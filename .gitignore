@@ -1,0 +1,6 @@
+*.pdf
+*.DS_Store
+.playwright-mcp/
+txt/
+nlp_polarization_downloads/
+convert_pdfs.py
