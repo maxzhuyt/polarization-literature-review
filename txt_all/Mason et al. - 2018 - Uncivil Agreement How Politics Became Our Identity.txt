@@ -1,0 +1,777 @@
+UNCIVIL AGREEMENT
+HOW POLITICS BECAME OUR IDENTITY
+
+      BY LILLIANA MASON
+
+
+                        Contents
+
+Figure 3.1                                         4
+Figure 3.2                                         5
+Figure 3.3                                         6
+Figure 3.4                                         8
+Figure 3.5                                         9
+Figure 4.1                                         10
+Figure 4.2                                         11
+Figure 4.3                                         12
+Figure 4.4                                         13
+Figure 4.5                                         14
+Regression Model Predicting Social-Distance Bias   15
+Figure 5.1                                         16
+Figure 5.2                                         17
+Figure 5.3                                         18
+Figure 5.4                                         19
+Figure 5.5                                         20
+Figure 6.1                                         21
+Figure 6.2                                         22
+Figure 6.3                                         23
+Figure 6.4                                         24
+Figure 6.5                                         25
+Figure 6.6                                         26
+Figure 6.7                                         27
+Figure 6.8                                         28
+Figure 6.9                                         29
+Figure 6.10                                        30
+Figure 7.1                                         31
+Figure 7.2                                         32
+Figure 7.3                                         33
+Figure 7.4                                         34
+Figure 7.5                                         35
+Figure 7.6                                         36
+Figure 7.7                                         37
+Figure 7.8                                         38
+
+
+Figure 7.9    40
+Figure 7.10   42
+Figure 7.11   43
+Appendix      44
+
+
+                       Figure 3.1. Traditional measure of ideology
+Note: Data drawn from the American National Election Studies cumulative file 1948– 2008
+(fully weighted) and the 2012 file (fully weighted). Ideology item available from 1972 and
+   later. Democrats and Republicans include independents who lean toward one party.
+                             Figure 3.2. Identity-based ideology
+ Note: Data drawn from the American National Election Studies from 1972, 1992, and 2000.
+ Democrats and Republicans include independents who lean toward one party. Vertical axis
+represents the percentage of Democrats/Republicans who identify with liberals/conservatives,
+                                         respectively.
+  Figure 3.3. Difference between the average policy positions of Democrats and Republicans
+  Note: Data drawn from the American National Election Studies cumulative file 1948–2008
+(fully weighted) and the 2012 ANES file (fully weighted). Democrats and Republicans include
+ independents who lean toward one party. Values represent the difference between the mean
+Democratic and mean Republican position on each issue. Bars to the left of zero indicate that
+              Democrats and Republicans differ in a party-inconsistent direction.
+Figure 3.3. (continued)
+                                Figure 3.4. Social-group sorting
+      Note: Bars represent the difference between the percentage of group members in the
+  Republican Party and the percentage of group members in the Democratic Party (including
+ partisan leaners). Income percentile is the difference between the mean income percentile of
+Republicans and Democrats. Data are drawn from the ANES cumulative data file for the 1952,
+1972, and 1992 graphs (fully weighted) and from the 2012 ANES (fully weighted) for the 2012
+ graph. There is also a gender gap between the parties, but this does not follow a clear pattern
+over time. Though Democrats were slightly more male (by 3 points) in 1952, Republicans have
+ been consistently more male ever since, with a partisan gap of 4 points in 1972, 10 points in
+                                   1992, and 7 points in 2012.
+                            Figure 3.5. Identity-based social sorting
+Note: Bars represent the difference between the percentage of Republicans who claimed to feel
+identified with each group minus the percentage of Democrats who did so (including partisan
+           leaners). Data drawn from the ANES data files of 1972, 1992, and 2000.
+                    Figure 4.1. Warmth bias and policy extremity over time
+     Note: Warmth bias is the absolute difference between each respondent’s thermometer
+   rating of the Democratic and Republican parties. Policy extremity is an index of six issues
+including abortion policy, government services versus spending, government health insurance,
+  government aid to minorities, government employment protections, and defense spending.
+  Each issue is folded in half so that higher scores represent more extreme positions on both
+  ends of the spectrum. The six folded issue scales are then combined into an index. Data are
+ drawn from the ANES cumulative file through 2012 (fully weighted), using only observations
+                        for which answers are available for all six issues.
+              Figure 4.2. Predicted feelings of warmth toward the Democratic Party
+   Note: Data drawn from the ANES cumulative file (fully weighted) and the ANES 2012 file
+(fully weighted). Predicted values are derived from OLS regressions, controlling for education,
+     sex, race, age, southern residence, urban residence, and church attendance. For the full
+                                regressions, see appendix table A.1a.
+              Figure 4.3. Predicted feelings of warmth toward the Republican Party
+   Note: Data drawn from the ANES cumulative file (fully weighted) and the ANES 2012 file
+(fully weighted). Predicted values are derived from OLS regressions, controlling for education,
+     sex, race, age, southern residence, urban residence, and church attendance. For the full
+                               regressions, see appendix table A.1b.
+               Figure 4.4. Social distance between Democrats and Republicans
+ Note: Data are drawn from an adult sample collected by YouGov Polimetrix, using funding
+  from the National Science Foundation under grant no. SES-1065054. Bars represent mean
+ levels of reported willingness among self-identified Democrats and Republicans, including
+independent leaners. Ninety-five percent confidence intervals around mean values shown to
+                                indicate significant differences.
+  Figure 4.5. Predicted difference in social distance between ingroup and outgroup partisans
+    Note: Predicted values drawn from an OLS regression controlling for education, political
+ knowledge, race, gender, income, age, and church attendance. Ninety-five percent confidence
+   intervals shown. Originating regressions are shown in appendix table A.2. Data are drawn
+from the 2011 Polimetrix sample. Sample includes only those respondents who have indicated
+  preference for one party (N = 774). Partisanship is a scale introduced and tested by Huddy,
+ Mason, and Aarøe (2015), based on items often found in social-psychological identity scales
+(Luhtanen and Crocker 1992; Crocker et al. 1994). Issues are an index of five generally salient
+  political issues, weighted by the rated importance of each one, as well as a measure of issue
+constraint. Social-distance scale ranges from 0 (no difference in willingness to interact socially
+ with members of the two parties) to 1 (maximal difference in willingness to interact socially
+                                with members of the two parties).
+SDB = a + B1(PID) + B2(IE) + B3(IC) + B4(IE*IC) + Bi(controls) + e
+Regression Model Predicting Social-Distance Bias
+Figure 5.1. Predicted values of partisan prejudice (warmth bias) among strong partisans across
+                                         levels of sorting
+  Note: Bars represent predicted values of warmth bias at varying levels of partisan-ideological
+   sorting in the ANES models and social sorting in the YouGov model, controlling for issue
+extremity and constraint, political knowledge, education, race, gender, income, age, and church
+   attendance. Originating regressions are shown in appendix table A.4. Ninety-five percent
+ confidence intervals are shown. ANES samples are fully weighted. The low sorting score in the
+ ANES models is not zero but 0.0857, the lowest sorting score possible given a strong partisan
+  identity. In the YouGov sample, the lowest possible value of the social-sorting scale among
+           strong partisans is 0.4286, and this is therefore the low sorting value used.
+Figure 5.2. Predicted values of partisan prejudice (warmth bias) among strong partisans across
+                              levels of sorting and issue polarization
+ Note: Bars represent predicted values of warmth bias at varying levels of social sorting in the
+  YouGov 2011 sample, across three levels of issue extremity, controlling for issue constraint,
+political knowledge, education, race, gender, income, age, and church attendance. Originating
+regression is shown in appendix table A.5. Ninety-five percent confidence intervals are shown.
+  The lowest observed value of the social-sorting scale among strong partisans is 0.4286, and
+   this is therefore the low sorting value used. The mean value of issue extremity is 0.65 (the
+                                 median, not shown here, is 0.67).
+             Figure 5.3. Difference in warmth bias by sorting in matched samples
+Note: Respondents are matched on ideology, issue extremity, political knowledge, education,
+ age, sex, race, geographical location, and church attendance. The only observed difference
+ between the two bars is the degree to which party identity aligns with ideological identity.
+Bars represent the mean level of warmth bias for each group. Ninety-five percent confidence
+                                      intervals are shown.
+                    Figure 5.4. Predicted social-distance bias by social sorting
+ Note: Bars represent predicted values of social-distance bias at varying levels of social sorting
+   in the YouGov 2011 sample, across three levels of issue positions, controlling for political
+      knowledge, education, race, gender, income, age, and church attendance. Originating
+regression is shown in appendix table A.6. Ninety-five percent confidence intervals are shown.
+ The lowest observed value of the social-sorting scale among strong partisans is 0.43, and this
+  is therefore the low sorting value used. Social distance scale ranges from 0 (no difference in
+   willingness to interact socially with members of the two parties) to 1 (maximal difference
+    in willingness to interact socially with members of the two parties). There is a significant
+     interaction between issue extremity and constraint in this model, so both variables are
+  included, both set at their minimum, mean, and maximum values for each set of predicted
+                                              values.
+      Figure 5.5. Predicted warmth bias by levels of social sorting and policy attitudes
+  Note: Bars represent predicted values of warmth bias (the difference between Democratic
+   and Republican feeling thermometers) at varying levels of social sorting in the YouGov
+ 2011 sample, controlling for political knowledge, education, race, gender, income, age, and
+church attendance. Originating regression is shown in appendix table A.7. Ninety-five percent
+confidence intervals are shown. Mean value of policy extremity is 0.66, of policy constraint is
+                          0.56, and of social sorting is 0.71 out of 1.0.
+               Figure 6.1. Anger toward the outgroup presidential candidate
+  Note: Data drawn from the weighted ANES cumulative data file, 1948– 2012. Numbers
+represent the percentage of people who reported feeling angry at the outgroup presidential
+  candidate, coded as a presidential candidate of the party that the respondent does not
+       belong to. Question was first asked in 1980. Pure independents are excluded.
+               Figure 6.2. Enthusiasm for the ingroup presidential candidate
+   Note: Data drawn from the weighted ANES cumulative data file, 1948– 2012. Numbers
+ represent the percentage of people who reported feeling proud of the ingroup presidential
+candidate, coded as a presidential candidate of the party that the respondent does belong to.
+                              Pure independents are excluded.
+   Figure 6.3. Change in anger and issue extremity between 1992 and 1996 by sorting
+Note: Data drawn from the ANES 1992–1996 Panel Study. Demographic controls are not
+necessary as this is a reinterview of the same individuals. Sorting is limited to the partisanideological sorting measure, due to data limitations.
+         Figure 6.4. Predicted probability of feeling anger at the outgroup candidate
+Note: Predicted probabilities drawn from a logit model using weighted ANES data from the
+cumulative file through 2012. Controls are included for issue extremity and constraint (and
+ their interaction), education, sex, race, age, southern location, urban location, and church
+   attendance. Originating regression is shown in appendix table A.8. Ninety-five percent
+                                 confidence intervals shown.
+           Figure 6.5. Predicted probability of feeling proud of ingroup candidate
+ Note: Predicted probabilities drawn from a logit model using weighted ANES data through
+   2012. Controls are included for issue extremity and constraint, education, sex, race, age,
+southern location, urban location, and church attendance. Originating regression is shown in
+             appendix table A.8. Ninety-five percent confidence intervals shown.
+          Figure 6.6. Percent angry at the outgroup candidate in matched sample
+Note: Data drawn from ANES cumulative file through 2012. Ninety-five percent confidence
+   intervals shown. Respondents matched on ideological identification, issue extremity,
+ education, sex, race, age, southern location, and church attendance. Low sorting and high
+                sorting are divided by cutting the sorting score at its median.
+          Figure 6.7. Percent proud of the ingroup candidate in matched sample
+Note: Data drawn from ANES cumulative file through 2012. Ninety-five percent confidence
+   intervals shown. Respondents matched on ideological identification, issue extremity,
+ education, sex, race, age, southern location, and church attendance. Low sorting and high
+                sorting are divided by cutting the sorting score at its median.
+                   Figure 6.8. Main effects of experimental treatment
+Note: Ninety-five percent confidence intervals shown. Bars represent mean levels of each
+                  emotion in each treatment, across the entire sample.
+                      Figure 6.9. Predicted angry reactions to messages
+Note: Bars represent the predicted values of anger at each level of issue extremity, partisan
+identity, or sorting. Originating regressions are shown in appendix table A.9. Ninety-five
+                             percent confidence intervals shown.
+               Figure 6.10. Predicted enthusiastic reactions to messages
+Note: Bars represent the predicted values of enthusiasm at each level of issue extremity,
+partisan identity, or sorting. Originating regressions are shown in appendix table A.10.
+                     Ninety-five percent confidence intervals shown.
+           Figure 7.1. Percentage of US population reporting that they have voted
+Note: Data drawn from the ANES cumulative file through 2012, weighted. Ninety-five percent
+       confidence intervals shown. Linear trend line drawn for ease of interpretation.
+Figure 7.2. Percentage of US population reporting having participated in each political activity
+Note: Data drawn from the ANES cumulative file through 2012, weighted. Ninety- five percent
+                                 confidence intervals shown.
+Figure 7.3. Percentage of US population reporting displaying a button, sticker, or sign, by level
+                                   of political discussion
+Note: Data drawn from the ANES cumulative file through 2012, weighted. Ninety-five percent
+                                confidence intervals shown.
+            Figure 7.4. Mean activism: Matching on ideology and issue extremity
+Note: Ninety-five percent confidence intervals shown. Data drawn from the ANES cumulative
+file through 2012. Samples are matched on ideology, issue extremity, education, sex, race, age,
+                      south/nonsouth location, and church attendance.
+    Figure 7.5. Predicted values of activism among strong partisans across levels of sorting
+   Note: Bars represent predicted values of activism at varying levels of partisan-ideological
+ sorting controlling for a scale of issue extremity and issue constraint (and their interaction),
+  political knowledge, race, sex, income, age, and church attendance. Originating regression
+  is shown in appendix table A.11. Ninety-five percent confidence intervals are shown. This
+sample is fully weighted. The low sorting score is not zero, but 0.0857, the lowest sorting score
+                            possible given a strong partisan identity.
+       Figure 7.6. Predicted values of a scale of prior activism, by level of social sorting
+ Note: Predicted values drawn from OLS models shown in the appendix, controlling for issue
+  extremity, constraint and rated importance, race, sex, income, age, political knowledge, and
+church attendance. Originating regression is shown in appendix table A.12. Ninety-five percent
+                                   confidence intervals shown.
+  Figure 7.7. Predicted values of a scale of intended future activism, by level of social sorting
+ Note: Predicted values drawn from OLS models shown in the appendix, controlling for issue
+  extremity, constraint and rated importance, race, sex, income, age, political knowledge, and
+church attendance. Originating regression is shown in appendix table A.12. Ninety-five percent
+                                   confidence intervals shown.
+     Figure 7.8. Predicted values of prior political engagement from abortion identity versus
+                     abortion extremity versus abortion extremity* importance
+    Note: Ninety-five percent confidence intervals shown. Identity measured from four items
+ including (1) How important is being pro-choice/pro-life to you? (2) How well does the term
+ pro-choice/pro-life describe you? (3) When talking about pro-choice/pro-life people how often
+ do you use “we” instead of “they”? (4) To what extent do you think of yourself as pro-choice/
+  pro-life? Prior political activism includes working for a political party or candidate, engaging
+   in political protest, writing a letter or email to a political official, and donating money to a
+    political party or candidate (a count recoded to range from 0 to 1). Panels A and C derive
+    from a model including the interactive term between extremity and importance. Panel B
+    only includes extremity and does not control for identity. All models control for race, sex,
+income, age, political knowledge, and church attendance. Originating regressions are shown in
+                                          appendix table A.13.
+Figure 7.8. (continued)
+  Figure 7.9. Predicted values of intended future political engagement from abortion identity
+                versus abortion extremity versus abortion extremity* importance
+    Note: Ninety-five percent confidence intervals shown. Identity measured from four items
+    including (1) How important is being pro-choice/pro-life to you? (2) How well does the
+ term pro-choice/pro-life describe you? (3) When talking about pro-choice/pro-life people how
+  often do you use “we” instead of “they”? (4) To what extent do you think of yourself as prochoice/pro-life? Intended activism includes intention to (1) donate to or (2) volunteer for
+   (3) candidates or (4) parties in the upcoming 2012 election. Panels A and C derive from a
+model including the interactive term between extremity and importance. Panel B only includes
+    extremity and does not control for identity. All models control for race, sex, income, age,
+  political knowledge, and church attendance. Originating regressions are shown in appendix
+                                            table A.14.
+Figure 7.9. (continued)
+           Figure 7.10. Predicted activism at low and high anger and enthusiasm
+Note: Ninety-five percent confidence intervals shown. Model only includes those who were
+presented with a threatening or reassuring message. OLS model with robust standard errors
+controls for issue extremity and constraint, race, sex, income, age, political knowledge, and
+      church attendance. Originating regressions are shown in appendix table A.15.
+Figure 7.11. Mean levels of intended activism after threatening versus nonthreatening messages
+ Note: Ninety-five percent confidence intervals shown. Dots represent mean levels of intended
+    activism in the presence of threatening or nonthreatening treatments. Data from 2011
+                                        YouGov sample.
+                             APPENDIX
+
+
+Figure A.1. Alternate to figure 4.5, varying issue extremity and constraint
+Figure A.2. Distribution of social-sorting score
+     Table A.1a Originating regressions for figure 4.2: Democratic feeling thermometer
+
+                                         1980             1982              1984             1986            1988            1990            1992            1994
+
+     Partisan identity               0.37    (.02)     0.37    (.01)     0.35    (.01)    0.36   (.01)    0.37   (.01)    0.29   (.01)    0.35   (.02)    0.37    (.02)
+        (strong Democrat = high)
+     Issue scale                     0.09    (.03)     0.10    (.03)     0.10    (.03)    0.06   (.03)    0.10   (.03)    0.06   (.03)    0.16   (.04)    0.25    (.04)
+        (most liberal = high)
+     Education                      −0.12    (.02)    −0.10    (.02)   −0.08     (.01)   −0.08   (.01)   −0.08   (.02)   −0.09   (.02)   −0.12   (.02)   −0.05    (.02)
+     Male                           −0.01    (.01)    −0.03    (.01)   −0.02     (.01)   −0.03   (.01)   −0.03   (.01)   −0.04   (.01)   −0.03   (.01)   −0.02    (.01)
+     White                          −0.06    (.01)    −0.04    (.01)   −0.07     (.01)   −0.04   (.01)   −0.06   (.01)   −0.04   (.01)   −0.03   (.01)   −0.07    (.02)
+     Age                             0.00    (.00)     0.00    (.00)    0.00     (.00)    0.00   (.00)    0.00   (.00)    0.00   (.00)    0.00   (.00)    0.00    (.00)
+     South                           0.02    (.01)     0.03    (.01)    0.00     (.01)    0.01   (.01)    0.00   (.01)    0.02   (.01)    0.03   (.01)    0.02    (.01)
+     Urban                           0.00    (.01)     0.01    (.01)    0.00     (.01)    0.00   (.01)    0.01   (.01)    0.01   (.01)    0.03   (.01)    0.01    (.01)
+     Church attendance               0.03    (.01)     0.01    (.01)    0.01     (.01)    0.02   (.01)    0.00   (.01)    0.01   (.01)   −0.01   (.01)   −0.02    (.02)
+     Constant                        0.41    (.03)     0.42    (.03)    0.44     (.02)    0.45   (.02)    0.41   (.03)    0.47   (.03)    0.37   (.04)    0.27    (.04)
+     R2                              0.38              0.46             0.41              0.38            0.39            0.29            0.42            0.51
+     N                              1580              1370             2198              2115            1977            1909            1077             991
+                                                                                                                                                           (continued)
+
+
+     Table A.1a (continued)
+
+                                              1996                1998                 2000                2004                2008                 2012
+
+     Partisan identity                    0.48     (.03)       0.34     (.02)      0.45     (.02)      0.42     (.02)       0.46     (.02)      0.49     (.02)
+        (strong Democrat = high)
+     Issue scale                         −0.02     (.07)       0.13     (.03)      0.05     (.02)      0.10     (.04)       0.11     (.02)      0.25     (.03)
+        (most liberal = high)
+     Education                            0.01     (.04)     −0.07      (.02)     −0.03     (.02)     −0.10     (.02)     −0.09      (.02)     −0.06     (.02)
+     Male                                −0.07     (.02)     −0.03      (.01)     −0.03     (.01)     −0.02     (.01)     −0.03      (.01)     −0.02     (.01)
+     White                               −0.08     (.02)     −0.09      (.01)     −0.05     (.01)     −0.05     (.01)     −0.05      (.01)     −0.07     (.01)
+     Age                                  0.00     (.00)      0.00      (.00)      0.00     (.00)      0.00     (.00)      0.00      (.00)      0.01     (.02)
+     South                                0.03     (.02)      0.01      (.01)      0.01     (.01)      0.02     (.01)      0.00      (.01)      0.00     (.01)
+     Urban                                0.00     (.02)     −0.02      (.01)      0.03     (.01)      —                   —                    0.03     (.02)
+     Church attendance                   −0.03     (.03)      0.01      (.01)      0.02     (.01)     −0.01     (.01)      0.01      (.01)     −0.03     (.01)
+     Constant                             0.37     (.06)      0.42      (.03)      0.34     (.03)      0.38     (.03)      0.38      (.03)      0.25     (.02)
+     R2                                   0.49                0.41                 0.42                0.48                0.52                 0.63
+     N                                    395                1258                 1754                1186                2030                 3437
+
+     Note: Coefficients indicate change in Democratic feeling thermometer. Bold coefficients are significant at the p < .05 level. Standard errors in parentheses. All models are OLS models with robust
+     standard errors. All variables are coded to range from 0 to 1.
+
+
+     Table A.1b Originating regressions for figure 4.3: Republican feeling thermometer
+
+                                         1980             1982              1984             1986            1988            1990            1992            1994
+
+     Partisan identity              −0.32    (.02)    −0.37    (.02)   −0.37     (.01)   −0.36   (.01)   −0.39   (.01)   −0.33   (.02)   −0.37   (.02)   −0.33    (.02)
+        (strong Democrat = high)
+     Issue scale                    −0.10    (.03)    −0.17    (.03)   −0.21     (.03)   −0.20   (.03)   −0.18   (.03)   −0.15   (.03)   −0.21   (.04)   −0.10    (.05)
+        (most liberal = high)
+     Education                      −0.08    (.02)    −0.04    (.02)   −0.06     (.02)   −0.01   (.02)   −0.04   (.02)   −0.06   (.02)   −0.12   (.02)   −0.02    (.03)
+     Male                            0.00    (.01)    −0.01    (.01)   −0.01     (.01)   −0.01   (.01)    0.00   (.01)   −0.02   (.01)   −0.05   (.01)    0.00    (.01)
+     White                          −0.02    (.02)     0.03    (.02)   −0.03     (.01)   −0.02   (.01)    0.00   (.01)   −0.02   (.01)    0.00   (.02)   −0.03    (.02)
+     Age                             0.00    (.00)     0.00    (.00)    0.00     (.00)    0.00   (.00)    0.00   (.00)    0.00   (.00)    0.00   (.00)    0.00    (.00)
+     South                           0.01    (.01)     0.03    (.01)    0.03     (.01)    0.02   (.01)    0.04   (.01)    0.00   (.01)    0.03   (.01)    0.05    (.02)
+     Urban                          −0.02    (.01)     0.01    (.01)   −0.03     (.01)   −0.02   (.01)    0.01   (.01)    0.01   (.01)    0.00   (.01)   −0.02    (.02)
+     Church attendance               0.04    (.01)     0.04    (.01)    0.04     (.01)    0.03   (.01)    0.04   (.01)    0.05   (.01)    0.02   (.02)    0.00    (.02)
+     Constant                        0.83    (.03)     0.81    (.03)    0.90     (.03)    0.90   (.03)    0.85   (.03)    0.86   (.03)    0.90   (.04)    0.81    (.04)
+     R2                              0.24              0.33             0.35              0.29            0.33            0.25            0.33            0.29
+     N                              1580              1370             2198              2115            1977            1909            1077             991
+                                                                                                                                                           (continued)
+
+
+     Table A.1b (continued)
+
+                                              1996                1998                 2000                2004                 2008                2012
+
+     Partisan identity                   −0.38     (.03)     −0.40      (.02)     −0.38     (.02)     −0.46     (.02)     −0.49      (.02)     −0.45     (.02)
+        (strong Democrat = high)
+     Issue scale                         −0.09     (.07)     −0.04      (.04)     −0.05     (.02)     −0.20     (.04)     −0.07      (.02)     −0.25     (.03)
+        (most liberal = high)
+     Education                           −0.14     (.05)     −0.09      (.02)     −0.07     (.02)     −0.09     (.03)     −0.08      (.02)     −0.05     (.02)
+     Male                                −0.02     (.02)      0.00      (.01)      0.00     (.01)     −0.02     (.01)     −0.04      (.01)     −0.02     (.01)
+     White                                0.02     (.03)     −0.02      (.02)      0.00     (.01)     −0.04     (.02)     −0.03      (.01)      0.02     (.01)
+     Age                                  0.00     (.00)      0.00      (.00)      0.00     (.00)      0.00     (.00)      0.00      (.00)      0.06     (.02)
+     South                                0.00     (.02)      0.04      (.01)      0.00     (.01)      0.03     (.01)      0.03      (.01)      0.01     (.01)
+     Urban                                0.01     (.03)     −0.02      (.01)     −0.01     (.02)      —                   —                    0.04     (.02)
+     Church attendance                    0.07     (.03)      0.02      (.02)      0.04     (.01)      0.00     (.02)      0.03      (.01)     −0.01     (.01)
+     Constant                             0.86     (.06)      0.81      (.03)      0.78     (.03)      0.94     (.04)      0.83      (.03)      0.81     (.02)
+     R2                                   0.35                0.33                 0.31                0.44                0.46                 0.54
+     N                                    395                1258                 1754                1186                2030                 3435
+
+     Note: Coefficients indicate change in Republican feeling thermometer. Bold coefficients are significant at the p < .05 level. Standard errors in parentheses. All models are OLS models with robust
+     standard errors. All variables are coded to range from 0 to 1.
+
+
+Table A.2 Originating regression for figure 4.5
+
+                                                              Social-distance bias
+
+                   Partisan identity strength                 0.34              (.04)
+                   Issue extremity                            0.07              (.10)
+                   Issue constraint                          −0.21              (.11)
+                   Issue extremity*constraint                 0.40              (.17)
+                   Education                                 −0.01              (.01)
+                   Sophistication                             0.11              (.04)
+                   White                                      0.02              (.04)
+                   Hispanic                                   0.05              (.04)
+                   Black                                      0.10              (.05)
+                   Male                                      −0.02              (.02)
+                   Income                                    −0.09              (.03)
+                   Age (decades)                              0.00              (.01)
+                   Church attendance                         −0.05              (.03)
+                   Constant                                  −0.05              (.08)
+                   R2                                         0.20
+                   N                                          774
+
+Note: Coefficients indicate change in social-distance bias. Bold coefficients are significant at the p <
+.05 level. Standard errors in parentheses. All models are OLS models with robust standard errors. All
+variables are coded to range from 0 to 1.
+Table A.3 Example calculation of sociopartisan sorting scores
+
+Individual A: Highest-score Republican                      Individual B: Lowest-score Republican
+
+Republican identity = 1                                     Republican identity = 0
+Democratic identity = NA                                    Democratic identity = NA
+Conservative identity = 1                                   Conservative identity = NA
+Liberal identity = NA                                       Liberal identity = −1
+Evangelical identity = 1                                    Evangelical identity = NA
+Secular identity = NA                                       Secular identity = −1
+Black identity = NA                                         Black identity = −1
+Tea Party identity = 1                                      Tea Party identity = NA
+Sorting score = (1 + 1 + 1 + 1)/4 = 1                       Sorting score = (0 − 1 − 1 − 1)/4 = −0.75
+
+Note: Sorting score rescaled to range from 0 to 1 by adding 0.75, then dividing by 1.75. No respondent
+rated the lowest sorting score. One Democrat scored −0.61 before recoding, and one Republican scored
+−0.27. The lowest recoded score is therefore 0.08. Nineteen respondents scored a perfect 1. All variables
+are coded to range between 0 and 1. Each identity score is generated from the four-item scale assessing
+social identification with the group. Party-inconsistent groups are reverse coded to range from –1 to 0.
+“NA” indicates a missing score.
+Table A.4 Originating regressions for figure 5.1
+
+                                              Cumulative ANES
+                                                 to 2012                               2011 YouGov
+
+Partisan strength                            0.26              (.02)                0.31              (.05)
+Partisan-ideological sorting                 0.21              (.03)
+Sociopartisan sorting                                                              0.36               (.08)
+Issue extremity                              0.00              (.03)               0.32               (.13)
+Issue constraint                            −0.07              (.05)               0.14               (.13)
+Issue extremity*constraint                   0.28              (.08)              −0.21               (.20)
+Political knowledge                          0.00              (.02)               0.14               (.04)
+Education                                   −0.03              (.02)              −0.01               (.01)
+White                                        0.02              (.02)               0.04               (.04)
+Hispanic                                     0.02              (.03)               0.03               (.04)
+Black                                        0.08              (.03)               0.09               (.05)
+Male                                        −0.02              (.01)              −0.03               (.02)
+Income                                      −0.04              (.02)               0.00               (.00)
+Age                                          0.00              (.00)               0.01               (.01)
+Church attendance                            0.00              (.00)              −0.04               (.03)
+Constant                                     0.07              (.04)              −0.26               (.10)
+R2                                           0.26                                  0.25
+N                                           2147                                   775
+
+Note: Coefficients indicate change in partisan warmth bias. Bold coefficients are significant at the p < .05
+level. Standard errors in parentheses. All models are OLS models with robust standard errors. All variables are coded to range from 0 to 1. Age is measured in ten- year increments. Coefficients should be
+interpreted with caution, as the partisan- identity and sorting measures are related by construction,
+so holding one constant while moving the other is not precisely possible. The predicted values take
+account of this problem by holding both variables constant at one value, but the regression coefficients
+do not.
+Table A.5 Originating regression for figure 5.2
+
+                                                                           Warmth bias
+
+            Partisan identity                                          0.31               (.05)
+            Sociopartisan sorting                                      0.36               (.08)
+            Issue extremity (including importance)                     0.21               (.07)
+            Issue constraint                                          −0.01               (.04)
+            Education                                                 −0.01               (.01)
+            Sophistication                                             0.14               (.05)
+            White                                                      0.04               (.04)
+            Hispanic                                                   0.03               (.04)
+            Black                                                      0.09               (.05)
+            Male                                                      −0.03               (.02)
+            Income                                                     0.00               (.00)
+            Age (decades)                                              0.01               (.01)
+            Church attendance                                         −0.04               (.03)
+            Constant                                                  −0.19               (.07)
+            R2                                                         0.25
+            N                                                          775
+
+Note: Coefficients indicate change in partisan warmth bias. Bold coefficients are significant at the
+p < .05 level. Standard errors in parentheses. All models are OLS models with robust standard errors.
+All variables are coded to range from 0 to 1. Coefficients should be interpreted with caution, as the
+partisan-identity and sorting measures are related by construction, so holding one constant while moving the other is not precisely possible. The predicted values take account of this problem by holding
+both variables constant at one value, but the regression coefficients do not.
+
+
+Table A.6 Originating regression for figure 5.4
+
+                                                                Social-distance bias
+
+                   Partisan identity                           0.25               (.05)
+                   Sociopartisan sorting                       0.27               (.09)
+                   Issue extremity                             0.05               (.10)
+                   Issue constraint                           −0.23               (.11)
+                   Issue extremity*constraint                  0.38               (.16)
+                   Education                                  −0.01               (.01)
+                   Sophistication                              0.06               (.04)
+                   White                                       0.03               (.04)
+                   Hispanic                                    0.05               (.04)
+                   Black                                       0.10               (.05)
+                   Male                                       −0.02               (.02)
+                   Income                                     −0.01               (.00)
+                   Age (decades)                               0.00               (.01)
+                   Church attendance                          −0.05               (.03)
+                   Constant                                   −0.14               (.09)
+                   R2                                          0.21
+                   N                                           774
+
+Note: Coefficients indicate change in social-distance bias. Bold coefficients are significant at the p < .05
+level. Standard errors in parentheses. All models are OLS models with robust standard errors. All variables are coded to range from 0 to 1. Coefficients should be interpreted with caution, as the partisanidentity and sorting measures are related by construction, so holding one constant while moving the
+other is not precisely possible. The predicted values take account of this problem by holding both
+variables constant at one value, but the regression coefficients do not.
+Table A.7 Originating regression for figure 5.5
+
+                                                                     Warmth bias
+
+                    Partisan identity                           0.31               (.05)
+                    Sociopartisan sorting                       0.36               (.08)
+                    Issue extremity                             0.32               (.13)
+                    Issue constraint                            0.14               (.13)
+                    Issue extremity*constraint                 −0.21               (.20)
+                    Education                                  −0.01               (.01)
+                    Sophistication                              0.14               (.04)
+                    White                                       0.04               (.04)
+                    Hispanic                                    0.03               (.04)
+                    Black                                       0.09               (.05)
+                    Male                                       −0.03               (.02)
+                    Income                                      0.00               (.00)
+                    Age (decades)                               0.01               (.01)
+                    Church attendance                          −0.04               (.03)
+                    Constant                                   −0.26               (.10)
+                    R2                                          0.25
+                    N                                           775
+
+Note: Coefficients indicate change in partisan warmth bias. Bold coefficients are significant at the p
+< .05 level. Standard errors in parentheses. All models are OLS models with robust standard errors.
+All variables are coded to range from 0 to 1. Coefficients should be interpreted with caution, as the
+partisan-identity and sorting measures are related by construction, so holding one constant while moving the other is not precisely possible. The predicted values take account of this problem by holding
+both variables constant at one value, but the regression coefficients do not.
+
+
+Table A.8 Originating regressions for figures 6.4 and 6.5
+
+                                                          Anger ANES                       Pride ANES
+
+Sorting                                              1.28            (.24)            0.85             (.25)
+Partisan strength                                    1.54            (.14)            2.42             (.14)
+Issue extremity                                     −0.35            (.31)           −0.17             (.31)
+Issue constraint                                     0.98            (.59)            0.64             (.60)
+Issue extremity*constraint                           0.93            (.90)           −0.42             (.87)
+Education                                            0.74            (.15)            0.20             (.15)
+Male                                                −0.03            (.08)           −0.08             (.08)
+White                                                0.17            (.10)           −0.18             (.11)
+Age                                                  0.01            (.02)            0.04             (.02)
+Southern location                                   −0.20            (.09)            0.20             (.09)
+Urban                                               −0.19            (.11)           −0.64             (.12)
+Church attendance                                   −0.06            (.03)            0.01             (.03)
+Constant                                            −1.67            (.25)           −1.43             (.24)
+Pseudo R2 (from unweighted model)                    0.13                             0.15
+N                                                   4395                             4395
+
+Note: Dependent variables are coded 1 for reporting feeling angry/proud, and 0 for no report of this
+emotion. All variables are coded to range from 0 to 1. Bold coefficients are significant at the p < .05 level.
+Standard errors in parentheses. All models are logit models with sample weights.
+Table A.9 Originating regressions for figure 6.9
+
+                                                 Issue                Partisan           Sociopartisan
+                                              polarization            identity              sorting
+
+                             Angry responses to party-based threats
+Partisan identity                                          −0.08             (.04)
+Sociopartisan sorting                                                                   −0.30       (.12)
+Group threat                             0.25      (.05)     0.13            (.07)      −0.12       (.13)
+Partisan identity × group threat                             0.24            (.11)
+Sociopartisan sorting × group threat                                                     0.68       (.23)
+Issue polarization                       0.03      (.05)     0.04            (.06)       0.09       (.06)
+Issue polarization × group threat        0.12      (.10)     0.09            (.10)      −0.02       (.11)
+White                                    0.01      (.04)     0.02            (.04)       0.09       (.03)
+Black                                   −0.15      (.05)   −0.14             (.05)
+Male                                     0.00      (.02)     0.00            (.02)       0.01       (.03)
+Income                                   0.00      (.00)     0.00            (.00)       0.00       (.00)
+Age (decades)                            0.02      (.01)     0.02            (.01)       0.02       (.01)
+Sophistication                           0.14      (.05)     0.15            (.05)       0.13       (.05)
+Church attendance                        0.04      (.03)     0.04            (.03)
+Constant                                 0.14      (.06)     0.16            (.06)       0.22       (.08)
+R2                                       0.16                0.17                        0.18
+N                                        859                859                          753
+                             Angry responses to issue-based threats
+Partisan identity                                          −0.03             (.04)
+Sociopartisan sorting                                                                   −0.40      0.12
+Issue threat                             0.14      (.05)     0.09            (.06)      −0.27      0.13
+Partisan identity × issue threat                             0.08            (.09)
+Sociopartisan sorting × issue threat                                                     0.70      0.23
+Issue polarization                      −0.06      (.06)   −0.05             (.06)       0.00      0.07
+Issue polarization × issue threat        0.39      (.10)     0.38            (.10)       0.26      0.12
+White                                    0.01      (.04)     0.01            (.04)       0.09      0.03
+Black                                   −0.16      (.05)   −0.16             (.05)       0.02      0.02
+Male                                     0.01      (.02)     0.01            (.02)
+Income                                   0.00      (.00)     0.00            (.00)       0.00      0.00
+Age (decades)                            0.01      (.01)     0.01            (.01)       0.01      0.01
+Sophistication                           0.06      (.05)     0.06            (.05)       0.06      0.05
+Church attendance                        0.04      (.03)     0.04            (.03)
+Constant                                 0.25      (.06)     0.27            (.06)       0.39      0.08
+R2                                       0.17                0.17                        0.19
+N                                        859                859                          753
+
+Note: Coefficients represent changes in reported levels of anger. Bold coefficients are significant at the
+p < .05 level in a two-tailed test. Standard errors in parentheses. All models are OLS regressions with
+robust standard errors. All variables are coded to range from 0 to 1. Shaded cells represent marginal
+effects for ease of interpretation.
+Table A.10 Originating regressions for figure 6.10
+
+                                                Issue                 Partisan           Sociopartisan
+                                             polarization             identity              sorting
+
+                       Enthusiastic responses to party-based reassurances
+Partisan identity                                            0.12    (.04)
+Sociopartisan sorting                                                                    0.30       (.13)
+Group support                            0.25      0.05      0.03    (.07)              −0.06       (.13)
+Partisan identity × group support                            0.34    (.09)
+Sociopartisan sorting × group                                                             0.54      (.21)
+   support
+Issue polarization                       0.02      0.06     −0.01    (.06)              −0.04       (.06)
+Issue polarization × group support       0.11      0.11      0.09    (.10)               0.01       (.11)
+White                                   −0.02      0.04     −0.02    (.04)              −0.07       (.03)
+Black                                    0.05      0.05      0.04    (.05)
+Male                                     0.02      0.02      0.03    (.02)               0.01       (.03)
+Income                                   0.00      0.00      0.00    (.00)               0.00       (.00)
+Age (decades)                            0.00      0.01      0.00    (.01)               0.00       (.01)
+Sophistication                          −0.06      0.05     −0.08    (.05)              −0.10       (.06)
+Church attendance                        0.05      0.03      0.03    (.03)
+Constant                                 0.36      0.07      0.33    (.07)               0.29       (.08)
+R2                                       0.12                0.15                        0.16
+N                                        859                 859                         753
+                       Enthusiastic responses to issue-based reassurances
+Partisan identity                                            0.15    (.04)
+Sociopartisan sorting                                                                    0.28       (.12)
+Issue support                            0.17      (.05)     0.12    (.07)              −0.09       (.14)
+Partisan identity × issue support                            0.08    (.10)
+Sociopartisan sorting × issue                                                             0.51      (.24)
+   support
+Issue polarization                      −0.04      (.06)    −0.07    (.06)              −0.10       (.06)
+Issue polarization × issue support       0.42      (.11)     0.39    (.11)               0.27       (.13)
+White                                   −0.04      (.04)    −0.04    (.04)              −0.07       (.03)
+Black                                    0.03      (.05)     0.02    (.05)
+Male                                     0.01      (.02)     0.02    (.02)               0.01       (.02)
+Income                                  −0.01      (.00)     0.00    (.00)              −0.01       (.00)
+Age (decades)                            0.00      (.01)     0.00    (.01)               0.00       (.01)
+Sophistication                          −0.07      (.05)    −0.08    (.05)              −0.09       (.05)
+Church attendance                        0.03      (.03)     0.02    (.03)
+Constant                                 0.41      (.06)     0.37    (.06)               0.31       (.08)
+R2                                       0.19                0.20                        0.23
+N                                        859                 859                         753
+
+Note: Coefficients represent changes in reported levels of enthusiasm. Bold coefficients are significant
+at the p < .05 level in a two-tailed test. Standard errors in parentheses. All models are OLS regressions
+with robust standard errors. All variables are coded to range from 0 to 1. Shaded cells represent marginal
+effects for ease of interpretation.
+Table A.11 Originating regression for figure 7.5
+
+                                                                        Activism
+
+                   Partisan strength                             0.06               (.01)
+                   Partisan-ideological sorting                  0.10               (.02)
+                   Issue extremity                               0.03               (.03)
+                   Issue constraint                              0.09               (.06)
+                   Issue extremity*constraint                    0.00               (.08)
+                   Political knowledge                           0.08               (.01)
+                   White                                         0.00               (.01)
+                   Black                                         0.05               (.02)
+                   Male                                          0.01               (.01)
+                   Income                                        0.04               (.02)
+                   Age                                           0.01               (.00)
+                   Church attendance                             0.00               (.00)
+                   Constant                                     −0.04               (.02)
+                   R2                                            0.11
+                   N                                            3426
+
+Note: Coefficients represent changes in levels of activism. Bold coefficients are significant at the p < .05
+level. Standard errors in parentheses. All models are OLS models with robust standard errors. All variables are coded to range from 0 to 1. Coefficients should be interpreted with caution, as the partisanidentity and sorting measures are related by construction, so holding one constant while moving the
+other is not precisely possible. The predicted values take account of this problem by holding both
+variables constant at one value, but the regression coefficients do not. Data are weighted and drawn
+from the cumulative ANES file through 2012.
+
+
+Table A.12 Originating regressions for figures 7.6 and 7.7
+
+                                                Past activism                        Intended activism
+
+Social sorting                              0.10              (.02)                 0.44            (0.08)
+Issue extremity                             0.03              (.03)                 0.13            (0.14)
+Issue constraint                            0.09              (.06)                 0.21            (0.18)
+Issue extremity*constraint                  0.00              (.08)                −0.14            (0.25)
+White                                       0.00              (.01)                −0.10            (0.03)
+Male                                        0.01              (.01)                 0.07            (0.03)
+Income                                      0.04              (.02)                 0.01            (0.00)
+Age                                         0.01              (.00)                 0.02            (0.01)
+Political knowledge                         0.08              (.01)                 0.26            (0.05)
+Church attendance                           0.00              (.00)                 0.05            (0.04)
+Constant                                   −0.04              (.02)                −0.50            (0.11)
+R2                                          0.19                                    0.17
+N                                           776                                     776
+
+Note: Coefficients represent changes in activism indices. Bold coefficients are significant at the p < .05
+level. Standard errors in parentheses. All models are OLS models with robust standard errors. All variables are coded to range from 0 to 1.
+Table A.13 Originating regressions for figure 7.8
+
+                                                                     Prior activism
+
+                                        Panels A and C
+               Abortion social identity                         0.32               (0.06)
+               Abortion issue extremity                        −0.07               (0.07)
+               Abortion issue importance                       −0.17               (0.07)
+               Abortion extremity*importance                    0.18               (0.09)
+               White                                            0.00               (0.03)
+               Male                                             0.06               (0.02)
+               Income                                           0.01               (0.00)
+               Age                                              0.03               (0.01)
+               Political knowledge                              0.38               (0.05)
+               Church attendance                                0.01               (0.03)
+               Constant                                        −0.27               (0.08)
+               R2                                               0.20
+               N                                                869
+                                           Panel B
+               Abortion issue extremity                         0.09               (0.02)
+               White                                           −0.01               (0.03)
+               Male                                             0.05               (0.02)
+               Income                                           0.01               (0.00)
+               Age                                              0.03               (0.01)
+               Political knowledge                              0.42               (0.04)
+               Church attendance                                0.04               (0.03)
+               Constant                                        −0.19               (0.05)
+               R2                                               0.18
+               N                                               1041
+
+Note: Coefficients represent changes in the four- item index of prior activism. Bold coefficients are
+significant at the p < .05 level. All models are OLS models with robust standard errors. All variables are
+coded to range from 0 to 1.
+Table A.14 Originating regressions for figure 7.9
+
+                                                                   Intended activism
+
+                                        Panels A and C
+               Abortion social identity                 0.28                       (0.07)
+               Abortion issue extremity                −0.08                       (0.08)
+               Abortion issue importance               −0.17                       (0.08)
+               Abortion extremity*importance            0.14                       (0.09)
+               White                                   −0.07                       (0.03)
+               Male                                     0.07                       (0.02)
+               Income                                   0.01                       (0.00)
+               Age                                      0.02                       (0.01)
+               Political knowledge                      0.30                       (0.05)
+               Church attendance                        0.07                       (0.03)
+               Constant                                −0.29                       (0.08)
+               R2                                       0.14
+               N                                        868
+                                           Panel B
+               Abortion issue extremity                 0.06                      −(0.02)
+               White                                   −0.07                      −(0.03)
+               Male                                     0.08                      −(0.02)
+               Income                                   0.01                       (0.00)
+               Age                                      0.02                      −(0.01)
+               Political knowledge                      0.34                      −(0.04)
+               Church attendance                        0.09                      −(0.03)
+               Constant                                −0.24                      −(0.05)
+               R2                                       0.18
+               N                                       1041
+
+Note: Coefficients represent changes in the four-item index of intended activism. Bold coefficients are
+significant at the p < .05 level. All models are OLS models with robust standard errors. All variables are
+coded to range from 0 to 1.
+
+
+Table A.15 Originating regressions for figure 7.10
+
+                                               Intended activism                   Intended activism
+
+Anger                                                                             0.12            (0.06)
+Enthusiasm                                   0.23             (0.05)
+Issue extremity and constraint               0.13             (0.07)              0.16            (0.08)
+White                                       −0.05             (0.07)             −0.01            (0.06)
+Black                                        0.01             (0.09)              0.13            (0.08)
+Male                                         0.05             (0.04)              0.10            (0.04)
+Income                                       0.01             (0.00)              0.01            (0.00)
+Age (decades)                                0.00             (0.01)              0.02            (0.01)
+Political knowledge                          0.36             (0.08)              0.21            (0.08)
+Church attendance                            0.04             (0.05)              0.01            (0.05)
+Constant                                    −0.29             (0.09)             −0.25            (0.10)
+R2                                           0.17                                 0.13
+N                                            366                                  376
+
+Note: Coefficients represent changes in the four-item index of intended activism. Bold coefficients are
+significant at the p < .05 level. Standard errors in parentheses. All models are OLS models with robust
+standard errors. All variables are coded to range from 0 to 1.

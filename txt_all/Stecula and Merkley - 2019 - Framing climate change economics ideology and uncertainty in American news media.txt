@@ -1,0 +1,958 @@
+EMPIRICAL STUDY
+                                                                                                                                           published: 26 February 2019
+                                                                                                                                      doi: 10.3389/fcomm.2019.00006
+
+
+                                           Framing Climate Change:
+                                           Economics, Ideology, and
+                                           Uncertainty in American News Media
+                                           Content From 1988 to 2014
+                                           Dominik A. Stecula 1,2* and Eric Merkley 3
+                                            Annenberg Public Policy Center, University of Pennsylvania, Philadelphia, PA, United States, 2 Department of Political
+                                           Science, Simon Fraser University, Burnaby, BC, Canada, 3 Department of Political Science, University of British Columbia,
+                                           Vancouver, BC, Canada
+                        Edited by:
+                       John Cook,
+            George Mason University,       The news media play an influential role in shaping public attitudes on a wide range of
+                      United States
+                                           issues—climate change included. As climate change has risen in salience, the average
+                     Reviewed by:
+                                           American is much more likely to be exposed to news coverage now than in the past.
+                       Jens Wolling,
+      Technische Universität Ilmenau,      Yet, we don’t have a clear understanding of how the content of this news coverage
+                            Germany        has changed over time, despite likely playing an important part in fostering or inhibiting
+                 Christopher Clarke,
+           George Mason University,
+                                           public support and engagement in climate action. In this paper we use a combination of
+                       United States       automated and manual content analysis of the most influential media sources in the U.S.
+                 *Correspondence:          -the New York Times, Wall Street Journal, the Washington Post, and the Associated
+                   Dominik A. Stecula
+                                           Press- to illustrate the prevalence of different frames in the news coverage of climate
+    dominik.stecula@appc.upenn.edu
+                                           change and their dynamics over time from the start of the climate change debate in 1988.
+                   Specialty section:      Specifically, we focus on three types of frames, based on previous research: economic
+         This article was submitted to
+                                           costs and benefits associated with climate mitigation, appeals to conservative and free
+          Science and Environmental
+                      Communication,       market values and principles, and uncertainties and risk surrounding climate change. We
+               a section of the journal    find that many of the frames found to reduce people’s propensity to support and engage
+          Frontiers in Communication
+                                           in climate action have been on the decline in the mainstream media, such as frames
+      Received: 06 September 2018
+       Accepted: 04 February 2019
+                                           emphasizing potential economic harms of climate mitigation policy or uncertainty. At the
+       Published: 26 February 2019         same time, frames conducive to such engagement by the general public have been on
+                             Citation:     the rise, such as those highlighting economic benefits of climate action. News content
+     Stecula DA and Merkley E (2019)       is also more likely now than in the past to use language emphasizing risk and danger,
+Framing Climate Change: Economics,
+Ideology, and Uncertainty in American      and to use the present tense. To the extent that media framing plays an important role in
+  News Media Content From 1988 to          fostering climate action in the public, these are welcome developments.
+           2014. Front. Commun. 4:6.
+    doi: 10.3389/fcomm.2019.00006          Keywords: climate change, framing, global warming, science communication, news media
+
+
+Frontiers in Communication | www.frontiersin.org                                  1                                                February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                    Framing Climate Change
+
+
+INTRODUCTION                                                                   coverage in the United States and in other countries. However,
+                                                                               their use of manual coding limits the degree to which they
+News media shape public attitudes on a variety of topics, and                  can reliably observe changes in the prevalence of important
+climate change is no different. Commentators attribute much                    frames over a long time period and across different news
+of the blame for Republican climate denial to conservative                     outlets. This is where our main contribution lies.3 This paper
+news outlets like Fox News,1 which have been found to                          aims to systematically analyze the content of the climate
+disseminate misinformation on climate science.2 However,                       change news stories in the most popular news media outlets
+Fox News represents only a small part of the news media                        in the United States as climate change emerged as a national
+environment, more important is the content of climate change                   issue. Specifically, we examine three key features of coverage
+news content in widely consumed mainstream news outlets.                       identified in the literature to influence public attitudes on
+Although it has been the subject of a large amount of research,                climate change: uncertainty and risk surrounding climate change
+we do not have a good sense of how this content has changed                    (Morton et al., 2011), economic costs and benefits of mitigation
+over time.                                                                     policies (Brulle et al., 2012), and appeals to conservative
+    Science communicators understand the importance of the                     ideology (Dixon et al., 2017).
+news media. Of particular interest has been how climate change
+is framed in public discourse. Communicators have a choice
+of which considerations to emphasize and which to downplay                     FRAMING CLIMATE CHANGE
+on any given political issue and they make such decisions
+strategically. The choices they make are the issue frames that                 Framing is an essential concept in communication studies and
+proliferate in political discourse. This is even truer with a                  has been a subject of interdisciplinary research for several
+complex topic like climate change. It is an issue that involves                decades. It refers to “the process by which people develop a
+multiple complex domains, like science, economics, and value                   particular conceptualization of an issue or reorient their thinking
+considerations, trade-offs, unequal impacts within society and                 about an issue” (Chong and Druckman, 2007, p. 102). The
+across nations, and future projections about somewhat uncertain                process of framing involves two key ingredients: selection and
+consequences. This complexity provides journalists, parties, and               salience. Framing is then about selecting some key aspects of
+interest groups tremendous latitude in framing the issue to serve              the perceived reality and making them more salient in the
+their interests and beliefs. The news media play a seminal role                process of communication (Entman, 1993). Those receiving that
+in this process because they are often the primary source of                   message have their own unique conceptualizations of issues—
+information on complex political issues for the average citizen.               often called “frames in thought”—which are influenced by
+They are therefore the primary mode of delivery of issue frames                “frames in communication” or considerations that are advanced
+to the public.                                                                 by speech acts or written work (Chong and Druckman, 2007).
+    Frames related to climate change can emphasize economic                    The influence of the latter on the former can be seen as a
+costs or benefits, heighten partisan or ideological conflict,                  framing effect.
+emphasize or downplay scientific uncertainty, among other                          Scholars have exhibited framing effects with surveys,
+things. There are likely implications for the public’s support for             experiments, and qualitative case studies across a wide range of
+climate action and willingness to act on these attitudes in a variety          issues including support for government spending, campaign
+of ways—from voting for environmentally-friendly candidates to                 finance, affirmative action, evaluations of foreign nations, and
+engaging in personal action to reduce one’s own carbon footprint               many others (see Chong and Druckman, 2007 for an extensive
+or even engaging in political activism. If the frames citizens                 survey of the literature). However, issues that are most influenced
+encounter lead citizens to think of climate science as uncertain or            by mediated communication tend to be complex ones that are
+mitigation as being costly, or see climate change as an ideological            mostly “invisible” to the public and, thus, difficult to comprehend
+battleground, we might expect their propensity to support and                  for many (Schäfer and O’Neill, 2017).
+engage in climate action to vary accordingly (Bain et al., 2016;                   Framing is unavoidable. All human knowledge makes use of
+Hornsey and Fielding, 2016; Walker et al., 2018).                              frames, and every word is defined in relation to the frames it
+    A growing body of experimental research has explored how                   neurally activates (Lakoff, 2010). Moreover, since frames always
+different frames in climate communication can affect attitudes                 come in systems, a single word can have the potential to activate
+and behavior. Alongside this important work has been research
+that examines the prevalence of frames in political discourse                  3 For example, Boykoff (2007) examined five U.S. and two U.K. newspapers in the
+
+(Boykoff and Boykoff, 2004, 2007; Antilla, 2005; Boykoff, 2007;                years 2003–2005. Boykoff and Boykoff (2004) examined five American newspapers
+Hoffman, 2011; Painter and Ashe, 2012; McGaurr et al., 2013;                   over a much longer period of 1988–2002, however, the issue of climate change
+                                                                               didn’t gain salience until post-2006 (see Merkley and Stecula, 2018). Boykoff
+Painter, 2013; Painter and Gavin, 2016; Feldman et al., 2017).                 and Boykoff (2007) expanded the scope of their work by focusing on a longer
+These works have shed light on the nature of climate change                    time period (1988–2004) and by adding broadcast television transcripts. Hoffman
+                                                                               (2011), on the other hand, examined more recent coverage in major U.S. papers,
+                                                                               but only over a very limited timespan: September 2007 to September 2009, and
+1 https://www.theguardian.com/environment/climate-consensus-97-per-cent/       only in opinion editorials. Painter and Gavin (2016) examined climate coverage in
+2013/aug/08/global-warming-denial-fox-news                                     the New York Times and the Wall Street Journal, among newspapers from other
+2 https://www.theguardian.com/environment/climate-consensus-97-per-cent/       countries, but their temporal focus was limited to a period from November 19,
+2014/apr/08/fox-news-28-percent-accurate-climate-change                        2009 to February 18, 2010.
+
+
+Frontiers in Communication | www.frontiersin.org                           2                                                February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                Framing Climate Change
+
+
+not only its defining frame, but also much of the system its                over time. No work has systematically examined this possibility
+defining frame is in (Lakoff, 2010). Every issue, including climate         in news content.4 We do so here.
+change, can be viewed from a variety of different perspectives
+and understood as having consequences for multiple values or                Conservative and Free-Market Ideology
+considerations. For those doing the communicating, the skillful             Second, frames may be present in the news media that
+use of framing can help them effectively convey their argument,             present climate change mitigation through the lens of leftfrequently by emphasizing specific a specific set of considerations         right ideological conflict. Ideology and values matter in shaping
+related to the issue at hand. The varying weights placed on these           citizen attitudes toward climate action. Anchored in a rich
+considerations often play a decisive role in determining overall            literature on motivated reasoning in social psychology (Kunda,
+attitudes and preferences (Druckman, 2001). The information                 1990; Ditto and Lopez, 1992), cultural cognition theory posits
+environment, such as the news media, play an important role in              that individual risk perceptions—and the acknowledgment of
+this process as they frequently carry the specific messages from            expert consensus—are shaped by their values in ways to
+the elites to the mass public (for an example of how this works in          maintain their group identities (Kahan, 2013). Those with
+the context of energy policy, see Clarke et al., 2015).                     individualistic value predispositions are expected to be more
+                                                                            skeptical of environmental risks because they justify regulation
+                                                                            and government intervention (Kahan et al., 2011). Kahan and
+Economic Costs and Benefits                                                 his colleagues highlight several mechanisms of cultural cognition:
+We focus on three classes of frames that we believe have                    the selective recall of supportive expert opinion, the selective
+particular relevance for societal debate on climate change, based           imputation of knowledge and trust to sympathetic experts, and
+on an analysis of relevant literature. First, frames in climate             the biased search of information and assimilation of expert
+change news coverage can focus on the economic costs and                    messages. Along a similar line, Campbell and Kay (2014) argue
+benefits of climate action for individuals or the society writ              that solution aversion is key to understanding conservative
+large. Researchers have found that fluctuations in the state of             reticence to accept climate science. Policy solutions to combating
+the economy affect levels of environmental concern (Kahn and                climate change are threatening to the ideological identities of
+Kotchen, 2010). People are less likely to support climate change            conservatives, which biases the perception and interpretation of
+mitigation policies when the economy is underperforming                     information from experts. Consequently, they find, along with
+(Elliott et al., 1997), and concern with climate change is correlated       other scholars, that emphasizing market-friendly solutions to
+with higher levels of employment and income (Scruggs and                    mitigation can lower conservative resistance to climate science
+Benegal, 2012; Carmichael et al., 2017).                                    (Campbell and Kay, 2014; Dixon et al., 2017).
+   The state of the economy is an objective fact, but the future                One important limitation of ideological and values-based
+projection of the possible consequences of climate mitigation               explanations for conservative resistance to climate change is that
+policy for the economy is far more complex. As such, it is open to          it takes this resistance as a fait accompli. However, it is not clear
+framing by political actors seeking to mobilize public support for          that this was the case. As late as 1997 Republicans were as likely as
+their position. Economic concerns surrounding climate change                Democrats to see climate change as a serious problem (Krosnick
+can be framed in terms of their costs and benefits. Some work               et al., 2000). Citizens had to learn to connect their individualistic
+has shown that cost-framed messages are effective in influencing            or conservative ideological beliefs to opposition to climate
+climate change attitudes and behaviors (Davis, 1995; Vries et al.,          action. They could have done so with exposure to ideological
+2016), while framing climate mitigation in terms of possible                frames and arguments in the news made by conservative and
+benefits increases support for climate action, even more so than            Republican elites. After all, the conservative movement has
+pointing out the costs of inaction (Spence and Pidgeon, 2010).              mobilized, more or less unanimously, to oppose climate change
+   Party elite behavior has adjusted accordingly (Nisbet, 2009).            mitigation (Oreskes and Conway, 2011). To be sure, these
+Republicans have typically adopted frames to highlight the                  groups have often used arguments related to economic costs of
+potentially detrimental economic costs of climate action, like              mitigation to undermine public support for climate action. They
+increased energy costs or the impact on the US’s global                     could have also used frames emphasizing the ideological threat
+competitiveness, to mobilize public opposition to mitigation.               of climate action, in the form of larger government, reduced
+Democrats, for their part, have tended to emphasize the                     American sovereignty, and sizable restrictions on free market
+benefits of investing in renewable energy sources and their                 competition. These themes tap into the individualism end of
+potential to revitalize the economy (Nisbet, 2009). This has been           Kahan’s individualism-communitarianism values dimension and
+particularly true since President Obama’s push for green jobs               conservative ideology more broadly.
+with the economic stimulus advanced in the aftermath of the                     A large literature on partisan cues in public opinion formation
+Great Recession.                                                            highlights the fact that political elites are often powerful drivers
+   The relative balance of these frames in news content may                 of public opinion (Downs, 1957; Zaller, 1992; Berinsky, 2009).
+have implications for the willingness of the public to support and
+engage in climate action (Bain et al., 2016; Hornsey and Fielding,          4 Feldman et al. (2017) have analyzed climate change news coverage by examining
+2016; Walker et al., 2018). As corporate America has gradually              different types of frames, including the economy, but their approach did not
+transitioned between intransigence on greenhouse gas emission               distinguish between economic cost and benefit, nor was it the central focus of
+reductions to cooperation, it is possible this balance has changed          their analysis.
+
+
+Frontiers in Communication | www.frontiersin.org                        3                                               February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                        Framing Climate Change
+
+
+Previous research has found that the news coverage of climate              gas emissions, and will result in severe environmental and
+change has politicized over the past few decades (Merkley and              human harm. The persuasive power of uncertainty in this context
+Stecula, 2018) and that partisan cues can polarize the public on           is its implicit justification and reification of the status quo,
+this issue (Tesler, 2018; Van Boven et al., 2018). What remains            especially as it pertains to fossil-fuel usage and carbon emissions
+unknown, however, is the degree to which ideological frames and            (Feygina et al., 2010).
+arguments are conveyed in the news media on climate change.                    One way in which this type uncertainty enters the media
+These frames could have provoked the polarization of Americans             coverage of climate change has been through the journalistic
+above and beyond the effects of partisanship.                              engagement of so-called “false balance.” Reporters frequently
+                                                                           treat topics as debates in which they present “both sides” in order
+Uncertainty and Risk in Climate Change                                     to adhere to a journalistic norm of objectivity. This norm exists,
+A final set of important frames in climate news coverage involves          in part, because both journalists and the general public prize
+the communication of uncertainty and risk in climate change.               it (Schudson, 1978; Giannoulis et al., 2010), but also because it
+Scientific uncertainty exists when there is a lack of scientific           acts as a mechanism to protect journalists from attacks on their
+knowledge or disagreement over the knowledge that exists at                credibility and to preserve access to sources on both sides of a
+a given point in time (Friedman et al., 1999). Researchers                 given political debate (Hallin, 1989; Shoemaker and Reese, 2013).
+understand that all forms of scientific endeavors involve such             The desire for balance also serves the media’s tendency toward
+uncertainty. In the context of climate change, discussion of               drama and conflict in news coverage (Bennett, 2007).
+uncertainty can focus on conflicting claims or a lack of knowledge             In many contexts it is important for journalists to be fair and
+about the existence or cause of climate change, its present-               evenly balanced in their presentation of different sides of a story,
+day effects, and the difficulty with assessing probabilities of            but it quickly becomes awkward when discussing the existence or
+specific outcomes and their consequences in the future (Patt and           causes of climate change where the credibility of each side does
+Schrag, 2003; Renn et al., 2011). Journalists covering scientific          not have equal weight. And, the consequences of this coverage
+issues, such as climate change, are also routinely confronted with         are troubling. Presenting a scientific consensus as a debate
+uncertainty, since controversy and debate are important criteria           confuses the public on the state of the science and, in the case
+for the “newsworthiness” of a story (Friedman et al., 1999). As a          of climate change, possibly reduces support for climate action
+result, how journalists present and describe scientific uncertainty        (Friedman et al., 1999; Corbett and Durfee, 2004; Koehler, 2016;
+affects how the public interpret such uncertainty.                         McCright et al., 2016).
+    Communicating this uncertainty, however, is notoriously                    Newsroom norms of objectivity will only contribute to a
+difficult (Fischhoff and Davis, 2014). Scientific discourse often          balanced presentation of a political debate if another side presents
+involves an amount of details that can overwhelm even seasoned             itself. Journalists ultimately rely on easily accessible sources when
+experts. It can also leave out crucial uncertainties that are              reporting on the news. And, because of the activism of the fossil
+commonly understood by the experts within the field, but                   fuel industry and conservative movement, there have been no
+need to be communicated to the broader public (Fischhoff and               shortage of sources ready and willing to use a platform provided
+Davis, 2014). Finding the right balance is difficult, yet essential,       by journalists to cast doubt on climate science—the so-called
+considering the important role that uncertainty plays in human             “Merchants of Doubt” (Oreskes and Conway, 2011). Scholars
+decision making (Curley et al., 1986; Sword-Daniels et al., 2018).         have noted that these groups have made a concerted effort to
+Psychological research shows that uncertainty generally has a              mobilize opposition to climate mitigation policy by undermining
+negative effect on prosocial behaviors, since it tends to enable           trust in foundations of climate science for both the public and
+people to adopt self-serving narratives about their actions and            policy makers (Jacques et al., 2008; Dunlap and McCright, 2011;
+limit their capacity to cooperate in social dilemma situations             Dunlap and Jacques, 2013; Farrell, 2016a,b). While these groups
+(Hine and Gifford, 1991; Dannenberg et al., 2015; for a review             are likely not as active in the media as conventional wisdom
+of the literature, see Kappes et al., 2018).                               might suggest (Merkley and Stecula, 2018), it is still possible that
+    Experimental work highlights that uncertainty framing also             the press, and in particular conservative media, pick up on their
+matters for climate change related behaviors, such as decreasing           message of uncertainty in their coverage of climate science even
+one’s energy consumption (Morton et al., 2011). A focus on                 if they don’t explicitly cite these actors.
+uncertainty in news coverage can potentially reduce the public’s               As the broader research on misinformation has shown,
+support and engagement in climate action because of the unclear            various myths surrounding climate science, including those
+outcomes of such actions.                                                  pertaining to certainty of different outcomes, tend to be “sticky,”
+    Uncertainty can take several forms in climate change                   and hence very difficult to correct (Lewandowsky et al., 2012).
+coverage. On a wide range of climate impacts and long-                     Efforts to correct such information tend to be ineffective, and,
+range forecasts of future warming there is uncertainty that is             in some circumstances might even result in what is called a
+appropriately acknowledged by experts in the media’s coverage              backfire effect, when people get more entrenched in their original
+of climate science. More problematic is if uncertainty is used             position (Nyhan and Reifler, 2010; Lewandowsky et al., 2012).
+in a way that casts doubt on the well-established tenants                  Some promising work suggests that exposing people to correct
+of the climate consensus of the Intergovernmental Panel on                 information prior to misinformation might be an effective way
+Climate Change (IPCC)—that climate change is happening, is                 to “inoculate” them from the perils of misinformation, at least
+predominantly man-made through the production of greenhouse                in some contexts, but the broader point remains that, if the
+
+
+Frontiers in Communication | www.frontiersin.org                       4                                         February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                             Framing Climate Change
+
+
+press disseminates uncertainty frames about climate change, such          increasing the temporal onset of climate change produces a
+information might play a negative role in people’s attitudes about        reduced willingness to engage in climate action for about half
+climate change and climate change mitigation policies (Cook               of their participants. The reason why proximity, either temporal
+et al., 2017; Jolley and Douglas, 2017).                                  or spatial, might matter has to do with the fact that things that
+    The themes of uncertainty have been analyzed in the context           are psychologically close seem more tangible and important than
+of climate change news coverage. Some research has shown that             those that are “farther” apart, as construal theory would suggest
+coverage of climate change in the 1990s and early 2000s was               (Trope and Liberman, 2010). What we do not know, however, is
+characterized by scientific inaccuracy and uncertainty, which was         how temporally proximate the presentation of climate change is
+driven by an adherence to balanced reporting and resistance to            in the major sources of information consumed by Americans.
+a growing body of scientific evidence. More recently, however,                These three, broad sets of frames: economic costs and benefits,
+balance nearly disappeared from the press (Zehr, 2000; Boykoff            appeals to conservative values, and uncertainty and risk in
+and Boykoff, 2004, 2007; Boykoff, 2007). The scope of this work,          climate science all could play a role in shaping the public’s support
+however, has been fairly limited in terms of the time dimension           and engagement in climate action. However, little is known about
+as well as the amount of news coverage examined, as was                   how often these frames are featured in news content and how this
+highlighted in the previous section. However, scholars who have           may have changed over time. As a result, in the rest of this paper,
+been examining this feature of news coverage of climate change in         we seek to answer the following research questions:
+the comparative context, have highlighted that the U.S. coverage
+                                                                          1. What is the balance of economic cost vs. economic benefits
+features substantially more climate skeptic voices pushing doubt
+                                                                             frames in climate change coverage, and did it change
+about climate science, compared to countries like India or France
+                                                                             over time?
+(Painter and Ashe, 2012). Furthermore, contrary to the findings
+                                                                          2. How prevalent were ideologically conservative appeals in the
+in the U.S.-centric literature, the authors found that skeptics
+                                                                             climate change coverage, and did they change over time?
+voicing climate increased their media presence between 2007 and
+                                                                          3. How often do the news media cover climate change using
+2010 (Painter and Ashe, 2012). In a separate analysis, Painter
+                                                                             uncertainty and risk frames, and did the prevalence of these
+(2013) also found that uncertainty was the second most common
+                                                                             frames change over time?
+frame used in climate change coverage, appearing in 76 percent
+of American articles, however it was the salient frame in only
+13 percent of the coverage. It is important to note that this             DATA AND METHODS
+analysis, however, was based only on a total of 55 articles.
+This disparity in findings highlights the need to systematically          We conducted a content analysis of prominent American
+examine uncertainty in the context of American news coverage              news media outlets to learn more about how the news media
+and examine degrees of uncertainty, not just whether the frame            frames climate change. We selected three top circulation daily
+is present or not.                                                        newspapers with a large, and growing, online presence to get a
+    Related to the communication of scientific uncertainty is risk.       representative view of the mainstream media coverage: the New
+Discussion of possible climate change impacts involve frames and          York Times, the Wall Street Journal, and the Washington Post,
+language that convey the severity of possible climate impacts.            as well as the newswire agency the Associated Press. We choose
+As the science of climate change has evolved, it has become               these newspapers since they are the highest circulation papers
+increasingly clear that risks of inaction are high (Oreskes, 2004;        in the United States and this circulation has been increasing
+McMichael et al., 2006; IPCC, 2014). Importantly, the prospect            in recent years.5 Furthermore, they each enjoy a large online
+of severe loss has been found to motivate people to engage in             presence as the New York Times, the Washington Post, and
+collective action in social dilemma situations (Milinski et al.,          the Wall Street Journal are ranked as the 3rd, 7th, and 19th
+2008; Dannenberg et al., 2015; Farjam et al., 2018), but people           most popular news websites on the internet by Alexa, at the
+tend to underestimate risks associated with climate change                time of this writing.6 They have also been the focus of a vast
+because they are abstract and mostly detached from their daily            amount of scholarly attention in communication literature, as
+life (Weber, 2006; Rabinovich and Morton, 2012). Consequently,            they are widely considered to be agenda-setters for both the
+frames that focus on the dangers of climate change may motivate           public and other news media sources (Golan, 2006; Zhang,
+climate action in the general public.                                     2018). The Associated Press, according to its annual report, is
+    Climate impacts, however, occur both in the distant future and        used by 900 newsrooms globally, and nearly half of the world’s
+at present. Accordingly, these risks can be framed either way.            population sees their content on any given day.7 In short, these
+Scholars have noted that the public’s propensity to support and           sources represent a significant portion of the mainstream news
+engage in climate action may be conditioned by the degree to              media landscape.
+which they psychologically proximate to the effects of climate               This selection of sources clearly does not include social
+change (see McDonald et al., 2015 for a review). The most studied         media data, which, according to the data by the Pew Research
+aspect of this has been spatial proximity. For example, Spence            Center, makes up an increasingly larger portion of Americans’
+and Pidgeon (2010) find that framing climate impacts as locally
+relevant increases one’s propensity to support climate mitigation.        5 http://www.journalism.org/fact-sheet/newspapers/
+There is a temporal dimension as well. Nicolaij and Hendrickx             6 https://www.alexa.com/topsites/category/Top/News
+
+(2003) demonstrate through experimental manipulation that                 7 https://www.ap.org/about/annual-report/2017/ap-by-the-numbers.html
+
+
+Frontiers in Communication | www.frontiersin.org                      5                                               February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                                Framing Climate Change
+
+
+TABLE 1 | News sources.                                                                 aim in this paper is to provide estimates of the prevalence of
+                                                                                        frames in news content across sources and over a long period of
+Source                    No. of articles          % of corpus        Start date
+                                                                                        time—tasks which are much more feasibly done with automated
+Associated Press              5,457                    39               1988            approaches to content analysis.
+New York Times                4,015                    28               1988               We use supervised machine learning to identify economic,
+Washington Post               3,469                    25               1988            conservative ideological, and uncertainty frames in coverage.
+Wall Street Journal           1,200                    8                1991
+                                                                                        The process first involves us (the researchers) hand coding a
+Total                         14,141                  100
+                                                                                        random samples of 2177 articles to train and test an algorithm.11
+                                                                                        In this case we use Support Vector Machines (SVM), which
+                                                                                        is a supervised machine learning technique that plots data
+                                                                                        points on an n-dimensional space to find a hyperplane that best
+media diets.8 Our main focus, however, is longitudinal, so we                           differentiates our classes of objects. We ensured our sample was
+concentrate on the most influential print news sources that                             stratified across three periods (1988–1996, 1997–2005, and 2006–
+have covered the issue of climate change from the beginning.                            2014) to ensure that our algorithm’s performance would not
+Furthermore, it is worth highlighting that most Americans                               fluctuate as climate change increased in salience over time.
+continue to get their news from mainstream sources, even in                                We randomly divided our hand coded sets into a training set
+the age of a highly fragmented media landscape. For example,                            (80%) and a testing set (20%). The former is used to train the
+recent analyses of actual behavior data, such as people’s web                           algorithm, while the latter allows us to compare the machine’s
+browsing patterns, reveal that most people obtain their news                            coding to our own. After training and testing the algorithms,
+from mainstream, centrist sources (Flaxman et al., 2016; Guess,                         they were used to classify the full corpus of articles for each
+2016). That is not to say that the partisan sources and social                          of our frames.
+media are irrelevant or that they might not be growing in                                  We assess the reliability of our trained algorithms with
+prominence, but our focus in this project was on the influential                        three metrics. First, we compute a simple accuracy measure,
+mainstream sources that covered the issue of climate change from                        which is the percent of our testing set with agreement between
+the emergence of the issue.                                                             our human and machine coding. However, accuracy alone is
+    News articles were collected from Lexis Nexis and Factiva for                       not sufficient to judge the quality of a classifier. Algorithms
+the time period between 1988 and 2014. We start our analysis                            may have poor predictive capacity but still yield high accuracy
+in 1988, the year of James Hansen’s Congressional testimony,                            scores when classes are imbalanced by following a simple
+which the New York Times proclaimed to be the “Beginning                                rule of assigning cases the value of the dominant class. Thus,
+                                                                                                                               true positives
+of Global Warming.”9 Articles that mentioned climate change                             we also present precision ( true positives+false positives ) and recall
+only in passing were excluded from the sample, to ensure that                                    true positives
+                                                                                        ( true positives+false negatives ) scores for each algorithm. The former
+we examined only relevant news reports.10 In total, the corpus
+                                                                                        tells us how many of our selected items are relevant. This
+includes 14,141 stories. A detailed breakdown of news reports, by
+                                                                                        metric is used by those concerned with minimizing false
+source, is featured in Table 1. The Associated Press makes up the
+                                                                                        positives. The latter tells us how many of our relevant items
+bulk of the content, but the New York Times and the Washington
+                                                                                        are actually selected—related to the minimization of false
+Post also covered the issue extensively. The Wall Street Journal is
+                                                                                        negatives. We present both because we want precision and
+an outlier, representing only 8 percent of the sample.
+                                                                                        recall to be approximately equal to present unbiased estimates
+    We rely primarily on automated approaches to content
+                                                                                        of proportions. We don’t want false negatives to outweigh false
+analysis in this paper, which allow for the full classification and
+                                                                                        positives or vice versa. Note that these two metrics are typically
+measurement of entire populations of news articles across criteria
+                                                                                        used in the context of information retrieval where researchers are
+we are interested in. These techniques are increasingly used by
+                                                                                        primarily interested in accurate predictions of instances of a class
+scholars in the social sciences to study news content and political
+                                                                                        of objects—in this case our frames. Because we are interested
+discourse more broadly (Young and Soroka, 2012; Grimmer
+                                                                                        in estimating proportions of articles of a given class we need to
+and Stewart, 2013; Lacy et al., 2015). They stand in contrast
+                                                                                        be interested in accurate predictions of both the presence and
+with human coding approaches, thus far dominant in climate
+                                                                                        absence of our frames, so we take the average of precision and
+change communication literature, that depend on the coding of
+                                                                                        recall scores for both.
+much smaller random samples of articles. Human coding has its
+                                                                                             The above process was applied to train and test the algorithms
+advantages. It can allow for a nuanced coding of content that
+                                                                                        related to each of our frames. The only difference between them
+takes fully into account the context in which words and language
+are used. However, the costs of this richness are efficiency and                        11 The training and testing sets were pulled from a larger number of mainstream
+a lack of estimate precision across diverse sub-populations. Our                        newspapers, which we have analyzed as part of our larger project studying climate
+                                                                                        change news content. However, only 30% of the training set came from other
+8 http://www.journalism.org/2018/09/10/news-use-across-social-media-                    mainstream newspapers. For this paper, one researcher completed the hand
+platforms-2018/                                                                         coding, while the second randomly selected 10% of these hand coded items (200
+9 https://www.nytimes.com/1988/06/24/us/global-warming-has-begun-expert-                articles) to assess the reliability of the coding. Our Krippendorff ’s Alpha score is
+tells-senate.html                                                                       0.87 for economic cost frames (95% agreement), 0.92 for economic benefit frames
+10 This was accomplished through a combination of human coding and supervised           (98% agreement), 0.88 for uncertainty frames (96% agreement), and 0.83 for
+machine learning, where a sample of stories was hand coded as relevant or not and       conservative frames (99% agreement). The human coding input for the algorithm
+then the machine learning algorithm was used to apply that to our corpus.               is thus highly reliable.
+
+
+Frontiers in Communication | www.frontiersin.org                                    6                                                  February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                          Framing Climate Change
+
+
+was in the size of the hand coded training and testing set. Each of            taking out wasted material helps keep prices low for Wal-Mart’s
+our frames is imbalanced in the hand coded set. There are more                 customers.’ Indeed, Mr. Scott told reporters after his talk that
+cases of each frame being absent than there are of instances of a              the current economic slump is prodding Wal-Mart even more to
+frame being used. SVM, like other supervised machine learning                  undertake its waste-reduction program. ‘When is a better time?”’
+approaches, is vulnerable when classes are imbalanced. In the
+process of training and testing our algorithms we found we could            We classified our full sample based on a training and testing set
+improve performance by training on a corpus where articles with             of 1,878 articles for economic cost frames, and 864 for economic
+a given frame command a larger share of the hand coded set. So,             benefit frames. Our economic cost classifier was 80% accurate,
+for each of our frames we randomly removed articles without a               with an average recall and precision of 0.76 and 0.80 respectively,
+given frame such that those with the frame represented a third of           indicating good performance. Similarly, our economic benefit
+the overall set. This reduced the number of overall articles in the         classifier was 80% accurate with average recall and precision
+combined hand coding set used for training and testing purposes             scores of 0.74 and 0.78, respectively.
+as described below.                                                            Third, we coded articles if there was any discussion related to
+   We now discuss each of our coding tasks in turn. First, we               conservative ideological themes (1) or not (0). Specifically, we
+coded whether (1) or not (0) a news article had mention of                  were interested in arguments that stressed the need to oppose
+possible costs of climate change mitigation to the economy.                 climate action because such policies empower bureaucrats,
+This could involve discussion of higher taxes, higher energy                undermine American sovereignty, serve a “big government”
+prices, reduced employment or economic growth, or reduced                   agenda, redistribute wealth, increase regulation, restrict freedom,
+competitiveness vis-à-vis developing countries. We code these               or violate the principles of the free market. Importantly, we
+dimensions of economic cost together because they are often                 wanted these arguments to be distinct from arguments about
+discussed together in news content, and, when not, typically                economic cost, and we excluded conservative frames that were
+involve the use of similar language and rhetoric. The reliable              used in support for climate action as their occurrence was too
+use of supervised machine learning requires the selection of                rare to reliably train an algorithm to engage in topic classification.
+topics that are clearly distinct in their language. In some cases           This frame was used in the same New York Times story as above:
+substantial discussion was present in a given article about
+economic impacts, but in other cases such frames were present                  “Republicans are already testing arguments. Steve Forbes, a
+in short rhetorical passages from political elites, particularly               Republican Presidential contender, immediately called the accord
+Republicans. An example of the use of such a frame can be                      ‘an unprecedented government seizure of American freedom and
+found in a New York Times article on December 13, 1997 where                   sovereignty.’ He added that ‘the Clinton health care plan pales
+Republicans attacked the Kyoto Protocol:                                       in comparison.”’
+
+   “Republicans are already testing arguments. . . Jim Nicholson,           More commonly, though, these themes were present in
+   the chairman of the Republican National Committee, said                  newspaper op-eds, such as the following from a Wall Street
+   the pact will ‘radically change the American life style.’ And            Journal op-ed on December 13, 2004:
+   Audrey Mullen, the executive director of the conservative group
+   Americans for Tax Reform, said, ‘Al Gore would prefer to stick
+                                                                               “There’s nothing capitalist about lobbying government to erect
+   working-class America with a big tax increase and stick America
+                                                                               a program that serves no other purpose than the redistribution
+   with lost jobs.”’
+                                                                               of wealth, whether it be from one company to another, or from
+                                                                               consumers to corporations.”
+Second, we coded articles for whether (1) or not (0) they had
+references to economic benefits for climate change mitigation.
+                                                                            We trained our algorithm on a combined training and testing set
+These frames feature discussion of win-win features of some
+                                                                            of 405 articles. Our classifier was 85% accurate, with average recall
+climate mitigation policies, like green jobs, lower energy and gas
+                                                                            and precision scores of 0.70 and 0.80, respectively.
+bills through increased energy efficiency, and increased profits
+                                                                               Finally, we coded each article for how balanced it was toward
+for green-friendly corporations. Importantly, we coded these
+                                                                            arguments of supporters and opponents of the IPCC consensus—
+frames not to include reference to the costs of climate inaction.
+                                                                            that climate change is happening, manmade, and a serious
+Discussion of energy efficiency, on its own, was also not enough
+                                                                            problem. Articles were coded −1 if there was no presence of
+to meet our criteria. There had to be mention of how such
+                                                                            discussion in the article that cast uncertainty on the veracity of
+efficiency benefits consumers or companies in the long run. For
+                                                                            any part of the IPCC climate consensus. They were coded 0 if
+example, this frame was used in a Wall Street Journal article
+                                                                            there was effectively an even balance of perspectives between
+on March 14, 2008 describing Wal-Mart’s efforts to reduce its
+                                                                            those that support for IPCC consensus and those that reject it,
+carbon footprint:
+                                                                            and 1 if the article featured a complete rejection of the IPCC
+   “The company is also looking into ways to reduce the amount              consensus and embrace of the uncertainty frame. This latter
+   of plastic used in making bottled-water containers, he said. The         category primarily took the form of op-eds by climate skeptics.
+   impetus for the company in doing all this isn’t just to please           Articles were also coded as −0.5 and 0.5 if they featured both
+   environmentalists, he said, but to save money. ‘It really is about       perspectives on climate science but were notably slanted in one
+   how you take cost out, which is waste,’ he said. ‘The savings by         direction or the other.
+
+
+Frontiers in Communication | www.frontiersin.org                        7                                          February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                           Framing Climate Change
+
+
+   There were too few instances of articles scored 0 and below                 climate policy are relatively limited, comprising just under 13%
+to train an algorithm to reliably return a fine grained measure                of coverage. However, there has been a notable spike in such
+of article balance, so we collapsed all categories above −1 when               coverage more recently in period 3 (18.9%). SVM classification
+training our algorithm. Thus, articles could be scored as 1 if                 yields largely similar results. Close to 30% of articles contain
+they had any discussion that cast doubt on the IPCC consensus                  frames related to economic costs, and there has been a modest
+and thus used an uncertainty frame, and 0 if they had no                       decrease in the most recent time period (24.4%), while 20% have
+such discussion.                                                               economic benefit frames, which have risen substantial in the most
+   An example of the use of an uncertainty frame is found in a                 recent period (23.9%) compared to the earliest period (10.8%).
+Washington Post article on October 30, 2000 citing a quote by, at                  Figure 1 below presents the SVM results annually since 1988.
+the time, presidential candidate Texas governor George W. Bush:                Economic cost frames unsurprisingly appear to coincide with
+                                                                               important policy debates such as the Rio conference, the Kyoto
+   “By contrast Gov. George Bush remains largely stuck in a posture            protocol, and Kyoto’s implementation. In all three of these
+   of wait and see. He says he takes global warming seriously, and he          periods Republicans and their allies in heavy industry were active
+   has proposed mandatory controls on power plant emissions that               in framing the climate debate in terms of the cost of mitigation
+   would include caps on the greenhouse gas carbon dioxide. But in             to the American economy due to the exclusion of developing
+   the debate he said, ‘I don’t think we know the solution to global           countries from mandatory emissions reduction targets. Since
+   warming yet. . . . Before we react I think it’s best to have the full       2001, however, it does appear that the presence of these frames
+   accounting, full understanding of what’s taking place.”’
+                                                                               in coverage have decline somewhat. In contrast, economic gain
+                                                                               frames marched steadily upwards in the 2000s, coinciding with
+We trained our algorithm on combined training and testing set of               the changing posture by much of corporate America toward
+1,179 articles. Our classifier was 77% accurate, with average recall           climate change mitigation. There now appears to be an even
+and precision scores of 0.70 and 0.68, respectively.                           contest between economic cost and economic benefit frames in
+   To examine the prevalence of language related to risk and                   news coverage, which was far from the case in the 1990s.
+time horizon, we turned to a different set of automated content                    The media’s treatment of economic frames is relatively
+analytic methods. Instead of supervised machine learning, we                   consistent across each of the outlets used here as shown in
+used dictionary methods. There were two primary reasons                        Table 2, with one notable exception. The conservative Wall Street
+for this choice. First, the aspects of coverage discussed above                Journal is substantially more likely to present economic cost
+were difficult to capture using a dictionary approach, and we                  frames (43.4%) compared to the others (24.7%, average), though
+weren’t able to produce reliable results with the dictionaries                 it is also modestly more likely to also focus on gains (27.4 vs.
+that we inductively put together. Supervised machine learning                  20.1%, average). In the temporal dynamics, however, each of
+approaches, however, did reliably work. Secondly, capturing                    our outlets are fundamentally similar. All four outlets have seen
+simpler components of language, such as risk and tense, is                     a gradual convergence in the promotion of economic cost and
+much more straightforward with dictionary methods, especially                  benefit frames in their coverage, as shown in Figure 1. In the
+with a pre-assembled and verified dictionaries included in                     contest to frame climate change mitigation as either a cost or a
+Linguistic Inquiry and Word Count (LIWC) software (Tausczik                    benefit, there is now a fair fight.
+and Pennebaker, 2010). The software has been used in countless                     In sharp contrast, conservative ideological framing—
+studies in the fields of communication, political science, and                 independent of concerns for economic costs—is very limited.
+computational linguistics, among others.                                       Our manual coding reveal that such frames are only present in
+   The LWIC dictionary is composed of 1,393 words measuring                    under 4% of news coverage. This figure has remained relatively
+different linguistic dimensions. For our purposes here, we                     constant across the three periods of our study. Our SVM
+use two specific dictionaries embedded into LWIC: risk                         algorithm returned results broadly similar to our coding, though
+and present tense. The risk dictionary is a collection of                      estimating the percentage slightly higher (5.6%). There were
+words and phrases such as alarm, avoid, hazard, and                            only a few times in the past few decades when the conservative
+threat, while present tense includes words like lives, now,                    framing was featured in more than 10% of the news articles.
+or present. In general, research has shown that dictionary                     As shown in Figure 2, in the years of peak salience of the issue,
+methods tend to do a good job capturing different linguistic                   2007–2009, conservative framing was featured in 3, 5, and 7%
+dimensions of text, comparable to the performance of manual                    of all news coverage, respectively. Interestingly, there is little
+coding (Young and Soroka, 2012).                                               evidence of a rise in conservative ideological framing, despite
+                                                                               increasing partisan polarization on climate change.
+RESULTS                                                                            There are, however, important differences between the Wall
+                                                                               Street Journal and the other papers. This is unsurprising, given
+We begin by presenting the results for economic frames. The                    that the Wall Street Journal is considered the flagship newspaper
+results of our manual coding are displayed in Table 2. It reveals              of the conservative movement. There are several years when the
+that, across all three periods, close to 30% of all stories had                conservative framing was featured prominently in the climate
+reference to possible economic costs of climate mitigation. This               coverage in the Journal. That was especially the case in 1996 and
+was largely consistent across all three time periods of our                    2001, where the conservative frame was present in 67 and 29%
+study. In contrast, frames focusing on economic benefits of                    of the climate stories in the Wall Street Journal. In the years
+
+
+Frontiers in Communication | www.frontiersin.org                           8                                        February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                        Framing Climate Change
+
+
+TABLE 2 | Hand coding and SVM results.
+
+                                             Total    Period 1      Period 2            Period 3        AP         NYT           WP            WSJ
+
+                                                     (1988–1996)   (1997–2005)        (2006–2014)
+
+Economic Cost (Manual)                       28.8%     29.7%            29.1%            27.4%
+Economic Cost (SVM)                          27.0%     32.7%            32.3%            24.5%         28.7%      21.9%         24.6%         43.8%
+Economic Gain (Manual)                       12.8%      9.7%            9.9%             18.9%
+Economic Gain (SVM)                          20.8%     11.4%            14.6%            24.4%         18.3%      22.3%         20.6%         28.3%
+Conservative Ideology (Manual)               3.8%       2.7%            4.5%             4.3%
+Conservative Ideology (SVM)                  5.7%       5.8%            6.4%             5.4%          3.8%        6.5%         6.3%          9.3%
+Uncertainty (Manual)                         18.1%     24.9%            14.6%            14.4%
+                       −1                    81.9%     75.1%            85.4%            85.6%
+                      −0.5                   10.7%     15.5%            9.6%             7.0%
+                       0                     3.9%       5.2%            2.9%             3.5%
+                       0.5                   1.1%       1.6%            0.4%             1.3%
+                       1                     2.3%       2.6%            1.7%             2.7%
+Uncertainty (SVM)                            19.6%     32.3%            21.2%            16.6%         16.1%      18.5%         23.8%         26.2%
+
+
+when the issue was covered most prominently, however, even                  even lower than these rather liberal estimates of uncertainty.
+the Journal used the framing at the rates comparable to other               The news media have simply not treated climate science
+news outlets, usually below 10% of all coverage. Conservative               in a balanced way, and they have increasingly purged any
+and Republican elites have not typically framed opposition to               reference to uncertainty surrounding the IPCC consensus from
+climate change in grand ideological terms, relying instead on               their coverage.
+arguments about economic cost, and, to a lesser degree, scientific             Risk framing is measured differently than economic cost and
+uncertainty, as we shall see below.                                         benefit frames and other results discussed above due to a different
+    Our manual coding also reveals that uncertainty frames are              method employed in capturing it. The results are presented
+not present in climate change coverage at levels we might                   in Figure 4. The y-axis indicates the percentage of words in
+expect. This is in line with past work that shows organized                 an average article each year that indicate risk. The numbers
+climate skeptics are rarely featured in the news (Merkley and               themselves are low, and somewhat difficult to substantively
+Stecula, 2018). Only 18% of coverage features any discussion                interpret, but what is clear is that language conveying danger
+that contradicts the IPCC climate consensus. And, of this share             and risk is increasingly present in climate change coverage as
+of coverage, well over half (10.7%) is still slanted in a way that          the issue has risen in salience. Between 1995 and 2014, risk
+privileges voices aligned with the IPCC consensus. Much dreaded             language usage in the press increased by over 35%. There
+“false balance” in climate coverage is rare. It also appears that the       are no substantive differences between the outlets. All display
+news media has improved in their coverage on this score. The                similar patterns of increased usage of risk framing, as the issue
+share of coverage with any uncertainty framing has decreased                has increased in salience in the mid-2000s. What might be
+from 25% in period 1 to ∼14% in period 3.                                   surprising, however, is a relatively high usage of risk language
+    The SVM results are consistent with our manual coding. It               in the early 1990s. The reason for that peak, however, is
+found 19% of articles to have some presence of uncertainty                  rooted in a relatively low number of articles in that timeframing, which has dropped from 32% in period 1 to 16%                      frame, especially before the Kyoto Protocol. The bulk of the
+in period 3. This is reflected in the annual plot of our                    stories in that period primarily focused on the science of
+SVM results in Figure 3. Uncertainty framing spiked to over                 climate change, and therefore language relating to risk was
+40% in periods of intense policy debate in the 1990s, but                   comparatively common.
+has marched steadily downward since, such that the best                        We also measured framing relating to temporal distance
+estimate of uncertainty framing in coverage at present is                   using the dictionary approach—specifically words used
+around 10%.                                                                 in climate coverage that were in the present tense. As
+    Again, results are reasonably consistent across our sources,            Figure 5 demonstrates, there has been an increase in
+though the conservative Wall Street Journal focuses on                      present-tense language around the time when the issue
+uncertainty frames modestly more than our other outlets on                  exploded in salience, in mid-2000s, around the release of
+average (25.4 vs. 19.4% average). The dynamics shown in                     Al Gore’s award winning documentary An Inconvenient
+Figure 3 below, however, illustrate that the decline in uncertainty         Truth. This pattern appears to be modestly stronger with
+framing is consistent across all of our sources, such that the              coverage by the Associated Press and the Washington Post,
+Wall Street Journal has largely converged with the rest. Again,             though it is, on average, higher now than in the past for all
+it is worth noting that instances of “false balance” are likely             four outlets.
+
+
+Frontiers in Communication | www.frontiersin.org                        9                                        February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                     Framing Climate Change
+
+
+ FIGURE 1 | Proportion of climate change news coverage with economic                FIGURE 2 | Proportion of climate change news coverage with conservative
+ framing from 1988 to 2014 in our combined corpus (top panel) and by source         framing from 1988 to 2014 in our combined corpus (top panel) and by source
+ (bottom panels).                                                                   (bottom panels).
+
+
+DISCUSSION                                                                         2010). Scholars have speculated that uncertainty frames confuse
+                                                                                   the public about the state of the science, and reduce their
+Frames play an essential role in distilling complex topics into                    propensity to engage in mitigation behavior (Boykoff and
+more manageable components so that people can identify its                         Boykoff, 2007), and there is some experimental evidence in
+relevance and form opinions (Spence and Pidgeon, 2010).                            support of that notion (Dixon and Clarke, 2013; Clarke et al.,
+It is inevitable in the context of climate change because of                       2015; Dixon et al., 2015; Koehler, 2016). We also know that
+the sheer number of dimensions associated with the issue—                          less polarizing climate change discourse may reduce Republican
+questions pertaining to the science and future climate forecasts,                  antipathy toward climate action (Tesler, 2018). However, we
+impacts, public policy, and related tradeoffs, among others.                       believe that more work needs to address the information
+Frames, however, are not neutral. Journalists, interest groups,                    environment in which citizens learn about climate change. How
+environmentalists, and party elites all compete to elevate frames                  often are these frames present? Has the dominance of certain
+conducive to their interests and ideologies (Nisbet, 2009).                        frames changed over time? Are there differences across outlets?
+   A rich literature has emerged using experimental methods                        Scholars need to increase their focus on the study of content,
+to examine the influence of these frames on public attitudes                       particularly in the news sources that most citizens learn about
+toward climate science and mitigation policy. Together, these                      political issues.
+works have provided important insights into the public’s                              We find here reason for optimism. Many of the frames
+complex relationship with climate change. We know that                             which scholars have identified as reducing citizen propensity
+frames emphasizing economic cost reduce support for climate                        to support and engage in climate action have been on
+mitigation (Davis, 1995; Vries et al., 2016), but those emphasizing                the decline in the mainstream media—even in the flagship
+gains are important at marshaling support (Spence and Pidgeon,                     publication of the conservative movement: the Wall Street
+
+
+Frontiers in Communication | www.frontiersin.org                              10                                              February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                     Framing Climate Change
+
+
+ FIGURE 3 | Proportion of climate change news coverage with uncertainty             FIGURE 4 | Frequency of risk related language in climate change news
+ framing from 1988 to 2014 in our combined corpus (top panel) and by source         coverage from 1988 to 2014 in our combined corpus (top panel) and by
+ (bottom panels).                                                                   source (bottom panels).
+
+
+Journal. Frames pertaining to the possible economic harms of                       interpretations of the economic implications of greenhouse gas
+climate mitigation policy have been prominent in the past,                         emission reductions. The use of the present tense is also more
+but appear to be on the decline. Similarly, frames related                         common in climate coverage, as is the presentation of language
+to uncertainty in the IPCC consensus have been in sharp                            related to risk. Climate discourse is increasingly focused on the
+decline, and true instances of “false balance” have never                          risk posed by inaction and the here and now. To the extent that
+been particularly common. Conservative ideological frames, for                     citizens may not be informed of the gravity of the risk posed by
+their part, have never gotten traction in mainstream news                          uncontrolled greenhouse gas emissions, or discount threats that
+coverage and this is even true in the Wall Street Journal.                         appear to be far in the future, these are welcome developments.
+The reason for this appears to be that economic cost is the                            We cannot definitely say why these changes are occurring
+argument of choice for conservative and Republican elites                          with a study of news content. However, it seems likely that
+when communicating opposition to climate change mitigation                         the sharp changes we have observed in the prevalence of
+policy. The three pillars of argument typically used by                            economic frames is a result of the changing posture of the
+countermovement organizations and the Republican Party to                          business community. A key characteristic of the Kyoto debate
+undermine climate action have been muffled in dominant                             was the monolithic opposition of American business to climate
+news outlets.                                                                      mitigation. Notwithstanding the continued reticence of the fossil
+   At the same time, frames conducive to the support and                           fuel industry—this is no longer true. Many sectors of American
+engagement in climate action by the general public have been on                    industry see opportunities for profit with climate mitigation
+the rise. Frames that emphasize the economic benefits of climate                   strategies—or, at least publicly recognize the need to minimize
+action have been on the sharp ascent since 2008 and now match                      future risks posed by climate change (Sullivan, 2008; Lee, 2012;
+those of economic cost. There is now a fair fight between rival                    Weinhofer and Busch, 2013; Doda et al., 2015). Other companies
+
+
+Frontiers in Communication | www.frontiersin.org                              11                                              February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                               Framing Climate Change
+
+
+                                                                                  reflected this change in their content. Our hand coding reveals
+                                                                                  that most of the decline in the use of uncertainty frame has been
+                                                                                  found in stories that reference uncertainty, but largely support
+                                                                                  the IPCC consensus (scored −0.5) and those that provide a
+                                                                                  balance of perspectives on the consensus (scored 0). These are
+                                                                                  primarily news stories. In contrast, there has been no notable
+                                                                                  decrease in articles that primarily reject the IPCC consensus,
+                                                                                  which are largely op-eds. In short, whatever problem that remains
+                                                                                  is primarily due to news outlets lending their op-ed pages to
+                                                                                  climate skeptics rather than the operation of a journalistic norm
+                                                                                  of balance—a point reinforced with the even lower share of
+                                                                                  coverage using uncertainty frames by the AP newswire. The
+                                                                                  implication is that continued scholarly focus on false balance
+                                                                                  and organized skeptics is perhaps misplaced—at least as far as
+                                                                                  understanding public opinion is concerned. Further research
+                                                                                  should explore the roots of these changes in journalist practice
+                                                                                  to allow us to avoid similar problems of false balance on other
+                                                                                  issues of scientific and expert consensus.
+                                                                                      Not all is well, though. It is heartening that conservative
+                                                                                  ideological frames are rarely used to oppose climate action, but
+                                                                                  at the same time these themes are not used in support of it either.
+                                                                                  Research has found that conservative frames in support of climate
+                                                                                  action can be highly persuasive to conservative and Republican
+                                                                                  identifiers (Campbell and Kay, 2014; Dixon et al., 2017). We
+                                                                                  were not able to find enough instances of this frame’s use to
+                                                                                  reliably train an algorithm to measure its (lack of) prevalence.
+                                                                                  Science communicators and journalists need to do more to
+                                                                                  elevate conservative arguments for climate action and those
+                                                                                  making these arguments.
+                                                                                      Perhaps even more importantly, previous work has shown
+                                                                                  that there has been a steady rise in the presence of cues or
+                                                                                  messages from party elites on climate change (Merkley and
+ FIGURE 5 | Frequency of present-tense related language in climate change         Stecula, 2018). This may help explain why, for all the gains
+ news coverage from 1988 to 2014 in our combined corpus (top panel) and by
+ source (bottom panels).
+                                                                                  that have been made in raising the awareness among Americans
+                                                                                  to the threat of climate change, the public has also polarized
+                                                                                  on the topic. A wide array of research on public opinion
+                                                                                  formation has shown such cues to be informative for citizens
+have emerged explicitly to capitalize on the emerging green                       and persuasive on a wide range of issues (Zaller, 1992; Cohen,
+economy. News content is reflecting these changes.                                2003; Berinsky, 2009), because both partisanship and negative
+    One limitation of our automated content analysis approach                     partisanship form critical parts of their social identity (Green
+was the need to code distinct dimensions of economic frames                       et al., 2002; Iyengar et al., 2012). Mobilizing a societal consensus
+together within the respective umbrellas of economic costs                        on climate action requires an awareness of this dynamic in
+and benefits. In so doing, we may have lost important                             the information environment and solutions that can overcome
+nuance. We cannot, for instance, say whether frames related to                    polarizing elite discourse.
+disemployment effects of mitigation policy are more common                            We hope that our findings will not only contribute to the
+than those focusing on energy costs. We believe this tradeoff was                 academic body of work on this topic, but will also prove
+necessary to maximize the precision of our over time estimates—                   useful for journalists, science communicators, and policy makers.
+a task which is much more suited for automated content analysis                   For journalists to change and improve their practice, they
+compared to the hand coding of a smaller batch of articles.                       first need to know what their current practice is and how its
+Future work should make more thorough use of human coding                         changed over time. One specific issue with climate coverage, for
+to tease out the prevalence of different dimensions of economic                   example, is the lack of conservative frames supporting climate
+costs and benefits and, if possible, how each of them may have                    action. Since science communicators believe these frames are
+changed over time.                                                                the key to persuading Republicans, as was highlighted above,
+    Similarly, it is likely that news content is reflecting changes               journalists should do a better job amplifying those voices in
+in climate science. The IPCC consensus is robust, but there is                    their coverage. Furthermore, as the issue of climate change has
+no doubt that confidence in its main tenants has solidified over                  been extensively studied, journalists and media professionals
+time as data and research has accumulated. Journalists have likely                can use some of the lessons of this coverage and apply
+
+
+Frontiers in Communication | www.frontiersin.org                             12                                         February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                                     Framing Climate Change
+
+
+them to other issues with broad scientific consensus, but were                               DATA AVAILABILITY
+coverage is routinely worse, such as the safety of genetically
+modified foods.                                                                              Replication data is available at https://osf.io/gfyhe/.
+    Future scholarship needs to bridge experimental research
+examining the effects of frames and cue sources on climate                                   AUTHOR CONTRIBUTIONS
+attitudes with descriptive analyses of the real world information
+environment where Americans are exposed to these messages.                                   DS and EM collected the data and produced the tables and
+Both are needed to allow science communicators to effectively                                figures, wrote, and edited the article, as well as handled the
+craft strategies to mobilize Americans for climate action. We                                revisions during the review process. EM performed the hand
+hope that our paper provides useful information to scholars                                  coding and ran machine learning analysis and wrote the bulk of
+seeking to design stronger, more externally-valid experimental                               the data and methods, results, and discussion. DS performed the
+studies and journalists concerned with writing news content                                  dictionary content analysis and validated hand coding and wrote
+conducive to raising public concern about the threat of                                      the bulk of the initial literature review and the introduction.
+climate change.
+    Furthermore, future work on this topic needs to more                                     FUNDING
+thoroughly link the body of work that has developed
+on this topic in a comparative context. As the news                                          Both DS and EM received doctoral dissertation funding, which
+media environment is becoming more global, particularly                                      this project is a part of, from the Social Sciences and Humanities
+with the rise of the importance of social media in                                           Research Council of Canada (Grant/Award Numbers: 752-2015the information environment of an average person,                                            2536,767-2015-2504).
+a systematic understanding of how climate change is
+covered and how that coverage changed in different                                           ACKNOWLEDGMENTS
+countries with different media systems, might illuminate
+best practices for science communicators, policymakers,                                      We thank the editor, John Cook, and the reviewers for
+journalists, and members of the interested public in different                               their thoughtful comments, and Kathleen Hall Jamieson for
+institutional contexts.                                                                      her support.
+
+
+REFERENCES                                                                                   Chong, D., and Druckman, J. N. (2007). Framing Theory. Ann. Rev. Pol. Sci. 10,
+                                                                                                103–126. doi: 10.1146/annurev.polisci.10.072805.103054
+Antilla, L. (2005). Climate of scepticism: US newspaper coverage of                          Clarke, C. E., Hart, P. S., Schuldt, J. P., Evensen, D. T. N., Boudet, H. S., Jacquet,
+   the science of climate change. Global Environ. Change 15, 338–352.                           J. B., et al. (2015). Public opinion on energy development: the interplay of
+   doi: 10.1016/j.gloenvcha.2005.08.003                                                         issue framing, top-of-mind associations, and political ideology. Energy Pol. 81,
+Bain, P. G., Milfont, T. L., Kashima, Y., Bilewicz, M., Doron, G., Garð*arsdóttir, R.           131–140. doi: 10.1016/j.enpol.2015.02.019
+   B., et al. (2016). Co-benefits of addressing climate change can motivate action           Cohen, G. L. (2003). Party over policy: the dominating impact of group
+   around the world. Nat. Climate Change 6, 154–157. doi: 10.1038/nclimate2814                  influence on political beliefs. J. Personal. Soc. Psychol. 85, 808–822.
+Bennett, W. L. (2007). News: The Politics of Illusion. New York, NY: Longman.                   doi: 10.1037/0022-3514.85.5.808
+Berinsky, A. J. (2009). In Time of War: Understanding American Public Opinion                Cook, J., Lewandowsky, S., and Ecker, U. K. H. (2017). Neutralizing
+   from World War II to Iraq. University of Chicago Press.                                      misinformation through inoculation: exposing misleading argumentation
+Boykoff, M. T. (2007). Flogging a dead norm? Newspaper coverage of                              techniques      reduces     their     influence.   PLoS      ONE     12:e0175799.
+   anthropogenic climate change in the United States and United Kingdom from                    doi: 10.1371/journal.pone.0175799
+   2003 to 2006. Area 39, 470–481. doi: 10.1111/j.1475-4762.2007.00769.x                     Corbett, J. B., and Durfee, J. L. (2004). Testing public (Un)certainty of
+Boykoff, M. T., and Boykoff, J. M. (2004). Balance as bias: global warming                      science: media representations of global warming. Sci. Commun. 26, 129–151.
+   and the US prestige press. Global Environ. Change 14, 125–136.                               doi: 10.1177/1075547004270234
+   doi: 10.1016/j.gloenvcha.2003.10.001                                                      Curley, S. P., Yates, J. F., and Abrams, R. A. (1986). Psychological sources of
+Boykoff, M. T., and Boykoff, J. M. (2007). Climate change and journalistic                      ambiguity avoidance. Organ. Behav. Human Decision Process. 38, 230–256.
+   norms: a case-study of US mass-media coverage. Geoforum 38, 1190–1204.                       doi: 10.1016/0749-5978(86)90018-X
+   doi: 10.1016/j.geoforum.2007.01.008                                                       Dannenberg, A., Löschel, A., Paolacci, G., Reif, C., and Tavoni, A. (2015). On
+Brulle, R. J., Carmichael, J., and Jenkins, J. C. (2012). Shifting public opinion               the provision of public goods with probabilistic and ambiguous thresholds.
+   on climate change: an empirical assessment of factors influencing concern                    Environ. Resour. Econom. 61, 365–383. doi: 10.1007/s10640-014-9796-6
+   over climate change in the U.S., 2002–2010. Climatic Change 114, 169–188.                 Davis, J. J. (1995). The effects of message framing on response to
+   doi: 10.1007/s10584-012-0403-y                                                               environmental communications. J. Mass Commun. Quart. 72, 285–299.
+Campbell, T. H., and Kay, A. C. (2014). Solution aversion: on the relation between              doi: 10.1177/107769909507200203
+   ideology and motivated disbelief. J. Personal. Soc. Psychol. 107, 809–824.                Ditto, P. H., and Lopez, D. F. (1992). Motivated skepticism: use of differential
+   doi: 10.1037/a0037963                                                                        decision criteria for preferred and nonpreferred conclusions. J. Person. Soc.
+Carmichael, J. T., Brulle, R. J., and Huxster, J. K. (2017). The great divide:                  Psychol. 63, 568–584. doi: 10.1037/0022-3514.63.4.568
+   understanding the role of media and other drivers of the partisan divide in               Dixon, G., Hmielowski, J., and Ma, Y. (2017). Improving climate change
+   public concern over climate change in the USA, 2001–2014. Climatic Change                    acceptance among U.S. conservatives through value-based message targeting.
+   141, 599–612. doi: 10.1007/s10584-017-1908-1                                                 Sci. Commun. 39, 520–534. doi: 10.1177/1075547017715473
+
+
+Frontiers in Communication | www.frontiersin.org                                        13                                                   February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                                        Framing Climate Change
+
+
+Dixon, G. N., and Clarke, C. E. (2013). Heightening uncertainty around certain                 Hoffman, A. J. (2011). Talking past each other? Cultural framing of skeptical
+    science: media coverage, false balance, and the autism-vaccine controversy. Sci.               and convinced logics in the climate change debate. Organ. Environ. 24, 3–33.
+    Commun. 35, 358–382. doi: 10.1177/1075547012458290                                             doi: 10.1177/1086026611404336
+Dixon, G. N., McKeever, B. W., Holton, A. E., Clarke, C., and Eosco, G. (2015). The            Hornsey, M. J., and Fielding, K. S. (2016). A cautionary note about
+    power of a picture: overcoming scientific misinformation by communicating                      messages of hope: Focusing on progress in reducing carbon emissions
+    weight-of-evidence information with visual exemplars. J. Commun. 65,                           weakens mitigation motivation. Global Environ. Change 39, 26–34.
+    639–659. doi: 10.1111/jcom.12159                                                               doi: 10.1016/j.gloenvcha.2016.04.003
+Doda, B., Gennaioli, C., Gouldson, A., Grover, D., and Sullivan, R. (2015). Are                IPCC (2014). Climate Change 2014: Synthesis Report (Fifth Assessment Report of the
+    corporate carbon management practices reducing corporate carbon emissions?                     Intergovernmental Panel on Climate Change). Geneva, Switzerland. Available
+    CSR Environ. Manage. 23, 257–270. doi: 10.1002/csr.1369                                        online at: https://www.ipcc.ch/report/ar5/syr/
+Downs, A. (1957). An Economic Theory of Democracy. New York, NY: Harper.                       Iyengar, S., Sood, G., and Lelkes, Y. (2012). Affect, not ideology: a social
+Druckman, J. N. (2001). The implications of framing effects for citizen                            identity perspective on polarization. Public Opin. Quart. 76, 405–431.
+    competence. Pol. Behav. 23, 225–256. doi: 10.1023/A:10150069                                   doi: 10.1093/poq/nfs038
+    07312                                                                                      Jacques, P. J., Dunlap, R. E., and Freeman, M. (2008). The organisation of
+Dunlap, R. E., and Jacques, P. J. (2013). Climate change denial books                              denial: conservative think tanks and environmental scepticism. Environ. Pol.
+    and conservative think tanks. Am. Behav. Sci. 57, 699–731.                                     17, 349–385. doi: 10.1080/09644010802055576
+    doi: 10.1177/0002764213477096                                                              Jolley, D., and Douglas, K. M. (2017). Prevention is better than cure:
+Dunlap, R. E., and McCright, A. M. (2011). Organized Climate Change                                addressing anti-vaccine conspiracy theories. J. Appl. Soc. Psychol. 47, 459–469.
+    Denial. The Oxford Handbook of Climate Change and Society.                                     doi: 10.1111/jasp.12453
+    doi: 10.1093/oxfordhb/9780199566600.003.0010                                               Kahan, D. M. (2013). Ideology, motivated reasoning, and cognitive reflection.
+Elliott, E., Seldon, B. J., and Regens, J. L. (1997). Political and economic                       Judgment Decision Making 8, 407–424.
+    determinants of individuals≫ support for environmental spending. J. Environ.               Kahan, D. M., Jenkins-Smith, H., and Braman, D. (2011). Cultural
+    Manage. 51, 15–27. doi: 10.1006/jema.1996.0129                                                 cognition of scientific consensus. J. Risk Res. 14, 147–174.
+Entman, R. M. (1993). Framing: toward clarification of a fractured                                 doi: 10.1080/13669877.2010.511246
+    paradigm. J. Commun. 43, 51–58. doi: 10.1111/j.1460-2466.1993.tb0                          Kahn, M. E., and Kotchen, M. J. (2010). Environmental Concern and the Business
+    1304.x                                                                                         Cycle: The Chilling Effect of Recession (Working Paper No. 16241). National
+Farjam, M., Nikolaychuk, O., and Bravo, G. (2018). Does risk communication                         Bureau of Economic Research. doi: 10.3386/w16241
+    really decrease cooperation in climate change mitigation? Climatic Change 149,             Kappes, A., Nussberger, A.-M., Faber, N. S., Kahane, G., Savulescu, J.,
+    147–158. doi: 10.1007/s10584-018-2228-9                                                        and Crockett, M. J. (2018). Uncertainty about the impact of social
+Farrell, J. (2016a). Corporate funding and ideological polarization about                          decisions increases prosocial behaviour. Nat. Human Behav. 2, 573–580.
+    climate change. Proc. Natl. Acad. Sci. 2016:201509433. doi: 10.1073/pnas.150                   doi: 10.1038/s41562-018-0372-x
+    9433112                                                                                    Koehler, D. J. (2016). Can journalistic “false balance” distort public
+Farrell, J. (2016b). Network structure and influence of the climate change counter-                perception of consensus in expert opinion? J. Exp. Psychol. 22, 24–38.
+    movement. Nat. Climate Change 6, 370–374. doi: 10.1038/nclimate2875                            doi: 10.1037/xap0000073
+Feldman, L., Hart, P. S., and Milosevic, T. (2017). Polarizing news? Representations           Krosnick, J. A., Holbrook, A. L., and Visser, P. S. (2000). The impact of the fall 1997
+    of threat and efficacy in leading US newspapers’ coverage of climate                           debate about global warming on American public opinion. Public Understand.
+    change. Public Understand. Sci. 26, 481–497. doi: 10.1177/096366251                            Sci. 9, 239–260. doi: 10.1088/0963-6625/9/3/303
+    5595348                                                                                    Kunda, Z. (1990). The case for motivated reasoning. Psychol. Bull. 108, 480–498.
+Feygina, I., Jost, J. T., and Goldsmith, R. E. (2010). System justification, the denial            doi: 10.1037/0033-2909.108.3.480
+    of global warming, and the possibility of “system-sanctioned change.” Personal.            Lacy, S., Watson, B. R., Riffe, D., and Lovejoy, J. (2015). Issues and best
+    Soc. Psychol. Bull. 36, 326–338. doi: 10.1177/0146167209351435                                 practices in content analysis. J. Mass Commun. Quart. 92, 791–811.
+Fischhoff, B., and Davis, A. L. (2014). Communicating scientific uncertainty. Proc.                doi: 10.1177/1077699015607338
+    Natl. Acad. Sci. 111(Suppl. 4), 13664–13671. doi: 10.1073/pnas.1317504111                  Lakoff, G. (2010). Why it matters how we frame the environment. Environ.
+Flaxman, S., Goel, S., and Rao, J. M. (2016). Filter bubbles, echo chambers,                       Commun. 4, 70–81. doi: 10.1080/17524030903529749
+    and online news consumption. Public Opin. Quart. 80(S1), 298–320.                          Lee, S. (2012), Corporate carbon strategies in responding to climate change.
+    doi: 10.1093/poq/nfw006                                                                        Business Strategy Environ. 21, 33–48. doi: doi:10.1002/bse.711
+Friedman, S. M., Dunwoody, S., and Rogers, C. L., (Eds.). (1999). Communicating                Lewandowsky, S., Ecker, U. K., Seifert, C. M., Schwarz, N., and Cook,
+    Uncertainty: Media Coverage of New and Controversial Science, 1st Edn.                         J. (2012). Misinformation and its correction: continued influence
+    Mahwah, NJ: Routledge.                                                                         and successful debiasing. Psychol. Sci. Public Interest 13, 106–131.
+Giannoulis, C., Botetzagias, I., and Skanavis, C. (2010). Newspaper reporters’                     doi: 10.1177/1529100612451018
+    priorities and beliefs about environmental journalism: an application of Q-                McCright, A. M., Charters, M., Dentzman, K., and Dietz, T. (2016). Examining the
+    methodology. Sci. Commun. 32, 425–466. doi: 10.1177/1075547010364927                           effectiveness of climate change frames in the face of a climate change denial
+Golan, G. (2006). Inter-media agenda setting and global news coverage. J. Stud. 7,                 counter-frame. Topics Cogn. Sci. 8, 76–97. doi: 10.1111/tops.12171
+    323–333. doi: 10.1080/14616700500533643                                                    McDonald, R. I., Chai, H. Y., and Newell, B. R. (2015). Personal experience and
+Green, D., Palmquist, B., and Schickler, E. (2002). Partisan Hearts and Minds.                     the ‘psychological distance’ of climate change: an integrative review. J. Environ.
+    Political Parties and the Social Identities of Voters. New Haven, CT; London:                  Psychol. 44, 109–118. doi: 10.1016/j.jenvp.2015.10.003
+    Yale University Press.                                                                     McGaurr, L., Lester, L., and Painter, J. (2013). Risk, uncertainty and opportunity in
+Grimmer, J., and Stewart, B. M. (2013). Text as data: the promise and pitfalls of                  climate change coverage: Australia compared. Austr. J. Rev. 35:21.
+    automatic content analysis methods for political texts. Pol. Anal. 21, 267–297.            McMichael, A. J., Woodruff, R. E., and Hales, S. (2006). Climate change
+    doi: 10.1093/pan/mps028                                                                        and human health: present and future risks. Lancet 367, 859–869.
+Guess, A. (2016). Media Choice and Moderation: Evidence From Online Tracking                       doi: 10.1016/S0140-6736(06)68079-3
+    Data. Available online at: https://www.dropbox.com/s/uk005hhio3dysm8/                      Merkley, E., and Stecula, D. A. (2018). Party elites or manufactured doubt?
+    GuessJMP.pdf?dl=0                                                                              The informational context of climate change polarization. Sci. Commun. 40,
+Hallin, D. C. (1989). The Uncensored War: The Media and Vietnam. University of                     258–274. doi: 10.1177/1075547018760334
+    California Press.                                                                          Milinski, M., Sommerfeld, R. D., Krambeck, H.-J., Reed, F. A., and Marotzke,
+Hine, D. W., and Gifford, R. (1991). Fear appeals, individual                                      J. (2008). The collective-risk social dilemma and the prevention of
+    differences, and environmental concern. J. Environ. Educ. 23, 36–41.                           simulated dangerous climate change. Proc. Natl. Acad. Sci. 105, 2291–2294.
+    doi: 10.1080/00958964.1991.9943068                                                             doi: 10.1073/pnas.0709546105
+
+
+Frontiers in Communication | www.frontiersin.org                                          14                                                    February 2019 | Volume 4 | Article 6
+
+
+Stecula and Merkley                                                                                                                                      Framing Climate Change
+
+
+Morton, T. A., Rabinovich, A., Marshall, D., and Bretschneider, P. (2011). The                Sullivan, R. (2008). Corporate Responses to Climate Change. London:
+   future that may (or may not) come: how framing changes responses to                           Routledge.
+   uncertainty in climate change communications. Global Environ. Change 21,                   Sword-Daniels, V., Eriksen, C., Hudson-Doyle, E. E., Alaniz, R., Adler, C.,
+   103–109. doi: 10.1016/j.gloenvcha.2010.09.013                                                 Schenk, T., et al. (2018). Embodied uncertainty: living with complexity
+Nicolaij, S., and Hendrickx, L. C. W. P. (2003). “The influence of temporal distance             and natural hazards. J. Risk Res. 21, 290–307. doi: 10.1080/13669877.2016.
+   of negative consequences on the evaluation of environmental risks,” in Human                  1200659
+   Decision Making and Environmental Perception. Understanding and Assisting                  Tausczik, Y. R., and Pennebaker, J. W. (2010). The psychological meaning of words:
+   Human Decision Making in Real-Life Situations. eds L. C. W. P. Hendrickx, W.                  LIWC and computerized text analysis methods. J. Language Soc. Psychol. 29,
+   Jager, and L. Steg (Groningen: University of Groningen) Available online at:                  24–54. doi: 10.1177/0261927X09351676
+   https://www.rug.nl/research/portal/publications/the-influence-of-temporal-                 Tesler, M. (2018). Elite domination of public doubts about climate change (Not
+   distance-of-negative-consequences-on-the-evaluation-of-environmental-                         Evolution). Pol. Commun. 35, 306–326. doi: 10.1080/10584609.2017.1380092
+   risks(92abf041-104a-4289-b813-64fecb2a065b).html                                           Trope, Y., and Liberman, N. (2010). Construal-level theory of psychological
+Nisbet, M. C. (2009). Communicating climate change: why frames matter                            distance. Psychol. Rev. 117, 440–463. doi: 10.1037/a0018963
+   for public engagement. Environ. Sci. Pol. Sustain. Dev. 51, 12–23.                         Van Boven, L., Ehret, P. J., and Sherman, D. K. (2018). Psychological barriers to
+   doi: 10.3200/ENVT.51.2.12-23                                                                  bipartisan public support for climate policy. Perspect. Psychol. Sci. 13, 492–507.
+Nyhan, B., and Reifler, J. (2010). When corrections fail: the persistence of political           doi: 10.1177/1745691617748966
+   misperceptions. Pol. Behav. 32, 303–330. doi: 10.1007/s11109-010-9112-2                    Vries, G., de Terwel, B. W., and Ellemers, N. (2016). Perceptions of manipulation
+Oreskes, N. (2004). The scientific consensus on climate change. Science 306,                     and judgments of illegitimacy: pitfalls in the use of emphasis framing when
+   1686–1686. doi: 10.1126/science.1103618                                                       communicating about CO2 capture and storage. Environ. Commun. 10,
+Oreskes, N., and Conway, E. M. (2011). Merchants of Doubt: How a Handful of                      206–226. doi: 10.1080/17524032.2015.1047884
+   Scientists Obscured the Truth on Issues From Tobacco Smoke to Global Warming               Walker, B. J. A., Kurz, T., and Russel, D. (2018). Towards an understanding
+   (Reprint edition). New York, NY: Bloomsbury Press.                                            of when non-climate frames can generate public support for climate
+Painter, J. (2013). Climate Change in the Media: Reporting Risk and Uncertainty.                 change policy. Environ. Behav. 50, 781–806. doi: 10.1177/00139165177
+   I.B.Tauris.                                                                                   13299
+Painter, J., and Ashe, T. (2012). Cross-national comparison of the presence of                Weber, E. U. (2006). Experience-based and description-based perceptions of longclimate scepticism in the print media in six countries, 2007–10. Environ. Res.                term risk: why global warming does not scare us (Yet). Climatic Change 77,
+   Lett. 7:044005. doi: 10.1088/1748-9326/7/4/044005                                             103–120. doi: 10.1007/s10584-006-9060-3
+Painter, J., and Gavin, N. T. (2016). Climate Skepticism in British                           Weinhofer, G., and Busch, T. (2013), Corporate strategies for managing
+   Newspapers,        2007–2011.       Environ.     Commun.         10,     432–452.             climate risks. Business Strategy Environ. 22, 121–144. doi: 10.1002/bse.
+   doi: 10.1080/17524032.2014.995193                                                             1744
+Patt, A. G., and Schrag, D. P. (2003). Using specific language to describe risk and           Young, L., and Soroka, S. (2012). Affective news: the automated
+   probability. Climatic Change 61, 17–30. doi: 10.1023/A:1026314523443                          coding of sentiment in political texts. Pol. Commun. 29, 205–231.
+Rabinovich, A., and Morton, T. A. (2012). Unquestioned answers or                                doi: 10.1080/10584609.2012.671234
+   unanswered questions: beliefs about science guide responses to uncertainty                 Zaller, J. (1992). The Nature and Origins of Mass Opinion. New York, NY:
+   in climate change risk communication. Risk Analysis 32, 992–1002.                             Cambridge University Press.
+   doi: 10.1111/j.1539-6924.2012.01771.x                                                      Zehr, S. C. (2000). Public representations of scientific uncertainty
+Renn, O., Klinke, A., and van Asselt, M. (2011). Coping with complexity,                         about global climate change. Public Understand. Sci. 9, 85–103.
+   uncertainty and ambiguity in risk governance: a synthesis. Ambio 40, 231–246.                 doi: 10.1088/0963-6625/9/2/301
+   doi: 10.1007/s13280-010-0134-0                                                             Zhang, X. (2018). Intermedia agenda-setting effect in corporate news: examining
+Schäfer, M. S., and O’Neill, S. (2017). Frame Analysis in Climate Change                         the influence of The New York Times and The Wall Street Journal on local
+   Communication. Oxford Research Encyclopedia of Climate Science.                               newspapers. J. Appl. J. Media Stud. 7, 245–263. doi: 10.1386/ajms.7.2.245_1
+   doi: 10.1093/acrefore/9780190228620.013.487
+Schudson, M. (1978). Discovering the News: A Social History of American                       Conflict of Interest Statement: The authors declare that the research was
+   Newspapers. Basic Books.                                                                   conducted in the absence of any commercial or financial relationships that could
+Scruggs, L., and Benegal, S. (2012). Declining public concern about climate                   be construed as a potential conflict of interest.
+   change: can we blame the great recession? Global Environ. Change 22, 505–515.
+   doi: 10.1016/j.gloenvcha.2012.01.002                                                       Copyright © 2019 Stecula and Merkley. This is an open-access article distributed
+Shoemaker, P. J., and Reese, S. D. (2013). Mediating the Message in the 21st Century:         under the terms of the Creative Commons Attribution License (CC BY). The use,
+   A Media Sociology Perspective, 1st edn. New York, NY: Routledge.                           distribution or reproduction in other forums is permitted, provided the original
+Spence, A., and Pidgeon, N. (2010). Framing and communicating climate change:                 author(s) and the copyright owner(s) are credited and that the original publication
+   the effects of distance and outcome frame manipulations. Global Environ.                   in this journal is cited, in accordance with accepted academic practice. No use,
+   Change 20, 656–667. doi: 10.1016/j.gloenvcha.2010.07.002                                   distribution or reproduction is permitted which does not comply with these terms.
+
+
+Frontiers in Communication | www.frontiersin.org                                         15                                                  February 2019 | Volume 4 | Article 6

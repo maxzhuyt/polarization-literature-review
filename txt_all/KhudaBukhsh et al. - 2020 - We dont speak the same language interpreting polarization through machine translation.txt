@@ -1,0 +1,1064 @@
+W E D ON ’ T S PEAK THE S AME L ANGUAGE : I NTERPRETING
+                                                    P OLARIZATION THROUGH M ACHINE T RANSLATION
+
+                                                                                                   A P REPRINT
+
+
+                                            Ashiqur R. KhudaBukhsh∗                                Rupak Sarkar∗                          Mark S. Kamlet
+arXiv:2010.02339v2 [cs.CL] 18 Oct 2020
+
+
+                                                Carnegie Mellon University        Maulana Abul Kalam Azad University of Technology    Carnegie Mellon University
+                                                akhudabu@cs.cmu.edu                       rupaksarkar.cs@gmail.com                        kamlet@cmu.edu
+
+                                                                                                Tom M. Mitchell
+                                                                                             Carnegie Mellon University
+                                                                                          tom.mitchell@cs.cmu.edu
+
+
+                                                                                                 October 20, 2020
+
+                                                                                                  A BSTRACT
+                                                     Polarization among US political parties, media and elites is a widely studied topic. Prominent lines
+                                                     of prior research across multiple disciplines have observed and analyzed growing polarization in
+                                                     social media. In this paper, we present a new methodology that offers a fresh perspective on interpreting polarization through the lens of machine translation. With a novel proposition that two
+                                                     sub-communities are speaking in two different languages, we demonstrate that modern machine
+                                                     translation methods can provide a simple yet powerful and interpretable framework to understand
+                                                     the differences between two (or more) large-scale social media discussion data sets at the granularity
+                                                     of words. Via a substantial corpus of 86.6 million comments by 6.5 million users on over 200,000
+                                                     news videos hosted by YouTube channels of four prominent US news networks, we demonstrate
+                                                     that simple word-level and phrase-level translation pairs can reveal deep insights into the current
+                                                     political divide – what is black lives matter to one can be all lives matter to the other.
+
+                                         Keywords Polarization · Machine Translation · US News Networks
+
+
+                                         1 Introduction
+
+                                         One mans meate is another mans poyson.
+                                         – Thomas Draxe; Bibliotheca Scholastica; 1616.
+
+                                         Polarization among US political parties [1, 2, 3, 4, 5], media [6, 7] and elites is a widely studied topic. Studies have
+                                         shown that over the last 30 years, both Democrats and Republicans have become more negative in their views toward
+                                         the opposition party [8]. Further, behavioral studies indicate that such negative views have affected outcomes in
+                                         settings as diverse as allocating scholarship funds [9], mate selection [10], and employment decisions [11]. Prominent
+                                         lines of prior research across multiple disciplines have observed and analyzed growing polarization in social media [12,
+                                         13, 14, 15], and previous studies have reported substantial partisan and ideological divergence in both content and
+                                         audience in major US TV news networks [16, 17, 18, 19]. Over the last few years, these news networks have amassed
+                                         millions of subscribers in their respective YouTube channels. As a result, the overall engagement in terms of likes,
+                                         views, and comments has shown a steep upward trend (see, Figure 1). Previous studies have reported news media’s
+                                         role in fostering partisanship [16, 19]. User engagement in YouTube news networks presents an excellent opportunity
+                                         to study web-scale user behavior in response to mainstream news content. In this work, via a comprehensive analysis
+                                            ∗
+                                                Ashiqur R. KhudaBukhsh and Rupak Sarkar are equal contribution first authors.
+
+
+               We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                                                                               7000
+                                                                                         Fox News
+
+
+                                                 Average #comments per video
+                                                                               6000      CNN
+                                                                                         MSNBC
+                                                                               5000      OANN
+
+                                                                               4000
+
+                                                                               3000
+
+                                                                               2000
+
+                                                                               1000
+                                                                                  2014   2015   2016   2017     2018    2019   2020
+                                                                                                        Year
+
+Figure 1: Temporal trend showing number of comments made about news videos on four news networks’ official
+YouTube channels over time.
+   Republicans are the greatest threat to America                                                             Democrats are the greatest threat to America
+   Republicans are the greatest threat to America that this nation has ever seen.                             . . . Had Trump placed more restrictions on travel sooner, Democrats would
+   They have willingly enabled a tyranny and wannabe dictator. . .                                            have cried “racism”. Democrats are the greatest threat to America today.
+
+    Republicans are traitors                                                                                  Democrats are traitors
+   The Republicans are traitors. Period, full stop. All good and patriotic Amer-                              The DEMOCRATS are TRAITORS to our country and should be rounded
+   icans must see this, realize it for what it is, and then begin to act accord-                              up and exiled to a island.
+   ingly. . .
+    I will never vote Republican again                                                                        I will never vote Democrat again
+   What a liar! I have always voted for the man not the party but after the way                               I used to vote for the democrats because they cared about poor people. Now
+   the republicans have acted I will NEVER vote republican again. . . .                                       they only care about exploitable non-american poor people, talk about being
+                                                                                                              un-american. I will never vote Democrat again.
+    Democrats are patriots                                                                                    Republicans are patriots
+   Democrats are patriots just holding on to our constitution ! McConnell and                                 Republicans are patriots. demoRats are traitors.
+   trump must have their crowns slapped off their tyranny heads
+
+   Democrats are fighting for                                                                                 Republicans are fighting for
+   WE ARE A NATION OF IMMIGRANTS. THAT’S WHAT MAKES                                                           Democrats are doing everything in their power to take away your power as
+   AMERICA GREAT!!!. . . DIVERSITY IS THE CORNERSTONE OF                                                      a citizen to make choices. The Republicans are fighting for YOU as an indiWESTERN DEMOCRACY. THE DEMOCRATS ARE FIGHTING FOR                                                          vidual. Come on Americans! Wake up!. . .
+   EQUALITY AND ECONOMIC STABILITY. . .
+
+    Vote all Democrats in                                                                                     Vote all Republicans in
+   . . . Regardless of whether or not our candidates win in the primaries or                                  We the American people are tired of these crazy dems.Hope we vote all rewhether we even like the Democrats we must be prepared to vote all                                         publicans in office.
+   Democrats in and all Republicans out. . .
+
+
+Table 1: Illustrative examples highlighting that Democrats and Republicans are used in almost mirroring contexts.
+Left and right column contain user comments obtained from official YouTube channels of CNN and Fox news, respectively. Our translation algorithm detects hdemocrats, republicansi as one of many translation pairs.
+
+
+of a substantial corpus of 86.6 million user comments on over 200,000 YouTube videos hosted by four prominent US
+news networks, we present a novel approach to interpreting polarization using machine translation methods.
+We ask the following question: Is it possible that the two sub-communities are speaking in two different languages
+such that certain words do not mean the same to the liberal and conservative viewership? If yes, how do we find those
+words? To do this in the context of user comments from the YouTube channels of different cable news networks, we
+begin by hypothesizing that viewers of CNN speak in what might be called “CNN-English” and viewers of Fox News
+speak in “Fox-News-English”. We then apply modern machine translation procedures to these two “languages” in the
+same way English would be translated into, say, Spanish.
+But, because both languages are using English words, the vast majority of words should translate into something very
+close to themselves. For instance, grape in CNN-English will very likely translate to grape or something highly
+similar in meaning to a grape in Fox-News-English, just as tree in Fox-News-English will very likely translate into
+tree in CNN-English or something close to tree in meaning. Recognizing this, we focus on those distinct pairs of
+words that translate into one another but have very different meaning and usage.
+Such pairs are not hard to envision. Consider this simple word pair: hrepublicans, democratsi and illustrative examples of their appearances in CNN and Fox News YouTube user discussions (listed in Table 1) where these two terms
+             We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+appear in highly similar contexts. Intuitively, republicans will appear in largely favorable contexts in conservative
+discussion outlets while democrats will appear mostly in unfavorable contexts. Conversely, in liberal discussion
+outlets, their roles with be completely reversed in what appear to be virtually identical contexts.
+How many such word pairs exist and what stories do they tell us? In this paper, we present a systematic approach
+to detect and study such word pairs developing a quantifiable framework to evaluate how similar or dissimilar webscale discussions of two sub-communities are by offering a fresh perspective on interpreting linguistic manifestation
+of polarization through the lens of machine translation. With this novel proposition that two sub-communities are
+speaking in two different languages, we demonstrate that modern machine translation methods can provide a simple
+yet powerful and interpretable framework to understand the differences between two (or more) large-scale social media
+discussion data sets at the granularity of words.
+Beyond promising results in quantifying ideological differences among multiple news networks, our automated
+method presents a compelling efficiency argument. It is infeasible to manually examine millions of social media
+posts (in the order of 100 million tokens) to identify and understand issue-centric differences. Our method boils down
+this task to manual inspection of less than a few hundred salient translation pairs that can provide critical insights
+into ideological differences. For example, translation pairs such as hsolar, fossili or hmask, muzzlei can provide
+insights to the ongoing energy debate or the debate surrounding mask and freedom of choice, and may indicate aggregate stance of a sub-community. Going beyond single-word translations, through simple phrase translations our
+method can reveal the current, deep political divide – what is black lives matter in CNN-English can be all
+lives matter in Fox-News-English.
+
+
+2 Our General Idea
+
+A standard machine translation system that performs single word translation takes a word in a source language as
+input (denoted by wsource ) and outputs an equivalent word in a target language (denoted by wtarget ). For example,
+in a translation system performing English → Spanish translation, if the input word wsource is hello, the output
+word wtarget will be ola, i.e., translate (hello)English→Spanish = ola. The distributional hypothesis of words [20]
+famously stated “You shall know a word by the company it keeps" [21]. The “company” of a word, i.e. the set of
+words that tend to occur closely to it, aka its context, plays an important role in modern machine translation methods.
+The underlying computational intuition is that in a translation pair hwsource , wtarget i, the contexts in which wsource
+appears in the source language are highly similar with the contexts in which wtarget appears in the target language.
+A powerful way to operationalize the notion of words being close (or far) from one another is to employ a method
+which embeds each word as a vector in a high-dimensional space (referred to as an embedding) and using the proximity
+of any two words in that space as a measure of closeness. This approach, set forth in [22], initiated a rich line of
+machine translation literature. [23] first observed that continuous word embedding spaces exhibit similar structures
+across languages and proposed a linear mapping from a source to target embedding space. Their approach worked
+surprisingly well even in distant language pairs. Since then, several studies proposed improvements over this general
+idea of learning cross-lingual embedding spaces [24, 25, 26, 27].
+In our work, we are interested in leveraging this machine translation literature to user discussions taking place at
+the comments section of official YouTube channels of two different news networks (e.g., CNN and Fox News). As
+we already mentioned, of course, both the CNN and Fox News corpora are in English. But we introduce a novel
+and powerful approach by treating them as two different languages: Lcnn and Lfox . Given that our “languages”
+are actually English from different sub-communities, on most occasions, hwsource , wtarget i will be identical word
+pairs (e.g., hgrape, grapei); i.e., for a given translation direction (say, Lcnn → Lfox ), translate (wsource )Lcnn →Lfox =
+wsource . The interesting cases are the pairs that include two different English words, i.e., hwsource , wtarget i such that
+wsource 6= wtarget . We call such word pairs misaligned pairs.
+These different word pairs can arise for either of two very different phenomena, though both result in the same
+treatment by our translation algorithm, because both phenomena result in the fact that wsource is used by one subcommunity in very similar contexts wtarget is used by the other sub-community.
+One case of misaligned pairs is where both wsource and wtarget in the pair hwsource , wtarget i refer to the actual
+same grounded entity (e.g., hpelosi, pelousyi). So, for instance in “Pelosi spoke yesterday” and “Pelousy spoke
+yesterday”, both communities are referring to Nancy Pelosi, the speaker of the United States House of Representatives.
+In this case, the reason that the two words appear in the same context is that the two communities are stating very
+similar beliefs about that entity. In this case, we can think of the two words as synonyms referring to the same entity,
+though the difference in the actual names can reflect important differences in attitudes toward that entity. The second
+case is where the word pair refers to two different entities, as in htapper, hannityi. Here, the phenomenon detected
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                               Category             Misaligned pairs
+                               Political entities   hdemocrats, republicansi, hnunes, schiffi
+                               News entities        hfox, cnni, htapper, hannityi
+                               Derogatory           hchump, trumpi, hpelosi, pelousyi
+                               (Near) synonyms      hlmao, loli, hallegations, accusationsi
+                               Spelling errors      hmueller, mulleri, hhillary, hilaryi
+                               Ideological          hkkk, blmi hliberals, conservativesi
+
+
+Table 2: Examples of misaligned word pairs. Word pairs are presented in hwcnn , wfox i format where wcnn ∈ Lcnn
+and wfox ∈ Lfox . A detailed treatment with more examples is presented in Section 6.
+
+
+is that one sub-community makes statements about wsource that are very similar to the statements made by the second
+sub-community about word wtarget (e.g., “Tapper is a great interviewer” vs. “Hannity is a great interviewer”). Table 2
+characterizes additional phenomena that can produce word pairs, though each of the rows there correspond to one of
+the two phenomena above. That is, the examples under political entities, news entities, and ideological rows in Table 2
+correspond to word pairs that refer to different entities. The examples under the derogatory, synonyms, and spelling
+errors rows correspond to the case where the two words refer to the same entity.
+Our intuition is misaligned pairs may reveal useful insights into differences between the two sub-communities. For example, solar in Lcnn translating into fossil in Lfox possibly indicates that the two communities have divergent, and
+close to mirror image views of climate change and renewable energy. Or, cooper in Lcnn translating into hannity in
+Lfox possibly indicates that the CNN sub-community views Anderson Cooper favorably and Sean Hannity unfavorably
+while the Fox News sub-community views the two news entities exactly the opposite way.
+Quantifying similarity and dissimilarity: If two sub-communities use most words in similar contexts, the number
+of misaligned word pairs will be fewer than the number of misaligned word pairs if the two communities use a large
+number of words (e.g., entities, issues) in different contexts. We can thus construct a measure of similarity and
+dissimilarity between discussions in sub-communities by computing the fraction of misaligned words over the size
+of the source vocabulary – the larger this number, the greater the dissimilarity. Comparing across multiple corpora
+will require careful selection of source and target vocabulary and several other design decisions to ensure cross-corpus
+comparability. A formal treatment of our approach is presented in Section 5.
+
+
+3 Data Set
+
+Our data set consists of user comments posted on videos hosted by four US news networks’ official YouTube channels
+listed in Table 3. CNN, Fox News, and MSNBC are considered to be the three leading cable news networks in the
+US [28]. Commensurate to their cable TV popularity, these three channels have a strong YouTube presence with
+millions of subscribers. Our choice of OANN, a conservative media outlet, is guided by the observation that the
+current US President shares favorable views about this network on social media platforms [29].
+Starting from 1 January, 2014, we considered videos uploaded on or before 31 July, 2020. We used the publicly
+available YouTube API to collect comments from these videos. YouTube comments exhibit a two-level hierarchy.
+Top-level comments can be posted in response to a video and replies can be posted to these top-level comments. We
+collect both and for the analyses in this paper, we focus on the top-level comments. Analyses on replies are presented
+in the Appendix. Overall, we obtain 86,610,914 million comments (50,988,781 comments and 35,622,133 replies)
+on 204,386 videos posted by 6,461,309 unique users. We use standard preprocessing (e.g., punctuation removal,
+lowercasing) for our comments. The preprocessing steps are described in details in the Appendix.
+In what follows, we present a few notable results we obtain while analyzing user engagement. The Appendix contains
+additional results.
+
+                                     News Network                        #Subscribers   #Videos
+                                     CNN (Cable News Network)              10.6M         95,433
+                                     Fox News                              6.09M         65,337
+                                     MSNBC                                 3.45M         31,732
+                                     OANN (One America News Network)       0.84M         11,884
+
+Table 3: List of news networks considered. Video count reflects #videos uploaded on or before 31 July 2020 starting
+from 1 January 2014.
+             We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+3.1 Temporal Trends of Video Likes and Dislikes:
+
+We first introduce a simple measure to evaluate viewership disagreement. For a given video v, let vlike and vdislike
+denote the total number of likes and dislikes v received. For each video v, we first compute the ratio vlikev+v
+                                                                                                             dislike
+                                                                                                                  dislike
+                                                                                                                          . If a
+video is disliked by fewer viewers and liked by a large number of viewers, this value will be close to 0. Conversely,
+if the video is overwhelmingly disliked, the value will be close to 1. A value close to 0.5 indicates that the opinion
+about the video among the viewership is divided. Formally, let I(v, m) be an indicator function that outputs 1 if video
+v is uploaded in month m and outputs 0 otherwise. For a given channel and a particular month mj , we compute the
+                                                                                              i
+                                                                                            vdislike
+                                                                         Σi I(vi ,mj ) i
+                                                                                         v        +v i
+following viewership disagreement factor:                           .                     dislike
+                                                                                   Σi I(vi ,mj )
+                                                                                                     like
+
+
+Our disagreement measure has the following advantages. First, assuming vlike + vdislike 6= 0, 0 ≤ vlikev+v  dislike
+                                                                                                                 dislike
+                                                                                                                         ≤ 1.
+Since average of bounded variables is also bounded, our disagreement factor is also bounded within the same range [0,
+1]. Since each video’s disagreement measure is bounded within the range [0, 1], this measure is robust to outliers; a
+single heavily liked or disliked video cannot influence the overall average by more than n1 where n is the total number
+of videos uploaded in that particular month2.
+
+                                                                   0.7
+                                                                                                               Fox News
+                                                                   0.6                                         CNN
+                                         Viewership disagreement
+
+
+                                                                                                               MSNBC
+                                                                   0.5                                         OANN
+
+                                                                   0.4
+
+                                                                   0.3
+
+                                                                   0.2
+
+                                                                   0.1
+                                                                    2014    2015     2016    2017    2018   2019   2020
+                                                                                              Year
+
+Figure 2: Temporal trend of viewership disagreement in terms of video likes and dislikes. Each point in the graph
+represents the monthly average of vlikev+v
+                                        dislike
+                                             dislike
+                                                     for each video v uploaded on the news network’s official YouTube
+channel. We report this value only if 10 or more videos are uploaded in a given month for a specific channel.
+
+Figure 2 presents the temporal trend of the viewership disagreement factor for four major news networks during
+the time period of 2014-2020. A paired t-test reveals that beyond 2017, the viewership disagreement among CNN
+viewers is larger than all other channels’ viewership disagreement with p-value less than 0.0001. This indicates
+that possibly, CNN is less of an echo chamber as compared to the other three media outlets. Among the four news
+networks we considered, the viewership disagreement among OANN viewers is the lowest. Our results corroborate
+to previous findings on the existence of echo chambers in highly conservative social media platforms [30, 31]. While
+not presented as a formal study, a parallel between Fox News and MSNBC’s comparable partisanship, albeit for two
+different political views, has been reported before [16]. Adding evidence to this observation, in Figure 2, we note that
+the temporal trends of viewership disagreement is similar across MSNBC and Fox News.
+
+
+4 Related Work
+
+Polarization and partisanship in US politics is a widely studied topic with surveys and studies focusing on diverse
+aspects such as congressional votes [1], response to climate change [32, 4], polarization in media [33] and economic
+decisions [5], and partisanship in search behavior [34] to name a few. Our work contrasts with recent computational
+social science research on polarization [12, 15] along the following three main dimensions: (1) our fresh perspective on
+casting the task of quantifying polarization as a machine translation problem; (2) our broad treatment of the problem
+without focusing on specific events or type of events; and (3) our focus on YouTube data of major news networks.
+Unlike [12] that focused on a specific type of events (mass-shootings) and [15] that studied controversy surrounding
+the most-recent supreme court confirmation, we consider a longer, continuous time-horizon (2017 - 2020) within which
+two (or more) sub-communities discuss a broad range of issues. Priors lines of research on quantifying polarization
+    Figure 2 presents the temporal trend of the viewership disagreement factor for four major news networks during the time period
+of 2014-2020. More than 100 videos are uploaded for most of the months we considered in our analysis shown in Figure 2.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+among YouTube and Facebook users have focused on characterizing user behavior in the context of scientific and
+conspiratorial content consumption [35].
+While work focusing on dialectical variants of English and their detection challenges exists [36, 37], to the best of our
+knowledge, treating two US news networks’ discussions as two distinct languages and leveraging modern machine
+translation literature [38] to detect mismatched translation pairs has not been explored before.
+A recent work has focused on 38 prominent Indian news networks’ YouTube channels leading up to 100 days of 2019
+Indian General election and has used language models to mine insights [39]. This study reported evidence of religious
+polarization in India. Our work addresses the challenge of quantifying intra-news network user discussion differences
+using a novel approach of machine translation.
+Presence of human biases in word embedding in social media corpora is a well-established observation [40, 41].
+Recent lines of work channelised considerable efforts to debias such embedding [42, 43]. Our work presents a novel
+method to detect word pairs where two different sub-communities exhibit comparable biases for two different words
+across two different corpora.
+
+
+5 Framework and Design Choices
+
+We first describe our framework for two news networks’ discussion data sets we assume to be authored in two different
+languages: Ls and Lt . A more general treatment involving more than two news networks is presented in Section 5.2.
+Let Ds and Dt be two monolingual text corpora authored in languages Ls and Lt , respectively. Let with respect to
+the corpora Ds and Dt , Vs and Vt denote the source and target vocabularies, respectively. Let we,l denote the vector
+representation of the word w in an embedding space trained on Dl . A word translation scheme, Ls → Lt , takes a
+word wsource ∈ Vs as input and outputs a single word translation wtarget such that
+(1) wtarget ∈ Vt , and
+                     e,s                                  e,t
+(2) ∀w ∈ Vt , dist(wsource W , we,t ) ≥ dist(wsource
+                                              e,s
+                                                     W , wtarget ) where W is a transformation matrix.
+
+5.1 Design Choices
+
+We now describe and justify our design choices.
+
+5.1.1 Translation algorithm
+We compute W using a well-known algorithm [38]. This algorithm requires two monolingual corpora and a bilingual
+seed lexicon of word translation pairs as inputs. First, two separate monolingual word embedding are induced using a
+monolingual word embedding learning model. Following [38], we use FastText [44] to train monolingual embedding.
+Next, the bilingual seed lexicon is used to learn an orthogonal transformation matrix, which is then used to align
+the two vector spaces. Finally, to translate a word from the source language to the target language, we multiply the
+embedding of the source word with the transformation matrix to align it with the target vector space. Then, the nearest
+neighbour of the aligned word vector in the target vector space is selected as the translation of the source word in the
+target language. Following [38], we use cosine distance as our distance metric. Our choice of the translation algorithm
+is motivated by its (1) competitive performance [38], (2) simple and elegant design, and (3) robustness to lexicon
+sparsity. The Appendix contains qualitatively similar results with a different translation algorithm [45].
+Unlike typical machine translation task, we are dealing with two English corpora. For the seed lexicon of translation
+pairs, ideally, we would prefer words that are neutral across political beliefs with very high probability. To this end,
+we construct our seed lexicon with English stopwords in the following way: {hw, wi}, w is a stopword. We consider
+the default English stopword set of NLTK [46].
+
+5.1.2 Vs and Vt
+We first ensure both corpora have identical size (in terms of #tokens). We next concatenate token-balanced Ds and Dt
+and choose the top 5,000 and top 10,000 words by frequency in the combined corpus as the source vocabulary Vs and
+target vocabulary Vt , respectively. We exclude the stopwords while computing Vs and Vt since we use them as anchor
+words for our translation algorithm. Note that, here we slightly abuse the notation since we have identical Vs and Vt
+across both translation directions.
+We token-balance our corpora to (1) enforce that the quality of the embedding is comparable across corpora and (2)
+ensure that both corpora have a fair influence on words that are included in Vsource and Vtarget .
+              We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+5.1.3 Similarity (Ls , Lt )
+The similarity measure between two languages along a given translation direction computes the fraction of words in
+Vs that translates to itself, i.e.,
+                            Σw∈Vs I(translate(w)Ls →Lt =w)
+Similarity(Ls , Lt ) =                   |Vs |
+                                                           . The indicator function returns 1 if the word translates to
+itself and 0 otherwise. The larger the value of Similarity (Ls , Lt ), the greater is the similarity between a language pair.
+
+5.1.4 Assigning user to a specific channel
+It is not possible to unambiguously identify if a YouTube user prefers CNN over Fox News or not. We assign a user
+to CNN or Fox News using a simple filter. If a user has commented more on Fox News videos than on CNN videos
+during our period of interest3 , we assign her to Fox News and vice versa. While computing the discussion data set
+for a specific channel, we restrict ourselves to users assigned to that channel. We acknowledge that our filter makes
+certain assumptions that may not hold in the wild. It is possible that a user only comments on a video if she does not
+agree with its content. The Appendix contains additional results showing the qualitative nature of our analyses remain
+unchanged with or without this filter.
+
+5.2 Extending to Multiple News Networks
+
+It is straight-forward to extend our method to more than two news network discussions data sets. We assume each
+discussion data set is authored in a distinct language (CNN: Lcnn ; Fox News: Lfox ; MSNBC: Lmsnbc ; and OANN:
+Loann ). We token-balance all corpora to identical size. Next, we concatenate all corpora and compute Vs and Vt as the
+top 5,000 and 10,000 words by frequency, respectively. Finally, for each translation direction, we compute pairwise
+similarity.
+
+6 Results
+We first focus on Fox News and CNN, the two most popular news networks, and present a qualitative analysis of the
+misaligned pairs obtained in the years 2017, 2018, 2019 and 2020.
+Characterizing the misaligned pairs: Upon manual inspection, we identify the following high-level categories in the
+misaligned pairs listed in Table 4. Note that, we do not intend these categories to be formal or exhaustive, but rather
+to be illustrative of the types of misaligned pairs we encountered. Further, we realize that the misaligned pairs have
+the following nuance. Some of the pairs map to the same entity (e.g., hliberals, libtardsi), while the rest map to
+completely different entities and beliefs (e.g., hnunes, schiffi, hsocialism, capitalismi).
+We notice several misaligned pairs between political oppositions (e.g., hdemocrats, republicansi) and news entities
+(hfox, cnni). This result was not surprising as we have already seen in Table 1 that Republicans and Democrats are
+used in almost interchangeable contexts across the two news networks’ user discussions. Similarly, a CNN viewer is
+likely to have favorable opinion toward CNN and their anchors while a Fox viewer will have positive views toward
+Fox News entities (see Appendix for more details).
+Along with a few instances of (near)-synonyms4 and incorrect spellings5 present in some of our misaligned pairs,
+we notice several derogatory terms for political and news entities (e.g., hobamas, obummeri or hchump, trumpi).
+Some of these derogatory terms could be possibly influenced by prominent public figures openly using them
+(e.g., hschiff, schitti) [47]. The derogatory terms used to describe opposition party’s fervent supporters (e.g.,
+htrumptards, slowflakesi) also translate to each other.
+We observe hints of the longstanding racial debate in some of the misaligned pairs (e.g., hkkk, blmi, hwhite, blacki).
+In Table 5, we list illustrative examples of their appearances in CNN and Fox News user discussions where these two
+terms appear in highly similar contexts.
+
+6.1 Comparing Multiple News Networks
+We now perform a quantitative analysis between CNN, MSNBC and Fox News. Table 6 presents the pairwise similarity
+between Lcnn , Lfox , and Lmsnbc . We first note that our similarity measure is reasonably symmetric; Similarity(Li , Lj )
+     All our analyses are performed at the temporal granularity of a year except for 2020, where we consider the time period starting
+from January 1, 2020 to July 31, 2020.
+     23% out of a randomly sampled 100 misaligned pairs.
+     3% out of a randomly sampled 100 misaligned pairs.
+                 We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                                            Category                 Misaligned pairs
+                                            Political entities       hdemocrats, republicansi,          hnunes, schiffi,
+                                                                     hdem, republicani, hdnc, gopi,
+                                                                     hkushner, burismai,               hgop, democratsi,
+                                                                     hflynn, hillaryi
+                                            News entities            hfox, cnni, hhannity, cuomoi, htapper, hannityi,
+                                                                     htucker, cuomoi
+                                            Derogatory               htrumptards, snowflakesi,           hchump, trumpi,
+                                                                     hliberals, libtardsi,            hpelosi, pelousyi,
+                                                                     hobamas, obummeri,               hcooper, giraffei,
+                                                                     hbiden, creepi, hschiff, schitti, hbarr, weaseli
+                                            (Near) synonyms          hlmao, loli,           hallegations, accusationsi,
+                                                                     hpuppet, stoogei,                   hbs, bullshiti,
+                                                                     hpotus, presidenti, hhahaha, loli
+                                            Spelling errors          hmueller, mulleri,         hkavanaugh, cavanaughi,
+                                                                     hhillary, hilaryi, hisreal, israeli
+                                            Ideological              hkkk, blmi,      hchristianity, multiculturalismi,
+                                                                     hsham, impeachmenti,                hantifa, nazii,
+                                                                     hliberals, conservativesi,
+                                                                     hcommunism, nazismi,         hleftists, fascistsi,
+                                                                     hliberalism, conservatismi, hcommunists, nazisi,
+                                                                     himmigrants, illegalsi
+
+
+Table 4: Characterizing the misaligned word pairs. We consider Fox News and CNN user discussions for the years
+2017, 2018, 2019, and 2020. Word pairs are presented in hwcnn , wfox i format where wcnn ∈ Lcnn and wfox ∈ Lfox .
+
+
+     KKK is a hate group                                                                  BLM is a hate group
+    . . . The kkk is a hate group. But drump will not call them that, he calls them       . . . blm is a hate group. A group of black supremacy isn’t any different than
+    very fine people. . .                                                                 white supremacy. Defund the department of education.
+
+    KKK terrorists                                                                        BLM terrorists
+    REPUBLICANS HAVE ALWAYS BEEN NEO-NAZI’S AND KKK TER-                                  Step 1 - Leftist defund the police
+    RORISTS                                                                               Step 2 - Antifa and BLM terrorists, looters and rioters invade neighborhoods
+                                                                                          Step 3 - Patriots (thanks to the 2nd amendment) respond to defend their families and light up the terrorists
+                                                                                          Step 4 - Anitfa and BLM call the police for help and get no answer, repeat
+                                                                                          step 3 as needed
+    KKK is nothing more than a                                                            BLM is nothing more than a
+    kkk is nothing more than a low-life racist terrorist gang. . .                        BLM is nothing more than a racist cult.
+
+
+Table 5: Illustrative examples highlighting that the discovered misaligned pair hblm, kkki are used in almost mirroring
+contexts. Left and right column contain user comments obtained from CNN and Fox news, respectively.
+
+
+and Similarity(Lj , Li ) have comparable values across all i, j. We next note that Lmsnbc is more similar to Lcnn than
+Lfox . Lcnn is more similar to Lmsnbc than Lfox , and Lfox is least similar to Lmsnbc . Hence, depending on the user
+discussions in their respective official YouTube channels, if we seek to arrange these three news networks along a
+political spectrum, a consistent arrangement is the following: MSNBC, CNN and Fox News (from left to right).
+One may wonder if synonymous words are causing this perception that Lcnn and Lmsnbc are closer than Lcnn and
+Lfox . We manually examine all misaligned pairs along the translation direction where Lcnn is the source. We found
+
+
+                                                                                                Ltarget
+                                                                                  Lcnn           Lfox       Lmsnbc
+                                                                      Lcnn           -          90.20%       94.20%
+                                                        Lsource       Lfox       89.60%             -        88.70%
+                                                                     Lmsnbc      94.10%         88.50%           -
+
+
+Table 6: Pairwise similarity between languages computed for the year 2020. Each corpus has identical number of tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words ranked
+by frequency. Since stopwords are used as anchor words, stopwords are excluded in the evaluation set. Appendix contains qualitatively similar results for other years. Appendix also contains results that use a different similarity measure
+which considers neighborhoods of the source and target words in their respective embedding spaces.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                                    Lcnn → Lfox                     Lcnn → Lmsnbc
+                                    htrumpty, obummeri              hdumpty, trumptyi
+                                    hwhite, blacki                  hnationalist, nazii
+                                    hpence, bideni                  handerson, racheli
+                                    hsupremacist, radicali          hdemonrats, demoncratsi
+                                    hsocialist, capitalisti         hscientist, experti
+
+
+Table 7: Discovered misaligned pairs from CNN to Fox News and MSNBC. For a translation direction Li → Lj , we
+present word pairs in hwi , wj i format where wi ∈ Li and wj ∈ Lj .
+
+
+that even after manually removing the synonymous misaligned pairs, our conclusion still holds. Table 7 lists a random
+sample of unique misaligned pairs obtained along Lmsnbc → Lfox and Lmsnbc → Lcnn translation directions.
+
+6.2 Primetime Comedies
+
+                                                                            Ltarget
+                                                        Lcnn         Lfox      Lmsnbc   Lcomedy
+                                               Lcnn        -        88.7%       90.3%    83.2%
+                                               Lfox     88.7%         -         85.7%    75.0%
+                                   Lsource
+                                              Lmsnbc    90.3%       85.8%           -    78.4%
+                                              Lcomedy   81.9%       74.6%       78.0%      -
+
+
+Table 8: Pairwise similarity between languages computed for the year 2019. Each corpus has identical number of
+tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words
+ranked by frequency.
+
+
+Which language do viewers of prime time comedies speak? We construct a data set of 4,099,081 comments (the
+Appendix contains more details about this data set) from official YouTube channels of well-known comedians focusing
+on political comedies (Trevor Noah, Seth Meyers, Stephen Colbert, Jimmy Kimmel, and John Oliver). Table 8 shows
+that the language of YouTube primetime comedy consumers, Lcomedy , is farthest from Lfox and closest to Lcnn .
+Two interesting misaligned pairs along the translation direction Lcomedy → Lfox include horange, dotardi and
+hblue, redi.
+
+6.3 All Four News Networks
+
+                                                                          Ltarget
+                                                        Lcnn         Lfox      Lmsnbc   Loann
+                                                Lcnn      -         61.1%      62.0%    42.2%
+                                                Lfox    60.1%         -        53.2%    52.7%
+                                    Lsource
+                                               Lmsnbc   63.0%       52.8%         -     41.9%
+                                               Loann    43.3%       54.8%      42.5%       -
+
+Table 9: Pairwise similarity between languages computed for the year 2020. Each corpus has identical number of
+tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words
+ranked by frequency.
+
+
+Data set size is one of the most important contributing factors to ensure the quality of word embedding [48]. A large
+data set presents a word in richer contexts, ensuring that the embedding captures more semantic information. As
+shown in Figure 1, of all the four channels we consider, OANN has the least user engagement in terms of comments.
+After adding OANN in our comparison framework and sub-sampling all other corpora to match with Doann ’s size,
+we observe that the pairwise similarity between all channels reduced. However, if we do not consider Loann and just
+focus on the three languages, the qualitative conclusions: (1) Lcnn is closer to Lmsnbc than Lfox ; (2) Lfox is farthest
+from Lmsnbc ; and (3) Lmsnbc is closer to Lcnn and farthest from Lfox , remain unaffected.
+As shown in Table 9, Loann is farthest from Lmsnbc and closest to Lfox . However, Lfox , a well-known conservative
+outlet, is closer to other two mainstream media outlets than Loann . In fact, a notable misaligned pair along the
+translation direction is Lfox → Loann is hmask, muzzlei. We further note that if we arrange all channels along a
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+political spectrum, a consistent arrangement is the following: MSNBC, CNN, Fox and finally, OANN (from left to
+right).
+
+6.4 Translating Trigrams
+
+Similar to the translation retrieval task presented in [38], we conduct a translation retrieval task focused on highfrequency trigrams. Consistent with our earlier design choices, our source and target phrase vocabulary consist of
+5,000 and 10,000 high-frequency trigrams of the combined 2020 Fox News and CNN corpora, respectively. Of the misaligned pairs we observe, the most notable is hblack lives matter, all lives matteri, black lives matter
+∈ Lcnn and all lives matter ∈ Lfox .
+
+7 Conclusions and Future Work
+In this paper, we provide a novel perspective on analyzing political polarization through the lens of machine translation.
+Our simple-yet-powerful approach allows us to both gather statistical aggregates about large-scale discussion data sets,
+and at the same time zoom into nuanced differences in view points at the level of specific word pairs. Future lines of
+research include: (1) looking into the possibility of dialects (e.g., languages spoken by centrist Democrats and their
+more liberal counterpart); (2) further leverage unsupervised machine translation to perform political view translation
+at the level of phrases and sentences; and (3) robustness analysis on other social media platforms and countries.
+
+References
+ [1] Keith T Poole and Howard Rosenthal. The polarization of american politics. The journal of politics, 46(4):1061–
+     1079, 1984.
+ [2] Geoffrey C Layman, Thomas M Carsey, John C Green, Richard Herrera, and Rosalyn Cooperman. Party polarization, party commitment, and conflict extension among american party activists. American Political Science
+     Review, 104(2):324–346, 2010.
+ [3] Nolan McCarty, Keith T Poole, and Howard Rosenthal. Polarized America: The dance of ideology and unequal
+     riches. mit Press, 2016.
+ [4] Matthew Baldwin and Joris Lammers. Past-focused environmental comparisons promote proenvironmental outcomes for conservatives. Proceedings of the National Academy of Sciences, 113(52):14953–14957, 2016.
+ [5] C McConnell, Y Margalit, N Malhotra, and M Levendusky. Research: Political polarization is changing how
+     americans work and shop. Harvard Business Review, 2017.
+ [6] Barry A Hollander. Tuning out or tuning elsewhere? partisanship, polarization, and media migration from 1998
+     to 2006. Journalism & Mass Communication Quarterly, 85(1):23–40, 2008.
+ [7] Natalie Jomini Stroud. Niche news: The politics of news choice. Oxford University Press on Demand, 2011.
+ [8] Shanto Iyengar, Gaurav Sood, and Yphtach Lelkes. Affect, not ideologya social identity perspective on polarization. Public opinion quarterly, 76(3):405–431, 2012.
+ [9] Shanto Iyengar and Sean J Westwood. Fear and loathing across party lines: New evidence on group polarization.
+     American Journal of Political Science, 59(3):690–707, 2015.
+[10] Gregory A Huber and Neil Malhotra. Political homophily in social relationships: Evidence from online dating
+     behavior. The Journal of Politics, 79(1):269–283, 2017.
+[11] Karen Gift and Thomas Gift. Does politics influence hiring? evidence from a randomized experiment. Political
+     Behavior, 37(3):653–675, 2015.
+[12] Dorottya Demszky, Nikhil Garg, Rob Voigt, James Zou, Jesse Shapiro, Matthew Gentzkow, and Dan Jurafsky.
+     Analyzing polarization in social media: Method and application to tweets on 21 mass shootings. In Proceedings
+     of NAACL-HLT 2019, pages 2970–3005. ACL, June 2019.
+[13] Kareem Darwish. Quantifying polarization on twitter: the kavanaugh nomination. CoRR, abs/2001.02125, 2020.
+[14] Eytan Bakshy, Solomon Messing, and Lada A Adamic. Exposure to ideologically diverse news and opinion on
+     facebook. Science, 348(6239):1130–1132, 2015.
+[15] Kareem Darwish. Quantifying polarization on twitter: the kavanaugh nomination. CoRR, abs/2001.02125, 2020.
+[16] Alessandra Stanley. How MSNBC Became Fox’s Liberal Evil Twin, 2012. Online; accessed 01-September-2020.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+[17] L Brent Bozell. Weapons of mass distortion: The coming meltdown of the liberal media. National Review, 2004.
+[18] Homero Gil de Zúñiga, Teresa Correa, and Sebastian Valenzuela. Selective exposure to cable news and immigration in the us: The relationship between fox news, cnn, and attitudes toward mexican immigrants. Journal of
+     Broadcasting & Electronic Media, 56(4):597–615, 2012.
+[19] Ki Deuk Hyun and Soo Jung Moon. Agenda setting in the partisan tv news context: Attribute agenda setting and
+     polarized evaluation of presidential candidates among viewers of nbc, cnn, and fox news. Journalism & Mass
+     Communication Quarterly, 93(3):509–529, 2016.
+[20] Zellig S Harris. Distributional structure. Word, 10(2-3):146–162, 1954.
+[21] John R Firth. A synopsis of linguistic theory, 1930-1955. Studies in linguistic analysis, 1957.
+[22] Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S Corrado, and Jeff Dean. Distributed representations of words
+     and phrases and their compositionality. In Advances in neural information processing systems, pages 3111–3119,
+     2013.
+[23] Tomas Mikolov, Quoc V Le, and Ilya Sutskever. Exploiting similarities among languages for machine translation.
+     arXiv preprint arXiv:1309.4168, 2013.
+[24] Manaal Faruqui and Chris Dyer. Improving vector space word representations using multilingual correlation. In
+     Proceedings of the 14th Conference of the European Chapter of the Association for Computational Linguistics,
+     pages 462–471, 2014.
+[25] Chao Xing, Dong Wang, Chao Liu, and Yiye Lin. Normalized word embedding and orthogonal transform
+     for bilingual word translation. In Proceedings of the 2015 Conference of the North American Chapter of the
+     Association for Computational Linguistics: Human Language Technologies, pages 1006–1011, 2015.
+[26] Angeliki Lazaridou, Georgiana Dinu, and Marco Baroni. Hubness and pollution: Delving into cross-space
+     mapping for zero-shot learning. In Proceedings of the 53rd Annual Meeting of the Association for Computational
+     Linguistics and the 7th International Joint Conference on Natural Language Processing (Volume 1: Long Papers),
+     pages 270–280, 2015.
+[27] Waleed Ammar, George Mulcaire, Yulia Tsvetkov, Guillaume Lample, Chris Dyer, and Noah A Smith. Massively
+     multilingual word embeddings. arXiv preprint arXiv:1602.01925, 2016.
+[28] Statista. Leading cable news networks in the united states in april 2020, by number of primetime viewers, 2020.
+     Online; accessed 3-Sep-2020.
+[29] Devin Gordon. Trump’s favorite tv network is post-parody, 2020. Online; accessed 3-Sep-2020.
+[30] Savvas Zannettou, Barry Bradlyn, Emiliano De Cristofaro, Haewoon Kwak, Michael Sirivianos, Gianluca
+     Stringini, and Jeremy Blackburn. What is gab: A bastion of free speech or an alt-right echo chamber. In
+     Companion Proceedings of the The Web Conference 2018, pages 1007–1014, 2018.
+[31] Benjamin D Horne, Jeppe Nørregaard, and Sibel Adalı. Different spirals of sameness: A study of content sharing
+     in mainstream and alternative media. In Proceedings of the International AAAI Conference on Web and Social
+     Media, volume 13, pages 257–266, 2019.
+[32] Dana R Fisher, Joseph Waggle, and Philip Leifeld. Where does political polarization come from? locating
+     polarization within the us climate change debate. American Behavioral Scientist, 57(1):70–92, 2013.
+[33] Markus Prior. Media and political polarization. Annual Review of Political Science, 16:101–127, 2013.
+[34] Masha Krupenkin, David Rothschild, Shawndra Hill, and Elad Yom-Tov. President trump stress disorder: partisanship, ethnicity, and expressive reporting of mental distress after the 2016 election. Sage open,
+     9(1):2158244019830865, 2019.
+[35] Alessandro Bessi, Fabiana Zollo, Michela Del Vicario, Michelangelo Puliga, Antonio Scala, Guido Caldarelli,
+     Brian Uzzi, and Walter Quattrociocchi. Users polarization on facebook and youtube. PloS one, 11(8):e0159641,
+     2016.
+[36] Su Lin Blodgett, Lisa Green, and Brendan O’Connor. Demographic dialectal variation in social media: A
+     case study of African-American English. In Proceedings of the 2016 Conference on Empirical Methods in
+     Natural Language Processing, pages 1119–1130, Austin, Texas, November 2016. Association for Computational
+     Linguistics.
+[37] Jacob Eisenstein, Noah A Smith, and Eric Xing. Discovering sociolinguistic associations with structured sparsity.
+     In Proceedings of the 49th annual meeting of the association for computational linguistics: human language
+     technologies, pages 1365–1374, 2011.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+[38] Samuel L. Smith, David H. P. Turban, Steven Hamblin, and Nils Y. Hammerla. Offline bilingual word vectors, orthogonal transformations and the inverted softmax. In 5th International Conference on Learning Representations,
+     ICLR 2017, Toulon, France, April 24-26, 2017, Conference Track Proceedings, 2017.
+[39] Shriphani Palakodety, Ashiqur R. KhudaBukhsh, and Jaime G. Carbonell. Mining insights from large-scale corpora using fine-tuned language models. In Proceedings of the Twenty-Fourth European Conference on Artificial
+     Intelligence (ECAI-20), pages 1890–1897, 2020.
+[40] Aylin Caliskan, Joanna J Bryson, and Arvind Narayanan. Semantics derived automatically from language corpora
+     contain human-like biases. Science, 356(6334):183–186, 2017.
+[41] Nikhil Garg, Londa Schiebinger, Dan Jurafsky, and James Zou. Word embeddings quantify 100 years of gender
+     and ethnic stereotypes. Proceedings of the National Academy of Sciences, 115(16):E3635–E3644, 2018.
+[42] Tolga Bolukbasi, Kai-Wei Chang, James Y Zou, Venkatesh Saligrama, and Adam T Kalai. Man is to computer
+     programmer as woman is to homemaker? debiasing word embeddings. In Advances in neural information
+     processing systems, pages 4349–4357, 2016.
+[43] Thomas Manzini, Lim Yao Chong, Alan W Black, and Yulia Tsvetkov. Black is to criminal as caucasian is to
+     police: Detecting and removing multiclass bias in word embeddings. In Proceedings of the 2019 Conference
+     of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), pages 615–621, Minneapolis, Minnesota, June 2019. Association for
+     Computational Linguistics.
+[44] Piotr Bojanowski, Edouard Grave, Armand Joulin, and Tomas Mikolov. Enriching word vectors with subword
+     information. Transactions of the Association for Computational Linguistics, 5:135–146, 2017.
+[45] Guillaume Lample, Alexis Conneau, Marc’Aurelio Ranzato, Ludovic Denoyer, and Hervé Jégou. Word translation without parallel data. In 6th International Conference on Learning Representations, ICLR 2018, Vancouver,
+     BC, Canada, April 30 - May 3, 2018, Conference Track Proceedings, 2018.
+[46] Steven Bird, Ewan Klein, and Edward Loper. Natural language processing with Python: analyzing text with the
+     natural language toolkit. " O’Reilly Media, Inc.", 2009.
+[47] Quint Forgey. Trump blasts ’little adam schitt’ on twitter, 2020. Online; accessed 3-Sep-2020.
+[48] Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S Corrado, and Jeff Dean. Distributed representations of words
+     and phrases and their compositionality. In C. J. C. Burges, L. Bottou, M. Welling, Z. Ghahramani, and K. Q.
+     Weinberger, editors, Advances in Neural Information Processing Systems 26, pages 3111–3119. Curran Associates, Inc., 2013.
+[49] William Cummings. Trump tweet says wall is necessary for ’good boarder security.’ twitter erupts, 2018. Online;
+     accessed 3-Sep-2020.
+[50] Laurens van der Maaten and Geoffrey Hinton. Visualizing data using t-SNE. Journal of machine learning
+     research, 9(Nov):2579–2605, 2008.
+              We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+8 Appendix
+
+8.1 Experimental Setup
+
+Experiments are conducted in a suite of machines with the following specifications:
+       • OS: Windows 10.
+       • Processor Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz, 2592 Mhz, 6 Core(s), 12 Logical Processor(s).
+       • RAM: 64 GB.
+
+8.2 Preprocessing and Hyperparameters
+
+To train word embedding on our data set, we use the following preprocessing steps. First, we remove all the emojis and
+non-ascii characters. Then, we remove all non-alphanumeric characters and lowercase the remaining text. We preserve
+the newline character after each individual document in the data set. We use the default parameters for training our
+FastText [44] Skip-gram embedding with the dimension set to 100.
+
+                                        Category             Misaligned pairs
+                                        Political entities   hdemocrats, republicansi,              hblue, redi,
+                                                             hdem, republicani,               hgop, democratsi,
+                                                             hschumer, mcconnelli
+                                        News entities        hfox, cnni, htapper, carlsoni, htapper, hannityi,
+                                                             htucker, cuomoi, hlemon, hannityi
+                                        Derogatory           hboarder, borderi,                             [49],
+                                                             hrepublicunts, democrapsi,       hmaddow, madcowi,
+                                                             hdemocrats, demoncratsi,        hcuomo, shitheadi,
+                                                             hobama, obummeri,                hschiff, schitti,
+                                                             hspanky, trumpi
+                                        (Near) synonyms      hlmao, loli,                 hstupidest, dumbesti,
+                                                             hwh, whitehousei,         hsociopath, psychopathi,
+                                                             hfavor, favouri, hhahaha, hahahahi, hhillary, hrci,
+                                                             hcongresswoman, pocahontasi
+
+                                        Spelling errors      hmelanie, melaniai,        hkellyann, kellyannei,
+                                                             hhillary, hilaryi, havenatti, avenatii
+                                        Ideological          hprotests, riotsi,    hprogressives, socialistsi,
+                                                             hsocialists, communistsi,     hbigotry, paranoiai,
+                                                             hliberals, conservativesi, hcommunism, nazismi,
+                                                             hcommies, fascistsi, hliberalism, conservatismi,
+                                                             hracism, supremacyi
+
+
+Table 10: Characterizing the misaligned word pairs. We consider Fox News and CNN user discussions for the years
+2017, 2018, 2019, and 2020. Word pairs are presented in hwcnn , wfox i format where wcnn ∈ Lcnn and wfox ∈ Lfox .
+Our findings are qualitatively similar to misaligned pairs listed in Table 4.
+
+
+   Cooper I love your show                                                           Hannity I love your show
+   Mr. Cooper I love your show, but the more I watch your interview with this        Hannity I love your show I think you’re very smart and it’s clear you have
+   uneducated idiot, the more my stomach turns.                                      great sources. . .
+   Cooper says it like it is                                                         Hannity says it like it is
+   Cooper says it like it is it’s not fake news it’s fake president                  Hannity says it like it is
+   Cooper keep up the good work                                                      Hannity keep up the good work
+   Cooper keep up the good work and tell the American people the truth. . .          Hannity keep up the good work. The truth is so refreshing and then we know
+                                                                                     how to vote. . .
+
+
+Table 11: Illustrative examples highlighting that the discovered misaligned pair hcooper, hannityi are used in almost
+mirroring contexts. Left and right column contain user comments obtained from CNN and Fox news, respectively.
+
+
+8.3 News Entities
+
+Figure 3 presents a 2D visualization of the word embedding space of CNN user discussions for the year 2020. We
+notice that three prominent news entities belonging to Fox News (Laura Ingraham, Sean Hannity, and Tucker Carlson)
+and CNN (Anderson Cooper, Jake Tapper, and Don Lemon) are clustered at two different locations. We further present
+example comments highlighting mirroring contexts for Sean Hannity and Anderson Cooper in Table 11.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+Figure 3: A 2D t-SNE visualization [50] of top 1,000 tokens (shown in blue) and six news entities belonging to
+CNN and Fox News (shown in red) in CNN user discussions for the year 2020. We notice that three prominent news
+entities belonging to Fox News (Laura Ingraham, Sean Hannity, and Tucker Carlson) and CNN (Anderson Cooper,
+Jake Tapper, and Don Lemon) are clustered at two different locations. Illustrative examples highlighting that the
+misaligned pair hcooper, hannityi detected by our method appears in almost mirroring contexts in CNN and Fox
+News’s users discussions are presented in Table 11.
+
+
+8.4 Combining Replies
+
+Intuitively, in a politically tense environment, replies to a comment may contain views opposing the views presented in
+the comment (verified upon manual inspection). Hence, combining replies with comments may influence an increase
+in overall similarity between news networks’ discussions. As shown in Table 12 and Table 14, our qualitative claim
+still holds, however, the similarities between news networks have increased.
+
+                                                                  Ltarget
+                                                          Lcnn    Lfox      Lmsnbc
+                                                 Lcnn        -    92.5%     94.0%
+                                       Lsource   Lfox     92.3%      -      90.4%
+                                                 Lmsnbc   93.9%   90.7%       -
+
+Table 12: Pairwise similarity between languages computed for the year 2019 combining comments and replies. Each
+corpus has identical number of tokens. The evaluation set (5K words) is computed by concatenating all three corpora
+and taking the top 5K words ranked by frequency. Since stopwords are used as anchor words, stopwords are excluded
+in the evaluation set.
+
+
+8.5 Additional Years
+
+We present the results computed for the year 2018 and 2019 in Table 13 and 14, respectively. We notice that our initial
+observation reported in Table 6 that Fox News and MSNBC are the farthest apart with CNN placed in the middle,
+holds in our new experiments summarized in Table 13 and 14.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+                       98
+                       94
+                       90
+                       86
+                            0         1000          2000           3000            4000       5000
+
+
+Figure 4: Similarity between language pairs as a function of the size of the source vocabulary |Vs | computed for the
+year 2019. For a given language pair Li , Lj , we average five runs of Li → Lj and fives runs of Lj → Li .
+
+                                                                   Ltarget
+                                                           Lcnn    Lfox      Lmsnbc
+                                                  Lcnn        -    87.7%     86.1%
+                                        Lsource   Lfox     88.7%      -      78.3%
+                                                  Lmsnbc   87.0%   79.3%       -
+
+
+Table 13: Pairwise similarity between languages computed for the year 2018. Each corpus has identical number of
+tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words
+ranked by frequency. Since stopwords are used as anchor words, stopwords are excluded in the evaluation set.
+
+
+8.6 User Filter
+
+Our user filter assigns one user to a specific news network. Intuitively, if there are one conservative news network
+and two liberal news networks, our filter may cause a split among the liberal users causing some minor shifts of the
+network in the center toward the right. We observe this phenomenon in the difference between Table 6 (which does
+not use our filter) and Table 15 (which uses our filter). We still find that our initial arrangement obtained in Table 6 –
+MSNBC, CNN and Fox News (from left to right) – is consistent with the newly obtained results in Table 15. However,
+we do notice that in Table 15, Lcnn gets closer to Lfox than Lmsnbc . Qualitatively similar to Table 4 (obtained using
+our filter), we obtain several misaligned pairs listed in Table 10 (obtained without using our filter).
+
+
+                                                                   Ltarget
+                                                           Lcnn    Lfox      Lmsnbc
+                                                  Lcnn        -    89.3%     90.6%
+                                        Lsource   Lfox     89.2%      -      86.1%
+                                                  Lmsnbc   90.8%   86.3%       -
+
+
+Table 14: Pairwise similarity between languages computed for the year 2019. Each corpus has identical number of
+tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words
+ranked by frequency. Since stopwords are used as anchor words, stopwords are excluded in the evaluation set.
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                                                                  Ltarget
+                                                          Lcnn    Lfox      Lmsnbc
+                                                 Lcnn        -    84.3%     82.0%
+                                       Lsource   Lfox     84.6%      -      77.2%
+                                                 Lmsnbc   82.9%   79.3%       -
+
+
+Table 15: Pairwise similarity between languages computed for the year 2020 when user filter is used. Each corpus
+has identical number of tokens. The evaluation set (5K words) is computed by concatenating all three corpora and
+taking the top 5K words ranked by frequency. Since stopwords are used as anchor words, stopwords are excluded in
+the evaluation set.
+
+
+8.7 Comedy Data Set
+
+Overall, we considered 3,898 videos obtained from the official YouTube channels of the comedians listed in Table 16.
+4,099,081 comments are obtained from these videos using the publicly available YouTube API.
+
+                                    Comedian              #Subscribers      #Videos
+                                    Trevor Noah              8.3M             729
+                                    Stephen Colbert          7.8M            1,428
+                                    Jimmy Kimmel            17.0M             935
+                                    John Oliver              8.4M              35
+                                    Seth Meyers              3.8M             771
+Table 16: List of YouTube channels of comedians considered in results reported in Table 8. Video count reflects
+#videos uploaded on or before 31 Dec 2019 starting from 1 January 2019.
+
+
+8.8 Robustness Analysis
+
+8.8.1 Other machine translation algorithms
+As shown in Table 17 and Table 14, we obtain consistent results with a different machine translation algorithm [45].
+The overall conclusion of Fox News and MSNBC being farthest apart, remains unchanged.
+
+                                                                  Ltarget
+                                                          Lcnn    Lfox      Lmsnbc
+                                                 Lcnn        -    86.9%     87.6%
+                                       Lsource   Lfox     86.5%      -      81.8%
+                                                 Lmsnbc   88.0%   82.2%       -
+
+
+Table 17: Pairwise similarity between languages computed for the year 2019 using [45]. Each corpus has identical
+number of tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top
+5K words ranked by frequency. Instead of algorithm proposed by [38], we present results using a different machine
+translation algorithm proposed by [45]. While using this new translation algorithm, we use the same set of stopwords
+as anchor words.
+
+8.8.2 Stability across multiple runs
+For each translation direction, we run five experiments with different splits of our data sets. As shown in Table 19,
+our similarity results are stable across multiple runs. Moreover, our prior arrangement of the news networks along a
+political spectrum obtained from the results presented in Table 6 – MSNBC, CNN and Fox News (from left to right) –
+still holds.
+
+8.8.3 Choice of |Vs |
+In our experiments, Vs ⊂ Vt and we select the top 5K words ranked by frequency from Vt as Vs . Effectively, the size
+of Vs is a hyperparameter set to 5K. As shown in Figure 4, beyond a reasonable threshold of 1,000, our results are
+not sensitive to the choice for this hyperparameter. Since we have observed that our similarity measure is reasonably
+symmetric, in this figure, we average 10 runs of a given language pair (five runs along Li → Lj and five runs along
+            We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+                                                                    Ltarget
+                                                      Lcnn           Lfox           Lmsnbc
+                                           Lcnn          -        37.9 ± 0.75%   41.5 ± 0.59%
+                                Lsource    Lfox    37.9 ± 0.73%         -        35.6 ± 0.43%
+                                          Lmsnbc   41.5 ± 0.55%   35.4 ± 0.24%        -
+
+
+Table 18: Pairwise similarity between languages computed for the year 2020 using our new similarity measure
+Similarity N . Each corpus has identical number of tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words ranked by frequency. Since stopwords are used as anchor words,
+stopwords are excluded in the evaluation set. Each cell summarizes the mean and standard deviation of five runs. Our
+obtained results using this new measure are consistent with the results presented in Table 19.
+
+                                                                    Ltarget
+                                                      Lcnn           Lfox           Lmsnbc
+                                           Lcnn          -        90.0 ± 1.05%   94.2 ± 0.30%
+                                Lsource    Lfox    89.4 ± 0.89%         -        87.0 ± 0.52%
+                                          Lmsnbc   94.0 ± 0.35%   88.2 ± 0.35%         -
+
+Table 19: Pairwise similarity between languages computed for the year 2020. Each corpus has identical number of
+tokens. The evaluation set (5K words) is computed by concatenating all three corpora and taking the top 5K words
+ranked by frequency. Since stopwords are used as anchor words, stopwords are excluded in the evaluation set. Each
+cell summarizes the mean and standard deviation of five runs.
+
+
+Lj → Li ). We demonstrate that our overall conclusion – Fox News and MSNBC are farthest apart – is reasonably
+robust to the choice of this hyperparameter.
+
+8.8.4 Fine-grained similarity measure
+Recall that, our similarity measure between two languages computes the fraction of words in Vs that translates to
+themselves. It is possible that even though a source word translates to itself, the neighborhoods of the source and
+the target word in their respective embedding spaces may not be identical. In what follows, in order to capture this
+difference, we present a fine-grained similarity measure. Let N (w)k,l denote the top k neighbors of the word w in an
+embedding space trained on Dl . In our new measure, Similarity N , we define the similarity between two languages as
+follows:
+                        Σ       Jaccard(N (ws )k,s , N (wt )k,t )
+SimilarityN (Ls , Lt ) = ws ∈Vs         |Vs |                     where wt = translate(ws )Ls →Lt and Jaccard (A, B) takes
+two sets A and B as inputs and outputs the Jaccard similarity between the two sets (defined as |A∩B|
+                                                                                               |A∪B| × 100 for sets
+A and B). As shown in Table 19 and 18, our obtained results using our new measure in Table 18 (k is set to 10) are
+consistent with the results presented in Table 19.
+
+8.9 Evolving Trends in Comments Share
+
+Let ucnn denote the total number of comments a unique user u posts on videos uploaded by CNN in a given year and
+ufox denote the total number of comments a unique user u posts on videos uploaded by Fox news in a given year. We
+now define the following sets (the superscript indicating the news network where the comments are posted):
+(1) cnn cnn
+         sole as comments posted by a user u such that ufox = 0 and ucnn > 0;
+        fox
+(2) fox sole as comments posted by a user u such that ucnn = 0 and ufox > 0;
+(3) cnn cnn
+         maj as CNN comments posted by a user u such that ucnn > 0, ufox > 0, and ucnn > ufox ;
+(4) cnn fox
+         maj as Fox news comments posted by a user u such that ucnn > 0, ufox > 0, and ucnn > ufox ;
+(5) fox cnn
+        maj as CNN comments posted by a user u such that ucnn > 0, ufox > 0, and ufox > ucnn ;
+(6) fox fox
+        maj as Fox news comments posted by a user u such that ucnn > 0, ufox > 0, and ufox > ucnn ;
+and
+(7) equal as comments posted by a user u such that ucnn > 0, ufox > 0, and ucnn = ufox .
+Figure 5 presents the relative distributions of the seven categories we defined above. We note that both fox cnn
+                                                                                                             maj and
+     fox
+cnn maj , i.e., comments made by users on a news network who are frequent commenters of the other news network,
+almost mirrors each other. We also note that from a sparse presence in 2015, engagement in Fox News grew remarkably
+in the year 2016 and since then, the engagement is comparable with CNN.
+We Don’t Speak the Same Language: Interpreting Polarization through Machine Translation A P REPRINT
+
+
+              cnncnn
+                             equal                                       cnncnn
+                                                                            sole
+                                                                                      equal
+                 sole
+
+                                            foxfox
+                                               maj                                                        foxfox
+                                                                                                             maj
+
+                                                               foxfox
+                                                                  sole
+    foxfox
+       sole
+
+
+                                           foxcnn
+                                              maj                                                     foxcnn
+                                        cnnfox                           cnncnn                          maj
+                         cnncnn            maj                              maj           cnnfox
+                                                                                             maj
+                            maj
+
+                         (a) 2020                                                  (b) 2019
+
+                             equal                                                     equal
+         cnncnn
+            sole
+                                           foxfox                 cnncnn
+                                                                     sole
+                                              maj
+                                                                                                         foxfox
+                                                                                                            maj
+
+
+    foxfox
+       sole
+                                              foxcnn
+                                                 maj
+
+                                                                                                         foxcnn
+                                           cnnfox                foxfox
+                                                                    sole
+                                                                                                            maj
+                                              maj                                                     cnnfox
+                                                                                                         maj
+                        cnncnn
+                           maj                                                        cnncnn
+                                                                                         maj
+
+                         (c) 2018                                                  (d) 2017
+
+                             equal                                                   equal foxfox
+       cnncnn
+          sole
+                                                                                               maj
+                                                                                                    foxcnn
+                                                                                                       maj
+                                            foxfox
+                                               maj                                                     cnnfox
+                                                                                                           maj
+
+
+                                                                                                           cnncnn
+                                                              cnncnn
+                                                                 sole
+                                                                                                              maj
+
+
+      foxfox
+         sole                              foxcnn
+                                              maj
+                                        cnnfox                                                       foxfox
+                                                                                                        sole
+                                           maj
+                           cnncnn
+                              maj
+
+                         (e) 2016                                                  (f) 2015
+
+                                 Figure 5: Comment distributions over the years.

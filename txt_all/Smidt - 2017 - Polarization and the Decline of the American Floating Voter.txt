@@ -1,0 +1,919 @@
+Polarization and the Decline of the American
+Floating Voter
+Corwin D. Smidt                 Michigan State University
+
+
+      Abstract: The observed rate of Americans voting for a different party across successive presidential elections has never been
+      lower. This trend is largely explained by the clarity of party differences reducing indecision and ambivalence and increasing
+      reliability in presidential voting. American National Election Studies (ANES) Times Series study data show that recent
+      independent, less engaged voters perceive candidate differences as clearly as partisan, engaged voters of past elections and
+      with declining rates of ambivalence, being undecided, and floating. Analysis of ANES inter-election panel studies shows the
+      decline in switching is present among nonvoters too, as pure independents are as reliable in their party support as strong
+      partisans of prior eras. These findings show parties benefit from the behavioral response of all Americans to polarization.
+      By providing an ideological anchor to candidate evaluations, polarization produces a reliable base of party support that is
+      less responsive to short-term forces.
+
+      Replication Materials: The data, code, and any additional materials required to replicate all analyses in this article are available on the American Journal of Political Science Dataverse within the Harvard Dataverse Network, at:
+      http://dx.doi.org/10.7910/DVN/4FCVUR.
+
+
+H
+           ow is it that American voters have allowed elite                 To better understand the electoral consequences of
+           party polarization to flourish? Whether their               polarization, we need to consider how its effects extend
+           opinions are polarized or not, the primary way              beyond engaged partisans. It is along these lines that
+that Americans reward or punish polarization is through                I propose elite polarization partially sustains itself by
+voting. Yet current evidence provides an incomplete pic-               turning independent and detached voters into loyal
+ture of how voting behavior responds to polarization. We               party supporters. In short, there are fewer floating
+know that elite polarization invigorates partisan attitudes            voters. Scholars emphasize that floating voters provide
+(Hetherington 2001) and makes the issue opinions of en-                valuable elements of flexibility and pragmatism within
+gaged partisans more consistent with their party’s stance              the electorate (Berelson, Lazarsfeld, and McPhee 1954;
+(Druckman, Peterson, and Slothuus 2013; Layman and                     Zaller 2004), and that they waver in their party support
+Carsey 2002; Levendusky 2010), such that partisanship’s                because they are either unaware, indifferent, or conflicted
+association with vote choice has strengthened (Bartels                 (Converse 1962; Hillygus and Shields 2008; Kelley 1983;
+2000). However, associations within elections cannot tell              Lavine 2001; Lavine, Johnston, and Steenbergen 2012;
+us whether voters change their opinions or partisanship                Mayer 2008; Zaller 2004). Greater clarity of party differacross elections to reward or punish a party. An even                  ences reduces all of these attributes. It makes it easier for
+greater concern is that these patterns fail to comment on              Americans to recognize the meaning and consequences
+the role of independent voters, who provide the strongest              of candidate differences, such that it reduces ambivalence
+incentive for party moderation and are as large a com-                 and indecision in voting. This makes Americans less open
+ponent of the electorate (and arguably more decisive) as               to a change in their behavior and ultimately more reliable
+they were in the 1950s or 1960s.1                                      in which party they support across time. Moreover, these
+
+Corwin D. Smidt is Assistant Professor, Department of Political Science, Michigan State University, South Kedzie Hall, 368 Farm Lane,
+S303, East Lansing, MI 48824 (smidtc@msu.edu).
+This article has benefited from the comments and suggestions of Paul Abramson, Paul Beck, Grant Ferguson, Mo Fiorina, Eric Juenke,
+Harvey Palmer, and the anonymous reviewers. Some of the results contained in this article were previously presented at the Annual Meeting
+of the Midwest Political Science Association on April 11, 2013.
+ Despite declining turnout rates (Abramowitz 2010), the average percentage of presidential voters who are pure independents in the
+American National Election Studies (ANES) is slightly greater across recent presidential elections (7.3% from 2000 to 2012) than what it
+was from 1952 to 1968 (7.1%) since more Americans are independent.
+American Journal of Political Science, Vol. 61, No. 2, April 2017, Pp. 365–381
+
+C 2015, Midwest Political Science Association                                                                   DOI: 10.1111/ajps.12218
+                                                                                                                                        15405907, 2017, 2, 366                                                                                                              CORWIN D. SMIDT
+
+
+dynamics are especially consequential for those voters                   Floating Voters in the Face
+who otherwise lack partisan attachments and are most                           of Polarization
+likely to switch their support, specifically independents
+and the less aware.
+                                                               Popular control in a democratic system depends on
+      I proceed by first presenting evidence of the unprecethe capacity of the electorate to remove a party from
+dented decline of floating voters. I then discuss why this
+                                                               power. If stable voters for each party are relatively equal
+is likely in response to elite polarization and verify this
+                                                               in number, then floating voters, those persons most
+link across multiple examinations. This analysis shows
+                                                               likely to support different parties in successive elections,
+that, despite declining rates of partisanship, polarization
+                                                               are largely responsible for bringing about democratic
+has enabled independents and the politically inattentive to
+                                                               accountability. When sufficient in number, the fear of
+become like loyal partisans in their attitudes and behavior.
+                                                               their movements “powerfully disciplines the actions of
+The ANES Time Series studies estimate that recognition of
+                                                               governments” (Key 1966, 10).
+party and candidate differences has become so pervasive
+                                                                    Scholars have emphasized various related markers of
+that independent and less aware Americans of recent elecvoters who are relatively pliable in their party support
+tions recognize party and candidate issue differences as
+                                                               across circumstances by characterizing them as being
+clearly as Americans who were strong partisans or highly
+                                                               either independent, less informed (Zaller 2004), crossattentive in prior eras. Further analysis finds this growpressured (Hillygus and Shields 2008), indifferent (Kelley
+ing recognition of differences predominately explains the
+                                                               1983; Mayer 2008), or ambivalent (Lavine 2001; Lavine,
+shrinking percentage of Americans who are ambivalent
+                                                               Johnston, and Steenbergen 2012).2 These studies share a
+or undecided in their choice for president. This comportrayal of floating voters as failing to perceive a clear
+bination of trends representing greater clarity of choice
+                                                               home within existing partisan divisions, either because
+predominately explains the observed decline of floating
+                                                               they are sporadically engaged in politics or because their
+voters as well. Finally, an examination of ANES panel
+                                                               values and attitudes are incongruent with major-party
+studies validates that these patterns come from greater
+                                                               alignments. They also commonly describe floating votloyalty among all Americans, not the withdrawal from
+                                                               ers as being more pragmatic in comparison to partisan
+voting of those who typically switch their support, as
+                                                               stalwarts. Floating voters are more likely to reward or
+it finds that pure independents were as stable in their
+                                                               punish the incumbent party for the country’s economic
+party support across the 2000–04 presidential elections
+                                                               performance or its successes and failures in foreign afas were strong partisans across the 1956–60 or 1972–76
+                                                               fairs (Key 1966; Lavine, Johnston, and Steenbergen 2012;
+elections.
+                                                               Zaller 2004), and they are more responsive to the ideoThese findings have important implications for our
+                                                               logical positioning of candidates (Zaller 2004).
+understanding of elite polarization, campaigns, and votProminent claims that politicians are fearful of and
+ing behavior. They illustrate that parties likely benefit
+                                                               attentive to pragmatic swing voters stand in sharp confrom polarization by gaining reliable supporters among
+                                                               trast to conventional descriptions of today’s polarized
+even nonpartisans. Importantly, these gains need not be
+                                                               party elites catering to and mobilizing their existing supa function of polarization in voters’ attitudes but simply
+                                                               porters. But why is this? Although some scholars suggest
+their recognition of party differences. Furthermore, they
+                                                               floating voters have withdrawn from participating in polshow that elite polarization has promoted major changes
+                                                               itics (Prior 2007), an emerging body of public opinion
+among what we traditionally consider to be unattached
+                                                               research points to a more likely explanation. Party elites
+or inattentive voters. These voters now appear more simcan ignore the moderating specter of floating voters beilar to past party stalwarts. They are as aware of candidate
+                                                               cause polarization has changed many of them into loyal
+differences on the issues and as loyal in their presidensupporters. Specifically, I propose that the clarity of elite
+tial support in recent elections as the strong partisans or
+                                                               polarization makes voters more attentive to the nature
+highly attentive Americans of prior eras. More broadly,
+                                                               and consequences of party differences, which, in turn,
+the findings suggest greater voter loyalty has consequences
+                                                               reduces the indifference, uncertainty, or ambivalence in
+for candidates’ electoral incentives that can then lead to
+further polarization. Polarization limits the number of        2
+                                                                Ticket splitting also relates to stability in party support and being
+floating voters and the electoral payoff of appealing to       cross-pressured and ambivalent (Mulligan 2011). However, rates of
+their moderate or pragmatic concerns, thereby strength-        ticket splitting are also contingent on incumbency, challenger quality, the southern realignment, and campaign competition (Burden
+ening candidate incentives to court and mobilize only          and Kim ball 2002), factors that have less relevance to presidential
+their likely supporters.                                       elections.
+
+
+                                                                                                                                       15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                      367
+
+candidate evaluations that would otherwise make these           dents as being either standpatters (repeat voters with no
+voters less stable in their party support.                      change in major-party support), floating voters (repeat
+      Recent studies document that these consequences ex-       voters with a change in major-party support), surgeist for partisan opinions but have yet to consider their ef-    and-decliners (voted in only one election), or repeat
+fects on stability in presidential voting. ANES surveys and     nonvoters.3
+experimental evidence find greater partisan constraint                Figure 1 plots the estimated percentage of Ameriin mass public opinion when party cues are clearer and          cans who are in each category. Polarization of the parmore salient (Layman and Carsey 2002; Levendusky 2010;          ties in Congress started its rapid growth during the 1980s
+Nicholson 2012). In a set of experiments, Druckman, Pe-         (McCarty, Poole, and Rosenthal 2006), and there is a clear
+terson, and Slothuus (2013) find that clearer differences       declining trend in floating voters since the 1980 election.
+between the two parties make partisans more confident           Before then, the lowest percentage of vote switching was
+in their party-directed opinions and weaken the role that       9.1% in 1956, which reflected the uncommon circumrelevant substantive information might play in promot-          stance of both parties nominating their previous nomiing countervailing consideration, which enables partisans       nee. In stark contrast, the percentage of floating voters
+to be less ambivalent and more stable in supporting their       has never exceeded 9% since 1996. Only 8.1% of Amerparty’s position.                                               icans reported voting for a different party’s nominee in
+      Of even greater consequence, however, is that inde-       2008 than in 2004, despite that year’s economic recession
+pendent and detached voters likely react just like parti-       and reversal in party presidential fortunes. The year 2012
+sans. The findings among partisans are consistent with          represented a new low in Americans’ tendency to switch
+the more general claim that clearer cues enable voters to       their party support, with only 5.2% of Americans voting
+accept a relatively homogeneous pool of considerations          for a different major-party nominee. The average rate of
+that are consistent with their values when forming their        vote switching over the past four elections (6.2%) is apcandidate evaluations (Zaller 1992). Independents may           proximately half of the average rate across 1952 to 1980
+fail to show greater ideological consistency in response        (12.0%). Moreover, the decline in floating voters is most
+to elite polarization (Layman and Carsey 2002), but their       closely associated with an upward trend in standpatters,
+greater recognition of issue differences still enables them     who reach their highest observed levels in 2012.
+to identify the policy consequences of their vote more                Considering the important role floating voters play
+clearly. This information can stabilize party support by        in deciding elections and enhancing democratic accounteither reducing a voter’s uncertainty over which party or       ability, it is curious that little attention has been paid to
+candidate is the lesser of two perceived evils or strengthen-   their rapid decline and its association with elite polaring a voter’s resolve to equivocate between considerations      ization. More Americans today may not identify with a
+that others perceive as conflicting (i.e., Alvarez and Brehm    party, but their behavior indicates we have never observed
+2002).                                                          as many loyal supporters. ANES estimates of standpatters
+      Polarization can also convert voters who lack clear       have never been higher, and estimates of floating voters
+party attachments into stable supporters by clarifying          have never been lower.4
+each party’s association and agreement with other
+social identities and group attachments. Polarization has
+strengthened cues from socioeconomic groups by mak-              Third-party voters are excluded from the measure since variations
+                                                                in third-party support mostly reflect the entry of third parties
+ing opinions within those groups more homogeneous               instead of tendencies to vote for a different party. Supporters of
+(Garner and Palmer 2011). In addition, these affective          Perot in 1992 or Wallace in 1968 were previously unable to support
+cues from social groups can reduce instability among            their party. The results in Tables 4–6 address this limitation by
+                                                                imputing an estimate of major-party switching among nonvoters
+members who might otherwise be ambivalent (Rudolph              and third-party voters as well. They suggest most Perot voters would
+2005) or provoke changes in social behaviors without            not have switched their votes if Perot had not run. Among the 1992
+changing political beliefs (Mason 2015).                        fresh cross-section, the estimated floating voter rate is 20.4% when
+                                                                including Perot voters, 10.6% when excluding Perot voters, and
+      The strong association between elite polarization and     13.1% when imputing whether a Perot voter would have floated if
+greater loyalty in presidential voting is clear from look-      Perot had not run.
+ing at trends in survey measures of repeat voter behav-         4
+                                                                 The ANES provides the most comparable survey evidence over
+ior. ANES estimates indicate recent presidential elections      time, but changes in the design and implementation of the ANES
+exhibit the lowest levels of floating voters ever recorded.     through the years admittedly complicate any inferences. These
+The ANES usually asks voters to recall whether they voted       complications include missing years (1984) and changes in the
+                                                                time and mode of interview, response rates, and weighting. Most
+in the previous presidential election and which nominee         notably, response rates have declined from 80% to 60%. Electionthey supported. Following Key (1966), I code respon-            to-election changes in response rates, however, have a weak
+
+
+                                                                                                                                           15405907, 2017, 2, 368                                                                                                                   CORWIN D. SMIDT
+
+
+           FIGURE 1 The Decline of Floating Voters
+                                                Standpatters
+                         40
+            Percentage
+                                                                            Repeat Nonvoters
+                               Surge and Decliners
+                         10
+
+                              Floating Voters
+
+
+                                 1960                               1980                            2000
+                                                                      Year
+
+           Note: ANES estimates using poststratification weights from the post-election interview, when available. The 1984
+           ANES time-series study did not ask for a respondent’s prior presidential vote in 1980. Percentages calculated with
+           third-party candidate supporters excluded from the measure.
+
+
+     The observed timing of these contrasting trends in                    Americans who ignore politics to recognize that there
+standpatters and floating voters points to elite polariza-                 are meaningful differences between them. Indeed, this
+tion’s likely role, but many other political or social fac-                growing recognition of differences has been so extreme
+tors may also be responsible for this pattern. In response,                and universal that the inattentive and independent voters
+the following analyses validate polarization’s role by doc-                of today perceive party and candidate differences to be
+umenting how America’s growing recognition of party                        as meaningful and as prominent as the informed and
+and candidate differences has ultimately erased many of                    partisan voters of the past saw them.
+the attributes that make voters, especially independents                        Figure 2 compares the percentage of respondents who
+and the less aware, more open to a change in their party                   claim there are important differences between the two
+support.                                                                   parties by their strength of partisanship or their level of
+                                                                           political awareness (as rated by interviewers). Americans
+                                                                           in the lower half of political awareness have been more
+      The Now-Aware Floating Voter                                         likely to claim there are important party differences during recent elections than were those in the upper half
+Scholars often describe floating voters as detached from                   prior to 1980. A greater percentage of independents perpolitics because of either indifference (Mayer 2008) or                    ceive important differences during recent elections than
+inattentiveness (Zaller 2004). But the clarity of differences              the percentage of weak or leaning partisans did prior to
+between the two polarized parties makes it easy for even                   1980.
+                                                                                The clarity of party differences that comes from polarization extends to voter perceptions of presidential cancorrelation with changes in floating voter rates (r = .12). I use
+multiple imputation in the analysis of the ANES panel studies to           didate differences across multiple issues. Elite polarization
+account for differences in panel attrition.                                has a strong positive association with the issue awareness
+
+
+                                                                                                                                                       15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                                     369
+
+      FIGURE 2 Comparing Perceptions of Important Party Differences across Time by
+               Attachment to Politics, 1960–2012 ANES
+
+                          By Strength of Partisanship
+                               Independent
+                                                                                    By Political Awareness
+                               Lean/Weak
+                                                                                         High
+                               Strong
+                                                                                         Low
+      Percentage
+                   40
+                        1960   1968     1976   1984    1992   2000   2008       1960    1968     1976    1984     1992    2000     2008
+                                                Year                                                       Year
+
+      Note: Percentage among each category saying there are important differences between the two parties, calculated from the
+      ANES time-series studies. Respondents are considered low in awareness if interviewers rate them as having “average” or worse
+      political knowledge, where high awareness represents “fairly high” and above.
+
+
+of Americans and their capacity to recognize differences                         Further tests indicate this trend is strongly associbetween the two parties on political issues (Layman and                     ated with polarization, even after accounting for the efCarsey 2002). It is less recognized, however, that inde-                    fects of a more educated public and other demographic
+pendents and the less aware of recent years have been as                    changes. Figure 3 compares the estimated growth in isaware of candidate differences on the issues as the strong                  sue awareness associated with greater elite polarization
+partisans and highly aware of earlier elections.                            by strength of partisanship and political awareness. The
+     To demonstrate these changes, I generated an issue                     specifications for these linear regression estimates follow
+awareness score for each ANES respondent that measures
+the percent of issues on which he or she met the basic
+                                                                            substantial differences in presidential nominee and party placeawareness criteria for issue voting: holding an issue opin-                 ments in those instances when the ANES asks respondents to place
+ion and seeing differences in the stances of the two party                  both. Since ANES surveys differ in the number and type of issues
+nominees on that issue. As shown in Section A of the                        measured across the years, I restrict the score to the five most salient
+                                                                            issues of each year, where the most salient issues were determined
+supporting information (SI), awareness of issue differ-                     by the lowest percent of “don’t knows” or no opinions. I include
+ences rose from an average rate of 31.4% of issues in 1956                  scores based on four issues in 1992, which only included four canto 76.5% of issues in 2012, with a sharp upward trend                       didate issue placement items, or if a respondent refused to answer
+following 1980.5                                                            one issue item. Issue awareness trends within the consistently asked
+                                                                            items, such as those concerning jobs and standard of living, also
+                                                                            show positive swings. SI Section A plots national averages by year,
+ Scores prior to 1972 rely on perceptions of party differences since        and SI Section C provides a list of the variables used to create each
+candidate perceptions were not measured. Analyses fail to indicate          year’s score.
+
+
+                                                                                                                                                15405907, 2017, 2, 370                                                                                                                       CORWIN D. SMIDT
+
+
+      FIGURE 3 Comparing Awareness of Issue Differences across Time by Attachment to Politics
+               (ANES 1956–2012, Controlling for Other Demographic Changes)
+                         By Strength of Partisanship                               By Political Awareness
+                            Independent                                                Fairly High
+                  80        Strong                                                     Fairly Low
+      Awareness
+                  50
+                  30
+                       1956 1964 1972 1980 1988 1996 2004 2012                 1956 1964 1972 1980 1988 1996 2004 2012
+                                           Year                                                         Year
+
+      Note: Issue awareness represents percent of issues for which the respondent holds an opinion and sees a difference between the
+      two presidential candidates (or parties prior to 1972). Estimates are generated from bias-corrected linear regression estimates
+      from a bootstrap sample of election studies for a 40-year-old white male with a high school degree and, in the case of awareness,
+      average partisan strength. Shading indicates 90% confidence intervals from the bootstrap sample of coefficients.
+
+
+Hetherington (2001) and account for a respondent’s age,                   estimated to recognize candidate differences across more
+gender, race, and education. Additional details and coef-                 issues than a strong partisan prior to 1984. Likewise, the
+ficient estimates are presented in SI Section A.                          estimates find that someone whom ANES interviewers
+     As the largely uniform trends in Figure 3 demon-                     rate as having “fairly low” knowledge of politics in 2012
+strate, interaction tests fail to indicate polarization’s ef-             perceives candidate differences across a relatively equal
+fects are weaker among independents or the less aware.6                   percentage of issues as someone ANES interviewers rate
+But what is most telling is that polarization’s association               as having had “fairly high” knowledge prior to 1980.
+is so strong that the independents and the less aware of                       Even if independents and those less interested in polirecent elections appear to be as capable of voting on is-                 tics have greater opportunity to ignore politics in modern
+sue differences as the strong partisans and highly aware                  society, the growth of elite polarization has more than
+before polarization’s rapid growth. Even when holding                     compensated. Consequently, independent and inattendemographic factors constant, an independent in 2012 is                   tive voters exhibit an awareness of candidate differences
+                                                                          across more political issues than strong partisan or poAs in Figure 2, I code weak partisans and leaning independents to        litically attentive Americans prior to 1980.7 The people
+be equally strong in their identifications. Preliminary tests failed to
+show substantial differences between weak partisans and leaning
+independents for all models (with leaning independents slightly            Further examination verifies the changes in Figure 3 reflect Amermore partisan than weak partisans) and supported the collapsed            icans being more likely to recognize differences on issues on
+measure’s interval coding.                                                which they have opinions, and not changes in their ability to hold
+
+
+                                                                                                                                             15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                            371
+
+we consider to be the detached voters of recent elections            ception of important party differences and issue awarerecognize party and candidate policy differences across              ness score into a summated scale that represents his or
+as many issues and perceive these differences to be as               her recognition of party and candidate differences. Immeaningful as did the attached voters of past elections.             portantly, this scale measures both facets that counter
+                                                                     indifference or detachment from party politics: the degree to which a respondent is aware of differences and
+    How Clarity in Party Differences                                 considers them to be meaningful.9 I then test the relaEnhances Clarity of Choice                                     tionship between a respondent’s recognition of party and
+                                                                     candidate differences and the probability of being ambivalent or undecided in his or her candidate evaluations.
+Greater perception and salience of party and candidate
+                                                                     The model also accounts for changes associated with eddifferences are consequential because they enhance the
+                                                                     ucation, strength of partisanship, and other demographic
+capacity of Americans to recognize and understand the
+                                                                     factors. Since early studies do not include interviewer ratpolicy consequences of a party holding power (Hetherings of a respondent’s political awareness, I follow Lavine
+ington 2001; Layman and Carsey 2002). As discussed, this
+                                                                     (2001) and use the respondent’s total number of likes and
+clarity likely reduces the tendency of voters to be ambivadislikes made in discussing the parties and candidates as
+lent or undecided in their candidate support. By seeing
+                                                                     an indicator of awareness and cognitive ability.10 In adthe consequences of their vote choice more clearly, voters
+                                                                     dition to the individual-level variables, I account for the
+are better able to hold a set of candidate evaluations that
+                                                                     potential election-level effects of economic conditions,
+are consistent and homogeneous with their values and
+                                                                     with the percentage point change in America’s per capita
+identifications, making them less ambivalent or indifferreal disposable personal income from the previous year,
+ent and less likely to waver in their support.
+                                                                     and reelection campaigns.
+     Evidence from the ANES time-series studies conI utilize a bivariate probit model to test these relafirms these expectations. There has been a steady decline
+                                                                     tionships. Bivariate probit estimates are more efficient
+in both the rate of Americans who are ambivalent in their
+                                                                     and especially useful in this case because being undecided
+candidate evaluations and the rate of Americans who
+                                                                     and being ambivalent are positively correlated with each
+are undecided in their candidate preference since 1980
+                                                                     other, but many characteristics that are associated with
+(see Figure B.1 in the SI). The last two ANES surveys
+                                                                     being ambivalent differ from those associated with being
+that measure ambivalence from number of likes and
+                                                                     undecided. The bivariate probit model estimates the exdislikes, 2000 and 2004, had the smallest percentage of
+                                                                     tent to which any unmodeled dependencies drive voters to
+ambivalent Americans ever observed in the series (18.4
+                                                                     be both ambivalent and undecided. These estimates, and
+and 20.6, respectively).8 Only once prior to 1984 was
+                                                                     all others from the combined time-series studies, account
+the percentage of Americans with ambivalent candidate
+                                                                     for the dependency of observations within each election
+evaluations observed below 24%. Since 1984, the national
+                                                                     by drawing 2,000 bootstrap samples of the election studies
+average of ambivalence has exceeded that rate only once,
+                                                                     to generate bias-corrected coefficient and standard error
+in 1992. Each study prior to 1996 had more than 10% of
+                                                                     estimates.11
+Americans claiming they were undecided, with a high of
+17.1% in 1976. The percentages since 1996, however, have             9
+                                                                      The combination of party and candidate perceptions is necessary
+been in the single digits, with an average rate of 7.0%.             since respondents are not asked weather presidential candidate difTo evaluate whether greater clarity in differences is           ferences are important. But the similarity of the party and candidate
+responsible for this trend, I combine a respondent’s per-            placement measures suggests respondents view parties and their
+                                                                     nominees as similar entities during presidential elections. Tests
+                                                                     that include the awareness and importance components separately
+                                                                     justify the additive scale. The 1956 ANES did not ask respondents
+opinions on these issues (see also Abramson, Aldrich, and Rohde      whether they saw important differences between the two parties.
+2010, 158).                                                          I use a respondent’s issue awareness level and other attributes to
+ Following Basinger and Lavine (2005) and Thompson, Zanna,           randomly impute a value based on a logit model estimate of the
+and Griffn (1995), let D indicate the average number of likes the    relationship from other years.
+respondent provided for the Democratic presidential nominee and      10
+                                                                        Interviewer ratings of awareness have a .55 correlation with total
+dislikes of the Republican nominee, with R indicating the same       number of comments; it only has a .39 correlation with education.
+for the Republican nominee. A respondent’s ambivalence is then       I limit the highest value of total comments to 20, since such values
+measured as (D + R)/2 − |(D − R)|. As discussed by Rudolph           are only possible if one does not have univalent candidate and party
+(2005) and Thornton (2011), I treat ambivalence as a nominal trait   evaluations.
+and identify a respondent as ambivalent if he or she has a score
+greater than 0. The ANES has yet to release counts and codes of         The ANES Time Series studies are multilevel data in that they
+party and candidate comments for 2008 or 2012.                       are a sample of individuals within 12–15 elections. With so few
+
+
+                                                                                                                                               15405907, 2017, 2, 372                                                                                                                        CORWIN D. SMIDT
+
+
+TABLE 1 Explaining the Presence of Ambivalence and Indecision about Presidential Candidates,
+        1956–2004
+                                                                  Ambivalent                                        Undecided
+
+Variable                                          Parameter                  Across-Era Effect          Parameter        Across-Era Effect
+                                                             ∗                         ∗                       ∗
+Recognition of Differences Scale                    −0.277                        −1.54                 −0.436                  −1.42∗
+                                                     (.049)                        (.26)                 (.045)                  (.15)
+Number of Likes/Dislikes                             0.078∗                        0.04∗                −0.033∗                 −0.01∗
+                                                     (.004)                        (.00)                 (.005)                  (.00)
+Education                                            0.102∗                        1.93∗                 0.030                   0.33
+                                                     (.015)                        (.29)                 (.022)                  (.25)
+Strength of Partisanship                            −0.296∗                       −0.05∗                −0.529∗                 −0.05∗
+                                                     (.028)                        (.00)                 (.032)                  (.00)
+Age                                                 −0.005∗                       −0.13∗                 0.005∗                  0.08∗
+                                                     (.001)                        (.02)                 (.001)                  (.02)
+Female                                              −0.042∗                        0.02∗                 0.081∗                 −0.02∗
+                                                     (.022)                        (.01)                 (.025)                  (.01)
+African American                                    −0.349∗                       −0.63∗                 0.046                   0.05
+                                                     (.057)                        (.11)                 (.069)                  (.07)
+Change in per Capita Income                         −0.045∗                        0.99∗                −0.026                   0.34
+                                                     (.023)                        (.51)                 (.024)                  (.30)
+Reelection Campaign                                 −0.007                        −0.01                 −0.139                  −0.11
+                                                     (.077)                        (.10)                 (.093)                  (.07)
+Constant                                            −0.579∗                                             −0.433∗
+                                                     (.099)                                              (.134)
+aROC                                                                  0.718                                           0.734
+                                                                                                    ∗
+␳ˆ                                                                                           0.327
+Log likelihood                                                                              −15942.54
+Elections                                                                                      13
+n                                                                                            19,639
+Note: Bias-corrected bivariate probit estimates from a bootstrap sample of election studies. Bootstrapped standard errors in parentheses.
+Across-era effects represent average percentage point change in respondents’ predicted probability when changing the variable’s value from
+its pre-1980 mean to its observed mean since 2000 and holding all other variables at their observed value. Both estimates weighted by each
+year’s pre-election interview weight (if available). ∗ p ≤ .05, two-tailed test.
+
+
+     Table 1 presents the bivariate probit estimates of the                     of candidate ambivalence measures in 2008 and 2012 rerelationship between recognition of party and candidate                         stricts the analysis from 1956 to 2004. The left column
+differences and the probability of being ambivalent or                          under each dependent variable presents the model’s pabeing undecided in one’s candidate evaluations. The lack                        rameter estimates and significance tests. The right column under each dependent variable presents the model
+years, however, asymptotic assumptions of maximum likelihood                    estimate of each variable’s across-era effect, which I operestimates are biased, primarily from standard error estimates that
+are too small (Stegmueller 2013). As discussed by Hox (2010, 236),              ationalize as the change in the sample average predicted
+it is best to either use a stronger set of Bayesian priors on the variance      probability when changing each variable from its avercomponents to inform these estimates or, as I do, use a bootstrap               age observed during the prepolarized era (pre-1980) to
+sample of the elections to provide a nonparametric estimate of how
+much these associations vary depending on the sample of elections
+                                                                                the average recently observed during the polarized era
+included. An additional advantage in using bootstrap estimates is               (2000 and beyond). Each calculation is made while keepthat they provide bias-corrected estimates that account for outlying            ing all other variables at their observed value (Hanmer
+elections having possible undue influence. SI Section B provides                and Kalkan 2013). By combining the model parameter esfurther discussion and demonstrates that in most instances the
+bootstrap estimates match the alternative asymptotic likelihood                 timates with the observed changes in each variable across
+coefficient estimates but with slightly larger standard errors.                 time, the estimates of the across-era effects identify what
+
+
+                                                                                                                                            15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                           373
+
+changes are most associated with the observed declines in           TABLE 2 The Effects of Greater Clarity of
+ambivalence and being undecided.                                            Differences by Strength of Partisanship
+     The estimates presented in the top row of Table 1
+show that greater recognition of differences is signifi-                                              Change in Predicted
+cantly associated with respondents who are less likely to                                             Probability of Being
+be ambivalent and undecided. The consistency of the neg-            1956 to 2012
+ative estimate across dependent variables is important be-          Change in Rec. of      Neither Undecided         Both Undecided
+cause it shows greater recognition of party and candidates          Differences Scale       nor Ambivalent           and Ambivalent
+differences has effects that differ from what we would ex-          Independents                    6.68∗                  −3.78∗
+pect if it were simply a measure of political awareness                                            (0.73)                   (0.53)
+or education. Americans with more education and who                 Strong Partisans                3.37∗                  −0.69∗
+are politically aware are significantly more likely to be                                          (0.49)                   (0.16)
+ambivalent.12 Consequently, the across-era comparison               Difference                      3.30∗                  −3.09∗
+estimates that the growth of formal education among                                                (0.40)                   (0.42)
+Americans would have produced a rise in ambivalence
+rates of 1.93 percentage points, when holding other fac-            Note: Percentage point change in predicted probability as recognition of candidate and party differences moves from its 1956 average
+tors constant.                                                      to its 2012 average for that profile. Standard errors in parentheses.
+     We have not seen a rise in ambivalence, however,               Both are calculated using the bootstrap sample of coefficients. Inbecause Americans’ concurrent greater recognition of                dividual profiles of the remaining variables are set to the mean
+                                                                    or modal value observed since 2000 within each profile. ∗ p ≤ .05,
+differences has had the opposite effect. Indeed, the consistwo-tailed test.
+tent negative association between a person’s recognition
+of differences and being ambivalent or undecided is most
+                                                                    ing independents. When independents were completely
+similar to that of strength of partisanship. But strength of
+                                                                    ignorant of party differences, as they were prior to polarpartisanship shows only slight gains over recent decades
+                                                                    ization, they were much more likely to be undecided or
+and is only slightly responsible for the across-era decline.
+                                                                    ambivalent. For instance, 64% of independents in 1956
+Americans’ growing recognition of differences, however,
+                                                                    failed to see a difference between the two parties on at
+has effects that are very similar to what we would expect
+                                                                    least one of the five most salient issues, compared to 21%
+if Americans had much stronger party identities. This
+                                                                    of strong partisans. Now most independents recognize
+massive shift respectively explains 1.5 and 1.4 percentage
+                                                                    some issue differences, as a similar calculation in the 2012
+point declines in being ambivalent and undecided across
+                                                                    ANES estimates that only 14% of independents (and 3%
+eras, estimates that are over twice as large as any other
+                                                                    of strong partisans) failed to recognize a difference befactor with significant negative across-era effects.13
+                                                                    tween Obama and Romney on any issue.
+Americans are also less likely to be ambivalent and
+                                                                         Table 2 compares the estimated consequence of the
+undecided when America’s personal income is growing
+                                                                    observed growth in recognition among independents and
+at a high rate and during reelection campaigns, but only
+                                                                    strong partisans, by setting each profile to its observed avthe relationship between ambivalence and change in
+                                                                    erage for income, age, change in per capita income, and
+per capita income is significant at the .05 level, where
+                                                                    number of comments and the most common category of
+the relatively low rates of income growth in recent
+                                                                    gender, race, and reelection since the 2000 ANES. When
+elections suggests there should have been higher rates of
+                                                                    an independent changes her rate of recognizing differambivalence. In summary, these estimates illustrate that
+                                                                    ences from the 1956 average for independents to the 2012
+a growing recognition of candidate and party differences
+                                                                    average, she is 6.7 percentage points more likely to be neipredominately explains the decline in national rates of
+                                                                    ther ambivalent nor undecided and almost 4 percentage
+candidate ambivalence and being undecided.
+                                                                    points less likely to be both undecided and ambivalent.14
+     Further examination of these results also suggests that
+                                                                    In contrast, her estimates as a strong partisan are signifthese changes have had larger consequences for nonleanicantly smaller because her existing level of recognition
+   This is a common result when accounting for strength of paralready made her unlikely to be either undecided or amtisanship; see Keele and Wolak (2008) for further discussion and    bivalent. Comparatively larger effects exist for those less
+evidence of a positive relationship between awareness, education,
+and presidential candidate ambivalence.                             14
+                                                                       My use of the average score in 2012 is not an out-of-sample preFigure B.2 in the SI demonstrates the strong negative aggregate   diction since there are plenty of independents and strong partisans
+association between rates of ambivalence and being undecided and    with recognition of differences scores of either 0 or 100 from 1956
+the average recognition of differences score.                       to 2004.
+
+
+                                                                                                                                                15405907, 2017, 2, 374                                                                                                                      CORWIN D. SMIDT
+
+
+aware as well. Observed rates of being undecided reached                 recognition of party and candidate differences and two
+their peak in 1976 and then bottomed in recent elections.                dummy variables indicating whether someone was unWhen holding the economy and reelection campaigns                        decided or ambivalent in the pre-election interview. The
+constant, the average predicted probability of being un-                 other independent variables follow from the models in
+decided drops by 3.3 percentage points (16.8 to 13.5)                    Table 1, but I also include each person’s level of external
+among those interviews rated in the bottom half of the                   efficacy since its general decline might be associated with
+political awareness scale, but only by 1.4 percentage points             the abstention of those who might otherwise be likely
+for those rated in the top half (9.5 to 8.1).                            floating voters.
+                                                                              The first column of results in Table 3 presents the coefficient estimates for the floating voter category (with
+      The Consequences of Clarity for                                    standpatters as the comparison group). SI Section D
+        Stability in Party Support                                       presents coefficient estimates and predicted probability estimates for all categories. The last two columns of
+The results in Tables 1 and 2 are consistent with elite po-              Table 3 present the across-era effect for changes in each
+larization making party and candidate differences clear                  independent variable and the combined effect associated
+to Americans and providing them with greater clarity of                  with each broader class of changes. Once again, the acrossmind in their vote choice. Americans are less ambiva-                    era effect is the average change in the predicted probability
+lent and more decisive in their presidential support, and                when changing each variable or set of variables from the
+these changes are relatively more prevalent among inde-                  prepolarized era average (pre-1980) to the polarized era
+pendents and the less aware. These dynamics among de-                    average (2000 and beyond), holding all other variables at
+tached voters are especially important because, as Table 1               their observed values.
+also shows, the consequences of greater recognition of                        The top three variables account for polarization’s efparty and candidate differences for being ambivalent and                 fects on voter loyalty through greater clarity of choice.
+undecided are much more similar to the effects of having                 Each variable has a significant and relatively strong asstronger partisan identities as opposed to the effects of                sociation with the probability of being a floating voter.
+simply more education or being more attentive. In short,                 Individuals are significantly less likely to float to another
+it enables detached voters to evaluate candidates like par-              party when they have greater recognition of candidate diftisan voters even if they do not hold those identities.                  ferences and are neither ambivalent nor undecided durIf this is the case, then the consequences of clarity of            ing the current election. Across the independent variables,
+choice should importantly extend to the stability of be-                 greater recognition of party and candidate differences has
+havior across elections as well. With fewer ambivalent or                the largest estimated single effect on the decline of floating
+undecided voters, there should be declining rates of their               voters. Moreover, the trends in these variables combine
+more open or pragmatic behavior since these voters are                   to produce the largest joint effect estimate.
+typically much more responsive to the effects of short-                       Among other factors, only changes in the political
+term forces like economic performance evaluations or                     orientations of Americans come close to making a subcandidate positioning (Key 1966; Lavine, Johnston, and                   stantial contribution. Some of the decline in floating votSteen- bergen 2012; Zaller 2004). Along these lines, polar-              ers is associated with Americans becoming less efficacious
+ization has made Americans less open to a change in their                and having slightly stronger partisan identifications. Only
+party preference and more reliable in which party they                   efficacy, however, has made a substantial contribution to
+support across elections by enabling them to approach                    the decline, as it has lowered turnout among potential
+recent elections with much greater clarity of choice.                    floaters.16 Many demographic changes have produced sigTable 3 presents multinomial logit estimates that test              nificant changes in floating across eras. Americans who
+which factors are most responsible for the observed de-                  are African American are significantly less likely to be
+cline in floating voters, using as the dependent variable the            floating voters, but being older and more educated insame four-part categorization of voters as in Figure 1.15 I              creases the probability of being a floating voter since it
+test for the effects that clarity of choice has on the inter-            has a very strong effect on reducing rates of abstention.
+election voting behavior of Americans by including the                   Consequently, demographic changes fail to show a sigthree associated variables: the index of a respondent’s                  nificant effect in combination since the turnout effects
+   Mixed logit estimates of the same model with correlated errors
+of different scales across choices failed to indicate the multinomial       The recent growth of strength of partisanship also fails to show
+logit specification provided a significant loss of fit, supporting its   stronger effects when restricting the analysis to post-1980 studies,
+IIA assumption.                                                          as clarity of choice factors continue to have the largest effects.
+
+
+                                                                                                                                                15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                               375
+
+TABLE 3 Explaining the Decline of Floating Voters, 1956–2004
+
+                                                          MNL Estimate                                       Across-Era Effect
+                                                          Standpatter—
+Variable                                                     Floating                             Single                        Combined
+Clarity of Choice
+Recognition of Differences Scale                              −0.440∗                             −0.45∗
+                                                               (.150)                              (.19)
+Ambivalent                                                     0.516∗                             −0.26∗                          −0.95∗
+                                                               (.095)                              (.04)                           (.20)
+Undecided                                                      0.583∗                             −0.22∗
+                                                               (.117)                              (.04)
+General Political Orientation
+External Efficacy                                             −0.054                              −0.42∗
+                                                               (.101)                              (.16)
+Number of Likes/Dislikes                                      −0.005                               0.00∗                          −0.41∗
+                                                               (.008)                             (0.00)                           (.17)
+Strength of Partisanship                                      −0.737∗                             −0.03∗
+                                                               (.048)                              (.00)
+Demographic Profile
+Age                                                           −0.008∗                              0.08∗
+                                                               (.002)                              (.02)
+Female                                                         0.077                              −0.01
+                                                               (.049)                              (.01)                           0.14
+African American                                              −0.372                              −0.27∗                           (.24)
+                                                               (.225)                              (.11)
+Education                                                     −0.163∗                              0.24
+                                                               (.042)                              (.16)
+Election-Level Factors
+Change in per Capita Income                                   −0.014                               0.14
+                                                              (.053)                              (.32)                            0.08
+Reelection Campaign                                           −0.135                              −0.06                            (.31)
+                                                              (.183)                              (.06)
+Constant                                                       0.118
+                                                              (.264)
+Log-likelihood                                               −14738.00
+Elections                                                        12
+n                                                             14,424
+Note: Bias-corrected maximum likelihood parameter estimates of a multinomial logit from a bootstrap sample of election studies.
+Bootstrapped standard errors in parentheses. Standpatters are baseline comparison group; coefficient estimates for repeat nonvoters and
+surge and decliners are presented in SI Section D. Across-era effects represent average percentage point change in the respondent’s predicted
+probability when changing the variable’s value from its pre-1980 mean to its observed mean since 2000 and holding all other variables at
+their observed value. Both estimates weighted by each year’s post-election interview weight (if available). ∗ p ≤ .05, two-tailed test.
+
+
+of an older and more educated electorate negate the ef-                       It is not surprising that Americans now perceive that
+fects of a diverse electorate. Finally, when holding these               differences between the parties are more meaningful and
+individual-level attitudes constant, none of the election-               exist across more issues in response to polarization, but
+level covariates have significant associations with rates of             this natural response has pervasive consequences for the
+floating voters.17                                                       behavior of American voters across elections. It enables
+   Poor income growth can indirectly lead to more floating through       nomic conditions (very good or very poor income growth) failed
+its effects on ambivalence (Table 1). Measures of extremity of eco-      to show significant associations with rates of floating.
+
+
+                                                                                                                                               15405907, 2017, 2, 376                                                                                                                      CORWIN D. SMIDT
+
+
+Americans to be less ambivalent and undecided in their                  TABLE 4 Estimates of Switching, Repeat
+candidate evaluations, and this clarity of choice has made                      Turnout, and Floating by ANES Panel
+Americans less open to changing their behavior in re-                           Study
+sponse to short-term forces as they approach presidential elections.18 Consequently, we find that Americans are                                                       Study
+much less likely to vote for a different party’s nominee
+across successive presidential elections.                               Percentage           1956–60 1972–76 1992–96 2000–04
+                                                                        Switching Parties      26.7        29.7         22.5        13.5
+                                                                                               (1.3)       (1.4)        (2.1)       (1.1)
+                                                                        Repeat Turnout
+      Evidence from the ANES Panel
+                                                                          Switchers            60.8        61.5        49.6        56.9
+                 Studies                                                                       (2.8)       (2.6)       (4.9)       (4.7)
+                                                                            Nonswitchers       75.8        72.4        65.2        66.0
+There are some limitations to the preceding analysis                                           (1.5)       (1.5)       (2.3)       (1.6)
+of floating voters. First, the identification of floating               Floating Voters        16.2        18.3        11.2         7.7
+voters relies on respondents’ recollections of their                                           (1.1)       (1.1)       (1.3)       (0.8)
+behavior four years prior. But, as Converse (1962) notes,               n                      1,239       1,320       1,005       1,807
+recalling one’s vote from four years prior varies in
+accuracy by factors associated with switching, such as                  Note: Sample average rate of switches in preferred major-party presidential candidate, repeat turnout, and being a floating voter with
+political sophistication, thus confounding comparisons                  standard errors in parentheses (1992–96 and 2000–04 estimates are
+of floating and nonfloating voters. More generally, this                weighted) using multiple imputation to correct for panel attrition.
+measure of floating combines both voter participation
+and preference switching, as ANES Time Series studies                   gest a significant reelection bias. Tables 1 and 3 fail to show
+fail to ascertain the candidate preference of those who                 reelections having a significant or strong influence on eidid not vote in the previous elections. Since I have                    ther clarity of candidate evaluations or the probability of
+not accounted for the stability of major-party support                  floating. Compared to other elections, there is an observed
+among habitual nonvoters, it is possible that Americans                 tendency for floating voter rates to be 1.5–2 percentage
+who typically switch their party support across elections               points higher in elections without a candidate who ran
+have simply withdrawn from voting (Prior 2007) instead                  previously, but this difference is insignificant.19 Many
+of polarization having reduced the propensity for                       reelections also fail to exhibit greater stability, as both
+major-party switching among all Americans.                              1992 and 2004 were reelection campaigns with higher
+      I address these concerns by comparing estimates from              rates of floating voters compared to the prior election.
+the four inter-election ANES panel studies (i.e., 1956–                      Not all respondents interviewed in the first wave of
+60, 1972–76, 1992–96, and 2000–04). These surveys usu-                  the ANES panel studies participated in the next election’s
+ally interview respondents before and after two successive              wave, especially within the recent two studies.20 Panel atpresidential elections, and they typically measure the pre-             trition lessens the representativeness of the sample, which
+ferred candidate for nonvoters as well. This allows one to              can be problematic if respondents who fail to complete
+estimate the percentage of party switchers, individuals                 the survey are those less likely to vote (Bartels 1999) or
+who support a different party’s nominee across succes-                  more likely to switch. To remedy attrition bias, I use mulsive elections, who become floating voters by turning out               tiple imputation to simulate a distribution of possible
+to vote across both elections.                                          values for missing observations (King et al. 2001). Along
+      These four studies clarify the contribution of repeat             with the independent variables, I include a set of auxiliary
+turnout and preference switching to floating’s decline but              variables (retrospective evaluations, thermometer scores,
+potentially overstate trends. The first two studies start               survey compliance, and other demographic measures) to
+with a landslide election that might have promoted higher               impute possible values of missing observations. By using
+levels of switching. The last two studies have a repeat nominee for one party, which also limits comparability with
+the first two studies. However, there is no evidence to sug-               About 8.65% of Americans are floating voters when presidents
+                                                                        run a second time, compared to 10.69% otherwise, and 10.07% if
+                                                                        1968 is excluded, when Johnson opted against running out of fear
+18                                                                      of losing.
+   For example, SI Section D shows that poor economic growth is no
+longer positively associated with rates of voters switching to punish      Observation rates for both voting turnout measures are (in
+incumbents.                                                             chronological order) 91%, 92%, 54%, and 46%.
+
+
+                                                                                                                                             15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                            377
+
+TABLE 5 Sample Rates of Switching, Repeat Turnout, and Floating by Strength of Partisanship
+                                                                          Respondent’s Average Strength of Partisanship
+
+Percentage                         Study                 Independent                Leaning/Weak Partisan                Strong Partisan
+Switching Parties                1956–60                      45.2                            28.7                             19.4
+                                 1972–76                      34.9                            32.8                             23.3
+                                 1992–96                      35.9                            25.1                             13.6
+                                 2000–04                      19.7                            16.1                              9.9
+Repeat Turnout                   1956–60                      55.4                            73.6                             75.1
+                                 1972–76                      50.3                            70.3                             77.0
+                                 1992–96                      42.6                            61.3                             71.5
+                                 2000–04                      44.3                            64.4                             70.8
+Floating Voters                  1956–60                      24.0                            18.9                             11.6
+                                 1972–76                      16.6                            20.6                             16.3
+                                 1992–96                      14.3                            13.3                              8.0
+                                 2000–04                       9.4                             9.1                              6.1
+Note: Average rates of major-party switching, repeat turnout, and floating (1992–96 and 2000–04 estimates are weighted) using multiple
+imputation to correct for panel attrition.
+
+
+multiple imputation, I can also estimate rates of major-                    lower for 1956–60 but only 9.1 percentage points lower
+party switching among third-party supporters from their                     for 2000–04.
+assessments of the major-party candidates across the two                         The bottom entry presents the percentage of Amerstudies. I present estimates summarizing across 10 im-                      icans who were floating voters. These are switchers who
+puted data sets for the first two panels and 20 imputed                     turned out to vote in both elections. The proportion of
+data sets for the recent two panels with higher attrition                   Americans who were floating voters from 1992 to 1996
+rates.21                                                                    was 5 to 7 percentage points lower relative to the preAs shown in the top entry of Table 4, the estimated                    vious two observations. This is a product of the decline
+proportion of Americans who switch their party support                      in switchers and the decline in repeat turnout among
+is much smaller across recent elections. The proportion                     switchers. Across 2000–04, however, repeat turnout rates
+of switchers across the 1956–60 and 1972–76 elections                       rose but rates of switching continued to decline, such
+is larger than the rate across 1992–96 and approximately                    that only 7.7% of Americans voted for a different party’s
+twice the rate across 2000–04. The next two rows show                       nominee. Compared to the first two studies, this is a sighow the decline in party switching is much sharper than                     nificant decline in floating voter rates of approximately
+the decline in repeat turnout among each group. Switchers                   10 percentage points.
+are less likely to be voters than nonswitchers, and they did                     Moreover, further examination indicates the decline
+show a decline in repeat turnout rates across 1992–96.                      of floating voters is largely a product of independents and
+But their repeat turnout levels rose across 2000–04, to                     the less aware being much more stable in their party prefthe point it is not significantly different from the turnout                erences across presidential elections. Table 5 compares
+rates of the first two studies. There is also no evidence                   rates of switching, repeat turnout, and being floating votof party switchers lowering their turnout rate relative                     ers by strength of partisanship. The most dramatic change
+to nonswitchers, as their rate is 15.0 percentage points                    is the large decline in average rates of switching, not repeat
+                                                                            turnout. Independents remain more likely to switch than
+                                                                            partisans, but the differences by strength of partisanship
+   I exclude respondents not interviewed in the original wave, since        become much smaller. From 1956–60 to 2000–04, the dethese interviews were added to correct for attrition biases within
+the original sample. I use the bootstrapping-based EM algorithm
+                                                                            cline in switching rates among leaning/weak partisans was
+within R’s version of Amelia II (Honaker, King, and Blackwell 2008)         about 13 percentage points and only 10 percentage points
+to impute values of each variable, except candidate preference. I           for strong partisans, but pure independents show a much
+rely on an additional set of transformed (i.e., passive) variables          larger drop of 25 percentage points. After having gone
+to sharpen the imputation of candidate preference within a wavespecific logit model. SI Section E provides a list of the variables and     through a recession and a war, pure independents were
+specifications used in estimation.                                          more stable in their party support across 2000–04 than
+
+
+                                                                                                                                            15405907, 2017, 2, 378                                                                                                                  CORWIN D. SMIDT
+
+
+TABLE 6 Sample Rates of Switching, Repeat Turnout, and Floating by Measures of Political
+        Awareness
+                                                           Interviewer’s Rating of Respondent’s Political Knowledge
+
+Percentage                    Study              Very Low–Low                 Average               Fairly High             Very High
+Switching Parties            1972–76                   36.0                     30.1                    28.5                    19.0
+                             1992–96                   31.5                     23.6                    17.7                    15.6
+                             2000–04                   16.4                     14.5                    10.8                    10.2
+Repeat Turnout               1972–76                   43.9                    69.1               81.2                          85.9
+                             1992–96                   37.6                    60.4               74.0                          78.4
+                             2000–04                   39.0                    66.3               80.3                          85.9
+Floating Voters              1972–76                   15.1                    18.2               21.6                          15.0
+                             1992–96                   10.0                    12.8               11.4                           9.0
+                             2000–04                    5.6                     8.7                 7.9                          8.8
+                                                                            Average Total Mentions (t)
+
+Percentage                    Study                   t≤5                   5<t≤8                   8 < t ≤ 11                t > 11
+Switching Parties            1956–60                  36.1                   32.0                      24.3                     13.8
+                             1972–76                  36.1                   31.1                      28.7                     23.5
+                             1992–96                  31.5                   26.2                      19.3                     14.0
+                             2000–04                  16.7                   14.5                      10.7                      9.5
+Repeat Turnout               1956–60                   48.1                     72.8                    80.3                    87.3
+                             1972–76                   51.6                     64.0                    74.8                    85.4
+                             1992–96                   40.4                     55.6                    68.7                    80.7
+                             2000–04                   47.5                     69.6                    72.6                    83.6
+Floating Voters              1956–60                   14.5                     22.1                    16.4                    11.9
+                             1972–76                   18.7                     17.0                    18.3                    19.1
+                             1992–96                   10.1                     13.5                    12.4                     9.7
+                             2000–04                    7.5                      9.6                     7.6                     6.8
+Note: Average rates of major-party switching, repeat turnout, and floating (1992–96 and 2000–04 estimates are weighted) using multiple
+imputation to correct for panel attrition.
+
+
+strong partisans were across 1972–76 and about as stable             those with low ratings is not significantly lower than the
+as strong partisans across 1956–60. In combination, the              rate across 1972–76.
+percentage of independents or leaning independents and                    The bottom panel compares respondents across cateweak partisans who were floating voters across 2000–04               gories marking quartiles of number of mentions.22 When
+is lower than the percentage of strong partisans who were            comparing rates of switching between 1956–60 and 2000–
+floating voters across either 1956–60 or 1972–76.                    04, the top quartile shows only a small decline of 6.8
+     Similarly, Table 6 uses multiple measures to show the           percentage points, whereas declines of 23.0, 14.1, and
+largest declines in switching rates are among those least            12.8 percentage points are respectively estimated for the
+attentive to politics. The top panel compares Americans              lowest, second, and third quartiles. However, outside of
+by the interviewers’ rating of their knowledge of public af-         1992–96, rates of repeat turnout are very much consisfairs during the first wave. Respondents interviewers rated          tent for those in the lower two categories. Both of these
+as “very low” or “low” in their level of political knowledge         comparisons suggest floating voter rates have largely deexhibit the greatest decline in rates of switching. Their av-        clined because rates of switching have declined, with reerage rate of switching declines by 19.6 percentage points           peat turnout rates remaining steady.
+from 1956–60 to 2000–04, compared to only 8.8 percentage points among those interviewers rated “very high.”                  In comparing these four studies, the bottom quartile of average
+                                                                     total mentions was consistently five or below, with the top quartile
+However, the rate of repeat turnout across 2000–04 for               showing mention rates above 11.
+
+
+                                                                                                                                  15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                 379
+
+     In combination, a consistent picture of the decline         ficult to consider them similar to the independents of the
+of the American floating voter emerges. All Americans,           past since they are as aware of party differences and as
+not just partisans or the politically engaged, have become       loyal in their party support as strong partisans were prior
+less likely to switch their vote across presidential elec-       to polarization. Polarization has not strengthened their
+tions. This is primarily a function of greater stability in      sense of partisan loyalty, but the clarity of polarization
+party preferences as opposed to switchers exiting politics.      has effectively allowed independents and the politically
+The panel evidence also documents that there have been           inattentive to act as loyal partisans in their behavior.
+dramatic changes among Americans whom scholars typi-                   More generally, these findings document that the
+cally consider to be unattached to parties or inattentive to     clarity of elite polarization changes American voting bepolitics. Pure independents and the less aware of 2000–04        havior and election outcomes. Americans’ party support
+were more likely to switch than the strong partisans or the      in presidential voting has strengthened in its durabilhighly aware of those elections, but they were also as loyal     ity and pervasiveness, as stable party divisions have exas were strong partisans and the highly aware prior to           tended to independents and the politically inattentive.
+polarization. Moreover, when factoring in turnout, inde-         This growth in loyalty lessens voter responsiveness to
+pendents and weak/leaning partisans are essentially equal        short-term forces and means that the party elites of today
+in their propensity to be floating voters, and, according to     have much less reason to fear losing their supporters to
+interviewer ratings of political awareness, the most aware       the other party or need to appeal to the pragmatic conAmericans were most likely to vote for different party           cerns of the remaining few floating voters, as long as they
+nominees across the 2000 and 2004 elections.                     are the only two parties. These findings only examine
+                                                                 polarization’s effects on choices, not opinions, but they
+                                                                 remain informative nonetheless since they indicate that a
+                                                                 polarization in choices is sufficient for a growth in loyalty.
+        Discussion and Conclusion                                Whether or not they are polarized in their issue attitudes,
+                                                                 Americans show little conflict or concern in picking a side
+Berelson, Lazarsfeld, and McPhee (1954) suggest that             and sticking with that choice. Consequently, even small
+our electoral system requires behaviors that are so              divisions in American public opinion can have pervasive
+incompatible within each individual that we can only             consequences for voting behavior if they clearly align with
+expect to attain them through a heterogeneous elec-              elite party differences.
+torate. From this perspective, even the “least admirable”              Since these changes largely follow trends of elite povoters (316) enrich our democratic political system by           larization, where the mass public’s issue awareness is esproviding it with the flexibility and indifference that it       pecially higher on moral issues where party divisions used
+needs. The pragmatic tendency of these voters enables            to be nonexistent (Fiorina, Abrams, and Pope 2006), the
+and motivates party compromises, and their willingness           decline in switching appears to be in response to polarto change their party support enhances accountability            ized parties. But to claim it is simply caused by elites
+within democratic elections.                                     is an oversimplification. The mass public’s response to
+     This analysis finds, however, that this diversifying and    party positioning is not immediate but takes time. In
+flexible group of voters has been on the decline, as there       terms of abortion, voters of 1980 were largely unaware
+have been major changes in the prominence and charac-            and unresponsive to the differences of Reagan and Carter
+teristics of floating voters over the past 30 years. Despite a   (Granberg and Burlison 1983). Recognition of party difdeclining percentage of Americans claiming a party iden-         ferences only emerged in 1984, once issue activists gained
+tification, Americans now exhibit the highest observed           footing within each party (Carmines and Woods 2002),
+rates of party allegiance when voting across successive          and its influence on partisan opinions took much longer
+presidential elections. This decline in floating voter rates     (Fiorina, Abrams, and Pope 2008).
+is primarily a result of all Americans being more sta-                 A clearer conclusion is that the response of voters and
+ble in their party support, not switchers abstaining from        elites to each other’s behavior has helped to facilitate this
+voting. By making it easy for Americans to recognize             trend. By being less conflicted and more stable in their
+party differences, polarization has reduced ambivalence          support of party nominees, the response of Americans to
+and indecisiveness and provided a strong and consistent          elite polarization changes the electoral incentives of party
+ideological anchor to Americans’ presidential preferences        candidates. When party preferences are more predictable
+across time, even for independents and the less aware.           and less responsive to short-term forces, candidates have
+Although independents remain slightly less stable in their       little need to appeal to the moderate or pragmatic conparty support across recent presidential elections, it is dif-   cerns of the few remaining floating voters. For those states
+
+
+                                                                                                                                          15405907, 2017, 2, 380                                                                                                                 CORWIN D. SMIDT
+
+
+where one party has an advantage, greater stability en-                                      References
+hances the dominant party’s certainty of winning and
+reduces its need to appeal to moderates or floating voters.           Abramowitz, Alan I. 2010. The Dissappearing Center: Engaged
+But even if stalwart supporters are evenly matched, and                  Citizens, Polarization, and American Democracy. New Haven,
+floating voters are potentially decisive, the predictability             CT: Yale University Press.
+of support among likely nonvoters may make a mobiliza-                Abramson, Paul R., John H. Aldrich, and David W. Rohde. 2010.
+tion strategy more appealing. Candidate efforts to per-                  Change and Continuity in the 2008 Elections. Washington,
+                                                                         DC: CQ Press.
+suade and win over a small group of floating voters are
+                                                                      Alvarez, R. Michael, and John Brehm. 2002. Hard Choices, Easy
+costly and provide uncertain payoffs. In contrast, and as                Answers. Princeton, NJ: Princeton University Press.
+was exemplified by the winning campaigns of 2004 and                  Bartels, Larry M. 1999. “Panel Effects in the American National
+2012, presidential candidates often see larger payoffs in                Election Studies.” Political Analysis 8(1): 1–20.
+trying to mobilize those who previously did not vote but              Bartels, Larry M. 2000. “Partisanship and Voting Behavior,
+are highly reliable in their support.                                    1952–1996.” American Journal of Political Science 44(1): 35–
+     Indeed, beyond studies of campaign fundraising in                   50.
+Congress, we currently have little understanding of elite             Basinger, Scott J., and Howard Lavine. 2005. “Ambivalence, Inpolarization’s relationship with campaign strategy and                   formation, and Electoral Choice.” American Political Science
+                                                                         Review 99(2): 169–84.
+how elections are won. Polarization has occurred as inBerelson, Bernard R., Paul F. Lazarsfeld, and William N.
+stitutional barriers to voting have eased and as campaign                McPhee. 1954. Voting: A Study of Opinion Formation in a
+organizations have made major advancements in their                      Presidential Campaign. Chicago: University of Chicago Press.
+ability to contact likely supporters and mobilize them to             Burden, Barry C., and David C. Kimball. 2002. Why Americans
+vote. Game-theoretic models find that the participation                  Split Their Tickets: Campaigns, Competition, and Divided
+choices of voters modify a candidates desire to appeal                   Government. Ann Arbor: University of Michigan Press.
+to the median voter (e.g., Callander and Wilson 2007).                Callander, Steven, and Catherine H. Wilson. 2007. “Turnout,
+Along these lines, it is possible that polarization has been             Polarization, and Duverger’s Law.” The Journal of Politics
+                                                                         69(4): 1047–56.
+facilitated by changes in how candidates view and expeCarmines, Edward G., and James Woods. 2002. “The Role of
+rience campaigning and what type of voters they view as                  Party Activists in the Evolution of the Abortion Issue.” Poeasiest or most desirable to win.                                        litical Behavior 24(4): 361–77.
+     The candidate-centric nature of modern campaigns                 Converse, Philip E. 1962. “Information Flow and the Stability of
+may also play a part in answering why we have varying                    Partisan Attitudes.” Public Opinion Quarterly 26(4): 578–99.
+evidence about the strength of partisanship among con-                Druckman, James N., Erik Peterson, and Rune Slothuus. 2013.
+temporary Americans. Americans are less willing to claim                 “How Elite Partisan Polarization Affects Public Opinion Formation.” American Political Science Review 107(1): 57–79.
+a party identification, and they have shown slightly higher
+levels of ambivalence in their evaluations of the political           Fiorina, Morris P., Samuel J. Abrams, and Jeremy C. Pope. 2006.
+                                                                         Culture War? The Myth of a Polarized America. 2nd ed. New
+parties more broadly since 1980 (Thornton 2013). This                    York: Pearson Longman.
+latter trend should theoretically lessen the direct effects           Fiorina, Morris P., Samuel J. Abrams, and Jeremy C. Pope. 2008.
+of partisanship by promoting informed and ideological                    “Polarization in the American Public: Misconceptions and
+voting (Basinger and Lavine 2005; Lavine, Johnston, and                  Misreadings.” The Journal of Politics 70(2):556–60.
+Steenbergen 2012). But perhaps there has not been a de-               Garner, Andrew, and Harvey Palmer. 2011. “Polarization and
+cline in reliable party support because clear candidate po-              Issue Consistency over Time.” Political Behavior 33(2):
+                                                                         225–46.
+sitioning can stand in as a substitute for party attachments
+                                                                      Granberg, Donald, and James Burlison. 1983. “The Abortion
+among independents and conflicted partisans by clarifyIssue in the 1980 Elections.” Family Planning Perspectives
+ing the policy consequences of their support.23 Hence,                   15(5): 231–38.
+Americans can distance themselves from the parties in                 Hanmer, Michael J., and Kerem Ozan Kalkan. 2013. “Behind the
+their political identities but fail to show similar conflict             Curve: Clarifying the Best Approach to Calculating Predicted
+in their more proximal candidate evaluations. There is a                 Probabilities and Marginal Effects from Limited Dependent
+clarity of mind among Americans when they vote, but                      Variable Models.” American Journal of Political Science 57(1):
+                                                                         263–77.
+perhaps not of purpose.
+                                                                      Hetherington, Marc J. 2001. “Resurgent Mass Partisanship: The
+                                                                         Role of Elite Polarization.” American Political Science Review
+                                                                         95(3): 619–31.
+   It is along these lines that Thornton (2014) fails to find party   Hillygus, D. Sunshine, and Todd G. Shields. 2008. The Persuadambivalence promoting defection in presidential voting when the          able Voter: Wedge Issues in Presidential Campaigns. Princeton,
+candidates are ideologically more extreme.                               NJ: Princeton University Press.
+
+
+                                                                                                                                        15405907, 2017, 2, THE DECLINE OF THE AMERICAN FLOATING VOTER                                                                                       381
+
+Honaker, James, Gary King, and Matthew Blackwell. 2008.             Rudolph, Thomas J. 2005. “Group Attachment and the Re-
+   “Amelia II: A Program for Missing Data.” Journal of Sta-            duction of Value-Driven Ambivalence.” Political Psychology
+   tistical Software 45(7): 1–47.                                      26(6): 905–28.
+Hox, Joop. 2010. Multilevel Analysis: Techniques and Applica-       Stegmueller, Daniel. 2013. “How Many Countries for Multilevel
+   tions. 2nd ed. New York: Routledge.                                 Modeling: A Comparison of Frequentist and Bayesian ApKeele, Luke, and Jennifer Wolak. 2008. “Contextual Sources of          proaches.” American Journal of Political Science 57(3): 748–
+   Ambivalence.” Political Psychology 29(5): 653–73.                   61.
+Kelley, Stanley, Jr. 1983. Interpreting Elections. Princeton, NJ:   Thompson, Megan M., Mark P. Zanna, and Dale W. Griffn.
+   Princeton University Press.                                         1995. “Let’s Not Be Indifferent about (Attitudinal) Ambivalence.” In Attitude Strength: Antecedents and Consequences,
+Key, V.O. Jr. 1966. The Responsible Electorate. Cambridge, MA:         ed. Richard E. Petty and Jon A. Krosnick, Mahwah, NJ: ErlHarvard University Press.                                           baum, 361–86.
+King, Gary, James Honaker, Anne Joseph, and Kenneth Scheve.         Thornton, Judd R. 2011. “Ambivalent or Indifferent? Examin2001. “Analyzing Incomplete Political Science Data: An Al-          ing the Validity of an Objective Measure of Partisan Ambivaternative Algorithm for Multiple Imputation.” American Po-          lence.” Political Psychology 32(5): 863–84.
+   litical Science Review 95(1): 46–69.
+                                                                    Thornton, Judd R. 2013. “The Impact of Elite Polarization on
+Lavine, Howard. 2001. “The Electoral Consequences of Am-               Partisan Ambivalence and Indifference.” Political Behavior
+   bivalence Toward Presidential Candidates.” American Jour-           35(2): 409–28.
+   nal of Political Science 45(4): 915–29.
+                                                                    Thornton, Judd R. 2014. “Getting Lost on the Way to the Party:
+Lavine, Howard G., Christopher D. Johnston, and Marco R.               Ambivalence, Indifference, and Defection with Evidence
+   Steenbergen. 2012. The Ambivalent Partisan: How Critical            from Two Presidential Elections.” Social Science Quarterly
+   Loyalty Promotes Democracy. New York: Oxford University             95(1): 184–201.
+   Press.
+                                                                    Zaller, John R. 1992. The Nature and Origins of Mass Opinion.
+Layman, Geoffrey C., and Thomas M. Carsey. 2002. “Party Po-            New York: Cambridge University Press.
+   larization and ‘Conflict Extension’ in the American Electorate.” American Journal of Political Science 46(4): 786–       Zaller, John R. 2004. “Floating Voters in U.S. Presidential Elec802.                                                                tions, 1948–2000.” In Studies in Public Opinion, ed. William
+                                                                       E. Saris and Paul M. Sniderman. Princeton, NJ: Princeton
+Levendusky, Matthew S. 2010. “Clearer Cues, More Consistent            University Press, 166–212
+   Voters: A Benefit of Elite Polarization.” Political Behavior
+   32(1): 111–31.
+Mason, Lilliana. 2015. “‘I Disrespectfully Agree’: The Differential Effects of Partisan Sorting on Social and Issue
+                                                                               Supporting Information
+   Polarization.” American Journal of Political Science 59(1):
+   128–45.                                                          Additional Supporting Information may be found in the
+Mayer, William G. 2008. “What Exactly Is a Swing Voter? Def-        online version of this article at the publisher’s website:
+   inition and Measurement.” In The Swing Voter in American
+   Politics, ed. William G. Mayer. Washington, DC: Brookings        A: Issue Awareness Estimates Generating Figure 3.
+   Institution Press, 1–31                                          B: Trends in Candidate Ambivalence and Being UndeMcCarty, Nolan, Keith T. Poole, and Howard Rosenthal. 2006.         cided and Results from Alternative Specifications.
+   Polarized America. Cambridge, MA: MIT Press.                     C: ANES Time Series Variables and Codings.
+Mulligan, Kenneth. 2011. “Partisan Ambivalence, Split-Ticket        D: Full Results from Multinomial Logit Estimates, AlVoting, and Divided Government.” Political Psychology
+   32(3): 505–30.                                                   ternative Estimates, and Example of Short Term Forces’s
+Nicholson, Stephen P. 2012. “Polarizing Cues.” American JourDeclining Inuence.
+   nal of Political Science 56(1): 52–66.                           E: ANES Variables Used in Multiple Imputation of Panel
+Prior, Markus. 2007. Post-Broadcast Democracy: How Me-              Studies.
+   dia Choice Increases Inequality in Involvement and               F: Observed Rates without Multiple Imputation and SamPolarizes Elections. New York: Cambridge University              ple Multiple Imputation Program-ming Code: 1972–76
+   Press.                                                           Estimation.

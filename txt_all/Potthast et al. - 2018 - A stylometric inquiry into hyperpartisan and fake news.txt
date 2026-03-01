@@ -1,0 +1,607 @@
+A Stylometric Inquiry into Hyperpartisan and Fake News
+
+Martin Potthast            Johannes Kiesel           Kevin Reinartz            Janek Bevendorff             Benno Stein
+
+         Leipzig University                                            Bauhaus-Universität Weimar
+martin.potthast@uni-leipzig.de                                    <first>.<last>@uni-weimar.de
+
+
+                        Abstract                                grees of truthfulness long before the digital revolution, its amplification over real news within social
+      We report on a comparative style analy-                   media gives many people pause. The fake news
+      sis of hyperpartisan (extremely one-sided)                hype caused a widespread disillusionment about sonews and fake news. A corpus of 1,627 ar-                 cial media, and many politicians, news publishers,
+      ticles from 9 political publishers, three                 IT companies, activists, and scientists concur that
+      each from the mainstream, the hyperpar-                   this is where to draw the line. For all their good intisan left, and the hyperpartisan right, have             tentions, however, it must be drawn very carefully
+      been fact-checked by professional journal-                (if at all), since nothing less than free speech is at
+      ists at BuzzFeed: 97% of the 299 fake news                stake—a fundamental right of every free society.
+      articles identified are also hyperpartisan.                  Many favor a two-step approach where fake
+      We show how a style analysis can distin-                  news items are detected and then countermeasures
+      guish hyperpartisan news from the main-                   are implemented to foreclose rumors and to disstream (F1 = 0.78), and satire from both                  courage repetition. While some countermeasures
+      (F1 = 0.81). But stylometry is no silver bul-             are already tried in practice, such as displaying
+      let as style-based fake news detection does               warnings and withholding ad revenue, fake news
+      not work (F1 = 0.46). We further reveal                   detection is still in its infancy. At any rate, a nearthat left-wing and right-wing news share                  real time reaction is crucial: once a fake news item
+      significantly more stylistic similarities than            begins to spread virally, the damage is done and uneither does with the mainstream. This re-                 doing it becomes arduous. Since knowledge-based
+      sult is robust: it has been confirmed by                  and context-based approaches to fake news detecthree different modeling approaches, one                  tion can only be applied after publication, i.e., as
+      of which employs Unmasking in a novel                     news events unfold and as social interactions occur,
+      way. Applications of our results include                  they may not be fast enough.
+      partisanship detection and pre-screening                     We have identified style-based approaches as a
+      for semi-automatic fake news detection.                   viable alternative, allowing for instantaneous reactions, albeit not to fake news, but to hyperpar1     Introduction
+                                                                tisanship. In this regard we contribute (1) a large
+The media and the public are currently discussing               news corpus annotated by experts with respect to
+the recent phenomenon of “fake news” and its po-                veracity and hyperpartisanship, (2) extensive expertential role in swaying elections, how it may af-               iments on discriminating fake news, hyperpartisan
+fect society, and what can and should be done                   news, and satire based solely on writing style, and
+about it. Prone to misunderstanding and misue, the              (3) validation experiments to verify our finding that
+term “fake news” arose from the observation that,               the writing style of the left and the right have more
+in social media, a certain kind of ‘news’ spreads               in common than any of the two have with the mainmuch more successfully than others, and this kind               stream, applying Unmasking in a novel way.
+of ‘news’ is typically extremely one-sided (hyper-                 After a review of related work, Section 3 details
+partisan), inflammatory, emotional, and often rid-              the corpus and its construction, Section 4 introdled with untruths. Although traditional yellow                 duces our methodology, and Section 5 reports the
+press has been spreading ‘news’ of varying de-                  results of the aforementioned experiments.
+    Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Long Papers), pages 231–240
+                 Melbourne, Australia, July 15 - 20, 2018. c 2018 Association for Computational Linguistics
+
+
+                                                          Fake news detection
+2   Related Work
+Approaches to fake news detection divide into three               Knowledge-based (also called fact checking)
+                                                                                                  Etzioni et al., 2018
+categories (Figure 1): they can be knowledge-based                     Information retrieval      Magdy and Wanas, 2010
+(by relating to known facts), context-based (by an-                                               Ginsca et al., 2015
+alyzing news spread in social media), and style-                                                  Wu et al., 2014
+                                                                       Semantic web / LOD         Ciampaglia et al, 2015
+based (by analyzing writing style).                                                               Shi and Weninger, 2016
+Knowledge-based fake news detection. Methods                                                      Long et al., 2017
+                                                                                                  Mocanu et al., 2015
+from information retrieval have been proposed                     Context-based                   Acemoglu et al., 2010
+early on to determine the veracity of web docu-                                                   Kwon et al., 2013
+                                                                                                  Ma et al., 2017
+ments. For example, Etzioni et al. (2008) propose                      Social network analysis
+                                                                                                  Volkova et al., 2017
+to identify inconsistencies by matching claims ex-                                                Budak et al., 2011
+                                                                                                  Nguyen et al. 2012
+tracted from the web with those of a document                                                     Derczynski et al., 2017
+in question. Similarly, Magdy and Wanas (2010)                    Style-based                     Tambuscio et al., 2015
+measure the frequency of documents that support a                                                 Wei et al., 2013
+                                                                                                  Chen et al., 2015
+claim. Both approaches face the challenges of web                      Deception detection        Rubin et al., 2015
+data credibility, namely expertise, trustworthiness,                                              Wang et al., 2017
+                                                                                                  Bourgonje et al., 2017
+quality, and reliability (Ginsca et al., 2015).
+                                                                                                  Afroz et al., 2012
+   Other approaches rely on knowledge bases, in-                                                  Badaskar et al., 2008
+cluding the semantic web and linked open data.                                                    Rubin et al., 2016
+                                                                       Text categorization        Yang et al., 2017
+Wu et al. (2014) “perturb” a claim in question to                                                 Rashkin et al., 2017
+query knowledge bases, using the result variations                                                Horne and Adali, 2017
+                                                                                                  Pérez-Rosas et al., 2017
+as indicator of the support a knowledge base offers for the claim. Ciampaglia et al. (2015) use          Figure 1: Taxonomy of paradigms for fake news detection alongside a selection of related work.
+the shortest path between concepts in a knowledge
+graph, whereas Shi and Weninger (2016) use a link
+prediction algorithm. However, these approaches         Style-based fake news detection. Deception detecare unsuited for new claims without corresponding       tion originates from forensic linguistics and builds
+entries in a knowledge base, whereas knowledge          on the Undeutsch hypothesis—a result from forenbases can be manipulated (Heindorf et al., 2016).       sic psychology which asserts that memories of reallife, self-experienced events differ in content and
+Context-based fake news detection. Here, fake           quality from imagined events (Undeutsch, 1967).
+news items are identified via meta information and      The hypothesis led to the development of forensic
+spread patterns. For example, Long et al. (2017)        tools to assess testimonies at the statement level.
+show that author information can be a useful fea-       Some approaches operationalize deception detecture for fake news detection, and Derczynski et al.     tion at scale to detect uncertainty in social media
+(2017) attempt to determine the veracity of a claim     posts, for example Wei et al. (2013) and Chen et al.
+based on the conversation it sparks on Twitter as       (2015). In this regard, Rubin et al. (2015) use
+one of the RumourEval tasks. The Facebook analy-        rhetorical structure theory as a measure of story
+sis of Mocanu et al. (2015) shows that unsubstan-       coherence and as an indicator for fake news. Retiated claims spread as widely as well-established      cently, Wang (2017) collected a large dataset conones, and that user groups predisposed to conspir-      sisting of sentence-length statements along their
+acy theories are more open to sharing the former.       veracity from the fact-checking site PolitiFact.com,
+Similarly, Acemoglu et al. (2010), Kwon et al.          and then used style features to detect false state-
+(2013), Ma et al. (2017), and Volkova et al. (2017)     ments. A related task is stance detection, where
+model the spread of (mis-)information, while Bu-        the goal is to detect the relation between a claim
+dak et al. (2011) and Nguyen et al. (2012) propose      about an article, and the article itself (Bourgonje
+algorithms to limit its spread. The efficacy of coun-   et al., 2017). Most prominently, stance detection
+termeasures like debunking sites is studied by Tam-     was the task of the Fake News Challenge1 which
+buscio et al. (2015). While achieving good results,     ran in 2017 and received 50 submissions, albeit
+context-based approaches suffer from working only       hardly any participants published their approach.
+a posteriori, requiring large amounts of data, and
+disregarding the actual news content.                         http://www.fakenewschallenge.org/
+    Where deception detection focuses on single             3 The BuzzFeed-Webis Fake News Corpus
+statements, style-based text categorization as proThis section introduces the BuzzFeed-Webis Fake
+posed by Argamon-Engelson et al. (1998) assesses
+                                                          News Corpus 2016, detailing its construction and
+entire texts. Common applications are author proannotation by professional journalists employed at
+filing (age, gender, etc.) and genre classification.
+                                                          BuzzFeed, as well as key figures and statistics.2
+Though susceptible to authors who can modify
+their writing style, such obfuscations may be de-           3.1      Corpus Construction
+tectable (e.g., Afroz et al. (2012)). As an early
+                                                          The corpus encompasses the output of 9 publishprecursor to fake news detection, Badaskar et al.
+                                                          ers on 7 workdays close to the US presidential
+(2008) train models to identify news items that
+                                                          elections 2016, namely September 19 to 23, 26,
+were automatically generated. Currently, text cateand 27. Table 1 gives an overview. Among the
+gorization methods for fake news detection focus
+                                                          selected publishers are six prolific hyperpartisan
+mostly on satire detection (e.g., Rubin et al. (2016),
+                                                          ones (three left-wing and three right-wing), and
+Yang et al. (2017)). Rashkin et al. (2017) perform
+                                                          three mainstream ones. All publishers earned Facea statistical analysis of the stylistic differences bebook’s blue checkmark , indicating authenticity
+tween real, satire, hoax, and propaganda news. We
+                                                          and an elevated status within the network. Every
+make use of their results by incorporating the bestpost and linked news article has been fact-checked
+performing style features identified.
+                                                          by 4 BuzzFeed journalists, including about 19% of
+    Finally, two preprint papers have been recently
+                                                          posts forwarded from third parties. Having checked
+shared. Horne and Adali (2017) use style features
+                                                          a total of 2,282 posts, 1,145 mainstream, 471 leftfor fake news detection. However, the relatively
+                                                          wing, and 666 right-wing, Silverman et al. (2016)
+high accuracies reported must be taken with a grain
+                                                          reported key insights as a data journalism article.
+of salt: their two datasets comprise only 70 news arThe annotations were published alongside the articles each, whose ground-truth is based on where
+                                                          ticle.3 However, this data only comprises URLs
+an article came from, instead of resulting from a
+                                                          to the original Facebook posts. To construct our
+per-article expert review as in our case; their final
+                                                          corpus, we archived the posts, the linked articles,
+classifier uses only 4 features (number of nouns,
+                                                          and attached media as well as relevant meta data to
+type-token ratio, word count, number of quotes),
+                                                          ensure long-term availability. Due to the rapid pace
+which can be easily manipulated; and based on
+                                                          at which the publishers change their websites, we
+their experimental setup, it cannot be ruled out
+                                                          were able to recover only 1,627 articles, 826 mainthat the classifier simply differentiates news porstream, 256 left-wing, and 545 right-wing.
+tals rather than fake and real articles. We avoid
+this problem by testing our classifiers on articles       Manual fact-checking. A binary distinction befrom portals which were not represented in the            tween fake and real news turned out to be infeasitraining data. Similarly, Pérez-Rosas et al. (2017)       ble, since hardly any piece of fake news is entirely
+also report on constructing two datasets compris-         false, and pieces of real news may not be flawless.
+ing around 240 and 200 news article excerpts (i.e.,       Therefore, posts were rated “mostly true,” “mixture
+the 5-sentence lead) with a balanced distribution of      of true and false,” “mostly false,” or, if the post was
+fake vs. real. The former was collected via crowd-        opinion-driven or otherwise lacked a factual claim,
+sourcing, asking workers to write a fake news item        “no factual content.” Four BuzzFeed journalists
+based on a real news item, the latter was collected       worked on the manual fact-checks of the news artifrom the web. For style analysis, the former dataset      cles: to minimize costs, each article was reviewed
+may not be suitable, since the authors note them-         only once and articles were assigned round robin.
+selves that “workers succeeded in mimicking the           The ratings “mixture of true and false” and “mostly
+reporting style from the original news”. The lat-         false” had to be justified, and, when in doubt about
+ter dataset encompasses only celebrity news (i.e.,        a rating, a second opinion was collected, whereas
+yellow press), which introduces a bias. Their fea-        disagreements were resolved by a third one. Fiture selection follows that of Rubin et al. (2016),       nally, all news rated “mostly false” underwent a
+which is covered by our experiments, but also in-         final check to ensure the rating was justified, lest
+corporates topic features, rendering the resulting        the respective publishers would contest it.
+classifier not generalizable.                               2
+                                                                Corpus download: https://doi.org/10.5281/zenodo.1239675
+                                                                http://github.com/BuzzFeedNews/2016-10-facebook-fact-check
+The journalists were given the following guidance:         Orientation
+                                                           Publisher
+                                                                           Fact-checking results        Key statistics per article
+                                                                          true mix false n/a    Σ     Paras. Links        Words
+   Mostly true: The post and any related link or
+                                                                                                             extern all quoted all
+image are based on factual information and por-            Mainstream     806    8     0   12   826   20.1     2.2 3.7   18.1 692.0
+tray it accurately. The authors may interpret the          ABC News        90    2     0    3    95   21.1     1.0 4.8   21.0 551.9
+                                                           CNN            295    4     0    8   307   19.3     2.4 2.5   15.3 588.3
+event/info in their own way, so long as they do not        Politico       421    2     0    1   424   20.5     2.3 4.3   19.9 798.5
+misrepresent events, numbers, quotes, reactions,           Left-wing       182   51   15   8    256   14.6     4.5 4.9   28.6 423.2
+                                                           Addicting Info   95   25    8   7    135   15.9     4.4 4.5   30.5 430.5
+etc., or make information up. This rating does not         Occupy Democrats 55   23    6   0     91   10.9     4.1 4.7   29.0 421.7
+allow for unsupported speculation or claims.               The Other 98%    32    3    1   1     30   20.2     6.4 7.2   21.2 394.5
+                                                           Right-wing      276 153    72   44   545   14.1     2.5 3.1   24.6 397.4
+   Mixture of true and false (mix, for short): Some        Eagle Rising    107 47     25   36   214   12.9     2.6 2.8   17.3 388.3
+elements of the information are factually accurate,        Freedom Daily    48 24     22    4    99   14.6     2.2 2.3   23.5 419.3
+                                                           Right Wing News 121 82     25    4   232   15.0     2.5 3.6   33.6 396.6
+but some elements or claims are not. This rating           Σ             1264 212     87   64 1627    17.2     2.7 3.7   20.6 551.0
+should be used when speculation or unfounded
+                                                           Table 1: The BuzzFeed-Webis Fake News Corpus 2016
+claims are mixed with real events, numbers, quotes,        at a glance (“Paras.” short for “paragraphs”).
+etc., or when the headline of the link being shared
+makes a false claim but the text of the story is
+                                                         fect score. By contrast, almost 45% of the rightlargely accurate. It should also only be used when
+                                                         wing articles are a mixture of true and false (153)
+the unsupported or false information is roughly
+                                                         or mostly false (72). Here, publisher “Right Wing
+equal to the accurate information in the post or link.
+                                                         News” sticks out by supplying more than half of
+Finally, use this rating for news articles that are
+                                                         mixtures of true and false alone, whereas mostly
+based on unconfirmed information.
+                                                         false articles are equally distributed.
+   Mostly false: Most or all of the information in
+                                                            Regarding key statistics per article, it is interestthe post or in the link being shared is inaccurate.
+                                                         ing that the articles from all mainstream publishThis should also be used when the central claim
+                                                         ers are on average about 20 paragraphs long with
+being made is false.
+                                                         word counts ranging from 550 words on average at
+   No factual content (n/a, for short): This rating is
+                                                         ABC News to 800 at Politico. Except for one pubused for posts that are pure opinion, comics, satire,
+                                                         lisher, left-wing articles and right-wing articles are
+or any other posts that do not make a factual claim.
+                                                         shorter on average in terms of paragraphs as well as
+This is also the category to use for posts that are of
+                                                         word count, averaging at about 420 words and 400
+the “Like this if you think...” variety.
+                                                         words, respectively. Left-wing articles quote on
+3.2   Limitations                                        average about 10 words more than the mainstream,
+                                                         and right-wing articles 6 words more. When artiGiven the significant workload (i.e., costs) required
+                                                         cles comprise links, they are usually external ones,
+to carry out the aforementioned annotations, the
+                                                         whereas ABC News rather uses internal links, and
+corpus is restricted to the given temporal period
+                                                         only half of the links found at Politico articles are
+and biased toward the US culture and political landexternal. Left-wing news articles stick out by conscape, comprising only English news articles from
+                                                         taining almost double the amount of links across
+a limited number of publishers. Annotations were
+                                                         publishers than mainstream and right-wing ones.
+recorded at the article level, not at statement level.
+For text categorization, this is sufficient. At the        3.4     Operationalizing Fake News
+time of writing, our corpus is the largest of its kind
+                                                           In our experiments, we operationalize the category
+that has been annotated by professional journalists.
+                                                           of fake news by joining the articles that were rated
+3.3   Corpus Statistics                                    mostly false with those rated a mixture of true and
+                                                           false. Arguably, the latter may not be exactly what
+Table 1 shows the fact-checking results and some
+                                                           is deemed “fake news” (as in: a complete fabricakey statistics per article. Unsurprisingly, none of
+                                                           tion), however, practice shows fake news are hardly
+the mainstream articles are mostly false, whereas
+                                                           ever devoid of truth. More often, true facts are mis8 across all three publishers are a mixture of true
+                                                           construed or framed badly. In our experiments, we
+and false. Disregarding non-factual articles, a little
+                                                           hence call mostly true articles real news, mostly
+more than a quarter of all hyperpartisan left-wing
+                                                           false plus mixtures of true and false—except for
+articles were found faulty: 15 articles mostly false,
+                                                           satire—fake news, and disregard all articles rated
+and 51 a mixture of true and false. Publisher “The
+                                                           non-factual.
+Other 98%” sticks out by achieving an almost per4      Methodology                                                   Originally, Unmasking takes two documents as
+                                                                  input and outputs its confidence whether they have
+This section covers our methodology, including
+                                                                  been written by the same author. Three steps are
+our feature set to capture writing style, and a brief
+                                                                  taken to accomplish this: first, each document is
+recap of Unmasking by Koppel et al. (2007), which
+                                                                  chunked into a set of at least 500-word long chunks;
+we employ for the first time to distinguish genre
+                                                                  second, classification errors are measured while itstyles as opposed to author styles. For sake of
+                                                                  eratively removing the most discriminative features
+reproducibility, all our code has been published.4
+                                                                  of a style model consisting of the 250 most fre4.1      Style Features and Feature Selection                     quent words, separating the two chunk sets with a
+                                                                  linear classifier; and third, the resulting classificaOur writing style model incorporates common feation accuracy curves are analyzed with regard to
+tures as well as ones specific to the news domain.
+                                                                  their slope. A steep decrease is more likely than a
+The former are n-grams, n in [1, 3], of characters,
+                                                                  shallow decrease if the two documents have been
+stop words, and parts-of-speech. Further, we emwritten by the same author, since there are preploy 10 readability scores5 and dictionary features,
+                                                                  sumably less discriminating features between docueach indicating the frequency of words from a
+                                                                  ments written by the same author than between doctailor-made dictionary in a document, using the
+                                                                  uments written by different authors. Training a clasGeneral Inquirer Dictionaries as a basis (Stone
+                                                                  sifier on many examples of error curves obtained
+et al., 1966). The domain-specific features include
+                                                                  from same-author document pairs and differentratios of quoted words and external links, the numauthor document pairs yields an effective authorber of paragraphs, and their average length.
+                                                                  ship verifier—at least for long documents that can
+   In each of our experiments, we carefully select
+                                                                  be split up into a sufficient number of chunks.
+from the aforementioned features the ones worthIt turns out that what applies to the style of auwhile using: all features are discarded that are
+                                                                  thors also applies to genre styles. We adapt Unhardly represented in our corpus, namely word tomasking by skipping its first step and using two
+kens that occur in less than 2.5% of the documents,
+                                                                  sets of documents (e.g., left-wing articles and rightand n-gram features that occur in less than 10%
+                                                                  wing articles) as input. When plotting classification
+of the documents. Discarding these features preerror curves for visual inspection, steeper decreases
+vents overfitting and improves the chances that our
+                                                                  in these plots, too, indicate higher style similarity
+model will generalize.
+                                                                  of the two input document sets, just as with chunk
+   If not stated otherwise, our experiments share
+                                                                  sets of two documents written by the same author.
+a common setup. In order to avoid biases from
+the respective training sets, we balance them us-                   4.3   Baselines
+ing oversampling. Furthermore, we perform 3-fold
+                                                                  We employ four baseline models: a topic-based bag
+cross-validation where each fold comprises one
+                                                                  of words model, often used in the literature, but less
+publisher from each orientation, so that the claspractical since news topics change frequently and
+sifier does not learn a publisher’s style. For nondrastically; a model using only the domain-specific
+Unmasking experiments we use WEKA’s random
+                                                                  news style features to check whether the differences
+forest implementation with default settings.
+                                                                  between categories measured as corpus statistics
+4.2      Unmasking Genre Styles                                   play a significant role; and naive baselines that classify all items into one of the categories in question,
+Unmasking, as proposed by Koppel et al. (2007),
+                                                                  relating our results to the class distributions.
+is a meta learning approach for authorship verification. We study for the first time whether it can                  4.4   Performance Measures
+be used to assess the similarity of more broadly
+                                                                  Classification performance is measured as accuracy,
+defined style categories, such as left-wing vs. rightand class-wise precision, recall, and F1 . We favor
+wing vs. mainstream news. This way, we uncover
+                                                                  these measures over, e.g., areas under the ROC
+relations between the writing styles that people may
+                                                                  curve or the precision recall curve for simplicity
+involuntarily adopt as per their political orientation.
+                                                                  sake. Also, the tasks we are tackling are new, so
+    Code download: http://www.github.com/webis-de/ACL-18          that little is known to date about user preferences.
+    Automated Readability Index, Coleman Liau Index, Flesh Kin-   This is also why we chose the evenly-balanced F1 .
+    caid Grade Level and Reading Ease, Gunning Fog Index, LIX,
+    McAlpine EFLAW Score, RIX, SMOG Grade, Strain Index
+5     Experiments                                            Features Accuracy         Precision                Recall                 F1
+                                                                            all      left right main.      left right main.      left right main.
+We report on the results of two series of experi-            Style         0.60      0.21 0.56 0.75 0.20 0.59 0.74 0.20 0.57 0.75
+                                                             Topic         0.64      0.24 0.62 0.72 0.15 0.54 0.86 0.19 0.58 0.79
+ments that investigate style differences and similar-        News style    0.39      0.09 0.35 0.59 0.14 0.36 0.49 0.11 0.36 0.53
+ities between hyperpartisan and mainstream news,             All-left      0.16      0.16 -    -  1.00 0.0 0.0 0.27 -    -
+and between fake, real, and satire news, shedding            All-right     0.33        - 0.33 -   0.0 1.00 0.0   - 0.50 -
+                                                             All-main.     0.51        -   - 0.51 0.0 0.0 1.00   -   - 0.68
+light on the following questions:
+                                                               Table 2: Performance of predicting orientation.
+   1. Can (left/right) hyperpartisanship be distinguished from the mainstream?
+                                                             Features     Accuracy         Precision              Recall                   F1
+   2. Is style-based fake news detection feasible?                             all       hyp.    main.          hyp.     main.      hyp.    main.
+   3. Can fake news be distinguished from satire?            Style           0.75        0.69      0.86         0.89     0.62       0.78        0.72
+   Our first experiment addressing the first ques-           Topic
+                                                             News style
+                                                                             0.71
+                                                                             0.56
+                                                                                         0.66
+                                                                                         0.54
+                                                                                                   0.79
+                                                                                                   0.58
+                                                                                                                0.83
+                                                                                                                0.65
+                                                                                                                         0.60
+                                                                                                                         0.47
+                                                                                                                                    0.74
+                                                                                                                                    0.59
+                                                                                                                                                0.68
+                                                                                                                                                0.52
+tion uncovered an odd behavior of our classifier:            All-hyp.        0.49        0.49        -          1.00      0.0       0.66          -
+it would often misjudge left-wing for right-wing             All-main.       0.51          -       0.51          0.0     1.00         -         0.68
+
+news, while being much better at distinguishing              Table 3: Performance of predicting hyperpartisanship.
+both combined from the mainstream. To explain
+this behavior, we hypothesized that maybe the writ-                 Features                  Left                          Right
+ing style of the hyperpartisan left and right are                         Trained on: right+main.         all          left+main.    all
+
+more similar to one another than to the mainstream.                 Style                 0.74          0.90             0.66       0.89
+                                                                    Topic                 0.68          0.79             0.48       0.85
+To investigate this hypothesis, we devised two                      News style            0.52          0.61             0.47       0.66
+additional validation experiments, yielding three            Table 4: Ratio of left articles misclassified right when
+sources of evidence instead of just one.                     omitting left articles from training, and vice versa.
+
+5.1    Hyperpartisanship vs. Mainstream
+                                                           classifier to discriminate hyperpartisanship in genA. Predicting orientation. Table 2 shows the classi-       eral from the mainstream. Table 3 shows the perfication performance of a ternary classifier trained       formance values. This time, the best classification
+to discriminate left, right, and mainstream—an ob-         accuracy of 0.75 at a remarkable 0.89 recall for the
+vious first experiment for our dataset. Separating         hyperpartisan class is achieved by the style-based
+the left and right orientation from the mainstream         classifier, outperforming the topic baseline.
+does not work too well: the topic baseline out-               Comparing Table 2 and Table 3, we were left
+performs the style-based models with regard to             with a riddle: all other things being equal, how
+accuracy, whereas the results for class-wise pre-          could it be that hyperpartisanship in general can
+cision and recall are a mixed bag. The left-wing           be much better discriminated from the mainstream
+articles are apparently significantly more difficult       than individual orientation? Attempts to answer
+to be identified compared to articles from the other       this question gave rise to our aforementioned hytwo orientations. When we inspected the confu-             pothesis that, perhaps, the writing style of hypersion matrix (not shown), it turned out that 66% of         partisan left and right are not altogether different,
+misclassifications of left-wing articles are falsely       despite their opposing agendas. Or put another way,
+classified as right-wing articles, whereas 60% of          if style and topic are orthogonal concepts, then beall misclassified right-wing articles are classified as    ing an extremist should not exert a different style
+mainstream articles. Misclassified mainstream arti-        dependent on political orientation. Excited, we
+cles spread almost evenly across the other classes.        sought ways to independently disprove the hypothThe poor performance of the domain-specific             esis, and found two: Experiments C and D.
+news style features by themselves demonstrate that         C. Validation using leave-out classification. If leftorientation cannot be discriminated based on the           wing and right-wing articles have a more similar
+basic corpus characteristics observed with respect         style than either of them compared to mainstream
+to paragraphs, quotations, and hyperlinks. This            articles, then what class would a binary classifier asholds for all subsequent experiments.                      sign to a left-wing article, if it were trained to distinB. Predicting hyperpartisanship. Given the appar-          guish only the right-wing from the mainstream, and
+ent difficulty of telling apart individual orientations,   vice versa? Table 4 shows the results of this experiwe did not frantically add features or switch classi-      ment. As indicated by proportions well above 0.50,
+fiers to make it work. Rather, we trained a binary         full style-based classifiers have a tendency of clasmainstream vs left                                                                     fake vs satire
+                        0.6             mainstream vs right                                        0.6                           real vs satire
+
+
+                                                                             Nomralized accuracy
+  Nomralized accuracy
+                                                left vs right                                                                     fake vs real
+
+                        0.4                                                                        0.4
+
+
+                        0.2                                                                        0.2
+
+
+                        0.0                                                                        0.0
+                              0   3   6        9      12        15                                       0   3      6        9         12         15
+                                      Iterations                                                                    Iterations
+Figure 2: Unmasking applied to pairs of political ori-                     Figure 3: Unmasking applied to pairs of sets of news
+entations. The steeper a curve, the more similar the                       that are fake, real, and satire.
+respective styles.
+                                                                       discriminated well from the mainstream: in particusifying left as right and right as left. The topic
+                                                                       lar the high recall of 0.89 at a reasonable precision
+baseline, though, gets confused especially when
+                                                                       of 0.69 gives us confidence that, with some furomitting right articles from the training set with
+                                                                       ther effort, a practical classifier can be built that
+performance close to random. The fact that the
+                                                                       detects hyperpartisan news at scale and in real time,
+topic baseline works better when omitting left from
+                                                                       since an article’s style can be assessed immediately
+the training set may be explainable: leading up
+                                                                       without referring to external information.
+to the elections, the hyperpartisan left was often
+merely reacting to topics prompted by the hyper-                           5.2                     Fake vs. Real (vs. Satire)
+partisan right, instead of bringing up their own.                      This series of experiments targets research quesD. Validation using Unmasking. Based on Kop-                           tions (2) and (3). Again, we conduct three experipel et al.’s original approach in the context of au-                   ments, where the first is about predicting veracity,
+thorship verification, for the first time, we gener-                   and the last two about discriminating satire.
+alize Unmasking to assess genre styles: just like                      A. Predicting veracity. When taking into account
+author style similarity, genre style similarity will                   that the mainstream news publishers in our corpus
+be characterized by the slope of a given Unmasking                     did not publish any news items that are mostly
+curve, where a steeper decrease indicates higher                       false, and only very few instances that are mixtures
+similarity. We apply Unmasking as described in                         of true and false, we may safely disregard them
+Section 4.2 onto pairs of sets of left, right, and                     for the task of fake news detection. A reliable
+mainstream articles. Figure 2 shows the result-                        classifier for hyperpartisan news can act as a preing Unmasking curves (Unmasking is symmetrical,                        filter for a subsequent, more in-depth fake news
+hence three curves). The curves are averaged over                      detection approach, which may in turn be tailored
+5 runs, where each run comprised sets of 100 arti-                     to a much more narrowly defined classification task.
+cles from each orientation. In case of the left-wing                   We hence use only the left-wing articles and the
+orientation, where less than 500 articles are avail-                   right-wing articles of our corpus for our attempt at
+able in our corpus, once all of them had been used,                    a style-based fake news classifier.
+they were shuffled again to select articles for the                        Table 5 shows the performance values for a
+remainder of the runs. As can be seen, the curve                       generic classifier that predicts fake news across oricomparing left vs. right has a distinctly steeper                      entations, and orientation-specific classifiers that
+slope than either of the others. This result hence                     have been individually trained on articles from eimatches the findings of the previous experiments.                      ther orientation. Although all classifiers outperWith caution, we conclude that the evidence                         form the naive baselines of classifying everything
+gained from our three independent experimental                         into one of the classes in terms of precision, the
+setups supports our hypothesis that the hyperparti-                    slight increase comes at the cost of a large decrease
+san left and the hyperpartisan right have more in                      in recall. While the orientation-specific classifiers
+common in terms of writing style than any of the                       are slightly better for most metrics, none of them
+two have with the mainstream. Another more tangi-                      outperform the naive baselines regarding the F -
+ble (e.g., practical) outcome of Experiment B is the                   Measure. We conclude that style-based fake news
+finding that hyperpartisan news can apparently be                      classification simply does not work in general.
+Features       Accuracy         Precision       Recall             F1                masking curves. The curve for the pair of fake vs.
+                   all         fake    real   fake   real   fake        real
+                                                                                     real news drops faster compared to the other two
+Generic classifier
+Style             0.55         0.42    0.62   0.41   0.64   0.41        0.63         pairs. Apparently, the style of fake news has more
+Topic             0.52         0.41    0.62   0.48   0.55   0.44        0.58         in common with that of real news than either of the
+Orientation-specific classifier                                                      two have with satire. These results are encouraging:
+Style            0.55           0.43   0.64   0.49   0.59   0.46        0.61
+Topic            0.58           0.46   0.65   0.45   0.66   0.46        0.66         satire is distinct enough from fake and real news,
+All-fake          0.39         0.39      -    1.00    0.0   0.56          -          so that, just like with hyperpartisan news compared
+All-real          0.61           -     0.61    0.0   1.00     -         0.76
+                                                                                     to mainstream news, it can be discriminated with
+    Table 5: Performance of predicting veracity.                                     reasonable accuracy.
+Features       Accuracy          Precision      Recall             F1                6   Conclusion
+                   all          sat.   real   sat.   real   sat.        real
+Style             0.82         0.84    0.80   0.78   0.85   0.81        0.82     Fact-checking for fake news detection poses an inTopic             0.77         0.78    0.75   0.74   0.79   0.76        0.77     terdisciplinary challenge: technology is required
+All-sat.          0.50         0.50      -    1.00    0.0   0.67          -      to extract factual statements from text, to match
+All-real          0.50           -     0.50   0.00   1.00     -         0.67
+Rubin et al.       n/a         0.90    n/a    0.84   n/a    0.87        n/a
+                                                                                 facts with a knowledge base, to dynamically retrieve and maintain knowledge bases from the web,
+ Table 6: Performance of predicting satire (sat.).
+                                                                                 to reliably assess the overall veracity of an entire
+                                                                                 article rather than individual statements, to do so
+B. Predicting satire. Yet, not all fake news are                                 in real time as news events unfold, to monitor the
+the same. One should distinguish satire from the                                 spread of fake news within and across social media,
+rest, which takes the form of news but lies more                                 to measure the reputation of information sources,
+or less obviously to amuse its readers. Regardless                               and to raise awareness in readers. These are only
+the problems that spreading fake news may cause,                                 the most salient things that need be done to tackle
+satire should never be filtered, but be discriminated                            the problem, and as our cross-section of related
+from other fakes. Table 6 shows the performance                                  work shows, a large body of work must be covered.
+values of our classifier in the satire-detection set-                            Notwithstanding the many attacks on fake news by
+ting used by Rubin et al. (2016) (the S-n-L News                                 developing one way or another of fact-checking,
+DB corpus), distinguishing satire from real news.                                we believe it worthwhile to mount our attack from
+This setting uses a balanced 3:1 training-to-test                                another angle: writing style.
+set split over 360 articles (180 per class). As can                                 We show that news articles conveying a hyperbe seen, our style-based model significantly out-                                partisan world view can be distinguished from
+performs all baselines across the board, achieving                               more balanced news by writing style alone. Morean accuracy of 0.82, and an F score of 0.81. It                                  over, for the first time, we found quantifiable evclearly improves over topic classification, but does                             idence that the writing styles of news of the two
+not outperform Rubin et al.’s classifier, which in-                              opposing orientations are in fact very similar: there
+cludes features based on topic, absurdity, grammar,                              appears to be a common writing style of left and
+and punctuation. We argue that incorporating topic                               right extremism. We further show that satire can be
+into satire detection is not appropriate, since the                              distinguished well from other news, ensuring that
+topics of satire change along the topics of news.                                humor will not be outcast by fake news detection
+A classifier with topic features therefore does not                              technology. All of these results offer new, tangible,
+generalize. Apparently, a style-based model is com-                              short-term avenues of development, lest large-scale
+petitive, and we believe that satire can be detected                             fact-checking is still far out of reach. Employed as
+at scale this way, so as to prevent other fake news                              pre-filtering technologies to separate hyperpartisan
+detection technology from falsely filtering it.                                  news from mainstream news, our approach allows
+C. Unmasking satire. Given the above results on                                  for directing the attention of human fact checkers
+stylistic similarities between left and right news,                              to the most likely sources of fake news.
+the question remains how satire fits into the picture. We assess the style similarity of satire from                                  Acknowledgements
+Rubin et al.’s corpus compared to fake news and                                  We thank Craig Silverman, Lauren Strapagiel,
+real news from ours, again applying Unmasking to                                 Hamza Shaban, Ellie Hall, and Jeremy Singer-Vine
+compare pairs of the three categories of news as                                 from BuzzFeed for making their data available, endescribed above. Figure 3 shows the resulting Un-                                abling our research.
+References                                                  Stefan Heindorf, Martin Potthast, Benno Stein, and
+                                                            Gregor Engels. 2016. Vandalism Detection in
+Daron Acemoglu, Asuman Ozdaglar, and Ali                    Wikidata. In Proceedings of the 25th ACM
+ParandehGheibi. 2010. Spread of (Mis)Information in         International Conference on Information and
+Social Networks. Games and Economic Behavior,               Knowledge Management (CIKM 16), pages 327–336.
+70(2):194–227.                                              ACM.
+Sadia Afroz, Michael Brennan, and Rachel Greenstadt.            Benjamin D. Horne and Sibel Adali. 2017. This just
+2012. Detecting Hoaxes, Frauds, and Deception in                in: Fake news packs a lot in title, uses simpler,
+Writing Style Online. In 2012 IEEE Symposium on                 repetitive content in text body, more similar to satire
+Security and Privacy, pages 461–475.                            than real news. CoRR, abs/1703.09398.
+Shlomo Argamon-Engelson, Moshe Koppel, and Galit                Moshe Koppel, Jonathan Schler, and Elisheva
+Avneri. 1998. Style-based text categorization: What             Bonchek-Dokow. 2007. Measuring differentiability:
+newspaper am i reading. In Proc. of the AAAI                    Unmasking pseudonymous authors. J. Mach. Learn.
+Workshop on Text Categorization, pages 1–4.                     Res., 8:1261–1276.
+Sameer Badaskar, Sachin Agarwal, and Shilpa Arora.          Sejeong Kwon, Meeyoung Cha, Kyomin Jung, Wei
+2008. Identifying real or fake articles: Towards better     Chen, and Yajun Wang. 2013. Prominent Features of
+language modeling. In Third International Joint             Rumor Propagation in Online Social Media. In Data
+Conference on Natural Language Processing, IJCNLP           Mining (ICDM), 2013 IEEE 13th International
+2008, Hyderabad, India, January 7-12, 2008, pages           Conference on, pages 1103–1108. IEEE.
+817–822. The Association for Computer Linguistics.
+                                                            Yunfei Long, Qin Lu, Rong Xiang, Minglei Li, and
+Peter Bourgonje, Julián Moreno Schneider, and Georg         Chu-Ren Huang. 2017. Fake news detection through
+Rehm. 2017. From clickbait to fake news detection:          multi-perspective speaker profiles. In Proceedings of
+An approach based on detecting the stance of                the Eighth International Joint Conference on Natural
+headlines to articles. In Proceedings of the 2017           Language Processing, IJCNLP 2017, Taipei, Taiwan,
+Workshop: Natural Language Processing meets                 November 27 - December 1, 2017, Volume 2: Short
+Journalism, NLPmJ@EMNLP, Copenhagen, Denmark,               Papers, pages 252–256.
+September 7, 2017, pages 84–89.
+                                                            Jing Ma, Wei Gao, and Kam-Fai Wong. 2017. Detect
+Ceren Budak, Divyakant Agrawal, and Amr El Abbadi.          rumors in microblog posts using propagation structure
+2011. Limiting the spread of misinformation in social       via kernel learning. In Proceedings of the 55th Annual
+networks. In Proceedings of the 20th International          Meeting of the Association for Computational
+Conference on World Wide Web, WWW ’11, pages                Linguistics, ACL 2017, Vancouver, Canada, July 30 -
+665–674, New York, NY, USA. ACM.                            August 4, Volume 1: Long Papers, pages 708–717.
+Yimin Chen, Niall J. Conroy, and Victoria L. Rubin.         Amr Magdy and Nayer Wanas. 2010. Web-based
+2015. News in an Online World: The Need for an              Statistical Fact Checking of Textual Documents. In
+"Automatic Crap Detector". In Proceedings of the            Proceedings of the 2Nd International Workshop on
+78th ASIS&T Annual Meeting: Information Science             Search and Mining User-generated Contents, SMUC
+with Impact: Research in and for the Community,             ’10, pages 103–110, New York, NY, USA. ACM.
+ASIST ’15, pages 81:1–81:4, Silver Springs, MD,
+USA. American Society for Information Science.              Delia Mocanu, Luca Rossi, Qian Zhang, Marton
+                                                            Karsai, and Walter Quattrociocchi. 2015. Collective
+Giovanni Luca Ciampaglia, Prashant Shiralkar,               Attention in the Age of (Mis)Information. Comput.
+Luis M Rocha, Johan Bollen, Filippo Menczer, and            Hum. Behav., 51(PB):1198–1204.
+Alessandro Flammini. 2015. Computational Fact
+Checking from Knowledge Networks. PloS one,                 Nam P. Nguyen, Guanhua Yan, My T. Thai, and
+10(6):e0128193.                                             Stephan Eidenbenz. 2012. Containment of
+                                                            Misinformation Spread in Online Social Networks. In
+Leon Derczynski, Kalina Bontcheva, Maria Liakata,           Proceedings of the 4th Annual ACM Web Science
+Rob Procter, Geraldine Wong Sak Hoi, and Arkaitz            Conference, WebSci ’12, pages 213–222, New York,
+Zubiaga. 2017. Semeval-2017 task 8: Rumoureval:             NY, USA. ACM.
+Determining rumour veracity and support for rumours.
+In Proceedings of the 11th International Workshop on            Verónica Pérez-Rosas, Bennett Kleinberg, Alexandra
+Semantic Evaluation, SemEval@ACL 2017, Vancouver,               Lefevre, and Rada Mihalcea. 2017. Automatic
+Canada, August 3-4, 2017, pages 69–76.                          detection of fake news. CoRR, abs/1708.07104.
+
+Oren Etzioni, Michele Banko, Stephen Soderland, and         Hannah Rashkin, Eunsol Choi, Jin Yea Jang, Svitlana
+Daniel S. Weld. 2008. Open Information Extraction           Volkova, and Yejin Choi. 2017. Truth of varying
+from the Web. Commun. ACM, 51(12):68–74.                    shades: Analyzing language in fake news and political
+                                                            fact-checking. In Proceedings of the 2017 Conference
+Alexandru L. Ginsca, Adrian Popescu, and Mihai              on Empirical Methods in Natural Language
+Lupu. 2015. Credibility in Information Retrieval.           Processing, EMNLP 2017, Copenhagen, Denmark,
+Found. Trends Inf. Retr., 9(5):355–475.                     September 9-11, 2017, pages 2931–2937.
+Victoria Rubin, Niall Conroy, and Yimin Chen. 2015.        An empirical study on uncertainty identification in
+Towards News Verification: Deception Detection             social media context. In Proceedings of the 51st
+Methods for News Discourse. In Proceedings of the          Annual Meeting of the Association for Computational
+Hawaii International Conference on System Sciences         Linguistics (Volume 2: Short Papers), pages 58–62,
+(HICSS48) Symposium on Rapid Screening                     Sofia, Bulgaria. Association for Computational
+Technologies, Deception Detection and Credibility          Linguistics.
+Assessment Symposium, Kauai, Hawaii, USA.
+                                                               You Wu, Pankaj K. Agarwal, Chengkai Li, Jun Yang,
+Victoria Rubin, Niall Conroy, Yimin Chen, and Sarah            and Cong Yu. 2014. Toward Computational
+Cornwell. 2016. Fake News or Truth? Using Satirical            Fact-checking. Proc. VLDB Endow., 7(7):589–600.
+Cues to Detect Potentially Misleading News. In
+Proceedings of the Second Workshop on                      Fan Yang, Arjun Mukherjee, and Eduard Constantin
+Computational Approaches to Deception Detection,           Dragut. 2017. Satirical news detection and analysis
+pages 7–17, San Diego, California. Association for         using attention mechanism and linguistic features. In
+Computational Linguistics.                                 Proceedings of the 2017 Conference on Empirical
+                                                           Methods in Natural Language Processing, EMNLP
+Baoxu Shi and Tim Weninger. 2016. Fact Checking in         2017, Copenhagen, Denmark, September 9-11, 2017,
+Heterogeneous Information Networks. In Proceedings         pages 1979–1989.
+of the 25th International Conference Companion on
+World Wide Web, WWW ’16 Companion, pages
+101–102, Republic and Canton of Geneva,
+Switzerland. International World Wide Web
+Conferences Steering Committee.
+Craig Silverman, Lauren Strapagiel, Hamza Shaban,
+Ellie Hall, and Jeremy Singer-Vine. 2016.
+Hyperpartisan Facebook Pages are Publishing False
+and Misleading Information at an Alarming Rate.
+https://www.buzzfeed.com/craigsilverman/partisan-fbpages-analysis.
+BuzzFeed.
+Philip J. Stone, Dexter C. Dunphy, and Marshall S.
+Smith. 1966. The General Inquirer: A Computer
+Approach to Content Analysis. MIT press.
+Marcella Tambuscio, Giancarlo Ruffo, Alessandro
+Flammini, and Filippo Menczer. 2015. Fact-checking
+Effect on Viral Hoaxes: A Model of Misinformation
+Spread in Social Networks. In Proceedings of the 24th
+International Conference on World Wide Web, WWW
+’15 Companion, pages 977–982, New York, NY, USA.
+ACM.
+Udo Undeutsch. 1967. Beurteilung der glaubhaftigkeit
+von aussagen. Handbuch der Psychologie, 11:26–181.
+Svitlana Volkova, Kyle Shaffer, Jin Yea Jang, and
+Nathan Oken Hodas. 2017. Separating facts from
+fiction: Linguistic models to classify suspicious and
+trusted news posts on twitter. In Proceedings of the
+55th Annual Meeting of the Association for
+Computational Linguistics, ACL 2017, Vancouver,
+Canada, July 30 - August 4, Volume 2: Short Papers,
+pages 647–653.
+
+William Yang Wang. 2017. "liar, liar pants on fire": A
+new benchmark dataset for fake news detection. In
+Proceedings of the 55th Annual Meeting of the
+Association for Computational Linguistics, ACL 2017,
+Vancouver, Canada, July 30 - August 4, Volume 2:
+Short Papers, pages 422–426.
+Zhongyu Wei, Junwen Chen, Wei Gao, Binyang Li,
+Lanjun Zhou, Yulan He, and Kam-Fai Wong. 2013.

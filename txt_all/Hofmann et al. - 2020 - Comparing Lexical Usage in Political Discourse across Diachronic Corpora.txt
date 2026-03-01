@@ -1,0 +1,400 @@
+Proceedings of ParlaCLARIN II Workshop, pages 44–50
+                                                                   Language Resources and Evaluation Conference (LREC 2020), Marseille, 11–16 May 2020
+                                                                         c European Language Resources Association (ELRA), licensed under CC-BY-NC
+
+
+                                    Parsing Icelandic Alþingi Transcripts:
+                                     Parliamentary Speeches as a Genre
+                                     Kristján Rúnarsson, Einar Freyr Sigurðsson
+                                        The Árni Magnússon Institute for Icelandic Studies
+                                                Árnagarði við Suðurgötu, IS-102
+                                       krunars@hi.is, einar.freyr.sigurdsson@arnastofnun.is
+
+                                                                Abstract
+We introduce a corpus of transcripts from Alþingi, the Icelandic parliament. The corpus is syntactically parsed for phrase structure
+according to the annotation scheme of the Icelandic Parsed Historical Corpus (IcePaHC). This addition to IcePaHC makes it more
+diverse with respect to text types and we argue that having a syntactically parsed corpus facilitates research on different types of texts.
+We furthermore argue that the speech corpus can be treated somewhat like spoken language even though the transcripts differ in various
+ways from daily spoken language. We also compare this text type to other types and argue that this genre can shed light on their
+properties. Finally, we show how this addition to IcePaHC has helped us identify and solve issues with our parsing scheme.
+
+Keywords: parliamentary corpus, parliamentary transcripts, text types
+
+
+                     1.    Introduction                                  The paper is structured as follows: In Section 2 we give a
+In this paper we discuss a corpus of Icelandic Alþingi par-              brief description of IcePaHC. Section 3 discusses the parlialiamentary speeches, syntactically parsed for phrase struc-              mentary transcripts and looks at parliamentary speeches as
+ture.1 The corpus, which contains approx. 60,000 words,                  a text type as opposed to other genres. Section 4 discusses
+is parsed in accordance with the Icelandic Parsed Historical             how the addition of parliamentary transcripts has impacted
+Corpus (IcePaHC) (Wallenberg et al., 2011).2 This new                    the annotation scheme of IcePaHC. Section 5 concludes the
+addition to IcePaHC makes it more diverse with respect to                paper.
+genres of texts. We chose unprepared speeches to make the                                      2.    IcePaHC
+parliamentary speech corpus more coherent and closer to
+                                                                         The Icelandic Parsed Historical Corpus (IcePaHC) (Wallenreflecting actual spoken language.
+                                                                         berg et al., 2011; Rögnvaldsson et al., 2012) is a collection
+In this paper, we first of all argue that having a syntactically
+                                                                         of parsed texts containing 1 million running words from the
+parsed corpus facilitates research on different text types. It
+                                                                         12th through the 21st centuries. It is annotated according to
+is therefore crucial for us to have the parliamentary speeches
+                                                                         a scheme based on that of the Penn Parsed Corpora of Hisparsed in the same way as the other 1 million words found
+                                                                         torical English (https://www.ling.upenn.edu/hist-corpora/)
+in IcePaHC.
+                                                                         (Kroch and Taylor, 2000; Kroch et al., 2004) using the
+Secondly, we focus on the properties of the unprepared
+                                                                         annotation tool Annotald (Ecay et al., 2018), after preprospeeches we chose for the corpus. We argue that they can
+                                                                         cessing, including lemmatization and preliminary parsing,
+be treated like spoken language in important ways, though
+                                                                         using IceNLP (http://icenlp.sourceforge.net/) — see Loftsthey differ in various ways from “regular” spoken language.
+                                                                         son (2008), Loftsson and Rögnvaldsson (2007) and Ingason
+Thirdly, we argue that the text type under discussion can
+                                                                         et al. (2008) — as well as various scripts developed specifshed light on other text types. For example, long clauses
+                                                                         ically for IcePaHC.
+containing many words seem to be one of the characteristics
+                                                                         IcePaHC has been designed to capture the Icelandic lannot only of the parliamentary speeches but also of religious
+                                                                         guage in various contexts with regard to time period and
+texts, whereas clauses in narratives tend to be much shorter.
+                                                                         subject matter. The texts have been selected so as to be
+Finding common traits in the speeches and the religious
+                                                                         presumably written each mainly by a single author and the
+texts may help us discover the defining characteristics of
+                                                                         length of the excerpts has been decided so that they are short
+these two genres.
+                                                                         enough that many diverse texts could be included, while still
+Furthermore, we will show examples of how this new adproviding adequate coverage of the authors’ internal gramdition to IcePaHC has helped us identify and solve issues
+                                                                         mar.
+with our parsing scheme.
+                                                                         IcePaHC aims to include texts in each of several genres
+                                                                         (narratives, religion, biographies, science, law) from every
+  The creation of the parsed corpus of parliamentary speeches is         century from the 12th century to the present, but currently
+  part of a bigger project named “Universal Treebanking” (Einar
+                                                                         includes mainly narratives and religious texts. There is also
+  Freyr Sigurðsson PI), funded by the Strategic Research and Development Programme for Language Technology 2019–2020 in
+                                                                         a need for still more types of texts from different authors and
+  which IcePaHC is also being converted to a Universal Depen-            times dealing with diverse subjects. The new additions to
+  dencies scheme.                                                        IcePaHC are genres not previously included, namely parliaThe parsed Icelandic Alþingi parliamentary speech cor-                 mentary transcripts and news articles. This paper focuses on
+  pus is available along with the rest of IcePaHC at                     the parliamentary transcripts and discusses their importance
+  https://github.com/antonkarl/icecorpus.                                as a text type.
+          3.    The Parliamentary Transcripts                                be shared with other text types.
+3.1.      The Nature of the Texts and Their Selection                        For example, as discussed in Section 3.4, we see that there
+                                                                             is a notable similarity between the parliamentary speeches
+The parliamentary transcripts are from a small set of only                   and religious texts, in contrast to narrative texts. Such findfour speakers that have been chosen so as to represent both                  ings may reveal something of the nature of these texts, and
+male and female speakers of different generations: Stein-                    comparisons of this kind can spark new research, e.g., in
+grímur J. Sigfússon (b. 1955), Þorgerður Katrín Gunnars-                     sociolinguistics.
+dóttir (b. 1965), Helgi Hrafn Gunnarsson (b. 1980) and                       In Sections 3.3–3.7 we discuss various linguistic features of
+Björt Ólafsdóttir (b. 1983).3 An important secondary con-                    the parliamentary transcripts.
+sideration was the existence of enough material from each
+speaker from a similar time, in this case between 2011 and                   3.3.     Disfluencies
+2015.                                                                        We can expect to find disfluencies of various sorts – such as
+The transcripts, which were extracted from the Icelandic                     breaks, false starts and repetitions – to a much higher degree
+Gigaword Corpus (Steingrímsson et al., 2018), were chosen                    in spoken language than in written texts that are carefully
+from among responses rather than prepared speeches, so                       planned and thought through. These include breaks where
+as to better represent spontaneous speech. The transcripts                   a sentence or a phrase breaks off or is not finished. An
+have, however, been edited by parliamentary secretaries for                  example from our Alþingi corpus is shown below.
+publication, so the text we have to work with is not pure
+speech. This is a drawback, especially if the intention is to                (1)       Ég veit ekki alveg hvernig ætti að vinna þetta tiltekna
+examine in detail the structure of spoken language as op-                              frumvarp frekar vegna þess að það er svo, – nú
+posed to written language, e.g., getting accurate statistics                           vantar mig aftur íslenska orðið fyrir „brutal“ –
+about the relative prevalence of specific features. Neverthe-                          ‘I don’t know exactly how this particular bill should
+less, it has been evident in the annotation process that certain                       be further worked on because it is so [BREAK] –
+features mainly associated with spoken language appear fre-                            now I need again the Icelandic word for “brutal”’
+quently in the transcripts despite the apparent tendency of
+the editing process to make them more concise and regularly                  The speaker in this example breaks off when describing the
+structured and adhere more closely to the norms of formal                    bill as he cannot remember the Icelandic word for English
+written language.                                                            brutal. Such breaks are marked specially in the parsing
+It may also be noted that published novels such as are in-                   scheme and can therefore be easily found.
+cluded in IcePaHC’s narratives category also go through an                   The unprepared speeches in our corpus, being spontaediting process with similar aims and tendencies to that of                  neous and not written beforehand, do in fact contain a
+parliamentary speeches before being published, so they too                   higher total number of breaks than all the rest of IcePaHC.
+do not perfectly represent the speaker’s idiolect.                           Even though the parliamentary speech corpus only contains
+There are also other circumstances in favor of the parlia-                   around 60,000 running words, as opposed to the 1 million
+mentary speeches including ease of access to both text and                   words of IcePaHC, it has 14 breaks whereas IcePaHC has
+original audio, lack of copyright restrictions and individ-                  only 5. It is possible that there is some inconsistency in parsual authorship (indisputable in the case of responses, apart                 ing between the speeches and the rest of IcePaHC but this
+from editor changes), which aligns very well with the design                 nonetheless suggests that breaks are more frequently found
+goals of IcePaHC.                                                            in the speeches due to their nature as spoken language.
+
+3.2.      Comparison with Other Text Types                                   3.4.     Clause Length
+It was our belief that there would be important differ-                      Matthíasson (1959) argues that parliamentary speeches tend
+ences between the parliamentary transcripts and the exist-                   to contain exceptionally many subordinate clauses as a reing IcePaHC corpus, and that constructions might be found                    sult of their nature, with, e.g., the speeches often being
+there that are not found, or are significantly less common,                  spontaneous.4 Matthíasson (1959, 206) furthermore claims
+in other more formal text types.                                             that increased frequency of subordinate clauses results in
+As expected, the parliamentary transcripts differ from pre-                  longer matrix clauses. It is quite straightforward to invesviously added IcePaHC texts in several ways. Disfluencies,                   tigate the length of clauses with our parsed corpus and we
+fragment answers (i.e., shortened answers to questions),                     can compare the speeches with other genres, namely narresumptive elements, clefts and arguments shared by con-                     rative and religious texts. When we look at the relative
+joined clauses (instances of which might be analysed as                      frequency of the three text types (see Figure 1), it turns
+right node raising) are some of the phenomena which occur                    out that the proportion of short clauses, with four to eight
+frequently in the parliamentary transcripts.                                 words, is much higher in the narratives. Religious texts and
+Adding new text types may also help us understand the na-                    the parliamentary speeches exhibit a similar proportion of
+ture of other text types, because there are many linguistic                  longer clauses, on the other hand, as opposed to narrative
+factors that could conceivably be affected by the genre. Sev-                texts whose longer clauses are proportionally less frequent,
+eral factors may be unique for a text type, while others might               as can be clearly seen in Figure 1.
+
+3                                                                            4
+    Helgi Hrafn Gunnarsson and Steingrímur J. Sigfússon’s speeches               Verifying Matthíasson’s claim should now be possible as differwere selected as their language had been investigated before; see            ent types of subordinate clauses (complement clauses, relative
+    Stefánsdóttir (2016) and Stefánsdóttir and Ingason (2018).                   clauses, adverbial clauses, etc.) are all parsed in the corpus.
+Figure 1: Relative frequency distribution of lengths (in words) of root clauses in different text types (religious texts, narrative
+texts, parliamentary speeches).
+
+
+3.5.      Resumptive Elements                                           Thráinsson (2005, 578) mentions the use of resumptive að
+The resumptive element þá ‘then’ is frequently found in                 þá, taking it to be even more connected to spoken language
+the parliamentary transcripts immediately following left-               use than þá. The use of resumptive þá and að þá merits
+dislocated subordinate clauses headed by ef ‘if’, þegar                 further research but for now it suffices to point out that the
+‘when’, þótt ‘even’, þó (að) ‘even’, þrátt (fyrir að) ‘despite’,        use of resumptive að þá found in the parliamentary speeches
+etc.                                                                    is indicative of the spoken language trait of this particular
+                                                                        text type.
+(2)       en ef fólk vill        fara á hausinn þá er það
+          but if people wants.to go bankrupt then is that               3.6.      Topic Expressions
+          væntanlega möguleiki líka.                                    Topic-introducing expressions seem to be relatively frequent
+          presumably a.possibility too                                  in the parliamentary speeches as opposed to other text types
+                                                                        in IcePaHC. These are expressions starting with words like
+Some such use of the resumptive þá has been linked to                   varðandi ‘regarding’, að því er varðar ‘regarding’, hvað
+spoken language (Thráinsson, 2005, 578) and we have in                  varðar ‘as regards’, hvað viðkemur ‘as regards’. To give
+fact noticed that it is sometimes deleted in the transcripts,           an example, there are 42 instances of matrix clauses startpresumably because it is frowned upon to an extent. This use            ing with the topic introducer varðandi in our parliamentary
+is, nonetheless, quite frequently found in our parliamentary            corpus, as in (4), but none in other IcePaHC texts.6
+speech corpus as well as in other texts in IcePaHC from all
+periods.                                                                (4)       Varðandi aukna kostnaðarþátttöku sjúklinga líst
+However, we find a certain use of resumptive elements in                          mér að sjálfsögðu illa á hana.
+the transcripts that we do not in other texts in IcePaHC. In                      ‘Regarding an increased cost participation of pasome cases, resumptive þá is immediately preceded by að.5                         tients, I do not, of course, like it.’
+Að can be many things in Icelandic syntax, such as a preposition, an infinitival marker or a complementizer. Without              This is something that needs further investigation. That is,
+going into details, it is presumably a complementizer in the            are such topic introducers more frequent in spoken language
+að þá construction.                                                     than written texts? This shows a clear need for more parsed
+                                                                        transcripts of spoken language. We therefore leave this for
+(3)       Vandinn er auðvitað sá að þegar menn tala um                  future research.
+          hin ósnortnu víðerni, sem því miður gerast nú ansi
+          fágæt og Ísland býr yfir sumum þeirra, sennilega              3.7.      Words Indicative of Informal Register
+          stærstu ósnortnu víðernum í Evrópu, a.m.k. í Vestur-          When we try to figure out the properties of a certain text type,
+          Evrópu, að þá er skilgreiningin sú að þar [...]               it is worth looking at the individual words used as well as the
+          ‘The problem is of course that when people talk               syntax. For that purpose, we do not need to rely on a syntacabout the untouched wilderness, which unfortu-                tically parsed corpus as we can search for particular words
+          nately are now becoming quite rare and Iceland has            in other corpora such as the Icelandic Gigaword Corpus
+          got some of them, probably the biggest untouched              (IGC; https://malheildir.arnastofnun.is/) (Steingrímsson et
+          wilderness in Europe, at least in Western Europe,             al., 2018). Svavarsdóttir (2007, 38–39) looks at word use
+          that then the definition is that there...’
+                                                                            It should be noted that we would not expect to find this particular
+    For a syntactic analysis, see Jónsson (2019).                           expression in older texts in IcePaHC.
+in three corpora of different types; she discusses words that          (5)       Jack may be—and Tony certainly is—a werewolf.
+are found in spoken language dialogues and to some degree
+in what she calls informal texts (diaries, etc.) but not, or to        Here, the NP a werewolf applies to the two matrix clauses,
+a much lesser degree, in rather formal, written texts (news-           i.e., Jack may be a werewolf and Tony certainly is a werepaper texts). Looking through her list of words, we note               wolf.8
+that she mentions, for example, ókei ‘okay’, which is nei-             The parsing scheme employed in IcePaHC has presumed
+ther found in her formal nor informal text corpus. There are,          that the second clause in right node raising is parenthetical
+however, 16 instances of ókei in the spoken language corpus            and that its rightmost element is raised so as to appear in the
+she reports on. Searching IGC, we find several instances of            appropriate place in the encompassing prior clause. This
+the word ókei in parliamentary transcripts, which without a            analysis has been inherited from PPCHE. While it might
+doubt does not belong to a formal register.                            be practical for English, it causes problems when applied
+Note that while we are arguing that the Icelandic parlia-              to Icelandic, because the evidence clearly shows that it is
+mentary speeches share various properties with other types             the second clause which governs the case of the shared
+of spoken language, we are not arguing that parliamentary              constituent and not the former. If the shared phrase has been
+speeches are like any other type of (informal) spoken lan-             moved (with argument movement), it would be expected to
+guage. Members of parliament sometimes use loanwords                   acquire its case from the governor of the place it was moved
+from other languages, like English, which they often ask the           to, and if it has not been moved it should likewise retain
+audience to excuse (by adding a phrase like svo ég sletti ‘so          the appropriate case for its position. An analysis involving
+I use a foreign word/expression’); this may be indicative of           right node raising is shown below where the dashed line
+a somewhat formal setting. We will not look further into               rectangle marks the parenthetical clause (IP-MAT-PRN).
+this for now.
+                                                                       ( (IP-MAT (NP-SBJ (PRO-N Við)) ‘we’
+    4.   Development of the Annotation Scheme                            (BEDI vorum) ‘were’
+                                                                         (PP (P í) ‘in’
+The prevalence of certain features has prompted a deeper                   (NP (ADJ-D miklu) ‘much’
+look into the way syntactic structure is analysed and an-                    (N-D sambandi) ‘contact’
+notated in IcePaHC, both shedding light on old issues that                   (PP (P við) ‘with’
+had never been definitively settled during earlier work on                     (IP-MAT-PRN (CONJ og) ‘and’
+IcePaHC and bringing new issues to our attention.                                (NP-SBJ *con*)
+The situation of IcePaHC is peculiar in that its an-                             (VBDI fengum) ‘got’
+notation scheme (http://linguist.is/icelandic_treebank/) is                      (NP-OB1 (NP (ADJ-A góða) ‘good’
+                                                                                   (N-A leiðsögn)) ‘guidance’
+derived from one developed for historical English
+                                                                                   (CONJP (CONJ eða) ‘or’
+texts (https://www.ling.upenn.edu/hist-corpora/) (Kroch                               (NP (ADJ-A góða) ‘good’
+and Taylor, 2000; Kroch et al., 2004). While the fact that                              (N-A áminningu))) ‘reminder’
+it has been developed for Early Modern and Middle En-                              (CP-REL *ICH*-1))
+glish rather than just contemporary English has made the                         (PP (P frá-frá))) ‘from’
+annotation scheme more suitable for Icelandic, there are still                 (NP (NPR-D Sambandi) ‘association’
+important features of Icelandic that affect the practicability                   (NP-POS (ADJ-G íslenskra)
+of specific analytical choices that have been retained from                                       ‘Icelandic-GEN’
+the Penn Parsed Corpora of Historical English (PPCHE)                              (NS-G sveitarfélaga))
+scheme.7                                                                                   ‘municipalities-GEN’
+In particular, Icelandic is a highly inflected language, much                    ))))
+                                                                         (CP-REL-1 (WNP-2 0)
+more so than English, especially with regard to case. While
+                                                                           (C sem) ‘which’
+the English of PPCHE, especially Middle English, does have                   (IP-SUB (NP-SBJ *T*-2)
+some limited case inflection, it is a language in transition                   (NEG ekki) ‘not’
+and it is not always clear to what degree inflection exists                    (BEDI var) ‘was’
+and case has generally not been annotated. By contrast,                        (VAN svarað))) ‘answered’
+Icelandic shows a clear distinction between the cases and                (, ,-,)))
+cases have been annotated in IcePaHC.                                  In this example, one and the same NP, Sambandi íslenskra
+This affects the analysis of presumed instances of right node          sveitarfélaga, applies to two clauses; it is simultaneously, in
+raising and that of comparative phrases which have been                a way, the object of two prepositions, við and frá, and the
+presumed to contain a prepositional phrase.                            question is how best to account for that within the scheme.
+4.1.     Right Node Raising                                            The NP headed by Sambandi is in the dative case as the
+                                                                       preposition frá assigns dative to its complement, but acOne issue where Icelandic does not seem to conform to the              cording to the analysis above it ends up in a PP with the
+scheme is that of right node raising. An English example
+from Postal (1974, 126) is shown in (5).                               8
+                                                                           Without going into details of the original account in Postal
+                                                                           (1974), right node raising “places a double of the sequence [i.e.
+    More information about the annotation scheme for the Penn              the phrase which is identical in both clauses] on the right, by
+    Historical Corpora may be found in the annotation manual at            Chomsky adjunction, and deletes all original occurrences” (p.
+    https://ling.upenn.edu/~beatrice/annotation/.                          126).
+preposition við ‘with’, which should govern the accusative           clause types in IcePaHC and the Penn Parsed Corpora of
+case. Furthermore, there is an extraposed relative clause            Historical English. However, when, instead of gap, an overt
+(CP-REL) belonging to the parenthetical clause (IP-MAT-              phrase corresponding to the antecedent is used, the structure
+PRN), but it ends up having to be raised to the outer main           is simplified, as shown in the following example, where the
+clause because it appears after the raised NP.                       pronoun sig corresponds to the prior NP engan betri vin:
+We therefore came up with a different scheme which appears
+to fit the Icelandic pattern better:                                 (IP-SUB (NP-SBJ (NPR-N Gróa)) ‘Gróa’
+                                                                       (VBDS ætti) ‘had’
+( (IP-MAT (IP-MAT (NP-SBJ (PRO-N Við))                                 (NP-OB1 (Q-A engan) ‘no’
+      (BEDI vorum)                                                       (ADJR-A betri) ‘better’
+      (PP (P í)                                                          (N-A vin) ‘friend’
+        (NP (ADJ-D miklu)                                                (PP *ICH*-4))
+        (N-D sambandi)                                                 (ADVP-LOC (ADV hér) ‘here’
+        (PP (P við)))))                                                  (PP (P á) ‘on’
+    (CONJP (CONJ og)                                                       (NP (N-D jörðu)))) ‘earth’
+      (IP-MAT (NP-SBJ *con*)                                           (PP-4 (P en) ‘than’
+        (VBDI fengum)                                                    (NP (PRO-A sig)))) ‘him/her’
+        (NP-OB1 (NP (ADJ-A góða)
+          (N-A leiðsögn))                                            From an English-speaking, or caseless, point of view, this
+          (CONJP (CONJ eða)                                          seems to work rather well and even to confirm the appro-
+            (NP (ADJ-A góða)                                         priateness of calling the traditionally termed subordinating
+              (N-A áminningu)))                                      conjunctions prepositions, which may otherwise seem id-
+          (CP-REL *ICH*-1))                                          iosyncratic. For Icelandic, however, the grammatical case
+        (PP (P frá)
+                                                                     of the supposed prepositional complement shows that it
+          (NP (NPR-D Sambandi)
+            (NP-POS (ADJ-G íslenskra)
+                                                                     cannot be a direct complement to the preposition, since a
+              (NS-G sveitarfélaga))))                                preposition governs a specific case, but the phrases in ques-
+        (CP-REL-1 (WNP-2 0)                                          tion do not take their case from any preposition, but rather
+          (C sem)                                                    agree in case with their antecedents.
+          (IP-SUB (NP-SBJ *T*-2)                                     This prompted us to include the CP-CMP in such construc-
+            (NEG ekki)                                               tions as well, allowing for an IP therein where the phrase
+            (BEDI var)                                               could fill the same role as its antecedent. That raised an-
+            (VAN svarað)))))                                         other issue: how does the WH-phrase in the CP connect to
+  (, ,-,)))                                                          the subordinate clause? The following shows an attempt at
+Here, the shared NP appears in a PP with a preposition               this, using a dummy adverbial phrase (ADVP) that has no
+governing the correct case, and instead of a parenthetical           clear semantic role or connection to the antecedent:
+clause, the two matrix clauses are conjoined in the most             ( (IP-IMP (VBPI Nýtum) ‘let’s utilize’
+usual way, using a conjunction phrase.                                 (ADVP (ADV þá)) ‘then’
+                                                                       (NP-OB1 (N-A tíma$) ‘time’
+4.2.   Resumptive NPs in Comparative Clauses
+                                                                         (D-A $nn)) ‘the’
+Another issue that has been identified as a problem in                 (PP (RP fram) ‘forward’
+IcePaHC is the treatment of comparative constructions of                 (P að) ‘to’
+the form <COMP ADJ/ADV> than ..., so/as <ADJ/ADV>                        (NP (ADJS-D næstu) ‘next’
+as ..., etc., also inherited from PPCHE. These constructions             (NS-D þingkosningum)
+are parsed as adjectival or adverbial phrases containing a                      ‘parliamentary elections’
+prepositional phrase, where the preposition is the word than             (, ,-,)
+or as (in Icelandic en, og) that immediately follows the                 (CP-REL (WNP-1 0)
+head adjective/adverb. In case a subordinate clause with                   (C sem) ‘which’
+                                                                           (IP-SUB (NP-SBJ *T*-1)
+a gap corresponding in function to the head follows, the
+                                                                             (RDPI verða) ‘will be’
+complement of the preposition is a complementizer phrase                     (ADVP (ADV vonandi)) ‘hopefully’
+containing the subordinate clause IP, as in the following                    (ADVP (ADVR fyrr) ‘sooner’
+example:                                                                     (PP (P en) ‘than’
+                                                                               (CP-CMP (WADVP-2 0)
+(ADJP (ADJR-N helgari) ‘holier’
+                                                                                 (C 0)
+  (PP (P en) ‘than’
+                                                                                 (IP-SUB (ADVP *T*-2)
+    (CP-CMP (WADJP-2 0)
+                                                                                   (ADVP (ADVR síðar))) ‘later’
+      (C 0)
+                                                                               )))))))
+      (IP-SUB (ADJP *T*-2)
+                                                                         (. .-.)))
+        (NP-SBJ (OTHERS-N aðrir) ‘other’
+          (ADJ-N helgir) ‘holy’
+          (NS-N menn)))))) ‘men’
+                                                                     A possible solution to the problem was found in another CP
+                                                                     construction – the relative clause. The following example
+While this two-layer PP/CP combination might seem odd                shows a resumptive NP, spítalann ‘the hospital’, being used
+it is in line with the treatment of various other subordinate        in lieu of a gap in a relative clause.
+( (IP-MAT (ADVP (ADVS Helst)) ‘chiefly’                                                   5.    Conclusion
+  (BEPI er) ‘is’
+  (NP-SBJ (PRO-N það)) ‘it’                                           We have established that the Icelandic Parsed Historical Cor-
+  (NP-PRD                                                             pus benefits from the addition of parliamentary transcripts
+    (NPR-N Landspítali$) ‘National Hospital’                          by demonstrating their unique qualities while also showing
+    (D-N $nn)) ‘the’                                                  their potential relationships to other types of text. Further-
+  (CP-CLF (WNP-1 0)                                                   more, we have found that adding new types of texts inspires
+    (C sem) ‘which’                                                   us to improve our analysis in unanticipated ways. We are
+    (IP-SUB (NP-SBJ (PRO-N við)) ‘we’                                 currently working on a further addition to the treebank, and
+      (VBPI sjáum) ‘see’                                              it is our hope that even more text types will be added in the
+      (CP-THT (C að) ‘that’                                           future so that it represents as good a cross-section of the
+        (IP-SUB (NP-SBJ *exp*)
+                                                                      language as possible.
+          (NP-ADV (NP-ADV (N-A ár) ‘year’
+            (PP (P frá) ‘from’
+              (NP (N-D ári))))) ‘year’                                               6.   Acknowledgements
+          (, ,-,)
+          (BEPI er) ‘is’                                              This project is funded by the Strategic Research and De-
+          (NEG ekki) ‘not’                                            velopment Programme for Language Technology, grant no.
+          (DAN gert) ‘done’                                           180020-5301.
+          (ADVP                                                       We would also like to thank the three anonymous reviewers
+            (ADV nægjanlega) ‘adequately’                             for their comments on the paper.
+            (ADV vel)) ‘well’
+          (PP (P við) ‘to’
+            (NP-RSP-1                                                           7.   Bibliographical References
+              (N-A spítala$) ‘hospital’
+              (D-A $nn))))))) ‘the’                                   Ingason, A. K., Helgadóttir, S., Loftsson, H., and Rögn-
+  (. .-.)))                                                             valdsson, E. (2008). A Mixed Method Lemmatization
+                                                                        Algorithm Using a Hierarchy of Linguistic Identities
+                                                                        (HOLI). In Bengt Nordström et al., editors, Advances in
+This analysis is based on that of the PPCHE; it is also used            Natural Language Processing. 6th International Conferparticularly in the Penn audio-aligned corpora (Tortora et              ence, GoTAL 2008 Gothenburg, Sweden, August 25–27,
+al., 2017; Tortora et al., 2020) and has been used in IcePaHC           2008 Proceedings, pages 205–216, Berlin. Springer.
+before. The WH-phrase is generally considered to have been            Jónsson, J. G. (2019). The XP-þá-construction and V2.
+moved from the IP and in a relative clause corresponds to               In Ken Ramshøj Christensen, et al., editors, The Sign
+the antecedent that the relative clause speaks about. In com-           of the V: Papers in Honour of Sten Vikner, pages 341–
+parative clauses there is also a comparative phrase that is an          360, Aarhus University. Department of English School of
+antecedent to the CP. Using the same method of connecting               Communication and Culture.
+the phrase that corresponds to the antecedent to the WH-              Loftsson, H. and Rögnvaldsson, E. (2007). IceParser: An
+phrase neatly ties together the treatment of different types            incremental finite-state parser for Icelandic. In Proceedof CP in gapped and ungapped variants.                                  ings of the 16th Nordic Conference of Computational
+                                                                        Linguistics (NODALIDA 2007), pages 128–135, Tartu,
+                                                                        Estonia, May. University of Tartu, Estonia.
+( (IP-IMP (VBPI Nýtum) ‘let’s utilize’
+  (ADVP (ADV þá)) ‘then’                                              Loftsson, H. (2008). Tagging Icelandic text: A linguis-
+  (NP-OB1 (N-A tíma$) ‘time’                                            tic rule-based approach. Nordic Journal of Linguistics,
+    (D-A $nn)) ‘the’                                                    31:47–72.
+  (PP (RP fram) ‘forward’                                             Matthíasson, H. (1959). Setningaform og stíll. Bókaútgáfa
+    (P að) ‘to’                                                         Menningarsjóðs, Reykjavík.
+    (NP (ADJS-D næstu) ‘next’                                         Postal, P. M. (1974). On Raising. One Rule of English
+    (NS-D þingkosningum)
+                                                                        Grammar and its Theoretical Implications. MIT Press,
+        ‘parliament elections’
+                                                                        Cambridge, MA.
+    (, ,-,)
+    (CP-REL (WNP-1 0)                                                 Stefánsdóttir, L. B. and Ingason, A. K. (2018). A high
+      (C sem) ‘which’                                                   definition study of syntactic lifespan change. University
+      (IP-SUB (NP-SBJ *T*-1)                                            of Pennsylvania Working Papers in Linguistics, 24.1:169–
+        (RDPI verða) ‘will be’                                          178. https://repository.upenn.edu/pwpl/vol24/iss1/20/.
+        (ADVP (ADV vonandi)) ‘hopefully’                              Stefánsdóttir, L. B. (2016). Breytingar á framburði. Með
+        (ADVP (ADVR fyrr) ‘sooner’                                      hliðsjón af félagslegum þáttum. B.A. thesis, University
+        (PP (P en) ‘than’                                               of Iceland, Reykjavík. http://hdl.handle.net/1946/24333.
+          (CP-CMP (WADVP-2 0)
+                                                                      Svavarsdóttir, Á. (2007). Talmál og málheildir — talmál
+            (C 0)
+            (IP-SUB (ADVP-RSP-2                                         og orðabækur. Orð og tunga, 9:25–50.
+                      (ADVR síðar))) ‘later’                          Thráinsson, H. (2005). Setningar. Handbók um setninga-
+          )))))))                                                       fræði. Íslensk tunga III. Almenna bókafélagið, Reykja-
+  (. .-.)))                                                             vík.
+      8.   Language Resource References
+Ecay, A., Beck, J., and Ingason, A. K. (2018). Annotald.
+  Version 1.3.10. http://annotald.github.io.
+Kroch, A. S. and Taylor, A. (2000). Penn-Helsinki Parsed
+  Corpus of Middle English. CD-ROM. Second Edition.
+  Size: 1.3 million words.
+Kroch, A. S., Santorini, B., and Delfs, L. (2004). PennHelsinki Parsed Corpus of Early Modern English. CDROM. First Edition. Size: 1.8 million words.
+Rögnvaldsson, E., Ingason, A. K., Sigurðsson, E. F., and
+  Wallenberg, J. (2012). The Icelandic Parsed Historical
+  Corpus (IcePaHC). In Proceedings of the Eighth International Conference on Language Resources and Evaluation, LREC 2012, Istanbul, Turkey.
+Steingrímsson, S., Helgadóttir, S., Rögnvaldsson, E.,
+  Barkarson, S., and Guðnason, J. (2018). Risamálheild:
+  A Very Large Icelandic Text Corpus. In Proceedings of
+  the Eleventh International Conference on Language Resources and Evaluation, LREC 2018, Miyazaki, Japan.
+Tortora, C., Santorini, B., Blanchette, F., and Diertani, C. (2017). The Audio-Aligned and Parsed Corpus of Appalachian English (AAPCAppE), version 0.1.
+  www.aapcappe.org. Size: 1.8 million words.
+Tortora, C., Cutler, C., Haddican, B., Newman,
+  M., Santorini, B., and Diertani, C. (2020). Corpus of New York City English (CUNY-CoNYCE).
+  https://conyce.commons.gc.cuny.edu/.
+Wallenberg, J. C., Ingason, A. K., Sigurðsson,
+  E. F., and Rögnvaldsson, E. (2011). Icelandic
+  Parsed Historical Corpus (IcePaHC). Version 0.9.
+  http://www.linguist.is/icelandic_treebank.

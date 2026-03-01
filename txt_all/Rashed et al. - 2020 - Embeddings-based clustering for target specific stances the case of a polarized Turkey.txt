@@ -1,0 +1,552 @@
+Embeddings-Based Clustering for Target Specific Stances:
+                                                                        The Case of a Polarized Turkey
+                                              Ammar Rashed,1 Mucahid Kutlu,2 Kareem Darwish,3 Tamer Elsayed,4 and Cansın Bayrak2
+                                                                                             Özyeğin University
+                                                                               TOBB University of Economics and Technology
+                                                                                                 QCRI, HBKU
+                                                                                                Qatar University
+                                                ammar.rasid@ozu.edu.tr, m.kutlu@etu.edu.tr, kdarwish@hbku.edu.qa, telsayed@qu.edu.qa, c.bayrak@etu.edu.tr
+arXiv:2005.09649v2 [cs.SI] 24 Feb 2022
+
+
+                                                                     Abstract                                 and those who favored other candidates using a novel finegrained unsupervised stance detection method, which relies
+                                           On June 24, 2018, Turkey conducted a highly consequential
+                                           election in which the Turkish people elected their president
+                                                                                                              on mapping users into an embeddings space, projecting them
+                                           and parliament in the first election under a new presidential      to a lower dimensional space, and then clustering them. This
+                                           system. During the election period, the Turkish people exten-      enables us to further characterize polarization across differsively shared their political opinions on Twitter. One aspect of   ent political and apolitical issues of interests to such users.
+                                           polarization among the electorate was support for or opposi-          For our analysis, we collected 108M election-related
+                                           tion to the reelection of Recep Tayyip Erdoğan. In this paper,    tweets between April 29 and June 23, 2018. Then, using
+                                           we present an unsupervised method for target-specific stance       semi-automatic labeling (based on self-declarations in users’
+                                           detection in a polarized setting, specifically Turkish politics,   profiles followed by a label propagation method), we labeled
+                                           achieving 90% precision in identifying user stances, while
+                                                                                                              about 652.7K Twitter users, of which 279.2K are considmaintaining more than 80% recall. The method involves representing users in an embedding space using Google’s Convo-        ered pro-Erdoğan and 373.5K are considered anti-Erdoğan.
+                                           lutional Neural Network (CNN) based multilingual universal         We estimate that tagging accuracy is above 95%. Of those
+                                           sentence encoder. The representations are then projected onto      users, we crawled the timelines of 82K and 86K random
+                                           a lower dimensional space in a manner that reflects similar-       users from pro- and anti-Erdoğan groups respectively to obities and are consequently clustered. We show the effective-       tain tweets that were posted before and after the election.
+                                           ness of our method in properly clustering users of divergent       Timeline crawling yielded 213M tweets.
+                                           groups across multiple targets that include political figures,        Previous work has suggested that word embeddings can
+                                           different groups, and parties. We perform our analysis on a        capture human biases (Caliskan, Bryson, and Narayanan
+                                           large dataset of 108M Turkish election-related tweets along
+                                           with the timeline tweets of 168k Turkish users, who authored
+                                                                                                              2017) and hence determine shifting and/or divergent atti213M tweets. Given the resultant user stances, we are able to      tudes (Garg et al. 2018; Giatsoglou et al. 2017).
+                                           observe correlations between topics and compute topic polar-          We build on previous work on embeddings to capture fineization.                                                           grained divergences between polarized groups across political issues to ascertain if these divergences are persistent
+                                                                                                              or transient. Specifically, we employ subword-level ConvoIntroduction                                 lution Neural Network (CNN) embeddings to map users,
+                                         On June 24, 2018, Turkey conducted early elections for the           based on the text of their tweets about a specific topic, into
+                                         presidency and the parliament that would bring into force            an n-dimensional embeddings space. As Turkish is an agthe constitutional changes that were approved a year earlier.        glutinative language in which words can be very long due
+                                         The constitutional changes would transform Turkey from a             to many suffixes (e.g. predicative pronouns, plural markers,
+                                         parliamentary system to a presidential system. With the of-          cases, etc.1 ), using subword-based models can help overfice of the president enjoying significantly-increased pow-          come the morphological complexity of Turkish. Next, we
+                                         ers, these elections were considered highly consequential for        project users into a lower dimensional space in a manner that
+                                         Turkey. Nascent coalitions were formed in the lead up to             brings similar users closer together and dissimilar users furthe elections with several presidential candidates represent-        ther apart, where similarity is computed based on their eming different Turkish political blocks such as conservatives,        beddings vectors. Lastly, the projected users are clustered.
+                                         secularists, nationalists, and Kurds. Given the front runner         One advantage of this method is that it does not rely on any
+                                         status of the incumbent candidate, Recep Tayyip Erdoğan,            Twitter specific features. The resultant clusters can be conand the newly-formed alliance between his party (AKParti)            trasted with the positions of the users in the lead up to the
+                                         and the nationalist party (MHP), in this work, we explore the        elections, where users either supported Erdoğan or one of his
+                                         polarization between Twitter users who supported Erdoğan            rivals. We can quantify polarization on a topic, which allows
+                                         Copyright © 2021, Association for the Advancement of Artificial
+                                         Intelligence (www.aaai.org). All rights reserved.                           https://en.wiktionary.org/wiki/Appendix:Turkish suffixes
+
+
+us to determine if divergences on specific topics are transient   vised method for discovering “alliances” in networks of veror more systemic, and whether they are pragmatic or ideo-         ified and unverified accounts via the use of bipartite graphs.
+logical. We examine topics relating to prominent politicians      They applied their method on the 2018 Italian elections.
+and popular political issues. Our contributions in this work
+are four-fold:                                                    Polarization on Twitter Social media is a fertile ground
+• We collected a large collection of tweets related to the        for polarization, due to two social phenomena, namely: hoTurkish election containing more than 108M tweets, and          mophily, which is the tendency of similar users to conused semi-supervised methods to accurately tag more than        gregate together, and biased-assimilation, where individu652k users given limited manual-tagging. We then col-           als readily accept evidence confirming their group’s view,
+  lected more than 213M tweets from timelines of users            but are rather critical when provided with disconfirming evfrom pro- and anti-Erdoğan groups.                             idence. Both phenomena are amplified on social network
+• Given embeddings representations of user tweets on spe-         platforms (Dandekar, Goel, and Lee 2013a; McPherson,
+  cific topics, we project and cluster users to determine         Smith-Lovin, and Cook 2001; Mousavi and Gu 2015).
+  if they are polarized on those topics. This allows us to           Further, online social networks facilitate discovery and
+  measure cross-topic mutual information to determine the         communication between like-minded users and hence the
+  alignment of polarization across multiple topics.               creation of large homophilous communities (Mousavi and
+                                                                  Gu 2015). Biased-assimilation has been shown to play a cru-
+• We couple our projection with hierarchical clustering           cial role in the dynamics of polarization, as it makes commuto further identify sub-groups, enabling us to gauge if         nity members more entrenched in their views, particularly
+  stances align on specific sub-topic but diverge otherwise.      on controversial topics (Dandekar, Goel, and Lee 2013a).
+• Using embeddings with projection and clustering, we pro-        The dynamics of intra-community and inter-community invide a comprehensive framework to analyze fine-grained          teractions provide predictive information about potential
+  polarization between groups over various topics, and we         conflicts (Weber, Garimella, and Batayneh 2013). (Kumar
+  show the efficacy of this approach in performing unsuper-       et al. 2018) introduced a method that employs graph embedvised stance detection in general                               dings, where the graph captures user interactions on Reddit2 , in conjunction with user, community, and text features
+                      Related Work                                to predict potential conflict and subsequent community mobilization. Unlike Twitter, the pseudo-anonymous nature of
+Stance Detection Stance detection can be performed us-            Reddit users may affect the types of interactions between
+ing supervised classification and using a variety of fea-         communities. Other work has focused on quantifying potures such as text-level features (e.g., words or hashtags),      larization (Darwish 2019; Garimella et al. 2018; Guerra
+user-interaction features (e.g., user mentions and retweets),     et al. 2013; Morales et al. 2015). Several methods were used
+and profile-level features (e.g., name and location) (Borge-      including random graph walks, network betweenness, disHolthoefer et al. 2015; Magdy et al. 2016; Magdy, Dar-            tances in embedding spaces for different groups (Garimella
+wish, and Weber 2016). The use of retweets seems to               et al. 2018), inter-group and intra-group distances (Morales
+yield competitive results (Magdy et al. 2016; Wong et al.         et al. 2015), and popularity of boundary nodes between com2013, 2016). Label propagation is also an effective semi-         munities (Guerra et al. 2013). Given polarized communities,
+supervised method that propagates labels in a network based       several studies looked at identifying distinguishing features,
+on follow or retweet relationships (Borge-Holthoefer et al.       such as hashtags, between such communities. One method
+2015; Weber, Garimella, and Batayneh 2013) or the sharing         uses the so-called valence score that measures the relative
+of identical tweets (Darwish 2018; Kutlu, Darwish, and El-        probability of a feature appearing in one community comsayed 2018; Magdy et al. 2016). In this paper, we use an it-      pared to another (Conover et al. 2011; Darwish 2018; Weber,
+erative label propagation method based on retweeted tweets.       Garimella, and Batayneh 2013).
+Other methods for user stance detection include: collective          Word embeddings were shown to capture implicit human
+classification (Duan et al. 2012), where users in a network       biases (Caliskan, Bryson, and Narayanan 2017). Thus, sevare jointly labeled, and projecting users into a lower dimen-     eral studies utilized word embeddings, trained on the consional user space prior to classification (Darwish, Magdy,        tent generated by different communities, to contrast them
+and Zanouda 2017). More recent work projects user onto a          through the usage of similar words and words associated
+two dimensional space and then uses clustering to perform         with different concepts (Garg et al. 2018; Giatsoglou et al.
+unsupervised stance detection (Darwish et al. 2019). In their     2017). (Garg et al. 2018) trained temporal word embeddings
+work, the best setup used UMAP for projection, mean shift         that span 100 years to measure shifts in racial and gender
+for clustering, and the retweeted accounts as user features.      attitudes. They also correlated key concepts with positive
+We employ a similar approach with two main differences,           and negative adjectives over time. (Giatsoglou et al. 2017)
+namely: we represent the content of user tweets on specific       trained a polarity classification model using word embedtopics using CNN embeddings vectors, availing the need for        dings with a seed lexicon of polarity-labeled words. (Yang
+Twitter specific features such as retweets; and we employ         et al. 2017) used word2vec embeddings and clustering metHDBSCAN for clustering instead of mean shift as it seems          rics to quantify polarization. (An et al. 2019) utilized semanto work better with our projected vectors and provides hierarchical clusters. (Becatti et al. 2019) described an unsuper-           https://www.reddit.com/
+
+
+tic differences to analyze interaction patterns in and between     against the Public Alignment’s candidate in such cities3 .
+homogeneous groups. They quantified semantic difference
+as the cosine distance between words’ vector representation                                   Dataset
+between different but aligned word embeddings trained on
+                                                                   We constructed two different datasets for our study. First,
+each groups’ vocabulary.
+                                                                   we collected election-related tweets, denoted as the ElecWe extend prior work on using embedding representa-             tion Dataset (ED). Next, we labeled the users as protions of tweets in multiple ways, namely: we use pre-trained       Erdoğan (Pro) or anti-Erdoğan (Anti) using a two-step labelCNN embeddings going beyond word boundaries to allow               propagation approach. Subsequently, we crawled all tweets
+us to project groups with divergent groups into a unified em-      of randomly selected labeled users to construct our Timeline
+beddings space; we specifically use subword-segment em-            Dataset (TD).
+beddings to overcome the morphological complexities of
+Turkish (such can be helpful to other morphologically rich
+languages); and we show that we can construct embeddings           Election Data Crawling: We collected tweets related to
+vector representations of users on specific topics and subse-      Turkey and the election starting on April 29, 2018 until
+quently automatically cluster users with high accuracy. Our        June 23, 2018, which is the day before the election. We
+model does not need manual labeling to determine users’            tracked keywords related to the election including political
+polarization on a specific topic.                                  party names, candidate names, popular hashtags during this
+                                                                   process (e.g., #tamam and #devam), famous political figures (e.g., Abdullah Gül, the former president of Turkey),
+          Background: Turkish Elections                            and terms that may impact people’s vote (e.g., economy and
+                                                                   terrorism). We wrote keywords in Turkish, which contains
+Through a referendum on April 16, 2017, Turkey made sig-           some additional letters that do not exist in the English alphanificant changes in its constitution, effectively changing the     bet (e.g., ç, ğ, ş). Next, we added versions of these keywords
+government from a parliamentary system to a presidential           written strictly with English letters (e.g., “Erdogan” instead
+system, giving more power to the president. The Turkish            of “Erdoğan”), allowing us to catch non-Turkish spellings.
+president Erdoğan announced the first election under the          Overall, we collected 108M tweets.
+new constitution that was held on June 24, 2018 to elect both
+the president and parliament simultaneously. Voter particiLabeling:    The labeling process was done in two steps:
+pation was 86.24% with eight political parties participating
+in the parliamentary elections. For the first time in the his-
+                                                                      (1) Manual labeling: First, we assigned labels to users
+tory of Turkish elections, parties were also allowed to make
+                                                                   in ED set who explicitly specified their party affiliation in
+alignments in parliamentary elections, such as the “Public
+                                                                   their Twitter handles or screen names. We made one simAlignment”, which included Justice and Development Party
+                                                                   plifying assumption, namely that supporters of a particu-
+(AKParti) and Nationalist Movement Party (MHP), and the
+                                                                   lar party would be supporting the candidate supported by
+“Nation Alignment”, which included the Republican Peotheir party. We extracted a list of users who use “AKParti”,
+ple’s party (CHP), the Good Party (IYI) and Felicity Party
+                                                                   “CHP”, “HDP”, or “IYI” in their Twitter handles or screen
+(SP). Such alignments brought parties with different ideonames. We labeled the users who used “AKParti” as “prological backgrounds together. In the presidential elections,
+                                                                   Erdoğan”, while the rest as “anti-Erdoğan”. Though “MHP”
+there were 5 candidates from these major parties, namely
+                                                                   officially supported Erdoğan in the election, we suspected
+Recep Tayyip Erdoğan (AKParti), Muharrem Ince (CHP),
+                                                                   that MHP supporters might not be universally supporting
+Selahattin Demirtaş (Peoples’ Democratic Party (HDP)),
+                                                                   Erdoğan due to various news articles and surveys.4 ConseMeral Akşener (IYI), and Temel Karamollaoğlu (SP). MHP
+                                                                   quently, we did not label MHP supporters as ‘pro-Erdoğan”.
+and Huda-Par, a minor Kurdish Islamist Party, announced
+                                                                   Further, we labeled users who had the hashtags #devam or
+their support for Erdoğan in the presidential election.
+                                                                   #tamam in their profile description as supporting or opposThe incumbent and front runner status of Erdoğan caused        ing Erdoğan respectively. Lastly, users who had the hashtag
+voters to cast the elections as referendum on continuing his       #RTE (i.e., initials of Recep Tayyip Erdoğan) in their profile
+presidency or not. Hence the hashtag #devam (“continue”)           description were labeled as pro-Erdoğan. While providing
+became popular among his supporters, while his opponents,          a political party name as a part of Twitter user profile is a
+regardless of political affiliation, used the hashtag #tamam       strong indication of supporting the respective party, we man-
+(“enough”). In our data also, we have seen that many users         ually checked all extracted names to ensure the correctness
+used these hashtags, not just in their tweets, but also in their   of labels. For instance, we found that some users expressed
+screen names. Therefore, Turkish voters can be roughly di-         that they are against a particular party in their user name
+vided into two groups: pro and anti-Erdoğan voters. We have       instead of supporting it. Therefore, whenever we suspected
+also observed this political binarization in Turkish politics      that keywords we used for labeling were not indicative of
+in the last elections held on 31 March, 2019, with previ-          their political view, we manually investigated the accounts
+ous alignments holding. Though HDP, commonly associated
+with Turkey’s Kurdish minority, was not a part of the Nation          3
+                                                                      www.bbc.com/turkce/haberler-turkiye-48213123
+Alignment and did not field candidates for many cities, HDP           4
+                                                                      https://konda.com.tr/wp-content/uploads/2018/05/
+announced support for the most favorable candidate running         KONDA SecmenKumeleri MHP Secmenleri Mayis2018.pdf
+
+
+ Supporters                              Users        Tweets     frequently use emojis, emoticons, hashtags, media links, and
+ pro-Erdoğan                            1,772       561,510     other non-alphabetic characters. Thus, we performed the folanti-Erdoğan w/o party affiliation     2,115       516,166     lowing pre-processing steps for the tweets on the ED and TD
+ pro-CHP                                    29       171,201     sets:
+ pro-IYI                                   890       168,442     – Case folding, where we lower-cased letters.
+ pro-HDP                                   354        61,274     – Removal of all links and user mentions.
+                                Total    5,960     1,478,593     – Removal of all non-letter characters and punctuation.
+                                                                 – Replacement of all numbers to the word “number”.
+                 Table 1: Manually-labeled users                 – Noisy text normalization.6
+
+                                                                 Embeddings-based Stance Detection Approach
+and removed their labels if their political views were un-       Description of Our Approach
+clear. The total number of manually labeled users are listed     As stated earlier, we aim to perform unsupervised finein Table 1.                                                      grained user-level stance detection based on the content of
+(2) Label Propagation: Next, we automatically labeled            user tweets. Specifically, our proposed method represents
+users based on the tweets that they retweeted (Darwish et al.    users in an embeddings space using their topically-relevant
+2017; Darwish 2018). The intuition behind this method is         tweets, projects user representations to a lower dimensional
+that users retweeting the same tweets most likely share the      space, and then clusters users.
+same stances on the topics of the tweets. Given that many
+of the tweets in our collection were actually retweets, we
+labeled users who retweeted 10 or more tweets that were          Tweet and User Representations Embeddings are able
+posted or retweeted exclusively by the pro- or anti- groups      to capture syntactic and semantic knowledge about words
+and no retweets from the other side as pro- or anti- re-         and word sequences (Garg et al. 2018). In this work, we use
+spectively. We iteratively performed such label propaga-         Google’s Multilingual Universal Sentence Encoder (MUSE)
+tion 11 times, which is when label propagation stopped           with pre-trained CNN embeddings (Yang et al. 2019) to replabeling new accounts. By the last iteration, we had la-         resent tweets. The embeddings were trained on a large mulbeled 652,729 users of which 279,181 were pro-Erdoğan           tilingual corpus containing text in 16 languages including
+and posted 28,050,613 tweets, and 373,548 were anti-             Turkish. The text was tokenized using SentencePiece (a.k.a.
+Erdoğan and posted 31,762,639 tweets. This label propaga-       BP), which produces sub-word tokens (Kudo and Richardtion method imposes strict conditions to avoid leakage from      son 2018). MUSE takes a sentence as an input sequence,
+one class to the other. However in doing so, it generally la-    tokenizes it, and produces a 512 dimensional output vector.
+bels users with potentially more entrenched stances. To en-      MUSE has been shown to produce competitive results for
+sure labeling accuracy, we manually and independently la-        a variety of natural language processing and retrieval tasks
+beled 100 users from each of the pro and anti groups, and        (Yang et al. 2019).7 Given a target of interest, such as the
+found that label propagation matched manual labeling for         name of a political party or the name of a politician, we fil191 users; 1 label was clearly wrong, and we could not de-       ter user tweets to obtain all tweets that mention the target.
+cide on the stances of the 8 remaining users due to insuffi-     Next, we pass all the filtered tweets to MUSE to obtain veccient political tweets.                                          tor representations of each. To represent individual users, we
+                                                                 take the average of all the vectors of the filtered tweets that
+                                                                 were posted by the user.
+Timeline Data Crawling: On Dec. 28, 2018, we started
+crawling the timelines of 86,116 and 81,963 pro and anti
+users respectively using Tweepy5 , which is a Twitter API        User Projection We then project each user vector onto
+wrapper. Though we started with an equal number of users         a two-dimensional plane using Uniform Manifold Approxfor both groups, some of the user accounts were either closed    imation and Projection (UMAP) algorithm (McInnes and
+or suspended at the time of crawling. Twitter typically al-      Healy 2018).8 UMAP attempts to project the data elements
+lows the crawling of the last 3,200 tweets for a user. Depend-   in a manner that reflects the similarity between them, such
+ing on how active each user is, 3,200 tweets can cover days,     that more similar elements are placed closer together and
+months, or years. We also excluded all non-Turkish tweets,       less similar elements are placed further apart. UMAP is
+where we relied on the language tag Twitter provides. In all,    more computationally efficient than other projection techwe collected 98,700,529 and 115,047,039 tweets from pro          niques, such as the Force Directed graph drawing technique
+and anti groups, respectively, with some of the tweets dating    (Fruchterman and Reingold 1991) and t-distributed Stochasback to 2013.                                                    tic Neighbor Embedding (t-SNE) (Maaten and Hinton 2008)
+                                                                       We used the normalization function of Zemberek-nlp library
+                    Data Pre-processing                          https://github.com/ahmetaa/zemberek-nlp
+Due to the informal nature of Twitter, tweets commonly have            https://tfhub.dev/google/universal-sentence-encodergrammatical and spelling errors. Furthermore, Twitter users      multilingual/3
+                                                                       We used the UMAP-learn library at https://umap-learn.
+       http://www.tweepy.org/                                    readthedocs.io/en/latest/
+
+
+and generally produces better projections (McInnes and                                                  Trump                 ED
+Healy 2018).                                                                                     PRO    ANTI AVG      PRO    ANTI    AVG
+                                                                                             P   0.84     0.97 0.91   0.49    1.00   0.74
+
+
+                                                                    UnSup SVM xval SVM 200
+                                                                                             R   0.98     0.78 0.88   1.00    0.58   0.79
+Clustering We then cluster the projected user vec-                                           F   0.91     0.86 0.89   0.65    0.74   0.69
+tors using hierarchical density based clustering (HDBSCAN) (McInnes and Healy 2017), which finds clusters                                         P   0.96     0.91 0.94   0.99    0.90   0.95
+of varying densities.9 We elect to project users prior to                                    R   0.93     0.96 0.95   0.74    1.00   0.87
+clustering, because clustering is typically less effective and                               F   0.94     0.93 0.94   0.85    0.95   0.90
+less efficient in high-dimensional spaces. Clustering in high                                P   0.94     0.93 0.94   0.99    0.98   0.99
+dimensional spaces suffers from the curse of dimension-                                      R   0.72     0.77 0.75   0.79    0.73   0.76
+ality (Verleysen 2003), and the distances between points,                                    F   0.82     0.84 0.83   0.88    0.84   0.86
+whether similar or dissimilar, begin to converge, which ad-                                  P   0.90     0.87 0.89   0.88    0.92   0.90
+
+
+                                                                    Ours
+versely affects clustering (Beyer et al. 1999). We also con-                                 R   0.82     0.85 0.84   0.72    0.85   0.79
+ducted side experiments, where we tried to cluster users                                     F   0.86     0.86 0.86   0.79    0.89   0.84
+without projection, and the clustering results were poor.
+                                                                   Table 2: Benchmark results for Trump and Erdoğan datasets.
+Validating Our Approach
+Before applying our proposed method on the Turkish election data, we validated its efficacy by comparing to exist-        validation on all the tagged users. Though the availability
+ing supervised and unsupervised methods on two datasets            of hundreds or thousands of accounts is not very common
+for which we have ground truth labels. In the following, we        in practice, this would likely give us an upper bound on the
+provide the details of our experiments.                            effectiveness of this method.
+                                                                      For the unsupervised method (denoted as UnSup), we
+                                                                   used the method proposed by (Darwish et al. 2019), which
+Datasets We used two datasets for evaluation. The first            represents each user using a vector composed of all unique
+comprises the 5,981 users who were manually labeled as             accounts that the user retweeted, projects the users onto
+pro- or anti-Erdoğan (Table 1) along with their 53,185            a two dimensional space using UMAP, and clusters using
+tweets in the ED dataset. The second is a dataset containing       mean shift clustering. Since unsupervised methods essenUS Twitter users who were labeled as either pro- or anti- the      tially perform clustering, they could potentially produce an
+American president Donald Trump (Darwish et al. 2019).             arbitrary number of clusters and not necessarily 2 clusters.
+Based on tweets that were collected in the span of three days      Hence, we assigned a label to each cluster based on the ma-
+(Oct. 25-27, 2018), the dataset has 13, 731 users, with 7, 421     jority class in that cluster. For example, if the majority of
+and 6, 310 labeled as pro- and anti-Trump respectively. The        users in a cluster were anti-Erdoğan, then we assigned this
+accounts were labeled based on stance-indicative hashtags          label to every user in the cluster and incorrectly labeled users
+in the profile descriptions of the users, where users with the     would lower the overall precision.
+hashtag #MAGA (Make American Great Again) were labeled
+as pro-Trump, and those with any of the hashtags#resist,
+#resistance, #impeachTrump, #theResistance,                        Results Table 2 compares the results of our method with
+or #neverTrump were labeled as anti-Trump. In all, pro-            the baselines using precision (P), recall (R), and F1 meaand anti-Trump users posted 166,814 and 148,178 tweets re-         sures (F). The results show that using more training data
+spectively.                                                        for the SVM classifier (for SVM xval ) improves results over
+                                                                   using less data (SVM 200 ). The UnSup method generally
+Baselines We compared our method to supervised and un-             yielded high precision that is often higher than using the susupervised setups. For the supervised method, we repre-            pervised methods; however, it led to much lower recall. Our
+sented each user using a vector of all unique accounts that        method, where users are represented using MUSE embedthe user retweeted. Then, we used a Support Vector Ma-             ding vectors, was competitive with the baseline supervised
+chine (SVM) classifier to perform classification.10 This is        methods with the distinct advantage of being completely unconsistent with the best setup used by (Magdy et al. 2016)         supervised. When compared to UnSup, though our method
+and (Darwish et al. 2017). We ran two setups of this super-        led to lower precision, it led to higher recall, leading to a
+vised method. In the first (denoted as SVM 200 ), we used the      comparable overall average F1-score. Given the results, we
+set of the 200 most vocal users (ones with the most tweets)        can see that our method has several advantages, namely: it
+for training and the remaining users for testing. This is to       is unsupervised; it does not rely on any Twitter specific feaemulate a typical situation where a set of users is manually       tures such as retweets; and, as we will see shortly, it can lead
+annotated. In the second (SVM xval ), we used five-fold cross      to finer-grained clustering that is difficult to achieve with the
+                                                                   baseline methods.
+      We used the hdbscan library at https://pypi.org/project/        It is noteworthy that although our method and the UnSup
+hdbscan/                                                           method both produced 2 clusters for the Trump dataset, they
+   10                                                              in fact produced 6 and 3 clusters respectively for the ED
+      We used the Scikit learn SVC implementation: scikit-learn.
+org/stable/modules/generated/sklearn.svm.SVC                       dataset. Upon inspecting the three clusters produced by the
+
+
+                                                                            PRO      ANTI      HDP       IYI      CHP    Avg.
+                                                                       P     0.88      0.74    0.68     0.94      0.90       0.83
+                                                                       R     0.72      0.83    0.77     0.69      0.43       0.69
+                                                                       F     0.79      0.78    0.72     0.80      0.59       0.74
+
+                                                                  Table 3: Aligning clusters with party affiliations with the
+                                                                  manually labeled users on the ED dataset.
+
+                                                                   Topic               Keywords                 Users       Tweets
+                                                                   Arabs               Arap (Arab)             39,918      858,237
+                                                                   CHP (main op-       chp            and     117,372    3,377,230
+                                                                   position party)     kılıçdaroğlu
+                                                                                       (its party leader’s
+                                                                                       surname)
+                                                                   Erdoğan            erdoğan               131,389    5,203,924
+                                                                   HDP (Kurdish        hdp and kürt           67,590    2,108,681
+                                                                   party)              (Kurd)
+                                                                   PKK (Kurdish        pkk and ypg            101,845    2,024,406
+                                                                   militia)
+                                                                   Syrians  and        suriye    (Syria)      112,459    1,688,988
+                                                                   refugees            and       mülteci
+                                                                                       (refugee)
+Figure 1: Party affiliation clusters on manually annotated         Trump               trump                   72,532      431,563
+users extracted by our method from ED dataset.                     USA                 amerika (Amer-          75,888    2,253,195
+                                                                                       ica) and abd
+                                                                                       (USA)
+UnSup method, we found that each cluster was dominated
+by either pro-Erdoğan, anti-Erdoğan (without party affilia-         Table 4: Eight topics used for quantitative analysis.
+tion), or pro-IYI party users. However, using our method,
+the 6 clusters were dominated by either: pro-Erdoğan, antiErdoğan (without party affiliation), pro-CHP, pro-IYI, or        indicative keywords. The topics with resultant tweets are depro-HDP users. We further manually inspected the two clus-        scribed in Table 4. We ran our clustering method on all the
+ters that were dominated by pro-Erdoğan users, and we            users who talked about the topics. We attempted to deterfound that pro-AKP accounts were dominant in one clus-            mine: 1) if we can infer the stance on one topic based on the
+ter while the other cluster had mostly pro-Erdoğan users         stance on another topic; and what polarization quantification
+who did not explicitly express party affiliation. Therefore,      informs us about different topics.
+in essence, our method was able to tweak apart all the con-          The overlap of a label, l, is defined as the fraction of users
+stituent sub-groups in our dataset. Figure 1 shows the pro-       labeled and predicted as l, over the entire set of users labeled
+jection of the users using our method onto a two dimensional      or predicted as l. In effect, this is Jaccard similarity.
+space, where we color-coded users according to their position/party affiliation. We also computed the precision, recall,   Can we infer the stance on a topic from a different topic?
+and F1 of the 5 sub-groups for which we have gold labels          One of the symptoms and reinforcing causes of polariza-
+(see Table 1). The results are shown in Table 3. As can be        tion is “biased assimilation”, where individuals readily acseen, the clusters generally have high precision (0.83 on av-     cept confirming evidence and are rather critical when proerage). We suspect that our method was able to more effec-        vided with disconfirming evidence (Dandekar, Goel, and
+tively cluster users at a finer-grained level compared to the     Lee 2013b). We inspected if this phenomenon implies that
+UnSup method, because the latter relies strictly on retweeted
+accounts and users may retweet a tweet if it agrees with their
+stance on a specific topic regardless of the political affilia-             Topic        pro-Erdoğan        anti-Erdoğan
+tion of the source. Conversely, our method uses the content                 Arab            78.78                88.83
+of the tweets, and users with similar ideological stances may               CHP             83.65                86.32
+use similar language in their tweets. We plan to investigate                Erdoğan        92.74                91.95
+this further in future work.                                                HDP             82.34                84.85
+                                                                            PKK             78.27                79.76
+                Quantitative Analysis                                       Syrian          83.35                 85.8
+In this section, we utilized our method to quantitatively an-               Trump           83.62                82.58
+alyze fine-grained topics. For our analysis, we picked 8 top-               USA             84.19                85.91
+ics, which cover polarizing issues and personalities. We extracted the tweets of each topic from the TD dataset with            Table 5: Cluster labels overlap with label propagation
+
+
+                                                                                            Target       RWC
+                                                                                            Arabs        0.81
+                                                                                            CHP          0.54
+                                                                                            Erdoğan     0.89
+                                                                                            HDP          0.88
+                                                                                            PKK          0.71
+                                                                                            Syrians      0.69
+                                                                                            Trump        0.62
+                                                                                            USA          0.56
+
+                                                                          Table 6: RWC polarization measure across targets.
+
+
+                                                                      computed based on retweets, RWC computes the shortest
+                                                                      graph traversal from a set of random users to prominent
+                                                                      users either with the same or different stances, where prominent nodes are the top n nodes with the most connections
+                                                                      in a community (Darwish 2019). Two nodes are considered
+                                                                      connected if their cosine similarity is not zero. The score is
+Figure 2: Adjusted mutual information between the clusters            formulated as: RW C = PAA PBB − PAB PBA , where A
+of different topics.                                                  and B are different classes and PXY is the probability that a
+                                                                      random node in X would reach a highly connected node in
+                                                                      Y.
+there is correlation between clusters on different topics.               We computed RWC polarization measure on the aforeFirst, we inspected the clustering overlap with the pro- and          mentioned 8 target topics. Table 6 shows the RWC values,
+anti-Erdoğan labels obtained earlier using label-propagation         which range between 0 and 1, where 0 implies no polarizaon the ED dataset as reported in Table 5. As the results              tion and 1 implies extreme polarization. The results suggest
+show, the positions towards different topics highly-correlate         that Turkish users are polarized on all topics. However, the
+with users’ positions during the election period. The great-          stance of people towards particular issues, such as Erdoğan
+est overlap was between the position towards Erdoğan in the          and HDP, cause more polarization than others. We also obED and TD datasets. We also plotted the projected users for           serve different RWC scores for similar topics. For instance,
+the 8 topics, retaining the users for which we have gold la-          HDP causes more polarization than PKK, which is considbels (from Table 1), in Figure 3. Again, we can see that for          ered as a terrorist group by Turkey and USA. While HDP
+certain topics, we can observe fine-grained separation be-            is a legitimate political party, many Turkish citizens want to
+tween groups. In Figure 2, we report adjusted mutual in-              ban HDP from participating in elections due to its alleged
+formation (AMI) heatmaps across various topics, adjusted              relation to PKK, yielding different stances towards HDP.
+for randomness (Kvålseth 2017). Mutual Information is a
+measure of the dependence between two clustering solu-                       Qualitative Analysis and Discussion
+tion, and AMI accounts for higher mutual information scores           In this section, we conduct qualitative analysis to shed light
+when the number of clusters is larger.11 We can see that top-         on our approach’s performance, and discuss its limitations.
+ics influence similar stances towards other topics such that
+the minimum AMI score in the table is 0.70. AMI score                 Semantic Differences in Clusters
+is especially high for particular topic pairs, such as Europe         For our analysis, we identify the most prominent terms in
+and USA (0.97), Kurdish and USA (0.95), USA and Trump                 each cluster to show how people talk about the same issue
+(0.95), and Syrian and Arab (0.89). Overall, our approach             in different contexts. We assign prominence scores for terms
+enables investigation of correlation between stances for dif-         using valence scores (Conover et al. 2011) and term frequenferent issues.                                                        cies. The valence score of a term in a set of tweets Da captures the degree of its occurrence in Da compared to another
+What does polarization quantification inform us on dif-               set Db .
+ferent topics? We computed the polarization between the                  We define the prominence score of a term in a set of tweets
+user clusters using Random Walk Controversy (RWC) mea-                as the product of its valence score and its term frequency as
+sure (Darwish 2019; Garimella et al. 2018). Given a graph             follows:
+of connected users, where the nodes denote users and the
+weights of the edges denote the user cosine similarities,                                                         tft,Da
+                                                                                                                   |Da |
+                                                                       P r(t, Da , Db ) = log (tft,Da )×(2 tf           tft,Db
+                                                                                                                               −1)   (1)
+  11                                                                                                          t,Da
+    We used Scikit-Learn implementation of Adjusted Mutual                                                   |Da | + |Db |
+Information      https://scikit-learn.org/stable/modules/generated/
+sklearn.metrics.adjusted mutual info score.html#sklearn.metrics.      where t is the term of interest, Da is a set of tweets (i.e.,
+adjusted mutual info score                                            tweets of users in a cluster of interest), Db is the other tweet
+
+
+                                     (a) CHP                                     (b) Erdoğan
+
+
+                                     (c) Syria                                    (d) Arab
+
+
+                                      (e) US                                      (f) Trump
+
+
+                                     (g) PKK                                      (h) HDP
+
+
+Figure 3: Clusters of TD users for different topics. Labels of the manually annotated users are used to color-code the clusters.
+Colors not shown in the legend refer to clusters that have no manually annotated users.
+
+
+   (a) Erdogan (Pro)                     (b) Erdogan (Anti)                     (c) Arab (Pro)                          (d) Arab (Anti)
+
+            Figure 4: Word Clouds Generated by prominent terms in each cluster for topics “Erdoğan” and “Arab”.
+
+
+set, tft,Da and tft,Db denote the term frequency of t in Da          We randomly picked 15 pro-Erdoğan and 15 anti-Erdoğan
+and Db respectively, and |Da | and |Db | are the sums of the         accounts that were misclustered. We manually inspected
+frequencies of all the terms in Da and Db respectively.              their tweets (549 and 230 tweets respectively) about
+   Figure 4 shows word clouds of the most prominent terms            Erdoğan in order to understand the possible reasons for erfor the topic “Erdoğan” and “Arab”. The word clouds of              rors. While in most of the cases the political stances of the
+other topics are omitted due to space limitations. We notice a       misclustered users were clear, there were many linguistic
+remarkable contrast between how users in different clusters          challenges and Turkish-specific political issues that might
+use distinctive terms towards a target.                              have potentially caused such misclustering. Table 7 shows
+   For instance, the top terms of “Erdoğan” topic from pro          sample tweets (demonstrating such challenges) translated
+users include “liderimiz” (our leader), “başkanımız” (our           into English.14
+leader), “cumhurbaşkanımız” (our president), “teşrifleriyle”          The main causes of errors were:
+(with his honouring [by his visit]), and “başkomutanımız”           Non-Turkish Phrases: We observed that Turks living
+(our commander-in-chief); whereas the top terms from the             abroad also tweet about Erdoğan in foreign languages. These
+anti users include “AKP”12 , words from popular phrases              non-Turkish words might adversely affect clustering. The
+used for criticism (“diyeli”, “birkaç”), words related to the       sample tweet shown in Table 7 also shows a code-switching
+2013 Gezi protests (“içtiler”, “bacıma”, “Kabataş’ta”),13 and      challenge where users tweet in Turkish but also use Kurdish
+other issues such as the economy (“zam” (price increase),            phrases (“biji serok” means “Long Live”), which is actually
+“bütçesi” (budget)) and allegations about Erdoğan’s son           mostly used by PKK supporters for their leaders.
+(Burak).                                                                Turkish Linguistic Complexity: Semantic analysis
+   Regarding the “Arab” topic, top words of pro-Erdogan              of Turkish sentences is especially hard due to its
+cluster include words about the political conflict between           rich and complex morphology. It is an agglutinaUAE and Turkey (e.g., “Zaid” (UAE ruler) and “Zayede”                tive language yielding long words with many mor-
+(to UAE ruler)), and complaints about discrimination against         phemes. As an extreme but popular example, the word
+Arabs (“bahsederken” (expressing double standard)). How-             ”uygarlaştıramadıklarımızdanmışsınızcasına” can be transever, the top words about Arabs in the anti-Erdoğan clus-           lated into English with a phrase of 12 words “as if you are
+ter include words about the sale of a state-owned tele-              one of those whom we could not civilize”. Moreover, the
+com operator to a Lebanese businessman (e.g., “Telekom”,             sentences have a free word-order sentence structure, where
+“Telekomu”, and “özelleştirmesi” (privatization of public          words can be in any order. For example, a headword of a
+entities)). We also observe similar contrast in other topics.        noun phrase can come before or after the other words in
+For instance, regarding the topic “Syria”, top words in the          the phrase. Perhaps due to such Turkish-specific linguistic
+pro-Erdoğan cluster include words about social integration          challenges, our approach fell short in “understanding” some
+of Syrian refugees, while top words in anti-Erdoğan cluster         Turkish sentences. For instance, we observed that 9 out of
+are about crimes committed by refugees.                              the 15 misclustered pro-Erdoğan accounts insulted people
+   Overall, users in different clusters raise completely differ-     other than Erdoğan, and free word order potentially conent issues and used different terms regarding the same topics        fused the classifier.
+with opposite stances.                                                  We have also observed that spam tweets, which use hashtags related to Erdoğan, cause misclustering.
+Misclustered Accounts                                                Mentioning Other Political Entities: We have observed
+Next, we investigated the misclustered users (e.g., pro-             that some accounts mention names of political entities freErdoğan accounts clustered with anti-Erdoğan accounts).            quently, which might increase their topical similarity with
+                                                                     those groups, eventually causing misclustering. For innon-official abbreviation of Erdoğan’s party, mostly used by   stance, a pro-Erdoğan user expressed that he is an Ataturkopposition not to call his party AKparti, which means White Party,
+suggesting innocence.                                                   14
+                                                                             Due to excessive slang, the translations are not necessarily litA large protest against government in 2013.                     eral.
+
+
+    Possible Reason                          Translation of a Sample Tweet
+    Non-Turkish phrases                      “biji serok Erdoğan” slogans in the skies of Diyarbakir
+    Challenges in Turkish Sentences          “The dishonoured anchorman of STV insulted Erdoğan”
+    Mentioning other political entities      “the love for Erdoğan is more powerful than PKK FETO ISIS DHKPC Angela
+                                             Merkel CHP HDP PYD YPG Netherlands USA”
+    Sarcastic tweets                         “Erdoğan, if you will not go, then at least love us, even if it is a lie”
+    Semantic ambiguity                       a tweet has two possible meanings: “Erdoğan is hypnotising the dog” and “the
+                                             dog Erdoğan is hypnotising”
+    Target Ambiguity                         “We are informed about the referendum process by our dear Party Province
+                                             Leader Erdoğan Altan. We thank him.
+    Criticism towards Supported Party        “He made a person who is fan of Erdoğan as a candidate against Erdoğan. But
+                                             he is still the leader of CHP with no shame”
+
+                                   Table 7: Possible reasons of misclustering with examples.
+
+
+ist. However, people identifying themselves as Ataturkist are                             Conclusion
+more frequently CHP supporters than Erdoğan supporters,           In this work, we explored the polarization between Twitas Atatürk founded the CHP party.                                 ter users who either supported or opposed Erdoğan in the
+Sarcastic Tweets: Sarcasm is frequently used in political          2018 Turkish elections using a novel fine-grained contentdiscussions, and we observed many sarcastic tweets in our          based unsupervised stance detection method. We collected
+analysis. For instance, anti-Erdoğan accounts may sarcasti-       108M tweets posted during the period leading up to the eleccally refer to Erdoğan as “the leader of Muslims” and “the        tion, and we used a semi-supervised method to label 653K
+hope of oppressed people”.                                         users, who posted 60M tweets, as pro- or anti-Erdoğan. SubSemantic Ambiguity: Ambiguity is one of the main chal-             sequently, we randomly selected 168K labeled users and
+lenges in NLP applications. We observed a tweet from a             crawled their timelines, collecting 213M tweets in total,
+pro-Erdoğan account which has two possible meanings (See          covering the period before and after the election. For our
+Table 7), with one of the possible meanings expressing ex-         analysis, we employed a novel stance detection method,
+treme negative sentiment towards Erdoğan.                         which uses subword-level embeddings to represent users
+Target Ambiguity: Erdoğan is a popular name and surname           based on the content of their tweets on a particular topic.
+in Turkey. Since we do keyword matching to find tweets,            Using subword-level embeddings helped deal with morsome of the tweets obtained are actually about other people        phological complexities of Turkish. Next, our method prowhose surnames are also Erdoğan.                                  jected users onto a lower dimensional space, bringing simiStance Ambiguity: We observed that an anti-Erdoğan user           lar users closer together and pushing dissimilar users further
+had tweets about Erdoğan that do not express his stance to-       apart, and then clustered the users. We observed that our
+wards Erdoğan directly, even though he explicitly states his      method can be used to detect fine-grained stances of users
+support for CHP in his profile.                                    towards different topics with high accuracy. We applied our
+Hashtag Hijacking: While a political group uses a spe-             method to cluster user stances towards various polarizing iscific hashtag to promote their political message, people from      sues in Turkish society, noting correlations between posiother political groups may use that particular hashtag to pro-     tions across topics. Additionally, we used the resultant clusmote their own messages. We also observed this behavior            ters to quantify polarization on topics of interest.
+in our data where anti-Erdoğan accounts use pro-Erdoğan
+hashtags to tweet against Erdoğan.                                                       References
+Criticism of Supported Party: Supporters of a political            An, J.; Kwak, H.; Posegga, O.; and Jungherr, A. 2019. Politparty might also criticize specific people in their party, as      ical Discussions in Homogeneous and Cross-Cutting Comshown in Table 7.                                                  munication Spaces.
+Exposing Negative News about the Target: In 6 out of 15            Becatti, C.; Caldarelli, G.; Lambiotte, R.; and Saracco, F.
+anti-Erdoğan accounts, we observed that people share just         2019. Extracting significant signal of news consumption
+negative news about Erdoğan without any personal com-             from social networks: the case of Twitter in Italian political
+ments. The lack of personal comments and background in-            elections. Palgrave Communications 5(1): 1–16.
+formation complicates stance detection.
+Political Alignments: Though AKParti and MHP aligned               Beyer, K. S.; Goldstein, J.; Ramakrishnan, R.; and Shaft, U.
+together for the 2018 election, MHP and CHP aligned to-            1999. When Is “Nearest Neighbor” Meaningful? In Progether in 2014 against Erdoğan. Thus, supporters of MHP           ceedings of the 7th International Conference on Database
+may have had different stances at different time periods.          Theory, ICDT ’99, 217–235. Springer-Verlag.
+One such example of this is a pro-MHP user, who heavily            Borge-Holthoefer, J.; Magdy, W.; Darwish, K.; and Weber,
+criticized Erdoğan in older tweets, while suggesting that he      I. 2015. Content and network dynamics behind Egyptian
+voted for Erdoğan in later ones.                                  political polarization on Twitter. In Proceedings of the 18th
+
+
+ACM Conference on Computer Supported Cooperative Work           Guerra, P. C.; Meira Jr, W.; Cardie, C.; and Kleinberg, R.
+& Social Computing, 700–711. ACM.                               2013. A measure of polarization on social media networks
+Caliskan, A.; Bryson, J. J.; and Narayanan, A. 2017. Se-        based on community boundaries. In Seventh International
+mantics derived automatically from language corpora con-        AAAI Conference on Weblogs and Social Media.
+tain human-like biases. Science 356(6334): 183–186.             Kudo, T.; and Richardson, J. 2018. Sentencepiece: A
+Conover, M.; Ratkiewicz, J.; Francisco, M. R.; Gonçalves,      simple and language independent subword tokenizer and
+B.; Menczer, F.; and Flammini, A. 2011. Political polariza-     detokenizer for neural text processing. arXiv preprint
+tion on twitter. Icwsm 133: 89–96.                              arXiv:1808.06226 .
+Dandekar, P.; Goel, A.; and Lee, D. T. 2013a. Biased            Kumar, S.; Hamilton, W. L.; Leskovec, J.; and Jurafsky, D.
+assimilation, homophily, and the dynamics of polariza-          2018. Community interaction and conflict on the web. In
+tion. Proceedings of the National Academy of Sciences           Proceedings of the 2018 World Wide Web Conference on
+110(15): 5791–5796. ISSN 0027-8424. doi:10.1073/pnas.           World Wide Web, 933–943. International World Wide Web
+1217220110. URL https://www.pnas.org/content/110/15/            Conferences Steering Committee.
+5791.                                                           Kutlu, M.; Darwish, K.; and Elsayed, T. 2018. DeDandekar, P.; Goel, A.; and Lee, D. T. 2013b.            Bi-    vam vs. Tamam: 2018 Turkish Elections. arXiv preprint
+ased assimilation, homophily, and the dynamics of polar-        arXiv:1807.06655 .
+ization. Proceedings of the National Academy of Sci-            Kvålseth, T. 2017. On Normalized Mutual Information:
+ences 110(15): 5791–5796. ISSN 1091-6490. doi:10.               Measure Derivations and Properties. Entropy 19: 631. doi:
+1073/pnas.1217220110. URL http://dx.doi.org/10.1073/            10.3390/e19110631.
+pnas.1217220110.
+                                                                Maaten, L. v. d.; and Hinton, G. 2008. Visualizing data using
+Darwish, K. 2018. To Kavanaugh or Not to Kavanaugh: That        t-SNE. Journal of machine learning research 9: 2579–2605.
+is the Polarizing Question. arXiv preprint arXiv:1810.06687
+.                                                               Magdy, W.; Darwish, K.; Abokhodair, N.; Rahimi, A.; and
+                                                                Baldwin, T. 2016. # isisisnotislam or# deportallmuslims?:
+Darwish, K. 2019. Quantifying Polarization on Twitter: The      Predicting unspoken views. In Proceedings of the 8th ACM
+Kavanaugh Nomination. In International Conference on So-        Conference on Web Science, 95–106. ACM.
+cial Informatics, 188–201. Springer.
+                                                                Magdy, W.; Darwish, K.; and Weber, I. 2016. # FailedRevoDarwish, K.; Magdy, W.; Rahimi, A.; Baldwin, T.; and
+                                                                lutions: Using Twitter to study the antecedents of ISIS supAbokhodair, N. 2017. Predicting Online Islamophopic Beport. First Monday 21(2).
+havior after# ParisAttacks. The Journal of Web Science 3(1).
+Darwish, K.; Magdy, W.; and Zanouda, T. 2017. Improved          McInnes, L.; and Healy, J. 2017. Accelerated HierarchiStance Prediction in a User Similarity Feature Space. In        cal Density Based Clustering. In Data Mining Workshops
+Proceedings of the 2017 IEEE/ACM International Confer-          (ICDMW), 2017 IEEE International Conference on, 33–42.
+ence on Advances in Social Networks Analysis and Mining         IEEE.
+2017, 145–148. ACM.                                             McInnes, L.; and Healy, J. 2018. Umap: Uniform maniDarwish, K.; Stefanov, P.; Aupetit, M. J.; and Nakov, P.        fold approximation and projection for dimension reduction.
+2019. Unsupervised User Stance Detection on Twitter. arXiv      arXiv preprint arXiv:1802.03426 .
+preprint arXiv:1904.02000 .                                     McPherson, M.; Smith-Lovin, L.; and Cook, J. M. 2001.
+Duan, Y.; Wei, F.; Zhou, M.; and Shum, H.-Y. 2012. Graph-       Birds of a Feather: Homophily in Social Networks. Annual
+based collective classification for tweets. In Proceedings of   Review of Sociology 27(1): 415–444. doi:10.1146/annurev.
+the 21st ACM international conference on Information and        soc.27.1.415. URL https://doi.org/10.1146/annurev.soc.27.
+knowledge management, 2323–2326. ACM.                           1.415.
+Fruchterman, T. M.; and Reingold, E. M. 1991. Graph draw-       Morales, A.; Borondo, J.; Losada, J. C.; and Benito, R. M.
+ing by force-directed placement. Software: Practice and ex-     2015. Measuring political polarization: Twitter shows the
+perience 21(11): 1129–1164.                                     two sides of Venezuela. Chaos: An Interdisciplinary Journal
+                                                                of Nonlinear Science 25(3): 033114.
+Garg, N.; Schiebinger, L.; Jurafsky, D.; and Zou, J. 2018.
+Word embeddings quantify 100 years of gender and ethnic         Mousavi, R.; and Gu, B. 2015. The Effects of Homophily in
+stereotypes. Proceedings of the National Academy of Sci-        Twitter Communication Network of U.S. House Representaences 115(16): E3635–E3644.                                     tives: A Dynamic Network Study. SSRN Electronic Journal
+Garimella, K.; Morales, G. D. F.; Gionis, A.; and Math-         doi:10.2139/ssrn.2666052.
+ioudakis, M. 2018. Quantifying controversy on social me-        Verleysen, M. 2003. Learning high-dimensional data. Nato
+dia. ACM Transactions on Social Computing 1(1): 3.              Science Series Sub Series III Computer And Systems SciGiatsoglou, M.; Vozalis, M. G.; Diamantaras, K.; Vakali, A.;    ences 186: 141–162.
+Sarigiannidis, G.; and Chatzisavvas, K. C. 2017. Sentiment      Weber, I.; Garimella, V. R. K.; and Batayneh, A. 2013. Secanalysis leveraging emotions and word embeddings. Expert        ular vs. islamist polarization in egypt on twitter. In ProSystems with Applications 69: 214–224.                          ceedings of the 2013 IEEE/ACM International Conference
+
+
+on Advances in Social Networks Analysis and Mining, 290–
+297. ACM.
+Wong, F. M. F.; Tan, C. W.; Sen, S.; and Chiang, M. 2013.
+Quantifying political leaning from tweets and retweets. In
+Seventh International AAAI Conference on Weblogs and Social Media.
+Wong, F. M. F.; Tan, C. W.; Sen, S.; and Chiang, M. 2016.
+Quantifying political leaning from tweets, retweets, and
+retweeters. IEEE transactions on knowledge and data engineering 28(8): 2158–2172.
+Yang, M.; Wen, X.; Lin, Y.-R.; and Deng, L. 2017. Quantifying Content Polarization on Twitter. In 2017 IEEE 3rd International Conference on Collaboration and Internet Computing (CIC), 299–308. IEEE.
+Yang, Y.; Cer, D.; Ahmad, A.; Guo, M.; Law, J.; Constant,
+N.; Abrego, G. H.; Yuan, S.; Tar, C.; Sung, Y.-H.; et al.
+2019. Multilingual universal sentence encoder for semantic retrieval. arXiv preprint arXiv:1907.04307 .

@@ -1,0 +1,1251 @@
+West European Politics
+
+
+      ISSN: 0140-2382 (Print) 1743-9655 (Online) Journal homepage: https://www.tandfonline.com/loi/fwep20
+
+
+Dimensions of political conflict and party positions
+in multi-level democracies: evidence from the
+Local Manifesto Project
+
+Martin Gross & Michael Jankowski
+
+To cite this article: Martin Gross & Michael Jankowski (2019): Dimensions of political conflict
+and party positions in multi-level democracies: evidence from the Local Manifesto Project, West
+European Politics, DOI: 10.1080/01402382.2019.1602816
+
+To link to this article: https://doi.org/10.1080/01402382.2019.1602816
+
+
+       View supplementary material
+
+
+       Published online: 17 May 2019.
+
+
+       Submit your article to this journal
+
+
+       View Crossmark data
+
+
+                      Full Terms & Conditions of access and use can be found at
+            https://www.tandfonline.com/action/journalInformation?journalCode=fwep20
+
+
+WEST EUROPEAN POLITICS
+https://doi.org/10.1080/01402382.2019.1602816
+
+
+Dimensions of political conflict and party
+positions in multi-level democracies: evidence
+from the Local Manifesto Project
+Martin Grossa             and Michael Jankowskib
+a
+  Geschwister-Scholl-Institute of Political Science, Ludwig-Maximilians-University of
+Munich, M€ unchen, Germany; bDepartment of Social Sciences, Carl von Ossietzky
+University of Oldenburg, Oldenburg, Germany
+
+    ABSTRACT
+    Partisan conflicts have been frequently analysed in comparative political science research. Yet little is known about the dimensions of political conflict at
+    the local level in multi-level democracies. This article contributes to the literature on the estimation and analysis of party positions by first presenting a
+    new dataset of more than 800 local party manifestos in Germany that allows
+    for a systematic analysis of the dimensions of political conflict at the German
+    local level. Secondly, it is demonstrated that (semi-)automatic content analysis
+    of these texts offers a promising approach for gaining new insights into local
+    party positions. Thirdly, the empirical analysis of German local party manifestos shows that partisan conflicts are not only structured along the left–
+    right dimension but also along a dimension which distinguishes between
+    parties addressing ‘local’ and ‘national’ issues to a varying degree in their
+    manifestos, due to the different behaviour of established and populist parties.
+
+
+KEYWORDS Dimensions of political conflict; local politics; multi-level democracies; content analysis;
+party positions
+
+
+Local politics plays a highly relevant role for citizens’ everyday life. It is
+the first and closest political unit they are in touch with. For politicians,
+local politics is often the starting point for their careers (Dodeigne et al.
+2018; Ohmura et al. 2018). Moreover, the local level frequently possesses
+important legal and administrative powers in specific policy areas and
+local political actors’ policy preferences have a decisive effect on various
+local policy outcomes (see e.g. Debus et al. 2013; Foremny and Riedel
+2014; Freier and Thomasius 2016; Goerres and Tepe 2013; Lindh and
+Johansson Sev€a 2018). Thus, it comes as no surprise that in recent years
+
+
+CONTACT Martin Gross          martin.gross@gsi.uni-muenchen.de
+    Supplemental data for this article can be accessed online at: https://doi.org/10.1080/01402382.2019.1602816.
+Color versions of one or more of the figures in the article can be found online at www.tandfonline.
+com/fwep.
+ß 2019 Informa UK Limited, trading as Taylor & Francis Group
+
+
+2     M. GROSS AND M. JANKOWSKI
+
+
+scholars in the field of political science and political economy have developed more interest in the dynamics and structure of local politics by
+widely acknowledging the importance of locating parties in a low-dimensional policy space.
+   Estimating parties’ policy positions, however, is demanding, as these
+positions cannot be directly observed. This problem is particularly challenging at the local level where we often lack systematic data sources
+from which party positions could be inferred, particularly regarding the
+most frequently used data sources in party politics research: surveys and
+manifestos. For example, conducting surveys among local councillors and
+mayors is very expensive and only feasible within the framework of a
+large-scale funded project (see e.g. B€ack et al. 2006; Egner et al. 2013;
+Heinelt et al. 2018). Furthermore, only a handful of studies used local
+party manifestos as a resource for analysing local party positions
+(Ashworth 2000; Agasoster 2001; Debus and Gross 2016; Gross and
+Debus 2018) because the collection and analysis of local party manifestos
+is more challenging compared to other layers of multi-level political systems (see below). We offer a potential solution to this challenge by presenting a new dataset of more than 800 local party manifestos from
+Germany – the Local Manifesto Project (LMP) – and we address the
+research question: ‘What can be learned from local party manifestos about
+the dimensions of political conflict and party positions at the local level?’
+   The article’s contribution to the literature on the estimation and analysis
+of local party positions and the dimensions of political conflict in multilevel governance systems is threefold. First, we argue that local party manifestos are a promising resource for systematically analysing local party positions and can be collected at relatively low cost (compared to conducting
+surveys). Secondly, we elaborate on the various advantages the analysis of
+local party manifestos has for the estimation of local party positions compared to other approaches. Thirdly, an empirical analysis of local party
+manifestos in 74 large cities in Germany demonstrates that (semi-)automatic content analysis of these texts is not only able to recover party positions on a general left–right scale, an economic scale and a dimension
+capturing the societal positions of local parties, but additionally reveals a so
+far unobserved dimension of local party competition: parties can be differentiated with regard to the degree to which they address local or national
+issues in their manifestos. We further corroborate this finding by showing
+that non-established and populist parties are particularly likely to put more
+emphasis on national issues in their local manifestos, thus adding complexity to the dimensions of political conflict at the German local level.
+   The article proceeds as follows. The next section motivates the analysis
+of local party manifestos by engaging with existing research on the
+
+
+                                                   WEST EUROPEAN POLITICS     3
+
+
+estimation of political actors’ policy positions and the specific challenges
+scholars are facing when studying party positions and dimensions of political conflict at the local level. Then the article introduces the LMP and discusses how local political actors’ policy positions can be estimated by using
+different text scaling methods; after which we describe and present the data
+for the estimation of local party positions and dimensions of political conflict in large German cities using two different text scaling approaches, and
+discuss the potential limitations of these techniques. The penultimate section is devoted to a first explanation of local party positions on a ‘local vs.
+national policies’ dimension. The final section concludes by critically discussing the results and mentioning implications for further research.
+
+
+Approaches for estimating policy positions of political actors
+and the challenge of local politics
+Local party positions predominantly play a role in explaining coalition
+formations and policy outcomes at the local level. In the last years, several
+studies in a variety of European countries have been conducted to investigate which factors increase the likelihood of potential coalitions being
+formed following local elections (see e.g. B€ack 2003; Debus and Gross
+2016; Falc o-Gimeno 2018; Gross and Debus 2018; Serritzlew et al. 2008,
+2010; Skjaeveland et al. 2007). Since policy-seeking approaches are a
+prominent strand of the literature on government formations in multilevel systems (see e.g. M€ uller 2009), and because party ideologies matter
+both for local policy outcomes and local politicians’ role perception (see
+e.g. B€ack et al. 2006; Egner et al. 2013; Gerber and Hopkins 2011; Heinelt
+et al. 2018), estimating local parties’ policy positions is crucial for the
+understanding of political processes at the local level.
+
+
+Approaches for estimating parties’ policy positions
+There is a vibrant scholarly debate on the appropriate way to measure
+(national) political actors’ ideological preferences by using either expert
+judgements or manifesto content information (see e.g. Br€auninger et al.
+2013; Laver 2014; Lindst€adt et al. 2018; Mair 2001).1 At the national level,
+expert surveys are considered a valuable source for estimating political
+actors’ policy positions, since experts possess detailed knowledge about
+parties and their positions on various issues. Compared to manifestobased approaches, experts can integrate various information into their
+judgement, thus counterbalancing parties’ strategic behaviour in drafting
+manifestos. Probably the most prominent example for expert surveys on
+political parties acting at the national level is the Chapel Hill Expert
+
+
+4     M. GROSS AND M. JANKOWSKI
+
+
+Survey (CHES) (see e.g. Bakker et al. 2015; Polk et al. 2017), where
+experts are asked to locate national parties on various policy dimensions
+and to assess the salience parties attach to these different policy areas in
+all European Union member states, Switzerland, Norway and Turkey.
+Although recent research suggests that experts sometimes widely disagree
+regarding parties’ positions on and salience of specific policies and issues
+(see Lindst€adt et al. 2018), CHES data fares quite well when compared to
+alternative sources of information on parties’ positions (see e.g. Hooghe
+et al. 2010; Marks et al. 2007).
+   In addition to expert surveys, estimates of parties’ policy positions are
+often based on the analysis of party manifestos. Approaches for extracting
+party positions from manifestos range from hand-coding over semi-supervised content analysis techniques to fully unsupervised methods (for a
+discussion and comparison of these techniques, see Grimmer and Stewart
+2013; Laver 2014; Wilkerson and Casas 2017). Most prominently, the
+Manifesto Research on Political Representation (MARPOR) project provides access to a large variety of issue salience and policy position indicators that are based on manual coding of party manifestos (see Budge
+et al. 2001; Klingemann et al. 2006; Merz et al. 2016). The heart of the
+MARPOR project constitutes a coding scheme of 56 categories. ‘Quasi
+sentences’ in party manifestos are assigned to these categories by coders.
+These categories are then used to estimate party positions on political
+dimensions. As with expert surveys, this approach has high reliability, as
+manifestos can be coded quite precisely.2
+   Moreover, party manifestos have the advantage that they are often
+highly comparable and written in a similar tone and style, which makes
+them particularly suitable for a comparable analysis. This characteristic of
+manifestos also facilitates the use of computerised text analysis, which usually relies on the assumption of a similar text-generating process. Laver
+et al. (2003) have developed the (semi-)supervised Wordscores technique
+for extracting policy positions from party manifestos, while the Wordfish
+approach developed in Slapin and Proksch (2008) is fully unsupervised and
+estimates party positions on a latent dimension. These approaches are
+extremely helpful in cases where hand-coding of manifestos is not feasible.
+But as the approaches are based on the automated extraction of positions,
+they require more attention regarding the validation of the estimated positions, on which we will elaborate further below.
+
+
+Challenges for the estimation of local party positions
+However, expert surveys and manual coding of party manifestos have
+important limitations when it comes to the analysis of local parties’ policy
+
+
+                                                   WEST EUROPEAN POLITICS     5
+
+
+positions. For example, the manual coding of party manifestos is based
+on a comprehensive coding scheme which is unsuitable for the local level,
+as it includes several categories that are potentially irrelevant at that level
+(e.g. ‘foreign policy’) or omits categories that might be relevant (e.g.
+‘bypass roads’). In short, a new coding scheme would have to be developed for the local level (see Agasoster 2001; van de Voorde et al. 2018).
+Yet even if such a new coding scheme is developed, then the coding itself
+is massively time-consuming and costly if scholars are interested in timeseries and cross-sectional analyses of local party competition, due to the
+large number of municipalities (van de Voorde et al. 2018: 9).3
+   Likewise, conducting expert surveys at the local level also comes with
+several challenges. First, conducting expert surveys is expensive.
+Therefore, this approach is only feasible for a small number of local units
+or requires the financial resources of a large well-funded cross-national
+research group to obtain a representative sample of local actors’ policy
+positions (see e.g. B€ack et al. 2006; Egner et al. 2013; Heinelt et al. 2018).
+Secondly, current expert surveys at the local level only provide data on
+local actors’ policy positions at a specific point in time. Unlike at the
+national and European level, there are no time-series cross-national datasets on local actors’ policy orientations, thus rendering it impossible to
+analyse trends over time. Thirdly, even for experts and local political
+actors, it might be challenging to provide reliable information on the policy positions of every small local party that might compete for seats in
+local councils for the first time, not to mention the myriad of independent local lists (see Reiser and Holtmann 2008) and citizens’ initiatives.
+Fourthly, existing research ex ante assumes that only a general left–right
+dimension is decisive for local party competition. Hence, all existing local
+expert surveys only ask local political actors to position themselves on a
+general left–right dimension. Yet this is a strong assumption and it
+remains an open empirical question if only one policy dimension is
+decisive for partisan conflicts in local politics.
+
+
+Potential solutions for estimating dimensions of political conflict and
+party positions at the local level
+How can dimensions of political conflict and party positions at the local
+level be estimated? While we have argued that conducting a large-scale
+expert survey is challenging, some scholars have done so. For example,
+Skjaeveland et al. (2007) measured local policy positions by conducting
+an expert survey of local councillors in all Danish municipalities. B€ack
+(2003, 2008) conducted a survey among local councillors in 49 municipalities located in one Swedish region. Finally, Egner et al. (2013) provide
+
+
+6     M. GROSS AND M. JANKOWSKI
+
+
+the largest cross-sectional dataset on local actors’ policy positions based
+on a survey among a sample of councillors in municipalities with more
+than 10,000 inhabitants in 16 countries. But still, these projects are either
+based on a well-funded research project or they cover only one very specific point in time.
+    Another approach frequently taken in the existing literature is to infer
+local policy positions from parties’ positions at the upper level of the political system. For example, Laver et al. (1998) use expert survey data on
+national parties’ left–right positions in Great Britain as a proxy for local
+parties’ left–right orientations. Denters (1985) and Steunenberg (1992) do
+the same for Dutch parties, whereas Goerres and Tepe (2013) use the
+order of German parties on the left–right dimension at the national level
+as a proxy for the ideological preferences of local parties in German cities.
+Yet research on sub-national party positions and intra-party heterogeneity
+in multi-level systems demonstrates that parties at the sub-national level
+can take on different policy stances to their national parties (see e.g.
+Bernauer and Br€auninger 2009; M€    uller 2009, 2013; Stecker 2015).4 Ideally,
+however, a reliable measure of local party positions is directly derived
+from information at the local level.
+    As an alternative to expert surveys and inferring local policy positions
+from upper levels, two promising proposals have been made in recent
+studies: (i) using electoral results from local elections, and (ii) using
+(semi-)automatic content analysis of local party manifestos. The first
+approach has been suggested by Nyhuis (2017). He shows the possibility
+of inferring local actors’ policy preferences from election results in elections with multiple votes. If voters spread their votes across party lists
+that are ideologically similar, these patterns can be exploited to infer local
+actors’ policy positions. Although only presenting results from one election in one German municipality, Nyhuis’ approach can be applied over
+time and for different municipalities in different countries, as long as voters have the possibility to spread their votes across multiple party lists.
+However, since the method depends on a specific electoral system, it is
+only applicable for a very small number of cases, which limits its general
+applicability.
+    The second approach is taken by Debus and Gross (2016), who transfer an already existing approach of estimating policy positions at the
+national and regional level (Wordscores; see Laver et al. 2003) to the local
+level by inferring local actors’ policy preferences based on information
+in local parties’ manifestos. They apply the Wordscores technique to
+estimate local parties’ policy positions in 29 large cities in the German
+state of North Rhine-Westphalia between 1999 and 2009 on a general
+left–right, a societal and an economic dimension, demonstrating that the
+
+
+                                                  WEST EUROPEAN POLITICS     7
+
+
+policy positions of party families and of party branches of the same party
+competing in various cities differ. We share their assumption that local
+party manifestos are a valuable source and that (semi-)automatic methods
+of quantitative text analysis provide a promising approach for extracting
+policy positions. More generally, previous research has demonstrated that
+text scaling methods can extract meaningful position estimates from party
+manifestos (Laver et al. 2003; Slapin and Proksch 2008). Since these methods do not rely on manual coding and are easily available, these
+approaches are far less time-consuming and more efficient.5 In the following, we apply two of the most common methods for text scaling,
+Wordscores and Wordfish, to a new collection of local party manifestos –
+the Local Manifesto Project.
+
+
+Scaling local party manifestos by using LMP data
+Inspired by comparable projects that analyse parties’ electoral manifestos
+at the national (Budge et al. 2001; Klingemann et al. 2006; Merz et al.
+2016) or regional level (Alonso et al. 2013), the Local Manifesto Project is
+a new resource to facilitate scholars’ attempts to analyse local party competition by systematically collecting local party manifestos. Currently, the
+LMP consists of more than 800 local party manifestos (and more than
+100 coalition agreements) drafted in the 74 large German cities with
+more than 100,000 inhabitants and covering a time span from 1990 to
+2016.6 We collected all publicly available party manifestos from all parties
+running for local council, including also small parties, independent local
+lists and citizens’ initiatives. These manifestos are already pre-processed
+and prepared for empirical analysis.7 At the core of the LMP is the project’s web page: www.localpartymanifestos.de. This web page provides
+access to the raw data as well as a link to an R Shiny App that allows
+users to analyse the data directly using nothing but their web browser.
+    Note that for many cases only the most recent party manifestos are
+currently available. Therefore, the following empirical analysis only
+includes manifestos from the most recent local elections in the respective
+cities (2013–2016). Moreover, to guarantee a certain amount of comparability in the length of the manifestos and to increase the reliability of the
+estimated policy positions, we only include manifestos with more than
+1000 words (see e.g. Klemmensen et al. 2007; Klingelh€     ofer and M€   uller
+2015). This leaves us with a corpus of 478 local party manifestos (see the
+online appendix for further justifications).
+    For a first estimation of local party positions using local party
+manifestos, large German cities are an ideal case because local party
+competition in Germany is highly politicised in specific issue areas
+
+
+8     M. GROSS AND M. JANKOWSKI
+
+
+(see e.g. Debus et al. 2013; Goerres and Tepe 2013), parties that run for
+regional and national elections also compete in larger cities with independent local lists, and city councils are equivalent to national and
+regional parliaments where party competition is usually structured along
+the lines of majority and minority factions (see e.g. Egner 2015).8
+Additionally, and unlike in other countries such as Belgium or Spain,
+local party branches in Germany independently draft their manifestos for
+local elections. There are neither ‘framework’ manifestos, nor national or
+regional ‘guidelines’ local party branches must follow. Hence, we can directly retrieve local parties’ policy positions from their election manifestos.
+We use the two most common (semi-)automatic text scaling approaches,
+Wordscores and Wordfish, to obtain local party positions.
+
+
+Using Wordscores and Wordfish for the analysis of local
+party manifestos
+Wordscores (Laver et al. 2003; Lowe 2008) is an a priori approach, as it
+allows the researcher to determine the dimension on which political
+actors will be scaled. The basic idea of Wordscores is to compare the
+frequency distribution of words in documents whose programmatic
+positions are known (‘reference texts’) with the frequency distribution of
+texts whose programmatic positions are unknown (‘virgin texts’). ‘Known’
+programmatic positions are usually derived by using expert judgements
+on parties’ positions on specific policy dimensions (so-called ‘reference
+scores’). Every word a party uses in a text is treated as a position of the
+party on an a priori specified scale, and the average position of all words
+used in a text indicates the position of the party.9
+   Since Wordscores estimates the position of local party manifestos based
+on the ‘reference texts’, the selection of these texts is crucial. ‘Reference
+texts’ should be of the same character as the ‘virgin texts’ regarding the
+structure and syntax of the text, as well as the terminology used by political actors. Additionally, to increase the validity and reliability of
+Wordscores estimates, ‘reference texts’ should cover the time period and
+the entire range of the ideological dimension under study, and the number of scored words and unique words in the ‘virgin texts’ should be high
+(Br€auninger et al. 2013: 19; Hjorth et al. 2015; Laver et al. 2003: 313–14).
+All these factors point to the direction that Wordscores works best when
+both ‘reference texts’ and ‘virgin texts’ are relatively long (Klemmensen
+et al. 2007).
+   The local party manifestos constitute our ‘virgin texts’ of which the
+positions are initially unknown. We opt for using national party manifestos from the German general election of 2013 as ‘reference texts’, since
+
+
+                                                  WEST EUROPEAN POLITICS     9
+
+
+these manifestos are closest in time to most of the elections we are dealing with, and we can use ‘reference scores’ based on expert judgements
+that have been collected close to the national elections in 2013.10 This
+decision has several advantages. First, national party manifestos are long
+and thus provide a comprehensive vocabulary. Secondly, parties use their
+national manifestos to send ideological signals to the electorate. Therefore,
+the words in these manifestos provide a meaningful foundation for positioning parties on several policy dimensions. Thirdly, relying on expert surveys we have a detailed understanding of party positions at the national
+level and we can use these expert judgements as meaningful ‘reference
+scores’.11 Finally, using manifestos from the national level allows us to have
+common ‘reference texts’ for all parties from different regions and cities.
+We are thus able to position all manifestos in the same ideological space,
+which makes the position estimates comparable between cities.12
+   In addition to the semi-supervised approach of Wordscores, we use an
+unsupervised scaling technique. In general, unsupervised techniques are
+described as a posteriori approaches (Benoit and Laver 2006), since one
+does not have prior knowledge about the dimensions being extracted
+from the documents. Therefore, unsupervised methods put more
+emphasis on an in-depth interpretation of the estimated dimensions.
+Since the estimated dimensions are not predetermined by the researcher,
+it is also possible that unsupervised methods discover dimensions in
+documents that are of only little interest for political scientists or which
+do not reflect ideological differences between parties. As Grimmer and
+Stewart (2013: 293) put it, unsupervised methods ‘seize upon the primary
+variation in language across actors’, but this variation is not necessarily
+ideological. Therefore, the question remains whether meaningful dimensions can be extracted from local party manifestos using unsupervised
+methods. In the following, we apply the Wordfish technique, which is the
+most prominent unsupervised text scaling method in political science
+research (Slapin and Proksch 2008).
+
+
+Wordscores: results
+The results of the Wordscores estimations on the general left–right,
+economic left–right, and societal (green/alternative/libertarian [GAL] to
+traditional/authoritarian/nationalist [TAN]) dimension strongly suggest
+that Wordscores can be applied to local party manifestos to estimate party
+positions at the local level (see Figure 1). The rank order of parties from
+left to right bears a close resemblance to the rank order of these parties at
+the upper political levels of the German multi-level system, with the Left
+Party being identified as the most leftist party, followed by the Greens,
+
+
+10       M. GROSS AND M. JANKOWSKI
+
+
+Figure 1. Boxplots of Wordscores results.
+Note: Boxplot of local party positions estimated using Wordscores with national party manifestos as
+‘reference texts’ and CHES party positions as ‘reference scores’. Upper panel shows results for the general left–right dimension. Middle panel shows economic positions of local parties. Lower panel uses
+the GAL-TAN index as ‘reference scores’, which measures positions on cultural and societal issues.
+Boxplots are ordered based on the position of the median party manifesto.
+
+the Social Democrats (SPD), the Christian Democrats (CDU/CSU), the
+Liberal Party (FDP) and finally the right-wing populist party Alternative
+for Germany (AfD). Furthermore, these results corroborate recent findings in the literature on local political actors’ policy positions in
+Germany, which are based on manifesto content (Debus and Gross 2016)
+and the self-positioning of both local councillors and mayors (Egner
+2018: 61; Egner et al. 2018; Remer-Bollow 2017: 239).
+    In order to validate the estimated positions further, Table 1 displays
+how often a certain order of Wordscores’ party positions on the general
+left–right scale can be observed. There can, for example, be no doubt that
+the populist radical-right AfD should be more right-wing than the Left
+Party. This is exactly what we find in every city. The same holds true for
+
+
+                                                                WEST EUROPEAN POLITICS           11
+
+
+Table 1. Validation of Wordscores results based on the general left–right scale
+party order.
+Condition                              True                        False                         %
+AfD > Left Party                        26                            0                         100
+AfD > SPD                               27                            0                         100
+AfD > CDU/CSU                           23                            2                          92
+SPD > Left Party                        40                           10                          80
+CDU/CSU > SPD                           46                           18                          72
+Note: Results are based on Wordscores party positions on the general left–right scale. ‘>’ in the
+‘Condition’ column should be read as ‘is estimated to be further to the right than’. For example, in
+23 out of 25 cases (92%) in which the AfD and the CDU/CSU both drafted a local manifesto in a
+city, the AfD is estimated to be more right-wing than the CDU/CSU.
+
+
+other pairwise comparisons. Even when comparing the placement of the
+CDU/CSU and the SPD, the CDU/CSU is further to the right than the
+SPD in 72% of the cases, which corroborates recent findings by
+Br€auninger and Debus (2012) regarding German L€ander party positions
+that the SPD sometimes drafts party manifestos that are more right-wing
+than CDU/CSU manifestos.
+   Furthermore, the more detailed results for the economic and societal
+dimension in Figure 1 show a high degree of face validity. The right-wing
+populist AfD is on a par with the CDU/CSU and FDP on the economic
+dimension, which is plausible since the parties’ focus is on societal issues
+such as migration and identity politics (Jankowski et al. 2017). In contrast,
+the Left Party, which is heavily concerned with the issue of redistribution,
+is consistently estimated to be the most leftist party at the local level on the
+economic dimension. The face validity of the results is further corroborated
+by party positions on the cultural/societal dimension which uses the
+CHES’s GAL-TAN index as ‘reference scores’. Here, the Greens are most
+often estimated to be the most leftist party. The AfD is the most rightwing party on this dimension by a large margin (Arzheimer 2015). Finally,
+and also in line with our expectations, the heterogeneity of the categories
+‘local list’ (comprising ‘official’ independent local lists such as the ‘Freie
+W€ahlergemeinschaften’ and the ‘Unabh€angige W€ahlergemeinschaften’) and
+‘small party’ (comprising very small parties which are usually unsuccessful
+at the regional or national level) is reflected by their large variation of positions on all three dimensions. Independent local lists are more frequently
+estimated to take a position close to the CDU/CSU and FDP, respectively,
+and thus appear to be rather conservative, which is in line with previous
+research (Reiser and Holtmann 2008).
+
+
+Wordfish: results
+Figure 2 shows the results from the Wordfish estimations of local political
+actors’ policy positions. The left panel of Figure 2 displays the results
+
+
+12       M. GROSS AND M. JANKOWSKI
+
+
+Figure 2. Results of the Wordfish analysis.
+Note: Left panel displays the distribution of party manifestos on the Wordfish dimension using boxplots. Right panel shows positions of each party manifesto in the analysis on the Wordfish dimension.
+Horizontal lines are 95% confidence intervals. Boxplots are ordered based on the position of the
+median party manifesto.
+
+
+aggregated for each party using horizontal boxplots and the right panel
+shows the position of each manifesto for all parties including 95% confidence intervals (horizontal lines). The results are apparently very different
+compared to the Wordscores analysis. Most importantly, the Left Party
+and the AfD are positioned near each other on the right end of the
+dimension. The manifestos of the FDP, Greens, SPD and CDU/CSU, in
+contrast, form a large block on the other side of this dimension.
+Obviously, this dimension does not reflect any of the dimensions from the
+previous analysis. Yet the positioning of parties in certain blocks suggests
+that positions follow a systematic pattern and are not randomly created.
+Wordfish appears to capture a different dimension of party conflict that
+is neither aligned with a general left–right nor with an economic or a
+societal dimension.
+   Using Wordfish, the substantive meaning of the dimension can be
+interpreted not only by investigating the position of parties, but by estimating the contribution of each word to the positioning of the manifestos
+on the estimated dimension (b). In Figure 3, these word contributions are
+displayed against the word fixed effects (w) and the 20 words with the
+highest and lowest b-values are highlighted. These are words which can
+be considered particularly informative for interpreting the substantive
+meaning of the dimension.
+   Based on these words, we interpret the estimated results as a ‘local vs.
+national policies’ dimension, mainly represented by mainstream parties
+and by challenger parties,13 which are at the fringes of the ideological
+
+
+                                                     WEST EUROPEAN POLITICS     13
+
+
+Figure 3. Word weights and word fixed effects.
+Note: The highlighted German words are translated and summarised in Table A1 in the
+online appendix.
+
+
+spectrum, thus corroborating recent findings regarding the dimensions of
+political conflict at the German L€ander level (see Nyhuis and K€        onig
+2018). Mainstream parties, such as the CDU/CSU, FDP, Greens and SPD,
+put more emphasis on specific local policies in their election manifestos
+by highlighting local politics issues, for example the parking lot situation
+(‘Parksituation’), city tourism (‘St€adtetourismus’) or citizens voluntarily
+responsible for children’s playgrounds (‘Spielplatzpaten’). On the other
+end of this dimension, especially the AfD and the Left Party use words
+related to national policies and politics, and their focus on national issues
+is accompanied by a rather critical and sometimes populist tone in
+response to established parties, which corroborates previous findings in
+the literature (see Lewandowsky et al. 2016; Polk et al. 2017). For
+example, some of the words with the highest contribution are words such
+as fascism (‘Faschismus’), weapons (‘Waffen’), foreign policies
+(‘Außenpolitik’), capitalism (‘capitalism’) or policy change (‘Kurswechsel’).
+Both the AfD and the Left Party seem to exploit local elections to address
+national or even European topics by emphasising their core issues: immigration, refugees and domestic security (AfD), and welfare policies, wealth
+
+
+14     M. GROSS AND M. JANKOWSKI
+
+
+tax and struggle against fascism (Left Party). This distinction highlights
+that the more established parties in the German party system (CDU/CSU,
+FDP, Greens and SPD) specifically target voters in local elections by
+emphasising local topics, whereas particularly AfD and the Left Party use
+local elections to mobilise their core voter clientele by emphasising topics
+that are largely not the responsibility of local governments. From that
+point of view, the local election manifestos of the Left Party and AfD
+resemble ‘advertisement manifestos’ (Clark and Bennie 2018) by promoting the parties’ core issues as a vote-seeking strategy for upper-level elections in the German multi-level system (for a similar strategy by Spanish
+parties in regional elections highlighting national instead of regional
+issues, see Cabeza et al. 2017).
+   A closer look at the boxplots and estimated positions of small parties
+and independent local lists (see Figure 2) additionally corroborates the
+interpretation of this dimension as picking up a ‘local vs. national policies’ conflict. One incentive for the foundation of independent local lists
+in Germany has been that citizens were eager to provide an alternative to
+political parties at the local level because they did not want local politics
+to become politicised by parties (Naumann 2012). Yet, over the years,
+independent local lists such as the ‘Freie W€ahlergemeinschaften’ (Free
+Voters) have gradually become more professionalised and, like parties,
+run for elections at the regional level and are even part of the state government in Bavaria. More importantly, independent local lists are very
+diverse and comprise subdivisions that use populist, anti-elite rhetoric,
+have strong anti-party sentiments (Angenendt 2018), campaign against
+‘established’ parties to attract dissatisfied voters (Otjes 2018), and are
+sometimes even led by extreme right-wing politicians (Berbuir et al. 2015;
+Stremmel 2017). The category ‘small party’, on the other hand, consists of
+a myriad of different smaller parties and citizens’ initiatives, ranging from
+the far left to the far right on a general left–right dimension, which is
+indicated by the large ‘whiskers’ of the respective boxplots in Figures 1
+and 2.14
+
+
+An exploratory analysis of the ‘local vs. national
+policies’ dimension
+This section provides an exploratory analysis to enhance our understanding of the ‘local vs. national policies’ conflict that seems primarily driven
+by the stark contrast between mainstream and challenger parties. We use
+several independent variables that might have an influence on the ‘local
+vs. national policies’ conflict in the time period under study. Therefore,
+this section is both a cross-validation of our ad hoc interpretation of the
+
+
+                                                  WEST EUROPEAN POLITICS     15
+
+
+Wordfish results and a first attempt to explain why and when local parties
+put more emphasis on national issues in their local manifestos.
+
+
+Theoretical expectations
+First, following the descriptive analysis of Wordfish positions (see Figure
+2) we expect that parties’ placement on the ‘local vs. national policies’
+dimension is related to the antagonism of mainstream and challenger parties. In the last decades, mainstream parties have been challenged by
+newly established parties that either focus on very specific issues or campaign against the so-called ‘corrupt elite’ by using populist rhetoric and
+activating ‘anti-party sentiments’ (see e.g. Mudde 2004). For the sake of
+simplicity, we subsume all these parties under the label ‘challenger’ parties, even though there are other terminologies such as ‘niche’, ‘populist’
+or ‘anti-system’ parties (see Meguid 2005; Mudde 2004; Stefuriuc 2009).
+We use the CDU/CSU as a reference category, as this party is on the
+‘local’ end of the ‘local vs. national policies’ dimension. Consequently, a
+positive sign of an independent variable’s coefficient indicates that the
+variable increases a party’s emphasis on national issues in the
+local manifesto.
+   Second, we expect that parties put less emphasis on national issues
+when they are more involved and established in local politics. We use two
+measures to control for a party’s local involvement. First, we expect that
+parties put less emphasis on national issues when the mayor is from their
+own party. Although the mayor is elected in a separate election, the constant interplay between mayors and local councillors is one of the most
+decisive factors in explaining everyday local politics (see Debus and Gross
+2016; Egner 2015; Gross and Debus 2018). Therefore, when the mayor
+comes from the same party, the local party should be more involved and
+better informed about local politics. Second, we control directly for the
+previous involvement in the city council by using the number of seats
+obtained in the previous legislative period in the city council, both as a
+measure of electoral success and particularly as an indicator for the
+experience in local politics. The more local councillors a party had
+elected, the more knowledge they possess about local politics and thus
+these parties should be less likely to address national issues.
+   Third, recent research addressing similar questions highlights that parties tend to ‘nationalise’ their party manifestos at lower levels of the political system when there is an electoral incentive to do so (see e.g. Cabeza
+et al. 2017). When their own party is performing well at the national
+level, then the local party branch might want to benefit from the performance at the national level by addressing more national issues.15 Likewise,
+
+
+16     M. GROSS AND M. JANKOWSKI
+
+
+parties that are not represented or are in opposition at the national level
+might want to exploit voters’ dissatisfaction with the national government
+and thus address more national issues when support for the national government is low. Therefore, we use different indicators for the popularity
+of parties and government at the national level as independent variables.
+The first indicator uses a party’s popularity at the national level and is
+measured based on national polling data.16 The second indicator measures
+the popularity of the government by adding the polls for each party that
+is part of the government. We then use an interaction of this indicator
+and the individual parties, as we expect that parties from the national
+government and opposition will respond differently to the popularity of
+the national government.
+   Finally, we include several additional variables to control for differences in the political and geographical context of the election. To control
+for the large differences in the party systems between Western and
+Eastern Germany, we include a dummy variable (East Germany ¼ 1). We
+also include dummy variables for the different years under study. To control for differences in the socio-economic contexts of the cities, we add
+the unemployment rate, the share of foreigners and the population in a
+city (see Kjaer and Elklit 2010). Lastly, we control for the party manifesto
+length (number of words).
+   The data is structured in a hierarchical way because parties are clustered in cities. We account for this clustering by estimating linear mixedeffect models with cities at the upper level and parties at the lower level.
+We use cluster-corrected standard errors to capture potential city-specific
+peculiarities.17
+
+
+Results
+The results of four regression models are displayed in Table 2. Model 1
+only accounts for differences between parties and additionally includes
+the control variables. In Model 2, we include the variable regarding the
+popularity of parties at the national level. In Model 3 this variable is
+replaced with the popularity of the government at the national level and
+interacted with the party dummies. Finally, Model 4 includes variables
+regarding the involvement of the parties at the local level.
+   The descriptive findings and our ad hoc interpretation of the estimated
+Wordfish dimension as being marked by the opposition between mainstream and challenger parties are confirmed by the regression models. In
+particular, the Left Party, the AfD and the heterogeneous group of small
+parties draft local manifestos that substantially highlight national issues
+
+
+                                                                     WEST EUROPEAN POLITICS         17
+
+
+Table 2. Determinants of local party manifesto positions on the ‘local vs. national
+policies’ dimension.
+                                        Model 1           Model 2            Model 3          Model 4
+AfD                                     1.865          2.240            5.445           1.688
+                                         (0.105)           (0.521)            (1.709)           (0.544)
+FDP                                     0.551           0.951þ              0.280             0.537
+                                         (0.059)           (0.543)            (0.688)           (0.559)
+Greens                                  0.757           1.086              0.354            0.784þ
+                                         (0.058)           (0.458)            (0.831)           (0.471)
+Left Party                              2.532          2.897           3.744          2.474
+                                         (0.096)           (0.503)            (0.727)           (0.520)
+Local lists                             0.931           1.336             1.146             0.877
+                                         (0.111)           (0.576)            (0.886)           (0.589)
+SPD                                      0.161            0.314              0.318             0.295
+                                         (0.057)           (0.219)            (0.605)           (0.227)
+Small parties                           1.694          2.071            1.946þ            1.571
+                                         (0.077)           (0.546)            (1.078)           (0.564)
+Seats in councilt1                                                                           0.028
+                                                                                                (0.005)
+Mayor is from the same party                                                                    0.031
+                                                                                                (0.074)
+Popularity of party (national)                              0.012                                0.012
+                                                           (0.016)                              (0.016)
+Popularity of government (national)                                           0.013
+                                                                              (0.033)
+AfD # Pop. of gov.                                                           0.057
+                                                                              (0.027)
+FDP # Pop. of gov.                                                             0.004
+                                                                              (0.011)
+Greens # Pop. of gov.                                                          0.006
+                                                                              (0.013)
+Left Party # Pop. of gov.                                                     0.019
+                                                                              (0.012)
+Local lists # Pop. of gov.                                                    0.033
+                                                                              (0.014)
+SPD # Pop. of gov.                                                            0.002
+                                                                              (0.010)
+Small parties # Pop. of gov.                                                  0.004
+                                                                              (0.017)
+Year ¼ 2014                             0.029            0.162þ               0.250            0.184
+                                        (0.175)           (0.083)             (0.658)           (0.081)
+Year ¼ 2015                             0.096             0.092               0.199             0.033
+                                        (0.193)           (0.122)             (0.720)           (0.121)
+Year ¼ 2016                             0.059             0.131               0.088            0.160þ
+                                        (0.171)           (0.089)             (0.430)           (0.088)
+% Foreigners                            0.105            0.205              0.049            0.303
+                                        (0.651)           (0.651)             (0.660)           (0.683)
+% Unemployed                             2.086             2.053              2.324þ            2.631þ
+                                        (1.368)           (1.362)             (1.325)           (1.402)
+East Germany                           0.581         0.591          0.577         0.625
+                                        (0.115)           (0.116)             (0.117)           (0.119)
+Population (log)                         0.057             0.055               0.063             0.097
+                                        (0.059)           (0.059)             (0.059)           (0.060)
+Manifesto length (log)                 0.136          0.145            0.132          0.171
+                                        (0.039)           (0.039)             (0.039)           (0.037)
+Constant                               2.955         3.642            2.466          3.880
+                                        (0.690)           (0.976)             (1.618)           (0.993)
+Observations                              478               474                 478               474
+Notes: Table displays results from four linear mixed-effects models with the dependent variable
+being the ‘local vs. national policies’ positions estimated by Wordfish. Cluster-robust standard errors
+at the level of each city are shown in parentheses. Reference category for parties is CDU/CSU.
+Reference category for party of the mayor is CDU/CSU/SPD. Reference category for year effects is
+2013 (year of the last national election). Reference for party system effects is West Germany.
+þ
+
+  p < 0.10;
+
+  p < 0.05;
+
+   p < 0.01;
+    p < 0.001.
+
+
+18     M. GROSS AND M. JANKOWSKI
+
+
+more than local manifestos by the CDU/CSU. These effects are also
+robust to the inclusion of additional variables (see Models 2–4).
+   Regarding the popularity of the national party or government, respectively, we only find little empirical evidence that this affects local parties’
+positioning on the ‘local vs. national policies’ dimension (see Models 2
+and 3). Note, however, that the negative and statistically significant coefficient for the interaction between the AfD and the national government’s
+popularity is in line with the theoretical expectation that the AfD – as
+challenger and opposition party, particularly towards Chancellor Angela
+Merkel (CDU) – emphasises national issues to a lesser extent when the
+national government is popular. Whether the mayor is from the same
+party does not make a difference for local parties’ positioning on the
+‘local vs. national policies’ dimension (see Model 4). This might be
+because mayors often are members of the CDU/CSU and SPD, and these
+parties are already close to the ‘local’ end of the dimension. In contrast,
+the number of seats held in the previous city council has a relatively
+strong effect which goes in the expected direction. The more seats a party
+has held previously, the more the party manifesto will be placed near the
+‘local’ end of the dimension.
+   With respect to the control variables, only two findings should be
+mentioned. First, manifestos in East Germany appear to be more local
+compared to manifestos in West Germany. This can partly be explained –
+but needs further empirical analyses – by the Left Party’s electoral
+strength in East German cities, thus creating incentives for the Left Party
+to use its great experience in local politics by addressing more local issues
+in its manifestos (as indicated by the negative and statistically significant
+sign of the variable capturing a party’s number of seats in the previous
+local council; see Model 4). Second, longer manifestos tend to be more
+‘national’. This might indicate that parties writing longer manifestos tend
+to focus less on local issues and partly go astray by addressing other
+topics as well.
+
+
+Conclusion
+Local politics gets more and more politicised, particularly in larger
+municipalities (see e.g. Egner 2015; Kjaer and Elklit 2010), and local governments have considerable powers in shaping the political agenda in
+municipalities and cities (see e.g. B€ack 2005; Heinelt and Hlepas 2006).
+Like their national and regional counterparts, political actors at the local
+level can have different views on specific policy issues and they distinguish themselves based on their programmatic orientations by joining different parties (or independent local lists and citizens’ initiatives). As
+
+
+                                                WEST EUROPEAN POLITICS    19
+
+
+recent research shows, the party affiliation of local politicians does make
+a difference for policy preferences and policy outcomes (see e.g. Debus
+et al. 2013; Gerber and Hopkins 2011; Goerres and Tepe 2013; Serritzlew
+2003). These results, however, heavily rely on the possibility to accurately
+assess local actors’ policy positions.
+   In this article, we presented two types of approach, supervised
+(Wordscores) and unsupervised (Wordfish), to estimate local party positions, which are derived from a new dataset of more than 800 local party
+manifestos in Germany: the Local Manifesto Project. The approaches
+demonstrate that they can be used to extract meaningful estimates of
+local party positions. Both methods have identified meaningful but substantially different dimensions. The results suggest that Wordscores can
+be used to place parties on ideologically meaningful left–right dimensions (general, economic and societal left–right), i.e. a priori known
+ideological dimensions from the national and regional level also structure party competition at the local level. If appropriate ‘reference texts’
+and ‘reference scores’ are available, the application of Wordscores helps
+to gain deeper insights into party positions and dimensions of political
+conflict at the local level.
+   The application of Wordfish, on the other hand, adds to these findings
+by revealing an additional dimension of local party competition capturing
+the emphasis on national policies and politics addressed in local party
+manifestos. This dimension is characterised by a clear distinction between
+mainstream parties and challenger or anti-establishment parties (AfD,
+Left Party), respectively, at the fringes of the dimension, and thus adds
+further evidence to the recent notion in the literature that subnational
+party competition in Germany is not exclusively characterised by a left–
+right conflict (see Nyhuis and K€  onig 2018). This dimension might provide
+more detailed insights into the dynamics of local party competition. A
+simple interpretation of this dimension could be, for example, that it
+measures the ‘second-orderness’ of a local party manifesto. Recent debates
+about second-order elections have discussed the question of to what
+extent sub-national elections can be classified as being ‘second-order’
+(Marien et al. 2015). Our results can speak to this debate from a different
+perspective. Existing research on second-order elections focuses on the
+motives of voters (Reif and Schmitt 1980), while our results provide interesting insights from the perspective of the political supply-side by showing that local parties not only address local policy issues but also topics
+that are primarily related to regional, national and European politics
+(especially the AfD and Left Party) in order to promote the parties’ core
+issues as a potential vote-seeking strategy for upper-level elections in the
+multi-level systems (see Cabeza et al. 2017; Stecker 2015). Further
+
+
+20      M. GROSS AND M. JANKOWSKI
+
+
+research is needed to analyse to what extent this campaign strategy might
+be beneficial for these parties at the local level.
+
+
+Notes
+ 1. Various other approaches for extracting party positions have been suggested,
+    including the use of voters’ evaluation of party positions, scaling of
+    candidate data, or the analysis of parties’ responses to statements in voting
+    advice applications. While all of these approaches have their merits, we
+    consider them less applicable to the local level and less prominent compared
+    to expert surveys and manifesto coding.
+ 2. The reliability is high with regard to the aggregated measures produced by
+    this coding scheme (Laver 2014: 217), but the approach has also been
+    subject to criticism regarding the focus on ‘quasi-sentences’ and intercoder
+    reliability (D€aubler et al. 2012; Mikhaylov et al. 2012), and the problem of
+    implausible ‘leapfrog’ shifts in party positions (Flentje et al. 2017).
+ 3. Recently, Benoit et al. (2016) demonstrate that using crowd-sourced text
+    analysis might circumvent some of these problems. Applying crowd-sourced
+    text analysis to local party manifestos is, however, beyond the scope of
+    this article.
+ 4. Therefore, using national party positions as proxies for political actors’
+    policy orientations at the local level might be misleading. Debus et al.
+    (2013) alternatively use regional parties’ positions as proxies for local
+    parties’ positions in municipalities and counties in the German state of
+    Baden-W€   urttemberg. Again, the authors use the party positions from an
+    upper level to infer party positions at the local level.
+ 5. To be clear, we do not argue that (semi-)automatic content analysis is
+    superior to the hand-coding approach. We simply consider it unrealistic
+    that the massive effort conducted for manifestos at the national level can
+    (and will) be transferred for the analysis of local party manifestos.
+ 6. This corpus will be constantly updated and it is planned to cover other
+    countries in the future as well, turning the LMP into a truly international
+    research project.
+ 7. We applied common pre-processing steps to the manifestos (for a summary
+    on these steps see e.g. Lucas et al. 2015). This includes stemming,
+    converting all text to lower case, removal of punctuation and numbers, as
+    well as deleting all words that occur in fewer than 10 documents.
+    Furthermore, and additional to the use of the German dictionary in the
+    quanteda-package as stopwords, we treated all city and region names, party
+    labels and specific words only common to specific regions in Germany
+    as stopwords.
+ 8. Additionally, for a first application of text scaling techniques to local party
+    manifestos, we strive to include as many party manifestos as possible, and
+    due to the more professionalised local politics environment in larger cities,
+    data collection of manifestos has been easier than in small municipalities
+    since party manifestos have been more frequently available. We
+    acknowledge, however, that our results are thus probably not representative
+    for smaller municipalities and we intend to address this issue in
+    future research.
+
+
+                                                     WEST EUROPEAN POLITICS      21
+
+
+ 9. For more details on the method see the very accessible descriptions in Laver
+    et al. (2003) and Lowe (2008).
+10. More specifically, we use the national party manifestos of the AfD, CDU,
+    FDP, Green Party, NPD, Pirate Party, SPD and Left Party for the 2013
+    German national elections as ‘reference texts’ to comprise the ideological range
+    of party positions as much as possible. This data is provided by the Political
+    Documents Archive (www.polidoc.net; see Benoit et al. 2009).
+11. As ‘reference scores’, we assign expert judgements on parties’ general
+    left–right, economic and societal positions to the ‘reference texts’ by using
+    the Chapel Hill Expert Survey (CHES) 2014 (Polki et al. 2017). The CDU
+    and CSU are treated separately in the CHES survey, yet both parties ran
+    with a joint manifesto for the general elections in 2013. We therefore use
+    the averaged scores of experts’ evaluations of their positions.
+12. One could argue that using regional party manifestos as ‘reference texts’
+    might be more suitable as these party manifestos are more likely to include
+    words that are only relevant in a very specific regional context. Yet when
+    using regional party manifestos we would lose many of the previously
+    mentioned advantages of using national party manifestos. First, we would
+    no longer be able to position all parties in the same ideological space.
+    Secondly, we do not possess precise information on the positions of regional
+    parties. The only comprehensive data set on regional party positions in
+    Germany comes from Br€auninger and Debus (2012) and these regional
+    party positions are already estimated using Wordscores and parties’ national
+    election manifestos. In addition, some parties and independent local lists
+    that are highly relevant at the local level do not compete in regional
+    elections. Discarding these parties and independent local lists would
+    erroneously reduce the ideological heterogeneity of the vocabulary in some
+    regions and make party positions less reliable.
+13. Challenger parties can be defined as parties that ‘seek to challenge the
+    mainstream political consensus and do not ordinarily enter government’
+    (Hobolt and Tilly 2016: 972).
+14. For example, the Human Environment Animal Welfare Party (‘Partei
+    Mensch Umwelt Tierschutz’) is partly infiltrated by extreme right-wing
+    individuals who combine animal welfare issues with anti-establishment
+    rhetoric and agitation against foreigners (Stremmel 2017).
+15. Ideally, we would also like to include a measure for the popularity of the
+    local party. Unfortunately, this is not possible as no such data exists.
+    However, one might argue that the number of seats obtained in the
+    previous election is also a proxy for the more general popularity of the
+    local party.
+16. We use a two-month lag for this variable as manifestos are usually drafted
+    some months prior to the election.
+17. Using restricted maximum likelihood instead of clustered standard errors
+    does not change the results.
+
+
+Acknowledgements
+An earlier version of this paper was presented at the annual meeting of the
+European Political Science Association (EPSA), Milan, June 2017, at the annual
+
+
+22      M. GROSS AND M. JANKOWSKI
+
+
+meeting of the German Political Science Association (DVPW) AK Handlungsund Entscheidungstheorie, Mannheim, June 2017, at the DVPW AK Lokale
+Politikforschung, Bielefeld, March 2018, at the Waseda University Brussels Office
+Workshop Series ‘Manifesto Coordination in Multi-level Settings’, Brussels,
+March 2018, and at the workshop ‘Comparative Local Government in the Nordic
+Region’, Lund, November 2018. We thank the participants and discussants, as
+well as the two anonymous referees for their valuable feedback and helpful suggestions. In addition, we thank Anna Adendorf, Yannik Buhl, Florian Erlbruch,
+Hatice K€ uc€
+            uk, Antonia Lang, Samuel M€  uller, Torben Sch€utz, Kenneth Stiller and
+Lea Maria Straßheim for their valuable assistance in collecting and preparing local
+manifestos.
+
+
+Disclosure statement
+No potential conflict of interest was reported by the authors.
+
+
+Notes on contributors
+Martin Gross is an Assistant Professor at the Geschwister-Scholl-Institute of
+Political Science, Ludwig-Maximilians-University Munich. He works on local politics, political institutions, party competition, coalition politics in multi-level systems, and EU cohesion policy. His research has appeared in journals such as
+Party Politics, West European Politics, Public Choice and German Politics. [martin.gross@gsi.uni-muenchen.de]
+Michael Jankowski is a post-doctoral researcher at the University of Oldenburg.
+He works on voter, candidate and party behaviour. His research has appeared in
+journals such as Party Politics, Electoral Studies, West European Politics and
+Journal of European Public Policy. [michael.jankowski@uol.de]
+
+
+ORCID
+Martin Gross    http://orcid.org/0000-0002-8836-3388
+Michael Jankowski     http://orcid.org/0000-0002-7765-9132
+
+
+References
+Agasoster, Bodil (2001). ‘A Framework for Analysing Local Party Policy
+  Emphases in Scotland’, in Michael Laver (ed.), Estimating the Policy Positions
+  of Political Actors. London: Routledge, 76–89.
+Alonso, Sonia, Laura Cabeza, and Braulio G         omez (2013). ‘Measuring
+  Centre–Periphery Preferences: The Regional Manifestos Project’, Regional &
+  Federal Studies 23:2, 189–211.
+Angenendt, Michael (2018). ‘Anti-Partyism in German Independent Local Lists:
+  Empirical Insights from a Membership Study’, German Politics 27:3, 401–23.
+Arzheimer, Kai (2015). ‘The AfD: Finally a Successful Right-Wing Populist
+  Eurosceptic Party for Germany?’, West European Politics 38:3, 535–56.
+
+
+                                                       WEST EUROPEAN POLITICS      23
+
+
+Ashworth, Rachel E. (2000). ‘Party Manifestos and Local Accountability: A
+   Content Analysis of Local Election Pledges in Wales’, Local Government
+   Studies 26:3, 11–30.
+B€ack, Hanna (2003). ‘Explaining and Predicting Coalition Outcomes: Conclusions
+   from Studying Data on Local Coalitions’, European Journal of Political Research
+   42:4, 441–72.
+B€ack, Hanna (2008). ‘Intra-Party Politics and Coalition Formation: Evidence from
+   Swedish Local Government’, Party Politics 14:1, 71–89.
+B€ack, Henry (2005). ‘The Institutional Setting of Local Political Leadership and
+   Community Involvement’, in Michael Haus, Hubert Heinelt, and Murray
+   Stewart (eds.), Urban Governance and Democracy. London: Routledge, 65–101.
+B€ack, Henry, Hubert Heinelt, and Annick Magnier, eds. (2006). The European
+   Mayor: Political Leaders in the Changing Context of Local Democracy.
+   Wiesbaden: VS Verlag f€   ur Sozialwissenschaften.
+Bakker, Ryan, Catherine de Vries, Erika Edwards, Liesbet Hooghe, Seth Jolly,
+   Gary Marks, Jonathan Polk, Jan Rovny, Marco Steenbergen, and Milada Anna
+   Vachudova (2015). ‘Measuring Party Positions in Europe: The Chapel Hill
+   Expert Survey Trend File, 1999–2010’, Party Politics 21:1, 143–52.
+Benoit, Kenneth, Drew Conway, Benjamin E. Lauderdale, Michael Laver, and
+   Slava Mikhaylov (2016). ‘Crowd-sourced Text Analysis: Reproducible and Agile
+   Production of Political Data’, American Political Science Review 110:2, 278–95.
+Benoit, Kenneth and Michael Laver (2006). Party Policy in Modern Democracies.
+   London: Routledge.
+Benoit, Kenneth, Thomas Br€auninger, and Marc Debus (2009). ‘Challenges for
+   Estimating Policy Preferences: Announcing an Open Access Archive of
+   Political Documents’, German Politics 18:3, 441–54.
+Berbuir, Nicole, Marcel Lewandowsky, and Jasmin Siri (2015). ‘The AfD and its
+   Sympathisers: Finally a Right-Wing Populist Movement in Germany?’, German
+   Politics 24:2, 154–78.
+Bernauer, Julian, and Thomas Br€auninger (2009). ‘Intra-Party Preference
+   Heterogeneity and Faction Membership in the 15th German Bundestag: A
+   Computational Text Analysis of Parliamentary Speeches’, German Politics 18:3,
+   385–402.
+Br€auninger, Thomas, and Marc Debus (2012). Parteienwettbewerb in den deutschen Bundesl€andern. Wiesbaden: VS Verlag f€   ur Sozialwissenschaften.
+Br€auninger, Thomas, Marc Debus, and Jochen M€        uller (2013). ‘Estimating Policy
+   Positions of Political Actors Across Countries and Time’, MZES Arbeitspapiere
+   – Working Papers 153.
+Budge, Ian, Hans-Dieter Klingemann, Andrea Volkens, Judith Bara, and Eric
+   Tanenbaum, eds. (2001). Mapping Policy Preferences: Estimates for Parties,
+   Electors, and Governments 1945–1998. Oxford: Oxford University Press.
+Cabeza, Laura, Braulio G   omez, and Sonia Alonso (2017). ‘How National Parties
+   Nationalize Regional Elections: The Case of Spain’, Publius: The Journal of
+   Federalism 47:1, 77–98.
+Clark, Alistair, and Lynn Bennie (2018). ‘Parties, Mandates and Multilevel
+   Politics: Subnational Variation in British General Election Manifestos’, Party
+   Politics 24:3, 253–64.
+D€aubler, Thomas, Kenneth Benoit, Slava Mikhaylov, and Michael Laver (2012).
+   ‘Natural Sentences as Valid Units for Coded Political Texts’, British Journal of
+   Political Science 42:4, 937–51.
+
+
+24     M. GROSS AND M. JANKOWSKI
+
+
+Debus, Marc, Christoph Knill, and Jale Tosun (2013). ‘Registration Fees for
+   Same-Sex Unions, Local Party Politics and Societal Demand’, Local
+   Government Studies 39:6, 756–76.
+Debus, Marc, and Martin Gross (2016). ‘Coalition Formation at the Local Level:
+   Institutional Constraints, Party Policy Conflict, and Office-Seeking Political
+   Parties’, Party Politics 22:6, 835–46.
+Denters, Bas (1985). ‘Towards a Conditional Model of Coalition Behaviour’,
+   European Journal of Political Research 13:3, 295–309.
+Dodeigne, Jeremy, Joanna Krukowska, and Aiste Lazauskiene (2018). ‘The
+   Mayors’ Political Career: Between Local and National Ambition’, in Hubert
+   Heinelt, Annick Magnier, Marcello Cabria and Herwig Reynaert (eds.), Political
+   Leaders and Changing Local Democracy: The European Mayor. Basingstoke:
+   Palgrave Macmillan, 109–47.
+Egner, Bj€ orn (2015). ‘Parliaments in Disguise? How German Councillors Perceive
+   Local Councils’, Local Government Studies 41:2, 183–201.
+Egner, Bj€ orn (2018). ‘Parteien in der Kommunalpolitik’, in Hubert Heinelt, Bj€
+                                                                               orn
+   Egner, Timo Alexander Richter, Angelika Vetter, Sabine Kuhlmann and
+   Markus Seyfried (eds.), B€      urgermeister in Deutschland: Problemsichten –
+   Einstellungen – Rollenverst€andnis. Baden-Baden: Nomos, 53–67.
+Egner, Bj€ orn, David Sweeting, and Pieter-Jan Klok, eds. (2013). Local Councillors
+   in Europe. Wiesbaden: Springer VS.
+Egner, Bj€ orn, Adam Gendzwiłł, Pawel Swianiewicz, and Werner Pleschberger
+   (2018). ‘Mayors and Political Parties’, in Hubert Heinelt, Annick Magnier,
+   Marcello Cabria and Herwig Reynaert (eds.), Political Leaders and Changing
+   Local Democracy: The European Mayor. Basingstoke: Palgrave Macmillan,
+   327–58.
+Falco-Gimeno, Albert (2018). ‘The Political Geography of Government
+   Formation: Why Regional Parties Join Coalitions’, Party Politics, available at
+   https://journals.sagepub.com/doi/abs/10.1177/1354068817750865.
+Flentje, Jan-Erik, Thomas K€onig, and Moritz Marbach (2017). ‘Assessing the
+   Validity of the Manifesto Common Space Scores’, Electoral Studies 47, 25–35.
+Foremny, Dirk, and Nadine Riedel (2014). ‘Business Taxes and the Electoral
+   Cycle’, Journal of Public Economics 115:3, 48–61.
+Freier, Ronny, and Sebastian Thomasius (2016). ‘Voters Prefer More Qualified
+   Mayors, but does it Matter for Public Finances? Evidence for Germany’,
+   International Tax and Public Finance 23:5, 875–910.
+Gerber, Elisabeth, and Daniel Hopkins (2011). ‘When Mayors Matter: Estimating
+   the Impact of Mayoral Partisanship on City Policy’, American Journal of
+   Political Science 55:2, 326–39.
+Goerres, Achim, and Markus Tepe (2013). ‘F€       ur die Kleinen ist uns nichts zu
+   teuer? Kindergartengeb€    uhren und ihre Determinanten in Deutschlands
+   95 bev€olkerungsreichsten St€adten zwischen 2007 und 2010’, dms – der moderne
+   Staat 6:1, 169–90.
+Grimmer, Justin, and Brandon M. Stewart (2013). ‘Text as Data: The Promise
+   and Pitfalls of Automatic Content Analysis Methods for Political Texts’,
+   Political Analysis 21:3, 267–97.
+Gross, Martin, and Marc Debus (2018). ‘Gaining New Insights by Going Local:
+   Determinants of Coalition Formation in Mixed Democratic Polities’, Public
+   Choice 174:1–2, 61–80.
+
+
+                                                      WEST EUROPEAN POLITICS      25
+
+
+Heinelt, Hubert, and Nikolaos-K Hlepas (2006). ‘Typologies of Local Government
+   Systems’, in Henry B€ack, Hubert Heinelt and Annick Magnier (eds.), The
+   European Mayor. Wiesbaden: VS Verlag f€      ur Sozialwissenschaften, 21–42.
+Heinelt, Hubert, Annick Magnier, Marcello Cabria, and Herwig Reynaert, eds.
+   (2018). Political Leaders and Changing Local Democracy: The European Mayor.
+   Basingstoke: Palgrave Macmillan.
+Hjorth, Frederik, Robert Klemmensen, Sara Hobolt, Martin Ejnar Hansen, and
+   Peter Kurrild-Klitgaard (2015). ‘Computers, Coders, and Voters: Comparing
+   Automated Methods for Estimating Party Positions’, Research & Politics 2:2,
+   1–9.
+Hobolt, Sara B., and James Tilly (2016). ‘Fleeing the Centre: The Rise of
+   Challenger Parties in the Aftermath of the Euro Crisis’, West European Politics
+   39:5, 971–91.
+Hooghe, Liesbet, Ryan Bakker, Anna Brigevich, Catherine de Vries, Erica
+   Edwards, Gary Marks, Jan Rovny, Marco Steenbergen, and Milada Vachudova
+   (2010). ‘Reliability and Validity of the 2002 and 2006 Chapel Hill Expert
+   Surveys on Party Positioning’, European Journal of Political Research 49:5,
+   687–703.
+Jankowski, Michael, Sebastian Schneider, and Markus Tepe (2017). ‘Ideological
+   Alternative? Analyzing Alternative f€  ur Deutschland Candidates’ Ideal Points via
+   Black Box Scaling’, Party Politics 23:6, 704–16.
+Kjaer, Ulrik, and Jorgen Elklit (2010). ‘Party Politicisation of Local Councils:
+   Cultural or Institutional Explanations for Trends in Denmark, 1966–2005’,
+   European Journal of Political Research 49:3, 337–58.
+Klemmensen, Robert, Sara Binzer Hobolt, and Martin Ejnar Hansen (2007).
+   ‘Estimating Policy Positions Using Political Texts: An Evaluation of the
+   Wordscores Approach’, Electoral Studies 26:4, 746–55.
+Klingelh€ofer, Tristan, and Jochen M€        uller (2015). ‘Consociational Rational
+   Coalitions: Norm-Based Government Formation and the Case of the Dutch
+   Provinces’, Acta Politica 50:1, 101–24.
+Klingemann, Hans-Dieter, Andrea Volkens, Judith Bara, Ian Budge, and
+   Michael D. McDonald, eds. (2006). Mapping Policy Preferences II: Estimates for
+   Parties, Electors, and Governments in Eastern Europe, European Union and
+   OECD, 1990–2003. Oxford: Oxford University Press.
+Laver, Michael (2014). ‘Measuring Policy Positions in Political Space’, Annual
+   Review of Political Science 17, 207–23.
+Laver, Michael, Colin Rallings, and Michael Thrasher (1998). ‘Policy Payoffs in
+   Local Government’, British Journal of Political Science 28:2, 333–53.
+Laver, Michael, Kenneth Benoit, and John Garry (2003). ‘Extracting Policy
+   Positions from Political Texts Using Words as Data’, American Political Science
+   Review 97:2, 311–31.
+Lewandowsky, Marcel, Heiko Giebler, and Aiko Wagner (2016).
+   ‘Rechtspopulismus in Deutschland: Eine empirische Einordnung der Parteien
+   zur Bundestagswahl 2013 unter besonderer Ber€            ucksichtigung der AfD’,
+   Politische Vierteljahresschrift 57:2, 247–75.
+Lindh, Arvid, and Ingemar Johansson Sev€a (2018). ‘Political Partisanship and
+   Welfare Service Privatization: Ideological Attitudes among Local Politicians in
+   Sweden’, Scandinavian Political Studies, 41:1, 75–97.
+Lindst€adt, Rene, Sven-Oliver Proksch, and Jonathan B. Slapin (2018). ‘When
+   Experts Disagree: Response Aggregation and its Consequences in Expert
+
+
+26     M. GROSS AND M. JANKOWSKI
+
+
+  Surveys’, Political Science Research and Methods, available at https://www.cambridge.org/core/journals/political-science-research-and-methods/article/whenexperts-disagree-response-aggregation-and-its-consequences-in-expert-surveys/
+  FA28544B5C2B7FB722F925697F53A09C
+Lowe, Will (2008). ‘Understanding Wordscores’, Political Analysis 16:4, 356–71.
+Lucas, Christopher, Richard Nielsen, Margaret Roberts, Brandon Stewart, Alex
+  Storer, and Dustin Tingley (2015). ‘Computer Assisted Text Analysis for
+  Comparative Politics’, Political Analysis 23:2, 254–77.
+Mair, Peter (2001). ‘Searching for the positions of political actors. A review of
+  approaches and a critical evaluation of expert surveys’, in Michael Laver (ed.),
+  Estimating the Policy Positions of Political Actors. London and New York:
+  Routledge, 10–30.
+Marien, Sophie, Ruth Dassonneville, and Marc Hooghe (2015). ‘How Second
+  Order are Local Elections? Voting Motives and Party Preferences in Belgian
+  Municipal Elections’, Local Government Studies 41:6, 898–916.
+Marks, Gary, Liesbet Hooghe, Marco R. Steenbergen, and Ryan Bakker (2007).
+  ‘Crossvalidating Data on Party Positioning on European integration’, Electoral
+  Studies 26:1, 23–38.
+Meguid, Bonnie M. (2005). ‘Competition Between Unequals: The Role of
+  Mainstream Party Strategy in Niche Party Success’, American Political Science
+  Review 99:3, 347–59.
+Merz, Nicolas, Sven Regel, and Jirka Lewandowski (2016). ‘The Manifesto
+  Corpus: A New Resource for Research on Political Parties and Quantitative
+  Text Analysis’, Research & Politics 3:2, 1–8.
+Mikhaylov, Slava, Michael Laver, and Kenneth Benoit (2012). ‘Coder Reliability
+  and Misclassification in the Human Coding of Party Manifestos’, Political
+  Analysis 20:1, 78–91.
+M€uller, Jochen (2009). ‘The Impact of the Socio-Economic Context on the L€ander
+  Parties’ Policy Positions’, German Politics 18:3, 365–84.
+M€uller, Jochen (2013). ‘On a Short Leash? Sub-National Party Positions between
+  Regional Context and National Party Unity’, Journal of Elections, Public
+  Opinion and Parties 23:2, 177–99.
+M€uller, Wolfgang C. (2009). ‘Government Formation’, in Todd Landmann and
+  Neil Robinson (eds.), The SAGE Handbook of Comparative Politics. Los
+  Angeles, CA: SAGE, 227–45.
+Mudde, Cas (2004). ‘The Populist Zeitgeist’, Government and Opposition 39:4,
+  541–63.
+Naumann, Ingo (2012). W€ahlergemeinschaften in einer Parteiendemokratie: Ihre
+  Stellung im politischen System der Bundesrepublik Deutschland. Wiesbaden: VS
+  Verlag f€ ur Sozialwissenschaften.
+Nyhuis, Dominic (2017). ‘Estimating Policy Positions of Local Parties in Elections
+  with Multi-Vote Ballots’, Local Government Studies 43:3, 475–98.
+Nyhuis, Dominic, and Pascal K€          onig (2018). ‘Estimating the Conflict
+  Dimensionality in the German L€ander from Vote Advice Applications,
+  2014–2017’, Statistics, Politics and Policy 9:1, 57–86.
+Ohmura, Tamaki, Stefanie Bailer, Peter Meissner, and Peter Selb (2018). ‘Party
+  Animals, Career Changers and Other Pathways into Parliament’, West
+  European Politics 41:1, 169–95.
+
+
+                                                      WEST EUROPEAN POLITICS      27
+
+
+Otjes, Simon (2018). ‘Pushed by National Politics or Pulled by Localism? Voting
+   for Independent Local Parties in the Netherlands’, Local Government Studies
+   44:3, 305–28.
+Polk, Jonathan, Jan Rovny, Ryan Bakker, Erica Edwards, Liesbet Hooghe, Seth
+   Jolly, Jelle Koedam, Filip Kostelka, Gary Marks, Gijs Schumacher, Marco
+   Steenbergen, Milada Vachudova, and Marko Zilovic (2017). ‘Explaining the
+   Salience of Anti-Elitism and Reducing Political Corruption for Political Parties
+   in Europe with the 2014 Chapel Hill Expert Survey Data.’ Research & Politics
+   4:1, 1–9.
+Reif, Karlheinz, and Hermann Schmitt (1980). ‘Nine Second-Order Elections: A
+   Conceptual Framework for the Analysis of European Election Results’,
+   European Journal of Political Research 8:1, 3–44.
+Reiser, Marion, and Everhard Holtmann, eds. (2008). Farewell to the Party
+   Model? Independent Local Lists in East and West European Countries.
+   Wiesbaden: VS Verlag f€   ur Sozialwissenschaften.
+Remer-Bollow, Uwe (2017). ‘Politische Ideologie und ideologische Kongruenz in
+   der lokalen Politik’, in Markus Tausendpfund and Angelika Vetter (eds.),
+   Politische Einstellungen von Kommunalpolitikern im Vergleich. Wiesbaden: VS
+   Verlag f€ur Sozialwissenschaften, 217–54.
+Serritzlew, Søren (2003). ‘Shaping Local Councillor Preferences: Party Politics,
+   Committee Structure and Social Background’, Scandinavian Political Studies 26:
+   4, 327–48.
+Serritzlew, Søren, Asbjorn Skjaeveland, and Jens Blom-Hansen (2008). ‘Explaining
+   Oversized Coalitions: Empirical Evidence from Local Governments’, The
+   Journal of Legislative Studies 14:4, 421–50.
+Serritzlew, Søren, Jens Blom-Hansen, and Asbjorn Skjaeveland (2010). ‘Portfolio
+   Allocation or Policy Horizons? Determinants of Coalition Formation in Danish
+   Local Government’, Local Government Studies 36:6, 843–66.
+Sieberer, Ulrich, Thomas Saalfeld, Tamaki Ohmura, Henning Bergmann, and
+   Stefanie Bailer (2018). ‘Roll-Call Votes in the German Bundestag: A New
+   Dataset, 1949–2013’, British Journal of Political Science, available at https://
+   www.cambridge.org/core/journals/british-journal-of-political-science/article/rollcall-votes-in-the-german-bundestag-a-new-dataset-19492013/FB0AC94535D5AC6
+   FB7B2DBD7A77E4963.
+Skjaeveland, Asbjorn, Søren Serritzlew, and Jens Blom-Hansen (2007). ‘Theories
+   of Coalition Formation: An Empirical Test Using Data from Denmark’,
+   European Journal of Political Research 46:5, 721–45.
+Slapin, Jonathan B., and Sven-Oliver Proksch (2008). ‘A Scaling Model for
+   Estimating Time-Series Party Positions from Texts’, American Journal of
+   Political Science 52:3, 705–22.
+Stecker, Christian (2015). ‘Parties on the Chain of Federalism: Position-Taking
+   and Multi-level Party Competition in Germany’, West European Politics 38:6,
+   1305–26.
+Stefuriuc, Irina (2009). ‘Government Coalition and Multi-Level Settings:
+   Institutional Determinant and Party Strategy’, Regional and Federal Studies 19:
+   1, 1–12.
+Steunenberg, Bernard (1992). ‘Coalition Theories: Empirical Evidence for Dutch
+   Municipalities’, European Journal of Political Research 22:3, 245–78.
+Stremmel, Jan (2017). ‘Die Kuschelnazis’, S€  uddeutsche Zeitung 4.-5.11.2017, 4–5.
+
+
+28     M. GROSS AND M. JANKOWSKI
+
+
+van de Voorde, Nicolas, Nicolas Bouteca, Tom Schamp, and Kristof Steyvers
+  (2018). ‘Birds of a Feather or by Note? Ideological Nationalization of Local
+  Electoral Manifestos in Belgium’, Lex Localis – Journal of Local SelfGovernment 16:1, 1–24.
+Wilkerson, John, and Andreus Casas (2017). ‘Large-Scale Computerized Text
+  Analysis in Political Science: Opportunities and Challenges’, Annual Review of
+  Political Science 20, 529–44.

@@ -1,0 +1,811 @@
+Session 1C: Sentiment                                                                                                     CIKM’17, November 6-10, 2017, Singapore
+
+
+                 Users Are Known by the Company They Keep: Topic
+                 Models for Viewpoint Discovery in Social Networks
+                   Thibaut Thonet, Guillaume Cabanac, Mohand Boughanem, Karen Pinel-Sauvagnat
+                                                              IRIT, Université de Toulouse, CNRS
+                                                                       Toulouse, France
+                                                         {thonet,cabanac,boughanem,sauvagnat}@irit.fr
+
+ABSTRACT                                                                                         other works noted the influence of social media on key political
+Social media platforms such as weblogs and social networking sites                               factors such as democratic participation [53] and campaigning [24].
+provide Internet users with an unprecedented means to express                                       Concurrently with the growing importance of social media in
+their opinions and debate on a wide range of issues. Concurrently                                public and political communication, a phenomenon known as the
+with their growing importance in public communication, social                                    echo chambers [48] or filter bubble [34] effect was recently brought
+media platforms may foster echo chambers and filter bubbles: ho-                                 to light by scholars. This effect postulates that homophily (i.e.,
+mophily and content personalization lead users to be increasingly                                higher chance of bonding between like-minded people) and conexposed to conforming opinions. There is therefore a need for                                    tent personalization lead to an increased exposure to conforming
+unbiased systems able to identify and provide access to varied                                   opinions, along with the hiding of contrasting positions. This pheviewpoints. To address this task, we propose in this paper a novel                               nomenon has been for example analyzed in the context of online
+unsupervised topic model, the Social Network Viewpoint Discovery                                 news consumption [14] and exposure to ideologically diverse conModel (SNVDM). Given a specific issue (e.g., U.S. policy) as well as                             tent on Facebook [4] and Twitter [12, 16]. While it has been obthe text and social interactions from the users discussing this issue                            served that Internet users are not necessarily interested in purely
+on a social networking site, SNVDM jointly identifies the issue’s                                antagonistic content, the study of news consumption patterns sugtopics, the users’ viewpoints, and the discourse pertaining to the                               gests that balanced sources, which reflect varied viewpoints, are
+different topics and viewpoints. In order to overcome the potential                              nonetheless appreciated [17]. Therefore, considering the instrusparsity of the social network (i.e., some users interact with only a                            mental role played by social media in politics nowadays, there is
+few other users), we propose an extension to SNVDM based on the                                  a need for unbiased systems that enable users to access different
+Generalized Pólya Urn sampling scheme (SNVDM-GPU) to leverage                                   opinions and thus “burst” the filter bubble.
+“acquaintances of acquaintances” relationships. We benchmark the                                    An initial and necessary step in the design of such unbiased sysdifferent proposed models against three baselines, namely TAM,                                   tems is an algorithmic approach able to identify users’ viewpoints
+SN-LDA, and VODUM, on a viewpoint clustering task using two                                      on a specific issue (e.g., U.S. policy) and the topics pertaining to
+real-world datasets. We thereby provide evidence that our model                                  this issue. In order to address this task in a realistic context – i.e.,
+SNVDM and its extension SNVDM-GPU significantly outperform                                       where annotation data is scarce, we propose in the present paper
+state-of-the-art baselines, and we show that utilizing social interac-                           a novel unsupervised topic model, the Social Network Viewpoint
+tions greatly improves viewpoint clustering performance.                                         Discovery Model (SNVDM). Given a specific issue as well as the text
+                                                                                                 and social interactions from the users discussing this issue on a
+KEYWORDS                                                                                         social networking site, SNVDM jointly identifies the issue’s topics,
+                                                                                                 the users’ viewpoints, and the discourse pertaining to the different
+Viewpoint Discovery, Topic Modeling, Social Networks
+                                                                                                 topics and viewpoints. In addition to utilizing text data as in traditional topic modeling approaches, SNVDM exploits the homophily
+                                                                                                 phenomenon and thus relies on the users’ social interactions to in1     INTRODUCTION                                                                               fer their viewpoints. Indeed, users who connect together are more
+The advent of social media platforms such as weblogs and social                                  likely to have the same viewpoint, as prior work showed [10, 15].
+networking sites provided Internet users with an unprecedented                                      While a user’s social interactions provide rich insight on her
+means to express their opinions and debate on a wide range of                                    opinions, social networks contain sparse components: some users
+issues, including society and policy. As a consequence, social media                             interact with only a few other users. They are however weakly
+is increasingly impacting political life for lay users and policy mak-                           connected to other users: the online acquaintances of their online
+ers alike, as a 2014 report by the Pew Research Center suggests [47].                            acquaintances (thereafter, for the sake of simplicity, “the acquainBetween 2010 and 2014, the share of American voters following po-                                tances of their acquaintances”). Accounting for the virtual links
+litical figures on social media has more than doubled. Additionally,                             between a user and the acquaintances of her acquaintances, we
+                                                                                                 propose an extension to SNVDM, namely SNVDM-GPU, which is
+ACM acknowledges that this contribution was authored or co-authored by an employee,              based on the Generalized Pólya Urn (GPU) scheme [28]. The GPU
+contractor or affiliate of a national government. As such, the Government retains a              scheme has been applied in prior work to embed word similarity
+nonexclusive, royalty-free right to publish or reproduce this article, or to allow others
+to do so, for Government purposes only.                                                          in topic models [8, 25, 30, 52]. To the best of our knowledge, our
+CIKM’17, November 6–10, 2017, Singapore.                                                         paper introduces the first application of GPU to social networking
+© 2017 ACM. ISBN 978-1-4503-4918-5/17/11. . . $15.00                                             interactions.
+DOI: https://doi.org/10.1145/3132847.3132897
+Session 1C: Sentiment                                                                                  CIKM’17, November 6-10, 2017, Singapore
+
+
+    The contributions of the present article are the following:                such as Naive Bayes [13, 19], Support Vector Machine [2, 9, 27],
+       • We propose a topic model, the Social Network Viewpoint                Decision Trees [37], or Neural Networks [22, 43]. While these clasDiscovery Model (SNVDM), that leverages text and social               sifiers usually reach high accuracy, they need to be fed labeled
+         networking interactions to estimate users’ viewpoints and             examples, which may be difficult to gather.
+         discussed topics in social media data;
+       • Accounting for social network sparsity and weaker connec-             2.2    Unsupervised Viewpoint Discovery
+         tions between users, we extend SNVDM into the SNVDMA common method to overcome the lack of annotation data in text
+         GPU model, which leverages the Generalized Pólya Urn
+                                                                               mining tasks is to explore unsupervised topic modeling approaches,
+         (GPU) scheme;
+                                                                               e.g., based on Latent Dirichlet Allocation (LDA) [6]. Researchers
+       • The two proposed models and variations thereof are evalutherefore proposed Bayesian and topic models to discover viewated against state-of-the-art baselines, namely TAM [35],
+                                                                               points in formal documents such as essays [35, 36, 50] and legislaSN-LDA [45], and VODUM [50], using two real-world
+                                                                               tion bills [33], or in social media data such as forum posts [40, 42]
+         datasets harvested from Twitter in [7] to assess the vaand tweets [5, 23, 44].
+         lidity of the discovered viewpoints;
+       • Additionally, we publicly release the code of our models
+         and baselines to foster reproducibility and facilitate future            2.2.1 Application to Formal Text. In [35], the authors defined the
+         viewpoint discovery research.                                         Topic-Aspect Model (TAM) that jointly models topics and so-called
+                                                                               aspects, which can be interpreted as viewpoints in the context
+   Section 2 reviews the prior work related to viewpoint discovof viewpoint discovery. A constrastive viewpoint summarization
+ery. Then, in Section 3, we define our model SNVDM as well as its
+                                                                               framework based on TAM was then described in [36], aiming to
+extension SNVDM-GPU and we detail their inference procedure.
+                                                                               find phrases that best reflect the different viewpoints pertaining to
+Section 4 describes the experiments conducted to validate these
+                                                                               a set of topics. Another topic model, the Viewpoint and Opinion
+models and how they compete with state-of-the-art baselines. FiDiscovery Unification Model (VODUM), was proposed to identify
+nally, Section 5 concludes the article and provides future research
+                                                                               viewpoints by leveraging parts of speech [50]. The proposed scheme
+directions to our work.
+                                                                               helped discriminate between topic words and opinion words. The
+                                                                               authors of [33] studied a slightly different yet related problem:
+2     RELATED WORK                                                             the prediction and analysis of legislators’ ideal point given their
+This section introduces the prior work related to viewpoint discov-            votes on bills. Ideal point is a measure used in political science
+ery in social media. We first review political polarization in social          to assign policy makers on a one-dimension ideological spectrum
+media. Then, we describe unsupervised topic models proposed in                 ranging from liberal to conservative. The topic model devised
+literature to address viewpoint discovery in formal text and social            in [33] integrates regression techniques to estimate real-valued
+media. We finally provide a comparison of our models against prior             ideal points and is able to extract ideological discourse vocabulary.
+approaches.
+                                                                                  2.2.2 Models for Social Media Data. Topic modeling for view2.1     Political Polarization in Social Media                                 point discovery has been applied as well to social media and particThe growing interplay between social media and politics impulsed               ularly to forums, which naturally enable Internet users to debate.
+substantial research on the polarization of online discussions. A              A more comprehensive literature review on the subject is provided
+seminal study reported on the interactions between political blog-             in [39]. The topic models described in [40–42] utilize the threaded
+gers for the 2004 U.S. elections [1]: Democratic (resp. Republican)            nature of forum posts. The authors assume that the viewpoint conbloggers were primarily connected to Democratic (resp. Republi-                veyed in a post depends on the post’s positive or negative polarity
+can) bloggers. A similar trend was stressed from the analysis of               and the viewpoint of the parent post – thereby denoting agreement
+political discussions on Twitter [10]. It was however noted that               or disagreement between users. However, the proposed approach
+mentions across ideologically antagonistic users are frequent, as              could not be applied to social networking sites such as Twitter,
+opposed to retweets across such users. Other works analyzed the                where threaded interactions are scarce.
+topics and word usage of Twitter communities built on political or                Viewpoint discovery was also studied on Twitter. The authors
+social polarizing issues [7, 18]. An interesting related body of work          of [44] designed a time-aware topic model to summarize contrastive
+tackled the detection of online controversy, i.e., issues that polarize        opinions expressed in multilingual social text streams. However,
+Internet users. In [11], the authors proposed a weakly-supervised              contrast was based only on sentiment (positive, negative, or neuapproach to identify controversial Wikipedia articles based on edits           tral) rather than on viewpoint – which goes beyond mere sentiand talk pages. Controversy detection was also studied on Twitter              ment polarity and encompasses partisanship, e.g., pro-Palestine and
+using supervised [38] and unsupervised methods [15].                           pro-Israel, or Democratic and Republican. Conversely, the work
+   The burst of interest for the study of polarization in social me-           described in [23] focused on detecting positions and political issues
+dia led researchers to devise supervised machine learning models               on Twitter. It proposed a topic model that uses politically affiliated
+in order to automatically identify users’ political affiliation and            users to estimate non-affiliated users’ position; yet it did not leverviewpoint (e.g., Democratic or Republican) from their generated                age interactions between users. On the other hand, a Bayesian ideal
+content and/or social interactions [2, 9, 13, 37, 43]. The proposed            point model for Twitter users was devised in [5] but it was only
+approaches were based on traditional machine learning classifiers              based on follow interactions and it did not utilize text data.
+Session 1C: Sentiment                                                                                                                 CIKM’17, November 6-10, 2017, Singapore
+
+
+Table 1: Comparison of our models SNVDM and SNVDM-GPU                                                         Table 2: Definition of the notations used in the paper.
+against related work approaches.
+                                                                                                            Symbol             Definition
+                                  Application   Use of social     Discovery of                                                 Number of users, number of documents from u, number of
+                                                                                     Unified              U , Du , Ou ,
+          Reference                to social    networking       viewpoints and                                                outgoing interactions for u, number of tokens for u and d,
+                                                                                    approach               Nud , Iud
+                                    media       interactions    related discourse                                              number of incoming interactions for u and d, resp.
+ TAM [35, 36]; VODUM [50]; [33]       ✗              ✗                 ✓              ✓                                        Number of topics, number of viewpoints, and number of
+      [40]; [42]; [41]; [23]          ✓              ✗                 ✓              ✓                     T, V,W
+                                                                                                                               words in the vocabulary, resp.
+               [44]                   ✓              ✗                 ✗              ✓
+       [5]; SN-LDA [45]               ✓              ✓                 ✗              ✓                   wudn , zudn ,        The n-th word token and its topic, level, and route assignments,
+               [49]                   ✓              ✓                 ✗              ✗                   ludn , xudn          resp., for document d from user u.
+   SNVDM(-GPU) [this paper]           ✓              ✓                 ✓              ✓
+                                                                                                              sudi             The sender of incoming interaction i on document d from u.
+                                                                                                              vud              The viewpoint assignment for document d from user u.
+                                                                                                                   ′           The recipient and the viewpoint assignment, resp., for
+                                                                                                            ruo , vuo
+   Although addressing a different task, the topic model described                                                             outgoing interaction o of user u.
+
+in [45], namely the Social Network Latent Dirichlet Allocation                                                                 1 × W matrix of background word distributions, V × W matrix
+                                                                                                        ϕ 00 , ϕ 01 , ϕ 10 ,   of viewpoint word distributions, T × W matrix of topic word
+(SN-LDA), combined both text and social networking interactions                                              ϕ 11 , β          distributions, V × T × W matrix of viewpoint-topic word
+to detect communities on Twitter. The difference between tradi-                                                                distributions, and their concentration parameter, resp.
+
+tional community detection and viewpoint discovery is that the                                              ψ0 , ψ1 ,          1 × 2 matrix of general route distribution, T × 2 matrix of topicγ0 , γ1            specific route distributions, and their shape parameters, resp.
+former usually focuses on topical communities (e.g., communities                                                               V × U matrix of viewpoint-specific interacting user distributions,
+                                                                                                               ξ, µ
+discussing football or programming) while the latter studies the                                                               and their concentration parameter, resp.
+different viewpoints expressed on a common set of topics (e.g.,                                             σ , δ0 , δ1
+                                                                                                                               V × U matrix of user-specific level distributions, and their shape
+                                                                                                                               parameters, resp.
+the Democratic and Republican positions on abortion). Nonethe-                                                                 U × T matrix of user-specific topic distributions and their
+                                                                                                              θ, α
+less, the homophily phenomenon is featured in both cases; the                                                                  concentration parameter, resp.
+method used in [45] is therefore relevant to our viewpoint discov-                                             π, η
+                                                                                                                               U × V matrix of user-specific viewpoint distributions and their
+                                                                                                                               concentration parameter, resp.
+ery goal. Community detection techniques were otherwise applied
+                                                                                                                               Number of background instances of word w, number of viewin conjunction with LDA to analyze advocating and conspiring dis-                                       n 00w , n 01vw ,       point instances of word w assigned to v, number of topic
+cussions about vaccines and their underlying topics on Twitter [49].                                   n 10zw , n 11vzw        instances of word w assigned to z, number of viewpoint/topic
+                                                                                                                               instances of word w assigned to v and z, resp.
+However, the proposed approach did not unify the modeling of
+                                                                                                                               Number of words assigned to level 0 and route x and number of
+text and social interactions. Moreover, the community detection                                            n 0x , n 1zx
+                                                                                                                               words assigned to level 1, topic z, and route x, resp.
+techniques used are non-parametric and thus lead to the discovery                                              nvu
+                                                                                                                               Number of interactions with interacting user u assigned to
+                                                                                                                               viewpoint v.
+of many small communities which may be difficult to interpret and
+                                                                                                               nul             Number of words from user u assigned to level l.
+do not necessarily reflect different viewpoints.                                                               nuz             Number of words from user u assigned to topic z.
+   We summarize in Table 1 the characteristics of our models                                                                   Number of documents and outgoing interactions from user u
+                                                                                                               nuv
+SNVDM and SNVDM-GPU compared against related work from                                                                         assigned to viewpoint v.
+
+Section 2.2. Our topic models SNVDM and SNVDM-GPU use social
+networking interactions and text in a unified fashion to discover
+viewpoints, topics and related word usage in social media data.                                     distinct types of interactions: incoming interactions and outgoing
+These characteristics are further detailed in Section 3.                                            interactions. A user u takes part in an incoming interaction with
+                                                                                                    another user u ′ if u ′ initiated the interaction (e.g., u ′ retweeted or
+3     METHOD                                                                                        replied to u’s tweet). We then call u and u ′ the recipient and the
+                                                                                                    sender of this interaction, respectively. Conversely, a user u takes
+In this section, we describe the topic models proposed to discover
+                                                                                                    part in an outgoing interaction with another user u ′ if u initiated
+viewpoints and topics in social networking data. We first establish
+                                                                                                    the interaction (e.g., u retweeted or replied to u ′ ’s tweet). Similarly,
+preliminary definitions and notations. Secondly, we define our topic
+                                                                                                    we call u and u ′ the sender and the recipient of this interaction,
+model, the Social Network Viewpoint Discovery Model (SNVDM),
+                                                                                                    respectively. The notations for the variables used throughout our
+and give its inference procedure. Thirdly, we provide background
+                                                                                                    paper are provided in Table 2. Additionally, we use boldface symon the Pólya Urn sampling scheme and we detail our extension to                                                                                                   Du U
+SNVDM, namely SNVDM-GPU, based on Generalized Pólya Urn.                                           bols to represent a multiset or a vector (e.g., v = {vud }d=1       u=1 ).
+                                                                                                    Count variables, i.e., variables expressing the number of specific
+3.1      Preliminaries                                                                              assignments, are defined by n and subscripts (e.g., nuz is the number of word tokens from user u assigned to topic z). A subscript “•”
+As the focus of this work is the modeling of viewpoints and topics
+                                                                                                    means that the counting is marginalized over the corresponding
+in social networks, we provide definitions for related terms and                                                           Í
+                                                                                                    variable (e.g., nv • = U u=1 nvu ). A superscript −(y) on a count variphrases. Following the definitions of [50], a topic is “one of the
+                                                                                                    able implies that the count variable excludes y from the counting
+subjects discussed in a document collection” and a viewpoint is                                             −(udn)
+“the standpoint of one or several authors on a set of topics.” We use                               (e.g., nuz      is the number of word tokens from user u assigned to
+the phrase “social network” to denote the directed graph of online                                  topic z, excluding word n from document d of user u).
+social interactions (the edges) between users (the nodes) on a social
+media platform (e.g., Twitter). We thereafter simply use social inter-                              3.2       Social Network Viewpoint Discovery Model
+actions or interactions to denote online social interactions. Given                                    3.2.1 Model Definition. Before providing a more formal descripthe directed nature of a social network, a user may take part in two                                tion of our proposed Social Network Viewpoint Discovery Model
+Session 1C: Sentiment                                                                                           CIKM’17, November 6-10, 2017, Singapore
+
+
+        γ           β                                         β                     µ                                   γ          β                      µ
+
+        ψ           ϕ                                         ϕ                     ξ                                  ψ           ϕ                     ξ
+            1+T   1+V +T +VT                                      T                     V                                   1+T   1+V +T +VT                  V
+
+
+        x           w                                        w                      r                                   x          w           s                  r
+                                                                                                                                                   Iud
+
+        l           z          v                  θ           z         v          v′                                   l          z           v                  v′
+                                   Nu                 V           Nud                                                                  Nud
+                                                                            Du          Ou                                                           Du               Ou
+
+        σ           θ          π                  α                          π                                          σ          θ                     π
+                                        U                                                    U                                                                             U
+
+        δ           α          η                                             η                                          δ          α                     η
+
+                  (a) TAM.                                    (b) SN-LDA.                                                           (c) SNVDM.
+
+
+Figure 1: Graphical models for TAM (a), SN-LDA (b), and our proposed model SNVDM (c). The original variable names for TAM and SN-LDA
+were slightly modified from [35] and [45], respectively, to facilitate their comparison against SNVDM.
+
+
+(SNVDM), we introduce its key characteristics. In traditional topic              influence of interacting users (e.g., retweeting users) on the viewmodels such as LDA [6], words are assumed to be drawn from                       point expressed in a document. Note that, in this paper, we adopt
+topic-specific word distributions. However, in SNVDM, we aim to                  a static view of the collection, we therefore assume in SNVDM’s
+model viewpoints in addition to topics. A naive approach to account              generative process that incoming interactions on a document occur
+for this would be to simply draw all words from viewpoint/topic-                 immediately after the document is written. In other words, we do
+specific distributions. However, all words need not depend on both               not account for the temporality of incoming interactions.
+a viewpoint and a topic. A word can for example be a background                     We now give a more formal definition of our proposed model
+word (e.g., say): it does not reflect any viewpoint or topic; it can             SNVDM by providing its graphical model (Figure 1c) compared
+otherwise be a topic word (e.g., energy), and depend only on a topic             against that of TAM (Figure 1a) and that of SN-LDA (Figure 1b).
+– and not on any viewpoint. To implement this observation, we                    We describe as well SNVDM’s generative story:
+follow the idea proposed in TAM [35]. The authors introduced                        (1) Draw general and topic-specific route distributions ψ 0 and ψ 1z ∼ Beta(γ 0, γ 1 )
+Bernoulli latent variables, namely levels and routes, to account for                    for z = 1, ..., T ;
+the possible dependency of word tokens on topic and viewpoint,                      (2) Draw background, viewpoint, topic, and viewpoint-topic word distributions
+                                                                                        ϕ 00 , ϕ 01v , ϕ 10z , and ϕ 11v z ∼ DirichletW (β ) for v = 1, ..., V and z =
+respectively. This yields four types of words: background words                         1, ..., T ;
+(level = 0, route = 0), viewpoint words (level = 0, route = 1), topic               (3) Draw viewpoint-specific interacting user distributions ξv ∼ DirichletU (µ U1 )
+words (level = 1, route = 0), and viewpoint-topic words (level = 1,                     for v = 1, ..., V ;
+                                                                                    (4) For each user u = 1, ..., U :
+route = 1). These different types of words are very useful to analyze                    (a) Draw viewpoint distribution πu ∼ DirichletV (η V1 );
+the viewpoint-specific and neutral word usage on a given topic.                          (b) Draw topic distribution θu ∼ DirichletT (α T1 );
+    Although word usage partially helps identify the expressed view-                     (c) Draw level distribution σu ∼ Beta(δ 0, δ 1 );
+                                                                                    (5) For each document d = 1, ..., Du from u = 1, ..., U :
+point in a document, this may not be enough as viewpoints can be
+                                                                                         (a) Draw a document viewpoint vud ∼ Discrete(πu );
+expressed in a subtle way [50]. It is even more problematic in social                    (b) For each token n = 1, ..., Nud :
+media texts (e.g., tweets), which are often short, noisy, and contain                            (i) Draw a topic zud n ∼ Discrete(θu );
+                                                                                                (ii) Draw a level lud n ∼ Discrete(σu );
+numerous abbreviations. However, social media platforms enable                                 (iii) If lud n = 0, draw a general route xud n ∼ Discrete(ψ 0 );
+social interactions between users. The underlying social network                                     Else if lud n = 1, draw a topic-specific route xud n ∼ Discrete(ψ 1zud n );
+then provides precious insights on users’ viewpoint according to                               (iv) If lud n = 0 and xud n = 0, draw a background word wud n ∼
+                                                                                                     Discrete(ϕ 00 );
+the homophily principle: like-minded users tend to connect together.                                 Else if lud n = 0 and xud n = 1, draw a viewpoint word wud n ∼
+This idea has been already used in prior topic models designed for                                   Discrete(ϕ 01vud );
+community detection, e.g. in SN-LDA [45]. However, SN-LDA only                                       Else if lud n = 1 and xud n = 0, draw a topic word wud n ∼
+                                                                                                     Discrete(ϕ 10zud n );
+utilized interactions and latent topics to identify communities –
+                                                                                                     Else if lud n = 1 and xud n = 1, draw a viewpoint-topic word wud n
+word usage did not directly depend on communities. Moreover, in                                      ∼ Discrete(ϕ 11vud zud n );
+SN-LDA, a given user is only aware of her outgoing interactions,                         (c) For each incoming interaction i = 1, ..., Iud , draw sender sud i ∼
+i.e., the interactions she initiated: her incoming interactions are                            Discrete(ξvud );
+                                                                                    (6) For each outgoing interaction o = 1, ..., Ou from u = 1, ..., U :
+ignored. This may matter for a user that only or mostly receives in-                     (a) Draw an outgoing interaction viewpoint vuo        ′ ∼ Discrete(π );
+                                                                                                                                                               u
+coming interactions (e.g., a user that is often retweeted but scarcely                   (b) Draw a recipient ruo ∼ Discrete(ξv ′ ).
+                                                                                                                                       uo
+retweets). Under the modeling of SN-LDA, this user’s community
+will be difficult to identify as she has very few outgoing interactions.         In the next section, we detail the posterior inference procedure for
+Therefore, in our model SNVDM, we propose to use both incoming                   SNVDM based on collapsed Gibbs sampling.
+and outgoing interactions. More precisely, in SNVDM, incoming                       3.2.2 Posterior Inference. As for other probabilistic topic modinteractions are used at document level to denote the retrospective              els, the exact posterior inference for SNVDM is intractable. We
+Session 1C: Sentiment                                                                                                                      CIKM’17, November 6-10, 2017, Singapore
+
+
+thus rely on collapsed Gibbs sampling [26] to estimate the model                                                  its sampling is more costly – since it depends on the usually large
+distributions. In SNVDM, the latent variables of interest for a col-                                              vocabulary size.
+lapsed Gibbs sampler are topics z, levels l, routes x, document
+                                                                                                                     3.2.3 Discussion. Although SNVDM utilizes direct outgoing and
+viewpoints v and outgoing interaction viewpoints v ′ ; the observed
+                                                                                                                  incoming interactions between a user and her acquaintances, it does
+variables are words w, incoming interaction senders s, and outgoing
+                                                                                                                  not leverage farther users in the network such as acquaintances of
+interaction recipients r. The collapsed Gibbs sampler for SNVDM
+                                                                                                                  acquaintances, who can nevertheless bring precious insights on the
+then successively samples the aforementioned latent variables from
+                                                                                                                  user’s viewpoint. For example, consider a user u who exclusively
+their conditional posterior probability, which we provide in the
+                                                                                                                  interacts with a second user u ′ , who in turn interacts with a large
+remainder of this section. Mathematical derivations are omitted due
+                                                                                                                  number of users. Using only u’s sparse direct interactions will not
+to space limitations; for a detailed description of Gibbs sampling
+                                                                                                                  provide much information about her, whereas knowing that there
+derivations for topic models, the interested reader can refer to [20].
+                                                                                                                  exists a weaker link between u and u ′ ’s acquaintances can help
+   Sampling topics, levels, and routes. Similarly to TAM [35], as-                                                describe u more accurately. We augment our model in the next
+signments zudn , ludn and xudn can be jointly sampled from the                                                    section to implement this idea.
+following joint conditional posterior probability:
+                                                                                    −(udn)
+                                                                                   nuz        + α T1
+                                                                                                                  3.3    Generalized Pólya Urn Extension
+   p(zudn = z, ludn = l, xudn = x |vud = v, rest) ∝                                                               We propose to extend SNVDM in order to account for virtual links
+                                                                                     −(udn)
+                                                                                   nu •        +α
+                                                                                                       (1)        between users and their “acquaintances of acquaintances”. We first
+                 −(udn)
+            nul     + δl                                                                                          introduce the simple Pólya urn scheme, then describe the extension
+      ·                     · p(xudn = x |rest) · p(wudn = w |rest)
+           −(udn)
+          nu •    + δ0 + δ1                                                                                       of SNVDM based on generalized Pólya urn.
+                                            
+                                                 −(ud n)
+                                                n 0x      +γ x                                                        3.3.1 Simple Pólya Urn. Collapsed Gibbs sampling for Dirichlet-
+                                            
+                                                                           if l = 0,
+                                            
+                                             n −(ud n) +γ0 +γ1                                                   multinomial topic models such as LDA or SNVDM can be interwhere p(xudn = x |rest) =                       0•
+                                                  −(ud n)
+                                            
+                                               n 1zx +γ x                                                        preted as an urn metaphor called the simple Pólya urn (SPU) scheme.
+                                            
+                                             n −(ud n) +γ0 +γ1             if l = 1;
+                                             1z     •
+                                                                                                                  SPU assumes that colored balls are successively drawn from an urn;
+                                        
+                                               −(ud n)
+                                             n 00w +β                                                             if a ball of color c is drawn, then this ball is put back into the urn
+                                        
+                                                                     if l = 0, x = 0,
+                                        
+                                             −(ud n)
+                                            n 00•     +βW                                                         and one additional ball of color c is added. This over-replacement
+                                        
+                                        
+                                        
+                                               −(ud n)
+                                             n 01v w +β                                                           scheme enforces a property known as “the rich get richer”: the
+                                        
+                                                                     if l = 0, x = 1,
+                                        
+                                             −(ud n)
+                                            n 01v • +βW                                                           more balls of color c are drawn, the more likely balls of color c will
+and p(wudn = w |rest) =                         −(ud n)
+                          
+                                            n 10zw +β                                                            be drawn in the future.
+                          
+                                         if l = 1, x = 0,
+                          
+                          
+                                              −(ud n)
+                                            n 10z • +βW                                                               We illustrate the SPU metaphor assuming outgoing interactions
+                          
+                                               −(ud n)
+                          
+                                            n 11v zw +β                                                          are balls, the recipient user of the interaction is their color, and
+                          
+                                         if l = 1, x = 1.
+                                              −(ud n)
+                                           n 11v z • +βW                                                         each urn is associated with a viewpoint. Initially, we assume that
+                                                                                                                  each urn contains µ U1 balls of each color. Now suppose that the
+   Sampling document viewpoints. The conditional posterior probainteraction o for user u is the last ball we want to sample from urn v –
+bility for the viewpoint vud assigned to user u and her document d
+                                                                                                                  i.e., we have already drawn and observed all other interactions/balls.
+is given by:
+                                                           (ud )
+                                                                                                                  Then the probability of obtaining color u ′ for ball (uo) is given by:
+                                            ÎW           În01v w −1 −(ud )
+                                               w =1       a=0      (n 01vw + a + β)                                                                               −(uo)
+                                                                                                                                                                 nvu ′ +µ U1
+            p(vud = v |rest) ∝
+                                               Î       (ud )                                                                      p(ruo = u ′ |vuo
+                                                                                                                                                ′ = v, rest) =
+                                                                                                                                                                   −(uo)              (4)
+                                                     n 01v • −1     −(ud)                                                                                         nv       +µ
+                                                     b=0
+                                                                  (n 01v • + b + βW )                                                                                  •
+
+
+                                                                                                                          −(uo)
+                 T
+                 Ö
+                       ÎW          (ud )
+                                 În11v zw −1 −(ud )
+                                                                                                                  where nvu ′     can be interpreted as the number of balls of color u ′
+                          w =1    a=0       (n 11vzw + a + β)                                                                             −(uo)
+             ·               (ud )
+                                                                                                       (2)        added in urn v, and nv •    as the total number of balls added in
+                 z=1
+                           În11v z −1 −(ud )
+                            b=0
+                                    •
+                                     (n 11vz • + b + βW )                                                         urn v, both counts excluding ball (uo) and the µ initial balls. Note
+                  −(ud )                ÎU      Învu (ud )
+                                                         ′ −1 −(ud )
+                                                                                                                  that the rightmost term in Eq. (3) is the same as the one in Eq. (4)
+                 nuv       + η V1           u ′ =1  a=0      (nvu ′ + a + µ U1 )                                  obtained using the SPU assumption, illustrating the equivalency
+             ·                      ·                                            .
+                    −(ud)                      Înv(ud ) −1 −(ud )
+                  nu •      +η                           •
+                                                           (nv •   + b + µ)                                       between Dirichlet-multinomial and SPU models.
+                                                b=0
+   Sampling outgoing interaction viewpoints. For each outgoing in-                                                   3.3.2 Generalized Pólya Urn. The generalized Pólya urn (GPU)
+                                  ′ is sampled as follows:
+teraction o of user u, viewpoint vuo                                                                              scheme [28] extends SPU by altering the replacement rule: after
+                                                              −(uo)                 −(uo)                         a ball of color c is drawn, the ball is put back into the urn and a
+             ′ = v |r       ′                                nuv   +η V1           nvu ′ +µ U1
+          p(vuo       uo = u , rest) ∝                         −(uo)           ·     −(uo)         .   (3)        certain number of balls of colors related to c are added along. In
+                                                              nu • +η               nv    •   +µ                  prior topic models using GPU, balls are tokens and colors are word
+   Sampling hyperparameters. Prior work showed that sampling                                                      types [8, 25, 30, 52]; the “relatedness” of colors is therefore based
+hyperparameters – as opposed to setting them to fixed values –                                                    on word similarity such as PMI [8, 52] or computed from word
+impacts the model’s performance [51]. Therefore, we apply a full                                                  embeddings [25].
+Bayesian treatment to our model by sampling the hyperparameters                                                      In our model, however, we utilize GPU to account for weaker
+α, γ , δ , η, and µ from Gamma(1, 1) hyperpriors, following the auxil-                                            links between users in a social network. As illustrated in 3.3.1,
+iary variable sampling technique as in [32]. We only fix β = 0.01 as                                              we consider interactions as balls and users as colors. Leveraging
+Session 1C: Sentiment                                                                                               CIKM’17, November 6-10, 2017, Singapore
+
+
+the network structure, we assume that the users most related to                              • (H3) The proposed models are comparably efficient to statea user u are the users who interact the most with u. Formally,                                 of-the-art baselines, i.e., their execution times have the
+we define the number of incoming interactions on u where u ′ is                                same order of magnitude.
+                            ÍDu ÍIud                 ′
+the sender as iuu ′ = d=1                                                                    • (H4) The viewpoints and topics discovered by our models
+                                     i=1 I(sudi = u ), and the number of
+                                               ′
+outgoing interactions from u where u is the recipient as ouu ′ =                               are coherent.
+ÍOu               ′
+   o=1 I(ruo = u ). I denotes the indicator function: I(true) = 1 and
+                                                                                         In the remainder of this section, we first introduce the experimenI(false) = 0. The set of the τ most interacting acquaintances of u                    tal setup. Secondly, we detail the viewpoint clustering performance
+(if such number of acquaintances exists for                                           of our models and baselines. Thirdly, we discuss the efficiency of the
+                    Í                              u) is then Ruτ with
+|Ruτ | = min τ , U     u ′ =1 I(iuu + ouu > 0) , and such that, for all
+                                   ′        ′                                         evaluated models. Finally, we illustrate the discovered viewpoints
+u ′ ∈ Ruτ , iuu ′ + ouu ′ > 0 (i.e., u ′ is an acquaintance of u) and,                and topics by providing their most representative words.
+for all u ′′ < Ruτ , iuu ′ + ouu ′ ≥ iuu ′′ + ouu ′′ (i.e., u ′ interacts more
+with u than u ′′ does). We now define a U × U real-valued matrix A                    4.1     Experimental Setup
+known as schema or addition matrix [28] which, given a withdrawn                         4.1.1 Baselines and Evaluated Models. In order to test hypotheball of color u, expresses the number of balls Auu ′ for each color                   ses (H1)-(H4), we compare prior topic models able to discover viewu ′ = 1, ..., U that is added along to the urn:                                       points against variations of our proposed models:
+                           
+                            1   if u = u ′ ,                                                • TAM [35] was initially designed to discover topics and
+                           
+                           
+                                                                                              aspects – which represent viewpoints in our context. It
+                 A uu ′   = λ    if u , u ′ and u ′ ∈ Ruτ ,               (5)
+                           
+                                                                                              was integrated into a viewpoint summarization framework
+                           0    otherwise;
+                                                                                              in [36]. It does not account for interactions between users.
+where λ is a real-valued parameter in [0, 1] denoting the number of                          • SN-LDA [45] aims to jointly discover topics and commuballs added for colors related to u (i.e., in Ruτ ).                                           nities – which we interpret as viewpoints – in a social
+   Contrarily to the SPU scheme, balls sampled according to GPU                                network where users are associated with text data. The
+are non-exchangeable, implying that the sampling order for a se-                               only interactions used are outgoing interactions.
+quence of balls will impact the probability of the observed colors.                          • VODUM [50] models viewpoints and topics. It leverages
+Following [30], we approximate the exact conditional posterior                                 part of speech to better discriminate opinion words (i.e.,
+probability used in Gibbs sampling by assuming that the ball or                                viewpoint/topic-specific words) from topic words. It does
+sequence of balls of interest is sampled as if we already sampled                              not use interactions between users.
+and observed all other balls in the urn. We thus ignore the current                          • SNVDM-WII is a degenerate variation of our model SNVDM
+sampling’s implications on the drawing of subsequent balls.                                    (described in Section 3.2) without incoming interactions.
+   The application of the GPU scheme to SNVDM under this approx-                               The only interactions used are outgoing interactions.
+imation leads to a slight modification of the collapsed Gibbs sampler                        • SNVDM is the model we propose, as described in Secdescribed in Section 3.2.2. In the sampling of document viewpoint                              tion 3.2. It leverages incoming and outgoing interactions.
+vud , the rightmost term in Eq. (2) under the GPU assumption can                             • SNVDM-GPU (τ = 10) and SNVDM-GPU (τ = ∞) exbe shown to become:                                                                            tend SNVDM by integrating the generalized Pólya urn
+         Iud ÍU                    −(ud) Íi−1                 1
+                                                                                               scheme into the inference procedure, as described in Secu ′′ =1 Au sud i nvu ′′ + j=1 Asud j sud i + µ U
+        Ö                   ′′
+                                                                                               tion 3.3. The value of τ defines the maximum number of
+                    ÍU                     Í                    . (6)
+                                    −(ud)   i−1                                                most interacting acquaintances used as related users. In
+                      u ′′ =1 Au • nvu ′′ + j=1 Asud j • + µ
+         i=1                    ′′
+                                                                                               SNVDM-GPU (τ = 10), only the 10 most interacting acSimilarly, the rightmost term in Eq. (3) for the sampling of outgoing                          quaintances of a given user are used as her related users,
+interaction viewpoint vuo ′ is changed into:
+                                                                                               whereas for SNVDM-GPU (τ = ∞) all acquaintances are
+                     ÍU                 −(uo)    1                                             used as related users.
+                      u ′′ =1 Au u nvu ′′ + µ U
+                                  ′′ ′
+
+                      ÍU                           .               (7)                We release the Java code for our models and baselines at https:
+                                        −(uo)
+                         u ′′ =1 Au • nvu ′′ + µ                                      //github.com/tthonet/SNVDM.
+                                     ′′
+
+
+4    EXPERIMENTS                                                                         4.1.2 Datasets. There exists only few annotated datasets to evalIn this section, we detail the experiments conducted on our models                    uate models for viewpoint discovery in social networks. In 2016, the
+SNVDM and SNVDM-GPU, and their comparison against state-of-                           International Workshop on Semantic Evaluation (SemEval) introthe-art baselines. We aim to validate the following hypotheses:                       duced a benchmark for stance detection on Twitter [31]. However,
+                                                                                      the task proposed by SemEval was focused on tweet-level stance
+       • (H1) The viewpoint clustering performance of the pro-                        detection, whereas in this work we are interested in discovering
+         posed models (a) outperforms that of state-of-the-art base-                  user-level viewpoints. The methods and data relevant to these two
+         lines; it is improved by (b) exploiting both incoming and                    problems differ as only the latter enables the exploitation of social
+         outgoing interactions, and (c) implementing the general-                     interactions. Therefore, we chose to validate our approaches on two
+         ized Pólya urn scheme.                                                      Twitter datasets1 introduced in [7], which we refer the reader to for
+       • (H2) Generalized Pólya urn scheme increases models’ ro-                     additional details. The first dataset, thereafter denoted as Indyref,
+         bustness to social network sparsity, i.e., GPU-based models
+         are less affected by limited number of social interactions.                  1 http://dx.doi.org/10.6084/m9.figshare.1430449
+Session 1C: Sentiment                                                                                                  CIKM’17, November 6-10, 2017, Singapore
+
+
+      Table 3: Statistics of the datasets used in the experiments.                                4.1.3 Parameter Setting. For both datasets Indyref and Midterms,
+                                                                                               we set the number of viewpoints (for VODUM and all SNVDM-
+                    #Users                                                                     based models), aspects (for TAM), and communities (for SN-LDA)
+ Dataset                               #Tweets   #Tokens     Vocabulary   #Interactions
+             Yes/Dem.     No/Rep.                                                              to 2. For all baselines and models, hyperparameters were initialized
+ Indyref           589           575   270,075   2,043,204       38,942        696,654         to 1 and sampled as described in Section 3.2.2, except for word
+Midterms           767           778   113,545     975,199       25,312        241,741         distributions parameters (β in SNVDM-based models) which are
+                                                                                               set to 0.01. The parameter λ used in GPU models was fixed to 0.5.
+                                                                                               We observed (not shown due to space limitations) that this yielded
+contains tweets about the 2014 Scottish Independence Referendum                                better performance than setting λ = 1 (i.e., a uniform treatment
+posted between 11/08/2014 and 20/10/2014. The two represented                                  of direct acquaintances and acquaintances of acquaintances). The
+viewpoints are Yes and No, respectively expressing support and                                 Gibbs sampling inference for all baselines and models is performed
+opposition to Scottish independence. The second dataset, thereafter                            on 5 Markov chains of 1,000 iterations each, with 500 iterations for
+denoted as Midterms, is constituted of the tweets written by the                               burn-in. After burn-in, one sample was collected every 50 iterations,
+policy makers who were active during the 2014 U.S. Midterm Elec-                               and models’ distributions were eventually estimated based on the
+tion. Note that, in order to extend the Midterms dataset, we used                              10 collected samples.
+users’ full Twitter timelines (until 21/11/2014) instead of restricting
+to the tweets posted during the Midterm Election timespan. Only                                4.2    Viewpoint Clustering
+Democratic and Republican users appear in the dataset. For both                                In this section, we describe the results obtained by baselines and
+datasets, users’ groundtruth viewpoints were originally obtained                               proposed models on the clustering of users’ viewpoints, evaluated
+in [7] either from self-description in user profiles or from official                          in terms of Purity and Normalized Mutual Information (NMI) [29].
+and unofficial lists. Similarly to prior work on political polariza-                           Purity measures the proportion of users who are assigned to the cortion [10, 27], the Twitter social interactions that we considered to                           rect groundtruth class. NMI is an information theoretic clustering
+define the users’ social network are retweets and replies.                                     metric based on Mutual Information and Entropy. We also tested
+   An issue we had to address with the datasets was the fact that                              the BCubed F measure [3] but we found almost perfect Spearman’s
+they contained a large amount of tweets that did not concern the                               rank correlations between Purity and BCubed F (ρ = 0.998) and
+studied political subject (e.g., tweets about leisure or daily life). To                       between NMI and BCubed F (ρ = 0.999) – computed from the 280
+remove these irrelevant tweets, we discarded all the tweets with no                            measurements obtained in Section 4.2.1. Therefore, for the sake of
+interactions from the users in the dataset, i.e., tweets with neither                          brevity, we only report the clustering quality results in terms of
+reply nor retweet from the dataset users. Although this process                                Purity and NMI in the experiments.
+removed some relevant tweets, we observed that it provided us                                     The clusters are built as follows: In SNVDM-based models, each
+with considerably more focused datasets. Moreover, we only kept                                user u is assigned to the viewpoint (cluster) v that maximizes the
+unique tweets in the datasets (removing the retweeted duplicates)                              user-specific viewpoint distribution πuv . TAM’s aspect and SNand assigned them to their original authors. After the denoising                               LDA’s community assignments for users are similary obtained.
+step, users left with no tweets were discarded (32 for Indyref and                             In VODUM, a viewpoint is naturally attributed to each user, as
+232 for Midterms). Note that this process is widely applicable to any                          viewpoints are defined at user level.
+dataset with social interactions and it does not require supervision.
+However, the number of interactions per tweet ratio is affected;                                  4.2.1 Clustering Performance. The viewpoint clustering results
+therefore we further investigate in Section 4.2.2 the impact of the                            in terms of Purity and NMI for different number of topics T ∈
+network sparsity on the models’ and baselines’ performance.                                    {5, 10, 15, 20} on both the Indyref and Midterms datasets are reWe then performed the following preprocessing steps on the                                  ported in Figure 2. Note that the error bars denote the 95% condatasets using Lingpipe2 and TweetNLP3 . We applied the part-of-                               fidence interval about the mean, which are computed from the 5
+speech tagger provided by TweetNLP to the tweets, as it is required                            repeated executions (i.e., the 5 Markov chains). Confirming (H1a),
+by the baseline VODUM to discriminate opinion words from topic                                 we observe that for both datasets and for both metrics, our prowords. Following [50], nouns were used as topic words and verbs,                               posed models SNVDM, SNVDM-GPU (τ = 10) and SNVDM-GPU
+adverbs, adjectives, and prepositions (and additionally hashtags)                              (τ = ∞) outperform all baselines with superior mean Purity and
+were used as opinion words in VODUM. Tokens not matching these                                 mean NMI on both Indyref and Midterms. The fact that their 95%
+parts of speech were discarded from the datasets used by all models –                          confidence intervals do not intersect with those of baselines also
+the rationale is that, for a fair comparison, we wanted to test all                            confirm the statistical significance of this observation at signifimodels on exactly the same text data. We then removed stopwords,                               cance level α = 0.05. We also notice that our models are mostly
+user mentions, URLs and word tokens that appeared only once.                                   insensitive to the number of topics.
+Following [46], we did not perform stemming. Users with no tweets                                 Comparing our models SNVDM, SNVDM-GPU (τ = 10) and
+(or with only token-less tweets) were discarded. The statistics of the                         SNVDM-GPU (τ = ∞) against SN-LDA and the degenerate variapreprocessed datasets are detailed in Table 3. Reported interactions                           tion SNVDM-WII, which both do not exploit incoming interactions,
+include both incoming and outgoing interactions.                                               support (H1b). Indeed, all models that use incoming interactions
+                                                                                               in addition to outgoing interactions significantly outperform those
+2 http://alias-i.com/lingpipe/                                                                 using only outgoing interactions. We nevertheless note that the
+3 http://www.cs.cmu.edu/∼ark/TweetNLP/                                                         baseline SN-LDA still achieved a strong clustering performance on
+Session 1C: Sentiment                                                                                 CIKM’17, November 6-10, 2017, Singapore
+
+
+both datasets, especially on Indyref. This could be explained by              perform the experiments is a laptop with eight i7-4700MQ CPUs at
+the fact that Indyref features a larger number of interactions per            2.40 GHz (although our implementation is not parallelized) and 8GB
+user, upon which SN-LDA heavily relies. It also underlines the key            RAM. We report in Table 5 the time (in seconds) taken by one Gibbs
+importance of social interactions to viewpoint discovery. Other               sampling iteration on Indyref (with T = 10) and Midterms (with T =
+baselines TAM and VODUM both performed markedly worse than                    15). While we observe that the SN-LDA and TAM implementations
+SN-LDA. They obtained similar performance on Midterms and TAM                 are faster, the execution times for SNVDM and SNVDM-GPU (τ =
+got better results on Indyref. The underperformance of VODUM                  10) are on the same order of magnitude: at most about 2 and 3 times
+may be due to its reliance on parts of speech, which are possibly             slower, respectively. The execution times on Midterms are very
+less discriminative in identifying viewpoint-specific words in noisy,         similar for all models, which is explained by the lower number of
+short texts like tweets than they are in long and formal documents.           interactions. With more interactions, the difference is greater on
+Both VODUM and TAM seem to be moderately sensitive to the                     Indyref. Indeed, SNVDM-based and especially GPU-based models
+number of topics, VODUM obtaining better performance for lower                are highly dependent on interactions. This is confirmed by the very
+number of topics on both datasets.                                            slow execution time of SNVDM-GPU (τ = ∞) on Indyref. On the
+   Hypothesis (H1c) is also validated by the observation that GPU-            contrary, we see that SNVDM-GPU (τ = 10) ran in reasonable time
+based models SNVDM-GPU (τ = 10) and SNVDM-GPU (τ = ∞) at-                     due to the more restrictive selection of related users; this model is
+tained slightly higher clustering performance than that of SNVDM.             therefore a good tradeoff between effectiveness and efficiency.
+However, note that SNVDM-GPU (τ = 10) only significantly outperforms SNVDM at significance level α = 0.05 on the Midterms
+dataset: on Indyref their 95% confidence intervals intersect both for         4.4    Discovered Viewpoints and Topics
+Purity and NMI and the difference is therefore not significant. We            In topic modeling literature, the traditional method to study the
+suspect the large number of interactions in the Indyref dataset to be         discovered topics’ quality is to analyze the coherence of the top
+responsible for the similar clustering results of SN-LDA, SNVDM,              words (i.e., most probable words) for the topic-specific distributions
+SNVDM-GPU (τ = 10) and SNVDM-GPU (τ = ∞). We therefore                        over words. Based on these top words, topic coherence metrics
+investigate in the next section to what extent these models are               have been proposed (e.g., in [30]) to quantitatively compare the
+robust to data with less interactions, i.e., sparser social networks.         topics’ quality across different models. However, the models and
+                                                                              baselines we wish to compare here have different distributions over
+   4.2.2 Robustness to Network Sparsity. In order to study the ro-            words. For example, SN-LDA only has topic-specific distributions
+bustness of models to sparse interactions, we artificially included           over words, while SNVDM-based models distinguish between four
+different percentages of the interactions (100%, 50%, 25%, and 10%)           types of words, as described in Section 3.2.1: background words
+that are available in the Indyref dataset. The interactions to be             (drawn from ϕ 00 ), viewpoint words (drawn from ϕ 01 ), topic words
+removed – either incoming or outgoing ones – were randomly cho-               (drawn from ϕ 10 ), and viewpoint-topic words (drawn from ϕ 11 ).
+sen. Then, for the obtained datasets derived from Indyref (identical          Consequently, topic coherence metrics cannot be applied to comfor all evaluated models), we analyzed the viewpoint clustering               pare the topics’ quality of our models and baselines. For that reason,
+performance of SN-LDA, SNVDM, SNVDM-GPU (τ = 10) and                          we choose to provide in this section a qualitative analysis of the
+SNVDM-GPU (τ = ∞). Given that the number of topics only has a                 topics and viewpoints discovered by our models.
+mild effect on the performance, as observed in Section 4.2.1, we set              It is particularly interesting to study for a same topic the topic
+T = 10 in this experiment. The results are shown in Table 4. Here             words as well as the viewpoint words for the different viewpoints:
+as well, we provide the 95% confidence interval about the mean.               this enables the comparison between neutral word usage against
+We observe a similar trend for all models: the clustering perfor-             subjective word usage. Therefore, we selected one topic discovered
+mance is substantially degraded for low percentage of interactions,           by our most effective model SNVDM-GPU (τ = ∞) in each dataset,
+especially 10%. This stresses again that interactions are key to the          Indyref (with T = 10) and Midterms (with T = 15), and display its
+identification of viewpoints in a social network.                             top 10 topic words as well as its top 10 viewpoint-topic words speOverall, in this studied case, GPU-based models are only marginally        cific to “Yes”/“No” supporters in Table 6 and Democrats/Republicans
+more robust to sparsity than other models, with significant improve-          in Table 7, respectively. Note that the topics were manually labeled.
+ments only over SN-LDA for 100%, 50%, and 25%; this observation                   Table 6 shows the top words for a central topic in the Indyref
+thus merely provides weak support to hypothesis (H2). However,                dataset: the question of the Scottish independence. As expected,
+interestingly, SNVDM-GPU (τ = 10) seems to be more robust to                  discovered topic words focus only on neutral aspects such as the
+interaction sparsity than SNVDM-GPU (τ = ∞): from 50% and                     referendum (#indyref, vote, campaign). On the contrary, pro-Yes and
+below, SNVDM-GPU (τ = 10) performed slightly better. This may                 pro-No viewpoints are clearly reflected in viewpoint-topic words.
+be explained by the fact that SNVDM-GPU (τ = 10) is more selec-               “Yes” supporters use specific hashtags such as #voteyes and #yes.
+tive than SNVDM-GPU (τ = ∞) on interacting users: the former                  On the other hand, “No” supporters use #bettertogether, which was
+uses only the 10 most interacting acquaintances, while the latter             the motto of the pro-No side. Moreover, “No” supporters seem to
+leverages all available acquaintances.                                        raise the issue of the currency in case of separation. In Table 7, we
+                                                                              reported the top words about energy and resources discovered in
+4.3    Efficiency                                                             the Midterms dataset. This topic showcases a striking difference
+We discuss in this section the efficiency in terms of execution time          in Democratic and Republican discourse. Democrats talk about
+for the baselines and the proposed models. The machine used to                environmental issues, with hashtags such as #actonclimate and
+Session 1C: Sentiment                                                                                                                                                   CIKM’17, November 6-10, 2017, Singapore
+
+
+                                                                   0.8
+
+
+                                                                                                                                                                                0.8
+                   ●        ●          ●          ●
+             0.9
+
+
+                                                                                                                             0.9
+                                                                                                                                                        ●        ●
+
+
+                                                                   0.6
+
+
+                                                                                                                                                                                0.6
+                                                                         ●                               ●                                   ●
+                                                                                    ●          ●                                    ●
+             0.8
+
+
+                                                                                                                             0.8
+                                                                                                                                                                                                                                  Models
+                                                                                                                                                                                                                               TAM
+    Purity
+
+
+                                                                                                                    Purity
+                                                                                                                                                                                                                  ●            SN−LDA
+
+
+                                                             NMI
+
+
+                                                                                                                                                                          NMI
+                                                                                                                                                                                                         ●                 ●
+                                                                                                                                                                                              ●
+
+
+                                                                   0.4
+
+
+                                                                                                                                                                                0.4
+                                                                                                                                                                                      ●                                        VODUM
+                                                                                                                                                                                                                               SNVDM−WII
+             0.7
+
+
+                                                                                                                             0.7
+                                                                                                                                                                                                                               SNVDM
+                                                                                                                                                                                                                               SNVDM−GPU (τ = 10)
+                                                                                                                                                                                                                               SNVDM−GPU (τ = ∞)
+
+
+                                                                   0.2
+
+
+                                                                                                                                                                                0.2
+             0.6
+
+
+                                                                                                                             0.6
+             0.5
+
+
+                                                                                                                             0.5
+                                                                   0.0
+
+
+                                                                                                                                                                                0.0
+                   5       10          15         20                     5         10          15        20                         5       10          15       20                   5      10          15       20
+                        Number of topics used                                   Number of topics used                                    Number of topics used                            Number of topics used
+
+
+    (a) Purity results on Indyref.                             (b) NMI results on Indyref.                      (c) Purity results on Midterms.                                 (d) NMI results on Midterms.
+
+
+Figure 2: Viewpoint clustering results on Indyref (2a, 2b) and Midterms (2c, 2d) datasets in terms of Purity (2a, 2c) and NMI (2b, 2d) for different
+number of topics (5, 10, 15, and 20). Higher is better. Error bars denote 95% confidence intervals around the mean computed from 5 executions.
+
+Table 4: Viewpoint clustering results in terms of Purity and NMI on Indyref for different percentages of social interactions (100%, 50%, 25%,
+and 10%). Higher is better, best scores are in boldface. Errors denote 95% confidence intervals around the mean computed from 5 executions.
+
+
+                                                       10% interactions used                            25% interactions used                                50% interactions used                    100% interactions used
+                       Model
+                                                Purity                    NMI                       Purity                   NMI                      Purity            NMI                       Purity                 NMI
+ SN-LDA                                         0.644 ± 0.113             0.087 ± 0.089             0.795 ± 0.056            0.283 ± 0.083            0.863 ± 0.026     0.433 ± 0.045             0.917 ± 0.002          0.588 ± 0.008
+ SNVDM                                          0.621 ± 0.148             0.082 ± 0.136             0.912 ± 0.043            0.580 ± 0.135            0.946 ± 0.017     0.702 ± 0.066             0.957 ± 0.002          0.748 ± 0.011
+ SNVDM-GPU (τ = 10)                             0.704 ± 0.097             0.149 ± 0.121             0.938 ± 0.008            0.666 ± 0.031            0.951 ± 0.007     0.720 ± 0.031             0.958 ± 0.004          0.749 ± 0.019
+ SNVDM-GPU (τ = ∞)                              0.687 ± 0.125             0.139 ± 0.117             0.900 ± 0.041            0.546 ± 0.107            0.958 ± 0.003     0.752 ± 0.014             0.964 ± 0.002          0.776 ± 0.010
+
+
+                                                                                        Table 6: The top 10 topic words (1st column)                                    Table 7: The top 10 topic words (1st column)
+Table 5: Execution time (in seconds) of one                                             and viewpoint-topic words for “Yes” support-                                    and viewpoint-topic words for Democrats
+Gibbs sampling iteration for models TAM,                                                ers (2nd column) and “No” supporters (3rd                                       (2nd column) and Republicans (3rd column)
+SN-LDA, VODUM, SNVDM-WII, SNVDM,                                                        column) about Scottish independence discov-                                     about Energy and ressources discovered by
+SNVDM-GPU (τ = 10) and SNVDM-GPU                                                        ered by SNVDM-GPU (τ = ∞) on Indyref.                                           SNVDM-GPU (τ = ∞) on Midterms.
+(τ = ∞) on Indyref (with T = 10) and
+Midterms (with T = 15).                                                                                 Topic: Scottish independence                                                      Topic: Energy and resources
+                                                                                                              Viewpoint: Yes                Viewpoint: No                                   Viewpoint: Dem.            Viewpoint: Rep.
+                                                Indyref     Midterms                      #indyref            #voteyes                      #indyref                     energy             #actonclimate              #4jobs
+ TAM                                               1.45                  0.87             scotland            yes                           uk                           house              climate                    #obamacare
+ SN-LDA                                            1.18                  0.64             independence        scotland                      salmond                      new                #p2                        #jobs
+ VODUM                                             2.78                  1.85             vote                independence                  #bettertogether              gas                change                     gop
+                                                                                          campaign            westminster                   #scotdecides                 natural            #climatechange             obama
+ SNVDM-WII                                         2.08                  1.08
+                                                                                          scottish            vote                          separation                   #energy            clean                      bills
+ SNVDM                                             2.49                  1.15
+                                                                                          uk                  independent                   currency                     #ff                oil                        jobs
+ SNVDM-GPU (τ = 10)                                3.47                  1.34             people              country                       thanks                       #kxl               energy                     house
+ SNVDM-GPU (τ = ∞)                                14.67                  2.56             future              #yes                          today                        support            #gop                       act
+                                                                                          independent         #scotland                     say                          economic           seec                       watch
+
+
+#climatechange, while republicans focus on the economic impact                                                                          terms of Purity and Normalized Mutual Information. This consuch as jobs and bills. Overall, we observe that the discovered topics                                                                  firms previous findings which highlighted the key importance of
+and viewpoints are reasonably coherent, which confirms (H4).                                                                            social interactions to discovering viewpoints [27]. Additionally,
+                                                                                                                                        the GPU scheme was found to slightly improve the robustness
+                                                                                                                                        to social network sparsity. Moreover, proposed models SNVDM
+5              CONCLUSION AND FUTURE WORK                                                                                               and SNVDM-GPU (τ = 10) were shown to be comparably efficient
+In this paper, we introduced a novel topic model for viewpoint dis-                                                                     to baselines, thus constituting good tradeoffs between efficiency
+covery in social networks, namely SNVDM, and its extension based                                                                        and effectiveness. The discovered topics and viewpoints were also
+on the generalized Pólya urn (GPU) scheme. We showed through-                                                                          observed to be reasonably coherent.
+out extensive experiments on two different Twitter datasets that our                                                                       Although our approach is widely applicable to study viewpoints
+proposed models significantly outperform state-of-the-art models                                                                        in social networks, one of its limitations is that it is most effective
+in a viewpoint clustering task. The experiments thereby underlined                                                                      for users that are strongly engaged (i.e., users who post and interact
+that leveraging both incoming and outgoing interactions as well                                                                         a lot). To study less active users’ viewpoints, post-level (e.g., tweetas exploiting the GPU scheme lead to significant improvement in                                                                         level) techniques may complement our approach.
+Session 1C: Sentiment                                                                                                           CIKM’17, November 6-10, 2017, Singapore
+
+
+   In future work, we plan to extend our proposed models and                                      [23] Aditya Joshi, Pushpak Bhattacharyya, and Mark Carman. 2016. Political Issue
+account for the temporal evolution of viewpoints, in order to illus-                                   Extraction Model: A Novel Hierarchical Topic Model That Uses Tweets By
+                                                                                                       Political And Non-Political Authors. In WASSA@NAACL HLT. 82–90.
+trate the trends of topics and underlying views concurring with                                   [24] Andreas Jungherr. 2016. Twitter Use in Election Campaigns: A Systematic
+current events. Another interesting research direction would be to                                     Literature Review. J. Inform. Tech. Polit. 13, 1 (2016), 72–91.
+                                                                                                  [25] Chenliang Li, Haoran Wang, Zhiqian Zhang, Aixin Sun, and Zongyang Ma.
+leverage users’ geolocation (e.g., as in [21]) and explore region-level                                2016. Topic Modeling for Short Texts with Auxiliary Word Embeddings. In SIGIR.
+viewpoints. Eventually, we aim to devise an unbiased viewpoint                                         165–174.
+summarization framework for social media to provide balanced                                      [26] Jun S. Liu. 1994. The Collapsed Gibbs Sampler in Bayesian Computations with
+                                                                                                       Applications to a Gene Regulation Problem. J. Am. Stat. Assoc. 89, 427 (1994),
+viewpoints and thus mitigate the “filter bubble” effect.                                               958–966.
+                                                                                                  [27] Walid Magdy, Kareem Darwish, Norah Abokhodair, Afshin Rahimi, and Timothy
+ACKNOWLEDGMENTS                                                                                        Baldwin. 2016. #ISISisNotIslam or #DeportAllMuslims? Predicting Unspoken
+                                                                                                       Views. In WebSci. 95–106.
+We would like to thank Éric Gaussier and Igor Brigadir for their                                 [28] Hosam M. Mahmoud. 2008. Pólya Urn Models. Chapman & Hall/CRC.
+valuable comments and helpful suggestions. This work was partially                                [29] Christopher D. Manning, Prabhakar Raghavan, and Hinrich Schütze. 2008. Introduction to Information Retrieval. Cambridge University Press.
+supported by the French National Research Agency under project                                    [30] David Mimno, Hanna M. Wallach, Edmund Talley, Miriam Leenders, and Andrew
+LisTIC (ANR-16-CE26-0014-01).                                                                          McCallum. 2011. Optimizing Semantic Coherence in Topic Models. In EMNLP.
+                                                                                                       262–272.
+                                                                                                  [31] Saif M. Mohammad, Svetlana Kiritchenko, Parinaz Sobhani, Xiaodan Zhu, and
+REFERENCES                                                                                             Colin Cherry. 2016. SemEval-2016 Task 6: Detecting Stance in Tweets. In Se-
+ [1] Lada A. Adamic and Natalie Glance. 2005. The Political Blogosphere and the                        mEval@NAACL HLT. 31–41.
+     2004 U.S. Election: Divided They Blog. In Link@KDD. 36–43.                                   [32] David Newman, Arthur Asuncion, Padhraic Smyth, and Max Welling. 2009.
+ [2] Faiyaz Al Zamal, Wendy Liu, and Derek Ruths. 2012. Homophily and Latent                           Distributed Algorithms for Topic Models. J. Mach. Learn. Res. 10 (2009), 1801–
+     Attribute Inference: Inferring Latent Attributes of Twitter Users from Neighbors.                 1828.
+     In ICWSM. 387–390.                                                                           [33] Viet-An Nguyen, Jordan Boyd-Graber, Philip Resnik, and Kristina Miler. 2015. Tea
+ [3] Enrique Amigó, Julio Gonzalo, Javier Artiles, and Felisa Verdejo. 2009. A Com-                   Party in the House: A Hierarchical Ideal Point Topic Model and Its Application
+     parison of Extrinsic Clustering Evaluation Metrics based on Formal Constraints.                   to Republican Legislators in the 112th Congress. In ACL/IJCNLP. 1438–1448.
+     Inform. Retrieval 12, 4 (2009), 461–486.                                                     [34] Eli Pariser. 2011. The Filter Bubble: What the Internet Is Hiding from You. The
+ [4] Eytan Bakshy, Solomon Messing, and Lada Adamic. 2015. Exposure to Ideo-                           Penguin Press.
+     logically Diverse News and Opinion on Facebook. Science 348, 6239 (2015),                    [35] Michael J. Paul and Roxana Girju. 2010. A Two-Dimensional Topic-Aspect Model
+     1130–1132.                                                                                        for Discovering Multi-Faceted Topics. In AAAI. 545–550.
+ [5] Pablo Barberá. 2015. Birds of the Same Feather Tweet Together: Bayesian Ideal               [36] Michael J. Paul, ChengXiang Zhai, and Roxana Girju. 2010. Summarizing ConPoint Estimation Using Twitter Data. Polit. Anal. 23, 1 (2015), 76–91.                            trastive Viewpoints in Opinionated Text. In EMNLP. 66–76.
+ [6] David M. Blei, Andrew Y. Ng, and Michael I. Jordan. 2003. Latent Dirichlet                   [37] Marco Pennacchiotti and Ana-Maria Popescu. 2011. Democrats, Republicans
+     Allocation. J. Mach. Learn. Res. 3 (2003), 993–1022.                                              and Starbucks Afficionados: User Classification in Twitter. In KDD. 430–438.
+ [7] Igor Brigadir, Derek Greene, and Pádraig Cunningham. 2015. Analyzing Dis-                   [38] Ana-Maria Popescu and Marco Pennacchiotti. 2010. Detecting Controversial
+     course Communities with Distributional Semantic Models. In WebSci. 27:1–10.                       Events from Twitter. In CIKM. 1873–1876.
+ [8] Zhiyuan Chen and Bing Liu. 2014. Mining Topics in Documents: Standing on                     [39] Minghui Qiu. 2015. Mining User Viewpoints in Online Discussions. Ph.D. Dissertathe Shoulders of Big Data. In KDD. 1116–1125.                                                     tion. Singapore Management University.
+ [9] Raviv Cohen and Derek Ruths. 2013. Classifying Political Orientation on Twitter:             [40] Minghui Qiu and Jing Jiang. 2013. A Latent Variable Model for Viewpoint
+     It’s Not Easy!. In ICWSM. 91–99.                                                                  Discovery from Threaded Forum Posts. In NAACL HLT. 1031–1040.
+[10] Michael D. Conover, Jacob Ratkiewicz, Matthew R. Francisco, Bruno Gonçalves,                [41] Minghui Qiu, Yanchuan Sim, Noah A. Smith, and Jing Jiang. 2015. Modeling
+     Filippo Menczer, and Alessandro Flammini. 2011. Political Polarization on Twitter.                User Arguments, Interactions, and Attributes for Stance Prediction in Online
+     In ICWSM. 89–96.                                                                                  Debate Forums. In SDM. 855–863.
+[11] Shiri Dori-Hacohen and James Allan. 2015. Automated Controversy Detection                    [42] Minghui Qiu, Liu Yang, and Jing Jiang. 2013. Modeling Interaction Features for
+     on the Web. In ECIR. 423–434.                                                                     Debate Side Clustering. In CIKM. 873–878.
+[12] Adam G. Dunn, Julie Leask, Xujuan Zhou, Kenneth D. Mandl, and Enrico Coiera.                 [43] Adithya Rao and Nemanja Spasojevic. 2016. Actionable and Political Text Classi2015. Associations Between Exposure to and Expression of Negative Opinions                        fication using Word Embeddings and LSTM. In WISDOM@KDD.
+     About Human Papillomavirus Vaccines on Social Media: An Observational Study.                 [44] Zhaochun Ren, Oana Inel, Lora Aroyo, and Maarten de Rijke. 2016. Time-aware
+     J. Med. Internet Res. 17, 6 (2015), e144.                                                         Multi-Viewpoint Summarization of Multilingual Social Text Streams. In CIKM.
+[13] Anjie Fang, Iadh Ounis, Philip Habel, Craig Macdonald, and Nut Limsopatham.                       387–396.
+     2015. Topic-centric Classification of Twitter User’s Political Orientation. In SIGIR.        [45] Mrinmaya Sachan, Avinava Dubey, Shashank Srivastava, Eric P. Xing, and Eduard
+     791–794.                                                                                          Hovy. 2014. Spatial Compactness meets Topical Consistency: Jointly modeling
+[14] Seth R. Flaxman, Sharad Goel, and Justin M. Rao. 2016. Filter Bubbles, Echo                       Links and Content for Community Detection. In WSDM. 503–512.
+     Chambers, and Online News Consumption. Public Opin. Quart. 80, S1 (2016),                    [46] Alexandra Schofield and David Mimno. 2016. Comparing Apples to Apple: The
+     298–320.                                                                                          Effects of Stemmers on Topic Models. T. Assoc. Comput. Ling. 4, 1 (2016), 287–300.
+[15] Kiran Garimella, Gianmarco De Francisci Morales, Aristides Gionis, and Michael               [47] Aaron Smith. 2014. Cell Phones, Social Media and Campaign 2014. Technical
+     Mathioudakis. 2016. Quantifying Controversy in Social Media. In WSDM. 33–42.                      Report. Pew Research Center.
+[16] Kiran Garimella, Gianmarco De Francisci Morales, Aristides Gionis, and Michael               [48] Cass R. Sunstein. 2009. Republic.com 2.0. Princeton University Press.
+     Mathioudakis. 2017. Reducing Controversy by Connecting Opposing Views. In                    [49] Didi Surian, Dat Quoc Nguyen, Georgina Kennedy, Mark Johnson, Enrico Coiera,
+     WSDM. 81–90.                                                                                      and Adam G. Dunn. 2016. Characterizing Twitter Discussions About HPV
+[17] R. Kelly Garrett and Natalie Jomini Stroud. 2014. Partisan Paths to Exposure                      Vaccines Using Topic Modeling and Community Detection. J. Med. Internet Res.
+     Diversity: Differences in Pro- and Counterattitudinal News Consumption. J.                        18, 8 (2016), e232.
+     Comm. 64, 4 (2014), 680–701.                                                                 [50] Thibaut Thonet, Guillaume Cabanac, Mohand Boughanem, and Karen Pinel-
+[18] Eduardo Graells-Garrido, Mounia Lalmas, and Ricardo Baeza-Yates. 2015. Finding                    Sauvagnat. 2016. VODUM: A Topic Model Unifying Viewpoint, Topic and OpinIntermediary Topics Between People of Opposing Views: A Case Study. (2015).                       ion Discovery. In ECIR. 533–545.
+     arXiv:1506.00963.                                                                            [51] Hanna M. Wallach, David Mimno, and Andrew McCallum. 2009. Rethinking
+[19] Eric A. Hardisty, Jordan Boyd-Graber, and Philip Resnik. 2010. Modeling Per-                      LDA: Why Priors Matter. In NIPS. 1973–1981.
+     spective using Adaptor Grammars. In EMNLP. 284–292.                                          [52] Shuai Wang, Zhiyuan Chen, and Bing Liu. 2016. Mining Aspect-Specific Opinion
+[20] Gregor Heinrich. 2008. Parameter Estimation for Text Analysis. Technical Report.                  using a Holistic Lifelong Topic Model. In WWW. 167–176.
+     Fraunhofer Institute for Computer Graphics. 1–31 pages.                                      [53] Weiwu Zhang, Thomas J. Johnson, Trent Seltzer, and Shannon L. Bichard. 2010.
+[21] Liangjie Hong, Amr Ahmed, Siva Gurumurthy, Alexander J. Smola, and Kostas                         The Revolution Will be Networked: The Influence of Social Networking Sites on
+     Tsioutsiouliklis. 2012. Discovering Geographical Topics In The Twitter Stream.                    Political Attitudes and Behavior. Soc. Sci. Comput. Rev. 28, 1 (2010), 75–92.
+     In WWW. 769–778.
+[22] Mohit Iyyer, Peter Enns, Jordan Boyd-Graber, and Philip Resnik. 2014. Political
+     Ideology Detection Using Recursive Neural Networks. In ACL. 1113–1122.

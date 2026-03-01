@@ -1,0 +1,553 @@
+Information Fusion 31 (2016) 54–64
+
+
+                                                                  Contents lists available at ScienceDirect
+
+
+                                                                      Information Fusion
+                                                           journal homepage: www.elsevier.com/locate/inffus
+
+
+Tweet categorization by combining content and structural knowledge
+J.M. Cotelo∗, F.L. Cruz, F. Enríquez, J.A. Troyano
+Department of Languages and Computer Systems, University of Seville, Avda. Reina Mercedes s/n, Seville 41012, Spain
+
+
+a r t i c l e          i n f o                            a b s t r a c t
+
+Article history:                                          Twitter is a worldwide social media platform where millions of people frequently express ideas and opinReceived 18 June 2015                                     ions about any topic. This widespread success makes the analysis of tweets an interesting and possibly
+Revised 10 November 2015
+                                                          lucrative task, being those tweets rarely objective and becoming the targeting for large-scale analysis. In
+Accepted 6 January 2016
+                                                          this paper, we explore the idea of integrating two fundamental aspects of a tweet, the proper textual
+Available online 13 January 2016
+                                                          content and its underlying structural information, when addressing the tweet categorization task. Thus,
+Keywords:                                                 not only we analyze textual content of tweets but also analyze the structural information provided by the
+Twitter                                                   relationship between tweets and users, and we propose different methods for effectively combining both
+Tweet categorization                                      kinds of feature models extracted from the different knowledge sources. In order to test our approach, we
+Ensemble learning                                         address the speciﬁc task of determining the political opinion of Twitter users within their political conKnowledge combination                                     text, observing that our most reﬁned knowledge integration approach performs remarkably better (about
+                                                          5 points above) than the textual-based classic model.
+                                                                                                                             © 2016 Elsevier B.V. All rights reserved.
+
+
+1. Introduction                                                                             trending topics are also vulnerable to scamming, phishing or spamming.
+    Twitter is a successful worldwide social media platform where                               Categorizing twitter messages is an interesting and valuable
+millions of people frequently express ideas and opinions about a                            task. In this paper, we address the categorization of tweets, focusmyriad of topics. Texts written in Twitter, called tweets, are char-                        ing on determining the political opinion of Twitter users within
+acterized by having a very short length (140 characters) and of-                            their political context. A collection of tweets not only provides texten written using devices like smartphones with almost no revi-                             tual information, but also provides structural information due to
+sion before sending them, trading redaction quality and/or cor-                             the relationship between users and messages, forming an underrectness for speed. Aside from the textual content, tweets (and                             lying network. We discuss the analysis of both types of content,
+Twitter itself) offer many other data and information that may                              applying different approaches and yielding different feature modserve as knowledge sources for solving different tasks of interest.                         els for each of them, and we propose several methods of combinIn this work, we explore how the integration of these heteroge-                             ing these feature models (both structural an textual ones) in the
+neous knowledge sources improves the overall performance when                               classiﬁcation process.
+it is used for addressing the automatic tweet categorization task.                              Although the approach presented in this article was originally
+    The widespread success of Twitter makes the analysis of the                             designed for the tweet categorization task in mind, it can be aptweets a very interesting (and possibly lucrative) task. The amount                         plied to other social networks (e.g. Facebook, Google+, . . .), as long
+of information in these texts is huge and tweets are rarely objec-                          as those social networks on which this approach is applied, may
+tive, becoming the target of large-scale analysis that could be re-                         exhibit relevant structural features in its messages.
+ally useful for marketing campaigns, public opinion determination                               Fig. 1 shows a diagram of the overall process of our proposal,
+or even inferring how a population responds for speciﬁc events.                             which can be described as follows. It starts with the retrieval
+Branding [1,2], political analysis [3–5] or user proﬁling for mar-                          phase, in which we collect tweets using an automatic topic-related
+ket analysis [6] are examples of actual applications for the analysis                       retrieval method that ensures that collected tweets are politically
+of Twitter and other social media texts. Protection and detection                           relevant. Before continuing with the experimental process, those
+against malware [7] is also an application of interest, as Twitter                          tweets are manually annotated by two independent annotators.
+                                                                                            The retrieval and annotation process, along with the reference to
+                                                                                            retrieval method, are described in Section 3. These politically rele-
+  ∗
+     Corresponding author. Tel.: +34 676582325.
+                                                                                            vant tweets are fed to two distinct pipelines in order to generate
+     E-mail addresses: jcotelo@us.es (J.M. Cotelo), fcruz@us.es (F.L. Cruz), fenros@us.es
+(F. Enríquez), troyano@us.es (J.A. Troyano).
+                                                                                            different feature models, being each pipeline focused on analyzing
+
+http://dx.doi.org/10.1016/j.inffus.2016.01.002
+1566-2535/© 2016 Elsevier B.V. All rights reserved.
+
+
+                                                   J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64                                          55
+
+
+                                                         Fig. 1. Overall process of our proposal.
+
+
+textual or structural content. After each structural and textual fea-            lexicons is supplied by using emoticons appearing in the tweets to
+ture models are generated, both are fed to the model integration                 build a polarity classiﬁer on Twitter; the idea is taken from [10],
+pipeline, which combines both models and improves the perfor-                    where the same technique was applied to a corpus of tweets in
+mance results.                                                                   English. In [11], automatic summaries of the opinions of a Twitter
+    This article is structured as follows: In Section 2, we discuss              user are generated by integrating the various negative and positive
+several other works that are related with the one presented in                   opinions expressed by users on various topics. In all these studthis paper. In Section 3, we deﬁne the speciﬁc task addressed in                 ies the classiﬁcation of a tweet is performed based solely on their
+this paper and we characterize the dataset, describing how it is                 textual content: in no case structural information inherent to Twitgenerated and its particularities. In Section 4 we described the                 ter is used, as might be other user’s tweets or other tweets using
+whole experimental setup developed for evaluating our proposal.                  the same hashtags, for example. In [12], the authors transform the
+In Section 5, we address the extraction of knowledge from the tex-               textual content to a graph representation where nodes are tweets,
+tual content of tweets, discussing the adaptation of models such as              users, hashtags and words. Nodes are labeled with polarities, taken
+the Bag-of-Words and its caveats, proposing an automatic feature                 from lexicons and from a supervised classiﬁer previously trained.
+selection process for improving the performance of that model. In                After that, they apply a label propagation algorithm described in
+Section 6 we discuss how to extract information from the struc-                  [13]. Their proposal is evaluated using three datasets (one of them
+tural content of tweets, exploiting the topological features of the              is from the political domain). Although the graph representation of
+underlying network formed by the users and messages. We pro-                     textual content proves to be effective and it yields better results
+pose a topological approach, consisting in generating a bipartite                than other approaches that directly handle the textual content, the
+friendship graph based on the identiﬁcation of two major kinds                   proposal only takes into account knowledge from textual content
+of users (content creators and content consumers). From this graph,              and do not extract any information from the structural knowledge
+we propose two different community feature models based on the                   that the underlying network offers.
+Louvain method and Spectral Biclustering technique respectively. In                  Many authors have been interested in studying the behavior
+Section 7, we combine both structural and textual feature models                 of users on Twitter in relation to politics. In [14] an analysis of
+in three different ways: directly combining both feature models,                 the hashtags used in politics in Canada was performed to distinusing Stacking Generalization and a variation of our own that we                 guish the different objectives for which they are used in the politcalled Multiple Pipeline Stacked Generalization. Finally, in Section 8,          ical context. In [15] a study of the different types of Twitter users
+we summarize our efforts, review the main points of our work and                 was conducted to characterize the so-called opinion leaders; they
+discuss the importance of combining structural and textual content               tend to seek information, mobilize, and express opinions publicly,
+for tweet.                                                                       and have a great inﬂuence on the political tendency of their followers (we will use this idea in our work, see Section 6). In [4]
+2. Related works                                                                 the LIWC2007 resource (Linguistic Inquiry and Word Count; Pennebaker [16]) was used to determine emotional and cognitive charThere are many works dealing with the classiﬁcation of tweets,               acteristics of tweets related to federal election of the national parespecially in the area of sentiment analysis (considering the sub-               liament in Germany 2009. They conclude that there exist high corjective content of many of the tweets). Most of these works face                 relations between the above results and dataset statistical metrics
+polarity classiﬁcation, i.e., deciding whether a tweet expresses a               such as concentration and share, and even the mere number of
+positive, negative or neutral opinion toward a given topic. For ex-              tweets mentioning each candidate is a good estimator of the elecample, in [8] the polarity classiﬁcation is performed using polar-               tion results. In [17] they also try to measure whether there is a cority lexicons (resources consisting of lists of negative and positive             relation between activity in social networks (Facebook and Twitter)
+words), and later tweaking this polarities from the semantic con-                and the results of the US presidential election of 2012. Based on
+text in which the words appear. In [9] the lack of Arabic polarity               the tweets mentioning Obama and Romney, Facebook oﬃcial pages
+
+
+56                                                J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64
+
+
+of the candidates, and comments on these pages, the various cit-                   Table 1
+                                                                                   Dataset political opinion distribution.
+izens contributions were manually classiﬁed according to polarity.
+The ﬁnal conclusion was that there is a strong positive correlation                                  PSOE positive (%)       PSOE negative (%)   PSOE neutral (%)
+between the data obtained and the results of the elections.
+                                                                                      PP positive    00.00                   01.07               01.36
+    These observations about the utility of the information con-                      PP negative    01.02                   04.00               46.14
+tained in the tweets, information used to carry out electoral pre-                    PP neutral     02.51                   18.83               25.07
+dictions or to estimate other political variables and traditionally
+been estimated using surveys, make the automatic classiﬁcation of
+user tweets very interesting in political contexts. Beyond classifyrefer to the current government (PP at the time of the dataset coling the polarity of tweets, in [18] tweets related to US presidential
+                                                                                lection) or the opposition (PSOE) party. The annotation process was
+election of 2012 were classiﬁed according to “purpose” of the aumade by two independent annotators and we check for tweets that
+thors: to point out hypocrisy or inconsistency; to point out mistake
+                                                                                with disagreement between annotators, ignoring those tweets and
+or blunder; to disagree; to ridicule; to criticize; to vent; to agree;
+                                                                                not counting them for the total 3000 tweets dataset.
+to praise, admire, or appreciate; to support; to motivate or incite
+                                                                                    Any tweet from this dataset express any positive, negative or
+to action; to be entertaining; to provide information without emoneutral stance regarding PP and PSOE parties, so we deﬁne the task
+tion. A preliminary study, in which this information was annotated
+                                                                                as classifying tweets into any of the nine combinatorial categories
+manually, conﬁrmed the strong correlation between the distribu-
+                                                                                (the Cartesian product of the possible stances of PP and PSOE). The
+tion of tweets according to these categories and election results;
+                                                                                dataset was manually annotated, indicating the political stance of
+however, the results reported for an automated purpose classiﬁer
+                                                                                each tweet according the previous categories.
+were not good. We understand that their classiﬁcation task has a
+                                                                                    Table 1 shows the distribution of the political opinion in the
+level of detail that is too high, so in this paper we propose a simtweets from the dataset and we observed an interesting phepliﬁcation of the same idea: classifying tweets as “for” or “against”
+                                                                                nomenon: most of classiﬁcation classes have with very low repthe different electoral candidates.
+                                                                                resentation, resulting that more than 90% of the dataset ﬁts into
+    Our approach is novel because, instead of focusing on only one
+                                                                                three of nine political opinion classes. Moreover, users rarely praise
+kind of content (textual content in this case), we integrate both exany effort coming from a major political party, being most tweets
+plicit textual and underlying topological information of tweets at
+                                                                                either comments with little political opinion or negative criticism
+the same level. Extracting knowledge from the structural content
+                                                                                against any of both major parties, but rarely against both.
+of tweets and generating a valid feature model proved to be nonThe low representation of the other six political opinion classes
+trivial. In our approach, it required the generation of a graph-based
+                                                                                led us to evaluate a simpliﬁed or reduced version of the problem
+representation and inferring communities in order to generate an
+                                                                                along the full version of the problem. Instead of taking into acexpressive feature model. Combining feature models from both
+                                                                                count all the classes, the reduced problem only considers tweets
+textual and structural content proved to be successful by yielding
+                                                                                whose political opinion is one of the three major classes: totally
+very good performance but it also had its diﬃculties because the
+                                                                                neutral, PP negative/PSOE neutral and PP neutral/PSOE negative.
+feature models were very different. We developed an interesting
+                                                                                    In summary, the task of determining the political opinion of
+ensemble learning approach that we named Multiple Pipeline Stacked
+                                                                                tweets is performed against two version of the datasets, the full
+Generalization for speciﬁcally taking advantage of mixing different
+                                                                                version and the reduced version. After determining the political
+feature modules.
+                                                                                opinion of tweets, the evaluation process is made by the direct
+                                                                                comparison of the manually annotated political opinions and the
+3. Task deﬁnition
+                                                                                computed ones.
+    We address the task of determining the political opinion from
+Spanish tweets whose contents are highly related to any aspect of               4. Experimental design
+Spanish politics. As in many other countries, the political situation
+is dominated by a handful political forces, in particular by two ma-               With the above deﬁned task in mind, we have developed an exjor parties: the conservative, liberal and Christian democratic Par-            perimental setup for evaluating our proposal, making use of both
+tido Popular (PP), and the social democratic Partido Socialista Obrero          versions of the dataset previously described. Our proposal comEspañol (PSOE). Since the Spanish transition to democracy, these                bines information that comes from two different types of source
+parties are the only ones that have held oﬃce and are going to be               knowledge, being each type of information processed in different
+the focus of our case study.                                                    pipelines. Thus, we implemented our experimental setup in three
+    We have generated a collection of tweets related to any of both             independent stages:
+major parties (PP or PSOE) using the dynamic retrieval method
+explained in [19]. Starting from a seed set, this retrieval method                • Textual content pipeline. This pipeline performs an analysis
+continuously collects data and periodically adjusts its keyword set,                over the actual textual content of the tweets, extracting inforperforming a graph-based analysis on the data collected in the pre-                 mation from the words according to a more conventional Bagvious iterations (using a sliding window). It guarantees a higher                   of-Words approach. The tweets are preprocessed before any
+volume of tweets, introduces very low noise and it reacts to any                    textual content analysis.
+unforeseen topic-related event during the retrieval time span. We                 • Structural content pipeline. This pipeline performs an analyperformed the retrieval process during the presentation of the ﬁ-                   sis over the structural features of the tweets, extracting infornal draft of the amendments of the law that regulates abortion in                   mation from the underlying network topology, using a graphSpain. This period spanned from 20th December 2013 to 23th De-                      based approach and a community model. We tested two comcember 2013. The proposed reform caused a great impact on the                       munity models: an aﬃnity community model based on the Loupopulation of Spain and every major political party actively posi-                  vain method and a fuzzy belonging model based on Spectral Bitioned regarding this matter.                                                       clustering.
+    From the whole collection of tweets, holding more than 100 k                  • Model integration pipeline. This pipeline performs a combipolitically relevant tweets, we composed our ﬁnal dataset, consist-                 nation scheme on feature models coming from both previing in a random sample of 3000 manually annotated tweets that                       ous pipelines and, depending on the schema used, applies an
+
+
+                                                  J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64                                         57
+
+
+                                                 Fig. 2. Overall experimental design for our proposal.
+
+
+                                                      Fig. 3. Textual feature extraction pipeline.
+
+
+     ensemble learning metaclassiﬁcation process on the relevance               relevant and have semantic value. On the other hand, tweets ofvalues extracted from classiﬁers from both previous pipelines.             ten are “polluted” with other elements that can be qualiﬁed as non
+                                                                                relevant such as ASCII art, numeral and ordinals, date/time comFig. 2 describes the whole experimental setup, showing the two
+                                                                                pounds and URLs. Those elements have to be removed with care
+pipelines for extracting the base feature models and the ﬁnal comwithout altering the rest of the extracted content.
+bination stage, where our custom ensemble learning method takes
+                                                                                    The proper processing of the textual content of a tweet is
+place. Each particular pipeline is described in detail in the followcrucial for posterior analysis. Our pipeline for processing tweets
+ing sections.
+                                                                                carefully addresses the points above mentioned and also perOn a side note, for the actual machine learning techniques and
+                                                                                forms more typical processing such as stopword and punctuation
+algorithms used throughout the whole experimentation process,
+                                                                                removal.
+we made use of the implementations already existing in the opensource project scikit-learn1 [20]. This project provides all the documentation regarding to the implementation, including the references to the corresponding papers.                                              5.2. Bag-of-Words model
+
+5. Textual content processing pipeline                                             The feature model proposed in this paper for our textual representation is the well-known Bag-of-Words (BoW) model, comOur pipeline designed for extracting features from textual con-             monly used as a standard for text classiﬁcation and being approtent has similar stages to other text processing pipelines: prepro-             priate for short texts like textual content of tweets. This model
+cessing and tokenization, feature extraction, feature selection (if             simpliﬁes each document by representing it as the multiset of its
+the resulting feature set is too large) and the classiﬁcation stage.            words, disregarding grammar or word order but taking into acFig. 3 shows the overall workﬂow of this pipeline.                              count the multiplicity of the words within the document. When
+                                                                                this model is used in vectorial form, it resembles to an histogram
+5.1. Tweet preprocessing and tokenization
+                                                                                representation.
+                                                                                   Despite its simplicity, this feature model is widely used in difDealing with tweet textual content differs from typical text proferent applications where an input feature vector for training clascessing in several aspects. On the one hand, special care must be
+                                                                                siﬁers and the results obtained are often adequate. We chose this
+taken during the tokenization process because tweets usually conmodel because the nature of the textual content of tweets is brief
+tain special elements like hashtags or user mentions that are quite
+                                                                                and with low grammar complexity and, usually, no grammar correctness. Thus, traditional NLP approaches that rely on grammar
+     http://scikit-learn.org .                                                  analysis would give no useful information.
+
+
+58                                                  J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64
+
+
+                              Table 2
+                              Cross-validated performance of the Bag-of-Words model.
+
+                                Feature model                             Full problem                  Reduced problem
+
+                                                                          Accuracy (%)     AUC (%)      Accuracy (%)   AUC (%)
+
+                                Dummy Random uniform                      12.73            50.00        34.86          50.00
+                                Dummy Random stratiﬁed                    31.32            49.82        36.37          49.64
+                                Dummy Most frequent class                 46.13            50.00        51.24          50.00
+                                Bag-of-Words                              61.97            79.19        68.36          85.13
+                                BoW-AFS (automatic feature selection)     77.37            90.15        88.38          96.30
+
+
+5.3. Improving performance via automatic feature selection                        5.4. Experimental results
+
+    Although the BoW model achieves some degree of success                            We tested the performance of the BoW model against the two
+as a feature model for training the classiﬁers, there is room for                 versions of the proposed task, including several dummy baselines
+improvement.                                                                      for comparison purposes and the automatic feature selection step.
+    A common way of improving the BoW model consists in ap-                       Table 2 shows the cross-validated performance of this model, usplying a TF-IDF weighting scheme to the vectorized documents,                     ing a Support Vector Machine (SVM) classiﬁer with hyperparameter
+giving more relevance to some words than others and improv-                       search. Any cross-validation process is stratiﬁed (preserving the raing the overall performance of the model. Nevertheless, due the                   tio of classes among the folds) with k = 10 folds.
+nature of the tweets textual content, applying a TF-IDF weight-                       Despite that the performance of the BoW model is quite suing scheme does not improve the results: the word co-occurrence                   perior to the dummy baselines the results are not very impreswithin each document is very low and the tweet length very                        sive. The BoW model surpasses the most frequent class baseline by
+short compared to the large number of documents, thus render-                     ≈ +15% for the full problem and ≈ +17% for the reduced problem,
+ing any weighting scheme based on word distribution is of little                  achieving a moderate success (between 61% and 69% of accuracy).
+use.                                                                                  With the previously mentioned automatic feature step, the BoW
+    A brief analysis on the BoW model vectorial data reveals an im-               model experiments a huge performance improvement (≈ from
+portant issue also associated with the textual content. The dimen-                +15% to +20% respect bare BoW model) on both versions of the
+sionality of the BoW model is quite high (≈ 3k features) while the                problem, achieving more than 88% of accuracy in reduced version
+average words/tweet is about 10.41, thus resulting in a low data                  of the problem. With this feature selection step, we can consider
+density (≈ 3.34 × 10−3 ) and low classiﬁer performance. In order to               that the BoW model achieves a good performance and it is appalliate this issue, a dimensionality reduction process is applied to             propriate as an initial feature model for classiﬁcation based on exthe BoW model. Generally speaking, there are two main ways to                     tracted textual content.
+address dimensionality: dataset transformation techniques and fea-                    The receiver operating characteristic curves (ROC) of these modture selection techniques. Dataset transformation techniques try to               els, for both full and reduced problem, are shown in Fig. 4a and b
+reduce the dimensionality via data transformations, combining and                 respectively, being the area under curve (AUC) values also shown
+transforming several data dimensions into fewer ones. Techniques                  in Table 2. ROC curves and their AUC values are consistent with
+typically rely on matrix factorization problems (PCA, Kernel PCA, SVD             the obtained accuracy values, yielding similar behavior.
+or NNMF) or manifold learning (LLE, LTSA, Spectral Embedding or
+MDS).                                                                             6. Structural content processing pipeline
+    Though dataset transformation techniques perform well and
+usually improve performance, these techniques did not work well                       As we have mentioned before, the structural nature of tweets
+with our BoW model. No signiﬁcant performance improvements                        is an interesting and relevant source of knowledge, though this aswere detected and classiﬁers generally performed worse, leading                   pect is often overlooked and extracting structural knowledge from
+us to discard such techniques.                                                    tweet collections is not straightforward. Despite the fact that there
+    Feature selection techniques work differently as they are based               are constructs within tweets that establish some relationships such
+under the central assumption that data contains many redundant                    as user mentions or hashtags, the underlying network is very rich
+or irrelevant features, which provide no beneﬁt for the classiﬁca-                and complex, requiring additional effort and speciﬁc approaches
+tion process. Feature selection techniques are better suited for our              for addressing that complexity.
+BoW model due to the sparseness of data and the fact that most                        The main idea relies on the fact that users may have explicit
+of the words may not be relevant for our task, resulting in sev-                  and implicit relationships between them, resulting in the creation
+eral features being uninformative. We have tested several feature                 of implicit communities in which members tend to share common
+selection techniques, being those based on decision trees the most                interests despite the fact that most members do not know each
+successful for our BoW model.                                                     other or have any direct contact. Thus, we devised a graph-based
+    We have deﬁned an automatic feature selection step to process                 approach for discovering these implicit communities and characthe BoW model, making use of a forest of extremely randomized                     terizing users by using a feature model extracted from these comtrees with a high number of estimators. This type of forest is sim-               munities.
+ilar to a typical random forest but it differs in the way of how                      Our approach for extracting meaningful structural features bethe thresholds are selected for each random subset: the thresh-                   gins with building a graph-based representation of the existing
+olds are drawn at random for each candidate feature and the best                  user relationships, inferring a community model from that graph
+are selected instead of looking for the most discriminating. This                 and generating a feature model from that community model. Thus,
+tends to further reduce the variance of the internal model. As it                 the resulting pipeline has the following stages: graph building,
+is shown in Fig. 3, this step is positioned in the pipeline right                 community detection, community feature extraction, feature selecbefore the application of the SVM classiﬁer with hyperparameter                   tion (if the resulting featureset is too large) and the classiﬁcation
+search.                                                                           stage. Fig. 5 shows the overall workﬂow of this pipeline.
+
+
+                                                    J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64                                        59
+
+
+                                      Fig. 4. Receiver operating characteristic curves (ROC) for textual content models.
+
+
+                                                        Fig. 5. Structural feature extraction pipeline.
+
+
+   Note that, in each structural approach, the proper detection                      From the pruned friendship graph, we build a bipartite graph
+of communities has been elaborated before the classiﬁer learning                  that express this behavior taking into account that some nodes
+phase, conceived as a feature extraction process, in order to in-                 have both incoming and outgoing edges, potentially having both
+clude the knowledge from the social network as features for the                   roles. Those nodes are transformed into two different nodes each
+learning process. We consider that this is necessary for evaluating               one only having incoming or outgoing edges. Any isolated node
+our proposal because it is the only way to be sure that test in-                  resulting from the pruning process or the bipartite process is disstances have valid community values.                                              carded. This bipartite graph is used as the base source for the community detection algorithms used in the next stage.
+
+6.1. Building the graph-based representation                                      6.2. Community detection and feature model extraction
+
+    The ﬁrst step of our graph building process consists in gen-                      The feature model extracted from the bipartite graph greatly
+erating a direct friendship graph using all the users that appear                 depends on the particular community detection process; differin the tweet collection and their friends (users who they directly                ent community detection methods yield quite different community
+follow). The resulting graph may be huge and diﬃcult to handle                    models, each one with their own advantages and drawbacks. In
+and it holds thousands of nodes that only have one incoming edge                  this paper, we have tested two different community detection ap-
+(friendship relationship), being mostly irrelevant nodes. Therefore,              proaches: an approach based on computing an user aﬃnity model
+the friendship graph is pruned by removing irrelevant nodes with                  and another approach based on modeling the community detection
+a low count of incoming edges and no outgoing edges.                              task as a biclustering problem.
+    This pruned friendship graph holds two kinds of users: origi-                     The ﬁrst approach consists on generating a feature model from
+nal users that authored any tweet in the original dataset and new                 the community model extracted from a similarity graph, being the
+users inferred from the existing relationships within the network.                resulting model able of computing the aﬃnity of each user to each
+We noticed that the original users are mostly content consumers                   detected community.
+while the new inferred users are mostly content creators. Content                     The ﬁrst step of this approach consists in generating a similarcreators are nodes that act as sources of relevant content which                  ity graph of the content creator nodes from the bipartite graph,
+we may identify as sources of political opinion. These users usually              based on the idea that two content creator nodes are similar if
+are mass media and politically active users and often hold a great                they share common content consumers. We selected the Dice meanumber of followers but this is not a necessary condition. Content                sure as an appropriate similarity measure for comparing content
+consumers are the rest of network nodes that consume the con-                     creator nodes via their sets of content consumers. Thus, we build
+tent that content creators generate by following them. Both roles                 a similarity graph whose edges between nodes have weight equal
+are not mutually exclusive and any user may hold both roles.                      to the Dice measure between them.
+
+
+60                                                   J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64
+
+
+                                   Table 3
+                                   Cross-validated performance of the different structural models.
+
+                                     Feature model                  Full problem                  Reduced problem
+
+                                                                    Accuracy (%)      AUC (%)     Accuracy (%)   AUC (%)
+
+                                     Bag-of-Words                   61.97             79.19       68.36          85.13
+                                     Community aﬃnity               50.07             54.66       56.04          54.66
+                                     Community aﬃnity-AFS           50.28             55.14       56.51          55.99
+                                     Biclustering relevance         59.97             77.21       68.75          77.21
+                                     Biclustering relevance-AFS     61.11             77.23       69.60          78.09
+
+
+    This similarity graph has to be further processed in order to                      For each content creator i and its most representative
+                                                                                                                                             biclusreveal some kind of hidden structure. Any edge representing a low                                                                         j∈bi Mi, j
+                                                                                   ter bi , we compute its intra-bicluster weight wi =    | j∈bi |     , being
+similarity value may be considered as uninformative, so every edge
+                                                                                   that the ratio of direct followers with the same representative biwith a weight lower than some threshold is removed. In our work,
+                                                                                   cluster of content creator i. These weights represent the relevance
+we found that weight values inferior to 0.35 indicated low similarof the content creators within the community represented by that
+ity between content creator nodes; this is direct result of using the
+                                                                                   bicluster.
+Dice measure.
+                                                                                       After that, for each user appearing in the dataset, we generate
+    This processed similarity graph can be no longer a connected
+                                                                                   a feature model similar to the previous approach but in this case,
+graph and different connected components must be inspected inthe belonging measure to each community (bicluster) is done by
+dividually though in most cases, the connected component with
+                                                                                   summing of the weights of the directly followed content creators
+greater number of nodes is also the only relevant connected comthat belong to that bicluster.
+ponent. After selecting the relevant connected components, we apply the well-tested Louvain method [21] for detecting communities
+on the processed similarity graph, assigning each content creator                  6.3. Experimental results
+to a particular community.
+    Using this community model, we generate a feature model for                        We tested the performance of the feature models generated
+each user representing the aﬃnity to each community. For each                      from both pure structural approaches against the two versions of
+user that appears in the dataset, we compute the proportion of                     the proposed task, testing the automatic selection step in both
+their friendships to each community thus obtaining a vector of val-                models and including the previous BoW model for comparison
+ues whose sum is 1.                                                                purposes. Table 3 shows the cross-validated accuracy of these
+    Though we consider this approach quite interesting, we felt that               models, using the same experimental process.
+the feature model based on the communities extracted by the Lou-                       Table 3 shows the performance values of the different feature
+vain method was insuﬃcient for revealing underlying structural                     models. It is interesting that the feature model based on computknowledge. The major disadvantage of this ﬁrst approach was that                   ing aﬃnity values from communities extracted by using the Louwe did all the community analysis in a deferred way, slightly de-                  vain method achieves this prediction power, moreover if we contaching content consumers and content creators instead of ana-                     sider it does not take into account what users express in their
+lyzing them jointly. Thus, we propose another approach that tries                  tweets. Applying an automatic feature selection shows a slight imto address the joint analysis of content consumers and content                     provement in performance but note that it is very diﬃcult to furcreators.                                                                          ther improve this feature model due the low number of features
+    This second approach is based on biclustering techniques that                  used.
+perform a simultaneous clustering of rows and columns of a ma-                         Nevertheless, the feature model based on the Spectral Biclustrix, being adequate for our task if we generate a model in which                  tering for obtaining the communities and computing the relevance
+the content consumers and content creators are represented as                      within those communities proved being more effective. This aprows and columns respectively. There are many biclustering tech-                   proach performs remarkably better than the other structural apniques and describing all of them is out of the scope of this paper.               proach and it yields similar results to the bare BoW model, inThe survey [22] is a good source for any interested reader on bi-                  dicating that the underlying network structure is, by itself, very
+clustering techniques. We have selected the Spectral Biclustering al-              valuable. Note that the automatic feature selection also slightly imgorithm [23] for our problem because it computes a fuzzy commu-                    proves results but suffers the same issues than the other approach,
+nity model with several degrees of membership instead of a one-                    namely the low number of features used.
+to-one model.                                                                          The receiver operating characteristic curves (ROC) of these modSpectral Biclustering relies on the idea that the data matrix has              els, for both full and reduced problem, are shown in Fig. 6a and b
+a hidden checkerboard structure and the n rows and m columns                       respectively, being the area under curve (AUC) values also shown
+may be partitioned into n × m biclusters. Each row will belong to                  in Table 3. The ROC curves obtained by the models using the Loum biclusters and each column to n biclusters with different degrees                vain method, show that these models have issues when the unof membership and the algorithm uses those m × n biclusters for                    derlying community structure. ROC curves and their AUC values
+computing the most representative bicluster for each row and col-                  are consistent with the obtained accuracy values, yielding similar
+umn element.                                                                       behavior.
+    Using the reduced bipartite graph, we build a friendship matrix M where Mi, j = 1 if and only if the content creator i is be7. Model integration pipeline
+ing followed by the content consumer j (j has a friendship relationship with i). Applying the Spectral Biclustering algorithm to
+                                                                                      In the previous sections we have shown how we have extracted
+the matrix M, we generate representative biclusters that we can
+                                                                                   knowledge from both structural and textual content, each type of
+interpret as communities of both content creators and content
+                                                                                   content independently addressed and achieving different degrees
+consumers.
+                                                                                   of performance. In this section, we evaluate the idea of mixing the
+
+
+                                                    J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64                                         61
+
+
+                                    Fig. 6. Receiver operating characteristic curves (ROC) for structural content models.
+
+
+                                                        Fig. 7. Direct model combination pipeline.
+
+
+best feature models of different nature, exploring several ways of                7.2. Stacked generalization
+combining these models in order to further improve the results.
+   We have tested three different approaches for feature combina-                     The direct combination scheme did not yield very good results
+tion: Direct combination, Stacked Generalization and our own pro-                 and it is clear that we needed other combination schemes that betposal Multiple Pipeline Stacked Generalization. Each one of these ap-             ter handle data from models of different nature.
+proaches have different steps, so each pipeline is discussed in their                 Ensemble learning methods use multiple learning algorithms
+respective subsections.                                                           to obtain better predictive performance. Though there are some
+                                                                                  methods that use the same feature model and/or algorithm, ensemble methods tend to yield much better results if there is a sig7.1. Direct combination
+                                                                                  niﬁcant diversity among the models. Many ensemble methods promote such diversity among the models they combine but the ones
+    Our ﬁrst mixing approach was a direct combination of both feain which we are interested are methods that allow different algoture models into a larger feature model. This combination is done
+                                                                                  rithms/feature models.
+by simply concatenating the feature models into a single vector
+                                                                                      Stacked generalization or Stacking [24,25] involves training a
+feature model. We apply an automatic feature selection step a primeta-classiﬁer on top of the outputs or predictions of several other
+ori, combining the pre-reduced feature models, and a posteriori,
+                                                                                  classiﬁers. The underlying idea is that the meta-classiﬁer learns
+reducing the feature sets after the combining the feature models.
+                                                                                  how properly the classiﬁers learn the training data. Since our probWe note the former model as BoW-AFS + Bicl-AFS while the latter
+                                                                                  lem consists in combining information from very different nature,
+is noted Combined-AFS. Fig. 7 shows the overall workﬂow of this
+                                                                                  stacked generalization offer more ﬂexibility than other ensemble
+pipeline.
+                                                                                  methods such as Bagging or Boosting. Fig. 8 represents the overall
+    We think that classiﬁers have diﬃculties when addressing the
+                                                                                  workﬂow of this pipeline, showing how the classiﬁer outputs are
+direct combination by concatenation. The feature models reprethe inputs for the meta-classiﬁer. The computation of base classent different kinds of knowledge thus confusing classiﬁers since
+                                                                                  siﬁer outputs are made via internal cross-validation and we used
+features of different models behave differently and may tend to
+                                                                                  10-fold stratiﬁed internal cross-validation schema.
+strongly disagree with each other.
+
+
+62                                                  J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64
+
+
+                                                   Fig. 8. Stacking Generalization combination pipeline.
+
+
+                                           Fig. 9. Multiple Pipeline Stacked Generalization combination pipeline.
+
+
+7.3. Multiple pipeline stacked generalization                                        Fig. 9 represents the overall workﬂow of this pipeline, showing
+                                                                                  how our proposal has separate sets of tier-0 classiﬁers being indeIn the previous section, we observed that the stacking tech-                  pendently trained and fed to the meta-classiﬁer.
+nique is able to combine feature models from very different
+sources successfully. However, individual classiﬁers exhibit much                 7.4. Experimental results
+of the same learning issues because they are fed with the complete feature model in a similar way as in the direct combination                    We tested the performance of the different model integraapproach. Though the metaclassiﬁer does its best to mitigate this                 tion approaches tested against the two versions of the proposed
+situation and achieves some degree of success, we devised a vari-                 task, including all the variants of the direct combination scheme
+ation of the stacked generalization technique that speciﬁcally tries              and both the BoW and the Biclustering models for comparison
+to address this issue.                                                            purposes. Table 4 shows the cross-validated accuracy of these
+    Our Multiple Pipeline Stacked Generalization approach is similar              approaches.
+to traditional stacking but it addresses each original feature model                 We observe that the direct combination scheme struggles to get
+in independent pipelines instead of feeding the complete feature                  better results in most variants, being the pre-reduced approach the
+model to each individual classiﬁer. Each feature model is processed               only one getting better results. It surpasses any model regarding
+in a separate pipeline and each one has a proper set of individual                the reduced problem and its performance is on par with the best
+classiﬁers, thus generating speciﬁc conﬁdence values for each fea-                when addressing the full problem. As we mentioned before, clasture model. Furthermore, each pipeline may have different sets of                 siﬁers have diﬃculties when addressing the direct combination by
+individual classiﬁers with different parameters, potentially ﬁtting               concatenation because the models represent very different kinds of
+better to each feature model.                                                     knowledge.
+    As a result of this independent processing, the tier-1 feature                   The Stacked Generalization approach performs signiﬁcantly betmodel is larger than in stacking. Being N classes, M feature models               ter than any direct combination approach, even applying an AFS
+and Km classiﬁers per feature model, the tier-1 feature model will                step. We experimentally found that the Stacking Generalization aphave |N| ×  i ∈ M |Ki | features while the stacking tier-1 model has             proach worked best when combining the BoW-AFS model and bare
+|N| × |K| features (|K| independent classiﬁers). The rest of the pro-             Bicluster model. Nevertheless, individual classiﬁers exhibit much of
+cess (the meta-classiﬁer learning stage and evaluation) is identical              the same learning issues because they are fed with the complete
+to traditional stacking. Similarly, the computation of base classiﬁer             feature model.
+outputs are made via internal cross-validation and we used 10-fold                   Our Multiple Pipeline Stacked Generalization, which used the
+stratiﬁed internal cross-validation schema.                                       same models used for Stacked Generalization, yields signiﬁcantly
+
+
+                                                      J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64                                        63
+
+
+                       Table 4
+                       Cross-validated performance of model integration approaches.
+
+                        Integration    Full problem Feature model                    Reduced problem
+
+                        scheme                                                       Accuracy (%)     AUC (%)   Accuracy (%)   AUC (%)
+
+                        None           BoW-AFS                                       77.37            90.15     88.38          96.30
+                                       Bicl-AFS                                      61.11            77.21     69.60          79.78
+                        Direct         Combined                                      64.79            83.62     71.98          86.75
+                                       Combined-AFS                                  75.24            91.38     86.68          94.67
+                                       BoW-AFS + Bicl-AFS                            77.40            92.65     89.07          96.23
+                        Stacking       Stacked Generalization                        79.99            93.69     89.22          95.98
+                                       Multiple Pipeline Stacked Generalization      82.36            95.05     91.22          96.71
+
+
+                                       Fig. 10. Receiver operating characteristic curves (ROC) for integration approaches.
+
+
+better results than any other approach on both versions of the                      of tweets and the structural information of their underlying social
+problem, proving that our variation was being more effective at                     network. This approach differs from the usual focus on textual concombining both feature models.                                                      tent commonly found in other approaches in the current literature,
+    The receiver operating characteristic curves (ROC) of the model                 and through experimentation, we found that mixing different feaintegration approaches, for both full and reduced problem, are                      ture models can yield very good results though it requires of an
+shown in Fig. 10a and b respectively, being the area under curve                    appropriate combination scheme.
+(AUC) values also shown in Table 4. ROC curves and their AUC val-                       We observed that, after preprocessing and tokenizing the
+ues are consistent with the obtained accuracy values, yielding sim-                 tweets, generating a feature model based in the well-established
+ilar behavior.                                                                      Bag-of-Words was a sensible idea; despite of its simplicity, it
+    In this work, each pipeline was set up using the best classi-                   achieves a moderate success and surpasses the baselines. This is
+ﬁers previously tested for each independent feature model and ver-                  mainly due to tweets are very short (140 characters max.) and have
+sion of the problem. The hyperparameters for the classiﬁers are the                 very little grammar complexity. We found that applying a TF-IDF
+same ones that we previously used when addressing the problem                       weighting schema did not improve the results.
+with each base feature model.                                                           Nevertheless, this textual feature model substantially grew and
+    For the Stacked Generalization approach, we found that a com-                   it was suffering from dimensionality issues. Applying an automatic
+bination of SVM-C, Random Forests and Logistic Regression classi-                   feature selection step based on a forest of extremely randomized
+ﬁers worked well for both feature models and both versions of the                   trees was quite effective and with this reduction, the BoW model
+problem.                                                                            experiments a huge performance improvement.
+    For the Multiple Pipeline Stacked Generalization approach,                          When analyzing the structural information, our idea of transwhen addressing the full version of the problem, we found that                      forming the underlying information of tweets into a bipartite
+a combination of SVM-C, Random Forests, Logistic Regression and                     friendship graph was quite successful when fed to the different
+Multinomial Naive Bayes worked well for both feature models.                        community detection techniques. Though both techniques are inHowever, in the reduced version of the problem we found that the                    teresting, the community model generated by the Spectral Biclusbest combination was SVM-C, Random Forest and Logistic Regres-                      tering is very superior; it yields better results and the model is
+sion for the BoW model while the best for the Biclustering model                    fuzzier, allowing that any user belongs to many communities with
+was SVM-C and Random Forest.                                                        different degrees of community membership.
+                                                                                        After each knowledge is independently addressed, we discuss
+8. Conclusions                                                                      how to design the model combination stage and we test three
+                                                                                    different ways of mixing feature models from different types of
+   In this paper, we propose an approach to the categorization                      knowledge: direct combination, Stacked Generalization and our proof tweets within the political context, based on the novel idea of                  posed variant of Stacked Generalization named Multiple Pipeline
+combining two different sources of knowledge: the textual content                   Stacked Generalization. Results show that the pipeline with our
+
+
+64                                                          J.M. Cotelo et al. / Information Fusion 31 (2016) 54–64
+
+
+proposed method performs remarkably better than any other fea-                             [8] A. Babour, J.I. Khan, Tweet sentiment analytics with context sensitive toneture model and combination method, being effective when com-                                   word lexicon, in: 2014 IEEE/WIC/ACM International Joint Conferences on Web
+                                                                                               Intelligence (WI) and Intelligent Agent Technologies (IAT), vol. 1, IEEE, 2014,
+bining feature models from both types of content.                                              pp. 392–399.
+    We can conclude that mixing both textual and structural                                [9] S. Al-Osaimi, K.M. Badruddin, Role of emotion icons in sentiment classiﬁcaknowledge is a good approach for determining the political ori-                                tion of Arabic tweets, in: Proceedings of the Sixth International Conference on
+                                                                                               Management of Emergent Digital EcoSystems, ACM, 2014, pp. 167–171.
+entation of tweets and can be applied to tweets from other do-                            [10] A. Pak, P. Paroubek, Twitter as a corpus for sentiment analysis and opinion
+mains. Extracting knowledge and generating good feature models                                 mining, in: LREC, 2010.
+is harder for structural content than for textual content and mak-                        [11] S. Xie, J. Tang, T. Wang, Topic related opinion integration for users of social
+                                                                                               media, in: Social Media Processing, Springer, 2014, pp. 164–174.
+ing use of both feature models proved to be non-trivial, as direct
+                                                                                          [12] M. Speriosu, N. Sudan, S. Upadhyay, J. Baldridge, Twitter polarity classiﬁcation
+combination does not properly behave with feature models of dif-                               with label propagation over lexical links and the follower graph, in: Proceedferent nature. Our proposed combination approach carefully tackles                             ings of the First Workshop on Unsupervised Learning in NLP, Association for
+                                                                                               Computational Linguistics, 2011, pp. 53–63.
+these issues and proved to be effective.
+                                                                                          [13] P.P. Talukdar, K. Crammer, New regularized algorithms for transductive learning, in: Machine Learning and Knowledge Discovery in Databases, Springer,
+                                                                                               2009, pp. 442–457.
+Acknowledgments
+                                                                                          [14] T.A. Small, What the hashtag? A content analysis of Canadian politics on twitter, Inf. Commun. Soc. 14 (6) (2011) 872–895.
+   This research is partially funded by the national project                              [15] C.S. Park, Does twitter motivate involvement in politics? Tweeting, opinion
+TIN2012-38536-C03-02 from the Ministerio de Economía y Com-                                    leadership, and political engagement, Comput. Hum. Behav. 29 (4) (2013)
+                                                                                               1641–1648.
+petitividad of Spain and the regional project P11-TIC-7684 MO                             [16] J.H. Kahn, R.M. Tobin, A.E. Massey, J.A. Anderson, Measuring emotional expresfrom the Junta de Andalucía of Spain.                                                          sion with the linguistic inquiry and word count, Am. J. Psychol. (2007) 263–
+                                                                                               286.
+                                                                                          [17] F.P. Barclay, Political opinion expressed in social media and election outcomesReferences                                                                                     us presidential elections 2012, J. Media Commun. (JMC) 1 (2) (2014).
+                                                                                          [18] S.M. Mohammad, X. Zhu, S. Kiritchenko, J. Martin, Sentiment, emotion, pur-
+[1] M. Ghiassi, J. Skinner, D. Zimbra, Twitter brand sentiment analysis: a hybrid              pose, and style in electoral tweets, Inf. Process. Manage. 51 (4) (2015) 480–
+    system using n-gram analysis and dynamic artiﬁcial neural network, Expert                  499.
+    Syst. Appl. 40 (16) (2013) 6266–6282, doi:10.1016/j.eswa.2013.05.057.                 [19] J.M. Cotelo, F.L. Cruz, J.A. Troyano, Dynamic topic-related tweet retrieval, J. As-
+[2] M.M. Mostafa, More than words: social networks’ text mining for consumer                   soc. Inf. Sci. Technol. 65 (3) (2014) 513–523, doi:10.1002/asi.22991.
+    brand sentiments, Expert Syst. Appl. 40 (10) (2013) 4241–4251, doi:10.1016/j.         [20] F. Pedregosa, G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O. Grisel,
+    eswa.2013.01.019.                                                                          M. Blondel, P. Prettenhofer, R. Weiss, V. Dubourg, J. Vanderplas, A. Passos,
+[3] M. Conover, J. Ratkiewicz, M. Francisco, B. Gonçalves, F. Menczer, A. Flammini,            D. Cournapeau, M. Brucher, M. Perrot, E. Duchesnay, Scikit-learn: machine
+    Political polarization on twitter., in: ICWSM, 2011.                                       learning in Python, J. Mach. Learn. Res. 12 (2011) 2825–2830.
+[4] A. Tumasjan, T.O. Sprenger, P.G. Sandner, I.M. Welpe, Predicting elections with       [21] V.D. Blondel, J.-L. Guillaume, R. Lambiotte, E. Lefebvre, Fast unfolding of comtwitter: what 140 characters reveal about political sentiment., ICWSM 10                   munities in large networks, J. Stat. Mech.: Theory Exp. 2008 (10) (2008)
+    (2010) 178–185.                                                                            P10008.
+[5] I. Himelboim, S. McCreery, M. Smith, Birds of a feather tweet together: inte-         [22] S. Madeira, A. Oliveira, Biclustering algorithms for biological data analysis: a
+    grating network and content analyses to examine cross-ideology exposure on                 survey, IEEE/ACM Trans. Comput. Biol. Bioinformat. 1 (1) (2004) 24–45, doi:10.
+    twitter, J. Comput. Mediated Commun. 18 (2) (2013) 40–60.                                  1109/TCBB.2004.2.
+[6] K. Ikeda, G. Hattori, C. Ono, H. Asoh, T. Higashino, Twitter user proﬁling based      [23] Y. Kluger, R. Basri, J.T. Chang, M. Gerstein, Spectral biclustering of microarray
+    on text and community mining for market analysis, Knowl. Based Syst. 51 (0)                cancer data: co-clustering genes and conditions, Genome Res. 13 (2003) 703–
+    (2013) 35–47, doi:10.1016/j.knosys.2013.06.020.                                            716.
+[7] J. Martinez-Romo, L. Araujo, Detecting malicious tweets in trending topics us-        [24] D.H. Wolpert, Stacked generalization, Neural Networks 5 (1992) 241–259.
+    ing a statistical analysis of language, Expert Syst. Appl. 40 (8) (2013) 2992–        [25] L. Breiman, Stacked regressions, Mach. Learn. 24 (1) (1996) 49–64, doi:10.1007/
+    3000.                                                                                      BF00117832.

@@ -1,0 +1,1838 @@
+Public Opinion Quarterly, Vol. 79, Special Issue, 2015, pp. 214-243
+
+
+SURVEYS IN CONTEXT
+HOW TIMING IN THE ELECTORAL CYCLE
+INFLUENCES RESPONSE PROPENSITY AND
+SATISFICING
+
+SUSAN BANDUCCI*
+DANIEL STEVENS
+
+
+          Abstract The value of cross-national surveys in examining how
+          political and social contexts shape attitudes and behavior has been dem­
+          onstrated over the past 20 years. Their vulnerabilities, such as meas­
+          urement equivalence, have also received considerable attention. Less
+          attention has been paid to how variations in the timing of the fieldwork
+          may affect data quality. We investigate how the timing of the survey in
+          the electoral cycle may affect survey cooperation and satisficing. For
+          some indicators, we find support for a context effect in that reluctance
+          to cooperate and satisficing decrease as an election approaches, and this
+          effect is more pronounced among the politically interested. Our results
+          have implications for both cross-national survey research and campaign
+          effects studies in that conducting fieldwork close to an election can alter
+          data quality and campaigns can influence behavior but also cooperation
+          with surveys.
+
+
+Introduction
+The use of cross-national survey data sets to study social and political atti­
+tudes has grown tremendously over the past 20 years, both because they allow
+researchers to pinpoint how variations in political and social contexts shape
+these attitudes, and because computer capacity has put complex modeling
+techniques for multi-country data at the fingertips of increasing numbers of
+
+S u s a n B a n d u c c i is a professor in politics at the University of Exeter, Exeter, UK. Daniel Stevens
+is an associate professor in politics at the University of Exeter, Cornwall Campus, Penryn, UK.
+The authors thank the three anonymous reviewers and Andrew Hattersley for their helpful and
+insightful comments on revising the manuscript. This research is supported by the Economic and
+Social Research Council of the UK [grant number ES/K004395/1], *Address correspondence to
+Susan Banducci, University of Exeter, Politics, Amory Building, Rennes Drive, Exeter EX4 4QJ,
+UK; e-mail: s.a.banducci@exeter.ac.uk.
+
+doi:10.1093/poq/nfv007
+© The Author 2015. Published by Oxford University Press on behalf o f the American Association for Public Opinion Research.
+All rights reserved. For permissions, please e-mail: joumals.permissions@oup.com
+
+
+Surveys in Context                                                                                215
+
+
+researchers. However, cross-national surveys are also particularly vulnerable
+to certain kinds of errors that can bias results and diminish the comparability
+of survey responses. Some of these are well known and well explored, such as
+measurement equivalence (e.g., Ariely and Davidov 2012), but other sources
+of bias have received less attention, including the “period effect” of when a
+survey takes place in a country’s electoral cycle.
+   We use the framework of campaign effects to investigate how the timing
+of survey fieldwork influences responses and response rates. Surveys are the
+bread and butter of campaign and elections research. They have been used
+to demonstrate that campaigns influence what people know about politics
+(Chaffee, Zhao, and Leshner 1994; Franz et al. 2008), their levels of interest
+in politics (Best, Johnson, and Krueger 2012), the importance they attach to
+particular issues (Hetherington 1996; Johnston et al. 1992; Johnston, Hagen,
+and Jamieson 2004; Lenz 2012; Parker 1995; Stevens et al. 2011), and (lack
+of) ambiguity about candidates and parties (Alvarez 1998; Rudolph 2005).
+Yet, these advances in our understanding of the impact of campaign contexts
+also serve to raise questions about the comparability of results and data qual­
+ity in cross-national studies that take place at different points in countries’
+electoral cycles. For example, campaigns are said to both influence politi­
+cal attitudes directly and alter the strength of relationships between variables,
+providing the means by which voters are able to connect underlying attitudes
+with preferences (Gelman and King 1993). If campaigns are such influences
+on what people know and think about politics, is it also possible that the timing
+of a survey relative to the electoral cycle affects whether respondents opt into
+and are then engaged with the survey itself? In this paper, we ask whether the
+proximity of (distance from or to) national elections influences two indicators
+of data quality in cross-national surveys: the propensity to agree to complete
+the interview and the effort invested in answering the questions (satisficing).
+   In order to address these issues, we draw on both the campaign effects liter­
+ature and theories of survey response. The campaign effects literature leads us
+to expect that respondents’ survey responses change over the course of some­
+times very long (e.g., the United States) campaigns, while survey response
+research suggests that at least part of these effects might be artefacts of the
+propensity to respond to the survey and the willingness to invest effort (or
+optimize) in answering questions about politics and current affairs.
+   Using the European Social Survey (ESS) and data from 26 countries pro­
+vides us with leverage over the question of election proximity because each
+round takes place over a common period of time; Round 4 used in our analy­
+sis took place between August 2008 and March 2010.1 For some countries,
+interviews were conducted within a few months of a national election or
+I. There are 31 countries that have participated in the European Social Survey, but this varies over the
+rounds of data available. Using Round 4 only and taking into account missing data on our main vari­
+able of interest, interview date, and other missing data, there are 26 countries available for analysis.
+
+
+216                                                      Banducci and Stevens
+
+
+referendum, while in other rounds, interviews took place more than two years
+before or since a national election or referendum. In addition to linking the col­
+lection of survey data to contextual information such as events data (Statham
+and Tumber 2013), the ESS is also ideal for examination of cross-country
+survey data quality because it is renowned for its rigorous sampling methods,
+its exclusive use of face-to-face interviews, and the very close attention paid
+to reliability, validity, and equivalence in measurement.
+   Our analysis shows that the context of the survey in terms of proximity to
+a national election alters the propensity to cooperate, with reluctance declin­
+ing as the election nears. On some measures, the effect of the timing of the
+interview is more pronounced for motivated respondents (i.e., those who are
+politically interested). There is more limited evidence that the timing of the
+interview in the electoral cycle influences satisficing. Satisficing, as in previ­
+ous research, tends to be driven by motivation and cognitive ability. Instead,
+timing in the electoral cycle may indirectly influence satisficing by increasing
+levels of motivation (i.e., political interest).
+
+
+Campaigns, Context, and the Survey Response
+
+CAMPAIGN EFFECTS AND LEARNING
+
+While the notion that campaigns have minimal effects is no longer conventional
+wisdom (indeed, while the duration of effects may be limited [Mitchell 2012],
+there is a large literature that indicates that election campaigns “enlighten”
+voters [Andersen et al. 2005; Arceneaux 2006; Erikson and Wlezien 2012;
+Gelman and King 1993; Johnston, Hagen, and Jamieson 2004; Stevenson
+and Vavreck 2000]), the implications for surveys, especially cross-national
+ones, have not been fully explored. Scholars suggest that as elections draw
+closer, individuals become increasingly capable of connecting “fundamentals”
+such as ideology and perceptions of the economy to vote intention (Gelman
+and King 1993; see also Erikson and Wlezien 2012; Johnston, Hagen, and
+Jamieson 2004), and cross-national researchers have not considered what this
+may mean for data quality and comparability.
+   This learning, resulting in different responses, has been linked to the tim­
+ing and length of campaigns by examining the effects of variation in cam­
+paigns cross-nationally. Voters learn more in longer campaigns (Stevenson and
+Vavreck 2000), and these learning effects tend to be larger for low political
+sophisticates in countries where responsibility for policy performance is low
+(Arceneaux 2006). This line of comparative research on campaigns implies
+campaign effects on both short-term and long-term attitudes and perceptions,
+and thus a potential influence of the context of the election cycle on survey
+responses more broadly.
+
+
+Surveys in Context                                                             217
+
+
+   Solvak (2009) explores this possibility in terms of the relationship between
+interest in politics and election context using the first three rounds of ESS data.
+He finds that interest in politics increases with proximity to an election, but that
+the effects are small. In order to gauge election effects more directly, Solvak then
+focuses on the six surveys in the first three rounds of the ESS for which field­
+work took place during an election and compares aggregate interest in politics
+month by month. He finds no systematic effects of election context on interest in
+politics but some effects on the variation of opinion around the mean—standard
+deviations become lower as interest in politics crystallizes during elections.
+   Beyond whether campaigns serve to increase interest in politics, there
+is also an emerging debate about the nature of learning in campaigns and
+whether prospective voters are “enlightened.” Lenz (2009) has argued that
+change attributed to priming effects in campaigns is in fact simply a product
+of learning, while Enns and Richman (2013) claim that much of what has
+been considered part of the process of enlightened preferences is actually an
+artefact of respondents growing more engaged with the surveys as elections
+near, rather than a learning response to campaign information flows. This, they
+argue, is more consistent with the literature showing that key fundamentals
+such as partisan identification and race are “easy issues” and would not be
+further enhanced by campaign information. Examining the timing of surveys
+cross-nationally in a survey such as the ESS has implications for this debate,
+as it allows us to examine the effects of time outside a campaign period as well
+as immediately before and after an election.
+
+PARTICIPATION IN SURVEYS AND INFLUENCES ON SURVEY RESPONSE
+
+Parallel to the literature on campaign effects, there is research on survey
+responses to questions about politics and current affairs. Two aspects in par­
+ticular are relevant to the timing of the survey: survey cooperation and item
+response. Survey cooperation is seen as the product of interviewer, survey, and
+respondent characteristics (Groves and Couper 1998; Krosnick 1999). One out­
+come of this interaction is that surveys about political and social issues are
+more likely to gain cooperation from individuals who are interested in the topic
+(Voogt 2004). Stoop et al. (2010) also point out that cultural context can play
+a role in survey cooperation for cross-national surveys—time-use patterns and
+survey traditions are examples of factors that can influence variation in survey
+cooperation rates across countries. Recognizing that context matters also raises
+the possibility that the timing of the fieldwork in the electoral cycle can moti­
+vate cooperation, in particular when the topic of the survey is political in nature.
+   In terms of item response, respondents are thought to spend effort interpreting
+the question, searching for relevant information, coming to a judgment, and then
+translating that judgment into one of the available responses (Tourangeau and
+Rasinski 1988; Tourangeau. Rips, and Rasinski 2000). Each step is cognitively
+demanding, and in combination means that responding to survey questions can
+
+
+218                                                                 Banducci and Stevens
+
+
+be very complex. Thus, in order to cope with this complex task, respondents
+may adopt a strategy of satisficing—expending less energy on the interpreta­
+tion, retrieval of information, and translation of judgments into available catego­
+ries—but still offering an answer so the survey can move on (Krosnick 1991;
+Krosnick, Narayan, and Smith 1996; Krosnick et al. 2002). Similarly, when a
+respondent is asked about familiar substantive territory, he may average across
+multiple considerations to provide an answer, but when survey territory is less
+familiar Zaller and Feldman (1992), argue that he may rely on a single consid­
+eration—whatever is “top-of-the-head”—to anchor his responses.
+   Like survey cooperation, interviewer, survey and respondent characteristics
+influence the quality of responses or satisficing. In addition to the difficulty
+of the question and the ability of the respondent, the importance of the sur­
+vey topic to the respondent will motivate respondents to optimize answers
+(Chaiken 1980; Krosnick 1999; Petty and Cacioppo 1986). Enns and Richman
+(2013) extend the idea to argue that satisficing is systematically related to the
+proximity of an election: the closer the election, the fewer respondents who
+satisfice. They show that those who are motivated (i.e., who care about the
+outcome of the election) are more likely to base preferences on fundamentals
+than those who do not care. This ability to base preferences on the fundamen­
+tals does not change over the course of the campaign; what changes is the
+number of respondents who are motivated to optimize (i.e., care about the
+outcome). Given that the survey topic motivates both cooperation and satisfic­
+ing, however, there is the possibility that those least likely to satisfice, who are
+more motivated, are easier to capture in the sample, and this will increase the
+number of optimizers (Kaminska, McCutcheon, and Billiet 2010).
+
+Theory and Hypotheses
+Our hypotheses are based on combining these insights from work on campaign
+effects with the theory of survey response to address questions of how the tim­
+ing of the survey in the electoral cycle influences cooperation and responses.
+More specifically, (1) the campaign effects literature indicates that campaigns
+change, inter alia, individuals’ levels of information, their engagement with
+politics and current affairs, and the salience of different issues, while (2) sur­
+vey response theory suggests that interest in the topic of a survey increases
+propensity to cooperate or respond (Lynn 2008)—thus affecting the composi­
+tion of the sample via overall response rates or response rates among a politi­
+cally engaged subset of the population—as well as the propensity to optimize
+responses rather than satisfice (Krosnick 1999).2
+2. We do not directly compare these effects to the enlightenment hypothesis, in which campaigns
+provide information that allows voters to connect “fundamentals” to vote choice, as the funda­
+mentals and the choice alternatives vary across countries, making the types of analysis in single
+countries where there is a range of fundamentals with a limited choice set problematic (for exam­
+ple, see Enns and Richman [2013], and for an argument that the notion of “fundamentals” is also
+problematic within a single country over time, see Erikson and Wlezien [2012]).
+
+
+Surveys in Context                                                                          219
+
+
+    First, the campaign may engage citizens and increase levels of political
+interest as the election nears. Elections are pivotal events in the political land­
+scape, capture the media’s attention and, while the population may at most
+times be apathetic about politics, we would expect an increase in interest dur­
+ing campaigns (e.g., Bowler and Donovan 2002), even if it is small (Slovak
+2009) and not necessarily direct.3Therefore, if campaigns serve to increase the
+perceived importance of political matters, respondents who are interviewed
+closer to an election should be more likely to be motivated to cooperate and to
+give considered responses.
+    The theory of survey response gives us a framework for understanding how
+the timing of a survey in the election cycle may alter engagement with the
+survey itself and influence responses to survey items and the distribution of
+these responses accordingly. Krosnick (1999) demonstrates that the topic of
+the questions can increase motivation to engage in the survey—both reducing
+reluctance to refuse the interview and raising the likelihood of giving consid­
+ered responses (see also Brehm 1993; Groves, Presser, and Dipko 2004; Lynn
+2008).4 Indeed, Enns and Richman (2013) argue that the increased reliance
+on fundamentals observed during a campaign is due to increased motivation
+to optimize rather than to satisfice survey responses, as opposed to increased
+levels of information among respondents.
+    Our analysis relies on the notion of an “electoral cycle” and not simply the
+campaign period. While campaigns may intensify the amount of information
+available and provide cues about the relevance of politics, the period of time
+we study captures effects prior to and after the election. After the ballots have
+been counted, and the winners announced, there will be a lingering effect on
+the polity (Rahn, Brehm, and Carlson 1999). One mechanism for a post-elec­
+tion effect that serves to engage citizens in politics, and subsequently surveys
+and survey items, is through developing political efficacy and social capital.
+Mobilization efforts, campaign activity, and the solidarity built through the
+ “ritual of the election” all serve to extend the influence of the election beyond
+election day. While Rahn, Brehm, and Carlson (1999) show that social capi­
+ tal increases after an election, most attention has focused on the campaign
+period in examining electoral cycle effects. However, other research focus­
+ ing on the impact of “events” examines how attitudes and behavior change in
+ response (see, for example, Sorrentino and Vidmar 1974; Traugott et al. 2002;
+3. In our supplementary analysis (supplementary analysis III in the online supplementary mate­
+rials), we demonstrate that in ESS Round 4, the probability of reporting high levels of political
+interest does not significantly increase as the election nears. Furthermore, there is no opposite
+effect, as the number of days after the election and the date of the interview increases.
+4. Individuals selected to participate in the ESS are told that the study is “about topics which
+affect you or people in your area, such as how you feel in your day-to-day life, the way the coun­
+try is run nowadays, and what things in life are important to you.” As such, the stated topics can
+be considered political and social. Therefore, general interest in politics could be a motivating
+predisposition to participate that may also condition how survey timing influences engagement
+with the survey.
+
+
+220                                                       Banducci and Stevens
+
+
+Boomgaarden and de Vreese 2007). If the election is understood as an event,
+we would expect it to have an impact on the motivation to participate in the
+survey in the post- as well as the pre-election period.
+   Based on the campaign effects literature, we would expect there to be
+an intensification of interest and campaign engagement closer to an elec­
+tion, and based on the “election as a ritual,” we would expect that there is
+engagement and efficacy that develops during and after an election takes
+place. Both effects lead us to test four primary hypotheses and one second­
+ary hypothesis:
+   Survey Cooperation Hypothesis'. As the interview date is more proximate
+to an election, survey cooperation will increase (or reluctance to participate
+will decline).
+   It follows that, as the election is more proximate (as it approaches or grows
+more distant), the level of effort respondents put into responding to questions
+will change, leading to:
+   Satisficing Hypothesis: As the interview date is more proximate to an elec­
+tion, satisficing will decline.
+   The Satisficing Hypothesis implies that greater engagement with surveys
+when elections are near produces smaller measurement error in responses,
+such that recall and reporting of behavior are more accurate (Enns and
+Richman 2013). If respondents are generally motivated to reflect and respond
+to the survey questions more thoughtfully due to the political context, these
+effects will be evident across the survey, that is, not just for questions about
+politics or current affairs.
+   On the other hand, survey response theory suggests that, rather than the
+proximity of an election raising levels of interest in politics, politically inter­
+ested individuals may be more motivated to participate in the survey and/or
+to optimize and give considered answers to survey questions than the politi­
+cally uninterested. These effects will be most pronounced in the context of an
+approaching or recent election. Therefore, we would expect that the effects
+of the proximity of an election would be greatest for those who are interested
+in politics, leading to two more nuanced hypotheses about cooperation and
+satisficing:
+   Conditioning Hypotheses: The proximity of the election affects (1) survey
+cooperation and (2) satisficing more strongly for those who are politically
+motivated (interested).
+   We make two notes about the above hypotheses. First, our hypotheses do not
+distinguish between the timing of the interview prior to the election and timing
+after the election. Based on the campaign effects literature and the election as
+a ritual argument, we argue that motivated respondents should be less reluc­
+tant and satisfice less if the interview happens closer to an election, whether
+that is prior to or after an election. However, neither the campaign effects nor
+the “election” ritual arguments make clear the strength, shape (linear or oth­
+erwise), and duration of this effect. Therefore, we examine the form and type
+
+
+Surveys in Context                                                                          221
+
+
+(pre- and/or post-election) of the timing of the interview in the electoral cycle
+in supplementary analysis (online supplementary analysis I).
+   Second, there is an alternative possibility, which predicts the opposite to
+the conditioning effects of interest hypothesis: the greatest effects of context
+on response rates and on satisficing will be among those who lack political
+interest, because those who are politically interested are sufficiently engaged
+with politics such as to be much less affected by timing, while the least inter­
+ested and sophisticated are most susceptible to the influences of campaigns
+(Arceneaux 2006).
+
+
+Methods
+The data we use are from Round 4 of the ESS, which began fieldwork in 2008.
+There are now six rounds of the ESS that have included 31 different countries,
+16 of which have featured in every round, with typical sample sizes in each
+country and each round of between 1,500 and 2,500 respondents.5 We focus
+exclusively on Round 4 because it has the most countries available in a single
+round, makes the analysis clearer, and has the necessary measure of survey
+cooperation for our analysis, which is whether the respondent initially refused
+to complete the survey.6 Based on the available data for interview date and
+refusal conversion, we use 26 countries in our analysis of all items with the
+exception of refusal conversion, where 13 countries are available.
+   Our key indicator is the distance between an election and the interview
+date, which varies across individuals. We analyze the length of time before
+the election (“days until’') and after the election (“days since”) separately. The
+cross-national approach allows us to compare countries with varying cam­
+paign lengths, over times near and far from the previous campaign and to the
+next campaign, over which levels of information about elections are likely to
+change throughout the electoral cycle. This is an advantage over campaign
+effects research, which both tends to focus on the United States and confines
+itself to a period of time that does not extend much before the official start of
+the campaign (see Erikson and Wlezien 2012).
+   The European Social Survey has strict standards for probability sampling
+and response rates—at least 70 percent. The attention to response rates means
+both that detailed records on refusal conversions are maintained and also that
+great effort is made at converting refusals. We assess the Survey Cooperation
+Hypothesis straightforwardly, by looking at two indicators of respondent
+reluctance: whether the respondent initially refused to complete the survey
+
+5. Data for Round 4 of the ESS were funded by the EU’s Sixth Framework Programme within
+the project “The European Social Survey European Round 4— Improving Social Measurement
+in Europe.” Within each participating country, the national scientific funding body is responsible
+for covering the costs of ESS fieldwork. Details on fieldwork (including response rates) in each
+country for Round 4 can be found at http://www.europeansocialsurvey.org/data/round-index.html.
+6. Round 6 was released after we began the analysis for the paper.
+
+
+222                                                                    Banducci and Stevens
+
+
+after contact was made and the interviewer’s rating of the respondent’s coop­
+eration with the survey. We would expect that willingness to cooperate in a
+survey about “the way the country is run nowadays” will increase as the elec­
+tion becomes more proximate, regardless of whether that is at the beginning or
+end of the fieldwork period.7
+   Because our sample includes those who completed a survey, refusal indicates
+when a respondent initially refused to cooperate with the survey. Therefore, a
+refusal represents those who were, at least initially, less cooperative. We have
+recoded this so that values of “ 1” indicate uncooperative or reluctant behavior
+(refusal). We supplement “refusal” with a second indicator: interviewer rat­
+ings of cooperation. The questions used are an interviewer’s assessments of
+how often the respondent asked for clarification, answered questions to the
+best of his or her ability, and how often the respondent was reluctant to answer
+questions. Responses ranged from “Never” to “Always” and were rescaled
+from 0 to 1, with higher values indicating a greater lack of cooperation (i.e.,
+greater reluctance, lower engagement, and lower understanding) as assessed
+by the interviewer. While these are not direct indicators of cooperation, they
+represent underlying propensity to cooperate with the survey, and they are
+items that have been used in previous research to measure resistance and to
+indicate overall reluctance to participate in the interview, along with refusal
+conversion attempts (Kaminska, McCutcheon, and Billiet 2010).
+   In order to test the Satisficing Hypothesis, we follow Krosnick (1991) and
+others (for example, Chang and Kronisk [2009]; Roberts et al. [2010]) by using
+an indicator that taps a respondent’s propensity to give similar answers across
+a range of questions. Non-differentiation refers to a respondent selecting the
+same scale point to rate a number of items presented together in a battery, in
+which the repetitive nature of the questions may lead to a lack of engagement
+in the process of answering each question. For non-differentiation, we identi­
+fied two batteries that are suitable for creating this measure: trust in five dif­
+ferent institutions—from the police to the United Nations—and assessments
+of trust, fairness, and helpfulness of people. Question wording is given in the
+appendix. The indicator captures the proportion of answers that are the same
+across each battery of questions, so that a value of 100 results if the respondent
+gave the same answer to all questions on the first battery and the same answer
+to all questions on the second battery. The same measure was used in Roberts
+et al. (2010) to assess data quality in the ESS.
+   In constructing these measures and applying them across a diverse set of
+countries, the equivalence of meaning must be considered. Where there is
+
+7. Political surveys are likely to pick up respondents high in political interest early in fieldwork,
+meaning that those lower in political interest become a higher proportion of “accepts” later in the
+fieldwork. If we were looking at election surveys, this would imply that political interest would
+likely be negatively correlated with distance to the election. However, for the ESS, fieldwork dates
+are not tied to an election period. To avoid any confounding effects, we control for the day of the
+interview in the fieldwork period.
+
+
+Surveys in Context                                                                             223
+
+
+systematic error in survey measures due to country-specific differences in
+responses to items, the underlying value on a scale might be the same but
+the observed values may vary across countries due to tendencies to answer
+questions in a particular way. When country-specific systematic bias exists in
+measures, the scores will not be comparable across countries and are then said
+to lack equivalence (Johnson 1998; van Deth 1998). The usual way to test and
+adjust for measurement (in)equivalence is to use a latent variables approach
+and fit a hierarchy of models in each country, imposing equality constraints on
+intercepts and loadings to determine whether the assumption of equivalence
+fits the data (see Davidov [2009], for example). However, previous research
+using ESS data has demonstrated that the measures we are employing in this
+paper to gauge reluctance and satisficing are mostly invariant (Kaminska,
+McCutcheon, and Billiet 2010). Furthermore, Kaminska, McCutcheon, and
+Billiet (2010) conclude that this limited lack of equivalence among respond­
+ents on satisficing “may be theoretically meaningful and does not necessarily
+imply a difference in measuring satisficing” (970).8
+   We test the Conditioning Hypothesis by examining the moderating influ­
+ence of a respondent’s level of political interest on the effects of proximity to
+an election on survey cooperation and satisficing. Political interest has been
+dichotomized from the four-point scale used in the survey to ease interpreta­
+tion—a value of 1 indicates those who are very and quite interested in politics.
+   Finally, the variable that runs through all our hypotheses is the timing of
+the interview in the electoral cycle. For “days until” or “days since” an elec­
+tion, we simply take the interview date for each respondent and calculate the
+time before or since a national election or referendum. For example, surveys in
+Slovenia began on October 6, 2008. The previous national election had been on
+September 21,2008, while the next national election was held on June 6, 2010.
+A respondent surveyed on October 24, 2008, was interviewed 33 days after the
+election and 590 days before the next national election, whereas the last surveys
+in this round in Slovenia took place on January 5, 2009, when respondents were
+interviewed 106 days after the election, and 517 days until the next election. In
+each model, we use days in increments of 100 to harmonize the coefficients.
+    We do not include local or EU elections in our calculations, as these are sec­
+ond-order elections, do not gain the same national media or party attention as
+do national elections (Hix and Marsh 2011), and are therefore much less likely
+to condition responses.9 In the appendix, we show the range of days from the
+
+8. Furthermore, the latent variable approach described above is not suitable when the objective is
+to test a structural relationship in as many countries as possible (see Stegmueller 2011). In other
+words, we are interested in uncovering what is meaningful in cross-national variation in survey
+cooperation and satisficing and need to optimize variation by testing a structural model in as large
+a sample of countries as possible.
+9. While we downplay the significance of these second-order election effects on survey responses,
+we do note that there is variation in the salience of these elections at the national level (Hobolt,
+Spoon, and Tilley 2009).
+
+
+224                                                      Banducci and Stevens
+
+
+election for each of the surveys. These data show considerable variation in the
+proximity of fieldwork to elections, with seven surveys having a fieldwork
+period within three months of an election, and 10 countries having a fieldwork
+period that was more than a year away from an election. For the remaining
+countries, the fieldwork period fell between three months and a year. The ESS
+issues guidelines on fieldwork periods and recommends a period of one month
+with consistent timing of the fieldwork across countries; however, the length
+and timing of fieldwork have been allowed to vary (Koch et al. 2009).
+   In examining the distribution of interviews per day (see appendix figure 1),
+we also note a great deal of variation, showing that most interviews took place
+within a year of an election or referendum, but there is a long tail. In most
+studies, the electoral cycle is composed of the campaign period. Stevenson
+and Vavreck (2000) operationalize “campaign length” into “short” and “long,”
+with “short” meaning shorter than six weeks. Arceneaux (2008) focuses both
+on the six-week threshold and also on three weeks. Gelman and King (1993)
+suggest that voters are not paying attention any more than 200 days before an
+election. Although US campaigns are notoriously long, the era of the “per­
+manent campaign” has also spread to Europe, so that while official campaign
+periods in countries such as the UK may only be 4-6 weeks, the reality is that
+electioneering begins much earlier. However, we have argued that in addition
+to a pre-election effect, there may also be a post-election effect on cooperation
+on optimizing.
+   Above, we note that the theories we draw on (campaign effects and election
+ritual) do not specify the shape or duration of the effect. We therefore take into
+account two considerations when constructing the appropriate measure of the
+timing of the interview in the electoral cycle. First, we consider which trans­
+formation of days to use. For example, a log transformation would suggest that
+days closer to the election will have a stronger effect and that the size of the
+effect of days diminishes as one gets further away from the election. On the
+other hand, a quadratic term would suggest a direct relationship up to a certain
+number of days, and that each additional day beyond that point does not influ­
+ence the outcome or has the opposite (negative) effect, producing a curvilinear
+effect. In either case of the logged or quadratic, the effect is initially strong
+and then diminishes or disappears, whereas the linear transformation assumes
+a specified unit increase in the outcome for each additional day in the electoral
+cycle. It is also possible that the shape of the relationship between proxim­
+ity and different outcomes varies. In our online supplementary analysis, we
+assessed each transformation of days until the election, days since the election,
+and the most proximate of the two against all outcomes. Based on an examina­
+tion of both the main effects and the fit of the models, our analysis suggests
+that a quadratic transformation is most appropriate. This supplementary analy­
+sis also shows that the measures of days until the election and days since the
+election provide the best fit. Separating out the effects of the electoral cycle
+in this way also allows us leverage over issues such as whether electoral cycle
+
+
+Surveys in Context                                                           225
+
+
+effects are stronger before an election than after, and to examine separately a
+campaign effect from an election ritual effect.
+   For modeling cross-national data, our approach is to use mixed-effects
+models to account for the multilevel structure of the data—individuals nested
+within countries. For dichotomous measures (refusal and satisficing), we use a
+logit function, while a general linear model is used for interviewer ratings. The
+use of multilevel models does raise two considerations: first, which effects to
+treat as fixed and which to treat as random, and second, whether particular
+countries have greater influence on the results than others. Hausman tests were
+performed to test for random versus fixed effects, and in additional supplemen­
+tary analysis we provide tests of the influence of individual countries (online
+supplementary analysis II). The analysis of the influence of specific countries
+leads us to estimate models on a subset of countries, and in the results below,
+we report where models have been estimated on a subsample of countries.
+   In testing our hypotheses, we model each outcome indicator of survey
+cooperation and satisficing as a function of days from the election and moti­
+vation (political interest). In the models, which are estimated with random
+intercepts at the country level, we also control for age, gender, and educa­
+tion. Both age and education have been identified as indicators of ability to
+interpret questions and thus may affect satisficing (Kaminska, McCutcheon,
+and Billiet 2010). Because reluctance and satisficing may also be linked to
+when the respondent completed the interview within the fieldwork period, we
+also control for the number of days from the start of the fieldwork period that
+the interview was completed. Therefore, any potential confounding effects of
+reluctant respondents being picked up later in the survey will be accounted for.
+
+
+Results
+According to the cooperation and satisficing hypotheses, survey reluctance
+and satisficing should increase as the interview date moves further away from
+the election (i.e., the coefficient on the number of days from an election should
+be positive). If motivation conditions satisficing such that satisficing declines
+more among the politically interested, the coefficient on the interaction term
+should also be positive. We estimate mixed models using random effects for
+the constant and for our indicators of days from the election. We performed a
+Hausman test examining whether allowing for a random slope for days was
+not a significantly better fit over a random intercept model only across the
+models. For timing of interview and refusal, the random intercept and slope
+model was an improvement (chsq 75.27 with df9 for interview rating and
+ 111.41 df9 for refusal).
+   Beginning with initial refusal in tables la and 1b, our expectation is that the
+probability of initially refusing will decline closer to an election, while our
+conditioning hypothesis examines whether this effect is greater for politically
+
+
+226                                                                                                     Banducci and Stevens
+
+
+                                                    *                                *         *
+                                                                                                                           £ n. ■
+                                                                                                                           o     o
+                  <p                                                                               CO                                 •I 2
+                  ;> o              oo r^- CN m    i—i CN o o CN o                             'sf oo                                  =    Q
+                                              cn o cn O o                                      p r~-
+                  § ^                         o d d d ° d o CN
+ c                                                                                               1 NO
+#o                2 £
+                  « S3                                                                                                                 o     c/3
+                  £ W                                                                                 CN                              fc E
+ 3                L-<
+                  <L> >
+                        >                NO ON CO (N o NO NO NO                                "sf cn
+                                                                                                   Q                                   u ^
+                                         CN o cn O o — o p
+E                 Q,    O           o o
+                                    o —’ d d d o d d o 00
+                                                                                                   rcn NO
+                                                                                                                                      -C o
+                                                                                                                                      .2>x
+ 0>                                                                                                                                   X. <u
+                                                                                                                                         m
+                               oo   *   *     *     *                                *
+ C                c     .2    ’S    *   *     *     *     *     *                    *         *
+ 3                .2 ’C                                                                                                    « B:
+                                                                                                                         •o —H
+ (Z)              *C/3 c
+                   i— 3                                                                                                   C 1)
+                                                                                                                          cS -O        £ ■S
+                   © O              o Ov -'t (N ON , o r- ON oo
+ 03                >                                                                           ON oo                      ■>, o o            “
+Q                  C U
+                   o
+                              cj
+                              C/3
+                                    o (N t3- O o o o o o 00                                    00                         £■ e •a Z
+                                    d o d o o d d d d CN                                       o NO
+T3                U s_
+ G                      <2
+                        V
+                        *-H
+ 3                 c
+                   C/33 X)
+                  ,3 r-       ^4-   -sh y—1 m ON CO f -4 o CO in Tt
+13                13 00        OJ
+                               0    o Ov O CN CN o o o           p
+                                                                                               ^t c n <n
+                                                                                               p O 00                                  * -g
+                                                                                                                                       >1    C3
+a©     <D
+       w                X     u     d d •^t d d d d d d NO
+                                                               i
+                                                                                                  ^
+                                                                                               cn no  rOn
+                                                                                                                          C/3 (U
+                                                                                                                                •«
+
+
+"ft                                                                                                                      ,o     O
+       c                                                                                                                 ^      j3      5
+             .2
+                     xT
+                  <D <D                                                                                                   C     <2
+       C/3
+       >>
+       aj                                                                                                                 § a
+4>
+U      Q     1I I                   CN NO O n CN ON i o r- ON ON
+                                    O CN cn O o o o o o O                                      NO >n
+                                                                                                        (N
+                                                                                                                          c3
+c                                                                                                                               <L>   t: •§
+-w
+ cj
+             ai^
+             —
+                                    d d d d o d d d o CN                                       o
+                                                                                                                                      a |
+ a
+             c3 Jt3>0
+             C/3 O W
+                      -
+                                       _ <n o in        ON O n t—
+             •2 S       3           •— NO cn CN — < o o o — —-(
+                                                                                               rin £ °
+X            (U W
+             X
+                        o
+                        u           d d CN d d d d d d CN                                      CN 5
+                                                                                                  ? ov o                 .5     -5
+
+>
+©>
+                                                                                                  fP O n '— '
+                                                                                                                          I     *
+>>                                                                                                                                     £ a
+h                                                                                                                        I I          ° '5
+                                                                                                                                      X
+C/3
+X5
+3                                                                                                                        2<U £D
+                                                                                                        '3U
+                                    o cn ON i-H oo — o NO r** oo                               c n £>                     o     ^
+                                                                                                                                 w
+                                    o CN CN o o o o o o p                                      in o                       2
+
+U                                   d d d d d d d d o                                          d d                        S <_3
+                                                                                                                         •a
+ 3                X
+#o
+•C                      o           ^t CN cn    On    o NO cn                                                 On          « o3
+ «                      U           o r- cn *—i T—1 o o o  p                                   t        5
+                                                                                               •n qn, cn m
+                                                                                                              (N          c o.
+                                    d d CN d d o d d d                                                                    o S 3 x
+E                                                                                              H oC ^ “                  ■o OJ ft ^
+                                                                                                                         a> V
+                                                                                                                         on —  2 ea
+#S                                                                                                                       c3    c ^
+                                                                                                                                      a o
+ £                                                                                                                        3 £
+                                                                                                                                      2 *
+                                              o                                                                           C/3 X
+                                              o                                                                           o '->
+u
+                                                                                                                                      03    C/3
+                                                                                                                                      M   15
+                                                                                                                                      L-l C/3
+                                                                                                                          <D          "d    ,3
+                                        C/3                                                                                     C/3   op 13
+                                              o
+o                                       2     o
+                                                          <u
+                                                              oo                                                          C
+                                                                                                                         .2
+                                                                                                                                C/3                o
+                                                          <D X
+QJ                                      2     W                                                                                 2     -a    O
+                                                                                                                          o              V
++->                                     c                                                                                       c
+3                                              e          C X
+                                                                 <Z)           3
+                                                                               O
+                                                                                           o
+                                                                                                                         £
+                                                                                                                          V
+                                                                                                                                        *
+                                                                                                                                         Cl,00
+                                                                                                                                            C3
+Q                                              o *o          T 3 73                                                       O B o
+                                                  o             ©                         ,©                                C/3 JS o *
+                                        O     d                                c5                                                C
+                                                                                                                                 /3
+                                              ">s M
+                                                  73      oo    C3             o
+                                                                                          P                              U  3
+                                                                                                                            r t <U
+                                                                                                                                        in
+                                                                                          X        c                     T
+                                                    3           3     o                                                    X Co/3 o O
+                                                                                                                           1.
+                                        o     C      cr   X      cr
+                                                                               T3    c    £
+                                                                                                        u                 w
+                                        CL                                 _0J W                                   C/3   — d ■H373 <u V
+                                              3     cn    X
+                                                                cn
+                                                                      .2
+                                                                                           O       c               CL    O _o        Vx cl
+■o                                      jz;   C/3    w    C/3    w             (-■   03   T3       o               Z3
+                                         oo         >.     u £                 oo    C     C   U        y          O     Z o C/3        *
+                                              C3 c3 Cvl c3 oo 0)                     o    73                                (U >>
+£                                       X     Q Q Q Q < X                     X      U    &             < z 6                    73 o
+                                                                                                                           13 T 3 in
+
+
+Surveys in Context                                                                         227
+
+
+Table lb. Date of Interview in Election Cycle and Survey Reluctance:
+Initial Refusal and Days since the Election
+                                                     Days since the Election
+
+                                               Refusals                       Refusals
+                                             (High Effort)                  (Low Effort)
+
+                                      coef         s.e.      sig     coef        s.e.       sig
+
+Days into Fieldwork
+  Interview Completed                 0.00         0.00              0.02        0.00       **
+
+High Political Interest              -0.03         0.02      *      -0.15        0.33
+Days until Next/from
+  Last Election (100s)               -0.11         0.01      **
+                                                                    -0.51        0.20       *
+
+Days Squared                          0.02         0.00      **      0.04        0.01       *
+
+Days x High Interest                  0.01         0.00              0.23        0.18
+Days Squared x High Interest          0.00         0.00             -0.02        0.01
+                                                             **
+Age in 10 Years                       0.00         0.00              0.00        0.00
+Female                                0.00         0.00              0.17        0.10
+High Education                                               *
+                                     -0.01         0.00              0.04        0.12
+Constant                             -0.12         0.14                                     **
+                                                                    -4.32        0.90
+Random Effects
+  Constant                            0.40         0.10      *       1.15       0.56
+AIC/BIC                              3,369        3,425             3,014       3,092
+N                                    17,682                         8,647
+Groups                                 9                              4
+
+    N ote .—Coefficient estimates are based on a mixed model with a random intercept and slope
+for daysto account for clustering by country and a random slope for days to/from the election.
+Hausman tests were performed comparing a fixed effects model (random intercept only) to model
+including random effects for days. The Hausman test showed significant differences (chiqq=
+75.27 with 9df).
+    *p < .05; **p < .01
+
+
+interested individuals. In table la, we show the results front models estimated
+on four different samples of countries. The first column presents the results
+estimated on the full sample of countries for which refusal data in ESS Round
+4 are available (13 countries), the second column excludes the countries with
+particularly high influence in column 1 (online supplementary analysis II),
+and the final sets of columns, three and four, split the sample by high- and
+low-effort refusal conversion countries. High-effort countries are those where
+more than 55 percent of initial refusals were recontacted. The results sug­
+gest that as the date of the interview is further away from the election, there
+are more initial refusals in the sample of respondents (a positive coefficient).
+This effect is consistent and significant across all subsamples, with the excep­
+tion of low-effort countries, where the effect is not significant. The negative
+quadratic term shows that this positive effect weakens as the election moves
+
+
+228                                                        Banducci and Stevens
+
+
+further away, and in fact the biggest effect is within 200 days of the election
+(in figure la). In general, we see that the politically interested are less likely
+to be initial refusals. This supports earlier research showing that motivated
+respondents are more likely to cooperate with surveys. We also see that in
+the full sample and in high-effort countries, the coefficient for the effect of
+the interaction between days and political interest is significant. However, it
+is difficult in a model with interaction terms to assess statistical significance
+simply from viewing the coefficients and their standard errors alone, so we
+construct graphs with predicted effects conditional on level of political interest
+(Franzese and Kam 2009). Figure la shows the decline in initial refusals as the
+interview day approaches the election, and there is a slightly lower probability
+of refusal among the politically interested. Because we have controlled for any
+fieldwork effect and that the difficult to reach and uninterested tend to be inter­
+viewed later in the cycle, these results suggest that more politically interested
+individuals could potentially be drawn into the sample as the election nears.
+   In table 1b, we see that there is a significant effect of days since the election
+and it is negative, suggesting that as the interview day moves further past the
+election, initial refusals decline slightly, which is captured by the quadratic
+terms and displayed in figure lb. Because we see little effect of “days since”
+
+
+Figure 1. Days until an Election and Survey Reluctance: Initial Refusal by
+Days and Political Interest (High Effort Countries). Lines depict the change
+in predicted proportion (see table la) of initial refusals with 90 percent con­
+fidence intervals (all other variables held constant at their means). The lines
+demonstrate the overall effect of interaction between interest and days from the
+election. This figure is based on estimates from the fixed-effects-only model.
+
+
+Surveys in Context                                                                        229
+
+
+the election on refusals, we estimate its impact only on low- and high-effort
+countries separately. These effects as shown are not statistically significant;
+therefore, there is little support for the election as a ritual when examining
+survey reluctance with initial refusals.
+   For interviewer ratings in table 2, we see that, for the motivated respondents,
+interviewer ratings of reluctance decline as the election is more proximate to
+the interview date. As illustrated in figure 2. the rating of reluctance declines as
+one approaches the election; as hypothesized, these effects are stronger among
+the political motivated. As with the refusals in figure 1, we see that reluctance
+declines among the motivated. There is significant differentiation between inter­
+ested and not interested respondents closest to the election, suggesting that the
+pre-election period serves to increase cooperation among the motivated. The
+results examining any ritual effect of the election show no significant effect of
+
+
+Table 2. Timing of Interview in Electoral Cycle and Survey
+Cooperation: Interviewer Rating of Reluctance
+                                             Days until                 Days since an
+                                            an Election                   Election
+
+                                     coef           s.e.    sig    C oef           s.e.    sig
+
+Day in Fieldwork Period          -0.03             0.00             0.01          0.00
+High Political Interest          -4.30             0.30     **     -2.74          0.67     **
+
+Days until Next/from Last
+                                                                   -2.09                   **
+  Election (100s)                    1.26          0.71                           0.90
+Days Squared                     -   0.30          0.04             0.01          0.03     **
+
+Days x High Interest                 0.38          0.10             0.01          0.23
+Days Squared x
+  High Interest                  -   0.02           0.01    **      0.01          0.02
+Age in 10 Years                   0.11              0.00    **      0.04          0.01     **
+Female                            0.29              0.12    *      -0.32          0.21     *
+
+High Education                   -2.85              0.17    **     -0.77          0.29     **
+
+Constant                         38.07              3.39    **     31.43          1.35     **
+
+Random Effects
+  Constant                        11.68            2.36     *        5.57        0.79      *
+
+  Days                             2.20            0.41     *        0.00        0.00      *
+
+AIC/BIC                         425433.5         425548.2         463424.2     463539.1
+N                                50,963                            50,963
+Groups                             26                                 26
+
+    N ote .— Coefficient estimates are based on a mixed model with a random intercept and slope
+for daysto account for clustering by country and a random slope for days to/from the election.
+Hausman tests were performed comparing a fixed effects model (random intercept only) to model
+including random effects for days. The Hausman test showed significant differences (chiqq=
+75.27 with 9df).
+    *p < .05; **p < .01
+
+
+230                                                              Banducci and Stevens
+
+
+Figure 2. Proximity to Election and Interviewer Rating of Reluctance:
+Level of Reluctance by Days and Political Interest. Lines depict the change
+in predicted proportion (see table 2) of don’t know and no answer responses
+on political items with 90 percent confidence intervals (all other variables held
+constant at their means). The lines demonstrate the overall effect of interaction
+between interest and days from the election.
+
+days since the election on reluctance (hence, no figure provided). Our supple­
+mentary analysis (online supplementary analysis II) shows no country or set of
+countries with unique influence, so we have not estimated the model on a sub­
+sample of countries.
+   We turn next to tests of the Satisficing Hypothesis. In table 3, we also find
+evidence that satisficing is lower closer to the election. Respondents are more
+likely to differentiate answers as the election nears. We also find support that
+this is conditional upon motivation, as the interaction term is significant. As
+before, we have graphed the conditional effects and show these in figure 3.
+The pattern is consistent with our expectations that there is greater differentia­
+tion between interested and uninterested respondents closer to the election in
+satisficing. However, using a 90 percent confidence interval, these approach
+traditional levels of statistical significance.10
+
+
+Discussion and Conclusion
+The value of cross-national surveys in examining how political and social
+contexts shape attitudes and behavior has been demonstrated over the past
+
+
+10. If we relaxed the confidence interval to 80 percent, as suggested by Western (1998), the
+effects would be significant.
+
+
+Surveys in Context                                                                             231
+
+
+Table 3. Date of Interview in Election Cycle and Satisficing:
+Non-Differentiation
+                                               Days until                       Days since
+                                               an election                      an election
+
+                                        coef           s.e.    sig     coef             s.e.    sig
+
+Day in fieldwork period              0.01             0.00     **
+                                                                       0.00            0.00
+High political interest             -3 .2 9           0.51     **
+                                                                      -0 .1 2          0.08     *
+
+Days until next/from
+  last election (100s)              -0 .6 0           0.24     *
+                                                                      -0 .0 4          0.04
+Days squared                            0.04          0.02     *
+                                                                       0.00            0.00
+Days x High interest                    0.49          0.18     **      0.02            0.03
+Days squared x High interest        -   0.04          0.01     **
+                                                                       0.00            0.00
+Age in 10 years                      0.45             0.06     **
+                                                                       0.03            0.01
+Female                              -0 .3 2           0.21             0.02            0.03
+High education                      -0 .7 8           0.29     **
+                                                                       0.10            0.04
+Constant                            33.25             1.32     **                               **
+                                                                        1.86           0.12
+Random effects
+  Constant                              0.37          0.05     **
+                                                                       0.00            0.11
+AIC/BIC                           463,416.9        463,522.9         40,763.6       40,860.9
+N                                  50,963                            50,963
+Groups                               26                                 26
+
+    Note .—Coefficient estimates are based on a linear mixed-effects model with a random inter­
+cept to account for clustering by country. Hausman tests were performed comparing a fixedeffects model with random effects for the intercept to a model with random effects for the slope
+of days. These showed only marginal significant differences, so we have estimated a mixed linear
+model with random intercept only to adjust for clustering by countries.
+    *p < .05; **p < .01
+
+
+20 years. Their vulnerabilities, such as measurement equivalence, have also
+received considerable attention. Less attention has been paid to how varia­
+tions in the timing of the fieldwork may affect data quality. We have inves­
+tigated how the timing of the survey in the electoral cycle may affect survey
+cooperation and satisficing. For some outcome indicators, we find support
+for a context effect in that reluctance to cooperate and more limited support
+that satisficing both decrease as the election approaches. For survey coop­
+eration, we find that this effect is more pronounced among the politically
+interested. We have found very little evidence to suggest that the election
+itself acts to engage respondents in the ritual of politics. Below, we discuss
+our results in the context of both cross-national survey research and cam­
+paign effects.
+   Survey methodology is focused on producing the highest-quality data
+possible, and cross-national surveys introduce additional challenges to
+producing data that are of comparable quality across a range of settings.
+
+
+232                                                     Banducci and Stevens
+
+
+Figure 3. Proximity to Election and Satisficing: Non-Differentiation by
+Days and Political Interest. Lines depict the change in predicted proportion
+(see table 3) of don’t know and no answer responses on political items with 90
+percent confidence intervals (all other variables held constant at their means).
+The lines demonstrate the overall effect of interaction between interest and
+days from the election.
+
+
+In addition to the contextual factors affecting survey response introduced
+by Stoop et al. (2010), we introduce the timing of the survey in an elec­
+toral cycle as another important contextual factor in cross-national sur­
+vey research. Our analysis contributes to the debate on the relationship
+between response rates and data quality. With declining response rates in
+surveys, great effort is expended to increase response rates. However, the
+greater the effort, the greater the risk of measurement error or poor-quality
+answers (Lynn 2008). In other words, the reluctant respondents that are
+captured through contacting and refusal conversion efforts are more likely
+to introduce measurement error into their responses. If we understand the
+politically uninterested as respondents more likely to introduce measure­
+ment error, our analysis shows that the closer to an election, the more likely
+those respondents who may give poor information are converted from an
+initial refusal to a completed interview. Therefore, in cross-national surveys
+that are not election studies, such as the regional “barometers” in Europe,
+Africa, and Latin America, if the fieldwork or interview date is closer to
+an election date, the quality of the data may be affected and thus not be
+comparable to the quality of data collected in a different country that is at a
+different point in the electoral cycle.
+
+
+Surveys in Context                                                             233
+
+
+   Our results show that political interest influences survey cooperation,
+which follows on findings that motivation increases willingness to cooperate.
+However, we also are able to show that the impact of motivation can depend
+on the timing in the electoral cycle. The differentiation between motivated and
+unmotivated is greatest in the period right before the election. In the figures dis­
+played, this is in the 100 days before an election. In terms of initial refusals, we
+suggest that the proportion of initial refusals declines as the election approaches
+and is a higher proportion of a sample with proximity to an election, and that a
+higher proportion of these conversions are drawn from individuals who are less
+politically interested. Though we do not investigate in this analysis, this effect
+may explain why there is not a significant increase in political interest as the
+election nears.
+   Our limited evidence linking satisficing and the fact that the timing of the
+interview does not affect these outcomes is consistent with the findings of
+Kaminska, McCutcheon, and Billiet (2010) in that they find that the relation­
+ship between survey reluctance on satisficing is spurious, as both are driven by
+cognitive ability. Our findings do show that motivation (i.e., political interest)
+and cognitive ability (as measured by education) reduce satisficing, but that
+these effects do not change according to the electoral cycle.
+   For those interested in how campaigns affect respondent engagement in
+surveys, our findings suggest that survey cooperation (and response rates),
+not just satisficing (or optimizing), influence whether we detect campaign
+effects. When fieldwork overlaps with campaigns or post-election periods, the
+politically uninterested may be overrepresented. The implications for cam­
+paign effects research should be further explored. While we do not compare
+the learning and the optimizing hypotheses regarding campaign effects, our
+analysis does suggest that optimizing is a factor in interviews conducted close
+to elections for the motivated. When taken together with the supplementary
+evidence that proximity to an election does not increase interest, we would
+argue that our analysis suggests that optimizing can explain at least part of
+what appear to be campaign effects.
+
+
+234                                                    Banducci and Stevens
+
+
+Appendix. Descriptive Statistics, Question Wording, and
+Sampling Methods
+Table A t. ESS Round 4— Descriptives on Main Indicators of Distance
+from Election, Survey Reluctance, and Satisficing
+                                                       Average
+              Range of days                          interviewer
+              most proximate   Sample   % Refusal      rating of        Non­
+Country         to election     size    conversion    reluctance   differentiation
+
+Belgium          447-549       1,760       0.07        31.92           29.49
+Bulgaria          35-120       2,230        na         43.62           44.17
+Switzerland        0-162       1,819       0.04        30.12           30.83
+Cyprus           225-306       1,215        na         43.31           34.24
+Czech
+   Republic      226-259       2,018        na         41.77           31.40
+Germany          239-395       2,751       0.13        29.64           27.83
+D enmark         147-274       1,610        na         28.85           32.13
+Estonia          622-736       1,661       0.00        36.27           29.37
+Spain            182-356       2,576       0.08        37.60           29.77
+Finland          551-689       2,195       0.02        30.12           26.21
+France           526-656       2,073       0.07        30.87           27.13
+United
+   Kingdom       475-611       2,352       0.09        32.49           30.30
+Greece            21-90        2,072        na         37.16           36.82
+Hungary          356-414       1,544        na         37.97           33.74
+Ireland            0-161       1,764       0.05        30.45           26.37
+Israel             0-146       2,490        na         41.75           32.11
+Netherlands      216-640       1,778       0.36        33.15           33.25
+Norway           237-389       1,548       0.07        36.81           28.29
+Poland           379-483       1,619       0.04        34.70           27.51
+Portugal         203-340       2,367        na         37.13           34.79
+Russia           251-403       2,512       0.02        51.05           37.44
+Sweden           593-724       1,830        na         30.82           28.78
+Slovenia          15-106       1,271        na         42.55           32.86
+Slovakia          21^424       1,810        na         33.52           37.94
+Turkey           258-564       2,416        na         46.03           44.52
+U kraine         290-321       1,845        na         49.54           47.74
+
+
+Surveys in Context                                                               235
+
+
+Table A2. Description of Indicators
+Indicator                                          Question/measurement
+Days until election                      Count of days that the interview was com­
+                                           pleted prior to the next national election
+                                           (including parliamentary, presidential,
+                                           and referenda)
+Days since election                      Count of days that the interview was
+                                           completed after the last national election
+                                           (including parliamentary, presidential,
+                                           and referenda)
+Interview day in fieldwork period        Number of day interview completed in
+                                           fieldwork period
+Refusal                                  Calculated from the number of refusal
+                                           conversion attempts made
+Interviewer rating                       Clarification of questions
+   (Average rating)                      Respondent reluctant to answer
+                                         Respondent tried to answer questions to the
+                                           best of ability
+Non-differentiation                      Most people try to take advantage of you,
+  (Proportion of time identical answer     or try to be fair
+    was given across the battery of      Most of the time people helpful or mostly
+    questions.)                            looking out for themselves
+                                         Most people can be trusted or you can’t be
+                                           too careful
+                                         Trust in country’s parliament
+                                         Trust in the legal system
+                                         Trust in the police
+                                         Trust in politicians
+                                         Trust in the United Nations
+Political interest                       How interested in politics (1 = Very and
+                                           Quite interested; 0 = Hardly and Not at
+                                           all)
+
+
+236                                                       Banducci and Stevens
+
+
+Description of Data & Sampling Methods
+ESS4-European Social Survey Round 4 2008-2009
+
+Round 4 of the ESS is funded via the European Commission’s 6th Framework
+Programme, the European Science Foundation, and national funding bodies
+in each country.
+   The population includes all persons aged 15 and over resident within pri­
+vate households, regardless of their nationality, citizenship, language, or
+legal status, in the following participating countries: European Union coun­
+tries— Austria, Belgium, Czech Republic, Denmark, Estonia, Finland, France,
+Germany, Greece, Hungary, Ireland, Italy, Luxembourg, Netherlands. Poland,
+Portugal, Slovakia, Slovenia, Spain, Sweden, UK; non-European Union coun­
+tries—Iceland, Norway, Switzerland, Turkey, Ukraine.
+   The sampling method for the ESS involves strict random probability sam­
+pling, a minimum target response rate of 70 percent, and rigorous translation
+protocols. Appendix table 3 below gives details on the sampling design and
+frame within each country.
+   Sample sizes are given in appendix table 1. Standard errors of estimates
+along with a description of the estimation techniques are given in the tables.
+No weighting was used.
+
+Question wording and response categories:
+
+Using this card, generally speaking, would you say that most people can be
+trusted, or that you can’t be too careful in dealing with people? Please tell me
+on a score of 0 to 10, where 0 means you can’t be too careful and 10 means
+that most people can be trusted.
+0                         You can’t be too careful
+1                         1
+2                         2
+3                         3
+4                         4
+5                         5
+6                         6
+7                         7
+8                         8
+9                         9
+10                        Most people can be trusted
+
+
+Using this card, do you think that most people would try to take advantage of
+you if they got the chance, or would they try to be fair?
+
+0                                             Most people try to take advantage
+                                                  of me
+1                                             1
+2                                            2
+3                                            3
+
+
+Surveys in Context                                                                237
+
+
+4                                              4
+5                                              5
+6                                              6
+7                                              7
+8                                              8
+9                                              9
+10                                             Most people try to be fair
+
+
+W ould you say that m ost o f the tim e people try to be helpful or that they are
+m ostly looking out for them selves?
+
+
+0                                         People mostly look out for themselves
+1                                         1
+2                                         2
+3                                         3
+4                                         4
+5                                         5
+6                                         6
+7                                         7
+8                                         8
+9                                         9
+10                                        People mostly try to be helpful
+
+
+U sing this card, please tell m e on a score o f 0 -1 0 how m uch you personally
+trust each o f the institutions I read out. 0 m eans you do not trust an institution
+at all, and 10 m eans you have com plete trust. First...?
+... [country]?s parliam ent?
+...the legal system ?
+...the police?
+...politicians?
+...the U nited N ations?
+
+
+0                                         No trust at all
+2                                         2
+3                                         3
+4                                         4
+5                                         5
+6                                         6
+7                                         7
+8                                         8
+9                                         9
+10                                        Complete trust
+
+
+ 238                                                                                                    Banducci and Stevens
+
+
+                                                                                                                                       68.44%
+               &
+               X                     OO      as                        X                        GO
+               OO                    an                                                         OO
+          o    OO
+          a-                                 as                        00
+          05   in                    r-      X                         r-~
+          <D
+          P4
+                                                                                   >> ^
+                                                        05             03          X   °
+                                      a!)               <D
+                                      CO                05             2     05
+                                      3                 05              o
+                                      O      ’>   a     O              X
+                                     X       -a ’ £                     0)   b
+                                                       X      O         05
+                                     4-h      c   o    -a                    rd
+                                      O    05 cd H            o         33
+                                                              (N             C     G 2
+               t-t                    S-h  <u 05 O                      O          O h Cd         S-H        t-H
+
+
+                                                                                                                                       National Register
+               <D                     E    on                  t-H     X     O
+               co                     05
+                                           o)
+                                           a>
+                                              a 2
+                                              £ 13
+                                                       2       <D             £             u £05            2
+                                           H           t+-»   X         O    2              c
+                                                                                            w ’5b           ’5b
+                30                   ‘ 5b ■a  o         o      cd
+                                                 X
+                <D                     <u X
+                                       Ui cd            <D    X         05   2 .                  a          a
+                                                                              a.
+               CtC
+                                               o   '5
+                                                        cd
+                                                               o    05        3              05 QC          C*
+               Id                    Id    05 c     03 x       cd 053
+                                                                              05             3s- 2          2
+                                       S3                     —
+                a
+                                       O  2    o
+                                              _o
+                                                    <D rd           rj  S3   X                D- c           c
+          a    #o
+                                           o
+                                                    30 £       G h CU #o                         #o         .2
+                                                               a
+          £
+          cd    cd                     cd X   2
+                                               U
+                                                    cd
+                                                       X5          u   £     'B             u £              £
+                                     z
+          00   z                              hJ                       Z                         Z          Z
+
+
+                             o
+                            X
+                             c
+               3     <+-.
+               O X3
+               <D 2 Cu
+               30  o
+               cd _0) £
+                      <U 2                                                                      <
+
+
+                                                                                                                                       NA
+               £
+£                         >-»
+                            X         <D
+                                                                                                z
+ a>        O
+ GO       *a
+                                      £
+  g
+ o        =5
+                                      cd
+                                     ■a                                X
+                                                                        cd
+ a
+ GO       O                                  x
+          X                                  ‘C
+                            m    a    i:      30
+          c
+C*                          o    £ ^         X
+          x                 i—   c3 *-<       05
+-O                          30   05 05
+  =                                   cd                               cd
+ a                                   2
+                                             5                        hJ
+
+ go'                                 30
+ a>
+                                                                                                                        Single-stage equal probability systematic
+
+
+                                     _c
+ s
+ as                                  ’a .
+                                              —                                                 ^   On      J2   a)
+ h
+               Q_
+                                     £                                                           cd —1
+                                                                                                            C
+                                                                                                            o03 ocO
+Efa            £
+               :d                                                      ac#T                                                                                                        <5 £
+                                                                       £                        .>      <L> ^
+ G                                                                                                                 a
+                                                                                                7d X <O
+                                                                                                      +-i X
+                                                                                                          t3
+*. £58f                                                                                          c O
+   a>                                X
+                                                                       £o                          o « £
+                                     p       X                                                              a - v-i
+ Q                                            o                       X
+                                                                       S3
+                                                                       cd
+                                                                                                            e -s
+ a,
+                                                                                                                          sample selection
+
+
+ £        -a
+                                                                                                            o 5
+ G
+          x
+           o
+
+          a3                                                           O
+                                                                                                 £^ c x    X       ^
+
+
+4 £                                                                    £
+                                                                      X)                         |u gU
+                                                                                                                          sample
+
+
+                                     X       X
+’■o                                   (U      <D                        D
+ G
+          a.
+                                     id                               ’X                                    £
+ G                                                                                              "a. JJ      a      uo
+ O        £                                                                                      S •£ 05
+                                                                                                      >>
+C*                                                                                                         CO
+c/3
+
+
+               £                             a:
+                                                                                                 ea
+                                                                                                                                       Finland
+s
+          c
+          3    £b                    J30                               £                         E
+                                                                       Q-                        5
+          O    2                     2                                 >»                        OJ
+£         U    CQ                    03      u                        u                         Q          PJ
+
+
+Surveys in Context                                                                                                                                                                       239
+
+
+    Response rate
+
+
+                                                                                                                                                  72.55%
+                                                                                                      8*
+                                             O n   r-               ON     in   on                               o
+                                             ON    cs                      ir~i so                    'd-        cn r -
+                                 ON
+                                             TdO n
+                                                                                          X           d
+                                                   r-                                                 NO
+
+
+                                                                                                                                in Portugal with more than
+                                  cd
+                                                          cd n
+                                                                            ©                                    u
+                                  cd
+                                 T3
+                                       ^
+                                        u.                dj v-«/   ' a ,y c*             o     t/i              *4—«
+                                  z,n 2 v-                          oc O Id                                        o
+                                                                                                .£
+
+
+                                                                                                                              National Register
+                                 .2 ^ £            On «
+
+
+                                                                                                                                10 households
+                                                                     cd                   (5 ’o
+    Sampling frame
+
+
+                                  cd   uh    .52   £cd                      O GO          m    O n <z>
+                                 x     °      oo                            O «
+                                                                            <D Oo                 'o o            oo
+                                  a,   £      2                                                    ©              <©
+                                                                    ^ .2 d co
+                                                                           E              t/2 © DC               OS
+                                  c    3 ^                                                o >
+                                  Q .O -                                                  X                             cd
+                                                                    cd E    cd X              "© I d             cd
+                                 W
+                                 pq ^
+                                     * o§          I      l l s             c iH          X X      C
+                                                   8 3 8 u I3- S03 .23 ocl,
+                                                                                          o «4-t _o              .2     °
+                                 w C 'g                             cd                         o   cd            cd     2
+                                 5           z                             z    c2                               Z _)
+    Within household selection
+
+
+                                             <                      <                                 <          <
+
+                                                                                                                                                  NA
+                                             z                      z                                 z          z
+
+
+                                 cd                                        -3   cd
+                                 X
+                                 jq                x                       •5   x
+                                 1                 'p                      .5 1
+                                                   X175                    f! 2
+                                                                           © ^
+                                                                           rtl cd         cd
+                                                   5                       Z hJ           d
+                                  oo
+                                 .2
+                                                                                                                                                  Simple random sample of persons from
+
+
+                                 "a*                                                                                    On
+                                                                                                      On
+                                  £                                                                   £                 £cd
+                                                                    o      00             ^           g
+                                                                    oo
+                                                                           e d            x           p
+                                                                                          x           o ,
+                                                                                                       I i*  ss x■§i
+                                                                                                                                                    registry of age 15 or over
+
+
+                                                                                          x           •§
+                                 X)
+                                 o
+                                                                                          o                a
+                                                                    £                     o,           ^o pE xo >o1
+                                                                                          ©           • -
+                                                                                          W)          Cd    r-          O
+                                                                                                            £ X         00
+                                                                                                            O    O      cd
+    Sampling method
+
+
+                                                                                                            X X         tt
+                                                                    x           ©                           C X          I
+                                                                    c      0 -0           £                 cd
+                                                                                                            u,
+                                                                                                                 cd
+                                                                                                                 u,
+                                                                                                                        O
+                                                                                                                        O
+                                                                           o x            X      oo © © cz> _c
+                                                                           oo +-*         o          oo O h O W
+                                                                           2 T3 a c             .£   cd c    oo x
+                                                                           C
+                                                                           /5 o bO P             O n c/5 .G cd O
+                                                                              X '«
+                                                                         g D !tl •— '            £ © ’^5 to X
+                                                                                      o          cd c
+                                                                           B    3                C/5 o    II O M
+                                                                           X    is                               > -fa
+                                                                           H oo                       <          H co
+                                                                                                                                                  Slovakia
+    Country
+
+
+                                             c                                                                          cd
+                                  ©          cd     ©                      X              X           3          X      bx)
+                                  o                 O                                      ©
+                                  c           £     D               00
+                                                                    e
+                                                                           cd
+                                                                                          X                       B p
+                                                                                                                 -3 P
+                                  cd         u      S               3           s—
+                                                                                (75
+                                                                                           ©           O         o c
+                                 £           O     a                X                     z           z          Oh     Oh
+
+
+240                                                                                                  Banducci and Stevens
+
+
+      Response rate                o
+                                       &
+                                       Os X oo
+                                              t£
+                                                         X-    o           rr- r-H 00         CN    >n          t**;
+                                   O s X (N O s          «n    X           <n
+                                   IT) X X               X     X           «n
+
+
+                                                         x
+                                                         o                                 £   6
+                                                                                       r   -. x
+                                                                                  CO < N       ^
+                                                                o c               ^   U,       -H
+                                   J-l  3 J-H      U            S-H   <D          <U
+                                         CO 1)                  « g 3 X              4>
+                                                                                               X
+      Sampling frame
+
+
+                                       3<D ^CO CO Xg            co    w     CO X     x
+                                   W) r j 5 0 OD 3             '5 b x      '5 b <    oo        '%
+                                              <D <D                                             CO
+
+                                   _ C _                       O«C “o c& x        CO co
+                                                                                      O
+                                                                                                O
+
+                                    cd      cd cd              I d .S
+                                                                      —3
+                                                                          oCJ     co
+                                                                                  o X
+                                    c 3 c c                      3 X   £ to
+                                                                       P O < 5 O
+                                   .2  3CL 3o _Xo                O X
+                                   cd    n    03   3            3 *           &t ii
+                                   Z <£ Z Z                    Z
+
+
+                                                         <D
+                                                         X
+      Within household selection
+
+
+                                                         X
+
+                                                         %
+                                                         pi                 3
+                                   < < <                 o                  X
+                                                                            r“    CO
+                                   Z Z Z                 X                  3     *i
+                                                         o                  O «
+                                                                            O X
+                                                         X
+                                                         u
+                                                         £     X
+                                                               X           3      £
+                                                   'C     &
+                                                    W)   £ x £
+                                                         X9 &b to3
+                                                   e>0                      W
+                                                   3     3                  c)
+                                             a-                 X           X
+                                   x x                                      £
+                                   £cd cd
+                                       £ scd I                  3E
+                                          3 >,
+
+                                   X     — -3
+                                         X                      X
+                                   3     3  3                   3          X
+                                   X     X                      X          o
+                                   O     ^ 2
+                                         O                      O
+                                          ° a,
+                                          o   <u
+                                   <u «   a. w>
+                                   W) bJj r “ 3
+      Sampling method
+
+
+                                   cd    cd
+                                              cd   7
+                                              «« <D
+                                   O     O    3 <U
+                                              3                  3
+                                   S £ Xo x                     £
+                                   X X  3 x
+                                   <U D 3 <              <u     X<D
+                                   X ’X >- XD            X      X
+                                        >. X
+                                        X 3
+                                              3 is
+                                              Hh go
+
+
+                                                   X
+                                                   C3                             X
+                                     5                          <D
+      Country
+
+
+                                           3 T2
+                                   '£<D    <L) oN         >>    3          X
+                                     >
+                                        _3 X
+                                                         XL-    'cd        n 3*
+                                     o £X < D
+                                           £ '$           3     j§         '£ 2
+                                   CO oo 00 00           H      53         D
+
+
+Surveys in Context                                                                       241
+
+
+                                         D a y s Until Election
+
+
+Appendix Figure 1. Distribution of Interviews in Election Cycle in ESS
+Round 4.
+
+
+Supplementary Material
+
+Supplementary data are freely available online at http://poq/oxfordjoumals.
+org/.
+
+
+References
+Alvarez, R. Michael. 1998. Information and Elections. Ann Arbor: University of Michigan Press.
+Anderson, Christopher J.. Andre Blais, Shaun Bowler, Todd Donovan, and Ola Listhaug. 2005.
+  Losers’ Consent: Elections and Democratic Legitimacy. Oxford: Oxford University Press.
+Arceneaux, Kevin. 2006. “Do Campaigns Help Voters Learn? A Cross-National Analysis." British
+  Journal o f Political Science 36:159-73.
+Ariely, Gal, and Eldad Davidov. 2012. “Assessment of Measurement Equivalence with CrossNational and Longitudinal Surveys in Political Science.” European Political Science
+  11:363-77.
+Best. Samuel, Kristin Johnson, and Brian Krueger. 2012. “Trends—Americans’ Interest and
+  Enthusiasm in Election Campaigns.” Public Opinion Quarterly 76:783-814.
+Bowler, Shaun, and Todd Donovan. 2002. “Democracy, Institutions, and Attitudes about Citizen
+  Influence on Government.” British Journal o f Political Science 32:371-90.
+Brehm, John. 1993. The Phantom Respondents. Ann Arbor: University of Michigan Press.
+Boomgaarden. Hajo G., and Claes H. de Vreese. 2007. “Dramatic Real-World Events and Public
+  Opinion Dynamics: Media Coverage and Its Impact on Public Reactions to an Assassination.”
+  International Journal o f Public Opinion Research 19:354-66.
+Chaffee, Steven H„ Xinshu Zhao, and Glenn Leshner. 1994. “Political Knowledge and the
+  Campaign Media of 1992.” Communication Research 21:305-24.
+Chaiken, Shelly. 1980. “Heuristic versus Systematic Information Processing and the Use of
+  Source versus Message Cues in Persuasion.” Journal o f Personality and Social Psychology
+  39:752-66.
+
+
+242                                                                Banducci and Stevens
+
+
+Chang, Linchiat, and Jon A. Krosnick. 2009, “National Surveys via RDD Telephone Interviewing
+   versus the Internet Comparing Sample Representativeness and Response Quality.” Public
+   Opinion Quarterly 73:641-78.
+Davidov, Eldad. 2009. “Measurement Equivalence of Nationalism and Constructive Patriotism in
+   the ISSP: 34 Countries in a Comparative Perspective.” Political Analysis 17:64-82.
+Enns, Peter, and Brian Richman. 2013. “Presidential Campaigns and the Fundamentals
+   Reconsidered.” Journal o f Politics 75:803-20.
+Erikson, Robert S., and Christopher Wlezien. 2012. The Timeline o f Presidential Elections: How
+   Campaigns Do (and Do Not) Matter. Chicago: University of Chicago Press.
+Franz, Michael, Paul Freedman, Kenneth Goldstein, and Travis Ridout. 2008. Campaign
+   Advertising and American Democracy. Philadelphia: Temple University Press.
+Franzese, Robert, and Cindy Kam. 2009. Modeling and Interpreting Interactive Hypotheses in
+   Regression Analysis. Ann Arbor: University of Michigan Press.
+Gelman, Andrew, and Gary King. 1993. “Why Are American Presidential Election Campaign
+   Polls So Variable When Votes Are So Predictable?” British Journal o f Political Science
+   23:409-51.
+Groves, Robert M., and Mick P. Couper. 1998. Nonresponse in Household Interview Surveys.
+   New York: John Wiley & Sons.
+Groves, Robert M., Stanley Presser, and Sarah Dipko. 2004. “The Role of Topic Interest in Survey
+   Participation Decisions.” Public Opinion Quarterly 68:2-31.
+Hetherington, Marc. 1996. “The Media’s Role in Forming Voters’ National Economic Evaluations
+   in 1992.” American Journal o f Political Science 40:372-95.
+Hix. Simon, and Michael Marsh. 2011. “Second-Order Effects Plus Pan-European Political
+   Swings: An Analysis of European Parliament Elections across Time.” Electoral Studies 30:415.
+Hobolt, Sara, Jae-Jae Spoon, and James Tilley. 2009. “A Vote against Europe? Explaining
+   Defection at the 1999 and 2004 European Parliament Elections.” British Journal o f Political
+   Science 39:93-115.
+Johnson, Timothy J. 1998. “Approaches to Equivalence in Cross-Cultural and Cross-National
+   Survey Research.” Zuma-Nachrichten Spezial. Available at http://www.gesis.org/fileadmin/
+   upload/forschung/publikationen/zeitschriften/zuma_nachrichten_spezial/znspezial3.pdf.
+Johnston, Richard, Andre Blais, Henry E. Brady, and Jean Crete. 1992. Letting the People Decide:
+   Dynamics o f a Canadian Election. Montreal: McGill-Queen’s University Press.
+Johnston. Richard, Michael Hagen, and Kathleen Hall Jamieson. 2004. The 2000 Presidential
+   Election and the Foundations o f Party Politics. Cambridge, UK: Cambridge University Press.
+Kaminska. Olena, Allan L. McCutcheon, and Jaak Billiet. 2010. “Satisficing among Reluctant
+   Respondents in a Cross-National Context.” Public Opinion Quarterly 74:956-84.
+Koch, Achim, Annelies G. Blom, Ineke Stoop, and Joost Kappelhof. 2009. “Data-Collection
+   Quality Assurance in Cross-National Surveys: The Example of the ESS.” Methoden Daten
+   Analysen 3:219—47.
+Krosnick, Jon. 1991. “Response Strategies for Coping with the Cognitive Demands of Attitude
+   Measures in Surveys.” Applied Cognitive Psychology 5:213-36.
+--------- . 1999. “Survey Research.” Annual Review o f Psychology 50:537-67.
+Krosnick, Jon A., Allyson L. Holbrook, Matthew K. Berent, Richard T. Carson, W.
+   Michael Hanemann, Raymond J. Kopp, and Robert Cameron Mitchell. 2002. “The Impact of
+    ‘No Opinion’ Response Options on Data Quality: Non-Attitude Reduction or an Invitation to
+    Satisfice?” Public Opinion Quarterly 66:371-403.
+Krosnick, Jon, Sowmya Narayan, and Tom W. Smith. 1996. “Satisficing in Surveys: Initial
+   Evidence.” New Directions fo r Evaluation 70:29^14.
+Lenz, Gabriel. 2009. “Learning and Opinion Change, Not Priming: Reconsidering the Priming
+    Hypothesis.” American Journal o f Political Science 53:821-37.
+Lenz, Gabriel S. 2012. “Follow the Leader? How Voters Respond to Politicians’ Policies and
+   Performance.” .Chicago: The University of Chicago Press.
+
+
+Surveys in Context                                                                        243
+
+
+Lynn, Peter. 2008. “The Problem of Nonresponse.” Journal o f Statistics 42(2):255-70.
+Mitchell. Dona-Gene. 2012. “It's about Time: The Lifespan of Information Effects in a Multiweek
+  Campaign.” American Journal o f Political Science 56:298-311.
+Parker, Suzanne. 1995. “Toward an Understanding of ‘Rally’ Effects: Public Opinion in the
+  Persian Gulf War.” Public Opinion Quarterly 59:526-46.
+Petty. Richard E., and John T. Cacioppo. 1986. The Elaboration Likelihood Model o f Persuasion.
+  New York: Springer.
+Rahn, Wendy M., John Brehm, and Neil Carlson. 1999. “National Elections as Institutions for
+  Generating Social Capital.” In Civic Engagement in American Democracy, edited by Skocpol
+  Theda and Morris P. Fiorina, 111-60. Washington, DC: Brookings Institution Press.
+Roberts, Caroline, Gillian Eva. Nick Allum, and Peter Lynn. 2010. “Data Quality in Telephone
+  Surveys and the Effect of Questionnaire Length: A Cross-National Experiment.” ISER Working
+  Paper Series, No. 2010-36.
+Rudolph, Thomas J. 2005. “Group Attachment and the Reduction of Value-Driven Ambivalence.”
+  Political Psychology 26:905-28.
+Solvak, Mihkel. 2009. “Events and Reliability of Measures: The Effect of Elections on Measures
+  of Interest in Politics.” International Journal o f Public Opinion 21:316-32.
+Sorrentino, Richard M.. and Neil Vidmar. 1974. “Impact of Events: Short- vs. Long-Term Effects
+  of a Crisis.” Public Opinion Quarterly 38:271-79.
+Statham, Paul, and Howard Tumber. 2013. “Relating News Analysis and Public Opinion: Applying
+  a Communications Method as a ‘Tool’ to Aid Interpretation of Survey Results.” Journalism
+   14:737-53.
+Stegmueller, Daniel. 2011. “Apples and Oranges? The Problem of Equivalence in Comparative
+  Research.” Political Analysis 19:471-89.
+Stevens, Daniel, Susan Banducci, Jeffrey Karp, and Jack Vowles. 2011. "Priming Time for Blair?
+  Media Priming, Iraq, and Leadership Evaluations in Britain.” Electoral Studies 30:546-60.
+Stevenson, Randolph, and Lynn Vavreck. 2000. “Does Campaign Length Matter? Testing for
+  Cross-National Effects.” British Journal o f Political Science 30:217-35.
+Stoop, Ineke, Jaak Billiet, Achim Koch, and Rory Fitzgerald. 2010. Improving Survey Response:
+  Lessons Learned from the European Social Survey. New York: John Wiley & Sons.
+Tourangeau, Roger, and Kenneth Rasinski. 1988. “Cognitive Processes Underlying Context
+  Effects in Measurement.” Psychological Bulletin 103:299-314.
+Tourangeau, Roger, Lance Rips, and Kenneth Rasinski. 2000. The Psychology o f Survey
+  Response. Cambridge, UK: Cambridge University Press.
+Traugott, Michael, Ted Brader, Deborah Coral, Richard Curtin, David Featherman, Robert Groves,
+  and Martha Hill. 2002. “How Americans Responded: A Study of Public Reactions to 9/11/01.”
+  Political Science & Politics 35:511-16.
+van Deth, Jan W. 1998. “Equivalence in Comparative Political Research.” Comparative Politics:
+   The Problem o f Equivalence, edited by Jan W. van Deth. 1-19. London/New York: Routledge.
+Voogt, R. J. J. 2004. Nonresponse Bias. Response Bias, and Stimulus Effects in Election
+  Research. PhD thesis, Faculty of Social Sciences, University of Amsterdam, The Netherlands.
+Western, Bruce. 1998. “Causal Heterogeneity in Comparative Research: A Bayesian Hierarchical
+   Modeling Approach.” American Journal o f Political Science 42:1233-1259.
+Zaller, John, and Stanley Feldman. 1992. “A Simple Theory of the Survey Response: Answering
+  Questions versus Revealing Preferences.” American Journal o f Political Science 36:579-86.
+
+
+Copyright of Public Opinion Quarterly is the property of Oxford University Press / USA and
+its content may not be copied or emailed to multiple sites or posted to a listserv without the
+copyright holder's express written permission. However, users may print, download, or email
+articles for individual use.

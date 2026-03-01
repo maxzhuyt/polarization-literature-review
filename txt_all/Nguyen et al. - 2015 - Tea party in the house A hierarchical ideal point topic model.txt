@@ -1,0 +1,809 @@
+Tea Party in the House: A Hierarchical Ideal Point Topic Model
+      and Its Application to Republican Legislators in the 112th Congress
+  Viet-An Nguyen       Jordan Boyd-Graber         Philip Resnik         Kristina Miler
+  Computer Science       Computer Science     Linguistics & UMIACS Government and Politics
+University of Maryland University of Colorado University of Maryland University of Maryland
+  College Park, MD         Boulder, CO           College Park, MD      College Park, MD
+  vietan@cs.umd.edu            Jordan.Boyd.Graber                resnik@umd.edu                  kmiler@umd.edu
+                                  @colorado.edu
+
+
+                      Abstract                                  In this paper, we develop this idea further by
+                                                             introducing HIPTM, the Hierarchical Ideal Point
+     We introduce the Hierarchical Ideal Point
+                                                             Topic Model, to estimate multi-dimensional ideal
+     Topic Model, which provides a rich picture
+                                                             points for legislators in the U.S. Congress. HIPTM
+     of policy issues, framing, and voting behavdiffers from previous models in three ways. First,
+     ior using a joint model of votes, bill text,
+                                                             HIPTM uses not only votes and associated bill text,
+     and the language that legislators use when
+                                                             but also the language of the legislators themselves;
+     debating bills. We use this model to look at
+                                                             this allows predictions of ideal points from politithe relationship between Tea Party Repubcians’ writing alone. Second, HIPTM improves
+     licans and “establishment” Republicans in
+                                                             the interpretability of ideal-point dimensions by
+     the U.S. House of Representatives during
+                                                             incorporating data from the Congressional Bills
+     the 112th Congress.
+                                                             Project (Adler and Wilkerson, 2015), in which bills
+ 1   Capturing Political Polarization                        are labeled with major topics from the Policy Agendas Project Topic Codebook.1 And third, HIPTM
+    Ideal-point models are one of the most widely
+                                                             discovers a hierarchy of topics, allowing us to anaused tools in contemporary political science relyze both agenda issues and issue-specific frames
+ search (Poole and Rosenthal, 2007). These models
+                                                             that legislators use on the congressional floor, folestimate political preferences for legislators, known
+                                                             lowing Nguyen et al. (2013) in modeling framing
+ as their ideal points, from binary data such as legas second-level agenda setting (McCombs, 2005).
+ islative votes. Popular formulations analyze legisUsing this new model, we focus on Republican
+ lators’ votes and place them on a one-dimensional
+                                                             legislators during the 112th U.S. Congress, from
+ scale, most often interpreted as an ideological specJanuary 2011 until January 2013. This is a partrum from liberal to conservative.
+                                                             ticularly interesting session of Congress for politiMoving beyond a single dimension is attractive,
+                                                             cal scientists, because of the rise of the Tea Party,
+ however, since people may lean differently based
+                                                             a decentralized political movement with populist,
+ on policy issues; for example, the conservative
+                                                             libertarian, and conservative elements. Although
+ movement in the U.S. includes fiscal conservatives
+                                                             united with “establishment” Republicans against
+ who are relatively liberal on social issues, and vice
+                                                             Democrats in the 2010 midterm elections, leadversa. In multi-dimensional ideal point models,
+                                                             ing to massive Democratic defeats, the Tea Party
+ therefore, the ideal point of each legislator is no
+                                                             was—and still is—wrestling with establishment
+ longer characterized by a single number, but by a
+                                                             Republicans for control of the Republican party.
+ multi-dimensional vector. With that move comes a
+                                                                The Tea Party is a new and complex phenew challenge, though: the additional dimensions
+                                                             nomenon for political scientists; as Carmines and
+ are often difficult to interpret. To mitigate this
+                                                             D’Amico (2015) observe: “Conventional views of
+ problem, recent research has introduced methods
+                                                             ideology as a single-dimensional, left-right specthat estimate multi-dimensional ideal points using
+                                                             trum experience great difficulty in understanding
+ both voting data and the texts of the bills being
+                                                             or explaining the Tea Party.” Our model identifies
+ voted on, e.g., using topic models and associating
+                                                             legislators who have low (or high) levels of “Tea
+ each dimension of the ideal point space with a topic.
+                                                             Partiness” but are (or are not) members of the Tea
+ The words most strongly associated with the topic
+                                                             Party Caucus, and providing insights into the nacan sometimes provide a readable description of its
+ corresponding dimension.                                        1
+                                                                     http://www.policyagendas.org/
+
+
+                                                        1438
+                Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics
+              and the 7th International Joint Conference on Natural Language Processing, pages 1438–1448,
+                   Beijing, China, July 26-31, 2015. c 2015 Association for Computational Linguistics
+
+
+ture of polarization within the Republican party.                 ated text (Gerrish and Blei, 2012; Gu et al., 2014;
+HIPTM also makes it possible to investigate a num-                Lauderdale and Clark, 2014; Sim et al., 2015).
+ber of questions of interest to political scientists.
+For example, are there Republicans who identify                   3     Hierarchical Ideal Point Topic Model
+themselves as members of the Tea Party, but whose                    Bringing topic models (Blei and Lafferty, 2009)
+votes and language betray a lack of enthusiasm for                into ideal-point modeling provides an interpretable,
+Tea Party issues? How well can we predict from                    text-based foundation for political scientists to unsomeone’s language alone whether they are likely                  derstand why the models make the predictions they
+to associate themselves with the Tea Party? Our                   do. However, both the topic—what is discussed—
+computational modeling approach to “Tea Parti-                    and the framing—how it is discussed—also reveal
+ness”, distinct from self-declared Tea Party Caucus               political preferences. We therefore introduce framemembership, may have particular value in under-                   specific ideal points, using a hierarchy of topics to
+standing Republican party politics going forward                  model issues and their issue-specific frames. Albecause, despite the continued influence of the Tea               though the definition of “frame” is itself a moving
+Party, the official Tea Party Caucus in the House                 target in political science (Entman, 1993), we adopt
+of Representatives is largely inactive and its future             the theoretically motivated but pragmatic approach
+uncertain (Fuller, 2015).                                         of Nguyen et al. (2013): just as agenda-issues map
+                                                                  naturally to topics in probabilistic topic models
+2       Polarization across Dimensions                            (e.g., Grimmer (2010)), the frames as second-level
+   Ideal point models describe probabilistic rela-                agenda-setting (McCombs, 2005) map to secondtionships between observed responses (votes) on                   level topics in a hierarchical topic model.
+a set of items (bills) by a set of responders (legis-                Our model’s inputs are votes {va,b }, each the
+lators) who are characterized by continuous latent                response of legislator a ∈ [1, A] to bill b ∈ [1, B].
+traits (Fox, 2010). A popular formulation posits an               Two types of text supplement the votes: floor
+ideal point ua for each lawmaker a, a polarity xb ,               speeches (documents) {wd } from legislator ad , and
+and popularity yb for each bill b, all being values               the text wb0 of bill b. While congressional debates
+in (−∞, +∞) (Martin and Quinn, 2002; Bafumi                       are typically about one piece of legislation, we
+et al., 2005; Gerrish and Blei, 2011). Lawmaker a                 make no assumptions about the mapping between
+votes “Yes” on bill b with probability                            wd and wb0 . In principle this allows wd to be any
+                                                                  text by legislator ad (e.g., not just floor speeches
+    p(va,b = Yes | ua , xb , yb ) = Φ(ua xb + yb )        (1)
+                                                                  about this bill, but blogs, social media, press rewhere Φ(α) = exp(α)/(1 + exp(α)) is the logis-                    leases) and—unlike Gerrish and Blei (2011)—this
+tic (or inverse-logit) function.2 Intuitively, most               permits us to make predictions about individuals
+lawmakers vote “Yes” on bills with high popularity                even without vote data for them. Figure 1 shows
+yb and “No” on bills with low yb . When a bill’s                  the plate notation diagram of HIPTM, which has the
+popularity is lower, the outcome of the vote va,b                 following generative process:
+depends more on the interaction between the law1. For each issue k ∈ [1, K]
+maker’s ideal point ua and the bill’s polarity xb .                       (a) Draw k’s associated topic φk ∼ Dir(β, φ?k )
+   Multi-dimensional ideal point models replace                           (b) Draw issue-specific distribution over frames
+scalars ua and xb with K-dimensional vectors ua                                ψk ∼ GEM(λ0 )
+                                                                          (c) For each frame j ∈ [1, ∞) (specific to issue k)
+and xb (Heckman and Jr., 1997; Jackman, 2001;                                     i. Draw j’s associated topic φk,j ∼ Dir(β, φk )
+Clinton et al., 2004). Unfortunately, as Lauderdale                              ii. Draw j’s regression weight ηk,j ∼ N (0, γ)
+and Clark (2014) observe, the binary data used for                    2. For each document d ∈ [1, D] by legislator ad
+these models are “insufficiently informative to sup-                      (a) Draw topic (i.e., issue) distribution θd ∼ Dir(α)
+                                                                          (b) For each issue k ∈ [1, K], draw frame distribuport analyses beyond one or two dimensions”, and                               tion ψd,k ∼ DP(λ, ψk )
+the additional dimensions are difficult to interpret.                     (c) For each token n ∈ [1, Nd ]
+To address this lack of interpretability, recent work                             i. Draw an issue zd,n ∼ Mult(θd )
+                                                                                 ii. Draw a frame td,n ∼ Mult(ψd,zd,n )
+has proposed multi-dimensional ideal point models
+                                                                                iii. Draw word wd,n ∼ Mult(φzd,n ,td,n )
+to jointly capture both binary votes and the associ-                  3. For each legislator a ∈ [1, A] on each issue k ∈ [1, K]
+     A probit function is also often used where Φ(α) is instead           (a) Draw issue-specific ideal point ua,k              ∼
+                                                                               N ( Jj=1   ψ̂a,k,j ηk,j , ρ) weighting ηk,j by how
+                                                                                    P k
+the cumulative distribution function of a Gaussian distribution (Martin and Quinn, 2002).                                                 much the legislator talks about that frame
+
+
+                                                             1439
+
+
+                  ߙ                        ߛ                                      at each frame node is a Dirichlet draw centered at
+                                                                                  the corresponding (parent) issue node. While the
+         ߣ        ߠௗ             ‫ݖ‬ௗ௡       ߟ௞௝
+                                                          ߩ         ߪ
+                                                                                  number of issues is fixed a priori, the number of
+                                                 ‫ܬ‬௞
+                                                      ‫ܭ‬                           second-level frames is unbounded. We also asso-
+        ߰௞        ߰ௗ௞            ‫ݐ‬ௗ௡                                              ciate each second-level frame node with an ideal
+                        ‫ܭ‬                  ‫ݑ‬௔௞
+                                                 ‫ܭ‬
+                                                          ‫ݒ‬௔௕      ‫ݔ‬௕ ‫ݕ‬௕
+                                                                                  point ηk,j ∼ N (0, γ). This resembles how suߣ଴                       ‫ݓ‬ௗ௡
+                                       ‫ܣ‬
+                                                                                  pervised topic models (Blei and McAuliffe, 2007;
+              ‫ܦ‬
+                            ܰௗ
+                                           ߶௞∗             ᇱ
+                                                          ‫ݖ‬௕௠      ߴ௕             Nguyen et al., 2015) discover polarized topics’ asᇱ
+                                                                                  sociated response variables.
+                                 ߶௞௝       ߶௞             ‫ݓ‬௕௠
+                            ‫ܬ‬௞
+                                                 ‫ܭ‬
+                                                              ‫ܯ‬௕
+                                                                           ‫ܤ‬
+                                                                                  Generating Text from Legislators. One of our
+                                 ߚ                                 ߙ
+                                                                                  model’s goal is to study how legislators frame policy agenda issues. To achieve that, we analyze
+        Figure 1: Plate notation diagram of HIPTM.
+                                                                                  congressional speeches (documents) {wd }, each
+ Agriculture: food; agriculture; loan; farm; crop; dairy;
+                                                                                  of which is delivered by a legislator ad . To genrural; conserve; commodity; eligible; farmer; margin; milk;                      erate each token wd,n of a speech d, legislator ad
+ contract; nutrition; livestock; plant                                            will (1) first choose an issue zd,n ∈ [1, K] from a
+ Health: drug; medicine; coverage; disease; public health;
+ hospital; social security; health insurrance; patient; appli-                    document-specific multinomial θd , then (2) choose
+ cation; treatment; payment; physician; nurse; clinic                             a frame td,n from the set of infinitely many possiLabor, Employment, and Immigration: employment;                                  ble frames of the given issue zd,n using the frame
+ immigration; labor; paragraph; eligible; status; compensation; application; wage; homeland security; unemploy-                          proportion ψd,k drawn from a Dirichlet process,
+ ment; board; violation; file; perform; mine                                      and finally (3) choose a word type from the choTable 1: Examples of informed priors φ?k for issues.                          sen frame’s topic φzd,n ,td,n . In other words, our
+                                                                                  model generates speeches using a mixture of K
+                                                                                  HDPs (Teh et al., 2006).5
+  4. For each bill b ∈ [1, B]
+      (a) Draw polarity xb ∼ N (0, σ)                            Generating Bill Text. The bill text provides in-
+      (b) Draw popularity yb ∼ N (0, σ)                          formation about the policy agenda issues that each
+      (c) Draw topic (i.e., issue) proportions ϑb ∼ Dir(α)
+      (d) For each token m ∈ [1, Mb ] in the text of bill b      bill addresses. We use LDA to model the bill text
+             i. Draw an issue zb,m  ∼ Mult(ϑb )                  {wb0 }. Each bill b is a mixture ϑb over K isii. Draw a word type wb,m   ∼ Mult(φzb,m
+                                                   0   )         sues, which is drawn from a symmetric Dirichlet prior, i.e., ϑb ∼ Dir(α). Each token wb,m  0
+  5. For each vote va,b of legislator a on bill b
+      (a) p(va,b | ua , xb , yb , ϑ̂b ) = Φ xb k ϑ̂b,k ua,k + yb in bill b is generated by first choosing a topic
+                                            P                  
+                                                                 zb,m  ∼ Mult(ϑb ), and then choosing a word type
+                                                                 w  0
+Topic Hierarchy. With the goal of analyzing                        b,m ∼ Mult(φzb,m0 ), as in LDA.
+agendas and frames in mind, our topic hierarchy                                   Generating Roll Call Votes. Following recent
+has two levels: (1) issue nodes and (2) frame nodes.                              work on multi-dimensional ideal points (Laud-
+(Look ahead to Figure 6 for an illustration.) More                                erdale and Clark, 2014; Sim et al., 2015), we define
+specifically, there are K issue nodes, each with a                                the probability of legislator a voting “Yes” on bill
+topic φk drawn from a Dirichlet distribution with                                 b as p(va,b = Yes | ua , xb , yb , ϑ̂b ) =
+concentration parameter β and a prior mean vector                                                      K
+                                                                                                                             !
+φ?k , i.e., φk ∼ Dir(β, φ?k ). In this hierarchical struc-                                            X
+                                                                                              Φ xb         ϑ̂b,k ua,k + yb         (2)
+ture, first-level nodes map to agenda issues, which                                                      k=1
+we treat as non-polarized, and second-level nodes
+map to issue-specific frames, which we assume                                     where ϑ̂b is the empirical distribution of bill b over
+                                                                                                                           M
+polarize on the issue-specific dimension.3                                        the K issues and is defined as ϑ̂b,k = Mb,k b,·
+                                                                                                                                  . Here,
+   To improve topic interpretability, issue nodes                                 Mb,k is the number of times in which tokens in b
+have an informed prior from the Congressional                                     the empirical word distribution from all bills labeled with k.
+Bills Project {φ?k } (Table 1).4 The frame topic φk,j                             K = 19, corresponding to 19 major topic headings in the
+                                                                                  Policy Agendas Project Topic Codebook.
+    3                                                                                 5
+      Nguyen et al. (2013) allow first-level nodes to polarize                          If we abandoned the labeled data from the Congressional
+but find first-level nodes are typically neutral.                                 Bills Project to obtain the prior means φ?k , it would be relaThe Congressional Bills Project provides a large collec-                    tively straightforward to extend to a fully nonparametric model
+tion of labeled congressional bill text. We compute {φ?k } as                     with unbounded K (Ahmed et al., 2013; Paisley et al., 2014).
+
+
+                                                                               1440
+
+
+are assigned to issue k and Mb,· is the marginal           where Mb,k denotes the number of tokens in bill
+count, i.e., the number of tokens in bill b.               text b assigned to issue k. The current estimated
+  The ideal point of legislator a specifically on is-      probability of word type v given issue k is φ̂k,v
+sue k is ua,k and comes from a normal distribution         (Equation 7). Marginal counts are denoted by · and
+                                                         the superscript −b,m excludes the assignment for
+                           XJk
+                                                           token wb,m  from the corresponding count.
+         T
+   N (ψ̂a,k  ηk , ρ) ≡ N      ψ̂a,k,j ηk,j , ρ (3)
+                            j=1                            Sampling Frame Assignments in Speeches To
+where Jk is the number of frames for topic k, which        sample the assignments for tokens in the speeches,
+is unbounded. The mean of the Normal distribution          we first sample an issue using
+                                                                                        −d,n
+is a linear combination of the ideal points {ηk,j } of                                 Nd,k  +α
+all issue k’s frames, weighted by how much time              p(zd,n = k | rest) ∝      −d,n
+                                                                                                       · φ̂k,wd,n (5)
+                                                                                      Nd,·  + Kα
+legislator a spends on each frame when talking
+                                 N                         where Nd,k similarly denotes the number of times
+about issue k, i.e., ψa,k,j = Na,k,j     . Here, Na,k,j
+                                   a,k,·                   that tokens in d are assigned to issue k. Given the
+is the number of tokens authored by a that are
+                                                           sampled issue k, we sample the frame as
+assigned to frame j of issue k, and Na,k,· is the
+                                                             p(td,n = j | zd,n = k, ad = a, rest) ∝
+marginal count. When Na,k,· = 0, which means                                         −d,n                
+that legislator a does not talk about issue k, we          
+                                                            N (ua,k ; µa,k,j , ρ) ·  Nd,k,j       λ·ψ̂k,j
+                                                                                       −d,n    + −d,n        ,
+                                                                                         Nd,k,j +λ     Nd,k,j +λ
+back off to an uninformed zero mean.
+                                                           
+                                                            N (ua,k ; µa,k,j new , ρ) ·      λ
+                                                                                                    · ψ̂k,j new ,
+   Equation 3 resembles how supervised topic mod-                                          −d,n
+                                                                                          Nd,k,j +λ
+els (SLDA) link topics with a response, in that the                                                                 (6)
+                                                                               PJk             −d,n
+response—the issue-specific ideal point ua,k —is           where µa,k,j = (       j 0 =1 ηk,j Nd,k,j 0 + ηk,j )/Nd,k,·
+latent. It is similar to how Gerrish and Blei (2011)       for an existing frame j, and for a newly
+use the bill text to regress on the bill’s latent polar-   created frame j new , we have µa,k,j new =
+ity xb and popularity yb . In this paper, we only use       P                −d,n
+                                                           ( Jj 0k=1 ηk,j 0 Nd,k,j 0 +ηk,j new )/Nd,k,· , where ηk,j new
+text from congressional speeches for regression, as        is drawn from the Gaussian prior N (0, γ). Here,
+these can capture how legislators frame specific top-      the estimated global probability of choosing a
+ics. Incorporating the bill text into the regression is    frame j of issue k is ψ̂k,j .
+an interesting direction for future work.
+                                                           Sampling Issue Topics In the generative process
+4   Inference                                              of HIPTM, the topic φk of issue k (1) generates
+                                                           tokens in the bill text and (2) provides the Dirichlet
+   Given observed data of (1) votes {va,b } by A
+                                                           priors of the issue’s frames. Rather than collapsing
+legislators on B bills, (2) speeches {wd } from legmultinomials and factorizing (Hu and Boyd-Graber,
+islators, and (3) bill text {wb0 }, we estimate the
+                                                           2012), we follow Ahmed et al. (2013) and sample
+latent variables using stochastic EM. In each iteration, we perform the following steps: (1) sampling                      φ̂k ∼ Dir(mk + ñk + βφ?k )                 (7)
+issue assignments {zb,m 0 } for bill text tokens, (2)      where mk ≡ (Mk,1 , Mk,2 , · · · , Mk,V ) is the token
+sampling the issue assignments {zd,n } and frame           count vector from the bill text assigned to each
+assignments {td,n } for speech tokens, (3) sampling        issue. The vector ñk ≡ (Ñk,1 , Ñk,2 , · · · , Ñk,V )
+the topics at first-level issue nodes {φk }, (4) sam-      denotes the token counts propagated from words
+pling the distribution over frames {ψk } for all is-       assigned to topics that are associated with frames of
+sues, (5) optimizing frames’ regression parameters         issue k, approximated using minimal or maximal
+{ηk,j } using L - BFGS (Liu and Nocedal, 1989), and        path assumptions (Cowans, 2006; Wallach, 2008).
+(6) updating legislators’ ideal points {ua,k } and         Sampling Frame Proportions Following the dibills’ polarity {xb } and popularity {yb } using gra-      rect assignment method described in Teh et al.
+dient ascent.                                              (2006), we sample the global frame proportion as
+Sampling Issue Assignments for Bill Tokens                   ψ̂k ≡ (ψ̂k,1 , ψ̂k,2 , · · · , ψ̂k,j new )
+The probability of assigning a token wb,m in the                  ∼ Dir(N̂·,k,1 , N̂·,k,2 , · · · , N̂·,k,Jk , λ0 ) (8)
+bill text to an issue k is                                                   PD
+                           −b,m                            where N̂·,k,j =        d=1 N̂d,k,j and N̂d,k,j can be
+                          Mb,k  +α                         sampled effectively using the Antoniak distribup(zb,m = k | rest) ∝    −b,m
+                                         · φ̂k,wb,m
+                                                0   (4)
+                        Mb,·  + Kα                         tion (Antoniak, 1974).
+
+
+                                                      1441
+
+
+Optimizing Frame Regression Parameters
+We update the regression parameters ηk of frames                Vote−HIPTM
+                                                                          All
+
+under issue k using L-BFGS (Liu and Nocedal,                   Vote−TF−IDF
+                                                                    Vote−TF
+1989) to optimize L(ηk )                                              HIPTM
+                                                                        Vote
+                                                                     TF−IDF
+            A                         J
+       1 X                      1 Xk                                     TF
+                   T                  2
+    −     (ua,k − ηk ψ̂a,k ) −       ηk,j        (9)                            0.60   0.65
+                                                                                        AUC−ROC
+                                                                                                 0.70      0.75
+      2ρ                       2γ
+           a=1                        j=1               Figure 2: Tea Party Caucus membership prediction results
+                                                        over five folds using AUC - ROC (higher is better, random baseUpdating Ideal Points, Polarity and Popularity          line achieves 0.5). The features extracted from our model are
+We update the multi-dimensional ideal point ua of       estimated using both the votes and the text.
+each legislator a and the polarity xb and popularity
+yb of each bill b by optimizing the log likelihood
+using gradient ascent.                                  simple feature sets where each legislator is represented by their speeches as either (1) a TF-IDF
+5       Data Collection                                 vector (Salton, 1968), (2) a normalized TF-IDF
+                                                        vector, or (3) a binary vector containing their votes.
+   What makes a Tea Partier? To address that quesOur dataset for binary prediction comprises a set
+tion, we use key votes identified by Freedom Works
+                                                        of 60 Republican representatives who self-identify
+as the most important votes on issues of economic
+                                                        as Tea Party Caucus members and 180 who do
+freedom. Led by former House Majority Leader
+                                                        not. These are divided using 5-fold cross-validation
+Dick Armey (R - TX), Freedom Works is a conwith stratified sampling, which preserves the ratio
+servative non-profit organization which promotes
+                                                        of the two classes in both the training and test sets.
+“Lower Taxes, Less Government, More Freedom”.6
+                                                        We report performance using AUC - ROC (Lusted,
+Karpowitz et al. (2011) report that Freedom Works
+                                                        1971) using SVMlight (Joachims, 1999).9 After preendorsements are more effective than other Tea
+                                                        processing, our vocabulary contains 5,349 unique
+Party organizations at getting out votes for Repubword types.
+lican candidates in the 2010 midterms.
+   For the 112th Congress, Freedom Works selected       Membership from Votes and Text. First, given
+60 key votes, 40 in 2011 and 20 in 2012. We are         the votes and text of all the legislators, we run
+interested in ideal points with respect to the Tea      HIPTM for 1,000 iterations with a burn-in period of
+Party movement, i.e., on the anti-pro Tea Party         500 iterations. After burning in, we keep the samdimension: whether a legislator agrees with Free-       pled state of the model after every fifty iterations.
+dom Works on a bill. More specifically, we assign       The feature values are obtained by averaging over
+va,b to be 1 if legislator a agrees with Freedom        the ten stored models as suggested in Nguyen et al.
+Works on bill b, and 0 otherwise. In addition to        (2014). Each legislator a is represented by a vector
+the votes, we obtained the bill text with labels from   concatenating:
+the Congressional Bills Project7 and the congres-         • K-dimensional ideal point vector estimated
+sional speeches from GovTrack.8 In total, we have         from both votes and text ua,k
+240 Republicans, 60 who self-identify with the Tea        • K-dimensional vector, estimating the ideal
+Party Caucus, and 13,856 votes.                           point using only text ηkT ψ̂a,k
+                                                          • B probabilities estimating a’s votes on B bills
+6       Predicting Tea Party Membership                         P
+                                                          Φ(xb K  k=1 b,k a,k + yb )
+                                                                      ϑ̂  u
+   To quantitatively evaluate the effectiveness of
+HIPTM in capturing “Tea Partiness”, we predict Tea         Figure 2 shows AUC - ROC results for our feature
+Party Caucus membership of legislators given their      sets. VOTE-based features clearly outperform textvotes and text. This examines (1) how effective         based features like TF and TF-IDF. Combining
+the baseline features extracted from the votes and      VOTE with either TF or TF-IDF does not improve
+text are in predicting the Caucus membership, and       the prediction performance much (i.e., VOTE-TF
+(2) how much prediction improves using features         and VOTE-TF-IDF). Features extracted from our
+extracted from HIPTM. For baselines, we consider           9
+                                                             We use the default settings of SVMlight , except that we
+                                                        set the cost-factor equal to the ratio between the number of
+      http://congress.freedomworks.org/                 negative examples (i.e., number of non-Tea Party Caucus
+      http://congressionalbills.org/                    members) and the number of positive examples (i.e., number
+      https://www.govtrack.us/data/us/112/              of Tea Party Caucus members).
+
+
+                                                   1442
+
+
+        HIPTM
+                                                                                  −1              0              1
+                                                                                             Ideal Point
+       TF−IDF                                                                   Tea Party Caucus Member Non−member
+            TF                                                    Figure 4: Box plots of the one-dimensional Tea Party ideal
+                                                                  points, estimated as a baseline in Section 7.1, for members and
+                   0.600      0.625       0.650
+                             AUC−ROC                              non-members of the Tea Party Caucus among Republican RepFigure 3: Tea Party Caucus membership prediction results          resentatives in the 112th U.S. House. The median of members’
+over five folds using AUC - ROC (higher is better, random base-   ideal points is significantly higher than that of non-members’.
+line achieves 0.5). The features extracted from our model for
+unseen legislators are estimated using their text only.
+
+                                                                  dataset.10 Figure 4 shows the box plots of estimodel, HIPTM, also outperform TF and TF-IDF                       mated Tea Party ideal points for both members and
+significantly, but only slightly better than VOTE.                non-members.11 The Tea Party ideal points corHowever, HIPTM and VOTE together significantly                    relate with DW- NOMINATE (ρ = 0.91), and the
+outperform VOTE alone.                                            median ideal point of Tea Party Caucus members
+                                                                  is higher than non-members. This confirms that
+Membership Prediction from Text Only. The                         Tea Partiers are more conservative than other Reresults in Figure 2 require both votes and legisla-               publicans (Williamson et al., 2011; Karpowitz et
+tors’ language. This is limiting, since it permits                al., 2011; Gervais and Morris, 2012; Gervais and
+predictions of “Tea Partiness” only for people with               Morris, 2014).
+an established congressional voting record. A poDivergences involving these ideal points help
+tentially more interesting and practical task is predemonstrate the face validity of our approach. For
+diction based on language alone.
+                                                                  example, the model gives Jeff Flake (R - AZ) the secThus, we first run our inference algorithm on
+                                                                  ond highest ideal point; he only disagrees with Freethe training data, which includes both votes and
+                                                                  dom Works position on one of 60 Freedom Works
+text. After training, using multiple models, we
+                                                                  key votes, but he is not a member of the Tea Party
+sample the issue and frame assignments for each
+                                                                  Caucus. Another example is Justin Amash (R - MI),
+token of the text authored by test lawmakers.
+                                                                  who founded and is the Chairman of the Liberty
+Since the votes are not available, HIPTM’s exCaucus. Its members are conservative and libertracted features here only consist of (1) the Ktarian Republicans, and Amash has agreed with
+dimensional vector ηkT ψ̂a,k estimating legislators’
+                                                                  Freedom Works on every single key vote selected
+ideal point using
+               PK text alone, and (2) the B proba-                by Freedom Works since 2011.
+bilities Φ(xb k=1 ϑ̂b,k ua,k + yb ) estimating the
+votes.                                                               Conversely, some self-identified Tea Partiers ofFigure 3 compares this approach with the two                   ten disagree with Freedom Works and thus have
+baselines capable of using text alone, TF and TF-                 relatively low ideal points. For example, Rodney
+IDF. Since HIPTM can no longer access the votes                   Alexander (R - LA) only agrees with Freedom Works
+in the test data, its performance drops significantly             48% of the time, and was a Democrat before 2004.
+compared with VOTE. However, it still quite                       Alexander and Ander Crenshaw (R - FL, 50% agreestrongly outperforms the two text-based baselines,                ment) are categorized as “Green Tea” by Gervais
+showing that jointly modeling the voting behavior                 and Morris (2014), i.e. Republican legislators who
+improves the text-based elements of the model.                    are “associated with the Tea Party on their own
+                                                                  initiative” but lack support from Tea Party organi7    How the Tea Party Votes                                      zations.
+  In this section, we examine legislators’ ideal
+points. We first expose Tea Party-specific ideal                        We use gradient ascent to optimize the likelihood of votes
+                                                                  whose probabilities are defined in Equation 1. We also put a
+points by examining one-dimensional ideal points                  Gaussian prior N (0, σ) on ua , xb , and yb .
+and then move on to the issue-specific ideal points                  11
+                                                                        Estimated ideal point signs might be flipped, as ua xb =
+that HIPTM enables.                                               (−ua )(−xb ), which makes no difference in Equation 1. To
+                                                                  ensure that higher ideal points are “pro-Tea Party”, we first
+7.1 One-dimensional Ideal Points                                  sort the legislators according to the fraction of votes for which
+                                                                  they agree with Freedom Works and initialize the ideal points
+  First, as a baseline, we estimate the one-                      of the top and bottom five legislators with +3σ and -3σ, where
+dimensional ideal points of the legislators in our                σ is the variance of ua ’s Gaussian prior.
+
+
+                                                             1443
+
+
+                                          Government Operations                                       ●
+
+
+                                                 Macroeconomics                 ●●
+
+
+                                                    Transportation                                                                                              ●                ●
+
+
+                            Labor, Employment, and Immigration                                                    ●
+
+
+                                                     Foreign Trade                                                                                                                   ●
+
+
+                    Banking, Finance, and Domestic Commerce                              ●   ●●           ●                                                         ● ●                      ●
+
+
+                                                          Defense           ●
+                                                                                                                                                                                                     ●
+
+
+                                                      Environment                ●   ●   ● ●                                                                ●
+                                                                                                                                                            ● ●                              ●   ●       ●
+
+
+                                                    Social Welfare                                            ●
+
+
+                                                         Education                                                                             ●   ●●   ●
+
+
+                                                           Energy
+                             International Affairs and Foreign Aid
+                                   Law, Crime, and Family Issues                                  ●                                                         ●        ●       ●
+
+
+               Space, Science, Technology and Communications                                                  ●           ● ●
+
+
+                  Community Development and Housing Issues            ●
+                                                                                                          ●
+                                                                                                                                                                                                 ●
+
+
+                           Public Lands and Water Management                                   ●
+                                                                                                                          ●
+                                                                                                                                                                         ●
+                                                                                                                                                                                         ●
+
+
+                                                            Health                                                                                           ●           ●
+
+
+                                                        Agriculture
+                 Civil Rights, Minority Issues, and Civil Liberties                                                   ●                                          ●
+
+
+                                                                      −6                                                  −3           0                3
+                                         Tea Party Caucus Member Non−member                                                     Ideal Points
+Figure 5: Box plots of ideal points dimensions, each corresponding to a major topic in the Policy Agendas Topics Codebook
+estimated by our model. On most issues the ideal point distributions over the two Republican groups (member vs. non-member
+of the Tea Party Caucus) overlap. The most polarized issues are Government Operations and Macroeconomics, which align well
+with the agenda of the Tea Party movement supporting small government and lower taxes.
+
+
+7.2 Multi-dimensional Ideal Points                                                   mainstream Republican legislators. An illustration
+   While it is interesting to compare holistic mea-                                  of this polarization can be seen in the intra-party
+sures of Tea Partiness, it doesn’t reveal how leg-                                   fight over the budget. Roll call vote 275 in 2011
+islators conform or deviate from what defines a                                      and roll call vote 149 in 2012 both would have
+mainstream Tea Partier. In this section, HIPTM                                       replaced Paul Ryan’s budget (the “establishment”
+reveals how issue-specific ideal points of the two                                   Republican budget) with the Republican Study
+groups of Republican representatives differ.                                         Committee’s (RSC) “Back to Basics” budget that
+   Figure 5 shows estimated ideal points for each                                    would cut spending more aggressively and balance
+policy agenda issue, sorted by the difference be-                                    the budget in a decade. In 2011, non-Tea Party
+tween the median of the two groups’ ideal points.                                    Republicans were evenly split in their budget
+On most issues, the ideal point distributions of the                                 preferences, but three quarters of the Tea Party
+two Republican groups are nigh identical.                                            Caucus supported it, which illustrates the differOn several issues, though, the ideal point distri-                                ence between the two factions of the Republican
+butions of the two groups of legislators diverge.                                    party. Similarly, in 2012, more than 80% of Tea
+In the remainder of this section, we consider                                        Partiers voted for the the RSC budget, but fewer
+the Government Operation, Macroeconomics, and                                        than half of non-Tea Party Republicans did. Other
+Transportation topics, and look at why HIPTM esti-                                   polarizing votes in the Macroeconomics topic
+mates these issues as the most polarized.                                            include votes to raise the debt ceiling and to avert
+                                                                                     the “fiscal cliff”. In these cases, support for these
+Government operations Tea Partiers differ                                            votes was 25 percentage points higher among Tea
+from their Republican colleagues on reducing gov-                                    Partiers than non-Tea Party Republicans, which
+ernment spending on the Economic Development                                         again illustrates their distinct policy preferences.
+Administration, the Energy Efficiency and RenewTransportation Transportation is the third most
+able Energy Program and Fossil Fuel Research and
+                                                                                     polarized issue estimated by our model, with two
+Development. More specifically, for example, on
+                                                                                     key votes focusing on federal spending on transthe key vote to eliminate the Energy Efficiency and
+                                                                                     portation that illustrate some polarization, but also
+Renewable Energy Program, nearly 80% (41 out
+                                                                                     some shared preferences among Republicans. Conof 53) of Tea Partiers vote “Yea” (with Freedom
+                                                                                     sistent with the Tea Party’s emphasis on reducing
+Works) but only 43% of non-Tea Partiers agree.
+                                                                                     government spending, Tea Party Republicans voted
+Macroeconomics Our            model     estimates                                    differently from their non-Tea Party colleagues on
+Macroeconomics policies as being the sec-                                            these issues. The first key vote, roll call vote 378 in
+ond most polarizing topic for House Republicans,                                     2012, caps highway spending at the amount taken
+which is consistent with the emphasis that the Tea                                   in by the gas tax. More than half of Tea Party CauParty places on issues like a balanced budget and                                    cus members (32 out of 55) voted in favor, while
+reduced federal spending. Indeed, we see that                                        non-members voted against it by a greater than 2:1
+Tea Party Republicans have distinct preferences                                      margin (122 of 172). Conversely, the second key
+on these types of issues as compared to more                                         vote (roll call vote 451 in 2012) authorizes fed1444
+
+
+                                        Macroeconomics
+                    balanc_budget, borrow, debt_ceil, cap, cut_spend, nation_debt,
+                                                                                                     Republican polarization related to budget issues.
+                     grandchildren, rais_tax, entitl, white_hous, debt_limit, prosper
+                                                                                                     The most Tea Party oriented frame node, M3,
+         Frame M1                         Frame M2                        Frame M3                   focuses on criticizing government overspending,
+                                                                                                     a recurring Tea Party theme.13 In contrast,
+      white_hous, shut,            balanc_budget, debt_ceil,
+                                                                      borrow, nation_debt,
+    continu_resolut, mess,         cap, cut_spend, debt_limit,
+                                                                    rais_tax, entitl, prosper,
+ hous_republican, novemb,           spend_cut, fiscal_hous,
+      govern_shutdown,
+    senat_reid, harri_reid,
+                                    grandchildren, guarante,
+                                    default, august, obama,
+                                                                      chart, grandchildren,
+                                                                   spend_monei, size, gdp,           Frame M1, least oriented toward the Tea Party,
+vision, shutdown, liber, arriv,
+   republican_parti, blame
+                                       deficit_spend, rein,
+                                          feder_budget
+                                                                       tax_increas, cent,
+                                                                  govern_spend, social_secur         focuses on the downsides of a government
+                -.57                -.24                          .56                                shutdown, highlighting establishment Republican
+    Establishment
+                                             -.13       .04         .56                 Tea Party    concerns about being held responsible for the
+                                                                                                     political and economic consequences.
+         Frame H1                         Frame H2                        Frame H3
+afford_care, exchang,
+patient_protect,
+                                   patient, doctor, physician,
+                                   hospit, medicaid, board,
+                                                                  obamacar, replac, mandat,
+                                                                  insur, health_insur, coverag,
+                                                                                                     Health. Healthcare was a central issue during
+human_servic, public_health,
+slush_fund, ppaca,
+                                   georgia, save_medicar,
+                                   nurs, tennesse, page,
+                                                                  social_secur, premium,
+                                                                  repeal_obamacar, entitl,
+                                                                                                     the 112th Congress, particularly the Affordable
+mandatori, mandatori_spend,
+governor, hospit,
+                                   bureaucrat,
+                                   advisori_board, medicin,
+                                                                  govern_takeov, purchas,
+                                                                  unconstitut, preexist_condit,
+                                                                                                     Care Act (Obamacare). Although all Republicans
+health_center, flexibl,
+teach_health, unlimit
+                                   independ_payment               employ
+                                                                                                     voted to repeal Obamacare, Figure 6 (bottom) highHealth                                                lights intra-party differences in framing the issue.
+         obamacar, patient, doctor, physician, afford_care, hospit, insur, replac, mandat,
+         exchang, health_insur, coverag, medicaid, patient_protect, board
+                                                                                                     Frame H1 leans strongest toward the establishment
+Figure 6: Framing of Macroeconomics (top) and Health (bot-                                           Republican end of the spectrum, and frames optom) among House Republicans, 2011-2012. Higher ideal                                                position in terms of the implementation of health
+point values are associated with the Tea Party.
+                                                                                                     care exchanges and the mandatory costs of the program. In contrast, H3 captures the more strident
+eral highway spending at a level that far exceeds                                                    Tea Party framing of Obamacare as an unconstituits revenue from the gas tax, which was opposed                                                      tional government takeover. More neutral from
+by Freedom Works. This measure was broadly                                                           an intra-party perspective, Frame H2 emphasizes
+popular with Republicans regardless of Tea Party                                                     Medicare, Medicaid, and the role of health care
+affiliation and a majority of both Tea Partiers and                                                  professionals within these systems.14
+non-Tea Partiers opposed it.                                                                         Labor, Employment and Immigration. The
+                                                                                                     discussion of this issue illustrates how HIPTM some8        How the Tea Party Talks                                                                     times captures frames that are distinct from Tea
+   Looking at HIPTM’s induced topic hierarchy, us-                                                   Partiness, per se. For example, it discovered a
+ing labeled data to create informative priors pro-                                                   strongly Tea Party oriented frame that focused on
+duces highly interpretable topics at the agenda-                                                     “union, south carolina, nlrb, boeing”. On inspecissue level; e.g., see the first-level nodes in Figure 6,                                            tion, this frame reflects a controversy in which the
+which capture key issue-level debates. For exam-                                                     National Labor Relations Board accused airline
+ple, one major event during the 112th Congress was                                                   manufacturer Boeing of violating Federal labor law
+the 2011 debt-ceiling crisis, which dominates dis-                                                   by transferring production to a non-union facility
+cussions in Macroeconomics. Similarly, Defense                                                       in South Carolina “for discriminatory reasons”,15
+is dominated by withdrawing U.S. troops from Iraq.                                                   and surfaces mainly in speeches by four legislators
+   Turning to framing, recall that second-level                                                      from South Carolina, three of whom are from the
+nodes of the hierarchy capture issue-specific frames                                                 Tea Party Caucus. This second-level topic illusof parent issues, each one associated with a frame-                                                  trates a limitation of HIPTM; it does not formally
+specific ideal point. To analyze intra-Republican                                                    distinguish frames from other kinds of subtopics.
+polarization, we first compute, for each issue k, the                                                We observe that modeling polarization on other
+span of ideal points the frames associated with k,                                                   kinds of sub-issues is nonetheless valuable: here
+i.e., the difference between the maximum and the                                                     it highlights a geographic locus of conflict involvminimum ideal points for frames under that issue.12                                                      13
+                                                                                                           E.g., Scott Garrett (R - NJ): “We will not compromise on
+We then consider several issues with a large span,                                                   our principles; our principles of defending the Constitution
+i.e. whose frames are highly polarized.                                                              and defending Americans and making sure that our posterity
+                                                                                                     does not have this excessive debt on it.”
+Macroeconomics. The HIPTM subtree for                                                                   14
+                                                                                                           This does not mean that discussions using this frame
+Macroeconomics, in Figure 6 (top), foregrounds                                                       lacked combative or partisan elements. For example, Glenn
+                                                                                                     Thompson (R - PA) argues that “on the Democratic side, they’re
+    12                                                                                               just willing to pull the plug and let [Medicare] die”.
+    The frame proportions Dirichlet process ψk creates many
+frames with one or two observations (Miller and Harrison,                                                  http://www.nlrb.gov/news-outreach/fact-sheets/fact2013). We ignore those with posterior probability ψk,j < 0.1.                                        sheet-archives/boeing-complaint-fact-sheet
+
+
+                                                                                                  1445
+
+
+     Ideal Point                                                                       Republicans generally share similar ideal points
+                                            Not                   Polarized
+    Distributions                                                                      and vote similarly, but frame the issue in distinct
+                                                                                       ways, e.g., Obamacare. Here legislative success
+                      Not
+                                   Civil Rights, Minority    Banking and Finance;
+    Distribution of
+    Issue Frames
+                                   Issues, Civil Liberties      Transportation
+                      Polarized                                                        may come despite the appearance that Republican
+                                  Health; Public Lands and
+                                                              Macroeconomics;          factions are talking past each other, because the
+                                                               Government
+                                    Water Management
+                                                                Operations             distribution of their ideal points on the policy is
+                                                                                       actually quite similar. Put differently, Republicans
+Table 2: Examples of agenda issues classified by polarization                          share policy goals on issues in this quadrant even
+of ideal points and issue frames within the Republican party.
+                                                                                       if they frame those preferences differently, and this
+                                                                                       underlying agreement on the ideal point may allow Republicans to reach consensus even when the
+ing South Carolina, where many representatives
+                                                                                       political rhetoric suggests otherwise.
+are Tea Party Caucus members. This may provide
+insight into how geography shapes Tea Party membership (Gervais and Morris, 2012).                                                    10 Conclusion
+
+9     Latent and Visible Disagreement                                                     We introduce HIPTM, which integrates hierarchical topic modeling with multi-dimensional ideal
+   Our analyses suggest a novel framework for unpoints to jointly model voting behavior, the text
+derstanding the political and policymaking implicontent of bills, and the language used by legislacations of the Tea Party in the 112th Congress, iltors. HIPTM is more effective than previous methlustrated in Table 2. Each issue can be characterods on the task of predicting membership in the
+ized by two features: (1) the degree to which ideal
+                                                                                       Tea Party Caucus. This improvement is especially
+points among Republican legislators are polarized,
+                                                                                       consequential as the formal organization of the Tea
+and (2) the degree to which the frames used are poParty Caucus is now defunct in the House, yet Tea
+larized. From these two assessments, we can orgaParty legislators remain both numerous and influennize all policy issues into four categories that have
+                                                                                       tial in Congress. In addition, unlike previous idealmeaningful implications for congressional politics
+                                                                                       point methods, HIPTM makes it possible to make
+and policy outcomes. At upper left we will find
+                                                                                       predictions for members of Congress who have not
+issues where HIPTM indicates low intra-party poyet established a voting record. More intriguingly,
+larization between Tea Party and non-Tea Party,
+                                                                                       this also suggests the possibility of assessing the
+and all Republicans tend to frame the issue in sim-
+                                                                                       “Tea Partiness” of candidates (or, anyone else, e.g.,
+ilar ways; e.g., Civil Rights, Minority Issues, and
+                                                                                       media outlets) based on language.
+Civil Liberties. In such cases, we expect cooperation among Republicans regardless of Tea Party                                           It is political conventional wisdom that the instatus, therefore a greater likelihood of bill pas-                                    flux of Tea Party legislators in the 112th Congress
+sage in a majority-Republican House. In stark con-                                     complicated the task of governance and policymaktrast, issues at lower right involve polarized ideal                                   ing for Republican leaders. By looking at issuepoints and polarized framing, e.g., the budget cri-                                    level ideal points and issue-specific framing using
+sis, where many establishment Republicans balked                                       our model, we begin to address the complexity
+at a government shutdown but hard-line Tea Party                                       of this relationship, finding the model successful
+legislators did not. These issues pose the greatest                                    both in establishing face validity and in suggesting
+challenge to Republican party leaders.                                                 novel insights into the dynamics of a Republican
+   Between these extremes are the issues in which                                      Congress. In future work, we plan to pursue the
+either Republicans’ ideal points or their policy                                       new framework suggested by our analyses, invesframes are polarized. Our model suggests that on                                       tigating the interaction of issue polarization and
+issues at upper right, with similar framing, the Tea                                   framing-based polarization. With the help of these
+Party and establishment Republicans will appear                                        new tools, we aim to both understand and predict
+to be in sync, and therefore it may seem to voters                                     substantive policy areas in which the Tea Party is
+that legislative progress is likely, but the under-                                    likely to be most successful working with the Relying issue polarization will make it hard to find                                     publican party, and, conversely, to flag ahead of
+policy common ground, potentially increasing pub-                                      time policy areas in which we can expect to see
+lic frustration. Last, at lower left are issues where                                  legislative gridlock and grandstanding.
+
+
+                                                                                    1446
+
+
+Acknowledgements                                                    Bryan T Gervais and Irwin L Morris. 2012. Reading the tea
+                                                                      leaves: Understanding Tea Party Caucus membership in
+  This work was supported by the NSF Grant IIS-                       the US House of Representatives. PS: Political Science &
+1211153 and IIS-1409287. Boyd-Graber is also                          Politics, 45(02):245–250.
+supported by NSF grants IIS-1320538 and NCSE-                       Bryan T Gervais and Irwin L Morris. 2014. Black Tea,
+1422492. Any opinions, findings, conclusions, or                      Green Tea, White Tea, and Coffee: Understanding the
+recommendations expressed here are those of the                       variation in attachment to the Tea Party among members
+                                                                      of Congress. In Annual Meeting of the American Political
+authors and do not necessarily reflect the view of                    Science Association.
+the sponsor.
+                                                                    Justin Grimmer. 2010. A Bayesian hierarchical topic model
+                                                                       for political texts: Measuring expressed agendas in Senate
+References                                                             press releases. Political Analysis, 18(1):1–35.
+E. Scott Adler and John Wilkerson. 2015. Congressional bills        Yupeng Gu, Yizhou Sun, Ning Jiang, Bingyu Wang, and Ting
+   project. NSF 00880066 and 00880061.                                Chen. 2014. Topic-factorized ideal point estimation model
+                                                                      for legislative voting network. In Proceedings of InterAmr Ahmed, Liangjie Hong, and Alexander Smola. 2013.                  national Conference on Knowledge Discovery and Data
+  Nested Chinese restaurant franchise process: Applications           Mining, pages 183–192.
+  to user tracking and document modeling. In Proceedings of
+  the International Conference of Machine Learning, pages           James J. Heckman and James M. Snyder Jr. 1997. Linear
+  1426–1434.                                                          probability models of the demand for attributes with an
+                                                                      empirical application to estimating the preferences of legisCharles E. Antoniak. 1974. Mixtures of Dirichlet processes
+                                                                      lators. The RAND Journal of Economics, 28:142–189.
+  with applications to Bayesian nonparametric problems.
+  The Annals of Statistics, 2(6):1152–1174.
+                                                                    Yuening Hu and Jordan Boyd-Graber. 2012. Efficient treeJoseph Bafumi, Andrew Gelman, David K Park, and Noah                  based topic modeling. In Association for Computational
+   Kaplan. 2005. Practical issues in implementing and under-          Linguistics.
+   standing Bayesian ideal point estimation. Political Analysis, 13(2):171–187.                                              Simon Jackman. 2001. Multidimensional analysis of roll
+                                                                      call data via Bayesian simulation: Identification, estimaDavid M. Blei and John Lafferty, 2009. Text Mining: The-              tion, inference, and model checking. Political Analysis,
+  ory and Applications, chapter Topic Models. Taylor and              9(3):227–241.
+  Francis, London.
+                                                                    Thorsten Joachims. 1999. Making large-scale SVM learning
+David M Blei and Jon D McAuliffe. 2007. Supervised topic              practical. In Advances in Kernel Methods - SVM. Univermodels. In Proceedings of Advances in Neural Information            sität Dortmund.
+  Processing Systems, pages 121–128.
+                                                                    Christopher F Karpowitz, J Quin Monson, Kelly D Patterson,
+Edward G Carmines and Nicholas J D’Amico. 2015. The                   and Jeremy C Pope. 2011. Tea time in America? The
+  new look in political ideology research. Annual Review of           impact of the Tea Party movement on the 2010 midterm
+  Political Science, 18(4).                                           elections. PS: Political Science & Politics, 44(02):303–
+                                                                      309.
+Joshua Clinton, Simon Jackman, and Douglas Rivers. 2004.
+   The statistical analysis of roll call data. American Political   Benjamin E. Lauderdale and Tom S. Clark. 2014. Scaling
+   Science Review, 98(02):355–370.                                    politically meaningful dimensions using texts and votes.
+                                                                      American Journal of Political Science, 58(3):754–771.
+Philip J Cowans. 2006. Probabilistic Document Modelling.
+  Ph.D. thesis, University of Cambridge.                            Dong C Liu and Jorge Nocedal. 1989. On the limited memory
+                                                                      BFGS method for large scale optimization. Mathematical
+Robert M Entman. 1993. Framing: Toward clarification of a
+                                                                      programming, 45(1-3):503–528.
+  fractured paradigm. Journal of Communication, 43(4):51–
+  58.
+                                                                    Lee B. Lusted. 1971. Signal Detectability and Medical
+Jean-Paul Fox. 2010. Bayesian item response modeling:                 Decision-Making. Science, 171:1217–1219, March.
+   Theory and applications. Springer.
+                                                                    Andrew D Martin and Kevin M Quinn. 2002. Dynamic ideal
+Matt Fuller. 2015. New Tea Party Caucus chairman:                     point estimation via Markov chain Monte Carlo for the US
+  DHS fight could break the GOP. Roll Call, Febru-                    Supreme Court, 1953–1999. Political Analysis, 10(2):134–
+  ary. http://blogs.rollcall.com/218/new-tea-party-caucus-            153.
+  chairman-dhs-fight-could-break-the-gop/.
+                                                                    Maxwell McCombs. 2005. A look at agenda-setting: Past,
+Sean Gerrish and David M. Blei. 2011. Predicting legislative          present and future. Journalism Studies, 6(4):543–557.
+   roll calls from text. In Proceedings of the International
+  Conference of Machine Learning, pages 489–496.                    Jeffrey W Miller and Matthew T Harrison. 2013. A simple example of dirichlet process mixture inconsistency for
+Sean Gerrish and David M. Blei. 2012. How they vote: Issue-            the number of components. In C.J.C. Burges, L. Bottou,
+   adjusted models of legislative behavior. In Proceedings of          M. Welling, Z. Ghahramani, and K.Q. Weinberger, editors,
+  Advances in Neural Information Processing Systems, pages             Advances in Neural Information Processing Systems 26,
+   2753–2761.                                                          pages 199–206. Curran Associates, Inc.
+
+
+                                                               1447
+
+
+Viet-An Nguyen, Jordan Boyd-Graber, and Philip Resnik.
+   2013. Lexical and hierarchical topic regression. In Proceedings of Advances in Neural Information Processing
+   Systems, pages 1106–1114.
+
+Viet-An Nguyen, Jordan Boyd-Graber, and Philip Resnik.
+   2014. Sometimes average is best: The importance of averaging for prediction using MCMC inference in topic modeling. In Proceedings of Emperical Methods in Natural
+   Language Processing, pages 1752–1757.
+
+Thang Nguyen, Jordan Boyd-Graber, Jeff Lund, Kevin Seppi,
+  and Eric Ringger. 2015. Is your anchor going up or down?
+  Fast and accurate supervised topic models. In North American Association for Computational Linguistics.
+
+John Paisley, Chong Wang, David M Blei, and Michael I Jordan. 2014. Nested hierarchical Dirichlet processes. IEEE
+   Transactions on Pattern Analysis and Machine Intelligence.
+
+Keith T Poole and Howard Rosenthal. 1985. A spatial model
+  for legislative roll call analysis. American Journal of Political Science, pages 357–384.
+
+Keith T Poole and Howard L Rosenthal. 2007. Ideology and
+  Congress. New Brunswick, NJ: Transaction Publishers.
+
+Gerard. Salton. 1968. Automatic Information Organization
+  and Retrieval. McGraw Hill Text.
+
+Yanchuan Sim, Bryan Routledge, and Noah A Smith. 2015.
+  The utility of text: The case of Amicus briefs and the
+  Supreme Court. In Association for the Advancement of
+  Artificial Intelligence.
+
+Yee Whye Teh, Michael I Jordan, Matthew J Beal, and
+  David M Blei. 2006. Hierarchical Dirichlet processes.
+  Journal of the American Statistical Association, 101(476).
+
+Hanna M Wallach. 2008. Structured Topic Models for Language. Ph.D. thesis, University of Cambridge.
+
+Vanessa Williamson, Theda Skocpol, and John Coggin. 2011.
+  The Tea Party and the remaking of Republican conservatism. Perspectives on Politics, 9(01):25–43.
+
+
+                                                              1448

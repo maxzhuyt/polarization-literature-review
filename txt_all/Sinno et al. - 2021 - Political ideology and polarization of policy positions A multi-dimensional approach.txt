@@ -1,0 +1,631 @@
+Political Ideology and Polarization: A Multi-dimensional Approach
+                                                           Barea Sinno1∗ Bernardo Oviedo2∗ Katherine Atwell3∗
+                                                                       Malihe Alikhani3 Junyi Jessy Li4
+                                                                        Political Science, Rutgers University
+                                                          Computer Science, 4 Linguistics, The University of Texas at Austin
+                                                                    Computer Science, University of Pittsburgh
+                                                       barea.sinno@gmail.com, bernyoviedo@utexas.edu, kaa139@pitt.edu
+                                                                             malihe@pitt.edu, jessy@utexas.edu
+
+
+                                                                  Abstract                        Two               The U.S. aim is to create a monetary sysdimensions:       tem with enough flexibility to prevent barAnalyzing ideology and polarization is of criti-      trade and         gain-hungry money from rolling around
+                                            cal importance in advancing our grasp of mod-         economic          the world like loose ballast on a ship disarXiv:2106.14387v2 [cs.CL] 4 May 2022
+
+
+                                                                                                  liberalism
+                                            ern politics. Recent research has made great                            rupting normal trade and currency flows.
+                                            strides towards understanding the ideological                           Nixon goals: dollar, trade stability. This
+                                            bias (i.e., stance) of news media along the left-                       must be accompanied, Washington says,
+                                            right spectrum. In this work, we instead take                           by reduction of [trade] barriers ...
+                                                                                                  One               The controls program, which Mr. Nixon
+                                            a novel and more nuanced approach for the             dimension:        inaugurated Aug. 15, 1971, has helped
+                                            study of ideology based on its left or right po-      trade             to reduce inflation to about 3 percent
+                                            sitions on the issue being discussed. Aligned         protectionism     yearly, and to boost annual U.S. ecowith the theoretical accounts in political sci-                         nomic growth to more than 7 percent...
+                                            ence, we treat ideology as a multi-dimensional
+                                            construct, and introduce the first diachronic        Table 1: Excerpts from news article #730567 in
+                                            dataset of news articles whose ideological po-       COHA (Davies, 2012). The first paragraph advocates
+                                            sitions are annotated by trained political scien-    for liberalism and the reduction of trade barriers. It also
+                                            tists and linguists at the paragraph level. We       has a domestic economic dimension. The second parashowcase that, by controlling for the author’s       graph, on the contrary, advocates for protectionism and
+                                            stance, our method allows for the quantitative       a domestic controls program.
+                                            and temporal measurement and analysis of polarization as a multidimensional ideological
+                                            distance. We further present baseline models         logical distance between groups, polarization has
+                                            for ideology prediction, outlining a challenging task distinct from stance detection.
+                                                                                                 waxed and waned since the advent of the American Republic (Pierson and Schickler, 2020). 1 Two
+                                        1   Introduction                                         eras—post-1896 and -1990s—have witnessed deleterious degrees of polarization (Jenkins et al., 2004;
+                                        Political ideology rests on a set of beliefs about the   Jensen et al., 2012). More recently, COVID-19, the
+                                        proper order of a society and ways to achieve this       murder of George Floyd, and the Capitol riots have
+                                        order (Jost et al., 2009; Adorno et al., 2019; Camp-     exposed ideological divergences in opinion in the
+                                        bell et al., 1980). In Western politics, these world-    US through news media and social media. With the
+                                        views translate into a multi-dimensional construct       hope of advancing our grasp of modern politics, we
+                                        that includes: equal opportunity as opposed to eco-      study ideology and polarization through the lens of
+                                        nomic individualism; general respect for tradition,      computational linguistics by presenting a carefully
+                                        hierarchy and stability as opposed to advocating         annotated corpus and examining the efficacy of a
+                                        for social change; and a belief in the un/fairness       set of computational and statistical analyses.
+                                        and in/efficiency of markets (Jost et al., 2009).           In contrast to studying the bias or the stance of
+                                           The divergence in ideology, i.e., polarization,       the author of the text via linguistic framing (Kulkais the undercurrent of propaganda and misinfor-          rni et al., 2018; Kiesel et al., 2019; Baly et al., 2019,
+                                        mation (Vicario et al., 2019; Bessi et al., 2016;        2020; Chen et al., 2020; Stefanov et al., 2020), we
+                                        Stanley, 2015). It can congest essential democratic
+                                        functions with an increase in the divergence of               1
+                                                                                                        We distinguish ourselves from work that considers other
+                                        political ideologies. Defined as a growing ideo-         types of polarization, e.g., as a measure of emotional distance (Iyengar et al., 2019) or distance between political par-
+                                            * Equal contribution ordered by first name.          ties (Lauka et al., 2018).
+
+
+study the little explored angle that is nonetheless            Our extensive annotation manual is developed
+critical in political science research: ideology of         by a political scientist, and the data then annotated
+the issue (e.g., policy or concept) under discus-           by three linguists after an elaborate training phase
+sion. That is, in lieu of examining the author’s            (Section 3). After 150 hours of annotation, we
+stance, we focus on addressing the at-issue content         present a dataset of 721 fully adjudicated annotated
+of the text and the ideology that it represents in the      paragraphs, from 175 news articles and covering an
+implicit social context. The nuanced co-existence           average of 7.86 articles per year (excerpts shown
+of stance and ideology can be illustrated in the            in Tables 1, 2, and 3). These articles originate
+following excerpt:                                          from 5 news outlets related the US Federal Bud-
+     “Republicans and Joe Biden are making a huge           get from 1947-1975 covering the center-left, cenmistake by focusing on cost. The implication is        ter, center-right spectrum: Chicago Tribune (CT),
+     that government-run health care would be a good        Christian Science Monitor (CSM), the New York
+     thing–a wonderful thing!– if only we could afford
+     it." (The Federalist, 9/27/2019)                       Times (NYT), Time Magazine (TM), and the Wall
+                                                            Street Journal (WSJ).
+The author is attacking a liberal social and eco-              With this data, we reveal lexical insights on the
+nomic policy; therefore, the ideology being dis-            language of ideology across the left-right spectrum
+cussed is liberal on two dimensions—social and              and across dimensions. We observe that linguistic
+economic, while the author’s stance is conservative.        use even at word level can reveal the ideology beMoreover, our novel approach acknowledges that              hind liberal and conservative policies (Section 4).
+ideology can also vary within one article. In Ta-           Our framework also enables fine-grained, quantitable 1, we show an example in which one part of an           tive analysis of polarization, which we demonstrate
+article advocates for trade liberalism, while another       in Section 5. This type of analysis, if scaled up
+advocates for protectionism.                                using accurate models for ideology prediction, has
+   Together, author stance and ideology inform us           the potential to reveal impactful insights into the
+not only that there is bias in the media, but also          political context of our society as a whole.
+which beliefs are being supported and/or attacked.             Finally, we present baselines for the automatic
+A full analysis of polarization (that reflects a grow-      identification of multi-dimensional ideology at
+ing distance of political ideology over time) can           the paragraph level (Section 6). We show that
+then be derived if diachronic data for both au-             this is a challenging task with our best baseline
+thor stance and ideology were available. However,           yielding an F measure of 0.55; exploring prewhile there has been data for the former (with arti-        training with existing data in news ideology/bias
+cles from recent years only) (Kiesel et al., 2019), to      identification, we found that this task is disdate, there has been no temporal data on the latter.        tinct from, although correlated with, labels auIn this paper, we present a multi-dimensional            tomatically derived from news outlets. We conframework, and an annotated, diachronic, stance-            tribute our data and code at https://github.
+neutral corpus, for the analysis of ideology in text.       com/bernovie/political-polarization.
+This allows us to study polarization as a state of
+ideological groups with divergent positions on a            2    Setup
+political issue as well as polarization as a process
+whose magnitude grows over time (DiMaggio et al.,           Many political scientists and political psycholo1996). We use proclaimed center, center-left and            gists argue for the use of at least a bidimensional
+center-right media outlets who claim to be objec-           ideology for domestic politics that distinguishes
+tive in order to focus exclusively and more objec-          between economic and social preferences (Carsey
+tively on the ideology of the issue being discussed,        and Layman, 2006; Carmines et al., 2012; Feldwithout the subjectivity of author stance annota-           man and Johnston, 2014). 3 We start with these
+tion. We study ideology within every paragraph 2                3
+                                                                   It is important to distinguish between ideology and sevof an article and aim to answer the following ques-         eral other concepts. (1) Partisanship (party identity) (Camption: which ideological dimension is present and to         bell et al., 1980): a partisan person changes their ideology
+                                                            when their party changes its ideology, whereas an ideologiwhich ideological position does it correspond to on         cal person changes their party when their party changes its
+the liberal-conservative spectrum.                          ideology. Partisanship is easily conflated with party ID using a unidimensional conceptualization of ideology, but not
+      We use automatically segmented paragraphs since the   with a multi-dimensional one. (2) Moral foundations: Haidt
+raw texts were not paragraph-segmented.                     et al. (2009) gave an evolutionary explanation of how human
+
+
+two dimensions while adding a third dimension,                    the (5) globalist counterpart of this dimension ac-
+“Foreign”, when the article tackles foreign issues.               counts for free-trade, diplomacy, immigration and
+   Specifically, our annotation task entails exam-                treaties such as the non-proliferation of arms, its (6)
+ining a news article and annotating each dimension                interventionist aspect is nationalist in its support
+(detailed below) along three levels—liberal, con-                 for excise tax on imports to protect American jobs
+servative, neutral—for each paragraph. The neutral                and economic subsidies and anti-immigration.
+level for every dimension is reserved for paragraphs                 With the annotated data, we demonstrate quanrelated to a specific dimension but either (a) con-               titative measures of polarization (Section 5) and
+tain both conservative and liberal elements that                  introduce the modeling task (Section 6) of autoannotators were unable to ascertain an ideological                matically identifying the ideology of the policy
+dimension with confidence, or (b) do not portray                  positions being discussed.
+any ideology. We additionally provide an irrelevant option if a dimension does not apply to the                  3    Data collection and annotation
+paragraph. The three dimensions are:
+                                                                  Raw data Since polarization is a process that
+Social: While the (1) socially conservative aspect                needs to be analyzed over time (DiMaggio et al.,
+of this dimension is defined as respect for tradition,            1996), our annotated articles are sampled from a
+fear of threat and uncertainty, need for order and                diachronic corpus of 1,749 news articles across
+structure, concerns for personal and national secu-               nearly 3 decades (from 1947 till 1974). Articles in
+rity, and preference for conformity, its (2) socially             this corpus are from political news articles of Desai
+liberal counterpart has been associated with a be-                et al. (2019) from the Corpus of Historical Amerilief in the separation of church and state, tolerance             can English (COHA, Davies (2012)) covering years
+for uncertainty and change (Jost et al., 2009).                   1922-1986. These 1,749 articles are extracted such
+Economic: Similarly, while the (3) economically                   that: (1) they cover broad and politically relevant
+conservative aspect of this dimension refers to moti-             topics (ranging from education and health to econvations to achieve social rewards, power, and pres-               omy) but still share discussions related to the fedtige such as deregulation of the economy, lower                   eral budget to make our annotations tractable 4 ; (2)
+taxes and privatization (i.e., being against deficit)             balanced in the number of articles across 5 news
+spending and advocating for a balanced budget,                    outlets with center-left, central, and center-right
+its (4) economically liberal counterpart refers to                ideology (c.f. Section 5): Chicago Tribune (CT),
+motivation for social justice and equality such as                Wall Street Journal (WSJ), Christian Science Monissues related to higher taxes on rich individuals                itor (CSM), the New York Times (NYT), and Time
+and businesses and more redistribution.                           Magazine (TM). A detailed description of our cuForeign: After piloting the bidimensional ap-                     ration process is in Appendix A.
+proach on 300 articles, we find that using only                      The raw texts were not segmented into para2 dimensions conflates two important aspects of                   graphs, thus we used Topic Tiling (Riedl and Bieideology related to domestic economy and foreign                  mann, 2012) for automatic segmentation. Topic
+trade. Tariffs, import quotas, and other nontariff-               Tiling finds segment boundaries again using LDA
+based barriers to trade that are aimed at improving               and, thus, identifies major subtopic changes within
+employment and the competitiveness of the US on                   the same article. The segmentation resulted in artithe international market did not map well onto the                cles with 1 to 6 paragraphs. The average number
+bidimensional framework. After consulting several                 of paragraphs per article was 4.
+senior political scientists, we adopted a third dimension that dealt with the markets as well as the                Annotation process Our team (including a politrelations of the US with the rest of the world. While             ical science graduate student) developed an annotation protocol for expert annotators using definitions
+morals, values and traits such as freedom, safety, harm, care,    in Section 2. The annotation process is indepenreciprocity, in-group loyalty, authority, equality are formed.
+Since, some scholars have used these traits to predict ideology   dently reviewed by four political science professors
+whereas others have attempted to understand what traits unites    from two universities in the US who are not authors
+people with the same ideology. (3) Framing: frames are used
+in many ways in political science. They can refer to different           Because federal budget stories touch on all aspects of
+ways scholars describe the same information or when scholars      the federal activity, this topic appeals to both liberal and contalk about different aspects of a single problem (Chong and       servative media and thus can provide a good testing ground to
+Druckman, 2007).                                                  showcase our proposed ideological annotation method.
+
+
+ Two             ... Secretary of Defense Robert S. [Mc-       Zero         . . . “The committee is holding public heardimensions:     Namara] threw his full support today be-      dimension    ings on President Eisenhower’s Economic
+ socially and    hind the Administration’s drive against                    Report, which he sent to Congress last week.
+ economically    poverty. ...Mr. Mc-Namara said : “It is                    The Secretary’s [Humphrey] appearance beliberal                                                                    fore the group provided an opportunity for
+                 the youth that we can expect to be the
+                                                                            political exchanges.
+                 most immediate beneficiaries of the war       One          Senators Paul H. Douglas of Illinois, J. W.
+                 on poverty." He said he was endorsing         dimension:   Fulbright of Representative Wright Patman
+                 the “entire program" both as a citizen and    econom-      of Texas, all Democrats, were active in quesas a member of the Cabinet. His endorse-      ically       tioning Mr. Humphrey. The Democrats asment came as his fellow Republicans in        liberal      serted that the Administration’s tax reducCongress continued to hammer away at                       tion program was loaded in favor of business
+                 parts of the Administration’s antipoverty                  enterprises and shareholders in industry and
+                 program. . . .
+                                                                            against the taxpayer in the lowest income
+ Two             The antipoverty program, the Republidimensions:                                                                brackets. . . .
+                 cans insisted, would undercut the authorsocially and                                                  One          Senator Fulbright .. declare[d] that the probity of the Cabinet members by making          dimension:
+ economically                                                               lem was to expand consumption rather than
+                 Sargent Shriver a "poverty czar." “I don’t    economiconservative                                                               production. ... “Production is the goose that
+                 see how you can lie down and be a door-       cally        lays the golden egg,“ Mr. Humphrey replied.
+                 mat for this kind of operation. "...          neutral      “Payrolls make consumers."
+
+Table 2: Excerpts from article #723847 in COHA. BeTable 3: Excerpts from article #716033 in COHA. The
+cause the first paragraph calls for minimizing income
+                                                              first paragraph is void of ideology. In the second parainequality, it is socially liberal; and because advocating
+                                                              graph the topic is anti tax reduction on businesses, thus
+for such a program call for an budgetary expenditure, it
+                                                              it is economically liberal. The third paragraph is siis also has an economic liberal dimension. The second
+                                                              multaneously economically conservative and liberal beparagraph advocates for the exact opposites of the posicause one speaker is advocating for decreasing tax on
+tions in the first paragraph. Therefore, it is socially and
+                                                              businesses and asserting that production gives an adeconomically conservative. Sentences most relevant to
+                                                              vantage to businesses, the other is advocating for dethese labels are highlighted.
+                                                              creasing tax on the poor because they need the income
+                                                              and asserting that healthy businesses are the ones who
+                                                              pay salaries for the low income bracket worker.
+of this paper; the research area of two of them is
+ideology and polarization in the US. We will release our full annotation interface, protocol, and            overlapped with only one other annotator. In stage
+procedure along with the data upon publication.               2, the two annotators examine paragraphs that they
+   We sampled on average 7.86 articles per year for           disagree, and met with the third annotator acting
+annotation, for a total of 721 paragraphs across 175          as consolidator to adjudicate. Tables 1. 3 and 2 are
+articles. We divided the annotation task into two             examples of adjudicated annotation in the data.
+batches of 45 and 130 articles, the smaller batch
+was for training purposes.                                    Agreement To assess the inter-annotator agreeIn addition to the political science graduate stu-         ment of stage 1, we report Krippendorf’s α (Hayes
+dent, we recruited three annotators, all of whom are          and Krippendorff, 2007) for each dimension for the
+recent Linguistics graduates in the US. The train-            135 articles after training and before any discusing sessions consisted of one general meeting (all            sion/adjudication: economic (0.44), foreign (0.68),
+annotators met) and six different one-on-one meet-            social (0.39). The agreements among annotators
+ings (each annotator met with another annotator               for the economic and foreign dimensions are modonce). During initial training, the annotators were           erate & substantial (Artstein and Poesio, 2008),
+asked to highlight sentences based on which the               respectively; for social, the ‘fair’ agreement was
+annotation was performed.                                     noticed during annotation, and additional discusAfter the annotations of this batch were final-            sion for each paragraph was then held. Afterwards,
+ized, the annotators met with the political science           25 more articles were independently annotated and
+student to create ground truth labels in cases of             assessed with an α of 0.53. Although the agreedisagreement. Then, the three annotators received             ments were not perfect and reflected a degree of
+the second batch and each article was annotated               subjectivity in this task, all dimensional labels were
+by 2 annotators. This annotation was composed                 adjudicated after discussions between annotators.
+of two stages to account for possible subjectivity.           In total, creating this dataset cost ∼150 hours of
+In stage 1, each annotator worked on a batch that             manual multi-dimensional labeling.
+
+
+             #Docs   Econ.   Soc.   Fgn.   Total
+     CSM     37      115     63     82     260
+     CT      14      48      33     16     97
+     NYT     60      219     114    130    463
+     TM      52      134     60     89     283
+     WSJ     12      42      21     21     84
+     Total   175     558     291    338    1187
+
+Table 4: Dimensional label counts across all 721 paragraphs in the adjudicated data (there can be multiple
+dimensions per paragraph).                                Figure 1: Dimensional label distribution per outlet.
+
+
+Qualitative analysis of text highlights For the
+25 articles used in training, all annotators highlighted the sentences that are relevant to each dimension they annotated. This helped annotators to
+focus on the sentences that drived their decision,
+and provided insights to the language of ideology,
+which we discuss here. On average, 21%–54% of            Figure 2: Co-occurrence matrices on the paragraph
+the sentences in a paragraph were highlighted.           level (left) and article level (right)
+    We found entities such as “President" and
+"Congress" were the most prevalent in the highlights, and they tackled social and economic issues      label of conservative or neutral in the fiscal dimencombined. This is not surprising as it suggests          sion. The percentage of such articles is 78.3%. Out
+that when the media quotes or discusses the “Presi-      of these articles, we examine the average propordent" and “Congress", they do so with reference to       tion of neutral, liberal, and conservative paragraph
+more complex policy issues. In contrast, individual      labels, and find neutral labels have the highest share
+congresspeople tackled mostly economic or social         (43.27%), followed by liberal (33.20%) and conserissues. This also is not surprising as it suggests       vative (23.53%). In Figure 2 (right), we visualize
+that individual congresspeople are more concerned        the percentage of articles where two dimensional
+with specific issues. Interestingly, “House" and         labels co-occur within the same article. The figure
+“Senate" almost always figured more in social is-        indicates that ideology varies frequently within an
+sues. This suggest that when news media speaks           article, showing that a single article-level label will
+about a specific chamber, they do so associating         not be fine-grained enough to capture variances
+this chamber with social issues. Finally, party af-      within an article.
+filiation was infrequent and was mostly associate           In Figure 2 (left) we also show paragraph-level
+with social issues.                                      label co-occurrence. Unlike the article-level, the
+                                                         co-occurrences are less frequent and we are more
+4   Ideology analyses                                    likely to observe co-occurrences along the same
+                                                         side of ideology. Still, we see interesting nuances;
+The number of paragraphs per dimension in total          for example, on both the paragraph and the artiis: Economics (558), Social (291), Forign (338),         cle level, the economic dimension is often neutral,
+across the 175 articles. In Table 4 we tabulate this     and this tends to co-occur with both liberal and
+for each of the news outlets. Figure 1 shows the         conservative positions in other dimensions.
+dimensional label distributions per outlet for each
+dimension. Expectedly, the dimensional labels of-        Lexical analysis To understand ways ideology is
+ten diverge from proclaimed ideology of the news         reflected in text, we also look into the top vocaboutlet.                                                  ulary that associates with conservative or liberal
+   We also analyze the percentage of articles that       ideology. To do so, we train a logistic regression
+contain at least one pair of paragraph labels that       model for each dimension to predict whether a
+lean in different directions; for instance, a para-      paragraph is labeled conservative or liberal on that
+graph with a label of globalist (i.e., liberal) in the   dimension, using unigram frequency as features.
+foreign dimension and another paragraph with a           In Table 5 we show the top most left-leaning (L)
+
+
+    Economic    C: mr (5.2), tax (5.0), truman (3.7), business (3.3),
+                billion (3.2)
+                L: school (-4.3), education (-3.3), commission (-3.2),
+                senator (-3.0), plan (-2.5)
+    Social
+
+
+                C: defense (7.5), tax (4.6), air (4.4), billion (3.9),
+                missile (3.8)
+                L: federal (-3.6), wage (-3.6), would (-3.5), policy
+                (-3.2), labor (-2.9)
+    Foreign
+
+
+                C: defense (6.9), force (5.3), north (5.2), air (5.0),
+                vietnam (4.6)                                            Figure 3: The evolution of the sorting measure, aggreL: aid (-9.3), economic (-5.5), foreign (-5.3), ger-     gating conservative/neutral/liberal outlets. Moving furmany (-4.3), make (-4.1)                                 ther away from the zero means articles deviate more
+                                                                         from the proclaimed ideology of their outlets.
+Table 5: Words with the most positive and negative
+weights from a logistic regression model trained to predict liberal/conservative ideology for each dimension.                      Limitations: We use only the fully adjudicated
+                                                                         data and refrain from using model predictions,
+                                                                         since our baseline experiments in Section 6 show
+or right-leaning (R) vocabulary with their weights.                      that predicting ideology is challenging. Hence, the
+The table intimately reproduces our annotation of                        analysis are demonstrations of what our framework
+ideology. For example, words like federal and Sen-                       enables, which we discuss at the end of this section,
+ator allude to the fact that the topic is at the federal                 and the conclusions are drawn for our annotated arlevel. The importance of education and labor to                          ticles only. We group our data in four-year periods
+liberals is also evident in the economic and so-                         to reduce sparsity.
+cial dimensions in words like school, education,
+and wage. The importance of the topic of taxation                        Measure 1: Sorting We adapt the sorting prinand defense is evident in conservative ideology in                       ciple of Abramowitz and Saunders (1998) to our
+words such as tax, business, missile, and force.                         data and investigate the difference between the proclaimed ideological bias of a news outlet and the
+5              Polarization                                              ideology of annotated articles from the outlet. To
+                                                                         obtain the bias Bj of a news outlet j, we average
+In this section, we demonstrate how our frame-                           the ratings of each news outlet across common
+work can be used to analyze ideological polariza-                        sites that rates media bias (Adfontes, Allsides, and
+tion, quantitatively. To say that two groups are                         MBFC), yielding: CSM (-0.07), CT (0.15), NYT
+polarized is to say that they are moving to opposite                     (-0.36), TM (-0.4), WSJ (0.32) (c.f. Table 8 in Apends of an issue on the multi-dimensional ideologi-                      pendix B for ratings from each site).
+cal spectrum while, at the same time, their respec-                                                             (j)
+                                                                            To obtain the overall ideology Ii of article i
+tive political views on ideological issues converge                      from outlet j, we take the average of liberal (-1),
+within a group, i.e. socially liberals become also                       neutral (0), and conservative (1) labels across its
+economically liberal (Fiorina and Abrams, 2008).                         paragraphs in all three dimensions. Thus, for each
+In political science when ideology is multidimen-                        4-year time period with m articles for outlet j, the
+sional, polarization is often quantified by consider-                    sorting measure would be the absolute distance of
+ing three measures that capture complementary as-                                                              (j)
+                                                                         article vs. outlet ideology |avgm
+                                                                                                         i=1 (Ii ) − Bj |/Bj .
+pects (Lelkes, 2016): (1) sorting (Abramowitz and
+                                                                            In Figure 3, we plot the sorting measure, averSaunders, 1998) (the extent to which the annotated
+                                                                         aged across news outlets of the same proclaimed
+ideology deviates from an outlet’s proclaimed ideoideological bias. The figure shows that in our samlogical bias); (2) issue constraint (Baldassarri and
+                                                                         ple of articles, the left-leaning news outlets were
+Gelman, 2008) (a correlational analysis between
+                                                                         closest to their proclaimed ideological bias meapairs of ideological dimensions); (3) ideological
+                                                                         sure over time, whereas the neutral outlets were
+divergence (Fiorina and Abrams, 2008) (the magmore liberal before 1957 and after 1964. The rightnitude of the distance between two groups along
+                                                                         leaning outlets were more conservative at that time
+a single dimension). Together these measures dethan their proclaimed ideological bias.
+scribe changes in the ideological environment over
+time: a concurrent increase in all three measures                        Measure 2: Issue constraint This measure
+indicates polarization in media.                                         refers to the tightness between ideological dimenFigure 5: The evolution of the ideological divergence
+                                                            measure stratified by dimension. The dotted line refers
+                                                            to the bimodality threshold (Lelkes, 2016). Higher values mean the ideology of an article along that one dimension is bimodal.
+
+
+                                                            polarized).
+Figure 4: The evolution of the issue constraint measure,       Figure 5 shows the evolution of the ideologistratified by pairs of dimensions. Higher values mean       cal divergence measure of every dimension. A
+some dimensions correlate more strongly than others.        bimodality measure assesses whether this diverDue to the lack of articles that simultaneously contains    gence attained the threshold for the cumulative dissocial & economic dimensions (1st graph), and economic & foreign dimensions (3rd graph) from consertribution to be considered bimodal. Ideological
+vative outlets their respective blue lines start in 1958.   distance, as a result, refers to the three bimodal
+                                                            coefficients. We note, for example, that the foreign
+                                                            dimension crossed this threshold between 1956 and
+sions over time (Baldassarri and Gelman, 2008) so           1968. This means that proclaimed left-leaning and
+as to assess, for example, if socially liberal dimen-       right-leaning outlets grew further apart on foreign
+sions are more and more associated with economic            issues during this time period.
+liberal dimensions for the news outlets. Concretely,
+                                                            Discussion Taken together, the graphs indicate
+for each article we derive its ideology along a single
+                                                            that the years between 1957 and 1967 are the most
+dimension as the average of paragraph annotations
+                                                            noteworthy. During this period, from our sample of
+along that dimension. We, then, calculate the Peararticles, we see that polarization was only present
+son correlation between the article ideology of each
+                                                            in conservative news media because it (1) sorted,
+pair of dimensions, over all articles from one outlet
+                                                            as it was significantly more conservative than its
+in the same period.
+                                                            composite bias measure, (2) constrained its issues,
+   Results in Figure 4, again averaged across news
+                                                            as evidence by high positive correlation values, and
+outlets of the same ideological bias, show that for
+                                                            (3) became increasingly bimodal, as the ideologiright-leaning media, the correlation between any
+                                                            cal distance between their positions and those of
+two dimensions in the annotated data are largely
+                                                            their liberal counterpart on foreign issues increased
+positive (e.g., economically conservative were also
+                                                            over time. While this conclusion applies to only
+socially conservative) until 1967 or 1970. However,
+                                                            the set of articles in our dataset, the above analyfor proclaimed left-leaning and neutral outlets, the
+                                                            sis illustrates that our framework enables nuanced,
+correlations fluctuates especially when considering
+                                                            quantitative analyses into polarization. We leave
+the foreign dimension.
+                                                            for future work, potentially equipped with strong
+Measure 3: Ideological divergence This mea-                 models for ideology prediction, to analyze the data
+sures the distance between two ideological groups           at scale.
+on a single dimension (Fiorina and Abrams, 2008).
+                                                            6   Experiments
+We follow Lelkes (2016) and calculate the bimodality coefficient (Freeman and Dale, 2013; Pfister            We present political ideology detection experiet al., 2013) per dimension over articles from all          ments as classification tasks per-dimension on the
+news outlets over the same time period. The bi-             paragraph level.
+modality coefficient ranges from 0 (unimodal, thus             We performed an 80/10/10 split to create the
+not at all polarized) to 1 (bimodal, thus completely        train, development, and test sets. The development
+
+
+and test sets contain articles uniformly distributed                                    Econ     Social    Foreign    Average
+from our time period (1947 to 1974) such that no                    Majority            0.30      0.23      0.25        0.26
+particular decade is predominant. To ensure the                     BiLSTM              0.44      0.37      0.33        0.38
+integrity of the modeling task, all paragraphs be-                  BERT no-ft          0.46      0.31      0.53        0.44
+longing to the same article are present in a single                   +pre-training     0.42      0.32      0.46        0.40
+                                                                    BERT ft             0.64      0.50      0.52        0.55
+split. The number of examples in the splits for each                  +pre-training     0.56      0.47      0.46        0.49
+dimension for the adjudicated data are as follows:                    -focal loss       0.61      0.50      0.50        0.54
+for the economic dimension, we had 450 training,
+50 development, and 58 test examples. For the                      Table 6: Macro F1 of the models averaged across 10 runs.
+social dimension, we had 253 for training, 13 for
+development, and 25 for testing. For the foreign                   dynamically scaled cross-entropy loss, where the
+dimension, we had 266 for training, 33 for devel-                  scaling factor is inversely proportional to the conopment, and 39 for testing.                                        fidence on the correct prediction. This dynamic
+6.1        Models                                                  scaling, controlled by hyperparameter γ, leads to a
+                                                                   higher focus on the examples that have lower conRecurrent neural networks We trained a 2-                          fidences on the correct predictions, which in turn
+layer bidirectional LSTM (Hochreiter and Schmid-                   leads to better predictions on the minority classes.
+huber, 1997), with sequence length and hidden size                 Since a γ of 0 essentially turns a focal loss into
+of 256, and 100D GloVe embeddings (Pennington                      a cross entropy loss, it has less potential to hurt
+et al., 2014).                                                     performance than to improve it. We found the best
+Pre-trained language models We used BERT-                          γ values to be 2 or 4 depending on the dimension.
+base (Devlin et al., 2019) from HuggingFace (Wolf                  Task-guided pre-training. We also explored suet al., 2020) and trained two versions, with and                   pervised pre-training on two adjacent tasks that
+without fine-tuning. In both cases we used a cus-                  can give insights to the relationship between tasks.
+tom classification head consisting of 2 linear layers              We used distant supervision that labeled the idewith a hidden size of 768 and a ReLU between                       ological bias of each article according to that of
+them. To extract the word embeddings we followed                   its news outlet from www.allsides.com (Kulkarni
+Devlin et al. (2019) and used the hidden states from               et al., 2018). This procedure allowed us to use the
+the second to last layer. To obtain the embedding                  unannotated articles. 6
+of the whole paragraph 5 we averaged the word embeddings and passed this vector to the classification              6.2   Results
+head.
+                                                                   Table 6 shows the macro F1 for each configuraTo find the best hyperparameters we performed
+                                                                   tion, averaged across 10 runs with different rana grid search in each dimension. For the economic
+                                                                   dom initializations. The fine-tuned BERT model,
+dimension, the best hyperparameters consisted of a
+                                                                   with no task-guided pre-training shows the best
+learning rate of 2e-6, 6 epochs of training, a gamma
+                                                                   performance across all 3 ideology dimensions. It
+value of 2, no freezing of the layers, a 768 hidden
+                                                                   is important to note that all the models do better
+size, and 10% dropout. For the social dimension,
+                                                                   than randomly guessing, and better than predicting
+the best hyperparameters were a learning rate of
+                                                                   the majority class. This shows that the models are
+2e-5, 12 epochs, a gamma of 4, no freezing of the
+                                                                   capturing some of the complex underlying phenomlayers, a 768 hidden size, and 10% dropout. Finally,
+                                                                   ena in the data. However, the classification tasks
+for the foreign dimension the best hyperparameters
+                                                                   still remain challenging for neural models, leaving
+consisted of a learning rate of 2e-5, 6 epochs, a
+                                                                   plenty of room for improvement in future work.
+gamma of 2, no freezing of the layers, a 768 hidden
+                                                                      The BERT ft -focal loss setting ablates the efsize, and a 10% dropout.
+                                                                   fect of focal loss against a weighted cross entropy
+Focal loss. To better address the imbalanced la-                   loss. with weights inversely proportional to the
+bel distribution of this task, we incorporated focal               distribution of the classes in the dimension. This
+loss (Lin et al., 2017), originally proposed for dense                 6
+                                                                         We also experimented with pre-training on the dataset
+object detection. Focal loss can be interpreted as a               from Chen et al. (2020). However, because their dataset starts
+                                                                   from 2006 (outside of our time domain), this setting performed
+          99% of the paragraphs in the dataset have ≤512 tokens.   poorly.
+
+
+loss helped get a bump in the macro F1 score of           8   Conclusion
+around 0.1 for each dimension compared to an unweighted cross entropy loss. However, the focal           We take the first step in studying multi-dimensional
+loss gave further improvements for 2 of the 3 di-         ideology and polarization over time and in news
+mensions. Although task-guided pre-training im-           articles relying on the major political science theproved the BERT (no fine-tuning) model for 1 of           ories and tools of computational linguistics. Our
+the 3 dimensions, it led to worse performance than        work opens up new opportunities and invites reBERT (fine-tuned). The improvement on the no              searchers to use this corpus to study the spread
+fine-tuning setting indicates that there is a potential   of propaganda and misinformation in tandem with
+correlation to be exploited by the ideology of the        ideological shifts and polarization. The presented
+news outlet, but such labels are not that informative     corpus also provides the opportunity for studying
+for multi-dimensional prediction. We hope that            ways that social context determines interpretations
+this dataset provides a testbed for future work to        in text while distinguishing author stance from conevaluate more distant supervision data/methods.           tent.
+                                                             This work has several limitations. We only focus
+                                                          on news whereas these dynamics might be different in other forms of communication such as social
+7   Related work                                          media posts or online conversations, and the legislature. Further, our corpus is relatively small
+In contrast to our multi-dimensional approach that        although carefully annotated by experts. Future
+examines the ideology of the issue being discussed        work may explore semi-supervised models or acinstead of the author stance, much of the recent          tive learning techniques for annotating and preparwork in computational linguistics has been ded-           ing a larger corpus that may be used in diverse
+icated to the latter (detection of ideological bias       applications.
+in news media) while collapsing ideology to one
+dimension (Budak et al., 2016; Kulkarni et al.,           Acknowledgements
+2018; Kiesel et al., 2019; Baly et al., 2019, 2020;       This research is partially supported by NSF grants
+Chen et al., 2020; Ganguly et al., 2020; Stefanov         IIS-1850153, IIS-2107524, and Good Systems,7
+et al., 2020). The proposed computational mod-            a UT Austin Grand Challenge to develop responels classify the partiality of media sources without      sible AI technologies. We thank Cutter Dalton,
+quantifying their ideology (Elejalde et al., 2018).       Kathryn Slusarczyk and Ilana Torres for their help
+   Other researchers interested in the computational      with complex data annotation. We thank Zachary
+analysis of the ideology have employed text data          Elkins, Richard Lau, Beth Leech, and Katherine
+to analyze congressional text data at the legisla-        McCabe for their feedback of this work and its antive level (Sim et al., 2013; Gentzkow et al., 2016)      notation protocol, and Katrin Erk for her comments.
+and social media text at the electorate level (Saez-      Thanks to Pitt Cyber 8 for supporting this project.
+Trumper et al., 2013; Barberá, 2015).                     We also acknowledge the Texas Advanced Computing Center (TACC) 9 at UT Austin and The Center
+   In political science, the relationship between         for Research Computing at the University of Pitts-
+(news) media and polarization is also an active           burgh for providing the computational resources
+area of research. Prior work has studied media            for many of the results within this paper.
+ideological bias in terms of coverage (George and
+Waldfogel, 2006; Valentino et al., 2009). Prior
+(2013) argues there is no firm evidence of a direct       References
+causal relationship between media and polarization
+                                                          Alan I Abramowitz and Kyle L Saunders. 1998. Ideoand that this relationship depends on preexisting
+                                                            logical realignment in the us electorate. The Journal
+attitudes and political sophistication. On the other        of Politics, 60(3):634–652.
+hand, Gentzkow et al. (2016) have established that
+polarization language snippets move from the legis-       Theodor Adorno, Else Frenkel-Brenswik, Daniel J
+lature in the direction of the media whereas (Baum-           7
+                                                                http://goodsystems.utexas.edu
+gartner et al., 1997) have shown that the media has           8
+                                                                https://www.cyber.pitt.edu
+an impact on agenda settings of legislatures.                   https://www.tacc.utexas.edu
+
+
+  Levinson, and R Nevitt Sanford. 2019. The authori-        Edward G Carmines, Michael J Ensley, and Michael W
+  tarian personality. Verso Books.                            Wagner. 2012. Who fits the left-right divide? partisan polarization in the american electorate. AmeriRon Artstein and Massimo Poesio. 2008. Inter-coder            can Behavioral Scientist, 56(12):1631–1653.
+  agreement for computational linguistics. Computational Linguistics, 34(4):555–596.                        Thomas M Carsey and Geoffrey C Layman. 2006.
+                                                              Changing sides or changing minds? party idenDelia Baldassarri and Andrew Gelman. 2008. Partisans          tification and policy preferences in the american
+  without constraint: Political polarization and trends       electorate. American Journal of Political Science,
+  in american public opinion. American Journal of             50(2):464–477.
+  Sociology, 114(2):408–446.
+                                                            Wei-Fan Chen, Khalid Al Khatib, Henning Wachsmuth,
+Ramy Baly, Giovanni Da San Martino, James Glass,              and Benno Stein. 2020. Analyzing political bias and
+  and Preslav Nakov. 2020. We can detect your bias:           unfairness in news articles at different levels of granPredicting the political ideology of news articles. In      ularity. In Proceedings of the Fourth Workshop on
+  Proceedings of the 2020 Conference on Empirical            Natural Language Processing and Computational
+  Methods in Natural Language Processing (EMNLP),            Social Science, pages 149–154.
+  pages 4982–4991.                                          Dennis Chong and James N Druckman. 2007. Framing
+                                                              theory. Annual Review of Political Science, 10:103–
+Ramy Baly, Georgi Karadzhov, Abdelrhman Saleh,                126.
+  James Glass, and Preslav Nakov. 2019. Multi-task
+  ordinal regression for jointly predicting the trustwor-   Mark Davies. 2012. Expanding horizons in historical
+  thiness and the leading political ideology of news         linguistics with the 400-million word corpus of hismedia. In Proceedings of the 2019 Conference of            torical american english. Corpora, 7(2):121–157.
+  the North American Chapter of the Association for
+  Computational Linguistics: Human Language Tech-           Shrey Desai, Barea Sinno, Alex Rosenfeld, and
+  nologies, Volume 1 (Long and Short Papers), pages           Junyi Jessy Li. 2019. Adaptive ensembling: Unsu2109–2116.                                                  pervised domain adaptation for political document
+                                                              analysis. In Proceedings of the 2019 Conference on
+Pablo Barberá. 2015. Birds of the same feather tweet          Empirical Methods in Natural Language Processing
+  together: Bayesian ideal point estimation using twit-       and the 9th International Joint Conference on Natuter data. Political analysis, 23(1):76–91.                  ral Language Processing (EMNLP-IJCNLP), pages
+                                                              4712–4724.
+Frank R Baumgartner, Bryan D Jones, and Beth L
+  Leech. 1997. Media attention and congressional            Jacob Devlin, Ming-Wei Chang, Kenton Lee, and
+  agendas. Do the media govern, pages 349–363.                 Kristina Toutanova. 2019. Bert: Pre-training of
+                                                               deep bidirectional transformers for language underEmily M Bender, Timnit Gebru, Angelina McMillan-               standing. In Proceedings of the 2019 Conference of
+  Major, and Shmargaret Shmitchell. 2021. On the               the North American Chapter of the Association for
+  dangers of stochastic parrots: Can language models           Computational Linguistics: Human Language Techbe too big? In Proceedings of the 2021 ACM Confer-           nologies, Volume 1 (Long and Short Papers), pages
+  ence on Fairness, Accountability, and Transparency,          4171–4186.
+  pages 610–623.
+                                                            Paul DiMaggio, John Evans, and Bethany Bryson.
+Alessandro Bessi, Fabio Petroni, Michela Del Vi-              1996. Have american’s social attitudes become
+  cario, Fabiana Zollo, Aris Anagnostopoulos, Anto-           more polarized? American journal of Sociology,
+  nio Scala, Guido Caldarelli, and Walter Quattrocioc-        102(3):690–755.
+  chi. 2016. Homophily and polarization in the age
+  of misinformation. The European Physical Journal          Erick Elejalde, Leo Ferres, and Eelco Herder. 2018. On
+  Special Topics, 225(10):2047–2059.                           the nature of real and perceived bias in the mainstream media. PloS one, 13(3):e0193765.
+David M Blei, Andrew Y Ng, and Michael I Jordan.            Stanley Feldman and Christopher Johnston. 2014. Un2003. Latent dirichlet allocation. Journal of ma-            derstanding the determinants of political ideology:
+  chine Learning research, 3(Jan):993–1022.                    Implications of structural complexity. Political Psychology, 35(3):337–358.
+Ceren Budak, Sharad Goel, and Justin M Rao. 2016.
+  Fair and balanced? Quantifying media bias through         Morris P Fiorina and Samuel J Abrams. 2008. Political
+  crowdsourced content analysis. Public Opinion              polarization in the american public. Annu. Rev. Polit.
+  Quarterly, 80(S1):250–271.                                 Sci., 11:563–588.
+
+Angus Campbell, Philip E Converse, Warren E Miller,         Jonathan B Freeman and Rick Dale. 2013. Assessing
+  and Donald E Stokes. 1980. The american voter.              bimodality to detect the presence of a dual cognitive
+  University of Chicago Press.                                process. Behavior research methods, 45(1):83–97.
+
+
+Soumen Ganguly, Juhi Kulshrestha, Jisun An, and Hae-       Alban Lauka, Jennifer McCoy, and Rengin B Firat.
+  woon Kwak. 2020. Empirical evaluation of three             2018. Mass partisan polarization: Measuring a
+  common assumptions in building political media             relational concept. American behavioral scientist,
+  bias datasets. In Proceedings of the International         62(1):107–126.
+  AAAI Conference on Web and Social Media, volume 14, pages 939–943.                                   Yphtach Lelkes. 2016. Mass polarization: Manifestations and measurements. Public Opinion Quarterly,
+Matthew Gentzkow, Jesse M Shapiro, and Matt Taddy.           80(S1):392–410.
+ 2016. Measuring polarization in high-dimensional
+ data: Method and application to congressional             Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming
+ speech. National Bureau of Economic Research.               He, and Piotr Dollár. 2017. Focal loss for dense object detection. In Proceedings of the IEEE internaLisa M George and Joel Waldfogel. 2006. The new              tional conference on computer vision, pages 2980–
+  york times and the market for local newspapers.            2988.
+  American Economic Review, 96(1):435–447.
+Jonathan Haidt, Jesse Graham, and Craig Joseph. 2009.      Jeffrey Pennington, Richard Socher, and Christopher
+  Above and below left–right: Ideological narratives          Manning. 2014. GloVe: Global vectors for word
+  and moral foundations. Psychological Inquiry, 20(2-         representation. In Proceedings of the 2014 Confer3):110–119.                                                 ence on Empirical Methods in Natural Language
+                                                              Processing (EMNLP), pages 1532–1543, Doha,
+Andrew F Hayes and Klaus Krippendorff. 2007. An-              Qatar. Association for Computational Linguistics.
+  swering the call for a standard reliability measure
+  for coding data. Communication methods and mea-          Roland Pfister, Katharina A Schwarz, Markus Janczyk,
+  sures, 1(1):77–89.                                         Rick Dale, and Jon Freeman. 2013. Good things
+                                                             peak in pairs: a note on the bimodality coefficient.
+Sepp Hochreiter and Jürgen Schmidhuber. 1997.                Frontiers in psychology, 4:700.
+  Long short-term memory.     Neural Comput.,
+  9(8):1735–1780.                                          Paul Pierson and Eric Schickler. 2020. Madison’s constitution under stress: A developmental analysis of
+Shanto Iyengar, Yphtach Lelkes, Matthew Levendusky,          political polarization. Annual Review of Political
+  Neil Malhotra, and Sean J Westwood. 2019. The              Science, 23:37–58.
+  origins and consequences of affective polarization in
+  the united states. Annual Review of Political Science,   Markus Prior. 2013. Media and political polarization.
+  22:129–146.                                               Annual Review of Political Science, 16:101–127.
+Jeffery A Jenkins, Eric Schickler, and Jamie L Carson.     Martin Riedl and Chris Biemann. 2012. Topictiling: a
+   2004. Constituency cleavages and congressional           text segmentation algorithm based on lda. In Proparties: Measuring homogeneity and polarization,         ceedings of ACL 2012 Student Research Workshop,
+   1857–1913. Social Science History, 28(4):537–573.        pages 37–42.
+Jacob Jensen, Suresh Naidu, Ethan Kaplan, Laurence
+                                                           Shruti Rijhwani and Daniel Preotiuc-Pietro. 2020.
+  Wilse-Samson, David Gergen, Michael Zuckerman,
+                                                             Temporally-informed analysis of named entity
+   and Arthur Spirling. 2012. Political polarization and
+                                                             recognition. In Proceedings of the 58th Annual
+   the dynamics of political language: Evidence from
+                                                             Meeting of the Association for Computational Lin130 years of partisan speech [with comments and
+                                                             guistics, pages 7605–7617.
+   discussion]. Brookings Papers on Economic Activity, pages 1–81.                                        Diego Saez-Trumper, Carlos Castillo, and Mounia LalJohn T Jost, Christopher M Federico, and Jaime L             mas. 2013. Social media news communities: gateNapier. 2009. Political ideology: Its structure, func-     keeping, coverage, and statement bias. In Protions, and elective affinities. Annual review of psy-      ceedings of the 22nd ACM international conference
+  chology, 60:307–337.                                       on Information & Knowledge Management, pages
+                                                             1679–1684.
+Johannes Kiesel, Maria Mestre, Rishabh Shukla, Emmanuel Vincent, Payam Adineh, David Corney,              Yanchuan Sim, Brice DL Acree, Justin H Gross, and
+  Benno Stein, and Martin Potthast. 2019. Semeval-           Noah A Smith. 2013. Measuring ideological pro2019 task 4: Hyperpartisan news detection. In Pro-         portions in political speeches. In Proceedings of
+  ceedings of the 13th International Workshop on Se-         the 2013 conference on empirical methods in natumantic Evaluation, pages 829–839.                          ral language processing, pages 91–101.
+Vivek Kulkarni, Junting Ye, Steven Skiena, and             Jason Stanley. 2015. How propaganda works. PrinceWilliam Yang Wang. 2018. Multi-view models for              ton University Press.
+  political ideology detection of news articles. In Proceedings of the 2018 Conference on Empirical Meth-       Peter Stefanov, Kareem Darwish, Atanas Atanasov,
+  ods in Natural Language Processing, pages 3518–            and Preslav Nakov. 2020. Predicting the topical
+  3527.                                                      stance and political leaning of media using tweets.
+
+
+  In Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, pages 527–
+  537.
+Nicholas A Valentino, Antoine J Banks, Vincent L
+  Hutchings, and Anne K Davis. 2009. Selective exposure in the internet age: The interaction between
+  anxiety and information utility. Political Psychology, 30(4):591–613.
+Michela Del Vicario, Walter Quattrociocchi, Antonio
+  Scala, and Fabiana Zollo. 2019. Polarization and
+  fake news: Early warning of potential misinformation targets. ACM Transactions on the Web (TWEB),
+ 13(2):1–22.
+Thomas Wolf, Lysandre Debut, Victor Sanh, Julien
+  Chaumond, Clement Delangue, Anthony Moi, Pierric Cistac, Tim Rault, Rémi Louf, Morgan Funtowicz, Joe Davison, Sam Shleifer, Patrick von Platen,
+  Clara Ma, Yacine Jernite, Julien Plu, Canwen Xu,
+  Teven Le Scao, Sylvain Gugger, Mariama Drame,
+  Quentin Lhoest, and Alexander M. Rush. 2020.
+  Transformers: State-of-the-art natural language processing. In Proceedings of the 2020 conference on
+  empirical methods in natural language processing:
+  system demonstrations, pages 38–45.
+
+
+A    Data curation                                        Topic1:         bank, market, farm, loan, export, agriculTrade           tur, farmer, dollar, food, debt
+A diachronic corpus is required to measure and ana-       Topic2:         incom, tax, revenu, profit, corpor, financ,
+                                                          Business        treasuri, pay, sale, bond
+lyze polarization over time (DiMaggio et al., 1996).      Topic3:         school, univers, educ, student, colleg, proWe collect and annotate data across a long period         Education       fessor, institut, teacher, research, graduat
+to address the issue of distributional shifts across      Topic4:         nuclear, missil, weapon, atom, test, energi,
+                                                          Defense         strateg, bomb, space, pentagon
+years (Desai et al., 2019; Rijhwani and Preotiuc-         Topic5:         budget, billion, economi, inflat, economic,
+Pietro, 2020; Bender et al., 2021) and help build         Economy         deficit, unemploy, cut, dollar, rate
+robust models that can generalize beyond certain          Topic6:         negro, hospit, medic, health, racial, southHealth/Race     ern, discrimin, doctor, contra, black
+periods.                                                  Topic7:         compani, contract, plant, steel, coal, wage,
+   Additionally, the raw data on top of which we          Industry        railroad, corpor, manufactur, miner
+annotate needs to satisfy the following constraints:
+                                                         Table 7: Top words from topics selected in our clus-
+(1) for human annotation to be tractable, the articles
+                                                         ter, from the 50-topic LDA model that yielded the most
+should share some level of topical coherence; (2)        well-deliminated topics.
+for the data to be useful for the larger community,
+the content should also cover a range of common
+discussions in politics across the aisle; and (3) the    only those that contain words such as “federal” and
+articles should come from a consistent set of news       “congress”, and excluded those that mention state
+outlets, forming a continuous and ideologically bal-     budget, and letters to editors. (Note that during ananced corpus.                                            notation, we also discard articles that are unrelated
+   We start with the diachronic corpus of political      to the federal budget.) After this curation, the total
+news articles of Desai et al. (2019) which covers        number of articles is 5,706 from the 5 outlets.
+years 1922-1986, the longest-spanning dataset to             To account for the sparsity of articles in the first
+our knowledge. This corpus is a subset of news           decades and their density in later decades, we nararticles from the Corpus of Historical American          rowed down the articles to the period from 1947
+English (COHA, Davies (2012)). To extract top-           to 1974. We believe this period is fitting because
+ically coherent articles, we investigate the topics      it includes various ideological combinations of the
+and articles across multiple LDA (Blei et al., 2003)     tripartite composition of the American government,
+runs varying the number of topics (15, 20, 30, 50),      Congress and presidency.10 The total number of
+aiming to arrive at a cluster of topics that share       articles in the final corpus of political articles on
+common points of discussion and collectively will        the federal budget from 1947 to 1974 is 1,749.
+yield a sizable number of articles each year from
+the same news outlets.                                   B        Proclaimed ideology of news outlets
+   The LDA models consistently showed one
+prominent topic—the federal budget—across 5                           Adfontes    Allsides      MBFC        Average
+news outlets with balanced ideology (c.f. Table 8):       CSM           -.06        0.00         -.16       -.07
+Chicago Tribune (CT), Wall Street Journal (WSJ),          CT            -.04        NA            .34       .15
+                                                          NYT           -.20         -.5          -.4       -.36
+Christian Science Monitor (CSM), the New York             TM            -.10         -.5          -.6       -.4
+Times (NYT), and Time Magazine (TM). Because              WSJ            .15         .25          .58       .32
+federal budget stories touch on all aspects of the
+federal activity, this topic appeals to both liberal     Table 8: Ideological bias of news outlets from common
+and conservative media and thus can provide a good       references of media bias. We use the average in our
+                                                         analyses.
+testing ground to showcase our proposed ideological annotation method. In addition to the core
+federal budget topic (topic 5 of Table 7), we also
+include other topics such as health and education
+that are integral parts of ideological beliefs in the
+United States, and when discussed at the federal
+government level, are typically related to the federal budget. The top vocabulary of the cluster               10
+                                                              For example, between 1947-49, Congress was Republiis shown in Table 7. In an effort to purge arti-         can and the President was a Democrat while the story flipped
+cles unrelated to the federal budget, we selected        between 1955-57.

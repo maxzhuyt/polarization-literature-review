@@ -1,0 +1,882 @@
+Journal of Elections, Public Opinion and Parties
+
+
+      ISSN: 1745-7289 (Print) 1745-7297 (Online) Journal homepage: https://www.tandfonline.com/loi/fbep20
+
+
+Populism, party membership, and language
+complexity in the Italian chamber of deputies
+
+Silvia Decadri & Constantine Boussalis
+
+To cite this article: Silvia Decadri & Constantine Boussalis (2019): Populism, party membership,
+and language complexity in the Italian chamber of deputies, Journal of Elections, Public Opinion
+and Parties, DOI: 10.1080/17457289.2019.1593182
+
+To link to this article: https://doi.org/10.1080/17457289.2019.1593182
+
+
+       Published online: 19 Mar 2019.
+
+
+       Submit your article to this journal
+
+
+       Article views: 43
+
+
+       View Crossmark data
+
+
+                     Full Terms & Conditions of access and use can be found at
+            https://www.tandfonline.com/action/journalInformation?journalCode=fbep20
+
+
+JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES
+https://doi.org/10.1080/17457289.2019.1593182
+
+
+Populism, party membership, and language
+complexity in the Italian chamber of deputies
+Silvia Decadri             and Constantine Boussalis
+Political Science, University of Dublin Trinity College, Dublin, Ireland
+
+
+    ABSTRACT
+    Common wisdom suggests that populist politicians use a simple language.
+    While scholars have provided vast anecdotal evidence of populists’ plain
+    speech style, the empirical literature on populist communication oﬀers very
+    few and mixed comprehensive evaluations of the complexity of elected
+    oﬃcials’ language. This paper relies on a novel populist dictionary and 78,855
+    utterances from the 17th Italian parliament – March 2013–July 2016 – to
+    comprehensively study the link between populism and speech complexity.
+    We argue that ideological and electoral considerations lead populist parties
+    and politicians to employ a straightforward language. Moreover, we claim that
+    party membership shapes the rhetoric of elected oﬃcials, leading members of
+    populist parties to use a simpler language. Using computer-assisted text
+    analytic techniques to inspect parliamentary speeches given by the members
+    of nine Italian parties, we perform a diﬀerence-in-diﬀerences analysis of the
+    inﬂuence of party switching on legislators’ behaviour. Our results suggest that
+    populist ideology, electoral strategy, and party membership inﬂuence
+    legislators’ language complexity. Our overarching conclusion is that language
+    simplicity might be thought of as a feature of populist communication. This
+    arguably has implications for the ability of populist actors to use a simple
+    communication style to outperform their mainstream counterparts when
+    competing for voters’ support.
+
+
+Introduction
+Populist politicians are said to use a simple language when communicating
+with the electorate (Albertazzi and McDonnell 2007). Some scholars have estimated Donald Trump’s language, for instance, as analogous to that of a sixth
+grader (Schumacher and Eskenazi 2016). Juan Peron’s language, even if not
+simplistic in its content, has been described as “comprehensible not only
+for the highly educated but also for the lower classes” (Rooduijn 2014).
+Members of the French National Front are said to use a plainspoken language
+(Davies 2012). Silvio Berlusconi’s rhetoric has been deﬁned as popular and
+easily understandable (Albertazzi and McDonnell 2007; Tarchi 2003).
+
+CONTACT Silvia Decadri      decadris@tcd.ie      University of Dublin Trinity College, Dublin, Ireland
+   Supplemental data for this article can be accessed https://doi.org/10.1080/17457289.2019.1593182.
+© 2019 Elections, Public Opinion & Parties
+
+
+2      S. DECADRI AND C. BOUSSALIS
+
+
+    While these anecdotal accounts are indicative, the empirical literature on
+populist communication thus far oﬀers very few and mixed comprehensive
+evaluations of the correlation between populism and the complexity of
+elected oﬃcials’ communication (Bischof and Senninger 2017; Brosius et al.
+2017). This study provides a systematic analysis of the relationship between
+populist ideology and political communication style. We ﬁrst oﬀer a theoretical discussion on the connection between populism and language complexity. We argue that ideological and electoral considerations lead populist
+politicians and parties to employ a straightforward language. Moreover, we
+claim that party membership shapes elected oﬃcials’ rhetoric and leads
+members of populist parties to use a plain speech style. To test the relationship between populism and language complexity, we employ a large-scale
+analysis of Italian MPs’ parliamentary oral communication during the 17th legislature – March 2013–July 2016. We use computer-assisted text analysis to
+inspect parliamentary speeches given by the members of nine Italian political
+parties. A cross-sectional analysis of MP spoken language, as well as a diﬀerence-in-diﬀerences analysis of the inﬂuence of party switching on language
+usage, provide evidence that populist ideology, populist electoral strategy,
+and party membership inﬂuence legislators’ language complexity. Our overarching conclusion is that language simplicity might be thought of as a
+feature of populist communication. Such elementary language, when used
+to explain complex issues in a straightforward manner and to oﬀer simple solutions, can eﬀectively attract electors’ attention and support (see Albertazzi
+and McDonnell 2007, 1–8). The relationship between populism and language
+complexity thus arguably has implications for the ability of populist actors to
+use a simple communication style to outperform their mainstream counterparts when competing for voter support (Bischof and Senninger 2017).
+
+
+Related work
+The literature oﬀers numerous descriptive accounts of European populist
+parties and political leaders who employ a simpliﬁed speech style to communicate with their electorate. The spontaneous and non-institutionalized
+language spoken by members of the populist Italian Lega Nord party is considered one of the main features of the party’s ideology and rhetoric (Albertazzi and McDonnell 2007, 88–90). The electoral success of the Swiss
+People’s Party in the 1990s is ascribed to the simple and media-friendly
+language used by Christoph Blocher (see Kriesi et al. 2005, 6). Beppe Grillo,
+leader of the Italian populist Five Star Movement, is said to communicate
+with his electorate through a simple language which functionally aims to
+articulate complex concepts to the layperson (Bordignon and Ceccarini 2013).
+   Comprehensive empirical studies of populist communication style are still
+quite rare though, and they show mixed empirical evidence. For example,
+
+
+                                        JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                      3
+
+
+Bischof and Senninger (2017) study the eﬀect of populism on the complexity
+of campaign messaging in Austria and Germany and ﬁnd empirical evidence
+of a positive eﬀect of populist rhetoric on text complexity. Similarly, Schumacher and Eskenazi (2016) ﬁnd that the complexity of Donald Trump’s campaign speeches is just below the sixth-grade level, Degani (2016) shows
+that Trump’s presidential campaign announcements have an average grade
+level of 5 on the Flesch-Kincaid scale. On the other hand, Brosius et al.
+(2017) measure the complexity of speeches from the German Bundestag
+and six EU member states’ heads of government, and they observe a higher
+language complexity for the speeches of the right-wing populist AfD.
+   While the literature analysing the relation between populist ideology and
+speech complexity oﬀers instructive insights, we ﬁnd two main limitations.
+Most of the contributions are in the form of anecdotal accounts. Comprehensive empirical studies, which are still quite rare, show mixed empirical evidence. Our study oﬀers further insight on the connection between
+populism and language complexity by building on the existing literature on
+populist ideology and electoral strategy, and by employing text analytic
+methods to study Italian MPs’ oral communication.
+
+
+Theoretical expectations
+Populist ideology, electoral strategy and party membership
+Building on previous contributions, we argue that populists have ideological
+and electoral reasons to employ a straightforward language (Bischof and Senninger 2017). To characterize the populist ideology, we rely on Mudde (2004)’s
+framework whereby populism is understood as a “thin ideology” that consists
+of two elements: people-centrism and anti-elitism. Populism divides societies
+into two opposing and monolithic groups, the “pure people” and the “corrupt
+and self-interested elite” (see also Rooduijn and Pauwels 2011). To demonstrate a complete identiﬁcation with their “popular” electorate, populists
+need to use a language that reﬂects people’s “simplicity” (Albertazzi and
+McDonnell 2007). Moreover, a simple language constitutes an eﬀective propaganda instrument.1 Populists strategically employ a straightforward rhetoric
+to persuade voters that their political programme and actions belong to
+them – the people (Dramnescu 2014). We argue that these ideological and
+electoral considerations are part of the coordinated electoral strategy of populist parties, as well as of the individual electoral strategy of populist politicians.
+    Conventional wisdom in legislative studies tells us that legislators’ behaviour is driven both by their own policy preferences and by the party line. It
+thus seems natural to assume that electoral and ideological considerations
+    In a similar vein, Spirling (2016) shows that British MPs “simpliﬁed” their speech style after the Franchise
+     Extension 1867 in UK to appeal to a broader, “popular” electorate.
+
+
+4        S. DECADRI AND C. BOUSSALIS
+
+
+inﬂuence political communication both at the individual and party level.
+Moreover, previous contributions provided anecdotal evidence of populist
+politicians employing a simple rhetoric (Albertazzi and McDonnell 2007;
+Kriesi et al. 2005), as well as statistical support for the hypothesis that populist
+parties employ a simple language in their oﬃcial communication (Bischof and
+Senninger 2017).
+   Accordingly, we posit:
+    H1: Populist ideology, both at the individual and party level, is negatively related
+    to the complexity of an MP’s oral communication, while controlling for personal
+    characteristics such us age, gender, education and profession.
+
+While previous contributions have provided important insights on the role of
+a party’s populist ideology in inﬂuencing the complexity of a party’s ofﬁcial
+communication – namely, electoral manifestos – we argue that a party’s populist ideology can also shape the speech style of its members. More precisely,
+we claim that party afﬁliation inﬂuences the rhetoric of an MP when she
+speaks in parliament. Since we do not speciﬁcally analyse the causal mechanism that leads party membership to inﬂuence MPs’ rhetoric, we propose two
+viable mechanisms through which party membership can affect an MP’s
+speech style.
+    The ﬁrst and most compelling explanation is that a deputy’s rhetoric could
+be inﬂuenced by the speech style of her colleagues. The standard account in
+the study of legislative norms emphasizes the socialization of new members
+by veteran members, in national assemblies (Asher 1973; Bowler, Farrell, and
+Katz 1999). Norms, like reciprocity or legislative work, deﬁne the standard of
+conduct expected by the members of a certain legislative body. When newcomers enter the legislature, they learn the relevant norms through a process of
+interaction and socialization with the veteran members. We argue that a similar
+socialization process could lead newcomers in a political party to change their
+speech style to match that of their colleagues. When an MP enters a populist
+party, she encounters shared “norms of communication”, which prescribe
+that members use a simple speech style. This could lead the newcomer to
+adapt her rhetoric, so that she would comply with the existing norms.
+    Party leaders too could shape the content of party members’ speeches and,
+consequently, inﬂuence their communication style when they speak in parliament. While most of the literature on legislative behaviour has concentrated
+on the study of the voting agenda, Proksch and Slapin (2012) show that party
+aﬃliation matters also when studying parliamentary speeches. The authors
+explain that party leaders’ have an incentive to control the content of party
+members’ speeches and to make sure that only speeches aligned with the
+party ideology make it to the ﬂoor. Voters can easily access plenary speeches;
+thus, it is very important that MPs speaking in parliament convey an image of
+a cohesive and uniﬁed party (see also Maltzman and Sigelman 1996; Proksch
+
+
+                                    JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                   5
+
+
+and Slapin 2015, 22).2 Researchers have shown that party leaders are able to
+coordinate the speeches given by their party members. For example, Harris
+(2005) shows that Democratic and Republican leadership have designed
+party organizations aimed at disciplining the one-minute speeches given by
+House members before the legislative day. Thanks to these organizations,
+party leaders can control and structure the content of their members’
+speeches (see also Morris 2001). Proksch and Slapin (2012) and Giannetti
+and Pedrazzani (2016) show that party leaders in the UK, Germany and
+Italy, can restrict access to the ﬂoor so that MPs who give speeches that
+comply with the party’s ideology and policy positions receive more speaking
+time. Since conveying straightforward messages is a deﬁning characteristic of
+the populist ideology and electoral strategy, populist party leaderships will
+likely be interested in ensuring that their members’ speeches express argumentations that are easily understandable by the electorate. Party leaders
+could ask to read party members speeches before they take the ﬂoor and
+approve only those whose content is simple enough to comply with the
+party’s ideology and electoral strategy. A straightforward speech style
+would then appear to be the most appropriate stylistic choice to express a
+pre-approved straightforward content.
+    Based on these considerations, we posit:
+    H2: A change in aﬃliation from a populist to a mainstream parliamentary group
+    increases a parliamentarian’s language complexity.
+
+To uncover the inﬂuence of party membership on the rhetoric employed by
+MPs, we build on previous contributions and employ party3 switching to
+obtain analytic leverage on the effect of partisanship on legislators’ behaviour
+(e.g. Krehbiel 1993; McCarty 2001; Nokken 2000; Rosenthal and Voeten 2004).
+We interpret a change in language complexity that follows a party switch as
+the independent effect of party membership on legislators’ behaviour – in this
+case, communication behaviour.
+
+
+Methods
+Outcome and independent variables
+Our dependent variable is the readability of an MP’s oral communication in
+the Italian Parliament. We focus on parliamentary speeches4 for several
+reasons. Parliamentary debates constitute an open forum for communication
+where an MP can publicly explain her policy opinions to voters (Proksch and
+  For a more detailed discussion on parliamentary speeches’ access to voters see also Section 4.1.
+  In this case, party-owned parliamentary group.
+  We automatically retrieved speeches from the Italian Parliament website (http://www.parlamento.it). The
+   procedure also entails text pre-processing steps: we have removed HTML tags, stop words, and formal
+   titles, like “Ministro”.
+
+
+6        S. DECADRI AND C. BOUSSALIS
+
+
+Slapin 2012). Moreover, the media enhance the communicative power of parliamentary debates by providing access to the public at large (Maltzman and
+Sigelman 1996). Televised news broadcasts show extracts of parliamentary
+debates on a regular basis and many parliaments post videos of legislative
+speeches on their website (Proksch and Slapin 2012). The Italian Parliament
+is no exception as it oﬀers live streams5 of parliamentary debates and has a
+YouTube6 channel where it broadcasts the activities of the House. We operationalize readability using the G-index.7 We have collapsed every utterance
+found in the oﬃcial transcript by MP and parliamentary group. This means
+that if an MP changed parliamentary group aﬃliation within the sample
+period, she has been measured separately after the move.
+   Our main explanatory variable is populist ideology. To measure individuallevel populism, we apply a novel dictionary of Italian populist rhetoric to the
+parliamentary speeches collapsed by MP and parliamentary group, to obtain
+the percentage of populist words used by every MP. The procedure results in
+the construction of three explanatory variables: Populism and its sub-components, Anti-elitism and People-centrism. Populism combines peoplecentric and anti-elitist terms, giving the overall percentage of populist
+words employed by an MP. Anti-elitism and People-centrism measure the percentage of anti-elite and pro-people words used by an MP. To disentangle the
+eﬀect of party membership from that of individual-level populism, we include
+parliamentary group dummies. We expect members of populist parties to
+speak more simply. We also control for demographic characteristics of a
+given MP – age, gender, education, and professional skill level. We expect
+more educated and higher skilled MPs to speak in a more complex manner.
+We do not have strong theoretical priors on how gender and age might
+predict speech complexity.
+
+
+Constructing a dictionary of Italian political populism
+In Section 3.1 we deﬁne populism as an ideology that divides societies into
+two opposing groups, the people and the elite. Accordingly, we construct
+our measure of populism with the aim of capturing words and expressions
+that relate both to the people-centric and anti-elitist components of the populist ideology. We follow previous studies (Jagers and Walgrave 2007; Pauwels
+2011; Rooduijn and Pauwels 2011) and measure the level of populism using a
+dictionary approach (see Table 1). Our dictionary is novel in that we expand
+upon Rooduijn and Pauwels (2011)’s dictionary by including a peoplecentric component. Rooduijn and Pauwels (2011) chose to exclude this
+  http://webtv.camera.it/home.
+  https://www.youtube.com/user/cameradeideputati.
+  The G-index readability function has been re-engineered from the textstat readability function by Benoit
+   et al. (2017).
+
+
+                                       JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                         7
+
+
+Table 1. Populism dictionary.
+                                            Italian populist terms                           English translation
+Anti-elitism                                antidemocratic*                                  undemocratic*
+                                            casta I ̵                                        caste
+                                            consens*                                         consensus*
+                                            corrot*                                          corrupt*
+                                            disonest*                                        dishonest*
+                                            elit*                                            elit*
+                                            establishment I ̵I ̵                             establishm*
+                                            ingann*                                          deceit*
+                                            mentir*                                          lie*
+                                            menzogn*                                         lie*
+                                            partitocrazia                                    establishm*
+                                            propagand*                                       propagand*
+                                            scandal*                                         scandal*
+                                            tradim* §                                        betray*
+                                            tradir* §                                        betray*
+                                            tradit* §                                        betray*
+                                            vergogn*                                         shame*
+                                            verita’                                          truth*
+People-centrism                             abitant*                                         citizen*
+                                            cittadin*                                        citizen*
+                                            consumator*                                      consumer*
+                                            contribuent*                                     taxpayer*
+                                            elettor*                                         voter*
+                                            gente                                            people
+                                            popol*                                           popol*
+Note: This table reports the terms used in our dictionary of Italian political populism. Italian and Englishtranslated terms are displayed. We append the Rooduijn and Pauwels (2011) dictionary with the following terms: (I ̵) “casta”, a frequently used synonym of “elite”; (I ̵ I ̵) the English word “establishment”, often
+ used in reference to “partyocracy (partitocrazia)”; (§) the original dictionary by Rooduijn and Pauwels
+ (2011) includes “tradi”, which may capture unrelated words like “tradizione” (“tradition”) – we therefore
+ include diﬀerent Italian translations of the word “betray”, such as “tradim*”, “tradir*” and “tradit*”.
+
+
+dimension from their dictionary, arguing that a large share of people-centric
+communication is composed of personal pro-nouns such as “we” and “our”,
+which are used in speech more generally. We agree that such pronouns,
+while capturing an important aspect of the “us-versus-them” element of the
+populist ideology, can overlap with irrelevant speech. However, the same
+argument could be made in relation to the anti-elite component. Pronouns
+such as “they” are also likely to be very common in both populist and unrelated discussion.
+   We propose an alternative approach which avoids the inclusion of pronouns, while incorporating other terms that may accurately reﬂect the propeople aspect of populist rhetoric without succumbing to the problems correctly pointed out by Rooduijn and Pauwels (2011). Speciﬁcally, this dimension of our dictionary contains the Italian translations of the words
+indicated by Jagers and Walgrave (2007) in their description of the propeople populist rhetoric.8 Moreover, we make a few adjustments to the
+    The G-index readability function has been re-engineered from the textstat readability function by Benoit
+     et al. (2017).
+
+
+8           S. DECADRI AND C. BOUSSALIS
+
+
+Italian variant of the Rooduijn and Pauwels (2011)’s dictionary which had been
+translated by the authors from the original English version. We exclude the
+term “politici*”, which in English refers exclusively to a politician or the political class, while in Italian it can refer to several unrelated concepts since it can
+also be an adjective. We add the term “casta”, a frequently used synonym of
+elite. We remove the word “referendum” to avoid a potentially misleading categorization of references to the widely discussed referendums on the privatisation of water services held in 2011 as instances of populist rhetoric.
+
+
+Dictionary validation
+Computer-assisted text analysis should always be coupled with explicit validation. Unfortunately, researchers often employ newly devised dictionaries
+without previously verifying their validity, thus running the risk of producing
+misleading results. Following best practices of validation for supervised text
+analytic methods, we perform an out-of-sample validation relying on a
+corpus of party press releases (Grimmer and Stewart 2013). The validation procedure works in three steps: (1) we identify allegedly populist parties in Italy
+based on the academic literature and on the opinions shared by observers of
+Italian politics; (2) we collect an external source of oﬃcial party communication for all parties in our sample; (3) we apply our populist dictionary to
+the newly collected out-of-sample set and observe agreement between
+them. If our dictionary constitutes a valid measure, we would expect that
+populist parties will use more populist terms in their oﬃcial communication.
+    Which Italian political parties are populist? It is clear that Lega Nord (LN) and
+Movimento 5 Stelle (M5S) are populist parties (Albertazzi and McDonnell 2007;
+Bordignon and Ceccarini 2013; Fella and Ruzza 2013). However, there is some
+disagreement over the level of populism of Il Popolo della Liberta (PdL) and
+Fratelli d’Italia-Centro Destra Nazionale (FDI-CDN). All other parties – Partito
+Democratico (PD), Sinistra Ecologia e Liberta (SEL), Centro Democratico (CD),
+Scelta Civica (SC) and Unione di Centro (UDC) – are widely considered mainstream (see also Appendix A). We expect higher populist term frequencies in
+press releases from LN, M5S, PdL and FDI-CDN. Our choice of press releases
+for the validation corpus is based on previous literature that demonstrates
+how press releases reliably represent party and party member ideology (e.g.
+Grimmer 2010; Haselmayer, Wagner, and Meyer 2017; Sagarzazu and Klüver
+2017; Wagner and Meyer 2014). Also, political parties typically issue press
+releases on a regular basis, thereby ensuring a substantial level of data for
+the validation. The press releases corpus contains all available press releases9
+    We automatically retrieved the press releases from oﬃcial party websites. For a summary of the corpus by
+     party, see Appendix B. We perform the dictionary analysis on the original text, with no pre-processing
+     steps taken.
+
+
+                                    JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                  9
+
+
+from the websites of all the nine Italian political parties considered in our
+analysis.10
+    The left panel of Figure 1 displays the share of populist words identiﬁed by
+our dictionary within a given party’s corpus of press releases. Based on the discussion in Section 4.2, statistics of allegedly populist parties are marked with
+an orange diamond while those of mainstream parties are shown as blue
+squares. As expected, M5S and LN appear to be leaders in the usage of populist terms. PdL remains slightly above the median, while FDI-CDN exhibits percentages closer to those of the mainstream parties. We also observe how
+party press releases communicate concepts related to the two theoretical
+components of populism. The middle plot of Figure 1 shows the relative frequency of anti-elitist terms by party. LN still exhibits a quite high percentage
+and is followed by M5S, PdL and FDI-CDN. The right panel of Figure 1 displays
+the relative frequencies of people-centric terms. In line with our expectations,
+M5S and LN exhibit the highest share of people-centric words in their press
+releases. PdL also rank highly, while FDI-CDN does not seem to exhibit a consistent people-centric rhetoric in its press releases. While unexpected, the low
+levels of people-centrist term usage exhibited by FDI-CDN can be attributed to
+its strong nationalist ideology, which prefers to refer to “the people” in ethnic
+terms, i.e. “Italians”11 (see also Appendix A).
+    Notwithstanding some inconsistencies, in general we ﬁnd that allegedly
+populist parties are leaders in the usage of populist terms, while mainstream
+parties are less inclined to use such words. We would also like to stress that
+while we think that showing validation results for the two components of
+our populism measure adds further transparency to our validation procedure,
+we do not have strong theoretical priors on why a party should employ relatively more terms belonging to one component or the other. More precisely,
+we consider the two components as equally important in deﬁning a party’s
+populist rhetoric and we do not diﬀerentiate between anti-elitist and
+people-centric parties. Therefore, we are mostly interested in producing a
+measure of populism that validly captures the stronger overall presence of
+populist terms in populist parties’ political communication, with respect to
+mainstream parties’ political communication. Importantly, the dictionary
+also conforms with our theoretical expectations when applied to the parliamentary speeches, which is the corpus we rely on for the empirical tests in
+Sections 5.1 and 5.2 (see also Appendix C). Given the above, we satisﬁed
+  UDC is an enthusiastic member of the European People’s Party (EPP). SC and CD, even though they are
+   not represented in the European Parliament, sustain EPP’s view and action. This is conﬁrmed by the
+   many references to EPP found in their press releases. To avoid confounding references to the European
+   Popular Area-EPP with people-centric rhetoric, we have removed them from UDC, SC and CD press
+   releases.
+  For a detailed discussion on the diﬀerence between people as ethnos and as demos in nationalistic and
+   populist rhetoric, see Albertazzi and McDonnell (2007).
+
+
+10       S. DECADRI AND C. BOUSSALIS
+
+
+Figure 1. Application of a populist dictionary to Italian party press releases. This ﬁgure
+displays the average percentage of populist words among all available online press
+releases of nine major Italian political parties (n = 16; 396). Speciﬁcally, Populism includes
+all terms from the components Anti-elitism and People-centrism as deﬁned in Table 1.
+Allegedly populist parties are marked with an orange diamond, mainstream parties
+are shown as blue squares.
+
+
+that our metric of populist communication possesses suﬃcient face and construct validity (Adcock and Collier 2001).
+
+
+Language complexity
+We evaluate language complexity in terms of readability using the Gulpease
+index (G-index) (Lucisano and Piemontese 1988).
+                                                300∗St − 10∗C
+                           Gulpease = 89 +                                                (1)
+                                                      W
+St indicates the number of sentences, C the number of characters and W the
+number of words. Gulpease assesses readability based on the average number
+of characters per word and the average number of words per sentence. Most
+of the traditional readability metrics, such as the Flesch-Kincaid or the
+Gunning fog indexes, have been constructed to assess the complexity of
+the English language. The use of readability indexes that are calibrated on
+the English language to study the complexity of texts written in Italian can
+produce inconsistencies due to the diﬀerent morphological structures of
+
+
+                                   JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                     11
+
+
+the two languages12 (Franchina and Vacca 1986). Gulpease has been used
+widely by researchers who engage with the Italian language, ranging from
+topics such as school bullying (Gini et al. 2008) to the readability of political
+blogs (Bigi 2013). The scale of the index ranges from 0 to 100, where larger
+values indicate higher readability, i.e. lower language complexity.
+
+
+Regression analysis
+To test our ﬁrst hypothesis, we employ a set of cross-sectional multivariate
+linear regression models to estimate the eﬀect of populist language, party
+aﬃliation, and demographic characteristics on the spoken language readability of MPs in parliament. The level of analysis is the MP. We have chosen an
+allegedly mainstream party led by a former technocrat (SC)13 as the reference
+category for the parliamentary groups dummies. In the ﬁrst model, we include
+a combined measure of populist language as the main explanatory variable,
+while in a second model we explain the variation of language readability
+with the people-centric and anti-elitist characteristics of an MP’s oral communication. Since we treat MPs who have changed party aﬃliation as separate observations, we include robust standard errors clustered by MP for all
+models.
+
+
+Diﬀerence-in-diﬀerences analysis
+Treatment and control groups
+To test our second hypothesis, we perform a diﬀerence-in-diﬀerences analysis.
+In an ideal setting, we would wish to observe changes in language complexity
+for legislators who move from a populist to a mainstream party and legislators
+who move in the inverse. If party eﬀects are present, we would expect that
+MPs in the former (latter) group would increase (decrease) their spoken
+language complexity. Unfortunately, our data include only instances of
+switching from a populist to a mainstream party. Therefore, we concentrate
+our analysis only on this case to draw inferences on the eﬀect of party switching on rhetorical style. In our dataset, we observe 19 MPs who moved from
+PdL to UDC14, four from M5S to PD, and one from M5S to SC (see also Appendix H).
+  Relying on the counting of syllables, as done by the Flesch-Kincaid index, is not appropriate for the
+   Italian language due to the presence of diphthongs and accents (Dell’Orletta, Montemagni, and
+   Venturi 2011).
+  SC is a centrist party founded in the lead up to the 2013 general election by Mario Monti, outgoing Prime
+   Minister of the 2011–2013 caretaker government.
+  The total number of MPs moving from PdL to UDC, during the period considered, is 21. However, two of
+   them go back to the MISTO group after moving to UDC. Since MISTO is not a “party-owned” group, we
+   do not consider these moves as treatments and we do not include these MPs in our analysis.
+
+
+12        S. DECADRI AND C. BOUSSALIS
+
+
+   We acknowledge the diﬀerent nature of the two treatments. In fact, while
+conventional wisdom on Italian populism would consider the two treatment
+groups as comparable, deeper inspection shows that relevant diﬀerences
+exist. We base such distinction on the magnitude of the diﬀerence in the
+level of populist ideology between the populist and mainstream parties
+that are relevant to a particular switch. We deﬁne the level of populist ideology of a party as the average share of populist terms used by its members
+when speaking in parliament.
+   Beginning with the M5S case, based on the descriptive and statistical analyses in Sections 4.2 and 4.4, members of M5S, on average, use more populist
+terms than MPs from PD or SC.15 That is, there is a clear and substantive diﬀerence in populist ideology between these parties. In contrast, the diﬀerence in
+populism between PdL and UDC is not as clear cut. Based on our discussion in
+Section 4.2, our observations of populist rhetoric displayed in Appendix C, and
+a diﬀerence in means test, we can conclude that the populist divide between
+UDC and PdL seems to be marginal.16 Based on this consideration, we deﬁne
+the switch from M5S to PD/SC as a strong treatment, while a move from PdL to
+UDC is understood as a weaker treatment.
+
+
+Statistical methods
+Since we necessarily rely on observational data, we cannot assume that the
+analysed switchers are a random sample of all the MPs. To account for potential confounders in our quasi-experiment, we employ a diﬀerence-in-diﬀerences (DiD) design, with time and MP ﬁxed-eﬀects. Moreover, given that
+the MPs included in our analysis who changed parliamentary group did so
+at diﬀerent points in time, we have multiple treatment groups. To estimate
+our staggered-DiD model we regress the following time and MP ﬁxedeﬀects model17:
+                                   Git = ai + lt + bDit + 1it                                      (2)
+Where Git is the G-index of readability for individual i at yearly quarter t, ai and
+λt are the MP and time ﬁxed eﬀects (FE), and Dit is an indicator for whether the
+treatment is present in quarter t for individual i. We also cluster standard errors
+on MPs to correct for heteroskedasticity and autocorrelation (Bertrand, Duﬂo,
+and Mullainathan 2004).
+    When data on the same individuals are available over time, the treatment
+itself may not be randomly assigned, i.e. individuals with certain
+  A two-sample t-test ﬁnds a statistically signiﬁcant diﬀerence in the mean levels of populism of PD/SC
+   and M5S, at traditional levels: t (392) = 6:891; p = 0:000.
+  We do not ﬁnd a statistically signiﬁcant diﬀerence in the mean share of populist term usage between
+   members of PdL and UDC [t (105) = 0:480; p = 0:632].
+  See Autor (2003), Stevenson and Wolfers (2006, 276–283), Besley and Burgess (2004).
+
+
+                                   JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                    13
+
+
+characteristics can be more likely to receive the treatment. Still, the identifying
+assumption for the FE model is that the treatment is only determined by individual ﬁxed eﬀect ai. We therefore assume that an MP’s choice to leave her
+parliamentary group is determined only by her own individual, time invariant,
+characteristics (see Pischke 2005, 12).18 In Appendix G, we provide further
+background on the party, as well as a discussion of media accounts about
+their departures from their party. Using individual-level panel data allows
+for a non-random treatment, but it still requires that the treatment and
+control groups exhibit parallel trends over time before the treatment
+occurs. In a model with multiple treatment groups, providing a simple
+visual inspection of parallel paths becomes unfeasible (see Pischke 2005, 7).
+We, therefore, present a formal test in Appendix F which demonstrates the
+presence of pre-treatment parallel trends.
+
+
+Results
+Does populist ideology predict simpler language in parliamentary
+oral communication?
+Does the populism level of an MP inﬂuence the complexity of her spoken
+communication? Figure 2 (and a related table in Appendix D) displays the
+regression estimates of the models described in Section 4. The ﬁrst model
+includes a combined metric of individual-level populism, while the second
+model estimates the eﬀect of its two components, people-centrism and
+anti-elitism, on language complexity. The results conform with our expectations on the eﬀect of populist ideology on speech readability of MPs. We
+ﬁnd a statistically signiﬁcant positive eﬀect of the combined populism variable. Substantively speaking, a shift from no populist term usage to the
+maximum observed frequency of populist language relates to an average
+increase of the G-index, from 42.9 to 50.5. To provide substantive context
+to this result, text with a G-index score below 40 is understood as being
+diﬃcult for a secondary school reading level (ages 14-18), while texts with a
+readability score below 60 are diﬃcult for a junior secondary school reading
+level (ages 11–13). We also ﬁnd positive and statistically signiﬁcant eﬀects
+for the components of populism, people-centrism and anti-elitism, on
+language readability.19 The substantive eﬀects of these components are
+roughly equivalent in size. A minimum to maximum shift in anti-elitist and
+people-centric term usage corresponds roughly to an expected 4.5 points
+increase on the readability scale, while holding all other variables constant.
+  Notwithstanding the notorious habit of the M5S of banning members who explicitly disagree with the
+   party leaders, the assumption seems reasonable here, given that all the observed moves were voluntary.
+  We ﬁnd similar results in unreported models that control for the logarithmic transformation of the populism, people-centrism, and anti-elitism variables.
+
+
+14       S. DECADRI AND C. BOUSSALIS
+
+
+Figure 2. Explaining spoken language readability in the current Italian Parliament. This
+ﬁgure displays linear regression estimates for the eﬀect of populist ideology (combined,
+people-centric, and anti-elitist), party aﬃliation, and demographic characteristics on the
+readability of a given MP’s plenary speeches in the 17th Italian Legislature. Regression
+coeﬃcients and conﬁdence intervals [90%, 95%, 99%] are displayed for the combined
+populism model (top, blue, circle) and component model (bottom, red, diamond). Standard errors are clustered by MP. See Appendix D for a table of these results.
+
+
+   Party membership also seems to be relevant in shaping the complexity of
+an MP’s spoken communication, independently from her use of populist
+terms. In the combined populism model, we ﬁnd a statistically signiﬁcant
+positive eﬀect of membership in the allegedly populist groups of LN and
+M5S, and in the mixed parliamentary group (MISTO). When estimating the
+components model, we ﬁnd a similar eﬀect: membership in the populist
+LN, M5S, and MISTO remain positively and statistically signiﬁcantly related
+with plenary speech readability when compared to SC aﬃliation. Lastly,
+among the demographic controls, only age displays a statistically signiﬁcant
+eﬀect, with older MPs being more likely to use a simpler language when
+speaking in parliament.
+   The signiﬁcant and substantive eﬀects of individual-level populist language
+usage as well as populist party aﬃliation suggest that both individual and
+party ideology matter in shaping the complexity of an MP’s plenary speech.
+Populist politicians, and politicians who are member of populist parties,
+employ a simpler rhetoric with respect to their mainstream colleagues.
+
+
+                                   JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES                   15
+
+
+Does party membership inﬂuence MPs’ language?
+The signiﬁcant party eﬀects found in our regression analysis suggest that
+party membership matters in shaping the complexity of an MP’s plenary
+speech. In this section, we exploit changes in party allegiances by Italian
+MPs to further estimate the causal impact of party membership on language
+usage. Table 2 shows the results for MPs moving, respectively, from M5s and
+PdL. In the M5S case, the treatment has a statistically signiﬁcant negative
+eﬀect on spoken language readability. Moving from M5S to a mainstream parliamentary group (either PD or SC) produces an expected decrease of 3.2
+points in the G-Index of readability of an MP, independently from her ideology
+(mean in the sample 46.4 points, range 63 points). Conversely, moving from
+PdL to UDC does not have a statistically signiﬁcant eﬀect on readability. We
+thus ﬁnd evidence of party membership eﬀects only in one of the two analysed cases. We do not observe signiﬁcant diﬀerences in the treatment
+eﬀects after controlling for, potentially time-variant, individual-level populism
+(see Appendix E).
+   We observe a signiﬁcant shift in language complexity only for MPs moving
+from M5S to PD/SC. We argue that this mixed evidence is not produced by
+idiosyncratic characteristics of the M5S, but by the structurally diﬀerent treatments involved. As we point out in Section 4.2, although both M5S and PdL
+are categorized as populist parties, their degree of populism is diﬀerent.
+MPs who move from PdL to UDC do not signiﬁcantly change their communication behaviour, therefore, because the change in party ideology to which
+they are subject is not substantively meaningful. Here we stress the importance of considering the fact that political parties’ ideology can exhibit
+diﬀerent degrees of populism. While political parties are usually categorized
+as either populist or mainstream, our analysis shows that the populist ideology should not be reduced to a dichotomous variable. A few authors have
+
+
+Table 2. Time and entity FE estimates.
+                                                       (a)                                       (b)
+                                                   M5S → PD/SC                               PdL → UDC
+Treatment eﬀect (DiD)                                −3.177**                                   0.612
+                                                      (1.101)                                  (2.129)
+MP ﬁxed eﬀects                                          Yes                                      Yes
+Time ﬁxed eﬀects                                        Yes                                      Yes
+N                                                       629                                      654
+Treated units                                             5                                       19
+Control units                                            73                                       53
+Note: This table displays the results of DiD models which estimate the eﬀect of joining a mainstream parliamentary group from a populist group on plenary oral language readability. Column (a) displays the
+   results of a move from M5S to PD or SC. Column (b) shows the results of a switch from PdL to UDC.
+   Robust standard errors in parenthesis are clustered by MP.
+Standard errors in parentheses.
++
+  p < 0.10, *p < 0.05, **p < 0.01.
+
+
+16      S. DECADRI AND C. BOUSSALIS
+
+
+already moved in this direction. Relevant examples include Akkerman, Mudde,
+and Zaslove (2014), that evaluate voters’ populist attitudes on a Likert Scale,
+and Caiani and Graziano (2016), who outline the presence of certain “varieties
+of populism” in their content analysis of Euromanifestos. Our study further
+conﬁrms the suitability of continuous measures of populism over dichotomous classiﬁcations of populist versus mainstream parties.
+
+
+Discussion
+Our analysis has relevant implications for the literature on populism and political communication, legislative behaviour, and electoral competition. While
+previous studies have mainly produced anecdotal accounts of populists’ plainspoken language, our study oﬀers comprehensive empirical evidence of a
+connection between populist ideology and language complexity. Our
+regression analysis shows that populist politicians, and members of populist
+parties, communicate using simpler language than their mainstream colleagues. These results speak to a general debate on political populism and
+communication. There is scholarly disagreement on whether populism
+should be deﬁned as an ideology (Mudde 2004) or as a discursive strategy
+(Bonikowski and Gidron 2016), while others argue that ideology determines
+the rhetorical style of populist parties (Jagers and Walgrave 2007). We build
+on Jagers and Walgrave (2007)’s conception, arguing that the usage of populist terms by a political actor is determined by her populist ideology. Our
+central conclusion, though, is that populist rhetoric is not only characterized
+by the use of “populist terms”, but also by the intrinsic simplicity of the
+language employed. In other words, language simplicity can be thought of
+as a feature of populist political communication.
+    Our diﬀerence-in-diﬀerences analysis further corroborates the hypothesis
+that party membership plays a role in inﬂuencing legislators’ communication
+behaviour. When MPs leave a populist parliamentary group to join a mainstream one, the complexity of their language increases. This empirical evidence oﬀers new insights on the extent of party membership’s inﬂuence
+over legislators’ behaviour and we hereby provide some viable explanations
+for our results.
+    A ﬁrst possible interpretation of our results concerns the process of learning and commitment to legislative norms. Common wisdom in the study of
+legislative norms states that when newcomers enter a legislative body they
+learn the relevant norms through a process of socialization with veteran
+members (Asher 1973; Bowler, Farrell, and Katz 1999). A similar process
+could be in place when switchers modify their speech style to match that
+of their colleagues. When an MP enters a populist party, she encounters
+shared “norms of communication”, which prescribe that members use a
+simple language, and which thus lead the newcomer to adapt her
+
+
+                          JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES   17
+
+
+communication style to comply with the existing norms. This suggests that
+the process of socialization through which legislators learn shared norms of
+conduct could be relevant not only when studying phenomena like apprenticeship or legislative work, but also when studying political communication.
+   A second viable explanation of our results involves party leaders’ action in
+parliament. Scholars have already provided evidence that, in addition to
+inﬂuencing legislators voting behaviour, party elites regulate the debate
+agenda in parliaments to convey an image of a cohesive and uniﬁed party
+(Giannetti and Pedrazzani 2016; Harris 2005; Maltzman and Sigelman 1996;
+Morris 2001; Proksch and Slapin 2012, 2015). Similarly, populist party
+leaders could opt for pre-approving speeches to make sure that their
+content is simple enough to comply with their populist party’s ideology
+and electoral strategy. A plain speech style would then appear to be the
+most appropriate stylistic choice to express a pre-approved simple content.
+Our results show that the relationship between party membership and communication behaviour is worth studying. Future work should further investigate the causal mechanisms that we propose, for example by studying
+socialization dynamics within a party, or propose further viable mechanisms.
+   Lastly, our analysis speaks to a more general point on the relative eﬀectiveness of populist actors in attracting electoral support. Recent scholarship has demonstrated that individuals are better able to estimate the
+ideological positions of parties who present their campaign messaging
+with a simpler language. When studying electoral manifestos in Austria
+and Germany, Bischof and Senninger (2017) ﬁnd that individuals are
+better able to grasp the ideological positions of parties that present their
+campaign messaging using a simpler language. Bos, Van Der Brug, and
+De Vreese (2013) ﬁnd evidence of a positive eﬀect of populist communication style on the perceived legitimacy of right-wing populist party
+leaders among lower educated and politically cynical Dutch voters. When
+analysing legislative speeches in the German Bundestag, Lin and Osnabrügge (2018) show that MPs increase the comprehensibility of their rhetoric
+to facilitate a more eﬀective communication. There appears to be consistent empirical evidence, at least among European countries, that a straightforward language, used to oﬀer simple solutions to complex issues, can
+eﬀectively inﬂuence public opinion and capture the emotions of discontented voters. In the age of social media and a maximum limit of 280 characters per Tweet, therefore, a simple political communication style might
+constitute a competitive advantage in the contemporary marketplace of
+ideas. While mainstream policy solutions are indeed more complex than
+the opportunistic positions held by populist politicians, mainstream actors
+should strive to deliver their ideas in a more straightforward manner
+when communicating with the electorate.
+
+
+18       S. DECADRI AND C. BOUSSALIS
+
+
+Disclosure statement
+No potential conﬂict of interest was reported by the authors.
+
+
+Notes on contributors
+Silvia Decadri is a PhD Candidate and IRC Scholar in the Political Science Department of
+Trinity College Dublin. In her thesis, she employs computational text analytic methods
+to study the causes of legislative particularism. She holds a BA in Political Science from
+Universita’ degli Studi di Milano and an MSc in Economics from Universita’ Cattolica del
+Sacro Cuore. She has worked as a research analyst, both in the public and in the private
+sector. Her main research interests include legislative behavior, party politics, political
+communication and computational methods.
+Constantine Boussalis is Assistant Professor of Political Science at Trinity College
+Dublin. Much of his current work examines the various facets of climate change communication with the help of computational and automated text-analytic methods. His
+work has appeared in Global Environmental Change, Regulation & Governance, Social
+Science & Medicine, Journal of Development Studies, Development Policy Review, and
+the Journal of Applied Research in Memory and Cognition.
+
+
+ORCID
+Silvia Decadri   http://orcid.org/0000-0003-0378-1183
+
+
+References
+Adcock, R., and D. Collier. 2001. “Measurement Validity: A Shared Standard for
+   Qualitative and Quantitative Research.” American Political Science Review 95 (3):
+   529–546.
+Akkerman, A., C. Mudde, and A. Zaslove. 2014. “How Populist are the People?
+   Measuring Populist Attitudes in Voters.” Comparative Political Studies 47 (9): 1324–
+   1353.
+Albertazzi, D., and D. McDonnell. 2007. Twenty First Century Populism. New York:
+   Palgrave Macmillan.
+Asher, H. B. 1973. “The Learning of Legislative Norms.” American Political Science Review
+   67 (2): 499–513.
+Autor, D. H. 2003. “Outsourcing at Will: The Contribution of Unjust Dismissal Doctrine to
+   the Growth of Employment Outsourcing.” Journal of Labor Economics 21 (1): 1–42.
+Benoit, K., K. Watanabe, P. Nulty, A. Obeng, H. Wang, B. Lauderdale, and W. Lowe. 2017.
+   Quanteda: Quantitative Analysis of Textual Data [Computer Software Manual].
+Bertrand, M., E. Duﬂo, and S. Mullainathan. 2004. “How Much Should We Trust
+   Diﬀerences-in-Diﬀerences Estimates?” The Quarterly Journal of Economics 119 (1):
+   249–275.
+Besley, T., and R. Burgess. 2004. “Can Labor Regulation Hinder Economic Performance?
+   Evidence from India.” The Quarterly Journal of Economics 119 (1): 91–134.
+Bigi, A. 2013. “Viral Political Communication and Readability: An Analysis of an Italian
+   Political Blog.” Journal of Public Aﬀairs 13 (2): 209–217.
+
+
+                              JOURNAL OF ELECTIONS, PUBLIC OPINION AND PARTIES           19
+
+
+Bischof, D., and R. Senninger. 2017. “Simple Politics for the People? Complexity in
+   Campaign Messages and Political Knowledge.” European Journal of Political
+   Research. 57 (2): 473–495.
+Bonikowski, B., and N. Gidron. 2016. “Multiple Traditions in Populism Research: Toward
+   a Theoretical Synthesis.” APSA Comparative Politics Newsletter 26 (12): 7–14.
+Bordignon, F., and L. Ceccarini. 2013. “Five Stars and a Cricket. Beppe Grillo Shakes
+   Italian Politics. ” South European Society and Politics 18 (4): 427–449.
+Bos, L., W. Van Der Brug, and C. H. De Vreese. 2013. “An Experimental Test of the Impact
+   of Style and Rhetoric on the Perception of Right-wing Populist and Mainstream Party
+   Leaders.” Acta Politica 48 (2): 192–208.
+Bowler, S., D. M. Farrell, and R. S. Katz. 1999. Party Discipline and Parliamentary
+   Government. Columbus: The Ohio State University Press.
+Brosius, A., B. Bakker, M. Schoonvelde, and G. Schumacher. 2017. “Evaluating
+   Complexity in Political Speech.” The Euengage working paper series.
+Caiani, M., and P. R. Graziano. 2016. “Varieties of Populism: Insights from the Italian
+   Case.” Italian Political Science Review/Rivista Italiana di Scienza Politica 46 (2): 243–
+   267.
+Davies, P. 2012. The National front in France: Ideology, Discourse and Power. London:
+   Routledge.
+Degani, M. 2016. “Endangered Intellect: A Case Study of Clinton vs Trump Campaign
+   Discourse.” Rivista semestrale ISSN 2281, 4582.
+Dell’Orletta, F., S. Montemagni, and G. Venturi. 2011. “Read-it: Assessing Readability of
+   Italian Texts with a View to Text Simpliﬁcation.” Proceedings of the second workshop
+   on speech and language processing for assistive technologies. Association for
+   Computational Linguistics (pp. 73–83).
+Dramnescu, M. 2014. “Communication. Political Speech. Populist Speech.” Topical
+   Communication Uncertainties 242–256.
+Fella, S., and C. Ruzza. 2013. “Populism and the Fall of the Centre-right in Italy: The End
+   of the Berlusconi Model or a New Beginning?” Journal of Contemporary European
+   Studies 21 (1): 38–52.
+Franchina, V., and R. Vacca. 1986. “Adaptation of Flesh Readability Index on a Bilingual
+   Text Written by the Same Author Both in Italian and English Languages.” Linguaggi 3:
+   47–49.
+Giannetti, D., and A. Pedrazzani. 2016. “Rules and Speeches: How Parliamentary Rules
+   Aﬀect Legislators’ Speech-making Behavior.” Legislative Studies Quarterly 41 (3):
+   771–800.
+Gini, G., T. Pozzoli, F. Borghi, and L. Franzoni. 2008. “The Role of Bystanders in Students’
+   Perception of Bullying and Sense of Safety.” Journal of school psychology 46 (6):
+   617–638.
+Grimmer, J. 2010. “A Bayesian Hierarchical Topic Model for Political Texts: Measuring
+   Ex-pressed Agendas in Senate Press Releases.” Political Analysis 18: 1–35.
+Grimmer, J., and B. M. Stewart. 2013. “Text as Data: The Promise and Pitfalls of
+   Automatic Content Analysis Methods for Political Texts.” Political Analysis 21 (3):
+   267–297.
+Harris, D. B. 2005. “Orchestrating Party Talk: A Party-based View of One-Minute
+   Speeches in the House of Representatives.” Legislative Studies Quarterly 30 (1):
+   127–141.
+Haselmayer, M., M. Wagner, and T. M. Meyer. 2017. “Partisan Bias in Message Selection:
+   Media Gatekeeping of Party Press Releases.” Political Communication 34 (3):
+   367–384.
+
+
+20       S. DECADRI AND C. BOUSSALIS
+
+
+Jagers, J., and S. Walgrave. 2007. “Populism as Political Communication Style: An
+   Empirical Study of Political Parties’ Discourse in Belgium.” European Journal of
+   Political Research 46 (3): 319–345.
+Krehbiel, K. 1993. “Where’s the Party?” British Journal of Political Science 23 (2): 235–266.
+Kriesi, H., R. Lachat, P. Selb, S. Bornschier, and M. Helbling. 2005. Der aufstieg der svp:
+   Acht kantone im vergleich. Zurich: NZZ Verlag.
+Lin, N., and M. Osnabrügge. 2018. “Making Comprehensible Speeches When Your
+   Constituents Need it.” Research & Politics 5 (3): 2053168018795598. doi:10.1177/
+   2053168018795598.
+Lucisano, P., and M. E. Piemontese. 1988. “Gulpease: una formula per la predizione della
+   diﬃcolta’ dei testi in lingua italiana.” Scuola e citta 3 (31): 110–124.
+Maltzman, F., and L. Sigelman. 1996. “The Politics of Talk: Unconstrained Floor Time in
+   the us House of Representatives.” The Journal of Politics 58 (3): 819–830.
+McCarty, N. 2001. “The Hunt for Party Discipline in Congress.” American Political Science
+   Review 95 (3): 673–687.
+Morris, J. S. 2001. “Reexamining the Politics of Talk: Partisan Rhetoric in the 104th
+   House.” Legislative Studies Quarterly 26: 101–121.
+Mudde, C. 2004. “The Populist Zeitgeist.” Government and Opposition 39 (4): 542–563.
+Nokken, T. P. 2000. “Dynamics of Congressional Loyalty: Party Defection and Roll-call
+   Behavior, 1947–97.” Legislative Studies Quarterly 25: 417–444.
+Pauwels, T. 2011. “Measuring Populism: A Quantitative Text Analysis of Party Literature
+   in Belgium.” Journal of Elections Public Opinion and Parties 21 (1): 97–119.
+Pischke, J. 2005. “Empirical Methods in Applied Economics: Lecture Notes.”
+   Downloaded July 24, 2015.
+Proksch, S.-O., and J. B. Slapin. 2012. “Institutional Foundations of Legislative Speech.”
+   American Journal of Political Science 56 (3): 520–537.
+Proksch, S. O., and J. B. Slapin. 2015. The Politics of Parliamentary Debate. Cambridge:
+   Cambridge University Press.
+Rooduijn, M. 2014. “The Nucleus of Populism: In Search of the Lowest Common
+   Denominator.” Government and Opposition 49 (4): 573–599.
+Rooduijn, M., and T. Pauwels. 2011. “Measuring Populism: Comparing Two Methods of
+   Content Analysis.” West European Politics 34 (6): 1272–1283.
+Rosenthal, H., and E. Voeten. 2004. “Analyzing Roll Calls with Perfect Spatial Voting:
+   France 1946–1958.” American Journal of Political Science 48 (3): 620–632.
+Sagarzazu, I., and H. Klüver. 2017. “Coalition Governments and Party Competition:
+   Political Communication Strategies of Coalition Parties.” Political Science Research
+   and Methods 5 (2): 333–349.
+Schumacher, E., and M. Eskenazi. 2016. “A Readability Analysis of Campaign Speeches
+   from the 2016 us Presidential Campaign.” arXiv preprint arXiv:1603.05739.
+Spirling, A. 2016. “Democratization and Linguistic Complexity: The Eﬀect of Franchise
+   Extension on Parliamentary Discourse, 1832–1915.” The Journal of Politics 78 (1):
+   120–136.
+Stevenson, B., and J. Wolfers. 2006. “Bargaining in the Shadow of the Law: Divorce Laws
+   and Family Distress.” The Quarterly Journal of Economics 121 (1): 267–288.
+Tarchi, M. 2003. L’Italia populista: dal qualunquismo ai girotondi. 147 vols. Bologna: Il
+   mulino.
+Wagner, M., and T. M. Meyer. 2014. “Which Issues do Parties Emphasise? Salience
+   Strategies and Party Organisation in Multiparty Systems.” West European Politics
+   37 (5): 1019–1045.

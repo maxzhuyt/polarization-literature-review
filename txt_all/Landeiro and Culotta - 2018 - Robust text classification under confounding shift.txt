@@ -1,0 +1,715 @@
+Draft version September 20, 2018
+                                                 Typeset using LATEX twocolumn style in AASTeX62
+
+
+                                                                               On the Missing Energy Puzzle of Tidal Disruption Events
+                                                                                           Wenbin Lu1, 2 and Pawan Kumar2
+                                                         1 TAPIR, Walter Burke Institute for Theoretical Physics, Mail Code 350-17, Caltech, Pasadena, CA 91125, USA
+                                                                      2 Department of Astronomy, University of Texas at Austin, Austin, TX 78712, USA
+arXiv:1802.02151v2 [astro-ph.HE] 19 Sep 2018
+
+
+                                                                                                     ABSTRACT
+                                                          For the majority of the tidal disruption event (TDE) candidates, the observed energy in the
+                                                       optical/near-UV bands is of order 1051 erg. We show that this observed energy is smaller than the
+                                                       minimum bolometric energy for the radiative inefficient accretion flow model by a factor of 10–100.
+                                                       We argue that this discrepancy is because the majority of the energy released is in the extreme-UV
+                                                       (EUV) band and/or in the form of relativistic jets beamed away from the Earth. The EUV scenario
+                                                       is supported by existing mid-infrared data and should be further tested by future dust reverberation
+                                                       observations. The jet scenario is disfavored by the radio observations of ASASSN-14li but may still
+                                                       be viable for other TDE candidates. We also provide evidence that, at least for some TDEs, most of
+                                                       the missing energy (in the EUV and/or in the form of jets) is released within a few times the orbital
+                                                       period of the most tightly bound material Pmin , which means (1) the circularization of the fall-back
+                                                       stream may occur rapidly and (2) the luminosity of the accretion flow or the jet power may not be
+                                                       capped near the Eddington level when the fall-back rate is super-Eddington. For most other TDEs,
+                                                       this energy-release timescale is currently not strongly constrained.
+
+                                                       Keywords: methods: analytical – galaxies: nuclei – infrared: ISM
+
+                                                                 1. INTRODUCTION                                  cording to the host spectrum) and supernovae (acA tidal disruption event (TDE) occurs when a star is            cording to the lightcurve shape, temperature evolushredded by the tidal gravity of a supermassive black              tion, and the distance to the galactic center). Howhole (BH) with mass M . 108 M⊙ (Rees 1988). To                     ever, these methods of selection do not guarantee the
+                                               conserve the total angular momentum, roughly half of               purity of the final TDE sample. For instance, suthe star is ejected to infinity, and the other half is left        pernovae from nuclear star clusters may occur at a
+                                               in bound elliptical orbits. The bound materials, after             rate of ∼10−4 galaxy−1 yr−1 for Milky-Way-like galaxpassing the apocenters of their orbits, fall back towards          ies (Zubovas et al. 2013), whereas the measured rate
+                                               the BH and generate bright multi-wavelength emission.              of the TDE candidates is 10−4 –10−5 galaxy−1 yr−1
+                                               Many TDE candidates have been discovered by tran-                  (Donley et al. 2002; van Velzen & Farrar 2014; Holoien et al.
+                                               sient surveys in the X-ray (e.g. Komossa & Bade 1999;              2016a; Hung et al. 2017b; van Velzen 2018). In this
+                                               Donley et al. 2002; Esquej et al. 2008; Saxton et al.              paper, we make the assumption that at least some
+                                               2012), UV (e.g. Gezari et al. 2008, 2009), and optical             of these candidates are actual TDEs; this is motibands (e.g. van Velzen et al. 2011; Gezari et al. 2012;            vated by the theoretical expectation of TDE rate being
+                                               Arcavi et al. 2014; Vinkó et al. 2015; Holoien et al.             10−4 –10−5 galaxy−1 yr−1 (Magorrian & Tremaine 1999;
+                                               2016a). As opposed to TDE candidates that typically                Wang & Merritt 2004; Stone & Metzger 2016). This is
+                                               show a thermal spectrum, a few events have been char-              also supported by the cutoff in the TDE rate for BH
+                                               acterized by highly variable, non-thermal (power-law)              masses above ∼108 M⊙ due to direct capture of stars by
+                                               γ/X-ray emission, which is likely generated by relativis-          the event horizon (van Velzen 2018).
+                                               tic jets pointing towards the Earth (Bloom et al. 2011;              In the generic picture of a TDE, general relativistic
+                                               Burrows et al. 2011; Zauderer et al. 2011; Cenko et al.            apsidal precession causes the fall-back stream to self2012; Brown et al. 2015).                                          intersect, and then the shocks at the collision point conThermal TDE candidates are usually selected from                vert the kinetic energy of the upstream gas into thermal
+                                               large samples of transient sources by eliminating the              energy. The angular momentum of the stream is redisby far more common flares from variable AGNs (ac-                  tributed downstream of the shock such that the orbital
+                                                                                                                  eccentricity is reduced and viscous accretion may proceed efficiently (e.g. Evans & Kochanek 1989; Kochanek
+                                               Corresponding author: Wenbin Lu, wenbinlu@caltech.edu              1994; Rosswog et al. 2009; Guillochon & Ramirez-Ruiz
+                                                                                                                  2013; Stone et al. 2013; Shiokawa et al. 2015; Sa̧dowski et al.
+
+
+2                                                        W. Lu & P. Kumar
+
+2016; Bonnerot et al. 2016; Jiang et al. 2016). Despite                (2) It has been proposed by Svirski et al. (2017) that
+significant progress in recent works, studying the de-                     the accretion flow may be in the form of a highly
+tailed post-disruption dynamics is still challenging due                   eccentric disk and the angular momentum exto the three-dimensional nature, the complexity of                         change among different parts of the disk may allow
+the physics (general relativity, self-gravity, radiation,                  the majority (&90%) of the mass to fall directly
+and magnetohydrodynamics), and the wide range of                           into the event horizon without circularization and
+time/length scales involved (see Stone et al. 2018, for                    viscous accretion.
+a review). An easier and more robust way of understanding the physics of TDEs is to look at the global                  (3) Most of the energy released from the accretion flow
+properties such as mass, energy, and angular momentum                      may be in the form of radiation either absorbed
+through their conservation laws. In the simplest picture,                  along the line of sight (e.g. by dust in the host
+if half of the star’s mass is eventually accreted onto the                 galaxy) or at other wavelengths that have not yet
+BH, the expected energy released is ∼1052–1053 erg.                        been observed.
+However, for the majority of the TDE candidates found                  (4) Most of the energy released from TDEs may be in
+in recent surveys, the observed radiation energy in the                    the form of relativistic jets beamed away from the
+optical/UV bands is only ∼1051 erg. The puzzle is:                         Earth.
+Where is the missing 90–99% of the energy?
+   This low apparent radiative efficiency led Piran et al.              We discuss the first scenario in §2 and §3. Based on the
+(2015a) to suggest that the optical emission is pow-                 radiatively inefficient accretion flow model, we calculate
+ered by the shocks due to stream-stream collision in-                the minimum bolometric energy output from a TDE
+stead of the accretion flow near the BH. This is because             and show that it is higher than the observed energy in
+the amount of kinetic energy dissipated at the shocks is             the optical/near-UV bands by a factor of 10–100. Thus,
+∼ 1051 (rI /103 rg )−1 erg, where rI is the intersecting ra-         this widely adopted model does not solve the energy
+dius and rg ≡ GM/c2 is the gravitational radius of the               efficiency puzzle.
+BH. However, Piran et al. (2015a) did not consider1 the                 The second scenario requires that (i) the disk eccenradiation from the subsequent accretion onto the BH af-              tricity stays high for ∼10 orbits (∼1 yr) and (ii) the exter the stream-stream collision, which we argue should               change of angular momentum among the fluid elements
+dominate the energy output from the TDE. This is be-                 occurs in a way such that only .10% of the mass in the
+cause the shocks can only unbind less than half of the               accretion flow circularizes and that the rest plunges into
+gas in the fall-back stream due to energy requirement.               the event horizon of the BH (Svirski et al. 2017). TypIf part of the gas receives more energy and becomes un-              ically, the stream-stream collision occurs at a substanbound, the others become more tightly bound.                         tial angle (40o –160o; Dai et al. 2015) and dissipates a
+   Thus, the majority of the shocked gas must be in-                 large fraction of the orbital kinetic energy. In addition,
+jected into the accretion flow and the mass feeding rate             the cooling time is generally comparable to or longer
+to the accretion flow is a large fraction of that entering           than the orbital time, so the resulting accretion flow
+the self-intersecting shocks. The question of the low ap-            is quasi-spherical (Hayasaki et al. 2016; Sa̧dowski et al.
+parent radiative efficiency of the accretion flow is still           2016) instead of highly elliptical. This scenario is not
+unanswered. There are a number of possible solutions                 discussed in this paper, because it can only occur in rare
+to this puzzle:                                                      cases where the stream-stream collision angle is small
+  (1) The mass-feeding rate to the accretion flow may                (≪1 rad) and the dissipation of orbital energy is ineffibe highly super-Eddington at early time, and due               cient.
+      to photon trapping and/or mass outflow, the lumi-                 The third scenario may explain the radiative efficiency
+      nosity of the escaping radiation may be regulated              puzzle, considering that the optical/near-UV spectrum
+      at a near-Eddington level. This radiatively inef-              of TDEs is usually Rayleigh-Jeans-like and that the peak
+      ficient accretion flow model is widely adopted by              may be in the extreme-UV (EUV) band. This scenario
+      many authors (Loeb & Ulmer 1997; Ulmer 1999;                   has not been thoroughly explored in the literature, beStrubbe & Quataert 2009; Krolik & Piran 2012;                  cause it is difficult to infer the peak frequency and hence
+      Coughlin & Begelman 2014; Piran et al. 2015b;                  bolometric luminosity from the optical/near-UV data,
+      Metzger & Stone 2016).                                         considering the strong dependence on the (highly uncertain) line-of-sight extinction of the host galaxy (e.g.
+                                                                     Gezari et al. 2009; Chornock et al. 2014). In §4, we
+  1 Another potential issue is that the shock-dissipated energy      show that this scenario is supported by existing dust remay not be radiated away efficiently. In order for the radiation     verberation observations in the mid-infrared where the
+to escape, the shocked gas needs expand to a much larger volume
+than that occupied by the cold streams and the radiation energy
+                                                                     extinction is negligible.
+may be lost in the form of PdV work. The stream-stream collision        The fourth scenario, which involves relativistic offsimulations by Jiang et al. (2016) show that only a few percent of   axis jets, will be discussed in §5. We show that
+the initial kinetic energy is radiated away.                         this scenario is ruled out by radio observations of
+
+
+                                             The Missing Energy Puzzle of TDEs                                                       3
+
+ASASSN-14li (Holoien et al. 2014; van Velzen et al.
+2016a; Alexander et al. 2016), but it still remains viable for the other thermal TDEs with only sparse radio
+upper limits.
+  In §6, we briefly discuss the implications of including
+the missing energy on the physics of circularization and
+accretion processes in TDEs. Throughout the paper,
+the convention of Q = 10n Qn and cgs units are used.
+ 2. MASS-FEEDING RATE TO THE ACCRETION
+                               FLOW
+  We consider a star of mass M∗ = m∗ M⊙ and radius R∗ = r∗ R⊙ interacting with a BH of mass M =
+106 M6 M⊙ . The tidal disruption radius is expressed in
+units of the BH’s gravitational radius rg ≡ GM/c2 as
+                     1/3
+        rT    R∗ M                  −2/3 −1/3                         Figure 1. A schematic picture of a tidal disruption event.
+           ≃                ≃ 47 M6     m∗ r∗ .     (1)
+        rg    rg M∗                                                   The star was initially in a parabolic orbit (dashed black
+                                                                      curve). After the tidal disruption, the bound materials are in
+When the star first enters the radius rT , the tidal gravity          highly eccentric elliptical orbits of different semimajor axes
+of the BH causes a spread of specific energy across the
+                                                                      (the most bound orbit is shown in red) but have the same apstar −∆ǫ ≤ ǫ ≤ ∆ǫ and (Stone et al. 2013)
+                                                                      sidal precession angle φ per orbital cycle. Materials in their
+            GM R∗                     1/3 2/3                         second orbit collide with those in the first orbit with velocity
+  ∆ǫ = ηǫ     2   ≃ 2.1 × 10−4 c2 ηǫ M6 m∗ r∗−1 ,              (2)
+             rT                                                       vI at radius rI from the BH, and the intersecting angle is θI .
+                                                                      Then, the post-shock gas expands rapidly into a thick torus
+where ηǫ is a dimensionless number of order unity (de-                wrapping around the BH.
+pending on the stellar density profile and the detailed
+disruption process). Bound materials have negative
+specific energies −∆ǫ ≤ ǫ < 0 and the leading edge                       In the following, we consider two simple mod-
+(ǫ = −∆ǫ) has the minimum orbital period                              els of specific energy distribution: (i) in the first
+                                                                      (“frozen”) case (e.g. Lodato et al. 2009; Stone et al.
+                                       1/2
+             Pmin ≃ (41 d) ηǫ−3/2 M6 m−1
+                                                 3/2                  2013; Coughlin et al. 2016), the distribution of spe-
+                                      ∗ r∗ .                   (3)
+                                                                      cific energy is assumed to be “frozen” when the star
+   As shown in Fig. (1), the bound stream self-intersects             first enters the tidal radius rT and each fluid eledue to apsidal2 precession. Since the intersecting radius             ment evolves ballistically (ignoring self-gravity, internal
+rI is typically less than the apocenter radius of the most            pressure, and shocks), and (ii) in the second (“flat”)
+bound orbit, the time it takes for a fluid element to move            case (e.g. Evans & Kochanek 1989; Phinney 1989),
+from the beginning of the second orbit to the intersecting            dM/dǫ is assumed to be independent of ǫ in the range
+point is insensitive to the specific energy. Thus, the                −∆ǫ < ǫ < ∆ǫ, i.e.,
+mass-flow rate to the intersecting point is given by
+                                                                          dM      M∗               M⊙         −1/3 1/3
+                                                                               =       = 2.3 × 103 2 ηǫ−1 M6       m∗ r∗ . (5)
+        dM   dM dǫ    dM (2πGM )2/3 −5/3                       (4)         dǫ     2∆ǫ               c
+   Ṁ ≃    =        =              P     ,
+        dP    dǫ dP    dǫ    3                                        We note that the specific energy distributions given
+which depends on the (uncertain) specific energy distri-              by Newtonian and relativistic numerical simulations
+bution dM/dǫ.                                                         generally lie between these two extreme cases (e.g.
+                                                                      Guillochon & Ramirez-Ruiz 2013; Cheng & Bogdanović
+                                                                      2014; Coughlin & Nixon 2015; Tejeda et al. 2017). We
+   2 We ignore the Lense-Thirring precession arising from the BH’s    also define t = 0 as when the most tightly bound matespin, which may otherwise deflect the stream out of the initial or-   rial (with ǫ = −∆ǫ) reaches the intersecting point.
+bital plane. If the stream has a small enough cross section (the
+evolution of which is controlled by the competition among tidal
+                                                                        Since the self-intersecting shock can only unbind a
+shear, self-gravity, gas and magnetic pressure, etc.; see Kochanek    small fraction of the gas in the fall-back stream, the
+1994; Coughlin et al. 2016), such a deflection may prevent stream-    mass enters the accretion flow at a rate roughly equal
+stream intersection during the second orbit and hence circular-       to that entering the shock.3 In the “frozen” case, when
+ization can be significantly delayed (Guillochon & Ramirez-Ruiz
+2015). As shown in §3, our conclusion on the radiation energy         the star first enters the tidal radius rT , we assume that
+discrepancy will be even stronger because the mass-feeding rate
+to the disk may be reduced and the radiative efficiency of the
+accretion flow should be closer to that of the standard thin disk        3 Alternatively, one can assume that a fraction f . 1 of the
+                                                                                                                           b
+(Shakura & Sunyaev 1973).                                             fall-back gas joins the accretion flow. This factor can be easily
+
+
+4                                                                          W. Lu & P. Kumar
+
+                                    0.9
+                                                                 frozen (γ = 4/3)
+                                                                                                              10 0
+                                    0.8                          frozen (γ = 1. 4)
+                                                                 frozen (γ = 5/3)
+                                    0.7                          flat (ηǫ = 0. 5)
+                                                                 flat (ηǫ = 1. 0)                             10 -1
+            ǫtidal × dM/dǫ [M ⊙ ]
+
+
+                                    0.6                                                                                                                Ṁ Edd
+
+
+                                                                                            Ṁ [M ⊙ yr −1 ]
+                                    0.5
+
+                                    0.4                                                                       10 -2
+
+
+                                    0.3
+                                                                                                                                                          t −5/3
+
+                                    0.2                                                                       10 -3
+
+
+                                    0.1
+
+                                    0.0                                                                       10 -4
+                                      0.0   0.2   0.4      0.6         0.8            1.0                             10 0    10 1     10 2     10 3     10 4
+                                                    |ǫ|/ǫtidal                                                                          t [d]
+
+Figure 2. Left panel: the yellow, red, and green curves show the distributions of specific energy when the star first enters rT ,
+under the assumption that it keeps its spherical shape and original density profile. We assume a polytropic equation of state
+and solve the Lane-Emden equation under different polytropic indexes γ = 4/3, 1.4, and 5/3. The specific energy is normalized
+by the work per unit mass done by tidal forces ǫtidal ≡ GM R/rT         . The magenta and blue curves show a flat distribution of
+specific energy in (−∆ǫ, 0), where ∆ǫ = ηǫ ǫtidal . We use BH mass M = 106 M⊙ , stellar mass 0.4M⊙ and stellar radius 0.48R⊙
+for this figure.
+Right panel: mass fall-back rate for different cases in the left panel. We define t = 0 to be when the most tightly bound material
+(with ǫ = −∆ǫ) reaches the intersection point. At late time, the fall-back rate goes as t−5/3 since dM/dǫ is asymptotically flat.
+The horizontal dashed line shows the Eddington accretion rate ṀEdd = 5.3 × 10−2 M⊙ yr−1 according to eq. (8) with thin-disk
+radiation efficiency η = 0.05.
+its spherical shape and original density profile are pre-                                             We note that the fall-back rates calculated via grid
+served and that pall fluid elements are moving at the same                                            (Guillochon & Ramirez-Ruiz 2013) or smoothed-particle
+velocity v0 = 2GM/rT . Then, the specific orbital en-                                                 hydrodynamical (Coughlin & Nixon 2015) simulations
+ergy of each fluid element is assumed to be frozen until                                              for {M6 = 1, m∗ = 1, r∗ = 1, γ = 5/3} are quite similar
+the stream self-intersects. For a polytropic equation of                                              with Ṁ (t = 1 yr) ≃ 9 × 10−2 M⊙ yr−1 , which is close to
+state P ∝ ργ , we solve the Lane-Emden equation for the                                               our “flat” case if ηǫ ≃ 0.9.
+density profile given by the total stellar mass M∗ and ra-                                               In Fig. (2), we show the distribution of specific energy
+dius R∗ . We consider three different polytropic indexes                                              (left panel) and the mass fall-back rates (right panel)
+γ = 4/3, 1.4, 5/3 (the star is more centrally concentrated                                            for the “frozen” and “flat” cases. We use M∗ = 0.4M⊙ ,
+for lower γ).                                                                                         R∗ = 0.48R⊙, and M = 106 M⊙ . At sufficiently late
+   In the “flat” case, the mass-feeding rate to the accre-                                            time t ≫ Pmin , the mass feeding rate in all cases aption flow is                                                                                          proaches the characteristic t−5/3 power-law, because
+                            3/2                −5/3                                                  the specific energy distribution is asymptotically flat,
+                           ηǫ m2∗
+                                    
+                                      t + Pmin                                                        dM/dǫ ≈ constant. The peak mass fall-back rate is
+   Ṁ (t) ≃ 3.0 M⊙ yr−1 1/2 3/2                      , (6)
+                          M r∗          Pmin                                                          much smaller in the “frozen” cases, because more mass
+                                                                                                      is concentrated near ǫ ≈ 0.
+which shows the canonical t−5/3 behavior at t ≫ Pmin :                                                   We define the Eddington accretion rate as
+                                                   1/3   1/3             −5/3
+                                                  M6 m∗ r∗            t
+ Ṁ (t) ≃ 7.8 × 10−2 M⊙ yr−1                                                      .
+                                                     ηǫ              yr                                                      LEdd                             −1
+                                                                               (7)                              ṀEdd ≡           = (2.6 × 10−2 M⊙ yr−1 ) M6 η−1   (8)
+                                                                                                                              ηc2
+
+included by replacing the thin-disk efficiency η (see eq. 8 for definition) by fb η throughout this section, and our conclusion stays                                    where LEdd = 1.5 × 1044 M6 erg s−1 is the Eddington
+unchanged.                                                                                            luminosity for solar metallicity with Thomson scattering
+
+
+                                              The Missing Energy Puzzle of TDEs                                                                    5
+
+opacity and η = 0.1η−1 is the radiative efficiency4 for                 ton accretion rate, the bolometric emission from the disk
+a standard thin disk (Shakura & Sunyaev 1973). In the                   tracks the mass-feeding rate and the luminosity becomes
+“flat” case, the ratio between the peak mass-feeding rate               η Ṁ c2 as in the standard thin-disk model, i.e.,
+and the Eddington accretion rate is                                                (
+                                                                                     Lbol (t) & LEdd if Ṁ (t) ≥ ṀEdd ;
+           Ṁpeak                 −3/2 2 −3/2                                                                                (10)
+                  ≃ 114 ηǫ3/2η−1 M6   m∗ r∗   ,                  (9)                 Lbol (t) ≃ η Ṁ c2 if Ṁ (t) < ṀEdd .
+           ṀEdd
+which becomes less than unity for BH mass M & 2.3 ×                     The total bolometric radiation energy is given by
+            2/3 4/3
+107 M⊙ ηǫ η−1 m∗ r∗−1 . On the right panel of Fig. (2),
+                                                                                                Z ∞
+we mark the Eddington accretion rate for the (conser-                                   Ebol ≡       Lbol (t)dt.          (11)
+vative) efficiency η = 0.05 with a horizontal dashed line.
+In all the cases considered in Fig. (2), the mass fall-back             Note that, if the accretion is significantly delayed (e.g.
+rates exceed the Eddington accretion rate for ∼1 yr.                    due to slow circularization and/or viscous spreading)
+                                                                        with respect to the mass-injection rate given by eq. (4),
+        3. MINIMUM BOLOMETRIC ENERGY                                    the peak accretion rate is reduced and the total boloSuper-Eddington BH accretion flows (Ṁ ≫ ṀEdd ) are                 metric radiation energy will be higher 5 (since the radigenerally believed to be radiatively inefficient compared               ation efficiency of the accretion flow is closer to that of
+to sub-Eddington thin disks, because (i) radiation can be               a standard thin disk).
+trapped by the inflowing matter and advected into the                     We also denote the duration of super-Eddington acBH (Begelman 1979), and (ii) the majority of the accret-                cretion as tEdd (and tEdd = 0 if Ṁpeak < ṀEdd ). In
+ing mass may become unbound due to energy injection                     the “flat” specific energy distribution case, if Ṁpeak ≫
+along with the outward transport of angular momen-                      ṀEdd , tEdd can be solved from Ṁ (tEdd ) = ṀEdd (comtum (Narayan & Yi 1994; Blandford & Begelman 1999,                      bining eqs. 6 and 8),
+2004). As a result, the bolometric radiative luminosity
+may be regulated at the Eddington luminosity times a                                                        3/5       −2/5        1/5 3/5
+                                                                              tEdd ≃ (700 d) ηǫ−3/5 η−1 M6                   m∗ r∗ ,            (12)
+logarithmic factor of order unity, as shown in recent multidimensional simulations of super-Eddington BH accre-                  Then, the minimum bolometric energy is
+tion disks (Ohsuga & Mineshige 2011; McKinney et al.                                            Z ∞                         −5/3
+2014; Sa̧dowski & Narayan 2016). We note that ver-                                                                      t                    5
+                                                                        Ebol & LEdd tEdd +              LEdd                          dt ≃     LEdd tEdd
+tical advection of radiation due to magnetic buoyancy                                            tEdd                 tEdd                   2
+may transport radiation energy faster than diffusion,                                      52                     3/5       3/5    1/5 3/5
+which may allow the accretion disk to radiate at highly                      ≃ (2.3 × 10        erg) ηǫ−3/5 η−1 M6 m∗ r∗ ,
+super-Eddington luminosities (e.g. Blaes et al. 2011;                                                                                           (13)
+Jiang et al. 2014), although the radiation may suffer
+from adiabatic loss if the disk also launches a highly                  where we have used Ṁ (t) ∝ t−5/3 when t ≫ Pmin .
+optically thick wind. Another possibility for higher ra-                Note that eqs. (12) and (13) are only valid when
+diative efficiency is that the accumulation of magnetic                 Ṁpeak ≫ ṀEdd, i.e. for BH masses M . (1.1 ×
+                                                                                     2/3 4/3
+flux near the BH event horizon leads to a magnetically-                 107 M⊙ ) ηǫ η−1 m∗ r∗−1 ; for larger BH masses, the
+arrested disk (magnetic fields become dynamically im-                   super-Eddington duration tEdd quickly drops to zero,
+portant), where radiation escapes along the low-density                 and the bolometric energy released Ebol approaches
+channel created by the Poynting flux of rotating field                  ηM∗ c2 /2 ≃ (9 × 1052 erg) η−1 m∗ .
+lines (Narayan et al. 2003; McKinney et al. 2015).                        On the left panel of Fig. (3), we show the minimum
+   In this section, we calculate the minimum bolometric                 bolometric energy released corresponding to the massenergy from a TDE, according to the mass-feeding rates                  feeding rates shown on the right panel of Fig. (2). We
+to the accretion flow obtained in the previous section.                 use thin-disk radiative efficiency parameter η = 0.05
+Our calculation is based on two conservative assump-                    for this figure. We also plot the observed radiation
+tions: (i) when the mass-feeding rate to the accretion
+flow exceeds the Eddington accretion rate, the angleintegrated bolometric luminosity is at least LEdd , and                        General relativistic hydrodynamical simulations by
+(ii) when the mass-feeding rate drops below the Edding-                 Shiokawa et al. (2015) showed that the circularization process
+                                                                        after the initial stream-stream collision may take up to ∼10Pmin
+                                                                        (∼1 yr) and hence the accretion process may be significantly
+                        p                                               lengthened at a reduced accretion rate. The viscous evolution
+  4 Note that η = 1 −     1 − 2rg /(3rISCO ) ranges from 0.038 (for     of the accretion flow with a time-dependent mass feeding has
+a retrograde orbit around an extreme Kerr BH with spin −1) to           been studied by Cannizzo et al. (1990) and Shen & Matzner
+0.42 (for a prograde orbit around an extreme Kerr BH with spin          (2014). TDEs with a prolonged accretion phase of ∼1 yr and slow
+1), where rISCO is the radius of the innermost stable circular orbit.   variability may have been missed in current optical/UV surveys
+For a zero-spin Schwarzschild BH, we have η = 0.057.                    (T. Holoien 2018, private communication).
+
+
+6                                                                   W. Lu & P. Kumar
+
+
+                                      1.5
+
+                                                                                        10 3
+                                                         ASASSN-15lh
+                                      1.0
+        log(E bol, min /10 51 erg)
+
+
+                                                      PS16dtm
+
+                                      0.5
+
+
+                                                                            t Edd [d]
+                                                                                        10 2
+
+                                      0.0
+
+                                                                                                        frozen (γ = 4/3)
+                                     −0.5                                                               frozen (γ = 1. 4)
+                                                                                             1          frozen (γ = 5/3)
+                                                                                                        flat (η = 0. 5)
+                                                                                                        flat (η = 1. 0)
+                                     −1.0
+                                            −1    0         1        2                           −1.5   −1.0     −0.5       0.0    0.5   1.0
+                                                 log(M/10 6 M ⊙ )                                               log(M/10 6 M ⊙ )
+
+Figure 3. Left panel: the minimum bolometric energy released corresponding to the mass-feeding rate to the accretion flow
+on the right panel of Fig. (2). When the feeding rate is super-Eddington (Ṁ ≥ LEdd /ηc2 ), we adopt a minimum bolometric
+luminosity Lbol,min ≃ LEdd ; when the feeding rate is sub-Eddington (Ṁ < LEdd /ηc2 ), the accretion flow settles into a thin disk,
+and the bolometric luminosity is Lbol ≃ η Ṁ c2 . We use a conservative thin-disk radiation efficiency parameter η = 0.05 for
+this figure. We also plot the observed radiation energy in the optical/near-UV bands from the TDE candidates D3-13, D1-9,
+D23H-1, TDE1, TDE2, Dougie, PTF09ge, iPTF16axa, PS1-10jh, PS1-11af, PS16dtm, and ASASSN-14ae, -14li, -15oi, -15lh. We
+find that the observed radiation energy in the optical/near-UV bands (in the form of a blackbody component with temperature
+1–3×104 K) is typically a factor of 10–100 smaller than the minimum bolometric energy expected in the generic TDE model,
+except for two cases, ASASSN-15lh and PS16dtm (where the discrepancies are less than a factor of ∼2).
+Right panel: the duration tEdd over which the mass feeding rate to the accretion flow exceeds the Eddington accretion rate. We
+find that for BH masses . a few×106 M⊙ , super-Eddington mass-feeding lasts for tEdd &a few×102 –103 days.
+energy in the optical/near-UV bands from the TDE                                 or superluminous supernovae (see Metzger et al. 2015;
+candidates found by GALEX (D3-13, D1-9, D23H-1;                                  Dong et al. 2016; Leloudas et al. 2016; Blanchard et al.
+Gezari et al. 2006, 2008, 2009), SDSS (TDE1, TDE2;                               2017). We also note that the missing energy is not
+van Velzen et al. 2011), ROTSE (Dougie; Vinkó et al.                            observed in the X-ray band (0.2–10 keV) because the
+2015), PTF (PTF09ge, iPTF16axa; Arcavi et al. 2014;                              ratios between the X-ray and optical/near-UV lumiHung et al. 2017a), Pan-STARRS (PS1-10jh, PS1-11af,                              nosities for these TDE candidates are at most of order
+PS16dtm; Gezari et al. 2012; Chornock et al. 2014;                               unity (Auchettl et al. 2017).
+Blanchard et al. 2017), and ASASSN (-14ae, -14li, -                                It can be seen from eq. (13) that this energy discrep15oi, -15lh; Holoien et al. 2014, 2016a,b; Dong et al.                           ancy cannot be reconciled by varying the thin-disk ra2016). Only Galactic extinction has been corrected for                           diative efficiency η∈(0.038, 0.42), specific energy distrithese events. Our sample is selected from the open                               bution parameter ηǫ ∈(∼0.3, ∼1), stellar mass m∗ & 0.1
+TDE catalog (http://tde.space) based on the good                                 (for a main-sequence star), and stellar radius r∗ & 0.2.
+quality of the optical/near-UV photometry in these                                 We note that highly centrally concentrated stars (e.g.
+sources. We find that the observed radiation energy in                           the Sun) are only fully disrupted for deeply penetratthe optical/near-UV bands, typically in the form of a                            ing orbits, while for the more general situation, the toblackbody component with temperature (1–3)×104 K,                                tal fall-back mass is smaller than M∗ /2 (Mainetti et al.
+is a factor of 10–100 smaller than the minimum bolo-                             2017). However, it is unlikely that the majority of the
+metric energy expected in the generic TDE model. This                            observed TDEs are partial disruptions where the star
+conclusion is not sensitive to the different fallback-rate                       only loses ≪0.1 M⊙ of mass, because the bright optimodels. We note that ASASSN-15lh and PS16dtm are                                 cal emission requires a minimum amount of mass to rethe only two cases with observed radiation energies near                         process the EUV or soft X-ray emission from the acthe theoretical expectation to within a factor of ∼2.                            cretion flow (Piran et al. 2015a; Metzger & Stone 2016;
+It is still debated whether these two sources are TDEs                           Roth et al. 2016). In the following, we show that this
+
+
+                                            The Missing Energy Puzzle of TDEs                                                  7
+
+minimum reprocessing layer constrains the total fall-                 To launch this outflow through local dissipation of orback mass to be more than ∼0.1M⊙ for most TDEs                        bital energy (e.g. via stream-stream collision as shown in
+in our sample.                                                        Jiang et al. 2014), the total amount of fall-back (bound)
+  The blackbody-like optical/near-UV spectrum of a                    mass needed is Mb & 2Mrep & 0.1M⊙.
+TDE gives the emitting area                                              Another possible solution to the energy discrepancy
+                                                                      is that the BH masses in these TDEs are actually
+   A = LBB /σT 4 ≃ (1.8 × 1030 cm2 ) LBB,44 T4.5
+                                             −4
+                                                 ,            (14)    .105 M⊙ . For some of the TDEs in our sample, BH
+                                                                      masses lower (by up to a factor of 10) than the valwhere σ is the Stefan-Boltzmann constant, LBB is the                  ues reported in the discovery papers are indeed found
+luminosity of the optical/near-UV component, and T is                 by Wevers et al. (2017) from the velocity dispersion of
+the photospheric temperature. If the emitting surface                 the host galaxies using high-resolution spectroscopy. On
+covers a solid angle of Ω (≤ 4π), the corresponding pho-              the right panel of Fig. (3), we show the duration tEdd
+tospheric radius is                                                   over which the mass-feeding rate to the accretion flow
+                              1/2
+                                        p                             exceeds the Eddington accretion rate. We can see that,
+     rph ≃ (3.7 × 1014 cm) LBB,44 T4.5
+                                     −2
+                                          4π/Ω,     (15)              if the luminosity is indeed capped near the Eddington
+The location of the photosphere is marked by the ef-                  luminosity of .105 M⊙ BHs, then the radiation energy
+fective absorption optical depth τ ≃ ρκrph ≃ 1, where                 should be released on a timescale of &103 days (eq. 12),
+                                        √                             which is inconsistent with the observed rise and decay
+the effective opacity is given by κ = κabs κs in the
+scattering-dominated regime, and κabs and κs are the                  time in the TDEs in our sample. Additionally, many
+opacities for absorption and electron scattering respec-              TDE candidates had peak optical/near-UV luminosities
+tively. Thus, the mass density near the photosphere is                of order 1044 erg s−1 , which is much higher than LEdd
+given by                                                              for BH masses . 105 M⊙ .
+                                                                               4. THE EXTREME-UV SCENARIO
+    ρ ≃ (κrph )−1 ≃ (10−13.5 g cm−3 ) κ−1  −1
+                                       −1 rph,14.5 ,          (16)
+                                                                        In the previous section, we show that 10–100 times the
+where we have used a fiducial effective opacity of κ =                observed energy may have escaped our detection. For
+0.1κ−1 cm2 g−1 motivated by the fact that bound-free                  the TDEs in our sample, the optical/near-UV spectrum
+and free-free opacity κabs ≪ κs ≃ 0.34 cm2 g−1 (for solar             is usually Rayleigh-Jeans-like, so most of the missing
+abundance) at densities ρ . 10−13 g cm−3 and tempera-                 energy may be in the EUV band (there are stringent
+tures T & 104 K (a rough scaling is κabs ∝ ρT −3.5 ). The             upper limits in the X-ray band). This scenario is also
+true opacity depends on gas metallicity and the detailed              motivated by the temperature associated with an Edionization state near the photosphere (see a discussion               dington luminosity emerging at the tidal disruption raby Roth et al. 2016).                                                 dius (Ulmer 1999)
+  On the other hand, since the fall-back materials do                                      1/4
+not have enough angular momentum to circularize at                                  LEdd                     1/12 −1/2 1/6
+                                                                         kT ≃ k       2σ         ∼ (20 eV) M6 r∗       m∗ ,
+radii rph & 1014 cm, the widths of the (Hα and/or He II)                          4πrT   SB
+emission lines cannot be sufficiently broadened by gas                                                                    (18)
+rotation. Instead, they suggest that the gas in the linewhere k is the Boltzmann constant and σSB is the
+forming region near the photosphere is expanding outStefan-Boltzmann constant. This EUV emission may
+wards at typical speeds v = 109 v9 cm s−1 . To sustain
+                                                                      be directly observable for high-redshift TDEs, provided
+the bright optical emission for a duration of ∆t (typithat photons near the spectral peak do not suffer from
+cally ∼30 days), the reprocessing gas needs to have a
+minimum mass6                                                         strong absorption (by e.g. neutral hydrogen) in the host
+                                                                      galaxy.
+                                 1/2   r                                 In this section, we discuss another indirect way of conLBB,44     Ω v9 ∆t
+  Mrep & ρAv∆t ≃ (0.06M⊙ ) 2                      . (17)              straining the total UV-optical luminosity with dust reT4.5 κ−1 4π 30 d
+                                                                      verberation mapping in the mid-infrared. If the gaseous
+                                                                      medium at the galactic center is dusty, a fraction of the
+   6 A speculative “TDE impostor” idea is the sudden accretion of
+                                                                      UV photons will be absorbed by dust and re-radiated
+∼0.01M⊙ following stellar collisions due to consecutive extreme
+mass ratio inspirals (EMRIs, Metzger & Stone 2017). In such           in the mid-infrared wavelengths λ ∼ 3-10 µm (Lu et al.
+cases, the peak accretion luminosity can reach ∼1044 erg s−1 but      2016). In the optically thin limit, due to high UV
+mainly in the EUV or soft X-ray bands. To match the observed          fluxes, dust particles will sublime within the critical raoptical/near-UV luminosity of ∼1044 erg s−1 , this model relies on
+the reprocessing by a fossil disk (with mass ∼0.1M⊙ ) at distances
+                                                                      dius (Waxman & Draine 2000)
+10–100 AU from the BH. The disk must exist for &104 yr to wit-                            1/2                       −1/2
+ness the stellar collision and hence is geometrically thin. It is       Rsub ∼ (0.2 pc) LUV,45 (Tsub /1800 K)−2.5 a−5 ,     (19)
+unclear whether such a thin disk is capable of reprocessing a large
+fraction (order unity) of the EUV or soft X-ray emission from the     where LUV = 1045 LUV,45 erg s−1 is the total UV-optical
+TDE impostor.                                                         luminosity of the TDE, Tsub is the sublimation temper8                                                        W. Lu & P. Kumar
+
+ature, and a = 0.1a−5 µm is the grain radius. The mid-               In this section, we discuss the possibility that
+infrared emission from the surviving dust particles at            1052 –1053 erg of energy is carried away by narrowly
+radius R ∼ Rsub lasts for a light-crossing timescale of           beamed relativistic jets. This is motivated by the
+the radiating dust shell                                          powerful non-thermal γ/X-ray emission from Swift
+                                                                  J1644+57 (Bloom et al. 2011; Burrows et al. 2011),
+          Rsub
+                                   
+                                        Tsub
+                                                −2.5             Swift J2058+05 (Cenko et al. 2012), and perhaps a third
+                           1/2                          −1/2
+    tIR ∼      ≃ (0.6 yr) LUV,45                        a−5 .     one, Swift J1112+82 (Brown et al. 2015). The isotropic
+           c                           1800 K
+                                                                  equivalent energies released in the X-ray band in Swift
+                                                       (20)                                         (iso)
+Therefore, we can monitor the mid-infrared emission               J1644+57 and J2058+05 are EX ≃ 5 × 1053 erg and
+from a sample of newly discovered TDEs on a cadence               9 × 10 erg, respectively. The total energy carried by
+                                                                                                       −1 −1
+of a few months and then use the measured duration tIR            the jet is given by Ej = EX fb,X fbol   fr , where fb,X is
+                                                                                                                    −1
+to infer the total UV-optical luminosity LUV .                    the beaming factor of the X-ray emission, fbol        is the
+  We note that eqs. (19) and (20) only capture the qual-          bolometric correction (to account for γ-rays), and fr is
+itative behavior of dust reverberation mapping. More              the jet radiative efficiency. Despite large uncertainties
+detailed calculations are needed to extract the total UV-         in these factors, we can see that the jet may indeed
+optical luminosity from mid-infrared observations. The            carry up to ∼1053 erg of energy in these cases (e.g. if
+                                                                                      −1 −1
+grain temperature at a certain distance from the UV               fb,X ∼ 0.02 and fbol  fr ∼ 10 for Swift J1644+57).
+source depends on the infrared emissivity, which is un-              There are a number of arguments against this jet
+certain at high temperatures &1000 K (Draine & Lee                scenario for the majority of TDEs. First, only about
+1984). The sublimation temperature Tsub depends on                10% of AGNs are radio-loud with relativistic jets (e.g.
+the size (distribution) and composition of dust particles         Wilson & Colbert 1995), but this argument may be
+(Guhathakurta & Draine 1989). More importantly, the               weak if the properties of the TDE accretion flow difmid-infrared duration tIR depends on the spatial distri-          fer qualitatively from those in AGNs. We also note that
+bution of dust near the galactic center as well as on the         the jet power in radio-loud AGNs is on the same order
+observational wavelength (the emission spectrum from              as the disk luminosity (e.g. Ghisellini et al. 2014), so the
+grains of a certain temperature is not a blackbody and            EUV scenario and the jet scenario may operate together.
+colder dust particles emit at longer wavelengths). For in-           Second, the rate of events like Swift J1644+57 is
+stance, different dust distribution geometries (e.g. torus,       estimated to be ∼10−9 galaxy−1 yr−1 , if one assumes
+patchy clouds) could cause tIR to vary by a factor of a           that Swift BAT is sensitive to all events within its
+few, so the UV-optical luminosity may have uncertainty            field of view (∼4π/7) in the past ∼10 yr up to redshift
+of an order of magnitude (LUV ∝ t2IR ). More detailed             ∼1 (Burrows et al. 2011; Cenko et al. 2012; Brown et al.
+calculations taking these uncertain factors into account          2015). This extremely small rate is 4 orders of magniare left for future works.                                        tude lower than the observationally inferred TDE rate
+  Currently, a few TDEs have been observed by                     of ∼10−5 galaxy−1 yr−1 and it requires a combination
+the Wide-field Infrared Survey Explorer at 3.6 and                of a small beaming factor and that only a small frac4.5 µm (Jiang et al. 2016; van Velzen et al. 2016b;               tion of TDEs produce relativistic jets. However, the
+Dou et al. 2017). PTF09ge had mid-infrared lumi-                  fact that all three jetted TDEs were discovered within
+nosity of LIR ∼ 1042 erg s−1 lasting for tIR ∼ 1 yr               three months of the same year raises the question of in-
+(van Velzen et al. 2016b). This implies an EUV lu-                completeness. Additionally, relativistic jets from TDEs
+minosity of LUV ∼ 1045 erg s−1 (but note the large                may release the majority of their radiation in the X-ray
+uncertainties mentioned above), which is a factor of              band, and they do not trigger Swift BAT in the γ-ray
+∼10 higher than the optical/near-UV luminosity. If                band. Thus, the observed non-thermal TDEs may be
+the duration of the EUV emission equals to that of                the tip-of-an-iceberg cases of a much larger population
+the optical emission, then the total energy released              of jetted events, so this argument is also a weak one.
+from PTF09ge may be of order 1052 erg. Future multi-                 Third, powerful radio emission as seen in Swift
+wavelength mid-infrared observations by JWST will                 J1644+57 is expected to be observable even for offenable detailed modeling of the dust properties/spatial           axis observers at sufficiently late times t & 1 yr
+distribution, and hence we can measure the total UV-              when the jet decelerates to non-relativistic speeds
+optical energy released from TDEs more accurately.                (Giannios & Metzger 2011). However, the flux at a
+This method of reverberation mapping, commonly used               given frequency seen by an off-axis observer depends
+in the AGN community (e.g. Peterson 1993), can be                 sensitively on the poorly known circum-nuclear medium
+used to constrain the total energy reservoir of TDEs              (CNM) density profile, the fraction of energy in magand may provide a solution to the energy efficiency               netic fields in the shocked region (ǫB ), and the angular
+puzzle.                                                           structure of the jet (Sari et al. 1998; Kumar & Granot
+                                                                  2003). Many of the thermal TDEs in our sample only
+               5. THE JET SCENARIO
+
+
+                                              The Missing Energy Puzzle of TDEs                                                 9
+
+had (typically single-epoch) upper limits7 at 5 GHz                   The measured peak frequency νa and flux density Fνa
+at ∼1–10 yr after the optical peak (van Velzen et al.                 at t = (143, 207, 246, 304, 381) d by Alexander et al.
+2013). Generozov et al. (2017) explored a wide range                  (2016) give expansion speeds β ≃ (2.2, 2.6, 2.4, 2.9, 2.8)×
+of CNM densities and used these radio upper limits                    10−2 (Ej,52 ǫB,−4 )1/11 . A similar conclusion of nearly conto constrain the jet energies to be Ej . 1052 –1053 erg               stant expansion speed is drawn by Krolik et al. (2016),
+(mostly near the higher end; see their Table 2). In their             under the assumption that magnetic field and electrons
+modeling, they kept fixed the magnetic energy fraction                are in energy equipartition (although we do not make
+(ǫB = 0.002) and the angular structure of the jet (a fast             this assumption). This nearly free expansion of the
+narrow core with Lorentz factor 10 surrounded by a slow               “synchrotron photosphere” at a sub-relativistic speed
+wide sheath with Lorentz factor 2, as in Mimica et al.                seen in the radio band is inconsistent with the decelera2015). Including the uncertainties in these two aspects               tion of a blast wave in the Sedov regime, and hence the
+(especially lower ǫB ) may make their constraints even                relativistic off-axis jet scenario with Ej ∼ 1052 –1053 erg
+weaker.                                                               is ruled out for ASASSN-14li.
+   The most constraining case is ASASSN-14li (luminos-                   We conclude that the jet scenario, where most of the
+ity distance DL ≈ 90 Mpc) where the radio luminosity is               energy released from the TDE accretion flow is in the
+many orders of magnitude lower and decays rapidly since               form of narrowly beamed relativistic jets, is ruled out for
+the first detection (at ∼1 month after the optical peak;              ASASSN-14li, but it is still a viable solution to the envan Velzen et al. 2016a). In the following, we show that              ergy efficiency puzzle for the other thermal TDEs. This
+a powerful jet with energy Ej ∼ 1052 –1053 erg is incon-              is mostly because single-epoch upper limits are by far
+sistent with multi-wavelength observations from 1.45 to               less constraining than multi-wavelength and multi-epoch
+24.5 GHz at late time t & 150 d (Alexander et al. 2016).              detections.
+   At sufficiently late times, the shock front expands in
+a nearly spherical manner at non-relativistic speed βc                                    6. DISCUSSION
+and radius r ≃ βct from the BH. We assume the CNM                        In previous sections, we have shown that 90%–99%
+density profile n(r) to be sufficiently smooth (e.g. a                of the energy released from the accretion flow is not
+power-law function), so the total number of protons (or               detected for the majority of TDEs. In the following, we
+electrons) in the shocked region is                                   briefly discuss the implications of the missing energy on
+                                                                      the physics of circularization and accretion in TDEs.
+                          Ej          4π                                 We argue that, at least for some TDEs, the missing
+              Ntot ≃                ≃    (βct)3 n,            (21)
+                       mp β 2 c2 /2    3                              energy (in the EUV and/or in the form of relativistic
+                                                                      jets) may be released within a few times the orbital
+which gives n ≃ (54 cm−3 ) Ej,52 β −5 (t/150 d)−3 at radius           period of the most bound material Pmin (see eq. 3).
+r. The magnetic field strength in the shocked region is               This is based on the following two aspects of observa1/2
+                                                                      tions. (i) The X-ray emission from jetted TDEs Swift
+ B ≃ (16πǫB nmp β 2 c2 )1/2 ≃ (2.7 × 10−3 G) n1/2 βǫB,−4 .            J1644+57 (Bloom et al. 2011; Burrows et al. 2011) and
+                                                      (22)            Swift J2058+05 (Cenko et al. 2012) show a plateau lastThe spectral peak is at the synchrotron self-absorption               ing for two weeks and then a power-law decay roughly
+frequency νa , at which the flux density Fνa is given by              as LX ∝ t−5/3 , roughly tracking the fall-back rate. (ii)
+                                                                      From the reverberation geometry, one can see that the
+                               2νa2                                   rise or decay time of the dust mid-infrared emission pro4πDL2 Fνa ≃          γa me c2 4π 2 r2 ,        (23)
+                                c2                                    vides an upper limit for the duration of the EUV emission. The first and second mid-infrared detections of
+where γa = (4πme cνa /3eB)1/2 is the electron Lorentz                 ASASSN-14li was 35 and 200 rest-frame days (respecfactor corresponding to synchrotron frequency νa . We                 tively) after discovery or the optical peak (Jiang et al.
+combine eqs. (21), (22) and (23), and obtain                          2016), with flux dropping by a factor of 5 between these
+                                                                      two epochs. We can see that the duration of the EUV
+                         11                  11   −1 −1
+   Fνa ≃ (125 mJy) β 4 νa,9
+                            (t/150 d) 4 Ej,524 ǫB,−4
+                                                     .        (24)    emission must be .100 d (the most conservative case is
+                                                                      that the mid-infrared flux rose in first 100 d and then
+Therefore, in the off-axis jet scenario, the shock expan-             immediately dropped in the second 100 d).
+sion speed can be calculated from the three measurables                  For many other TDEs, the timescale over which the
+νa , Fνa , t by                                                       missing energy is released is unconstrained and hence
+                                                                      the EUV or jet luminosity is uncertain. For instance,
+                          4   − 11                   1   1
+ β ≃ 0.17 (Fνa /mJy) 11 νa,910 (t/150 d)−1 Ej,52
+                                                 ǫB,−4
+                                                       . (25)         the constraints on the EUV duration from PTF09ge and
+                                                                      PTF09axc (van Velzen et al. 2016b) are rather weak,
+                                                                      because the mid-infrared observations were made much
+   7 Similar upper limits have been reported by Bower et al. (2013)
+                                                                      later. PTF09ge had the first and second detections at
+for a sample of X-ray-selected TDE candidates.                        200 and 360 rest-frame days after the optical peak, with
+
+
+10                                                   W. Lu & P. Kumar
+
+roughly equal fluxes between the two epochs. Then             tion observations, although the quality of currently exin the most conservative scenario, the duration of the        isting data is relatively low in terms of time and waveEUV emission may be up to 280 d, which is a weak              length coverages. Future dust reverberation mapping
+constraint. We also note that the X-ray emission (as-         will not only provide a measurement of the total EUV
+sociated with the accretion process) from ASASSN-14li         luminosity from the TDE but also constrain the comhad decay time of ∼30 d (Miller et al. 2015), while the       position and spatial distribution of dust particles near
+X-ray emission from ASASSN-15oi steadily rises from           non-active galactic nuclei.
+LX ∼ 5 × 1041 erg s−1 to 5 × 1042 erg s−1 over one year          The jet scenario is disfavored by a number of indirect
+after discovery (Gezari et al. 2017; Holoien et al. 2018).    (and weak) arguments. The strongest constraint is from
+The X-ray lightcurve from ASASSN-15lh is also qualita-        ASASSN-14li, where relativistic off-axis jets with Ej ∼
+tively similar as -15oi (Margutti et al. 2017). Since only    1052 –1053 erg have been ruled out by multi-wavelength
+a small fraction of the total energy released is in the       radio observations. It is currently unclear whether the
+X-ray band (LX ≪ LEdd), the diverse X-ray lightcurves         radio emission from ASASSN-14li is representative of all
+could be due to variable efficiency of high-energy emis-      the other thermal TDEs, so the jet scenario still remains
+sion and hence do not provide strong constraints on the       a viable solution to the energy efficiency puzzle for some
+circularization or disk-formation timescale.                  TDEs. Future wide field-of-view X-ray transient surveys
+                                                              may directly probe the rate of jetted TDEs and provide
+                     7. SUMMARY                               better constraints on this scenario.
+   For TDE candidates found by recent surveys, the ob-           We also provide evidences that, at least for some
+served radiation energy in the optical/near-UV bands          TDEs, most of the missing energy (in the EUV and/or in
+is only ∼1051 erg, which is much smaller than the total       the form of jets) is released within a few times the orbital
+amount of energy generated ∼1052 –1053 erg if roughly         period of the most tightly bound material Pmin , which
+half of the star’s mass is accreted onto the BH. In this      means (1) the circularization of the fall-back stream may
+paper, we show that this energy discrepancy cannot be         occur rapidly, and (2) the luminosity of the accretion
+explained by the radiatively inefficient accretion flow       flow or the jet power may not be capped near the Edmodel at super-Eddington accretion rate. We calculated        dington level when the fall-back rate is super-Eddington.
+the minimum bolometric energy output from a TDE,              For most other TDEs, this energy-release timescale is
+based on the assumption that the minimum radiative            currently not strongly constrained. In the future, more
+luminosity from the accretion flow is min(LEdd , η Ṁ c2 ),   realistic numerical simulations are needed to understand
+where η is the radiative efficiency of a standard thin disk   the detailed circularization and accretion processes.
+and Ṁ is the mass-feeding rate to the accretion flow.
+The minimum bolometric energy from our calculation is                       8. ACKNOWLEDGMENTS
+higher than the observed energy in the optical/near-UV          We thank Sjoert van Velzen and James Guillochon
+bands by a factor of 10–100. Therefore, we argue that         for reading the manuscript and providing valuable comthe missing energy may be in the unobserved EUV band          ments. The comments from an anonymous referee have
+and/or in the form of relativistic jets.                      improved the clarity of the paper. We also thank Tom
+   The EUV scenario is supported by the observations          Holoien, Julian Krolik, Scott Tremaine, Jeremy Goodthat the optical/near-UV spectrum of TDEs is close            man, and Brian Metzger for useful discussions. W.L.
+to the Rayleigh-Jeans law and that the luminosity in          was supported by the David Alan Benfield Memorial
+the X-ray band is at most comparable to that in the           Fellowship at the University of Texas at Austin, and the
+optical/near-UV (for thermal TDEs). This scenario is          David and Ellen Lee Fellowship at California Institute
+also supported by existing mid-infrared dust reverbera-       of Technology.
+
+                                                       REFERENCES
+Abramowicz, M. A., & Fragile, P. C. 2013, Living Reviews      Blaes, O., Krolik, J. H., Hirose, S., & Shabaltas, N. 2011,
+ in Relativity, 16, 1                                           ApJ, 733, 110
+Alexander, K. D., Berger, E., Guillochon, J., Zauderer,       Blanchard, P. K., Nicholl, M., Berger, E., et al. 2017, ApJ,
+  B. A., & Williams, P. K. G. 2016, ApJL, 819, L25              843, 106
+Arcavi, I., Gal-Yam, A., Sullivan, M., et al. 2014, ApJ,      Blandford, R. D., & Begelman, M. C. 1999, MNRAS, 303,
+  793, 38                                                       L1
+Auchettl, K., Guillochon, J., & Ramirez-Ruiz, E. 2017,        Blandford, R. D., & Begelman, M. C. 2004, MNRAS, 349,
+ ApJ, 838, 149                                                  68
+Begelman, M. C. 1979, MNRAS, 187, 237                         Bloom, J. S., Giannios, D., Metzger, B. D., et al. 2011,
+Begelman, M. C. 2012, MNRAS, 420, 2912                          Science, 333, 203
+
+
+                                        The Missing Energy Puzzle of TDEs                                                11
+
+Böker, T. 2010, Star Clusters: Basic Galactic Building          Hayasaki, K., Stone, N., & Loeb, A. 2016, MNRAS, 461,
+  Blocks Throughout Time and Space, 266, 58                        3760
+Bonnerot, C., Rossi, E. M., Lodato, G., & Price, D. J. 2016,     Holoien, T. W.-S., Prieto, J. L., Bersier, D., et al. 2014,
+  MNRAS, 455, 2253                                                 MNRAS, 445, 3263
+Bower, G. C., Metzger, B. D., Cenko, S. B., Silverman,           Holoien, T. W.-S., Kochanek, C. S., Prieto, J. L., et al.
+  J. M., & Bloom, J. S. 2013, ApJ, 763, 84                         2016, MNRAS, 455, 2918
+Brown, G. C., Levan, A. J., Stanway, E. R., et al. 2015,         Holoien, T. W.-S., Kochanek, C. S., Prieto, J. L., et al.
+  MNRAS, 452, 4297                                                 2016, MNRAS, 463, 3813
+Burrows, D. N., Kennea, J. A., Ghisellini, G., et al. 2011,      Holoien, T. W.-S., Brown, J. S., Auchettl, K., et al. 2018,
+  Nature, 476, 421                                                 arXiv:1804.00006
+Cannizzo, J. K., Lee, H. M., & Goodman, J. 1990, ApJ,            Hung, T., Gezari, S., Blagorodnova, N., et al. 2017, ApJ,
+  351, 38                                                          842, 29
+Cenko, S. B., Krimm, H. A., Horesh, A., et al. 2012, ApJ,        Hung, T., Gezari, S., Cenko, S. B., et al. 2017,
+  753, 77                                                          arXiv:1712.04936
+Cheng, R. M., & Bogdanović, T. 2014, Phys. Rev. D, 90,          Jiang, Y.-F., Stone, J. M., & Davis, S. W. 2014, ApJ, 796,
+  064020                                                           106
+Chornock, R., Berger, E., Gezari, S., et al. 2014, ApJ, 780,     Jiang, Y.-F., Guillochon, J., & Loeb, A. 2016, ApJ, 830,
+  44                                                               125
+Coughlin, E. R., & Begelman, M. C. 2014, ApJ, 781, 82            Jiang, N., Dou, L., Wang, T., et al. 2016, ApJL, 828, L14
+Coughlin, E. R., & Nixon, C. 2015, ApJL, 808, L11                Kochanek, C. S. 1994, ApJ, 422, 508
+Coughlin, E. R., Nixon, C., Begelman, M. C., Armitage,           Komossa, S., & Bade, N. 1999, A&A, 343, 775
+  P. J., & Price, D. J. 2016, MNRAS, 455, 3612                   Komossa, S. 2015, Journal of High Energy Astrophysics, 7,
+Dai, L., McKinney, J. C., & Miller, M. C. 2015, ApJL, 812,
+  L39                                                            Krolik, J. H., & Piran, T. 2012, ApJ, 749, 92
+                                                                 Krolik, J., Piran, T., Svirski, G., & Cheng, R. M. 2016,
+Dong, S., Shappee, B. J., Prieto, J. L., et al. 2016, Science,
+                                                                   ApJ, 827, 127
+  351, 257
+                                                                 Kumar, P., & Granot, J. 2003, ApJ, 591, 1075
+Donley, J. L., Brandt, W. N., Eracleous, M., & Boller, T.
+                                                                 Leloudas, G., Fraser, M., Stone, N. C., et al. 2016, Nature
+  2002, AJ, 124, 1308
+                                                                   Astronomy, 1, 0002
+Dou, L., Wang, T., Yan, L., et al. 2017, ApJL, 841, L8
+                                                                 Lodato, G., King, A. R., & Pringle, J. E. 2009, MNRAS,
+Draine, B. T., & Lee, H. M. 1984, ApJ, 285, 89
+                                                                   392, 332
+Eftekhari, T., Berger, E., Zauderer, B. A., Margutti, R., &
+                                                                 Loeb, A., & Ulmer, A. 1997, ApJ, 489, 573
+  Alexander, K. D. 2017, arXiv:1710.07289
+                                                                 Lu, W., Kumar, P., & Evans, N. J. 2016, MNRAS, 458, 575
+Esquej, P., Saxton, R. D., Komossa, S., et al. 2008, A&A,
+                                                                 Magorrian, J., & Tremaine, S. 1999, MNRAS, 309, 447
+  489, 543
+                                                                 Margutti, R., Metzger, B. D., Chornock, R., et al. 2017,
+Evans, C. R., & Kochanek, C. S. 1989, ApJL, 346, L13
+                                                                   ApJ, 836, 25
+Generozov, A., Mimica, P., Metzger, B. D., et al. 2017,
+                                                                 McKinney, J. C., Tchekhovskoy, A., Sadowski, A., &
+  MNRAS, 464, 2481
+                                                                   Narayan, R. 2014, MNRAS, 441, 3177
+Gezari, S., Martin, D. C., Milliard, B., et al. 2006, ApJL,      McKinney, J. C., Dai, L., & Avara, M. J. 2015, MNRAS,
+  653, L25                                                         454, L6
+Gezari, S., Basa, S., Martin, D. C., et al. 2008, ApJ, 676,      Mainetti, D., Lupi, A., Campana, S., et al. 2017, A&A,
+  944-969                                                          600, A124
+Gezari, S., Heckman, T., Cenko, S. B., et al. 2009, ApJ,         Metzger, B. D., Margalit, B., Kasen, D., & Quataert, E.
+  698, 1367                                                        2015, MNRAS, 454, 3311
+Gezari, S., Chornock, R., Rest, A., et al. 2012, Nature,         Metzger, B. D., & Stone, N. C. 2016, MNRAS, 461, 948
+  485, 217                                                       Metzger, B. D., & Stone, N. C. 2017, ApJ, 844, 75
+Gezari, S., Cenko, S. B., & Arcavi, I. 2017, ApJL, 851, L47      Miller, J. M., Kaastra, J. S., Miller, M. C., et al. 2015,
+Ghisellini, G., Tavecchio, F., Maraschi, L., Celotti, A., &        Nature, 526, 542
+  Sbarrato, T. 2014, Nature, 515, 376                            Mimica, P., Giannios, D., Metzger, B. D., & Aloy, M. A.
+Giannios, D., & Metzger, B. D. 2011, MNRAS, 416, 2102              2015, MNRAS, 450, 2824
+Guhathakurta, P., & Draine, B. T. 1989, ApJ, 345, 230            Narayan, R., & Yi, I. 1994, ApJL, 428, L13
+Guillochon, J., & Ramirez-Ruiz, E. 2013, ApJ, 767, 25            Narayan, R., Igumenshchev, I. V., & Abramowicz, M. A.
+Guillochon, J., & Ramirez-Ruiz, E. 2015, ApJ, 809, 166             2003, PASJ, 55, L69
+Guillochon, J., & McCourt, M. 2017, ApJL, 834, L19               Ohsuga, K., & Mineshige, S. 2011, ApJ, 736, 2
+
+
+12                                                  W. Lu & P. Kumar
+
+Pasham, D. R., Cenko, S. B., Levan, A. J., et al. 2015,      Strubbe, L. E., & Quataert, E. 2009, MNRAS, 400, 2070
+   ApJ, 805, 68                                              Svirski, G., Piran, T., & Krolik, J. 2017, MNRAS, 467,
+Peterson, B. M. 1993, PASP, 105, 247                           1426
+Piran, T., Svirski, G., Krolik, J., Cheng, R. M., &          Tejeda, E., Gafton, E., Rosswog, S., & Miller, J. C. 2017,
+   Shiokawa, H. 2015, ApJ, 806, 164                            MNRAS, 469, 4483
+Piran, T., Sa̧dowski, A., & Tchekhovskoy, A. 2015,           Ulmer, A. 1999, ApJ, 514, 180
+   MNRAS, 453, 157                                           van Velzen, S., Farrar, G. R., Gezari, S., et al. 2011, ApJ,
+Phinney, E. S. 1989, The Center of the Galaxy, 136, 543        741, 73
+Poutanen, J., Lipunova, G., Fabrika, S., Butkevich, A. G.,   van Velzen, S., Frail, D. A., Körding, E., & Falcke, H. 2013,
+   & Abolmasov, P. 2007, MNRAS, 377, 1187                      A&A, 552, A5
+Rees, M. J. 1988, Nature, 333, 523                           van Velzen, S., & Farrar, G. R. 2014, ApJ, 792, 53
+Rosswog, S., Ramirez-Ruiz, E., & Hix, W. R. 2009, ApJ,
+                                                             van Velzen, S., Anderson, G. E., Stone, N. C., et al. 2016,
+   695, 404
+                                                               Science, 351, 62
+Roth, N., Kasen, D., Guillochon, J., & Ramirez-Ruiz, E.
+                                                             van Velzen, S., Mendez, A. J., Krolik, J. H., & Gorjian, V.
+   2016, ApJ, 827, 3
+                                                               2016, ApJ, 829, 19
+Sari, R., Piran, T., & Narayan, R. 1998, ApJL, 497, L17
+                                                             van Velzen, S. 2018, ApJ, 852, 72
+Sa̧dowski, A., & Narayan, R. 2016, MNRAS, 456, 3929
+                                                             Vinkó, J., Yuan, F., Quimby, R. M., et al. 2015, ApJ, 798,
+Sa̧dowski, A., Tejeda, E., Gafton, E., Rosswog, S., &
+   Abarca, D. 2016, MNRAS, 458, 4250
+Saxton, R. D., Read, A. M., Esquej, P., et al. 2012, A&A,    Wang, J., & Merritt, D. 2004, ApJ, 600, 149
+   541, A106                                                 Waxman, E., & Draine, B. T. 2000, ApJ, 537, 796
+Shakura, N. I., & Sunyaev, R. A. 1973, A&A, 24, 337          Wevers, T., van Velzen, S., Jonker, P. G., et al. 2017,
+Shen, R.-F., & Matzner, C. D. 2014, ApJ, 784, 87               MNRAS, 471, 1694
+Shiokawa, H., Krolik, J. H., Cheng, R. M., Piran, T., &      Wilson, A. S., & Colbert, E. J. M. 1995, ApJ, 438, 62
+   Noble, S. C. 2015, ApJ, 804, 85                           Zauderer, B. A., Berger, E., Soderberg, A. M., et al. 2011,
+Stone, N., Sari, R., & Loeb, A. 2013, MNRAS, 435, 1809         Nature, 476, 425
+Stone, N. C., & Metzger, B. D. 2016, MNRAS, 455, 859         Zubovas, K., Wynn, G. A., & Gualandris, A. 2013, ApJ,
+Stone, N. C., Kesden, M., Cheng, R. M., & van Velzen, S.       771, 118
+   2018, arXiv:1801.10180

@@ -1,0 +1,447 @@
+Political Science Research and Methods (2021), 9, 857–866
+                                                                                      doi:10.1017/psrm.2020.27
+
+
+                                                                                      RESEARCH NOTE
+
+
+                                                                                      Value extremity contributes to affective polarization in
+                                                                                      the US
+                                                                                      Adam M. Enders1 and Robert N. Lupton2*
+                                                                                       Department of Political Science, University of Louisville, Louisville, USA and 2Department of Political Science, University of
+                                                                                      Connecticut, Storrs, CT, USA
+                                                                                      *Corresponding author. Email: robert.lupton@uconn.edu
+
+                                                                                      (Received 10 February 2019; revised 15 February 2020; accepted 20 March 2020; first published online 22 June 2020)
+
+
+                                                                                          Abstract
+                                                                                          A wealth of research documents the rise of affective polarization, or the increasing disdain for the
+                                                                                          out-party in American politics. In this paper, we analyze ANES data from 1988 to 2016 to investigate
+                                                                                          the contribution of core value polarization to the phenomenon of out-party enmity. We find that greater
+                                                                                          differences in fundamental principles relate significantly to emotionally intense evaluations of the opposing party and its candidates, as well as the ideological out-group, independent of issue attitude extremity
+                                                                                          and the strength of one’s partisan and ideological identities. Moreover, ANES panel data from 1992 to
+                                                                                          1996 reveal that past value extremity promotes future affective polarization. These results are important
+                                                                                          for our understanding of the nature and extent of value-based polarization in American politics.
+
+                                                                                      Keywords: Affective polarization; core values; sorting
+
+
+                                                                                      A burgeoning literature informing the character and scope of political polarization investigates
+                                                                                      the phenomenon of affective polarization, or the growing contempt that partisans hold for the
+                                                                                      opposite party, its adherents and its candidates (Mason, 2015; Rogowski and Sutherland, 2016;
+                                                                                      Iyengar et al., 2019). In this paper, we explore core value polarization’s contribution to individuals’ differential emotional responses to political stimuli. Core political values shape citizens’
+                                                                                      ideological and partisan attachments (Jacoby, 2006; Evans and Neundorf, 2018) and are central
+                                                                                      to attitude formation (e.g., Feldman, 1988; Schwartz, 1992; Goren, 2012). Thus, we argue that
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      value extremity should generate affective polarization because an individual whose value orientation is farther from the average orientation of the opposite party—indicating a more starkly different worldview from that held by one’s political adversary—should hold more positive views of
+                                                                                      one’s own party and more negative views of the out-party than another citizen whose values are
+                                                                                      less extreme.
+                                                                                         We investigate our hypothesis using CPS American National Election Studies (ANES) data
+                                                                                      from 1988 to 2016, and we find evidence that value polarization contributes to affective polarization, independent of issue attitude extremity and partisan-ideological sorting. Moreover, the relationship between value extremity and differential emotional reactions to the major parties,
+                                                                                      ideological groups, and presidential candidates has strengthened in recent years as the elite
+                                                                                      party coalitions have increasingly diverged ideologically. Lastly, we investigate the direction of
+                                                                                      the causal relationship between value extremity and affective polarization using ANES panel
+                                                                                      data from 1992 to 1996. Cross-lagged panel models reveal that past value polarization induces
+                                                                                      future affective polarization, whereas polarized emotional responses to political stimuli do not
+                                                                                      engender later value changes. The results suggest that core values underlie an important element
+                                                                                      of citizens’ evaluation of the polarized American political landscape.
+
+                                                                                      © The European Political Science Association 2020.
+
+
+                                                                                      858       Adam M. Enders and Robert N. Lupton
+
+
+                                                                                      1. Theoretical framework
+                                                                                      Although crystallized policy positions and strong liberal-conservative commitments contribute to
+                                                                                      affective polarization (Rogowski and Sutherland, 2016; Bougher, 2017; Webster and Abramowitz,
+                                                                                      2017; Lelkes, 2019), evidence shows that individuals’ emotional hostility toward the out-party
+                                                                                      importantly can and does manifest in the absence of issue extremity or ideological consistency
+                                                                                      (Iyengar et al., 2012; Mason, 2015; Lelkes, 2018). This phenomenon occurs because citizens’
+                                                                                      evaluation of, and response to, the political world is rooted more in their attachments to partisan
+                                                                                      and ideological groups than in their attitudes toward the major issues of the day (Malka and
+                                                                                      Lelkes, 2010; Lupton et al., 2015b). Here, we consider whether the roots of affective polarization
+                                                                                      are deeper than these social identities (e.g., Iyengar et al., 2012; Mason 2015, 2016), or even ideology (e.g., Rogowski and Sutherland, 2016; Webster and Abramowitz, 2017; Orr and Huber, 2019).
+                                                                                      More specifically, we expect that the extremity of one’s broad postures toward equality and moral
+                                                                                      traditionalism—two guiding core values in American politics—are related to differential affective
+                                                                                      evaluations of political in- and out-groups.
+                                                                                          Empirical evidence from the United States and elsewhere demonstrates that citizens maintain
+                                                                                      ranked, transitive, and durable values preferences (Jacoby, 2006, 2014; Ciuk and Jacoby, 2015;
+                                                                                      Searing et al., 2019) that shape subsequent political attitudes and behavior (e.g., Evans and
+                                                                                      Neundorf, 2018; Lupton et al., 2020), even as they are not immutable (e.g., Lupton et al.,
+                                                                                      2015a, 2015b; Connors, 2019). Which values, though, are salient to American public opinion?
+                                                                                      A wealth of evidence shows that egalitarianism and moral traditionalism meaningfully influence
+                                                                                      citizens’ political attitudes and behavior (e.g., Jacoby 2006).1
+                                                                                          Given these values’ importance for understanding individuals’ political attachments and attitudes, we argue that they are theoretically relevant for understanding citizens’ reactions toward
+                                                                                      in- and out-party groups. We therefore hypothesize that fundamental beliefs about what is
+                                                                                      good and bad in the world—core values—should also relate closely to citizens’ emotional reactions to political stimuli. Moreover, this relationship should have strengthened over time amid
+                                                                                      an atmosphere of increasing and unabated elite polarization, which has produced higher levels
+                                                                                      of affective polarization among the electorate (Mason, 2015).
+                                                                                          Specifically, we argue that extreme preferences for egalitarianism and moral traditionalism will
+                                                                                      produce more positive evaluations of one’s own party, ideological group, and presidential candidates, and more negative evaluations of each of these out-groups. We further hypothesize that the
+                                                                                      relationship between value polarization and affective polarization has strengthened over the last
+                                                                                      three decades against the backdrop of elite polarization. Namely, we anticipate that the major parhttps://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      ties’ and candidates’ ideological divergence will have led citizens to connect their core principles
+                                                                                      more strongly to their affective evaluations of politically salient individuals and groups.
+
+
+                                                                                      2. Data and method
+                                                                                      We begin our investigation of the relationship between value extremity and affective polarization
+                                                                                      using pooled ANES surveys for the years 1988–2016, a span representing every presidential election year in which the egalitarianism and moral traditionalism batteries needed to test our
+                                                                                      hypotheses have been featured on the ANES. This timeframe is fortuitous because it coincides
+                                                                                      with a period of heightened elite conflict (e.g., Hare and Poole 2014), allowing us to interrogate
+                                                                                      our argument that the relationship between value extremity and affective polarization has
+                                                                                      increased concomitantly with elite polarization. We also employ ANES panel data from 1992
+                                                                                      to 1996 in order to examine the nature of the causal relationship between value extremity and
+                                                                                      affective polarization. These panel data usefully feature measures of key variables identical to
+                                                                                          We provide a lengthier rationale for incorporating these two specific core values into our study, including citations to
+                                                                                      extant research documenting their special relevance to American public opinion and voting behavior, in the
+                                                                                      Supplemental online appendix.
+
+
+                                                                                                                                                           Political Science Research and Methods                859
+
+
+                                                                                      those in the aforementioned cross-sectional ANES data, permitting different empirical tests of the
+                                                                                      same hypothesized relationships.
+                                                                                          The key independent variable in this analysis is value polarization, which is measured by first
+                                                                                      constructing a core value orientations scale for all individuals across time, following recent work
+                                                                                      by Lupton et al. (2020). This value orientations scale is a reliable (α = 0.71) additive index comprised of eight items capturing individuals’ relative preferences for egalitarianism and moral traditionalism. Although many treat egalitarianism and moral traditionalism separately, recent work
+                                                                                      by Jacoby (2014) finds that these values lie at opposite ends of a continuum. Republicans and
+                                                                                      conservatives cherish moral traditionalism and devalue equality, whereas the opposite is true
+                                                                                      for Democrats and liberals. Our own item analysis supports our operationalization of value orientations using a unidimensional scale.2
+                                                                                          After creating the value orientations scale, we construct the value polarization variable by calculating the absolute difference between each respondent’s value orientations score and the mean
+                                                                                      value orientations score for members of the opposite party. In other words, if a respondent identifies as a Democrat, then his or her degree of value polarization will be calculated as the absolute
+                                                                                      value of his or her value orientations scale score minus the average Republican value orientations
+                                                                                      scale score. The larger the numerical value of the value polarization variable, the greater the difference between one’s own value profile and the average value orientation of out-party members.
+                                                                                          Our three dependent variables are standard measures of affective polarization capturing citizens’ reactions to the major parties, ideological groups, and presidential candidates, as measured
+                                                                                      by 101-point feeling thermometers. Following a wealth of previous scholarship (e.g., Iyengar
+                                                                                      et al., 2012; Mason, 2015; Druckman and Levendusky, 2019), we subtract individual thermometer
+                                                                                      scores for counter-partisan (parties and presidential candidates) and counter-ideological stimuli
+                                                                                      from each other to obtain an estimate of differential emotional reactions to those groups or
+                                                                                      individuals.
+
+
+                                                                                      3. Cross-sectional data evidence
+                                                                                      We begin our investigation of the relationship between core value orientations and affective polarization by specifying three ordinary least squares regression models in which we regress each measure of affective polarization on our measure of value polarization, plus measures of issue extremity,
+                                                                                      partisan sorting, political interest, and a host of demographic control variables.3 Issue extremity is a
+                                                                                      critical variable to incorporate into our models because we argue that core value extremity relates to
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      affective polarization independent of individuals’ policy attitudes.4 That is, we anticipate that possessing extreme issue attitudes will relate to disdain for the out-party, but we do not expect that such
+                                                                                      attitudes are necessary for individuals to connect their core value preferences to their emotional judgements of political stimuli. We construct the issue extremity variable by calculating the average
+                                                                                      absolute difference between individuals’ issue attitudes and the most moderate possible position
+                                                                                      across five political issues: defense spending, government spending and services, aid to minorities,
+                                                                                      health insurance and government-guaranteed jobs, and standard of living.5
+                                                                                          We first observe that, consistent with previous evidence, issue extremity’s relationship to all
+                                                                                      three measures of affective polarization is statistically significant (Webster and Abramowitz,
+                                                                                          The full question wording for the ANES values batteries, as well as our item analysis of each values question, is located in
+                                                                                      the Supplemental online appendix.
+                                                                                          We operationalize sorting following Mason (2015).
+                                                                                          One could argue that issue extremity and sorting are themselves the product of value polarization. In order to alleviate
+                                                                                      this potential concern, we specified models replicating those shown in Table 1 but that omit these independent variables. We
+                                                                                      find no substantive differences except a larger effect of value polarization in some instances. These alternative model specifications are located in the Supplemental online appendix.
+                                                                                          We also include year fixed effects, and we control for a variety of demographic factors likely to relate to affective polarization. The full question wording and coding for all variables is located in the Supplemental online appendix.
+
+
+                                                                                      860        Adam M. Enders and Robert N. Lupton
+
+                                                                                      Table 1. Predicting affective polarization, 1988–2016 ANES
+
+                                                                                      The relationship between value polarization and affective polarization
+                                                                                      Variable                                        Parties                           Ideological groups              Candidates
+
+                                                                                      Issue extremity                             0.101* (0.014)                           0.124* (0.012)              0.121* (0.014)
+                                                                                      Sorting                                     0.342* (0.014)                           0.410* (0.012)              0.237* (0.014)
+                                                                                      Value polarization                          0.133* (0.016)                           0.228* (0.014)              0.193* (0.017)
+                                                                                      Political interest                          0.144* (0.017)                           0.070* (0.015)              0.215* (0.017)
+                                                                                      Education                                  −0.058* (0.014)                           0.058* (0.012)             −0.036* (0.014)
+                                                                                      Age                                         0.077* (0.016)                           0.056* (0.014)              0.076* (0.017)
+                                                                                      Income                                     −0.031* (0.009)                           0.023* (0.011)              −0.012 (0.013)
+                                                                                      Church attendance                          −0.031* (0.009)                           0.016* (0.008)             −0.039* (0.009)
+                                                                                      Black                                       0.128* (0.009)                          −0.072* (0.008)              0.092* (0.010)
+                                                                                      Hispanic                                    0.062* (0.010)                          −0.028* (0.009)              0.042* (0.010)
+                                                                                      Female                                      0.036* (0.006)                          −0.018* (0.006)               0.041 (0.007)
+                                                                                      South                                       −0.003 (0.007)                           0.016* (0.006)              −0.010 (0.007)
+                                                                                      Year fixed effects                               ✓                                        ✓                           ✓
+                                                                                      Constant                                    0.069* (0.020)                          −0.080* (0.018)               0.034 (0.021)
+                                                                                      R2                                            0.245                                    0.347                       0.262
+                                                                                      N                                              6231                                     6144                        6239
+
+                                                                                      Cell entries are unstandardized OLS coefficients (standard errors). *p < 0.05; two-tailed tests.
+
+
+                                                                                      2017). Additionally, more thoroughly sorted individuals are biased favorably toward their own
+                                                                                      party, ideological group, and presidential candidates, and biased negatively toward the out-party,
+                                                                                      as well as associated stimuli (e.g., Mason 2015).
+                                                                                          Our primary interest involves the relationship between core values extremity and affective
+                                                                                      polarization. We observe in Table 1 a statistically significant association between core value polarization and polarized emotional responses to the major parties, their affiliated ideological groups,
+                                                                                      and their presidential candidates, supporting our key hypothesis regarding fundamental principles’ contribution to citizens’ feelings toward prominent political stimuli. Moreover, as all independent variables have been recoded to range from 0 to 1, we can compare the magnitude of the
+                                                                                      relationship between each covariate and affective polarization measure. As expected, sorting exhibits the strongest connection to each outcome measure, but the link between value polarization
+                                                                                      outstrips even that of issue extremity across all three models. We argue that these findings testify
+                                                                                      to the overlooked relevance of core values to Americans’ heightened emotional reactions to parties, ideological groups, and candidates.
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                          We can further explore whether the observed relationships strengthen over time against a
+                                                                                      backdrop of increasing elite polarization. In order to do so, we specify conditional regression
+                                                                                      models in which we interact our value polarization measure with time, which we operationalize
+                                                                                      as election year. Since interpreting multiplicative interaction term coefficients is sometimes difficult, we underscore our key independent variable’s substantive influence by depicting the interactive relationships visually. Figure 1 below plots the estimated marginal effect of core value
+                                                                                      polarization on each of our three measures of affective polarization over time, where the dashed
+                                                                                      lines represent 95 percent confidence intervals. The plots underscore our expectation regarding
+                                                                                      values’ role in the age of polarization: The relationship between citizens’ core value extremity
+                                                                                      and biased emotional reactions to the major political parties, ideological groups, and presidential
+                                                                                      candidates has strengthened dramatically throughout this period.6 More specifically, the marginal
+                                                                                      effect of value extremity more than doubled between 1988 and 2016 for candidate- and ideological group-based operationalizations of affective polarization, and more than quadrupled for
+                                                                                          Table A1 in the Supplemental online appendix shows the full results of models used to calculate and plot the marginal
+                                                                                      effects presented in Figure 1. Note that the multiplicative interaction term involving value polarization and time in each of the
+                                                                                      three models is statistically significant (p < 0.05).
+
+
+                                                                                                                                                          Political Science Research and Methods               861
+
+
+                                                                                      Figure 1. Marginal effect of value polarization on three affective polarization measures, 1988–2016 ANES.
+
+
+                                                                                      the party-based measure.7 Finally, we note that the estimated marginal effect of value polarization
+                                                                                      in 2016 across all operationalizations of affective polarization is at least as large as, and in several
+                                                                                      instances considerably larger than, that of issue extremity, political interest, and all sociodemographic characteristics.
+                                                                                         We conclude that individuals’ orientations toward the fundamental principles of equality and
+                                                                                      moral traditionalism influence their emotional responses to the major parties, ideological groups,
+                                                                                      and candidates. Individuals whose value orientations are further from the average value orientation of the opposite party are more likely than others to respond more emotionally in favor of
+                                                                                      their own parties, ideological groups, and candidates, and to exhibit biased evaluations of the outgroup. These relationships have increased over time as elite party conflict has intensified.
+
+
+                                                                                      4. Panel data evidence
+                                                                                      Although the evidence presented in the previous section documents the relationship between
+                                                                                      individuals’ core value extremity and affective polarization, as well as these variables’ increasingly
+                                                                                      close connection over time, cross-sectional observational data are incapable of testing the causal
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      relationship between these two phenomena. One could investigate these variables’ causal ordering
+                                                                                      experimentally, but manipulating core value polarization likely cannot be accomplished straightforwardly. Indeed, if values behave as social scientific theories and empirical evidence suggest—as
+                                                                                      foundational and stable (Searing et al., 2019)—then they should not, for example, be easily
+                                                                                      manipulable via a survey experiment. Instead, we turn to panel data in order to gain some insight
+                                                                                      into which orientation most likely causes the other. Although panel data frequently suffer from
+                                                                                      their own limitations (e.g., high attrition rates), they are nonetheless an attractive data analytic
+                                                                                      option when the variables of interest are less amenable to experimental manipulation.
+                                                                                         Fortunately, the 1992–1996 ANES panel data contain the relevant variables for constructing
+                                                                                      measures of both value and affective polarization, and therefore testing causality.8 We specify
+                                                                                      three cross-lagged panel models predicting value polarization and each affective polarization
+                                                                                      measure using the 1996 data. More specifically, each of three models includes two equations:
+                                                                                          We also note that the bottom error band for the 2016 marginal effect never overlaps with the top band for the 1988 effect,
+                                                                                      despite the quantities appearing similar in the first panel.
+                                                                                          We note that although many respondents also participated in a 1994 wave of the same panel study, the values items
+                                                                                      necessary for constructing the value polarization variable were not fielded on that survey. Furthermore, neither more recent
+                                                                                      ANES panel studies, nor other fruitful public opinion panel studies, contain measures of both value orientations and affective
+                                                                                      polarization.
+
+
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+                                                                                                                                                                                                        Adam M. Enders and Robert N. Lupton
+           Table 2. Panel models predicting value polarization and affective polarization, 1992–1996 ANES
+
+           Testing for the reciprocal influence of value polarization and affective polarization
+                                                                                                                Second wave (dependent) variables
+                                                                                     Model 1                                     Model 2                                     Model 3
+           First wave (independent) variables                        Value pol.                     Party        Value pol.                  Ideology        Value pol.                 Candidates
+
+           Value polarization92                                    0.184* (0.048)              0.118* (0.044)   0.197* (0.047)             0.086* (0.043)   0.193* (0.047)              0.050 (0.046)
+           Party thermometer differences92                          0.063 (0.044)              0.332* (0.038)         –                          –                –                          –
+           Ideological group therm. diff.92                              –                           –           0.078 (0.048)             0.472* (0.040)         –                          –
+           Candidate thermometer differences92                           –                           –                –                         —            0.030 (0.043)             0.289* (0.040)
+           Sorting92                                               0.134* (0.053)              0.133* (0.048)   0.111* (0.056)              0.069 (0.048)   0.140* (0.052)             0.123* (0.052)
+           Issue extremity92                                        0.004 (0.041)              0.088* (0.038)    0.007 (0.049)              0.017 (0.038)    0.012 (0.040)             0.090* (0.039)
+           Coefficient of determination                              0.292                                        0.379                                       0.244
+           Number of observations                                      597                                          597                                         597
+
+           Cell entries are unstandardized OLS coefficients (standard errors). *p < 0.05; two-tailed tests.
+
+
+                                                                                                                                                          Political Science Research and Methods                863
+
+
+                                                                                      one in which 1996 value polarization serves as the dependent variable, and one in which one of
+                                                                                      our three measures of 1996 affective polarization serves as the dependent variable. Both equations
+                                                                                      are estimated simultaneously, via maximum likelihood with missing values, in each of the three
+                                                                                      models. Independent variables in each model include value polarization and the associated measure of affective polarization in 1992, along with the 1992 measurements of the controls employed
+                                                                                      in previous models.
+                                                                                          This modeling strategy allows us to examine the causal effects of value polarization and
+                                                                                      affective polarization on each other, while controlling for previous values of those variables
+                                                                                      (for recent examples of related work assessing causal relationships using similar modeling
+                                                                                      strategies, see Evans and Neundorf (2018) and Lelkes (2018)). Of course, we expect that
+                                                                                      1992 value polarization predicts 1996 value and affective polarization. However, 1992 affective
+                                                                                      polarization should not predict 1996 value polarization if our theory is supported. These dual
+                                                                                      findings would be consistent with our theory that value polarization drives affective polarization more so than the reverse.
+                                                                                          The empirical results, presented below in Table 2, confirm nearly all of our expectations.9 We
+                                                                                      first observe that 1992 measurements of value and affective polarization predict 1996 measurements of the same variables in all three models. We also observe that in no instance does
+                                                                                      1992 affective polarization significantly predict 1996 value polarization. Finally, 1992 value polarization significantly predicts two of three operationalizations of 1996 affective polarization: party
+                                                                                      and ideological group affect. Value polarization in 1992 does not, however, predict polarized
+                                                                                      affective reactions to the major party presidential candidates in 1996.
+                                                                                          Although we expected 1992 measurements of value polarization to predict all 1996 value
+                                                                                      polarization measurements, the candidate thermometers surely provide the hardest test of
+                                                                                      our theory. Unlike major political parties and “liberal” and “conservative” ideological groups,
+                                                                                      presidential candidates are not constant. In our view, anticipating that value polarization
+                                                                                      would be sufficiently domineering to traverse the characteristics of particular candidates
+                                                                                      and promote strongly polarized emotional reactions to them is unreasonable. That said,
+                                                                                      both value polarization and affective polarization were lower in the early-mid 1990s than
+                                                                                      they are today. Perhaps a similar analysis of data from the past two presidential elections
+                                                                                      would reveal a predictive effect of previous measurements of value polarization on current
+                                                                                      measurements of candidate-based affective polarization, where the necessary data available
+                                                                                      for empirical scrutiny. Regardless of any possible explanation (or lack thereof) for this single
+                                                                                      unrealized expectation, the panel analyses provide support for our theory that value polarizahttps://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      tion tends to precede affective polarization.
+                                                                                          The empirical patterns that these analyses reveal also provide additional clues regarding the
+                                                                                      precise nature of the two types of polarization. That previous affective polarization does not
+                                                                                      explain future value polarization challenges recent work showing that those with the strongest
+                                                                                      and most divergent affective attachments to parties and ideological labels change their values,
+                                                                                      issue attitudes, and identities (e.g., Lelkes, 2018; Egan, 2019). Moreover, the effect of value polarization on affective polarization suggests a deep-seated base to affective polarization, consistent
+                                                                                      with scholarship demonstrating the ideological foundations of affective polarization (e.g.,
+                                                                                      Rogowski and Sutherland, 2016; Webster and Abramowitz, 2017).
+
+
+                                                                                      5. Conclusion
+                                                                                      We endeavored in this paper to understand more fully the underlying source of the observed
+                                                                                      affective polarization in American politics. Scholars have documented the normatively troubling
+                                                                                      trend of individuals displaying heightened animosity toward the out-party, a phenomenon that
+                                                                                         Control variables are omitted from Table 2 in the interest of space. We present the full cross-lagged panel model results in
+                                                                                      Table A5 of the Supplemental online appendix.
+
+
+                                                                                      864     Adam M. Enders and Robert N. Lupton
+
+
+                                                                                      leads to judgmental biases, anger, and even discrimination that has been shown to exceed racial
+                                                                                      hostility (Iyengar and Westwood, 2015). Previous work locates the source of these emotional
+                                                                                      responses in social identity theory, specifically the alignment of individuals’ ideological, partisan,
+                                                                                      and even racial and religious identities (Mason, 2015, 2016; Davis, 2018).
+                                                                                          We argued that “there is a there there” to citizens’ emotional responses to politics. As Evans
+                                                                                      and Neundorf write in theorizing about values’ role in shaping party attachments, “It seems
+                                                                                      unlikely that people randomly attach themselves to parties” (Evans and Neundorf, 2018, 1).
+                                                                                      We similarly argue that individuals’ antipathy toward the parties, ideological groups and candidates are rooted in worldview differences, or competition over the broad and enduring orientations that citizens bring to bear in their approach to the political world. In other words, we do not
+                                                                                      reduce out-party enmity entirely to partisan, often derisively called “tribal,” allegiances. Instead,
+                                                                                      we departed from this tradition to argue and demonstrate that citizens’ deeply help political principles are capable of producing the observed discord: Those “other” folks do not arouse negative
+                                                                                      emotion merely because they subscribe to a different party label, but also, and perhaps mostly,
+                                                                                      because they define the good life differently.
+                                                                                          Moreover, we demonstrated that as elite polarization has intensified over the past generation,
+                                                                                      so too has the relationship between value extremity and disdain for the out-party. Our results thus
+                                                                                      offer at least a partial explanation for why affective polarization has increased in recent years.
+                                                                                      Core values help individuals connect their partisan and ideological attachments (Lupton et al.,
+                                                                                      2020), and they similarly promote positive affection for in-groups and dislike for the out-groups
+                                                                                      when value preferences are extreme. Our evidence that value differences underlie affective polarization builds upon existing work showing that ideology—closely interwoven with values—is capable of producing emotional biases toward political out-groups (e.g., Rogowski and Sutherland,
+                                                                                      2016; Webster and Abramowitz, 2017). It also builds on recent experimental work showing
+                                                                                      that a hypothetical candidate’s ideological positioning affects citizens’ feeling thermometer ratings of the candidate far more than does the candidate’s party label (Lelkes, 2019). Our results
+                                                                                      provide further skepticism of claims that sorted social identities alone are the salient source of
+                                                                                      individuals’ affective responses and judgements. Instead, core values—the “glue” connecting disparate attitudes within relevant policy domains—are capable of producing observed affective evaluations of the major stimuli in the American political system.
+                                                                                          We also wish to acknowledge that our argument and analyses do not deny, much less disprove,
+                                                                                      that social identity sorting is relevant for understanding the strength of citizens’ partisan attachments or emotional responses to political actors and events. Our own panel evidence suggests that
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      sorted partisan and ideological identifications move value orientations, leading us to believe that
+                                                                                      larger, glacial political, social, and cultural movements likely undergird both the alignment of citizens’ self-understanding and their professed principles that they bring to bear in the realm of politics. Indeed, these findings provide additional caution to claims that values are immutable.
+                                                                                      Connors (2019), for example, provides extensive observational and experimental evidence that
+                                                                                      purported core values are at least partially socially constructed: Individuals subscribe to the values
+                                                                                      that they believe they should hold based upon social group membership. Although we find merit
+                                                                                      in the vast literature documenting values’ contemporaneous and temporal influence on partisanship, ideology, candidate evaluations, and issue attitudes, we do not consider our findings to be at
+                                                                                      odds with an account that citizens may have changed their values, or altered the strength of their
+                                                                                      value commitments, in response to the parties’ shifting platforms and reputations.
+                                                                                          The likely next step in this agenda, then, is to unpack more precisely the connection between
+                                                                                      core values, sorting, and issue extremity. This paper robustly evidences the relationship between
+                                                                                      value extremity and affective polarization, and subsequent research should investigate directly
+                                                                                      values’ potential contribution to the sorting of individuals’ social identities. Experiments are a
+                                                                                      potentially useful option. One possible experimental test would be to connect elite rhetoric
+                                                                                      and cues to the observed relationships between value extremity and citizens’ emotional reactions
+                                                                                      to the political world. For example, independent of sorted identities, does particular candidate
+
+
+                                                                                                                                                           Political Science Research and Methods                865
+
+
+                                                                                      rhetoric activate citizens to apply their core values to party, group, and candidate assessments?
+                                                                                      Perhaps scholars might even reveal—despite a mostly polarized landscape—additional communication strategies that appeal to common values and mitigate the concerning levels of out-party
+                                                                                      antagonism poisoning the contemporary American electorate (e.g., Levendusky, 2018). This task
+                                                                                      may be essential to repairing American democracy.
+                                                                                      Supplementary material. The supplementary material for this article can be found at https://doi.org/10.1017/psrm.2020.27
+
+                                                                                      Acknowledgments. We thank Michael S. Lewis-Beck for providing helpful discussant comments on a previous version of
+                                                                                      this paper that was presented on a panel in Chicago at the 2019 conference entitled “Measurement Meets Politics and Policy:
+                                                                                      Honoring the Scholarship and Mentorship of William G. Jacoby and Saundra K. Schneider.” Additionally, we thank Nathan
+                                                                                      Kalmoe for valuable suggestions for improving this project that he offered when an inchoate version of this paper was presented on a panel at the 2017 Southern Political Science Association annual meeting in New Orleans. We also thank David
+                                                                                      Ciuk, Christopher Hare, William G. Jacoby and Paul Sniderman for their valuable insights into the relationships we explored
+                                                                                      in this paper. Finally, we thank the Editor and three anonymous referees, all of whom helped strengthen this paper throughout the peer-review process.
+
+
+                                                                                      References
+                                                                                      Bougher LD (2017) The correlates of discord: identity, issue alignment, and political hostility in polarized America. Political
+                                                                                         Behavior 39, 731–762.
+                                                                                      Ciuk DJ and Jacoby WG (2015) Checking for systematic value preferences using the method of triads. Political Psychology
+                                                                                         36, 709–728.
+                                                                                      Connors EC (2019) The social dimension of political values. Political Behavior. https://link.springer.com/article/10.1007%
+                                                                                         2Fs11109-019-09530-3.
+                                                                                      Davis NT (2018) Religion and partisan-ideological sorting, 1982–2014. Social Science Quarterly 99, 1446–1466.
+                                                                                      Druckman JN and Levendusky MS (2019) What do we measure when we measure affective polarization? Public Opinion
+                                                                                         Quarterly 83, 114–122.
+                                                                                      Egan PJ (2019) Identity as dependent variable: how Americans shift their identities to align with their politics. American
+                                                                                         Journal of Political Science. https://doi.org/10.1111/ajps.12496.
+                                                                                      Evans GC and Neundorf A (2018) Core values and the long-term shaping of partisanship. British Journal of Political Science.
+                                                                                         https://doi.org/10.1017/S0007123418000339.
+                                                                                      Feldman S (1988) Structure and consistency in public opinion: the role of core beliefs and values. American Journal of
+                                                                                         Political Science 32, 416–440.
+                                                                                      Goren P (2012) On Voter Competence. New York, NY: Oxford University Press.
+                                                                                      Hare C and Poole KT (2014) The polarization of contemporary American politics. Polity 46, 411–429.
+                                                                                      Iyengar S and Westwood SJ (2015) Fear and loathing across party lines: new evidence on group polarization. American
+                                                                                         Journal of Political Science 59, 690–707.
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      Iyengar S, Sood G and Lelkes Y (2012) Affect, not ideology: a social identity perspective on polarization. Public Opinion
+                                                                                         Quarterly 76, 405–431.
+                                                                                      Iyengar S, Lelkes Y, Levendusky M, Malhotra N and Westwood SJ (2019) The origins and consequences of affective polarization. Annual Review of Political Science 22, 129–146.
+                                                                                      Jacoby WG (2006) Value choices and American public opinion. American Journal of Political Science 50, 706–723.
+                                                                                      Jacoby WG (2014) Is there a culture war? Conflicting value structures in American public opinion. American Political Science
+                                                                                         Review 108, 754–771.
+                                                                                      Lelkes Y (2018) Affective polarization and ideological sorting: a reciprocal, albeit weak, relationship. The Forum: A Journal of
+                                                                                         Applied Research in Contemporary Politics 16, 67–79.
+                                                                                      Lelkes Y (2019) Policy over party: comparing the effects of candidate ideology and party on affective polarization. Political
+                                                                                         Science Research and Methods. https://doi.org/10.1017/psrm.2019.18.
+                                                                                      Levendusky MS (2018) Americans, not partisans: can priming American identity reduce affective polarization? Journal of
+                                                                                         Politics 80: 59–70.
+                                                                                      Lupton RN, Singh SP and Thornton JR (2015a) The moderating impact of network heterogeneity on the relationships
+                                                                                         among core values, partisanship, and candidate evaluations. Political Psychology 36, 399–414.
+                                                                                      Lupton RN, Myers WM and Thornton JR (2015b) Political sophistication and the dimensionality of elite and mass attitudes,
+                                                                                         1980–2004. Journal of Politics 77, 368–380.
+                                                                                      Lupton RN, Smallpage SM and Enders AM (2020) Values and political predispositions in the age of polarization: examining
+                                                                                         the relationship between partisanship and ideology in the U.S., 1988–2012. British Journal of Political Science 50, 241–260.
+                                                                                      Malka A and Lelkes Y (2010) More than ideology: conservative-liberal identity and receptivity to political cues. Social Justice
+                                                                                         Research 23, 156–188.
+
+
+                                                                                      866       Adam M. Enders and Robert N. Lupton
+
+                                                                                      Mason L (2015) ‘I disrespectfully agree’: the differential effects of partisan sorting on social and issue polarization. American
+                                                                                        Journal of Political Science 59, 128–145.
+                                                                                      Mason L (2016) A cross-cutting calm: how social sorting drives affective polarization. Public Opinion Quarterly 80, 351–377.
+                                                                                      Orr LV and Huber GA (2019) The policy basis of measured partisan animosity in the United States. American Journal of
+                                                                                        Political Science. https://doi.org/10.1111/ajps.12498.
+                                                                                      Rogowski JC and Sutherland JL (2016) How ideology fuels affective polarization. Political Behavior 38, 485–508.
+                                                                                      Schwartz SH (1992) Universals in the content and structure of values: theoretical advances and empirical tests in 20 countries. In Zanna MP (ed.), Advances in Experimental Social Psychology. Orlando, FL: Free Press, pp. 1–65.
+                                                                                      Searing DD, Jacoby WG and Tyner AH (2019) The endurance of politicians’ values over four decades: a panel study.
+                                                                                        American Political Science Review 113, 226–241.
+                                                                                      Webster SW and Abramowitz AI (2017) The ideological foundations of affective polarization in the U.S. Electorate.
+                                                                                        American Politics Research 45, 621–647.
+https://doi.org/10.1017/psrm.2020.27 Published online by Cambridge University Press
+
+
+                                                                                      Cite this article: Enders AM, Lupton RN (2021). Value extremity contributes to affective polarization in the US. Political
+                                                                                      Science Research and Methods 9, 857–866. https://doi.org/10.1017/psrm.2020.27

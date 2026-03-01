@@ -1,0 +1,447 @@
+American Political Science Review (2024) 118, 3, 1570–1576
+                                                                                           doi:10.1017/S0003055423001302       © The Author(s), 2023. Published by Cambridge University Press on behalf of American Political Science
+                                                                                           Association.
+
+
+                                                                                           Letter
+                                                                                           Testing the Robustness of the ANES Feeling Thermometer Indicators
+                                                                                           of Affective Polarization
+                                                                                           MATTHEW TYLER Rice University, United States
+                                                                                           SHANTO IYENGAR Stanford University, United States
+
+
+                                                                                                  A
+                                                                                                            ffective polarization (AP)—the tendency of political partisans to view their opponents as a
+                                                                                                            stigmatized “out group”—is now a major field of research. Relevant evidence in the United States
+                                                                                                            derives primarily from a single source, the American National Election Studies (ANES) feeling
+                                                                                                  thermometer time series. We investigate whether the design of the ANES produces overestimates of AP. We
+                                                                                                  consider four mechanisms: overrepresentation of strong partisans, selection bias conditional on strong
+                                                                                                  identification, priming effects of partisan content, and survey mode variation. Our analysis uses the firstever collaboration between ANES and the General Social Survey and a novel experiment that manipulates
+                                                                                                  the amount of political content in surveys. Our tests show that variation in survey mode has caused an
+                                                                                                  artificial increase in the mixed-mode ANES time series, but the general increase in out-party animus is
+                                                                                                  nonetheless real and not merely an artifact of selection bias or priming effects.
+
+
+                                                                                           INTRODUCTION                                                            BACKGROUND
+
+
+                                                                                           T
+                                                                                                    here is general agreement that affective polari-               Survey self-reports are the most widely used measure
+                                                                                                    zation (AP)—the tendency of partisans to view                  of AP. What some have called the “workhorse” inditheir opponents as a stigmatized “out group”—                  cator (Iyengar et al. 2019) is the feeling thermometer
+                                                                                           has increased significantly in the United States (US).                  question from the ANES time series. The feeling therThe relevant survey evidence comes primarily from the                   mometer battery dates back to 1970 and asks responAmerican National Election Studies (ANES) feeling                       dents to rate a variety of political leaders and groups on
+                                                                                           thermometer time series. In this note, we consider the                  a scale ranging from cold (0) to warm (100). Over the
+                                                                                           possibility that the finding of increased polarization is               years, ANES respondents have used the thermometer
+                                                                                           attributable to distinctive features of the ANES design.                to rate Democrats and Republicans (or the Democratic
+                                                                                           Specifically, we investigate the role of selection bias                 and Republican Parties). Scholars typically compute
+                                                                                           resulting in the oversampling of more polarized parti-                  the difference between the thermometer score given
+                                                                                           sans, priming effects that elevate the salience of respon-              to the party of the respondent and the score given to the
+                                                                                           dents’ party affiliation, and changes in survey mode.                   opposing party as the operational measure of AP. In
+                                                                                              The possibility of survey artifacts in the thermometer               some instances, scholars calculate the corresponding
+                                                                                           data has clear implications for the study of American                   difference in the thermometer ratings of the presidenpolitics. To the extent the data overstate polarization,                tial candidates rather than the parties. As shown in
+                                                                                           concerns over any resulting spillover effects, such as the              Figure 1, both measures show a substantial increase in
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                           erosion of support for democratic norms and the poten-                  AP since 1978; the in-group versus out-group differtial for political violence (e.g., Kalmoe and Mason 2022;               ence for the party thermometer rises from 24 degrees in
+                                                                                           Westwood et al. 2022), are premature. Our results                       1980 to 51 degrees in 2020. The corresponding differshow, however, that the broad trends in feeling ther-                   ence for the in-group and out-group candidate thermometer results are likely robust to both selection bias                mometer ratings (e.g., rating for Bush/Gore in 2000)
+                                                                                           and the priming of partisan identity. While the use of an               increases from 24 degrees in 1980 to 59 degrees in 2020.
+                                                                                           online survey mode has led to a moderate inflation of                      As Figure 1 makes clear, the rise in AP is not
+                                                                                           the mixed-mode ANES time series, the phenomenon of                      attributable to any major movement in partisans’
+                                                                                           increased animus toward political opponents is real.                    positive feelings for their side, but rather, to the
+                                                                                                                                                                   intensification of their dislike for the opposition.
+                                                                                                                                                                   The share of ANES partisans expressing extreme
+                                                                                           Corresponding author: Matthew Tyler , Assistant Professor,              negativity for the out party (ratings of 0) remained
+                                                                                           Department of Political Science, Rice University, United States,
+                                                                                           mdtyler@rice.edu.
+                                                                                                                                                                   quite small leading up to and during 2000. Since 2000,
+                                                                                           Shanto Iyengar , William Robertson Coe Professor and Professor          however, the size of this share has increased dramatof Political Science and of Communication, Department of Political      ically—from 8% in 2000 to 40% in 2020. Thus, over
+                                                                                           Science, Stanford University, United States, siyengar@stanford.edu.     the first two decades of this century, partisans’ mild
+                                                                                           Received: July 30, 2022; revised: March 09, 2023; accepted: Novem-      dislike for their opponents metastasized into a deeper
+                                                                                           ber 07, 2023. First published online: December 12, 2023.                form of animus.
+
+
+                                                                                           1570
+
+
+                                                                                                                                                                        Testing the Robustness of the ANES Feeling Thermometer Indicators
+
+
+                                                                                               FIGURE 1. ANES Feeling Thermometer Time Series
+
+                                                                                                                                                                Party                            Presidential Candidate
+
+
+                                                                                                               Feeling Thermometer [0−100]   60
+                                                                                                                                             20
+
+                                                                                                                                                  1980   1990    2000    2010    2020 1980       1990     2000     2010   2020
+                                                                                                                                                                            In−Party      Out−Party
+
+
+                                                                                           DESIGN-BASED EXPLANATIONS FOR                                                               complete, focusing almost exclusively on elections, votINCREASED PARTISAN ANIMUS                                                                   ing behavior, and political opinions. The time commitment and subject matter are thus likely to discourage
+                                                                                           Survey responses are notoriously responsive to prop-                                        individuals who are relatively uninterested in politics;
+                                                                                           erties of the survey instrument including question                                          and indeed, ANES is aware that nonresponders are less
+                                                                                           wording and ordering, the mode in which the survey                                          likely to be affiliated with a political party, are less
+                                                                                           is administered, and possible biases in sample compo-                                       educated, and less attentive to politics than responders.
+                                                                                           sition. There is a vast literature documenting these                                        One possible bias resulting from this increasing phedesign effects on a variety of political attitudes (e.g.,                                   nomenon of nonresponse is the overrepresentation of
+                                                                                           Palmer and Duch 2001).                                                                      relatively opinionated or politically involved individThroughout, we benchmark the ANES against the                                            uals. This is the first design effect we test.
+                                                                                           General Social Survey (GSS), treating the GSS as a
+                                                                                           non-political gold standard survey. The GSS is a nowbiennial nationally representative survey of non-                                           The Priming Explanation
+                                                                                           institutionalized adults in the US administered by                                          A second possible source of inflation in the ANES
+                                                                                           NORC at the University of Chicago. GSS interviews                                           estimates of partisan affect is the potential for priming
+                                                                                           are predominantly conducted face-to-face with some of                                       effects induced by repeated exposure to questions with
+                                                                                           the survey refusals instead interviewed over the phone                                      clear partisan valence. In the case of the ANES party
+                                                                                           (<10%). The GSS is used extensively throughout the                                          thermometers (which are administered during the presocial sciences and is held in high regard by academic                                      election wave), respondents have already answered
+                                                                                           researchers and government agencies. Because the                                            some seventy questions concerning their voting preferGSS is far less explicitly political in content, it is more                                 ences and evaluations of parties/candidates before
+                                                                                           likely to be robust to the potential problems faced by                                      providing their thermometer scores. In keeping with
+                                                                                           the ANES. In summary, it is the best available bench-                                       self-perception theory (Bem 1972), respondents’
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                           mark for the ANES.                                                                          answers to this lengthy sequence of questions with
+                                                                                                                                                                                       obvious partisan valence will tend to heighten selfThe Selection Bias Explanation                                                              awareness of their partisan affiliation, thereby encouraging polarized responses to the feeling thermometers.
+                                                                                           Participation in surveys is a voluntary act and, as the
+                                                                                           number of surveys has proliferated, the level of respondent compliance has correspondingly declined. The                                           Changes in Survey Mode
+                                                                                           ANES traditionally maintained relatively high
+                                                                                                                                                                                       The last potential source of bias we consider is the
+                                                                                           response rates exceeding 60%. However, in recent
+                                                                                                                                                                                       variation in ANES survey modes over time. Prior to
+                                                                                           years, despite repeated contacts with potential respon2012, every iteration of the ANES used a face-to-face
+                                                                                           dents and the provision of significant financial incen-
+                                                                                                                                                                                       (FTF) mode with an in-person interviewer. Then, in
+                                                                                           tives for participation, the response rate has declined to
+                                                                                                                                                                                       2012 and 2016, the ANES used a mixture of FTF and
+                                                                                           around 50%.1
+                                                                                                                                                                                       Internet modes. Finally, in 2020, the ANES temporarily
+                                                                                              The ANES is an unusually lengthy survey with two
+                                                                                                                                                                                       dropped the FTF mode (as a response to COVID-19).
+                                                                                           waves, each requiring approximately 60 minutes to
+                                                                                                                                                                                       These changes in survey mode are a potentially significant over-time confounder for any ANES time series
+                                                                                            The ANES response rate has declined from a high of around 80% in                           analysis that uses all available respondents, which we
+                                                                                           1964 to just under 50% in 2020.                                                             refer to as the mixed-mode ANES time series.
+
+
+                                                                                                                                                                                                                                           1571
+
+
+                                                                                           Matthew Tyler and Shanto Iyengar
+
+
+                                                                                               FIGURE 2. Proportion of Partisans Classified                                         FIGURE 3. Subgroup AP by PID Strength
+                                                                                               as Strong Partisans                                                                  (ANES Only)
+
+                                                                                                                                  0.5
+                                                                                                 Proportion of Strong Partisans
+                                                                                                                                                                                     Subgroup AP
+                                                                                                                                  0.4
+                                                                                                                                                                                                   30
+                                                                                                                                  0.3
+                                                                                                                                        1980   1990      2000     2010   2020                           1980     1990        2000     2010       2020
+                                                                                                                                                      ANES      GSS                                        Strong Partisan     Weak/Leaning Partisan
+
+
+                                                                                             To be clear, we do not take a firm stance on whether                               features many fewer questions with obvious political
+                                                                                           any particular mode is superior to another. It is plausi-                            content3—shows a markedly different distribution of
+                                                                                           ble that respondents provide less sincere feeling ther-                              party identification even though both surveys use idenmometer measures in the FTF mode because of the                                      tical question wording. The figure shows that the ANES
+                                                                                           presence of an interviewer. In that case, the Internet                               has seen a significant over time increase in the propormode may be more accurate. However, the Internet                                     tion of strong partisans. In contrast, the proportion of
+                                                                                           mode is not observed prior to 2012, so our estimate of                               strong partisans found in the GSS has remained approxthe long-run increase in AP will be confounded when                                  imately stable—and drops relative to the early 2000s—
+                                                                                           we compare the 1980 ANES FTF to the 2020 ANES                                        over the same period until a surge in 2020–21.4
+                                                                                           Internet if the two modes are systematically different.                                 Since strong partisans are significantly more polarThis potential over-time confounding is the principal                                ized than weak/leaning partisans, this overrepresentareason we investigate mode effects.                                                  tion mechanism is potentially important. On the one
+                                                                                                                                                                                hand, Figure 3 shows that strong partisans are much
+                                                                                                                                                                                more polarized (have higher AP levels) on the feeling
+                                                                                                                                                                                thermometer measure than weak partisans in each wave
+                                                                                           TESTING THE POSSIBLE DESIGN EFFECTS                                                  of the ANES. On the other hand, both groups have
+                                                                                                                                                                                polarized substantially and proportionally between
+                                                                                           Selection Mechanisms                                                                 1978 and 2020.
+                                                                                                                                                                                   We cannot know the full impact of this overrepreWe begin our analysis by testing the selection bias
+                                                                                                                                                                                sentation of strong partisans until we translate the
+                                                                                           explanation. Because of the availability of GSS data,
+                                                                                                                                                                                benchmark distribution of strong partisanship onto a
+                                                                                           it is useful to decompose this bias into two distinct
+                                                                                                                                                                                counterfactual time series. That is, we need to calculate
+                                                                                           mechanisms. The first mechanism, discussed immediwhat the ANES time series would look like under the
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                           ately below, concerns the overrepresentation of strong
+                                                                                                                                                                                GSS distribution of strong partisanship. Figure 4 plots
+                                                                                           partisans in the ANES relative to the GSS benchmark.
+                                                                                                                                                                                the AP time series for the ANES alongside the counThe second mechanism, discussed further below, conterfactual time series “GSS Partisans” that uses the
+                                                                                           cerns the selection of more polarized respondents conGSS distribution of strong partisanship. This counterditional on strong party identification.
+                                                                                                                                                                                factual time series is not a causal counterfactual; it is
+                                                                                              Figure 2 compares the strong party identifier time
+                                                                                           series in the ANES and GSS, making it clear that the
+                                                                                           ANES often overstates the prevalence of strong parti-                                3
+                                                                                                                                                                                  For instance, the 2021 GSS questionnaire included only three items
+                                                                                           sans relative to the GSS benchmark.2 Since the                                       with clear partisan valence (party identification and two questions
+                                                                                           mid-1990s, ANES respondents are drawn increasingly                                   about the 2016 election). In contrast, the 2020 ANES includes over
+                                                                                           from the ranks of strong partisans, so much so that strong                           40 items with clear partisan valence. More generally, the GSS staff
+                                                                                                                                                                                estimates that approximately 30% of the survey content references
+                                                                                           partisans are the modal response category in 2020. The                               broadly defined political subject matter. The corresponding figure for
+                                                                                           increasing number of strong partisans appears to be                                  the ANES survey is in excess of 60%.
+                                                                                           distinctive to the ANES surveys. The GSS—which                                       4
+                                                                                                                                                                                  We speculate that the sudden increase in the share of strong
+                                                                                                                                                                                partisans in the 2020–21 GSS may be related to mode effects. Because
+                                                                                                                                                                                of the pandemic, the study was fielded online instead of via FTF
+                                                                                            We omit non-citizen GSS respondents from all analyses so that the                   interviews. To support this hypothesis, Figure B6 in Appendix B of
+                                                                                           ANES and GSS estimates reported here correspond to similar target                    the Supplementary Material shows that there are significant mode
+                                                                                           populations.                                                                         differences for the proportion of strong partisans in the ANES.
+
+
+                                                                                           1572
+
+
+                                                                                                                                                      Testing the Robustness of the ANES Feeling Thermometer Indicators
+
+
+                                                                                                                                                                     but, in 2020, the ANES and GSS conducted a collaboFIGURE 4. Mean AP Time Series with                                    rative study in which eligible GSS 2016–20 panel
+                                                                                               Alternative Partisan Compositions                                     respondents were invited to fill out the ANES postelection questionnaire. The GSS respondents were
+                                                                                                          50                                                         re-recruited by NORC so as to replicate the GSS selection process as closely as possible.6 The GSS respondents were interviewed concurrently with the 2020
+                                                                                                                                                                     ANES post-election respondents during November
+                                                                                                Mean AP
+
+
+                                                                                                                                                                     2020 to January 2021. A total of 1,164 GSS respondents
+                                                                                                                                                                     completed the ANES post-election survey out of 1,734
+                                                                                                                                                                     invited GSS panelists (67%).
+                                                                                                          30                                                            This first-ever reinterview of GSS respondents by
+                                                                                                                                                                     ANES gives us a direct test of the degree to which
+                                                                                                                                                                     strong partisans or weak/leaning partisans in the ANES
+                                                                                                          20                                                         sample are more polarized than those in the GSS.
+                                                                                                                                                                     While the standard GSS questionnaire does not include
+                                                                                                               1980      1990      2000       2010        2020       the feeling thermometer battery, the 2020 ANES postANES Partisans      GSS Partisans              election battery includes feeling thermometer measures for the presidential candidates (Biden and
+                                                                                                                                                                     Trump, in this case).7 This allows us to test whether
+                                                                                                                                                                     the level of AP is different across studies conditional on
+                                                                                           merely a weighted average of the ANES strong parti-                       strength of party identification. If we find no such
+                                                                                           sans and weak/leaning partisans, weighting by their                       differences, then that is consistent with no selection
+                                                                                           prevalence in that year’s GSS survey. Formally, “GSS                      bias conditional on strong party identification.
+                                                                                           Partisans” = E[AP ∣ ANES, Strong] P[Strong ∣ GSS] +                          Figure 5 shows the average AP levels among strong
+                                                                                           E[AP ∣ ANES, Weak/Leaning] P[Weak/Leaning ∣ GSS]                          and weak/leaning partisans for both the 2020 ANES
+                                                                                           within a given year.                                                      and the joint study respondents recruited from the GSS
+                                                                                              We can use this figure to test the overrepresentation                  2016–20 panel. In fact, the differences across the samof strong partisans mechanism in isolation. If the sub-                   ples are negative and/or small in absolute terms: −3.7
+                                                                                           group AP levels are similar across the ANES and GSS                       (2.6) for strong partisans and 2.2 (3.1) for weak/leaning
+                                                                                           —an assumption we test below—then this figure shows                       partisans. Statistically, we can reject differences across
+                                                                                           that compositional differences between the ANES and                       the samples that would be large enough to cast doubt
+                                                                                           GSS have only a minor impact on the overall mean                          on the ANES feeling thermometer time series.
+                                                                                           AP. In fact, the increase from 1978 to 2020 is only about                    These results suggest that, although the ANES has a
+                                                                                           5.5% less using the GSS partisan composition (29.3                        noticeably higher share of strong partisans than the GSS,
+                                                                                           vs. 30.9). This indicates that, if strong partisans are                   strong partisans exhibit similar levels of polarization
+                                                                                           overrepresented in the ANES, then the bias that over-                     whether they originate from the ANES or GSS sample.
+                                                                                           representation introduces by itself in the AP time series                 Similarly, weak/leaning partisans look quite similar
+                                                                                           is relatively small in magnitude.                                         across the two samples. Thus, we find no evidence
+                                                                                              Having documented differences in the partisan com-                     indicating that strong or weak/leaning partisans who
+                                                                                           position of the ANES and GSS samples, we turn to the                      participate in the ANES are more polarized than their
+                                                                                           second mechanism: selection bias conditional on strong                    counterparts in the GSS. After accounting for strong
+                                                                                           partisanship. This mechanism stipulates that strong                       partisanship, selection effects do not appear to have a
+                                                                                           and/or weak/leaning partisans in the ANES are more
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                                                                                                     meaningful impact on the feeling thermometer scores.
+                                                                                           polarized than the equivalent groups in the GSS. More
+                                                                                           specifically, they appear more polarized while exposed
+                                                                                           to the same questionnaire (particularly, the ANES                         Priming of Partisanship as an Explanation
+                                                                                           questionnaire).5 If this mechanism holds, then the                        Priming effects are the third mechanism we test. While
+                                                                                           ANES would be overstating AP for reasons uncorre-                         the selection bias mechanisms describe a difference in
+                                                                                           lated with strong partisanship.                                           the average ANES and GSS respondent, priming
+                                                                                              To test for this mechanism, we compare the AP levels                   effects are the result of varying the questionnaire
+                                                                                           across 2020 ANES and 2020 GSS respondents, a subset                       respondents are exposed to. A priming effect in this
+                                                                                           of whom answered the ANES post-election question-                         case would cause respondents to self-report higher
+                                                                                           naire. Since we already know the ANES has a higher                        levels of AP after being exposed to survey content with
+                                                                                           share of strong partisans, we focus on whether the
+                                                                                           strong or weak/leaning partisans in the ANES are more
+                                                                                           polarized than those in the GSS. Typically, the GSS                         Figure B5 in Appendix B of the Supplementary Material confirms
+                                                                                           does not include political feeling thermometer items                      that the joint study, just like the regular GSS samples, contains fewer
+                                                                                                                                                                     strong partisans than the 2020 ANES.
+                                                                                                                                                                       Party and candidate affect are highly correlated in surveys where
+                                                                                                                                                                     both are observed (0.77 for Biden and 0.78 for Trump, weighted).
+                                                                                            We revisit whether it is necessary to stress the role of the question-   Figures B3 and B4 in Appendix B of the Supplementary Material plot
+                                                                                           naire with the third mechanism.                                           the conditional relationships.
+
+
+                                                                                                                                                                                                                                      1573
+
+
+                                                                                           Matthew Tyler and Shanto Iyengar
+
+
+                                                                                               FIGURE 5. Subgroup Mean AP (2020–21)                                        FIGURE 6. The Effects of Political Content on
+                                                                                                                                                                           AP Levels
+                                                                                                                        Strong Partisans      Weak/Leaning Partisans
+                                                                                                Subgroup Mean AP
+                                                                                                                                                                            ATE: Mean AP
+                                                                                                                                                                                             0
+                                                                                                                   50
+                                                                                                                                                                                           −5
+                                                                                                                        ANES    Joint Study     ANES     Joint Study                       −10
+                                                                                                                                                                                                 RCT: DiM              RCT: Lin
+
+                                                                                                                                                                           Note: See models 3 and 4 of Table B1 in Appendix B of the
+                                                                                           clear partisan valence. If this holds, then the ANES                            Supplementary Material for the full results.
+                                                                                           measure of AP could be interpreted as artificially
+                                                                                           inflated relative to an individual’s “resting” AP level.
+                                                                                              Ideally, we would test this mechanism by randomly                        of the standard feeling thermometer questions.9 We
+                                                                                           assigning respondents to take a highly political survey                     preregistered this survey experiment, our hypotheses,
+                                                                                           like the ANES (treatment) or a survey with no political                     and our analyses in advance on the Open Science
+                                                                                           content (control) and then record their feeling ther-                       Framework.10
+                                                                                           mometer outcomes. This would tell us if differences in                         We fielded the experiment in May 2022 using the
+                                                                                           the questionnaire has an effect on AP levels. Rivers and                    YouGov platform. YouGov interviewed 1,639 responNail (2020) performed such an experiment to examine                         dents who were then matched down to a sample of
+                                                                                           the priming effects of lengthy political surveys on polar-                  1,000 (500 in each condition) to produce the final
+                                                                                           ized economic evaluations. We replicated the design of                      dataset as part of YouGov’s standard algorithm. The
+                                                                                           Rivers and Nail (2020), but significantly increased the                     respondents were matched to a sampling frame drawn
+                                                                                           amount of exposure to political content so as to                            from the 2019 ACS based on gender, age, ethnicity/
+                                                                                           more closely approximate the experience of ANES                             race, and education.
+                                                                                           respondents.8 We assigned participants to complete a                           Figure 6 provides a coefficient plot for the treatment
+                                                                                           10–12 minute survey focusing on either political or non-                    effects on AP levels. We plot both the difference-inpolitical subject matter.                                                   means (DiM) and the Lin (2013) covariate-adjustment
+                                                                                              In the political condition, respondents answered                         estimate (Lin). Neither estimate is positive—the Lin
+                                                                                           approximately 40 questions used in the ANES concern-                        estimate is −2.7 (3.0)—and we can reject substantively
+                                                                                           ing evaluations of Donald Trump and Joe Biden, past                         large positive effects.
+                                                                                           presidential voting choices, confidence in the two                             As an additional analysis, Appendix E of the Suppleparties’ ability to handle major national problems, and                     mentary Material compares feeling thermometer meapositions on several policy issues (including gun control,                  sures taken from a new ANES module inserted into the
+                                                                                           climate change, health care, and immigration). At the                       2020 wave of the 2016–20 GSS panel with thermometer
+                                                                                           end of the survey, respondents encountered the feeling                      measures from the subsequent ANES post-election
+                                                                                           thermometer questions asking for their evaluations of                       survey. In theory, this allows us to test for priming
+                                                                                           the two parties. The survey instrument in the non-                          differences between the ANES and GSS questionnaires
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                           political condition focused exclusively on consumer                         by looking at within-respondent changes between surproducts and respondents’ recent and anticipated future                     veys. We refer readers to the Supplementary Material
+                                                                                           purchasing behavior. We asked respondents about their                       for a discussion of the potential flaws of this comparison
+                                                                                           cell phone manufacturer, their cell phone carrier, and                      as a test for priming effects given that the questionnaires
+                                                                                           the amount of time they spend on their phone. They also                     were administered with differing proximity to a potenanswered a battery of questions about their leisure                         tially polarizing election. With that said, the confidence
+                                                                                           activities, in addition to their culinary and beverage                      intervals from this analysis overlap with the experimenpreferences.                                                                tal confidence intervals of Figure 6 in the region assoIn both conditions, the standard ANES seven-point                        ciated with substantively small priming effects (1.2–3.3).
+                                                                                           party identification question appeared at the 5-minute
+                                                                                           mark, approximately 7 minutes before the appearance                         9
+                                                                                                                                                                         Figure B2 in Appendix B of the Supplementary Material shows that
+                                                                                                                                                                       we detect no effect of the treatment on strength of party identification
+                                                                                                                                                                       using this measure. However, note that, to define respondent-level
+                                                                                            We do not replicate the ANES questionnaires exactly due to space           AP, we use the party identification variable asked by YouGov before
+                                                                                           constraints (the ANES is an exceptionally long survey) and the              our survey was administered. This guarantees that the treatment and
+                                                                                           difficulty in replicating the logical flow of the ANES questionnaire.       control groups are comprised of (on average) equivalent groups of
+                                                                                           For the full list of questions with short descriptions included in the      partisans.
+                                                                                           two conditions, see Appendices D.1 and D.2 of the Supplementary                https://osf.io/4b92u/?view_only=3f755d19992c4890b92e7d668
+                                                                                           Material.                                                                   babb5bf.
+
+
+                                                                                           1574
+
+
+                                                                                                                                                                Testing the Robustness of the ANES Feeling Thermometer Indicators
+
+
+                                                                                            FIGURE 7. Affective Polarization Estimates Conditional on Mode Analyzed
+                                                                                                             Affective Polarization
+
+
+                                                                                                                                      40                                                             Mode
+                                                                                                                                                                                                       FTF
+                                                                                                                                                                                                       Internet
+                                                                                                                                                                                                       Combined
+                                                                                                                                                                                                       FTF Imputed
+                                                                                                                                           1980 1984 1988 1992 1996 2000 2004 2008 2012 2016 2020
+
+
+                                                                                             All told, respondents who encountered an almost                                online subsequently completed the 2020 ANES online
+                                                                                           exclusively non-political survey before providing their                          (n ¼ 1, 747). Because we observe their AP levels with
+                                                                                           thermometer scores appear basically just as polarized                            the same survey mode—the online component of the
+                                                                                           as those who answered a lengthy series of political                              2020 ANES closely matches the online component of
+                                                                                           evaluations with clear partisan valence. There is no                             the 2016 ANES—we have measures of withinevidence of large priming effects.                                               respondent 2016–20 changes in AP levels which are
+                                                                                                                                                                            unaffected by 2016–20 mode changes. The average
+                                                                                                                                                                            within-respondent increase in AP levels between 2016
+                                                                                           Mode Effects                                                                     and 2020 among this sample is a substantial 9.0. Incorporating these data into an imputation procedure
+                                                                                           Up to this point, we have ignored survey mode and used                           detailed in Appendix F of the Supplementary Material,
+                                                                                           all ANES respondents in a given year. Our final analysis                         we estimate that the 2016 FTF respondents, if reinterexamines whether variation in survey mode has con-                               viewed in 2020, would have provided AP levels that
+                                                                                           founded the ANES time series. Taking advantage of                                were 9.6 points higher in 2020 than 2016. For visual
+                                                                                           the fact that both FTF and Internet modes are present                            comparison, we depict this imputed FTF 2016–20 trend
+                                                                                           in 2012 and 2016, we can assess whether there are                                in Figure 7 as “FTF Imputed.” Stepping back, we find
+                                                                                           differences in average AP levels across modes. Figure 7                          that the 1980–2020 increase in this combined FTF and
+                                                                                           plots the FTF-only, Internet-only, and combined esti-                            “FTF Imputed” AP time series amounts to 18.9 points,
+                                                                                           mates of average AP levels over time. The estimates
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                                                                                                            which is smaller than the mixed-mode increase over the
+                                                                                           are based on mode-specific weights to account for poten-                         same period of 27.1 but still substantial and, importial mode-related unit nonresponse. Therefore, in the                            tantly, still increasing.
+                                                                                           absence of mode effects, the three estimates should
+                                                                                           converge on the same quantity.
+                                                                                               Figure 7 shows that there are substantively large
+                                                                                           mode differences in 2012 and 2016. The gap between                               CONCLUSION
+                                                                                           the FTF-only and Internet-only estimates is 7.9 in 2012
+                                                                                           and 8.8 in 2016. Explaining what exactly is causing this                         We have subjected the standard feeling thermometer
+                                                                                           mode difference is beyond the scope of this analysis, but                        measure of AP to a sequence of robustness tests. These
+                                                                                           it is clear that our estimate of AP does depend, at least to                     tests show that the ANES feeling thermometers prosome degree, on the survey mode. Polarization appears                            vide largely reliable measures of AP over time. Of the
+                                                                                           lower in the FTF mode but heightened in the online                               first three design-related mechanisms we enumerated,
+                                                                                           mode. Figure B6 in Appendix B of the Supplementary                               we only find support for the selection of partisans with
+                                                                                           Material shows that the Internet mode similarly finds a                          stronger party attachments into the ANES. We observe
+                                                                                           higher share of strong partisans than the FTF mode.                              this in both the time series data and in the ANES–GSS
+                                                                                               To assess the potential contribution of mode effects                         joint study. However, the impact of this selection effect
+                                                                                           to the historical trend in AP, we can leverage the 2016–                         on the overall increase in AP is likely to be small
+                                                                                           20 ANES panel respondents. A large number of Dem-                                because both strong and weak/leaning partisans have
+                                                                                           ocrats and Republicans who completed the 2016 ANES                               polarized at similar rates over time. Moreover, the
+
+
+                                                                                                                                                                                                                                1575
+
+
+                                                                                           Matthew Tyler and Shanto Iyengar
+
+
+                                                                                           selection effects on strength of party identification are     ACKNOWLEDGMENTS
+                                                                                           relatively modest. Therefore, we observe only a 5.5%
+                                                                                           reduction in the long-run AP trend when we substitute         We would like to thank Matthew DeBell and Justin
+                                                                                           the GSS composition of strong partisans (Figure 4).           Grimmer for their insightful feedback. All errors are
+                                                                                              We do not find supporting evidence for meaningful          our own.
+                                                                                           priming effects. Magnifying the political content of
+                                                                                           surveys does not appear to elevate the level of
+                                                                                           AP. Participants exposed to minimal political content         CONFLICT OF INTEREST
+                                                                                           respond basically no differently to the thermometer
+                                                                                           questions than their counterparts exposed to a lengthy        M.T. acknowledges a potential competing interest in
+                                                                                           battery of political questions with clear partisan valence.   his former capacity as a postdoctoral scholar for the
+                                                                                              Yet we do find significant differences in estimated        ANES. S.I. acknowledges a potential competing interAP across survey modes. In overlapping years, the             est in his capacity as a principal investigator of
+                                                                                           Internet-only estimate of average AP is about 8–9             the ANES.
+                                                                                           points higher than the FTF-only estimate of average
+                                                                                           AP. We are unable to adjudicate over the accuracy of
+                                                                                           the FTF versus online estimates without some behavioral indicator of out-party animus. Online respon-           ETHICAL STANDARDS
+                                                                                           dents may be overstating their hostility toward the out       The authors declare the human subjects research in this
+                                                                                           group, whereas FTF respondents may be doing the               article was deemed exempt from review by Stanford
+                                                                                           opposite. All we can conclude is that with the advent         University IRB (eProtocol 65566). The authors affirm
+                                                                                           on online interviews, there is an upward shift in the         that this article adheres to the APSA’s Principles and
+                                                                                           long-run AP trend for the mixed-mode ANES time                Guidance on Human Subject Research.
+                                                                                           series.
+                                                                                              Overall, our results demonstrate that the ANES
+                                                                                           feeling thermometers are largely robust to concerns
+                                                                                           over both selection bias and priming effects associated       REFERENCES
+                                                                                           with exposure to a lengthy political survey. Mode             Bem, Daryl J. 1972. “Self-Perception Theory.” In Advances in
+                                                                                           effects probably shift the long-run AP trend upward             Experimental Social Psychology, Vol. 6, 1–62. New York: Elsevier.
+                                                                                           when the Internet mode is included in the analyses but,       Iyengar, Shanto, Yphtach Lelkes, Matthew Levendusky, Neil
+                                                                                                                                                           Malhotra, and Sean J Westwood. 2019. “The Origins and
+                                                                                           fortunately, mode effects can be obviated by leaving            Consequences of Affective Polarization in the United States.”
+                                                                                           Internet respondents out of the full time series analysis.      Annual Review of Political Science 22: 129–46.
+                                                                                           In all, the feeling thermometers constitute an invalu-        Kalmoe, Nathan P., and Lilliana Mason. 2022. Radical American
+                                                                                           able time series on the state of political polarization.        Partisanship: Mapping Violent Hostility, Its Causes, and the
+                                                                                           Based on the evidence presented here, we encourage              Consequences for Democracy. Chicago, IL: University of Chicago
+                                                                                                                                                           Press.
+                                                                                           their continued use in the years ahead.                       Lin, Winston. 2013. “Agnostic Notes on Regression Adjustments to
+                                                                                                                                                           Experimental Data: Reexamining Freedman’s Critique.” Annals
+                                                                                                                                                           of Applied Statistics 7 (1): 295–318.
+                                                                                                                                                         Palmer, Harvey D., and Raymond M. Duch. 2001. “Do Surveys
+                                                                                           SUPPLEMENTARY MATERIAL                                          Provide Representative or Whimsical Assessments of the
+                                                                                                                                                           Economy?” Political Analysis 9 (1): 58–77.
+                                                                                           To view supplementary material for this article, please       Rivers, Douglas, and Stephanie A. Nail. 2020. “Partisan
+                                                                                           visit https://doi.org/10.1017/S0003055423001302.                Polarization and Retrospective Voting.” Paper presented at
+                                                                                                                                                           the Annual Meeting of the American Political Science
+                                                                                                                                                           Association.
+https://doi.org/10.1017/S0003055423001302 Published online by Cambridge University Press
+
+
+                                                                                                                                                         Tyler, Matthew, and Shanto Iyengar. 2023. “Replication Data for:
+                                                                                                                                                           Testing the Robustness of the ANES Feeling Thermometer
+                                                                                           DATA AVAILABILITY STATEMENT                                     Indicators of Affective Polarization.” Harvard Dataverse. Dataset.
+                                                                                                                                                           https://doi.org/10.7910/DVN/G9OKGB.
+                                                                                           Research documentation and data that support the              Westwood, Sean J., Justin Grimmer, Matthew Tyler, and Clayton
+                                                                                                                                                           Nall. 2022. “Current Research Overstates American Support for
+                                                                                           findings of this study are openly available at the              Political Violence.” Proceedings of the National Academy of
+                                                                                           American Political Science Review Dataverse: https://           Sciences 119 (12): e2116870119. https://doi.org/10.1073/
+                                                                                           doi.org/10.7910/DVN/G9OKGB.                                     pnas.2116870119.
+
+
+                                                                                           1576

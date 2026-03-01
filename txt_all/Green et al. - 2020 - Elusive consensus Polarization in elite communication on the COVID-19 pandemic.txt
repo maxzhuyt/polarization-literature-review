@@ -1,0 +1,254 @@
+Science Advances Publish Ahead of Print, published on June 24, 2020 as doi:10.1126/sciadv.abc2717
+
+                                                                                                                                            RESEARCH ARTICLES
+
+
+                                                                                                                                Cite as: J. Green et al., Sci. Adv
+                                                                                                                               10.1126/sciadv.abc2717 (2020).
+
+
+Elusive consensus: Polarization in elite communication on
+the COVID-19 pandemic
+Jon Green1, Jared Edgerton1, Daniel Naftel1, Kelsey Shoub2, and Skyler J. Cranmer1*
+1Department of Political Science, The Ohio State University. 2Department of Political Science, University of South Carolina.
+
+*Corresponding author. Email: cranmer.12@osu.edu
+
+Cues sent by political elites are known to influence public attitudes and behavior. Polarization in elite
+rhetoric may hinder effective responses to public health crises, when accurate information and rapid
+behavioral change can save lives. We examine polarization in cues sent to the public by current members of
+the U.S. House and Senate during the onset of the COVID-19 pandemic, measuring polarization as the
+ability to correctly classify the partisanship of tweets’ authors based solely on the text and the dates they
+
+
+                                                                                                                                                                     were sent. We find that Democrats discussed the crisis more frequently—emphasizing threats to public
+health and American workers, while Republicans placed greater emphasis on China and businesses.
+Polarization in elite discussion of the COVID-19 pandemic peaked in mid-February – weeks after the first
+confirmed case in the United States – and continued into March. These divergent cues correspond with a
+partisan divide in the public’s early reaction to the crisis.
+
+Introduction                                                                              Congress between January 17, 2020 – the date of the first
+In democratic countries, the public is highly responsive to                               mention of the virus by a member – and March 31, 2020.
+cues sent by political elites (1, 2), whose messages can                                  Members of Congress frequently use Twitter to communicate
+encourage unity or deepen social cleavages. Because the                                   their political positions (11) and directly engage with voters
+public relies on these cues for reliable information, it is                               (12). Following recent work on discourse polarization in Conespecially important that elites present a unified message                                gress (13), we operationalize polarization as the degree to
+during a crisis. Elites sent such a unified message after the                             which one can correctly classify the partisanship of a speaker
+September 11th terrorist attacks, when Republican and                                     based on a “unit of speech” – in this case, the text contained
+Democratic lawmakers issued joint statements reassuring                                   in a tweet about the issue. The greater one’s ability to identify
+Americans they were safe and promising rapid retaliation (3).                             the partisanship of a tweet’s author based only on what the
+However, the high levels of partisan polarization observed                                tweet says, the greater the polarization.
+today among both elites and the mass public in the United
+States (4–6) can lead to a fractured national response as elites                          Materials and Methods
+send conflicting cues to citizens who are inclined to only be                             To systematically monitor the polarization of the political
+receptive to the messages of co-partisans (7). And once initial                           elite’s response to the COVID-19 pandemic, we begin with a
+opinions based on these messages are formed, they may be                                  list of Twitter handles associated with members of the 116th
+difficult to update with subsequent factual information (8).                              United States Congress. This includes all official member acCOVID-19 presents the greatest public health threat and                               counts from a list maintained by C-SPAN, as well as any vereconomic challenge in modern history, with the United States                              ified account associated with a member that averaged at least
+having the fastest rate of growth in cases among industrial-                              one tweet per day at the time of collection and did not indiized nations as of this writing (9). The severity of this crisis is                       cate in the profile information that the account was for camparticularly sensitive to public opinion given that behavioral                            paign purposes or managed by staff. These additions are
+change at the individual level is integral to successfully slow-                          necessary because some members operate multiple accounts,
+ing the spread of the virus. Given the high levels of polariza-                           and the unofficial account is often more prominent than the
+tion in the American electorate, citizens are less likely to                              official one in these cases. We then merged these handles
+change their behavior in ways that correspond to the consen-                              with data on members’ partisanship and ideology and colsus of public health experts if there is not a political consen-                          lected their timelines via Twitter’s REST API. In order to
+sus that such changes are necessary (10).                                                 identify tweets about the COVID-19 pandemic, we developed
+    Here, we investigate polarization in elite cues on COVID-                             a set of dictionaries regarding sub-topics related to the crisis
+19 with a comprehensive dataset of tweets about the virus                                 (details in the Supplementary Materials).
+sent by members of the (current) 116th United States                                          After flagging COVID-19-related tweets, we apply a set of
+
+First release: 24 June 2020                                         www.advances.sciencemag.org (Page numbers not final at time of first release) 1
+
+                              Copyright 2020 by American Association for the Advancement of Science.
+
+
+preprocessing steps (outlined in the Supplementary Materi-          document-feature matrix of the text and appending the dates
+als); tokenize to unigrams, bigrams, and trigrams; omit to-         each tweet was sent (coded as the number of days since Jankens that appear extremely frequently or infrequently; and          uary 1), we hold out a random sample of 30% of the data as a
+train a random forest machine learning algorithm on a ran-          test set and train a random forest on the remaining 70%. This
+domly-sampled majority of the tweets using the text features        process is repeated over 15 folds of cross-validation to acand the dates they were sent. Random forests are advanta-           count for sensitivity to observations falling on either side of
+geous in this context because they can account for non-linear       the training/testing split. Following recent work in this area
+interactions in token usage that are difficult to capture using     (13), the proportion of tweets in the test sets that are correctly
+traditional parametric approaches (see the Supplementary            labeled as being sent by either a Democrat or Republican are
+Materials for a comparison). We then use this model to pre-         used to derive our estimates of language-based polarization.
+dict the partisan affiliation of the remaining tweets. This out-        Partisan polarization is not constant over time, however.
+of-sample classification accuracy is taken as our measure of        Initially low, it quickly and sharply increased, and only
+discourse polarization, as is established in the literature (13).   slightly lessened as the severity of the crisis has become undeniable. Figure 2a shows that in the first full week after the
+Results                                                             first mention of COVID-19, accuracy is relatively low – indiWe find that members of Congress quickly polarized along            cating little polarization. However, polarization quickly rises,
+party lines in their communications regarding the crisis. Not       peaking during the week beginning February 9 – roughly two
+only did members of each party differ in how they discussed         weeks after the first reported case in the United States and
+the issue, but Democrats tended to discuss the issue earlier        well after the virus had begun to have devastating effects in
+and with more frequency. From January 17 through March              multiple peer democracies. From there, polarization declines
+31, Democrats sent 19,803 tweets about COVID-19 while Re-           slightly in early-to-mid March before rising again later in the
+publican members issued only 11,084, or 71 tweets per Dem-          month as the parties debated the various relief packages deocratic to 45 tweets per Republican member. We see these            signed to mitigate the economic damage caused by the pantrends clearly in Figs. 1a, with the first panel showing cumu-      demic.
+lative tweets from Democratic and Republican members of                 Overall, the tweets members of Congress have sent about
+Congress about COVID-19. The difference in cumulative               COVID-19 are highly informative of their partisanship, as
+tweets between Democratic and Republicans politicians be-           well as ideology. This is seen in Fig. 2b, which identifies the
+came more pronounced after the CDC identified the first case        median tweet for each member in the test set in terms of preof community spread in California and this gulf continued to        dicted probability that the tweet was authored by a Republiincrease following the declaration of a national emergency.         can, and plots that against that member’s DW-NOMINATE
+The differential emphasis on the issue itself, independent of       score, a standard left/right scaling of congressional voting bedifferences in word usage, suggests that Democratic mem-            havior (14). The band in the figure marks the range of partibers were sending earlier and stronger signals to their con-        san overlap – from the Democrat with the highest median
+stituents that they should be concerned about the crisis.           predicted probability of having authored a tweet sent by a
+    In addition to differences in the volume of communica-          Republican to the Republican with the lowest median probations about the crisis, there are also meaningful differences       bility. In total, 69% of members fall outside this range, sugin the substantive content of the signals that members of           gesting their tweets are more partisan than those of the most
+each party were sending to constituents. Figure 1b displays         similar member of the other party. Were there full political
+the greatest absolute difference in words used by Democratic        consensus throughout the entire period such that text feaand Republican members of Congress (e.g., the word “health”         tures were in expectation uninformative for partisanship, this
+was used in 26 percent of Democratic and 15 percent of Re-          band would encompass all or nearly all members.
+publican tweets). The words most frequently used by Demo-               Much of the variation in polarization is attributable to
+crats concern public health and direct aid to workers (e.g.,        changes in how Republican members discuss the issue: Behealth, leave, testing) while the words most frequently used        ginning in early March, they adopt less distinctive language
+by Republicans concern national unity, China, and business          and become more difficult to classify. We see this in Fig. 2c,
+(e.g., together, United States, China, businesses).                 which plots weekly rates of recall (the proportion of DemoWe find further evidence of polarization in elite commu-        cratic and Republican members who are correctly identified
+nication regarding the COVID-19 pandemic using a combina-           as such) against the “no- information” rate that would expect
+tion of natural language processing and machine learning            to achieve by flipping a coin weighted to the share of tweets
+techniques, which enable us to correctly classify the partisan-     in the test sets sent by Republicans or Democrats, respecship of 76% of tweets based solely on the text features they        tively. Rates of recall for Republican members are higher
+contain and the dates they were sent. After creating a              above the no-information rate earlier in the period, while
+
+
+First release: 24 June 2020                        www.advances.sciencemag.org (Page numbers not final at time of first release) 2
+
+
+Democratic rates of recall are high throughout. To be clear, it     independents and Republicans during the initial wave of the
+is not the case that Republicans are sending no meaningful          pandemic (18). While directly identifying linkages between
+partisan signals in later weeks such that the model predicts        the two phenomena is beyond the scope of this work, we note
+every tweet is sent by a Democrat – in that case, the rate of       the vast literature in political science highlighting the imrecall for Republican members would be zero. This does              portance of partisan and elite cues for anchoring citizens’ pomean, however, that tweets sent by Republicans in earlier           litical attitudes and behaviors (1, 2, 19), as well as citizens’
+weeks are more distinctive – i.e., easier to separate from          particular attentiveness to trusted elites during times of crisis
+tweets sent by Democrats – than those sent in later weeks.          (20). The counterfactual state in which partisan elites formed
+                                                                    a consensus regarding the public health crisis and sent clear,
+Discussion                                                          consistent cues to that effect would almost certainly have led
+These results highlight the degree to which a political con-        to more consistent changes in behavior on the part of the
+sensus regarding the COVID-19 pandemic failed to quickly            public – and in turn, a slower spread of the disease. This unmaterialize in the United States. A society’s ability to effec-     derscores the urgency by which political leaders must detively mobilize in response to a crisis of the nature and scale     velop a bipartisan consensus consistent with public health
+of COVID-19 depends in large part on its political leadership.      recommendations if they intend to effectively respond to the
+
+
+                                                                                                                                                                This is apparent on two levels: First, the scale of the govern-     COVID-19 pandemic.
+mental response required to mitigate the impacts of this pan-       REFERENCES AND NOTES
+demic makes this as much a political crisis as a public health      1. A. Berinsky, Assuming the costs of war: Events, elites, and American public support
+one; second, the public’s reliance on elite cues and the neces-          for military conflict. J. Polit. 69, 975–997 (2007). doi:10.1111/j.1468sity of widespread changes in individual behavior to slow the            2508.2007.00602.x
+                                                                    2. G. Lenz, Follow the Leader? How Voters Respond to Politicians’ Policies and
+spread of disease puts abnormally high pressure on elected               Performance (University of Chicago Press, 2012).
+officials to send consistent and accurate cues regarding how        3. Expressing the sense of the Senate and House of Representatives regarding the
+citizens should think about and react to the crisis. The set of          terrorist attacks launched against the United States on September 11, 2001, S.J.
+elected officials we analyze here – members of Congress –                Res. 22, 107th Cong. (2001).
+                                                                    4. S. Iyengar, G. Sood, Y. Lelkes, Affect, not ideology: A social identity perspective on
+have not signaled consensus.                                             polarization. Public Opin. Q. 76, 405–431 (2012). doi:10.1093/poq/nfs038
+    Our analysis of tweets sent by members of Congress dur-         5. S. Webster, A. Abramowitz, The ideological foundations of affective polarization in
+ing the early months of the outbreak indicate that members               the U.S. electorate. Am. Polit. Res. 45, 621–647 (2018).
+quickly polarized around the issue, with Democrats discuss-              doi:10.1177/1532673X17703132
+                                                                    6. L. Mason, Uncivil Agreement: How Politics Became our Identity (University of
+ing the issue earlier, more frequently, and with more empha-             Chicago Press, 2018).
+sis on public health and direct aid to affected workers. By         7. D. Kahan, What is the ‘science of science communication’? Journal of Science
+contrast, Republicans placed more emphasis on generalized                Communication 14, 1–12 (2015). doi:10.22323/2.14030404
+national unity, China, and businesses. Our overall classifica-      8. J. Druckman, T. Bolsen, Framing, motivated reasoning, and opinions about
+                                                                         emergent technologies. J. Commun. 61, 659–688 (2011). doi:10.1111/j.1460tion accuracy of 76% – with 69% of members falling outside               2466.2011.01562.x
+the range of partisan overlap we identify on the issue – pro-       9. E. Dong, H. Du, L. Gardner, An interactive web-based dashboard to track COVID-19
+vides further evidence of a substantial partisan divide in how           in real time. Lancet Infect. Dis. 20, 533–534 (2020). 10.1016/S1473COVID-19 is discussed. This rate is similar to the results de-           3099(20)30120-1 Medline
+                                                                    10. D. Kahan, H. Jenkins-Smith, D. Braman, Cultural cognition of scientific consensus.
+rived from an analysis of recent floor speeches in Congress              J. Risk Res. 14, 147–174 (2011). doi:10.1080/13669877.2010.511246
+(13), and is considerable given the relative brevity of each        11. L. Hemphill, J. Otterbacher, M. Shapiro, Proceedings of the 2013 conference on
+“unit of speech” represented in a tweet. This suggests that the          Computer supported cooperative work (2013), pp. 877–886.
+response to the current crisis has followed recent patterns of      12. J. Golbeck, J. M. Grimes, A. Rogers, Twitter use by the us congress. J. Am. Soc. Inf.
+                                                                         Sci. Technol. 61, 1612–1621 (2010).
+polarization seen in political communication more generally.        13. M. Gentzkow, J. Shapiro, M. Taddy, Measuring group differences in highParty elites have become polarized on an increasing number               dimensional choices: Method and application to congressional speech.
+of issue areas (15), including topics that lack a clear ideologi-        Econometrica 87, 1307–1340 (2019). doi:10.3982/ECTA16566
+cal dimension (16). And while policy debates in Congress are        14. H. Rosenthal, K. Poole, N. McCarty, Polarized America: The Dance of Ideology and
+                                                                         Unequal Riches (MIT Press, 2006).
+often driven by the most extreme legislators (17), the speed        15. G. Layman, T. Carsey, Party polarization and ‘conflict extension’ in the American
+with which polarization occurred around COVID-19 is nota-                electorate. Am. J. Pol. Sci. 46, 786–802 (2002). doi:10.2307/3088434
+ble, particularly in the absence of obvious pressure from           16. F. E. Lee, Beyond ideology: Politics, principles, and partisanship in the US Senate
+party activists (15).                                                    (University of Chicago Press, 2009).
+                                                                    17. J. Grimmer, Representational style in Congress: What legislators say and why it
+    The divergent cues sent by Congressional Democrats and               matters (Cambridge University Press, 2013).
+Republicans correspond with a partisan divide in the public’s       18. E. Bello-Pardo, M. Nayak, J. Ray, New coronavirus polling shows Americans are
+early reaction to the crisis, with self-identified Democrats re-         responding to the threat unevenly, https://medium.com/@YouGovBlue/ newporting significantly more behavioral change than                        coronavirus-polling-shows-americans-are-responding-to-the-threat-unevenly641026301516 (2020).
+
+
+First release: 24 June 2020                        www.advances.sciencemag.org (Page numbers not final at time of first release) 3
+
+
+19. A. Lupia, Shortcuts versus encyclopedias: Information and voting behavior in
+    California insurance reform elections. Am. Polit. Sci. Rev. 88, 63–76 (1994).
+    doi:10.2307/2944882
+20. B. Albertson, S. Kushner Gadarian, Anxious Politics: Democratic Citizenship in a
+    Threatening World (Cambridge University Press, 2014).
+21.     M.     W.     Kearney,     Package       ‘rtweet’.    URL:      https://cran.rproject.org/web/packages/rtweet/rtweet.pdf [accessed 2019-03-19] (2016).
+22.      J.      Lewis,     L.      Sonnet,       Package        ‘rvoteview’.      URL:
+    https://github.com/voteview/Rvoteview [accessed 2019-03-19] (2019).
+23. A. Hughes, S. Shah, A. Smith, Tweets by members of congress tell the story of an
+    escalating       covid-19       crisis,       https://www.pewresearch.org/facttank/2020/04/02/tweets-by-members-of-congress-tell-the-story-of-anescalating-covid-19-crisis/ (2020). Online; posted April 2, 2020.
+24. M. Taddy, Multinomial inverse regression for text analysis. J. Am. Stat. Assoc. 108,
+    755–770 (2013). doi:10.1080/01621459.2012.734168
+25. A. Altmann, L. Toloşi, O. Sander, T. Lengauer, Permutation importance: A
+    corrected feature importance measure. Bioinformatics 26, 1340–1347 (2010).
+    doi:10.1093/bioinformatics/btq134 Medline
+
+
+                                                                                                                                                        ACKNOWLEDGMENTS
+We would like to thank the Ohio Supercomputer Center for use of the machine and
+   for giving this COVID-19 related research queue priority. We would also like to
+   thank The Ohio State University Political Science workshop and the Lazer Lab at
+   Northeastern University for helpful feedback and suggestions. Funding: S.J.C.
+   graciously acknowledges NIDA R-34 DA043079-01A1. Author contributions: All
+   authors conceived of the research. J.G. led data collection. J.G., D.N., J.E., and
+   K.S. led dictionary construction. J.G. built the models. J.E., J.G., and K.S. led data
+   visualization. All authors contributed to the interpretation of results and the
+   writing of the paper. Competing interests:. The authors declare no competing
+   interests. Data and materials availability: All data and code needed to evaluate
+   the conclusions of the paper are available on the Harvard Dataverse at
+   https://doi.org/10.7910/DVN/VBYWOP.
+SUPPLEMENTARY MATERIALS
+advances.sciencemag.org/cgi/content/full/sciadv.abc2717/DC1
+
+
+Submitted 15 April 2020
+Accepted 28 May 2020
+Published First Release 24 June 2020
+10.1126/sciadv.abc2717
+
+
+First release: 24 June 2020                                           www.advances.sciencemag.org (Page numbers not final at time of first release) 4
+
+
+                                                                                                                                 Fig. 1. Cumulative tweet count and absolute difference in the proportions of words used by party. Plot (a)
+   shows the cumulative count of deaths (9), and COVID-19 related tweets by party over time. Notably,
+   Congressional Democrats discussed COVID-19 significantly more during the crisis. Plot (b) displays the 15
+   largest absolute differences in words most frequently used by Democrats and Republicans. Compared to
+   Democrats, Republicans more frequently discuss China, business interests, and frame the pandemic as a war,
+   while Democrats discuss public health and aid to workers.
+
+
+First release: 24 June 2020                 www.advances.sciencemag.org (Page numbers not final at time of first release) 5
+
+
+
+
+      Fig. 2. Classification accuracy, partisan COVID-19 language by roll call voting, and recall above
+      no-information rate. Plot (a) k-fold prediction out of sample by week. Classification accuracy
+      increases over time. This suggests that Democratic and Republican members of Congress are
+      becoming more polarized over time. Plot (b) displays the increases political ideology of members
+      of Congress by the median predicted probability of their test set tweets being authored by a
+      Republican. Plot (c) displays rates of recall (recovery of true cases) by party. The lower bound is
+      the naive probability of correctly classifying a Republican or Democratic member as such based
+      solely on prevalence in the test sets, the upper bound displays the observed rate of recall, and the
+      shaded area represents the increase in recall above the no-information rate.
+
+
+First release: 24 June 2020                   www.advances.sciencemag.org (Page numbers not final at time of first release) 6
+
+
+Elusive consensus: Polarization in elite communication on the COVID-19 pandemic
+Jon Green, Jared Edgerton, Daniel Naftel, Kelsey Shoub and Skyler J. Cranmer
+
+
+published online June 24, 2020
+
+
+  ARTICLE TOOLS                   http://advances.sciencemag.org/content/early/2020/06/24/sciadv.abc2717
+
+
+                                                                                                                                REFERENCES                      This article cites 13 articles, 0 of which you can access for free
+                                  http://advances.sciencemag.org/content/early/2020/06/24/sciadv.abc2717#BIBL
+
+
+  PERMISSIONS                     http://www.sciencemag.org/help/reprints-and-permissions
+
+
+Use of this article is subject to the Terms of Service
+
+
+Science Advances (ISSN 2375-2548) is published by the American Association for the Advancement of Science, 1200 New York
+Avenue NW, Washington, DC 20005. The title Science Advances is a registered trademark of AAAS.
+Copyright © 2020 The Authors, some rights reserved; exclusive licensee American Association for the Advancement of Science.
+No claim to original U.S. Government Works. Distributed under a Creative Commons Attribution NonCommercial License 4.0 (CC
+BY-NC).

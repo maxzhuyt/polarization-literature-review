@@ -1,0 +1,742 @@
+The Parties in Our Heads: Misperceptions about
+Party Composition and Their Consequences
+Douglas J. Ahler, Florida State University
+Gaurav Sood, Washington, DC
+
+
+We document a large and consequential bias in how Americans perceive the major political parties: people tend to considerably overestimate the extent to which party supporters belong to party-stereotypical groups. For instance, people think
+that 32% of Democrats are LGBT (vs. 6% in reality) and 38% of Republicans earn over $250,000 per year (vs. 2% in reality).
+Experimental data suggest that these misperceptions are genuine and party speciﬁc, not artifacts of expressive responding,
+innumeracy, or ignorance of base rates. These misperceptions are widely shared, though bias in out-party perceptions is
+larger. Using observational and experimental data, we document the consequences of this perceptual bias. Misperceptions
+about out-party composition are associated with partisan affect, beliefs about out-party extremity, and allegiance to one’s
+own party. When provided information about the out-party’s actual composition, partisans come to see its supporters as less
+extreme and feel less socially distant from them.
+
+
+P      artisanship is arguably the most fundamental identity in
+       American political life. Not only does it strongly inﬂuence vote choice (e.g., Ansolabehere, Rodden, and Snyder 2008; Bartels 2000), it also colors how partisans process
+politically relevant information (Bartels 2002; Druckman, Pethat constitute the parties or parties’ sociopolitical brands drive
+                                                                                    their feelings toward the parties, and ultimately their partisan attachments (Green et al. 2002; Hetherington and Weiler
+                                                                                    2009, chap. 9; Kuo, Malhotra, and Mo 2017; Mason and Davis
+                                                                                    2015; Zaller 2012; cf. Abramowitz and Saunders 2006).
+terson, and Slothuus 2013; Huddy, Mason, and Horwitz 2016;                             However, most supporting evidence for the theory is cirLodge and Taber 2013; Theodoridis 2017). Partisanship also                          cumstantial—for example, aggregate stability in party afﬁlifuels animus and distrust across party lines, with roughly a                        ation in the face of changing economic conditions or ecothird of partisans describing the other side as “a threat to the                    nomically consequential policy shifts by parties (e.g., Achen
+nation’s well-being” (Pew 2014) and nearly as many aghast at                        and Bartels 2016; Gamm 1989; Green et al. 2002). We still
+the idea of an out-party supporter marrying into their family                       largely lack direct evidence that the parties’ social composition
+(Iyengar, Sood, and Lelkes 2012).                                                   drives partisanship (though see Kuo et al. 2017; Mason 2016).
+    What explains the power of partisanship?1 A long line                           The group account of partisanship is also at odds with the fact
+of research suggests that people tend to think about parties in                     that the parties do not look very different. Majorities of both
+terms of other, longer-standing groups (Berelson, Lazarsfeld,                       parties’ supporters are white, middle class, and heterosexual,
+and McPhee 1954; Campbell et al. 1960; Converse 1964; Green,                        and both parties’ modal supporters are middle aged, nonevanPalmquist, and Schickler 2002; Hetherington and Weiler 2009).                       gelical Christians.2 Given these similarities, how can differences
+According to this account, people’s feelings toward the groups                      in party composition explain the heft of partisanship?
+
+
+Douglas J. Ahler (dahler@fsu.edu) is assistant professor of political science, Florida State University, Tallahassee, FL 32306. Gaurav Sood (gsood07@gmail.com) is
+an independent scholar based in Washington, DC.
+   The title is inspired by Walter Lippmann’s (1922) observation that we interpret the world through “pictures in our heads.” Many thanks to the Institute of
+Governmental Studies at University of California, Berkeley, for ﬁnancial support through the Mike Synar Graduate Research Fellowship. Studies presented in this
+article using human subjects were conducted in compliance with relevant laws and the ethical standards contained in the 1964 Declaration of Helsinki and its later
+amendments and were deemed exempt by Stanford University and the University of California, Berkeley. Data and supporting materials necessary to reproduce the
+numerical results in the paper are available in the JOP Dataverse (https://dataverse.harvard.edu/dataverse/jop). An online appendix with supplementary material is
+available at http://dx.doi.org/10.1086/697253.
+    1. For a discussion of different theories of partisanship, see Johnston (2006).
+    2. According to data from the 2012 ANES. See the online appendix (OA) secs. 1.3 and 2.8 for further details.
+
+The Journal of Politics, volume 80, number 3. Published online April 27, 2018. http://dx.doi.org/10.1086/697253
+q 2018 by the Southern Political Science Association. All rights reserved. 0022-3816/2018/8003-0016$10.00
+
+
+                                                                                           Volume 80     Number 3     July 2018 / 965
+
+
+    The answer, as we discover, lies not in the actual compo-        (2016) formalize this as follows: a characteristic (c) is likely
+sition of the parties, but in how people perceive the parties to     to be stereotypical to a group (g) “when it scores high on the
+be composed. People make large, systematic errors when               likelihood ratio” Pr(cjg)= Pr(cj:g). These discriminating
+judging party composition, considerably overestimating the           characteristics, however, need not be common within groups.
+extent to which partisans belong to party-stereotypical groups.      For example, even though Americans tend to associate blacks
+For instance, Americans believe that 32% of Democrats are            with the Democratic Party (Green et al. 2002), just a quarter
+gay, lesbian, or bisexual (only 6.3% are in reality), and that 38%   of Democrats are black.
+of Republicans earn over $250,000 per year (just 2.2% do in              Further, when “picturing” groups, people tend to ﬁxate on
+reality). These misperceptions are also consequential: they          prototypical characteristics and ignore other relevant inforaffect partisans’ beliefs about and feelings toward the parties.     mation such as the prevalence of prototypical characteristics
+Across multiple experiments, partisans who received infor-           in the population, a tendency Kahneman and Tversky (1972)
+mation about the actual share of party-stereotypical groups          describe as representativeness bias. Reliance on representain their out-party rated its supporters as less extreme and          tiveness, in turn, leads to “distorted distributions” of beliefs
+reported warmer feelings toward them.                                about group composition, in which people “overweight representative types” (Bordalo et al. 2016, 3). Thus, if people
+PARTIES AS SOCIOPOLITICAL BRANDS                                     think about the parties primarily in terms of other social
+People tend to think about parties in terms of other, longer-        groups, they are liable to overestimate the percentage of parstanding groups (Berelson et al. 1954; Campbell et al. 1960;         tisans belonging to groups they perceive as core to the party
+Converse 1964; Goggin and Theodoridis 2017; Green et al.             brand.
+2002; Hetherington and Weiler 2009). When evaluating po-                 But how do people learn about these discriminating traits
+litical parties, Americans are thought to ask: “What kinds of        and form beliefs about group-party associations? Political
+social groups come to mind as I think about Democrats,               parties cannot be experienced ﬁrsthand—we cannot literRepublicans, and Independents?” (Green et al. 2002, 8).              ally meet the party. Learning about the parties is necessarily
+    The groups that come to mind when people think about             mediated. As Mutz (1998, 12) notes, “while (personal-level
+the parties tend to be shared, with Democrats, independents,         knowledge) comes to us primarily through personal experiand Republicans often associating the same groups with the           ence, (societal-level knowledge) usually reaches us by means
+parties (Green et al. 2002; Rothschild et al. 2018). Group-          of abstracted discussions conveyed through impersonal chanparty associations also tend to endure. For example, associa-        nels.” The most common of these interpersonal channels for
+tions between the working class and Democrats and the                politics continues to be the mass media (Olmstead et al. 2013).
+wealthy and Republicans have endured for nearly a century            Mass media’s role in popularizing certain images of parties
+(Green et al. 2002).                                                 (e.g., Levendusky and Malhotra 2016) potentially explains why
+    We posit that these widely shared and enduring associa-          partisan prototypes are widely shared. It also suggests that intions reﬂect a tendency to think about parties in terms of           terest in political news will be positively correlated with beliefs
+prototypes—abstract composites of characteristics associated         about the share of partisans belonging to party-stereotypical
+with the party, akin to Lippman’s “pictures in our heads.” For       groups.
+instance, when thinking about the parties, one may call to               Not only are the most voracious news consumers most
+mind a Southern, evangelical Republican or a young, non-             likely to encounter party stereotypes in the information enwhite Democrat. Prototypes are a kind of schema—a mental             vironment, but they are also most likely to process informarepresentation of a category. They “provide the organizing           tion about the parties in a schema-consistent manner (Lodge
+structure for interpreting (new) information” (Norman 1979)          and Hamill 1986). The politically sophisticated are liable to
+and therefore help people remember more about groups, re-            encode new information that comports with their preexistcall information about groups faster, and make inferences            ing party prototypes while overlooking information that does
+about new people and situations (Lodge and Hamill 1986).             not. Thus, those who pay the most attention to political media
+They also help people more quickly assess where they sit in          may not just be more likely to recall political facts but also the
+relation to groups in society (Lippman 1922; Mutz 1998;              likeliest to possess the most misinformation about party comTurner et al. 1987).                                                 position (also see Achen and Bartels 2016; Luskin, Sood, and
+    To help people quickly categorize others, prototypes tend        Blank 2013; Pasek, Sood, and Krosnick 2015; Roush 2016).
+to reﬂect characteristics that distinguish groups from each              Finally, because of partisan homophily, partisans are less
+other (Rosch and Mervis 1975; Tajfel 1959). Relying on a             likely to have personal information about the out-party (Halprototype-based approach to stereotyping, Bordalo et al.             berstam and Knight 2014; Mutz 2006), rendering impersonal
+
+
+966 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+information like media portrayals of the parties more impor-                    quired to be between 0 and 100, in a box next to each group.4
+tant. Thus, we hypothesize that people will overestimate the                    The order of Democratic and Republican batteries was ranshare of party-stereotypical groups in the out-party more.                      domized, as was the order of items within the batteries. We
+                                                                                compared respondents’ reported perceptions to the actual
+PERCEPTIONS OF PARTY COMPOSITION                                                shares of these groups in the parties, estimated from Pew’s
+In March 2015, we surveyed 1,000 Americans through You-                         2012 Religion and Public Life Project (for the two religious
+Gov. (For additional details on sampling and comparisons                        party-group dyads) and the 2012 American National Election
+to established benchmarks, see the online appendix (OA) 1.1                     Study. (See OA 1.3 for details.)
+and OA 1.2.) For both parties, respondents estimated the percentage of supporters belonging to four party-stereotypical                     People overestimate the share of partygroups.                                                                         stereotypical groups in the parties
+    We turned to existing research to identify stereotypically                  People’s perceptions of party composition contain large, sysDemocratic and Republican groups. The most enduring im-                         tematic errors. In particular, people overestimate the share of
+ages of the parties are from the New Deal: the association of                   party-stereotypical groups in the parties (see ﬁg. 1 and table 1).
+the rich with Republicans and the working class with Dem-                       On average, respondents overestimated these groups’ prevaocrats (Green et al. 2002). And, for a long time, Republicans                   lence by 342% (95% conﬁdence interval (CI): [327%, 358%]).
+have been seen as the party of older Americans (Lewis-Beck                      Not only are misperceptions large, they are also widespread.5
+et al. 2008, 148). Over time, however, additional social cleav-                 For all party-group dyads, a majority of respondents considages have become aligned with partisanship. Most notably, as                    erably overestimated the group’s share, and for six of the eight,
+a consequence of partisan racial sorting in the mid-twentieth                   over 70% did so (see OA 1.7).,6
+century, African Americans have come to be seen as proto-                           Looking separately at individual groups, little distinguishes
+typically Democratic. Events half a century ago also precipi-                   misperceptions about old and new social cleavages. Respontated the end of the long-standing association between the                      dents thought that 39.3% of Democrats belonged to a labor
+South and the Democrats, replacing it with a new linkage be-                    union—only 10.5% do. Even more egregiously, they estimated
+tween the region and the GOP (Green et al. 2002). Separately,                   that 38.2% of Republicans earned over $250,000 per year
+the rise of the evangelical movement in the 1980s led evan-                     when just 2.2% of GOP supporters do. But misperceptions
+gelical Christians to become more closely linked to Repub-                      were equally common on more recent cleavages. For instance,
+licans, and the secular to Democrats (Claassen 2011). Given                     respondents thought that the share of Democrats who are gay,
+the recent politicization of gay rights, and the longer-standing                lesbian, or bisexual was roughly ﬁve times greater than it aclinkage between minority groups and Democrats, we added                         tually is (31.7% vs. 6.3%). Similarly, though by a considerably
+gays, lesbians, and bisexuals to the list of groups associated                  less dramatic margin—a bit more than 20%—respondents
+with Democrats.3 Reassuringly, after we conducted this study,                   overestimated the share of evangelicals among Republicans.
+Rothschild et al. (2018) administered open-ended items about                        While most people overestimate the share of partythe types of people who belong to the parties, and the groups                   stereotypical groups in the parties, the extent to which they
+selected here were frequently cited. To make measurement                        overestimate varies by partisanship. As columns 3–4 of tatractable, we exchanged vaguely deﬁned groups for similar                       ble 1 show, Republicans’ perceptions of Democratic compoprecisely deﬁned groups. For example, we substituted “earn-                     sition exhibit signiﬁcantly more bias than Democrats’. (Indeing more than $250,000 per year”—a contemporary sign-                           pendents’ perceptions about party composition are roughly
+post for great wealth in the United States—for “rich.”
+    In all, we asked respondents to estimate the percentage of                      4. Data from a follow-up study suggest that the number of items preDemocrats who are black, atheist or agnostic, union members,                    sented on a single screen does not have a large effect on reported perceptions
+and gay, lesbian, or bisexual, and the percentage of Repub-                     (see OA 1.5).
+                                                                                    5. To assess whether outliers drive the results, we compared median
+licans who are evangelical, 65 or older, Southern, and earn
+                                                                                estimates to the truth (see OA 1.6). Medians are generally lower than means
+over $250,000 per year. Respondents typed their estimate, re-                   but only by a few percentage points. More pertinently, differences between
+                                                                                median estimates and true proportions remain vast. Box plots, split by party,
+                                                                                are presented in OA 1.8.
+    3. The list is neither comprehensive nor systematic, but it covers prom-        6. Are people thinking about party elites instead of rank-and-ﬁle supinent groups associated with the parties. Such a list is adequate for the       porters when answering these questions? Evidence presented in OA 1.4
+purposes of our study—to describe the degree to which certain prominent         suggests not. Furthermore, even if people were thinking about party elites
+prototypes bias assessments of partisan composition and what, if anything, we   (variously deﬁned), their perceptions would still be inaccurate—sometimes
+may gain by clearing up such misperceptions.                                    more so (see OA 1.4).
+
+
+                                                                                                     Volume 80        Number 3       July 2018 / 967
+
+
+              Figure 1. People overestimate the share of party-stereotypical groups in the parties; 95% conﬁdence intervals depicted
+
+
+as accurate as in-party estimates; see ﬁg. OA 1.2 in OA 1.9).               with the notion that people rely on commonly shared, imFor example, while Democrats overestimate the percentage of                 personal information to arrive at these judgments, people are
+copartisans belonging to a union by 25.2 percentage points,                 not especially accurate when thinking about their own party;
+Republicans overestimate by an additional 8.3 percentage                    they are just more biased when thinking about the main oppoints. Similarly, Democrats’ perceptions of Republicans tend               posing party.
+to be more error prone. (Excluding leaning independents does                   Finally, the data suggest a potential source of these misnot change results systematically or appreciably, as OA 1.6                 perceptions. We asked respondents how interested they were
+shows.)                                                                     in politics.7 Political knowledge generally increases with inTo formally test for differences between in- and out-party               terest in politics (e.g., Ellis and Stimson 2012; Zaller 1992),
+perceptions, we compare mean bias in perceptions by parti-                  but in this case, perceptual bias about party composition insanship. Democrats overstate the share of party-stereotypical               creases with political interest (see ﬁg. 2). For seven of the eight
+groups in the Democratic Party by 214%, while Republicans
+do so by 306%, a 92-point difference (95% CI: [58, 126]).
+Similarly, Democrats err about the degree to which the Re-                       7. The exact question wording was: “Some people seem to follow what’s
+publican Party is composed of prototypical supporters by                    going on in government and public affairs most of the time, whether there’s an
+                                                                            election going on or not. Others aren’t that interested. Would you say you
+515%—134 percentage points worse than Republicans (95%
+                                                                            follow what’s going on in government and public affairs . . . Most of the time
+CI: [82, 184]). In line with our hypothesis, the data suggest               (42.0%), Some of the time (31.5%), Only now and then (18.1%), or Hardly at
+that out-party perceptions are more biased. But consistent                  all (8.5%)?”
+
+
+Table 1. Perceptions of the Share of Partisan Identiﬁers Belonging to Party-Stereotypical Groups across Different Studies
+
+                                                                               YouGov                                                                 Amazon Mechanical Turk
+
+                                                                     Main Survey, March 2015                           Alternate Interpretations        Extremity Experiment           Affect Experiment
+
+                                                   Full Sample               Democrats                Republicans           November 2014                      April 2014               November 2014
+                                       True        (n p 1,000)               (n p 438)                (n p 336)               (n p 382)                       (n p 1,036)                 (n p 821)
+                                        (1)             (2)                     (3)                       (4)                    (5)                              (6)                        (7)
+
+Democratic Party groups:
+  Black                             23.9             41.9                     39.4                     46.4                    37.7                            41.5                         41.4
+                                   [22.5, 25.5]     [40.2, 43.7]             [36.8, 41.9]             [43.4, 49.4]            [35.3, 40.1]                    [38.9, 44.2]                 [38.4, 44.4]
+  Union members                     10.5             39.3                     36.8                     43.5                    36.4                            39.7                         39.3
+                                    [9.4, 11.6]     [37.6, 41.1]             [34.3, 39.4]             [40.5, 46.6]            [34.0, 38.8]                    [37.1, 42.2]                 [36.4, 42.3]
+  Gay, lesbian, and bisexual         6.3             31.7                     29.0                     38.2                    29.4                            29.7                         30.5
+                                    [5.4, 7.2]      [29.9, 33.6]             [26.5, 31.6]             [34.8, 41.7]            [26.6, 32.3]                    [26.8, 32.6]                 [27.1, 33.9]
+  Atheist/agnostic                   8.7             28.7                     24.5                     35.7                    30.5                            33.2                         29.1
+                                    [8.1, 9.2]      [27.0, 30.4]             [23.3, 26.6]             [32.5, 38.8]            [28.1, 32.9]                    [30.4, 36.0]                 [26.4, 31.8]
+Republican Party groups:
+  Earn over $250,000                 2.2             38.2                     44.1                     33.3                    34.3                            37.3                         37.3
+                                    [1.5, 2.8]      [36.4, 40.1]             [41.0, 47.1]             [30.5, 36.1]            [31.4, 37.2]                    [35.2, 39.4]                 [35.0, 39.6]
+  Evangelicals                      34.3             41.6                     43.7                     43.2                    48.7                            51.8                         49.9
+                                   [32.5, 36.1]     [39.8, 43.3]             [40.9, 46.5]             [40.6, 45.9]            [45.9, 51.5]                    [49.9, 53.7]                 [47.8, 52.0]
+  Southerners                       35.7             40.4                     44.4                     39.7                    47.7                            50.8                         48.8
+                                   [33.5, 37.8]     [38.8, 41.9]             [41.9, 46.8]             [37.5, 41.9]            [45.4, 50.0]                    [49.3, 52.3]                 [47.1, 50.5]
+  Age 651                           21.3             39.1                     44.2                     38.3                    47.3                            See n. 15                    50.6
+                                   [19.5, 23.1]     [37.7, 40.6]             [41.8, 46.5]             [36.1, 40.5]            [45.1, 49.6]                                                 [49.0, 52.3]
+
+Note. 95% conﬁdence intervals in brackets. The three Amazon Mechanical Turk (MTurk) samples were recruited to conduct experimental studies discussed in the section on alternate explanations and
+consequences of misperceptions about party composition. From the alternate explanations experiment, we only utilize data from the control group. From the other two experiments, discussed in the section on
+consequences of misperceptions, we use data from all conditions as perceptions were measured pretreatment. In these experiments, we only asked about perceptions of out-party-group dyads; independents were
+randomly assigned to one of two parties.
+
+
+                                                                                                           Volume 80        Number 3        July 2018 / 969
+
+
+Figure 2. Those most interested in political news hold the most skewed perceptions. LOESS with 95% conﬁdence intervals. All linear relationships, estimated
+via ordinary least squares (OLS), are signiﬁcant at p ! :01.
+
+
+party-group dyads, those who report following the news most                      both evangelicals and Republicans may deliberately overstate
+closely also hold the most prototype-biased beliefs about party                  the percentage of Republicans who are evangelical Christians.
+composition.8 The one dyad for which this is not true involves                   Second, even if responses are genuine, they may reﬂect innua social group whose share in the population was frequently                      meracy rather than misperception. In particular, sums of peomentioned by the media—“the 1%.” To restate the obvious,                         ple’s estimates of shares of exhaustive, mutually exclusive catecorrelation is not causation. But along with existing theory                     gories often exceed 100 (e.g., Wong 2007). So, for instance,
+and evidence on mass media’s role in shaping perceptions                         when people report that 30% of Democrats are black, a more
+of collectives (e.g., Mutz 1998), these results provide further                  appropriate interpretation may be that they think that 30 of
+reason to investigate the effect of media depictions of the par-                 every 120 or 150 Democrats are black. Third, inaccurate
+ties on people’s beliefs about party composition.                                responses may not be party speciﬁc but rather may reﬂect misperceptions about how common various groups are in the
+Are these reported perceptions real?                                             population at large. If so, the misperceptions we document
+The results thus far comport with the notion that people’s                       above would reﬂect not prototypical thinking but, instead,
+beliefs about party composition are notably and systematically                   simple ignorance of US demographics.
+distorted by party prototypes. However, they are also con-                          We conducted an experiment on Amazon’s Mechanical
+sistent with three alternate explanations: expressive respond-                   Turk to assess these alternate explanations.9 We randomly
+ing, innumeracy, and ignorance of group base rates. First, instead of offering their true beliefs about the composition of
+                                                                                     9. Two pieces of data suggest that inferences are likely generalizable to the
+the parties, respondents may offer answers that convey how                       population. First, MTurk respondents’ perceptions of party composition are
+they feel about a party. For instance, Democrats who dislike                     quite similar to those of YouGov respondents (see table 1). Second, the two
+                                                                                 most salient concerns pertain to partisanship and education, which deviate
+                                                                                 signiﬁcantly from the US population, and plausibly strongly condition treat8. These associations remain healthy even when we control for education       ment effects. Treatment effects, however, do not vary signiﬁcantly by eduand partisanship (see OA 1.12). Furthermore, the bivariate correlations be-      cational attainment or partisanship (see OA 2.5 for partisanship and OA 2.6
+tween education and these perceptions is relatively weak (see OA 1.11).          for education).
+
+
+970 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+assigned respondents to one of four conditions (see OA 2.2                     groups and perceptions of their shares in parties are exfor screenshots). The Standard estimation condition asked                      tremely weak (see OA 2.7).
+the partisan composition questions in the same way as the
+YouGov survey. Estimates from this condition serve as a base-                  Innumeracy: Using a denominator larger than 100. Even
+line. We designed each of the other three conditions to assess                 if responses reﬂect genuine beliefs, they may reﬂect innuthe merit of one speciﬁc explanation. Thus, a signiﬁcant re-                   meracy rather than misperception. For example, when asked
+duction in mean perceptual bias in any of these conditions                     to report perceived shares of mutually exclusive, complewould imply support for the corresponding alternative.                         mentary groups in the population, responses often sum to
+   Table 2 presents the results. (See OA 2.3 for a plot akin to                more than 100 (e.g., Wong 2007). To assess the concern about
+ﬁg. 1.) Like table 1, we present respondents’ estimates of the                 respondents using the wrong denominator, we asked a ranpercentage of the party belonging to the party-stereotypical                   dom set of respondents to not only report their beliefs about
+group against the truth, except here we do so separately by                    the share of partisans belonging to each of the four partyexperimental condition.10                                                      stereotypical groups but also the shares of mutually exclusive
+                                                                               complementary groups. We asked respondents about either
+Expressive responding. People may intentionally misreport                      in-party- or out-party-group dyads (e.g., “What percentage of
+the share of party-stereotypical groups to express partisan                    Democrats do you think are: Black? White? Latino? Other?”)
+affect. For instance, they may intentionally overstate the share               and we required that responses sum to 100. (An on-screen
+of groups they like in the party they like or understate the                   counter presented a running tally of their summed responses.)
+share of groups they like in the party they dislike. To estimate                   If innumeracy inﬂates reported shares of party-stereotypical
+the degree to which our measures capture expressive respond-                   groups in the Standard condition, estimates in the Sum to 100
+ing vis-à-vis beliefs about party composition, we provided                     condition ought to be considerably smaller. For the most part,
+accuracy incentives to a random subset of respondents for                      they are not. For six of the eight groups, the difference between
+close-to-correct responses (see Bullock et al. 2015; Prior, Sood,              reports in the Standard condition and the Sum to 100 condiand Khanna 2015). Participants received an additional 5 cents,                 tion were indistinguishable from zero or in the wrong direction.
+20% of the compensation for ﬁnishing the survey (25 cents),                    Only for the Democratic-black and Republican-evangelical
+for each response that fell within 5 percentage points of the                  dyads were estimates in the Sum to 100 condition noticeably
+truth. We expect this opportunity to nearly triple the earn-                   smaller, albeit still greater than those groups’ actual shares.
+ings to motivate respondents to report their true beliefs.11                   In the case of the Democratic-black dyad, the difference beThe data suggest that expressive responding contributes                    tween reported and actual share in the Sum to 100 condition
+little to the bias we observe. Perceptions in the Incentives                   is statistically distinguishable from zero; for the Republicancondition are just as biased as those in the standard esti-                    evangelical dyad it is not. Pooling across groups, reports of
+mation condition (see OA 2.4). Not only are there no sta-                      perceptions in the Sum to 100 condition were 1.94 points less
+tistically signiﬁcant differences in average perceptions for                   biased than reports in the Standard condition. Given that the
+any of the eight party-group dyads, the overall distributions                  typical perception is off by 23.1 points in the standard conof responses in the two conditions do not differ statistically                 dition, this reduction is neither substantively nor statistically
+signiﬁcantly either. Furthermore, the data suggest that party                  signiﬁcant. (See OA 2.12 for a regression with group-party
+affect does not drive reported perceptions of party compo-                     dyad ﬁxed effects.)
+sition; the bivariate associations between feelings toward                         The Sum to 100 task provides an additional insight. We
+                                                                               asked about multiple complementary groups for ﬁve of the
+                                                                               party-group dyads. In each of these cases, one group was most
+                                                                               obviously counter-stereotypical to the party. Respondents underestimated the share of these counter-stereotypical groups.
+    10. In table 2, we pool across partisans. However, it may be that the
+                                                                               They thought 19% of Republicans earned under $50,000 per
+treatments affect out-party perceptions more strongly than in-party perceptions (or vice versa). To test that, we interacted treatment conditions with
+                                                                               year (compared to 41% in reality), 16% were between 18 and
+partisanship (see OA 2.5). We ﬁnd no systematic patterns.                      39 years old (33%), and 12% were non-Christian or did not
+    11. According to Horton and Chilton (2010), the typical MTurker will       identify with a religion (19%). Similarly, they thought just 42%
+work for $1.40 per hour. The average completion time for this study was just   of Democrats were white (60%), and 26% Protestant (45%).
+under seven minutes. And 25 cents for completing the survey implies an
+average hourly wage of $2.14. However, the potential hourly wage in the
+                                                                               (Differences between each of these misperceptions and the
+Incentives condition was $5.57, nearly four times the hourly wage for which    actual share are statistically signiﬁcant at conventional levels;
+MTurk workers are willing to work.                                             see OA 2.8.) In toto, people overestimate the shares of parVolume 80   Number 3    July 2018 / 971
+
+
+Table 2. Bias Due to Expressive Responding, Innumeracy, and Poor Knowledge of Base Rates Is Likely Small
+
+                                                                           Standard                 Incentives           Sum to 100            Base Rates
+                                                   True                    (n p 98)                 (n p 91)              (n p 98)             (n p 95)
+
+Democratic Party groups:
+  Black                                         23.9                       36.2                     38.5                   28.4                 43.2
+                                               [22.5, 25.5]               [31.6, 40.7]             [33.8, 43.3]           [24.7, 32.1]         [38.3, 48.0]
+   Union members                                10.5                       36.5                     35.6                   36.8                 36.9
+                                                [9.4, 11.6]               [32.1, 41.0]             [30.9, 40.3]           [31.5, 42.1]         [32.0, 41.7]
+   Gay, lesbian, and bisexual                    6.3                       27.0                     27.7                   24.6                 35.9
+                                                [5.4, 7.2]                [21.9, 32.1]             [22.7, 32.7]           [19.1, 30.1]         [29.5, 42.3]
+   Atheist/agnostic                              8.7                       29.6                     29.5                   25.9                 34.7
+                                                [8.1, 9.2]                [25.2, 33.9]             [24.7, 34.3]           [21.2, 30.5]         [29.8, 39.6]
+Republican Party groups:
+  Earn over $250,000                             2.2                       31.5                     34.9                   29.3                 39.2
+                                                [1.5, 2.8]                [26.5, 36.6]             [29.4, 40.4]           [22.4, 36.2]         [33.2, 45.3]
+   Evangelicals                                 34.3                       46.6                     48.9                   38.9                 56.0
+                                               [32.5, 36.1]               [41.1, 52.1]             [43.7, 54.1]           [32.7, 45.1]         [50.8, 61.3]
+   Southerners                                  35.7                       42.3                     40.9                   60.9                 52.7
+                                               [33.5, 37.8]               [38.2, 46.4]             [36.5, 45.2]           [56.4, 65.4]         [48.3, 57.2]
+   Age 651                                      21.3                       44.7                     45.5                   44.9                 53.1
+                                               [19.5, 23.1]               [40.3, 49.0]             [41.3, 49.7]           [39.1, 50.6]         [49.1, 57.2]
+
+Note. 95% conﬁdence intervals in brackets. In the Sum to 100 condition, participants responded only to the Democratic or the Republican battery to prevent
+fatigue. Battery assignment was random, with 47 participants responding to the Democratic battery and 51 to the Republican battery.
+
+ticular groups and underestimate the share of others in a                                a mode effect—the Standard condition employs text entry
+manner consistent with the parties’ sociopolitical brands.                               boxes instead of the sliders in the Base Rates condition. To
+                                                                                         tease apart the effect of provision of base rates from the change
+Ignorance of base rates. A well-documented ﬁnding, and                                   in mode, we administered the party composition battery with
+one we replicated in the Standard condition, is that people are                          both sliders and text entry (but no base rates) in a follow-up
+largely ignorant of the shares of various groups in the popu-                            study. Participants assigned to the sliders reported perceplation. Thus, the misperceptions we have documented may be                               tions roughly three points larger across party-group dyads, a
+genuine but may reﬂect misperceptions about the composi-                                 nonsigniﬁcant difference smaller than that between the Stantion of the population rather than anything speciﬁc to the                               dard and Base Rates conditions here. (See OA 2.9 for full
+parties.12 We put this question to a dispositive test by remov-                          results, and Ahler and Sood [2017] for more information on
+ing ignorance about base rates as a plausible alternative ex-                            base rate perceptions.) Thus, even if sliders inﬂate responplanation. In the base rates condition, we anchored sliding                              dents’ reported beliefs about party composition, they are unscales at each party-stereotypical group’s share in the adult                            likely to obscure a corrective effect of the Base Rates condition.
+American population. We alerted respondents to this design                               These misperceptions appear to reﬂect more than mere igfeature and then asked them to use the sliders to report their                           norance of population demographics.
+perceptions of the groups’ shares in “their” parties.
+    Surprisingly, providing base rates appears to make partic-                           CONSEQUENCES OF MISPERCEPTIONS ABOUT
+ipants less accurate (see table 2). This may, however, reﬂect                            PARTY COMPOSITION
+                                                                                         The evidence thus far suggests that people believe that
+                                                                                         party-stereotypical groups are far more common in the par12. In the Standard condition, we asked participants about the share of              ties than they actually are, that partisans hold especially disparty-stereotypical groups in the population after quizzing them about their             torted perceptions of the composition of the out-party, and
+share in the parties. Respondents overestimated the share of all the groups in           that these misperceptions are particular to the parties. We
+the population except for Southerners. Party-speciﬁc perceptions, however,
+were signiﬁcantly larger and more biased than perceived shares in the popnow assess the consequences of these misperceptions. Variaulation, implying that people’s images of the parties color their perceptions of         tion in perceptions of parties’ composition and widespread
+Pr(partyFgroup). See OA 2.11 for complete results.                                       bias in those perceptions provide leverage for doing so.
+
+
+972 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+    First, we examine the extent to which beliefs about party       Berkeley, and which surveyed 4,257 California residents
+composition drive inferences about partisans’ policy views.         through Survey Sampling International (SSI). The marginals
+Beliefs about composition may affect beliefs about policy pref-     on important demographic variables matched population
+erences because people associate social groups with particular      marginals quite well (see OA 3.1 for demographics); survey
+policy preferences (Brady and Sniderman 1985; Chambers,             weights improve this correspondence but do not affect the
+Schlenker, and Collisson 2013; Wilder 1978). If they think          results much. Of the 4,257 respondents, 1,815 partisans were
+about the parties primarily in terms of salient groups, percep-     randomly chosen to answer party composition questions like
+tions about groups’ shares in the parties ought to inﬂuence their   those in the previous studies.
+beliefs about partisans’ policy views. For instance, people (ac-       For analysis, we constructed a measure of average percurately) see African Americans and union members as being          ceptual bias in respondents’ beliefs about party composition.
+relatively liberal on economic and social welfare issues (Brady     Letting p index the two main parties, and i index n partyand Sniderman 1985; Chambers et al. 2013). Thus, overesti-          stereotypical groups:
+mating the proportion of Democratic supporters who are black
+                                                                                                 1 n Estimated %g 2 True %g
+                                                                                                       i
+
+or who belong to unions is liable to cause people to infer that     Average perceptual biasp p        ^             i
+                                                                                                                            :   i
+
+
+                                                                                                 ni g p1
+                                                                                                   i
+                                                                                                             True %g    i
+the party’s supporters are more liberal than they actually are.
+    Second, we examine the extent to which beliefs about com-           We also measured beliefs about partisans’ policy preferposition affect how people feel about out-party supporters.         ences, feelings toward out-party supporters, and the extent to
+There are two reasons to expect this relationship. First, par-      which partisans support their own party. To gauge beliefs
+tisans may be prejudiced against out-party-stereotypical groups,    about Democrats’ (Republicans’) policy preferences, we asked
+and that may spill over into their evaluations of the party. For    respondents what percentage of Democrats (Republicans)
+instance, racism may combine with positive bias in percep-          supported each of six policy statements; the six statements
+tions of the share of blacks in the Democratic party to reduce      were drawn randomly from a list of 25. Respondents answered
+how much Republicans like Democrats. Alternatively, these           the same six items for Democrats and Republicans (with party
+misperceptions may heighten partisan animus through the             order randomized). (See OA 3.2 for the full list of statements
+logic we lay out above—overestimating the share of party-           and additional details about all dependent measures.) Since
+stereotypical groups may cause partisans to think that out-         roughly half of these statements were liberal and half conpartisans support extreme positions, which may in turn cause        servative, we recoded responses to reﬂect the percentage of
+people to dislike that party’s supporters more. (We do not          party p supporters believed to be conservative on the issue.
+have the data to shed light on the mechanism. We simply test        Note that this is a measure of perceived constraint. (In our
+whether misperceptions about out-party composition predict          experimental analog, we rely on perceived extremity. We expartisan antipathy, as they ought to under a group identity         pect both constraint and extremity to be correlated with bias
+conception of partisanship.)                                        in perceptions of shares of stereotypical groups.)
+    Believing that opposing partisans hold more extreme pol-            Second, to gauge feelings toward supporters of the main
+icy preferences, and feeling more socially distant from them,       opposing party, we administered a partisan social distance
+are both liable to cause citizens to become less receptive to       battery (Bogardus 1947). Following Almond and Verba (1963)
+out-party communications and less likely to consider voting         and Iyengar et al. (2012), we asked respondents how happy
+for that party. This may happen because people come to see          or unhappy each of the following situations would make them:
+opposing partisans as working on behalf of the interests of         a family member marrying a Republican (Democrat), being
+a few groups (at the expense of other groups or even the na-        assigned to work closely with a colleague who supports the
+tional interest) (e.g., Bawn et al. 2012), or because they think    Tea Party (Occupy Movement) and enjoys discussing politics
+that the opposing party supports more extreme policies that         at work, a neighbor putting a “Palin for President” (“Hillary
+it does, or potentially even because they distrust elites repre-    Clinton 2016”) sign in their yard, and George W. Bush (Bill
+senting disliked groups.                                            Clinton) receiving an honorary degree from a nearby college.
+                                                                    Consistent with past work, we averaged responses to the four
+Observational evidence                                              items to create a Partisan Social Distance Index (a p 0:71).
+We begin by presenting some data on the association between             Finally, we administered three items to measure in-party
+perceptions of party composition and partisan evaluations.          allegiance: likelihood of supporting an out-party candidate
+We estimated the strength of these associations using data          for US House in 2016 (reverse coded), anger at the possibility
+from the 2015 IGS-California Poll, conducted by the Institute       of an out-party candidate winning the presidency in 2016,
+of Governmental Studies at the University of California,            and likelihood of switching party registration in the future
+
+
+                                                                                                       Volume 80      Number 3      July 2018 / 973
+
+
+(reverse coded). We again created an index from these items                    CI: [.04, .22]). Similarly, respondents who most overestimated
+(a p 0:68).                                                                    the share of the rich, evangelical, and so on in the Republican
+    To determine whether beliefs about party composition are                   party believed GOP supporters to be 13% more likely to take
+associated with beliefs about partisans’ policy preferences,                   conservative positions than did those with the least biased
+we analyze the data at the policy-perception level, regressing                 perceptions (95% CI: [.08, .19]). And as table 4 shows, parBeliefs about Democrats’ Opinions on Average perceptual                        tisans with the most biased perceptions of out-party compobiasD (and repeating for Republican perceptions). We include                   sition tend to feel most socially distant from the main opﬁxed effects for policy statements and cluster standard errors                 posing out-party and report the greatest in-party allegiance.
+by respondent. Analysis is simpler for Partisan Social Distance                    The explanatory power of perceptual bias declines someand In-Party Allegiance: we regress the dependent measures                     what when we control for likely confounders (see cols. 2 and 4
+on bias in out-party perceptions. For all analyses, we rescale                 in tables 3 and 4). But even after controlling for partisanship,
+all the variables to lie between 0 and 1.                                      whether or not the respondent is a “strong partisan” (1 or 7
+    As table 3 shows, overestimating shares of party-                          on the 7-point scale), and affect toward party-stereotypical
+stereotypical groups in the parties goes hand in hand with                     groups (mean feeling thermometer rating), beliefs about party
+seeing the parties as ideologically sorted. Compared to those                  composition are still the strongest predictor of beliefs about
+with the least biased beliefs, respondents with the most biased                partisans’ political views. Further, these beliefs continue to
+beliefs about Democratic composition tended to think an                        strongly and signiﬁcantly predict partisan affect and in-party
+additional 13% of Democrats took the liberal position (95%                     allegiance.
+
+
+Table 3. People with the Most Prototype-Biased Party Perceptions See Partisans as More Likely to Take
+Party-Consistent Policy Positions
+
+                                                                 DV: Perceived % of Democrats                   DV: Perceived % of Republicans
+                                                                  Taking Conservative Position                   Taking Conservative Position
+
+                                                                     (1)                    (2)                     (3)                      (4)
+
+
+Average perceptual bias, Democratic composition                   2.13***                 2.13***
+                                                                   (.05)                   (.04)
+Average perceptual bias, Republican composition                                                                    .13***                   .11***
+                                                                                                                  (.03)                    (.02)
+Mean FT for Democratic groups                                                               .09***
+                                                                                           (.03)
+Mean FT for Republican groups                                                                                                               .07**
+                                                                                                                                           (.04)
+Strong partisan                                                                             .00                                             .02**
+                                                                                           (.01)                                           (.01)
+PID: Republican                                                                           2.02**                                          2.01
+                                                                                           (.01)                                           (.01)
+Constant                                                            .39                     .36                    .56                      .53
+                                                                   (.01)                   (.01)                  (.01)                    (.01)
+Issue ﬁxed effects                                                   X                       X                       X                       X
+R2                                                                  .18                     .18                    .11                      .12
+SER                                                                 .24                     .24                    .26                      .25
+n perceptions                                                      10,837                 10,825                  10,856                  10,844
+n respondents                                                       1,807                   1,805                   1,810                   1,808
+
+Note. DV p dependent variable; FT p feeling thermometer; PID p partisan identiﬁcation; SER p standard error of regression; n differs from cols. 1–2 and
+3–4 because a handful of respondents left the feeling thermometers blank.
+* p ! .1.
+** p ! .05.
+*** p ! .01.
+
+
+974 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+                Table 4. People with the Most Prototype-Biased Out-Party Perceptions Feel the Most Socially Distant
+                from the Out-Party and Are the Biggest Supporters of Their Party
+
+                                                                               DV: Partisan Social Distance          DV: Allegiance to In-Party
+
+                                                                                     (1)               (2)                (3)                (4)
+
+                Average perceptual bias, out-party composition                      .14***            .08***             .24***            .18***
+                                                                                   (.03)             (.03)              (.04)             (.03)
+                Mean FT for out-party groups                                                          .33***                               .37***
+                                                                                                     (.03)                                (.03)
+                Strong partisan                                                                       .05***                               .20***
+                                                                                                     (.01)                                (.01)
+                PID: Republican                                                                     2.00                                   .02*
+                                                                                                     (.01)                                (.01)
+                Constant                                                            .56               .40                .57               .32
+                                                                                   (.01)             (.02)              (.01)             (.02)
+                R2                                                                  .02               .20                .02               .28
+                SER                                                                 .15               .13                .23               .20
+                n respondents                                                        926              925                1,818             1,815
+
+                Note. DV p dependent variable; FT p feeling thermometer; PID p partisan identiﬁcation; SER p standard error of regression; n differs from cols. 1–2 and 3–4 because a handful of respondents left the feeling thermometers blank.
+                * p ! .1.
+                ** p ! .05.
+                *** p ! .01.
+
+
+   These data establish that the expected associations exist                           questions (like those from the YouGov study) prior to adin high-quality survey data. To assess causality, we rely on a                         ministering the dependent measures.14 Participants in the Tell
+series of experiments.                                                                 condition also answered these questions but received correct
+                                                                                       information about the share of party-stereotypical groups
+Experimental design                                                                    in the out-party before responding to the dependent meaWe conducted two experiments on MTurk, differing only                                  sures. Finally, participants assigned to the Control condition
+in the dependent variables. (See OA 4.1 for sample demo-                               responded to the dependent measures without ﬁrst answergraphics.) The ﬁrst experiment, conducted in April 2014                                ing questions about out-party composition. However, they
+(n p 1; 036), assessed the impact of misperceptions about                              responded to these questions later in the survey, so we have
+out-party composition on beliefs about out-party extremity                             perceptions of party composition for all participants. To deter
+and feelings toward the out-party.13 The second experiment,                            demand effects, we couched the composition questions as part
+conducted in November 2014 (n p 821), further investi-                                 of a broader political knowledge survey.
+gated the effect of these misperceptions on partisan animus.                               To identify the impact of correcting misperceptions about
+   To determine the causal effect of misperceptions about out-                         out-party composition, we compare responses in the Tell conparty composition, we provided information about the actual                            dition to responses from the other two conditions. The Conshare of four party-stereotypical groups in the out-party to                           trol condition provides a baseline for the dependent measures.
+a random set of respondents. First, we assigned respondents                            The Ask condition mimics the Tell condition more closely: it
+to one of three conditions: Ask, Tell, or Control. In the Ask
+condition, we administered the four out-party composition
+                                                                                           14. In the ﬁrst experiment, one party-group dyad was different. Instead of
+                                                                                       asking Democrats about the percentage of Republicans 65 years or older, we
+                                                                                       asked about the counter-stereotypical group, the percentage of Republicans
+    13. We focused exclusively on the out-party for two reasons. First, per-           aged 35 or below. The average of the responses to this question was close to the
+ceptions of out-party composition tend to be more erroneous and, thus, pro-            actual number (26.6% vs. 25.7% in reality). However, Democratic participants
+vide greater opportunity for correction. Second, rising out-party hostility—           were as inaccurate about the other three groups as they were in the above
+not in-party afﬁnity—is the primary driver of the rise in affective polarization       studies. Thus, average correction from the Tell treatment did not vary unduly
+(e.g., Iyengar et al. 2012).                                                           across the two experiments.
+
+
+                                                                                           Volume 80     Number 3     July 2018 / 975
+
+
+asks for people’s beliefs about the share of party-stereotypical     the out-party as most extreme, and to feel most affectively
+groups but does not provide correct information before the           polarized. However, if the treatment is effective, we also expect
+dependent variables are administered.                                treated participants with the most biased perceptions to most
+    The Ask condition, however, very likely changes people’s         strongly update their beliefs and attitudes, as they receive the
+beliefs about the parties’ composition. As we contend above,         largest corrections.
+people’s “mental pictures” of parties reﬂect party-stereotypical
+groups. These pictures implicitly map to inﬂated beliefs about       Manipulation check, complier average causal effect estishares of party-stereotypical groups. However, being forced          mates, and placebo test. We measured the effectiveness of
+to offer explicit, precise numerical estimates of the shares of      the manipulation by asking participants in the Tell condition
+different groups in the party disrupts the tendency to think         to again answer the party composition questions at the end
+about parties in terms of prototypes. It forces people to take       of the second experiment. Beliefs became signiﬁcantly more
+stock of some of the large numbers that the pictures in their        accurate posttreatment; across all perceptions, mean absolute
+heads map to and to revise their beliefs to lower, more plau-        error declined from 27.7 points to 6.1 points, a 21.6-point
+sible numbers. Experimental data support such a mechanism:           drop (95% CI: [223.6, 219.5]). (It also decreased signiﬁmore “considered” responses tend to be less inﬂated than             cantly for each of the eight party-group dyads. OA 4.4 pre-
+“automatic” responses (Ahler and Sood 2017).                         sents these results. OA 4.3 presents additional data showing
+    In the ﬁrst experiment, we asked respondents to place the        that respondents thought that the information was novel.)
+typical Democrat and Republican on four semantic policy                  Assuming that the effect of our informational treatment is
+scales: taxes, abortion, gay rights, and racial policy. We crafted   limited to those who learn the information that is provided,
+the scale endpoints so that they fell outside the political main-    the difference in means between conditions is a conservative
+stream and, instead, reﬂected the extreme demands of party-          intention-to-treat (ITT) estimate. To assess the effect of actually
+stereotypical groups (e.g., Bawn et al. 2012). For example, the      learning something about out-party composition—the causal
+“taxes” endpoints reﬂected the stereotypical preferences of          average complier effect, or CACE—we estimate the treatment
+the very wealthy and the economically marginalized. Specif-          effect among those who answered at least one of the four endically, the scale ran from “Decrease federal income taxes on         of-survey composition questions within ﬁve percentage points
+just the highest earners, keeping the tax rate the same on all       of the truth. (This is a liberal deﬁnition of compliance, which
+others” to “To address inequality, establish a national maxi-        has the effect of yielding a conservative estimate of CACE.) By
+mum income by taxing all income over a certain amount at             this deﬁnition, 74.2% of participants “complied.” Using as100%.” (See OA 4.5 for exact question wording and response           signment to Tell as an instrument for learning the information
+options.) Our primary dependent measure for the experiment           about out-party composition, CACE p ITT=%complier (Bloom
+was whether or not respondents placed the typical out-party          1984).
+supporter at the party’s ideologically stereotypical extreme             Finally, to more squarely pin down the causal mechanism,
+endpoint, for example, saying that the typical Democrat              we conducted a placebo test in the ﬁrst experiment. In addisupports a national maximum income. While results are ro-            tion to measuring out-party policy placements and feeling
+bust to other reasonable coding speciﬁcations (raw placement,        thermometer ratings, we asked respondents for their beliefs
+winsorized placement, and absolute distance from the scale           about and feelings toward their own party. Since we did not
+midpoint; see OA 4.7), our primary measure most clearly              provide information about the composition of the in-party in
+comports with our hypothesis that overestimating the share           any condition, treatment should not affect in-party outcomes.
+of party-stereotypical groups in the out-party leads people to       The difference between the Ask and Control conditions on
+see that party’s supporters as “intense policy demanders.”           perceptions of in-party extremity is 20.00 (95% CI: [20.04,
+    We assessed the consequences of misperceptions on feel-          0.03]), and the difference between the Tell and Control conings toward the out-party two ways. In the ﬁrst experiment,          ditions is 0.01 (95% CI: [20.03, 0.04]). Similarly, comparing
+we measured partisan animus with a reverse-coded, 101-point          the Ask and Control conditions, the difference in reverseout-party feeling thermometer, rescaled 0–1. In the second           coded in-party feeling thermometer ratings (rescaled 0–1) is
+experiment, we used the social distance battery that was also        20.01 (95% CI: [20.04, 0.03]). Between the Tell and Control
+used in the observational study.                                     conditions, the difference is equally small (95% CI: [20.04,
+    We hypothesize that participants assigned to the Tell con-       0.03]). In all, it suggests that any change in dependent meadition will see the out-party as less extreme and will dislike       sures can be attributed to learning party-speciﬁc information
+that party less. Consistent with the observational results, we       rather than to a more general mechanism (e.g., reduction in
+further expect people with the most biased perceptions to see        self-conﬁdence).
+
+
+976 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+Figure 3. Misperceptions cause people to attribute more extreme policy preferences to the typical out-party supporter. All variables are rescaled to lie
+between 0 and 1. The dashed vertical line denotes the point at which average bias p 0 when not rescaled. Perceptions of out-party composition were
+measured after the policy perceptions battery in the Control condition. Panel A shows the proportion of respondents in each condition placing the out-party at
+the extreme endpoint on the policy scales, with 95% conﬁdence intervals. Panel B plots the predicted proportion of respondents in each condition placing the
+out-party as extreme, as a function of prior beliefs about party composition, with 95% conﬁdence intervals. The slopes in panel B refer to linear approximations
+estimated via OLS. See OA 4.6 for OLS estimates.
+
+
+Misperceptions about composition cause                                                 Next, we assess whether people’s prior beliefs about outperceptions of out-party extremity                                                 party composition moderate the treatment effect. In particPartisans assigned to the Tell condition were 6.6 points less                      ular, we regress perceived extremity on average perceptual
+likely to place the typical out-party supporter at the extreme                     bias (rescaled 0–1) within conditions, including ﬁxed effects
+than those in the Control condition (95% CI: [20.11, 20.02];                       for the distinct policy questions and random effects for resee the left pane of ﬁg. 4).15 (For analysis, we stacked the data                  spondents. Letting i index respondents and p policy domains,
+so that the unit of analysis is respondent policy question. To                     and letting d denote ﬁxed effects, e random error, a random
+account for correlation of errors within respondents, we clus-                     effects for each respondent, and X the respondent’s average
+tered the standard errors by respondent.)                                          perceptual bias, our model takes the following form:
+    The corresponding difference between the Ask and ConPr(yip p 1) ∼ logit21 (b # X i 1 dp 1 ai ; j2ε )
+trol conditions is about half as large. This suggests that simai ∼ N(0; j2a ):
+ply asking people to report beliefs explicitly on a numerical
+scale reduces the usual tendency to think about parties as                         As ﬁgure 3B shows, people who most overestimate the share
+prototypes (and the consequences of such thinking). However,                       of party-stereotypical groups are also the likeliest to see the
+the effect falls just short of the conventional cut-off for sta-                   typical party supporter as having extreme preferences. Howtistical signiﬁcance (diff : p 20:03, 95% CI: [20.08, 0.01]).                      ever, this trend is signiﬁcantly less pronounced among those
+                                                                                   who are given accurate information about party composition.
+    15. This main effect only appears among partisans. One reason for              In the Tell condition, participants with the most biased outthis is that independents are generally less likely to see partisans as ex-        party perceptions were just 12.8 points more likely to see the
+treme (Ahler 2014). We see the same pattern in our data. Just 22% of the           typical out-party supporter as an extreme policy demander
+placements given by independents are at the endpoint, compared to 31%
+                                                                                   than those who had the least biased beliefs about out-party
+of those given by partisans. Further, independents tend to have less biased
+beliefs about party composition than partisans (see ﬁg. OA 1.2), suggesting        composition. (The dashed vertical line in ﬁg. 3B denotes the
+smaller treatment impact on average.                                               point on the x-axis at which X p 0, when not rescaled 0–1.)
+
+
+                                                                                                            Volume 80       Number 3       July 2018 / 977
+
+
+Figure 4. Misperceptions cause people to dislike the out-party. All variables have been rescaled to lie between 0 and 1. The dashed line denotes the point at
+which average bias p 0 when not rescaled. Perceptions of out-party composition were measured after the feeling thermometer battery in the Control condition.
+Panel A plots mean out-party feeling thermometer rating by condition with 95% conﬁdence intervals. Panel B plots ratings by condition, as a function of prior
+beliefs about party composition, with 95% conﬁdence intervals.
+
+In the Ask and Control conditions, the corresponding differ-                      Misperceptions about composition cause
+ences are 27.4 and 32.7 points, respectively. More generally,                     partisan animus
+among partisan respondents assigned to the Tell condition, at                     In the ﬁrst experiment, participants randomly assigned to the
+any level of correction, the odds of placing the out-party as                     Tell condition reported liking the out-party 6.4 percentage
+extreme are 0.34 times lower than in the other conditions (95%                    points more than those in the control group [95% CI: [20.10,
+CI: [0.08, 1.56]). In the full sample, where we have more                         20.03]). Participants assigned to the Tell condition also reprecision, the interaction effect is similar (e ^b p 0:25, 95% CI:                ported feeling a statistically insigniﬁcant 1.5 points warmer
+[0.06, 0.99]), implying that independents with strongly                           toward the out-party than those in the Ask condition (95% CI:
+prototype-biased perceptions of the parties are affected by                       [20.05, 0.02]), who, as ﬁgure 4A shows, reported signiﬁcantly
+the treatment. (OLS estimates with cluster-robust standard                        warmer feelings toward the other side vis-à-vis the control
+errors are virtually identical. They are reported in OA 4.7,                      group. Taken together, these comparisons suggest that inacalong with models including controls for respondent educa-                        curate beliefs about out-party composition increase animus
+tion.)                                                                            toward the out-party but that correcting those beliefs, or poUntil now we have discussed estimates of ITT effects and                       tentially merely asking partisans to report their beliefs nuhow they vary by magnitude of perceptual bias. But ITT un-                        merically, can reduce such animus.
+derestimates the effect of learning about the actual share of                        The second experiment investigated the effect of these
+stereotypical groups in the out-party. Using assignment to                        misperceptions on partisan social distance. The Tell treatment
+Tell as an instrument for learning the information provided,                      reduced animus by 2.5 points on average (95% CI: [20.05,
+and using the deﬁnition of compliance we note above, the                          0.00]), with an estimated CACE of 3.3 percentage points (95%
+CACE is 8.7 points, two points larger than the ITT estimate.                      CI: [20.07, 0.00]).16 But to interpret this effect size, it is useThat is, partisans assigned to the Tell condition who actually
+learned the information were nearly 9 points less likely to
+place the typical out-party supporter as an extreme policy
+                                                                                      16. As independents tend not to feel as socially distant from partisans as
+demander (95% CI: [20.12, 20.06]) than they would have                            opposing partisans, the treatment effects among nonleaning independents
+been in the control condition.                                                    are close to 0. See OA 4.8 for the analyses.
+
+
+978 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+Figure 5. Misperceptions cause people to feel socially distant from out-party supporters. All variables rescaled 0–1. The dashed vertical line denotes the
+point at which X p 0. Perceptions of out-party composition were measured after the policy perceptions battery in the Control condition. Panel A plots mean
+partisan animus by condition with 95% conﬁdence intervals. Panel B plots partisan animus by condition. as a function of prior beliefs about party composition,
+with 95% conﬁdence intervals.
+
+
+ful to note that the range of scores on this measure is de facto                  Finally, and consistent with our hypotheses, in all three extruncated. Partisans rarely respond that they would be “some-                     periments, the weakest relationship between perceptual bias
+what happy” or “very happy” about interparty social inter-                        and the dependent measure of interest is among Tell particactions; 93.1% of partisans’ scores on the social distance in-                    ipants. In all, these convergent ﬁndings suggest that the index fell between 0.5 and 1. Thus, one way to think about the                      dividual experiments’ results are yet more unlikely to be a
+substantive signiﬁcance of this effect is to divide it by 0.5. In                 consequence of random perturbation.
+all, consistent with the observational results, partisans’ beliefs                    However, it is also true that the treatment effects are relaabout out-party composition can fuel partisan affect.                             tively small, especially in the case of the affect experiments. The
+    Last, consistent with the extremity-perception results,                       differences between the Tell and Control groups, albeit staﬁgures 4B and 5B suggest that the magnitude of bias matters.                      tistically signiﬁcant at conventional levels, are approximately 6
+In the Ask and Control conditions in both affect experi-                          and 3 points on the feeling thermometer and social distance
+ments, there is a positive relationship between stereotype bias                   scale, respectively. Furthermore, differences between the Ask
+in out-party perceptions and partisan animus, as expected                         condition and the other two tend to be small and statistically
+from the observational results. However, in the Tell condition,                   insigniﬁcant. And, ﬁnally, we lack the power to estimate varthe slopes describing these relationships are almost exactly                      iation in treatment effects by prior beliefs about partisan
+ﬂat. That is, correcting these widespread misperceptions ap-                      composition with precision. Larger samples, and more enpears to most strongly affect the partisan sentiments of the                      gaging treatments that encourage people to absorb and reﬂect
+most misinformed.                                                                 on the new information, are likely to prove more persuasive.
+    The experimental results presented in ﬁgures 3, 4, and 5
+cohere. In all three experiments, the difference-in-means be-                     DISCUSSION
+tween the Tell and the Control group is the largest, statistically                Across ﬁve studies, we ﬁnd that people overestimate the designiﬁcant, and in a direction consistent with the hypotheses.                    gree to which partisans belong to party-stereotypical groups,
+Likewise, in all three cases, the Ask group’s average score on                    often vastly so. Even in cases where these groups comprise just
+the dependent measure falls between the other two groups’.                        a sliver of the population, people report that these groups
+
+
+                                                                                               Volume 80       Number 3        July 2018 / 979
+
+
+constitute upward of 40% of the party they “ﬁt.” And when            ever, they also show that beliefs about shares of various groups
+people are given information about these groups’ shares in the       in the parties matter. Thus, while the group identity account
+population, the bias in their estimates does not decline, sug-       makes a compelling case that partisanship is a relatively stable,
+gesting that people rely on representativeness when making           affective attachment, work in this tradition must grapple more
+judgments about party composition.                                   thoroughly with the social cognitions (and cognitive biases)
+    Republicans, Democrats, and independents, all overesti-          that are relevant to how people reason about politics.
+mate the share of party-stereotypical groups in both the major           This is especially the case because partisans overestimate
+parties. Partisan differences, although statistically signiﬁcant,    the share of party-stereotypical groups in their own party. For
+are relatively small compared to the overall magnitude of these      instance, many lower- and middle-class Republicans think
+misperceptions. Strikingly, those most interested in politics        that their party contains far more rich people than it actually
+hold the most skewed perceptions of party composition. One           does. This suggests that many partisans like their own parties
+plausible explanation for both of these results is that mediated,    to the extent they do—average ratings exceed 70 on the therimpersonal information drives these misperceptions. How-             mometer scale (Iyengar et al. 2012)—despite believing that the
+ever, all the evidence we have presented on this point is de-        party has a larger share of groups to which they do not belong
+scriptive. Additional research is needed to assess the extent to     than it actually does. Green et al. (2002, 8) suggest that partiwhich media shape these perceptions.                                 sans choose parties based on “which assemblage of groups”
+    These misperceptions are also consequential. Experimen-          looks like them. While this may still be true, the data suggest
+tal evidence suggests that beliefs about out-party composition       that people identify with parties based on which groups they
+affect perceptions of where opposing-party supporters stand          like.
+on the issues. These ﬁndings provide a potential explanation             Finally, and most broadly, this research furthers our unfor why people tend to overestimate the extremity of opposing        derstanding of people’s perceptions of mass collectives and
+partisans. In future extensions, we plan to further investigate      how these perceptions shape individuals’ own political attiwhether beliefs about party composition explain the striking         tudes. Mutz (1998) describes impersonal inﬂuence as the efﬁnding that people also overestimate the extremity of copar-         fect of people’s perceptions of what others are experiencing,
+tisans (Ahler 2014; Levendusky and Malhotra 2015). Misper-           or what others believe, on their own attitudes and behaviors.
+ceptions about out-party composition also lead partisans to          We take this one step further and assert that people’s perfeel more socially distant from the opposing party. Building         ceptions of who belongs to a collective can be a source of
+on work by Hetherington and Weiler (2009) and Mason and              impersonal inﬂuence—and in this case, a catalyst for partiDavis (2015), who ﬁnd that partisan animus is related to party       sanship in American politics.
+composition, we experimentally show that people’s beliefs
+about party composition affect their feelings toward the opposing party.                                                        ACKNOWLEDGMENTS
+    Beyond beliefs about extremity, we suspect that percep-          We thank Martin Bisgaard, David Broockman, Jamie Drucktions about party composition affect people’s beliefs about          man, Bob Erikson, Andrew Gelman, Stephen Goggin, Don
+the parties’ priorities. For instance, believing that a third of     Green, Travis Johnston, Josh Kalla, Kabir Khanna, Jonathan
+Democrats are atheist or agnostic, or that half of Republicans       Ladd, Gabe Lenz, Leif Nelson, Eric Schickler, Jas Sekhon, John
+are evangelical, may lead one to believe that cultural issues like   Sides, Laura Stoker, Kim Twist, and Rob Van Houweling for
+school prayer are far more important to the parties than they        helpful feedback.
+actually are. More generally, we suspect that people associate
+a narrow set of policy demands with each party-stereotypical         REFERENCES
+group and think these groups have sway over the party’s              Abramowitz, Alan I., and Kyle L. Saunders. 2006. “Exploring the Bases of
+agenda. This is liable to fuel more resentment and cynicism             Partisanship in the American Electorate: Social Identity vs. Ideology.”
+                                                                        Political Research Quarterly 59 (2): 175–87.
+about the motivations of party elites.
+                                                                     Achen, Christopher H., and Larry M. Bartels. 2016. Democracy for Realists:
+    More broadly, the data shed faint light on the nature of            Why Elections Do Not Produce Responsive Government. Princeton, NJ:
+partisanship. A long-standing debate pits cognitive concep-             Princeton University Press.
+tions of partisanship against claims that partisan attachments       Ahler, Douglas J. 2014. “Self-Fulﬁlling Misperceptions of Public Polarization.”
+are largely affective and stem from other group identities              Journal of Politics 76 (3): 607–20.
+                                                                     Ahler, Douglas J., and Gaurav Sood. 2017. “Measuring Perceptions of Shares
+(Johnston 2006). The experimental ﬁndings support the no-               of Salient and Stereotypical Groups.” In Brian G. Southwell, Emily Thortion that orientations toward constituent social groups affect          son, and Laura Sheble, eds., Misinformation and Mass Audiences. Austin:
+how people feel toward the parties, among other things. How-            University of Texas Press.
+
+
+980 / The Parties in Our Heads Douglas J. Ahler and Gaurav Sood
+
+
+Almond, Gabriel A., and Sidney Verba. 1963. The Civic Culture: Political            Horton, John Joseph, and Lydia B. Chilton. 2010. “The Labor Economics of
+     Attitudes and Democracy in Five Nations. Boston: Little, Brown.                    Paid Crowdsourcing.” Presented at the 11th Association for Computing
+Ansolabehere, Stephen, Jonathan Rodden, and James M. Snyder. 2008. “The                 Machinery conference on electronic commerce, Cambridge, MA.
+     Strength of Issues: Using Multiple Measures to Gauge Preference Stability,     Huddy, Leonie, Lilliana Mason, and S. Nechama Horwitz. 2016. “Political
+     Ideological Constraint, and Issue Voting.” American Political Science              Identity Convergence: On Being Latino, Becoming a Democrat, and GetReview 102 (2): 215–32.                                                            ting Active.” Russell Sage Foundation Journal of the Social Sciences 2 (3):
+Bartels, Larry M. 2000. “Partisanship and Voting Behavior, 1952–1996.”                  205–28.
+     American Journal of Political Science 44 (1): 35–50.                           Iyengar, Shanto, Gaurav Sood, and Yphtach Lelkes. 2012. “Affect, Not IdeBartels, Larry M. 2002. “Beyond the Running Tally: Partisan Bias in Political           ology: A Social Identity Perspective on Polarization.” Public Opinion
+     Perceptions.” Political Behavior 24 (2): 117–50.                                   Quarterly 76 (3): 405–31.
+Bawn, Kathleen, Martin Cohen, David Karol, Seth Masket, Hans Noel, and              Johnston, Richard. 2006. “Party Identiﬁcation: Unmoved Mover or Sum of
+     John Zaller. 2012. “A Theory of Political Parties: Groups, Policy De-              Preferences.” Annual Review of Political Science 9:329–51.
+     mands, and Nominations in American Politics.” Perspectives on Politics 10      Kahneman, Daniel, and Amos Tversky. 1972. “Subjective Probability: A Judg-
+     (3): 571–97.                                                                       ment of Representativeness.” Cognitive Psychology 3 (3): 430–54.
+Berelson, Bernard, Paul Lazarsfeld, and William McPhee. 1954. Voting: A             Kuo, Alexander, Neil Malhotra, and Cecilia Hyunjung Mo. 2017. “Social
+     Study of Opinion Formation in a Presidential Campaign. Chicago: Uni-               Exclusion and Political Identity: The Case of Asian American Partisanversity of Chicago Press.                                                          ship.” Journal of Politics 79 (1): 17–32.
+Bloom, Howard S. 1984. “Accounting for No-Shows in Experimental Eval-               Levendusky, Matthew, and Neil Malhotra. 2015. “(Mis)perceptions of Paruation Designs.” Evaluation Review 8 (2): 225–46.                                  tisan Polarization in the American Public.” Public Opinion Quarterly
+Bogardus, Emory S. 1947. “Measurement of Personal-Group Relations.” So-                 80 (S1): 378–91.
+     ciometry 10 (4): 306–11.                                                       Levendusky, Matthew, and Neil Malhotra. 2016. “Does Media Coverage of
+Bordalo, Pedro, Katherine Coffman, Nicola Gennaioli, and Andrei Shleifer.               Partisan Polarization Affect Political Attitudes?” Political Communication
+     2016. “Stereotypes.” Quarterly Journal of Economics 131 (4): 1753–94.              33 (2): 283–301.
+Brady, Henry E., and Paul M. Sniderman. 1985. “Attitude Attribution:                Lewis-Beck, Michael S., William G. Jacoby, Helmut Norpoth, and Herbert F.
+     A Group Basis for Political Reasoning.” American Political Science Review          Weisberg. 2008. The American Voter Revisited. Ann Arbor: University of
+     79 (4): 1061–78.                                                                   Michigan Press.
+Bullock, John G., Alan S. Gerber, Seth J. Hill, and Gregory A. Huber. 2015.         Lippmann, Walter. 1922. Public Opinion. London: Routledge.
+     “Partisan Bias in Factual Beliefs about Politics.” Quarterly Journal of        Lodge, Milton, and Ruth Hamill. 1986. “A Partisan Schema for Political
+     Political Science 10 (4): 519–78.                                                  Information Processing.” American Political Science Review 80 (2): 505–20.
+Campbell, Angus, Philip E. Converse, Warren E. Miller, and Donald E.                Lodge, Milton, and Charles S. Taber. 2013. The Rationalizing Voter.
+     Stokes. 1960. The American Voter. Chicago: University of Chicago                   Cambridge: Cambridge University Press.
+     Press.                                                                         Luskin, Robert C., Gaurav Sood, and Joshua Blank. 2013. “The Waters of
+Chambers, John R., Barry R. Schlenker, and Brian Collisson. 2013. “Ideology             Casablanca: Political Misinformation (and Knowledge and Ignorance).”
+     and Prejudice: The Role of Value Conﬂicts.” Psychological Science 24 (2):          Presented at the annual meeting of the Midwest Political Science Asso140–49.                                                                            ciation, Chicago.
+Claassen, Ryan L. 2011. “Religious Changes in American Society and among            Mason, Lilliana. 2016. “A Cross-Cutting Calm: How Social Sorting Drives
+     Party Activists.” Presented at the annual meeting of the American Po-              Affective Polarization.” Public Opinion Quarterly 80 (S1): 351–77.
+     litical Science Association, Seattle.                                          Mason, Lilliana, and Nicholas Davis. 2015. “A New Identity Politics: How
+Converse, Philip. 1964. “The Nature of Belief Systems in Mass Publics.” In              Socio-partisan Sorting Affects Affective and Ideological Polarization in
+     David Apter, ed., Ideology and Discontent. New York: Free Press.                   American Politics.” Presented at the annual meeting of the American
+Druckman, James N., Erik Peterson, and Rune Slothuus. 2013. “How Elite                  Political Science Association, San Francisco.
+     Partisan Polarization Affects Public Opinion Formation.” American Po-          Mutz, Diana C. 1998. Impersonal Inﬂuence: How Perceptions of Mass Colleclitical Science Review 107 (1): 57–79.                                             tives Affect Political Attitudes. Cambridge: Cambridge University Press.
+Ellis, Christopher, and James A. Stimson. 2012. Ideology in America. New            Mutz, Diana C. 2006. Hearing the Other Side: Deliberative versus ParticiYork: Cambridge University Press.                                                  patory Democracy. New York: Cambridge University Press.
+Gamm, Gerald H. 1989. The Making of New Deal Democrats: Voting Behavior             Norman, Donald A. 1979. “Perception, Memory, and Mental Processes.” In
+     and Realignment in Boston, 1920–1940. Chicago: University of Chicago               Lars-Göran Nilsson, ed., Perspectives on Memory Research. Hillsdale, NJ:
+     Press.                                                                             Erlbaum, 121–42.
+Goggin, Stephen N., and Alexander G. Theodoridis. 2017. “Disputed Own-              Olmstead, Kenneth, Mark Jurkowitz, Amy Mitchell, and Jodi Enda. 2013. “How
+     ership: Parties, Issues, and Traits in the Minds of Voters.” Political Be-         Americans Get TV News at Home.” Pew Research Center, October 11.
+     havior 39 (3): 675–702.                                                        Pasek, Josh, Gaurav Sood, and Jon Krosnick. 2015. “Misinformed about the
+Green, Donald, Bradley Palmquist, and Eric Schickler. 2002. Partisan Hearts             Affordable Care Act? Leveraging Certainty to Assess the Prevalence of
+     and Minds: Political Parties and the Social Identities of Voters. New Haven,       Misinformation.” Journal of Communication 65 (4): 660–73.
+     CT: Yale University Press.                                                     Pew. 2014. “Political Polarization in the American Public: How Increasing
+Halberstam, Yosh, and Brian Knight. 2014. “Homophily, Group Size, and the               Ideological Uniformity and Partisan Antipathy Affect Politics, ComproDiffusion of Political Information in Social Networks: Evidence from               mise, and Everyday Life.” Pew Research Center, June 12.
+     Twitter.” Working paper no. 20861, National Bureau of Economic Re-             Prior, Markus, Gaurav Sood, and Kabir Khanna. 2015. “You Cannot Be Serious:
+     search, Cambridge, MA.                                                             The Impact of Accuracy Incentives on Partisan Bias in Reports of Economic
+Hetherington, Marc J., and Jonathan D. Weiler. 2009. Authoritarianism                   Perceptions.” Quarterly Journal of Political Science 10 (4): 489–518.
+     and Polarization in American Politics. New York: Cambridge Uni-                Rosch, Eleanor, and Carolyn B. Mervis. 1975. “Family Resemblances: Studies in
+     versity Press.                                                                     the Internal Structure of Categories.” Cognitive Psychology 7 (4): 573–605.
+
+
+                                                                                                         Volume 80       Number 3       July 2018 / 981
+
+
+Rothschild, Jacob E., Adam J. Howat, Richard M. Shafranek, and Ethan C.         Turner, John C., Michael A. Hogg, Penelope J. Oakes, Stephen D. Reicher,
+    Busby. 2018. “Pigeonholing Partisans: Stereotypes of Party Supporters           and Margaret S. Wetherell. 1987. Rediscovering the Social Group: A Selfand Partisan Polarization.” Political Behavior (Spring): 1–21. https://         Categorization Theory. Oxford: Blackwell.
+    link.springer.com/article/10.1007/s11109-018-9457-5.                        Wilder, David A. 1978. “Perceiving Persons as a Group: Effects on AttriRoush, Carolyn E. 2016. “Believing the Worst: Out-Party Hostility and Re-           butions of Causality and Beliefs.” Social Psychology 41 (1): 13–23.
+    ceptiveness to Political Misinformation.” Presented at the annual meeting   Wong, Cara J. 2007. “ ‘Little’ and ‘Big’ Pictures in Our Heads: Race, Local
+    of the American Political Science Association. Philadelphia.                    Context, and Innumeracy about Racial Groups in the United States.”
+Tajfel, Henri. 1959. “Quantitative Judgment in Social Perception.” British          Public Opinion Quarterly 71 (3): 392–412.
+    Journal of Psychology 50 (1): 16–29.                                        Zaller, John. 1992. The Nature and Origins of Mass Opinion. Cambridge:
+Theodoridis, Alexander G. 2017. “Me, Myself, and (I), (D), or (R)? Parti-           Cambridge University Press.
+    sanship and Political Cognition through the Lens of Implicit Identity.”     Zaller, John. 2012. “What Nature and Origins Leaves Out.” Critical Review
+    Journal of Politics 79 (4): 1253–67.                                            24 (4): 569–642.

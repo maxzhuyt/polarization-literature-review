@@ -1,0 +1,799 @@
+Observational constraints on unified dark matter including Hubble parameter data
+
+                                                                      Kai Liao, Shuo Cao, Jun Wang, Xiaolong Gong and Zong-Hong Zhu∗
+                                                                     Department of Astronomy, Beijing Normal University, Beijing 100875, China
+
+                                                             We constrain a unified dark matter (UDM) model from the latest observational data. This model
+                                                           assumes that the dark sector is degenerate. Dark energy and dark matter are the same component.
+                                                           It can be described by an affine equation of state PX = p0 + αρX . Our data set contains the
+                                                           newly revised H(z) data, type Ia supernovae (SNe Ia) from Union2 set, baryonic acoustic oscillation
+arXiv:1205.0972v1 [astro-ph.CO] 4 May 2012
+
+
+                                                           (BAO) observation from the spectroscopic Sloan Digital Sky Survey (SDSS) data release 7 (DR7)
+                                                           galaxy sample, as well as the cosmic microwave background (CMB) observation from the 7-year
+                                                           Wilkinson Microwave Anisotropy Probe (WMAP7) results. By using the Markov Chain Monte
+                                                           Carlo (MCMC) method, we obtain the results in a flat universe: ΩΛ =0.719+0.0264     +0.0380
+                                                                                                                                   −0.0305 (1σ)−0.0458 (2σ),
+
+                                                           α=1.72+3.92     +5.47
+                                                                 −4.79 (1σ)−7.30 (2σ)(×10
+                                                                                         −3
+                                                                                            ), Ωb h2 =0.0226+0.0011     +0.0016
+                                                                                                            −0.0011 (1σ)−0.0015 (2σ).     Moreover, when considering a non-flat universe,   ΩΛ =0.722+0.0362     +0.0479
+                                                                                                 −0.0447 (1σ)−0.0634 (2σ),     α=0.242+0.787     +1.10
+                                                                                                                                      −0.775 (1σ)−1.03 (2σ)(×10
+                                                                                                                                                               −2
+                                                                                                                                                                  ),
+                                                           Ωb h2 =0.0227+0.0015     +0.0021                 +2.02     +2.75
+                                                                        −0.0014 (1σ)−0.0018 (2σ), Ωk =−0.194−1.85 (1σ)−2.57 (2σ)(×10
+                                                                                                                                    −2
+                                                                                                                                       ).      These give a more
+                                                           stringent results than before. We also give the results from other combinations of these data for
+                                                           comparison. The observational Hubble parameter data can give a more stringent constraint than
+                                                           SNe Ia. From the constraint results, we can see the parameters α and Ωk are very close to zero,
+                                                           which means a flat universe is strongly supported and the speed of sound of the dark sector seems
+                                                           to be zero.
+
+                                                           PACS numbers: 98.80.-k
+                                                           Keywords: unified dark matter; affine equation; Hubble parameter.
+
+
+                                                                                                 1.   INTRODUCTION
+
+
+                                               Cosmic acceleration is one of the most striking discoveries in modern cosmology [1]. Many works have been done to
+                                             explain this unexpected phenomenon. There are different mechanisms for the universe acceleration. The most popular
+                                             idea is assuming a new component with negative pressure known as dark energy. Other mechanisms contain various
+                                             modifications of gravitation theory [3] and violation of cosmological principle [2]. There are all kinds of dark energy
+                                             models including quintessence [4], holographic dark energy [5], quintom [6], phantom [7], generalized Chaplygin gas
+                                             model [8] and so on. Among these, the simplest and most successful model is ΛCDM model [9] while it has to face
+                                             some theoretical problems. For example, the ”coincidence” problem and the ”fine-tuning” problem [10]. From this
+                                             standard model, the flat universe consists of ∼ 4% baryons, ∼ 23% dark matter, ∼ 73% dark energy [11]. However,
+                                             we still know little about dark matter and dark energy [12]. All we can feel about them are their gravitational effects.
+                                             Observationally, they are degenerate. Based on these, a unified dark matter model was proposed which assumes that
+                                             dark matter and dark energy are from a same dark component [13]. Since the equation of state of the unified dark
+
+
+                                             ∗ Electronic address: zhuzh@bnu.edu.cn
+component is unknown, we assume that it has a constant speed of sound c2s = α which is equivalent to the affine form
+[14]. In order to break the degeneracies, different kinds of observational data are used to constrain cosmological model,
+among which SNe Ia, CMB, and BAO are usually used to constrain cosmological parameters [15]. Recently, other
+observations are included. For example, the gamma-ray burst [16], cluster gas mass fraction [17], lensing [18] and so
+on. But these processes need to integrate the Hubble parameter to obtain the distance scale. The more information
+about H(z) can’t be embodied. Therefore, it is meaningful to study the H(z) data directly. The expression of the
+Hubble parameter can be written in this form
+
+                                                                1 dz
+                                                   H(z) = −            ,                                               (1)
+                                                              1 + z dt
+
+which depends on the differential age as a function of redshift. Based on Jimenez et al. [20], Simon et al. [21] used the
+age of evolving galaxies and got nine H(z) data. Many works based on these nine data was done [22]. Recently, Stern
+et al. [25] revised these data at 11 redshifts from the differential ages of red-envelope galaxies. Moreover, Gaztañaga
+et al. [26] took the BAO scale as a standard ruler in the radial direction, obtained three more additional data.
+  In this paper, we use the Markov chain Monte Carlo (MCMC) method to give constraints on the unified dark
+matter model from the latest data including the observational Hubble parameter data. In section 2, we give a brief
+introduction of the UDM model. In section 3, we introduce the observational data set we use. The full parameter
+space using different combinations of data is exhibited in section 4. Finally, we give a conclusion in section 5.
+
+
+                   2.   UNIFIED DARK MATTER WITH CONSTANT SPEED OF SOUND
+
+
+  In this section, we give a brief introduction to unified dark matter model. For details of this model, please refer to
+[13].
+  Considering the universe is described by the Friedmann-Robertson-Walker metric and assuming a single UDM
+besides baryons and radiation, the Friedmann equation is expressed as
+
+                                                    H(a) = H0 E(a),                                                    (2)
+
+where H0 represents the Hubble constant today, and
+
+                                       E(a)2 = Ωr (a) + Ωb (a) + ΩX (a) + Ωk (a),                                      (3)
+
+where Ωi (a) = ρi (a)/ρc , ρc is the critical density today. The subscripts r, b, k and X represent for radiation, baryons,
+curvature and UDM component respectively. Each component satisfies the energy-momentum conservation equation
+
+                                                   ρ̇i = −3H(ρi + Pi ).                                                (4)
+
+  For the radiation and baryons, the equations of state are 1/3 and 0, respectively. The conservation equation gives
+Ωb (a) ∝ a−3 and Ωr (a) ∝ a−4 .
+  For the UDM, it is considered as an approximation to an barotropic fluid. Since the equation of state PX = PX (ρX )
+is unknown, we assume a constant speed of sound
+
+                                                     dPX /dρX ≃ α,                                                     (5)
+which leads to the 2-parameter affine form
+
+                                                   PX ≃ p0 + αρX .                                             (6)
+
+  Combined with the conservation equation, we can regard this component as an effective cosmological constant plus
+a generalized dark matter which has a constant equation of state α. The density evolves as
+
+                                             ΩX (a) = ΩΛ + (Ω̃m )a−3(1+α) ,                                    (7)
+
+where Ω̃m = ΩXo − ΩΛ stands for the generalized dark matter, and ΩΛ stands for the effective cosmological constant
+component, ρ̇Λ = 0.
+  The Friedmann equation now can be expressed as
+
+                      E(a)2 = Ωr a−4 + Ωb a−3 + ΩΛ + (1 − Ωb − Ωr − ΩΛ )a−3(1+α) + Ωk a−2 ,                    (8)
+
+where Ωr , Ωb and Ωk represent dimensionless radiation, baryon matter and curvature today. ΩΛ and α are the
+parameters we introduced. We notice that when α = 0, the UDM model are equivalent to ΛCDM. In
+UDM model, we can equivalently think that the generalized dark matter may has a non-zero equation
+of state. Naturally, because the property of the effective cosmological constant component is the same
+as the one in ΛCDM, when the property of generalized dark matter is equivalent to the usual dark
+matter in ΛCDM, UDM model totally becomes ΛCDM.
+  The speed of sound characterizes the perturbations to the dark matter density and pressure which
+are related to the microphysics. Since we know litter about dark sector in our universe, the equation
+of state is introduced to describe the property of dark sector.               However, it can not give us the
+information about the microphysics and other properties. The speed of sound can give information
+about the internal degrees of freedom. For example, quintessence has cs = 1. If we can confirm the
+sound speed that is below the speed of light, we can get further degrees beyond a canonical, minimally
+coupled scalar field. If the sound speed is small, the perturbations can be detected on a proper scale.
+This perturbations will change the gravitational potential, thus affecting the geodesic of photons. As a
+result, the cosmic microwave background will be changed through the Integrated Sachs-Wolfe (ISW)
+effect. In order to show the differences between UDM mdoel and ΛCDM which corresponds to α = 0,
+we give the CMB temperature angular power spectrum in Fig. 7. Our calculations are based on
+CAMB [19].
+
+
+                                  3.     CURRENT OBSERVATIONAL DATA
+
+
+  Now, we introduce the data set using to constrain the UDM model.
+
+
+                                  3.1.    Observational Hubble parameter data
+
+
+  The observational Hubble parameter as a function of redshift has been used to constrain cosmological parameters
+[23]. For the observational data, we choose 11 data from [25]. These data were obtained through the measurement of
+differential ages of red-envelope galaxies known as ”differential age method”. The aging of stars can be regarded as
+an indicator of the aging of the universe. The spectra of stars can be converted to the information of their ages, as
+the evolutions of stars are well-known. Since we can not observe stars one by one at cosmological scales, we take the
+spectra of galaxies which contain relatively uniform star population. The surveys including the Gemini Deep Deep
+Survey [24], VIMOS-VLT Deep Survey and SDSS [25] are related to obtaining data. We consider the red-envelope
+galaxies which are massive with fairly homogeneous star population. Moreover, the data can be obtained from the
+BAO scale as a standard ruler in the radial direction known as ”Peak Method” [26]. Though this method, we have
+three additional data [26]: H(z = 0.24) = 79.69 ± 2.32, H(z = 0.34) = 83.8 ± 2.96, and H(z = 0.43) = 86.45 ± 3.27,
+which are independent. Plus the measurement of Hubble constant [27], we totally have 15 data now. The χ2 value of
+the H(z) data can be expressed as
+                                                           X  [H(zi ) − Hobs (zi )]2
+                                               χ2H =                                   ,                                         (9)
+                                                           i=1
+                                                                         σi2
+
+where σi is the 1σ uncertainty of the observational H(z) data.
+
+
+                                                    3.2.    Type Ia supernovae
+
+
+  Since the SNe Ia fist revealed the acceleration of the universe, it has been a well-established method for probing
+dark energy.
+  Recently, the Supernova Cosmology Project (SCP) released the Union2 data set including 557 samples [28]. It
+covers a redshift region 0-1.4. These data have been widely used to investigate dark energy models [29]. The distance
+modules is given by
+
+                                              µtheory (z) = 5 log10 [dL (z)] + µ0 ,                                             (10)
+
+where dL (z) is the luminosity distance. It is defined as
+                                                                                          Z z       
+                                                                       c            p          dz ′
+                            dL (z) = (1 + z)r(z),          r(z) =     p      sinn    |Ωk |             .                        (11)
+                                                                                            0 E(z )
+                                                                                                   ′
+                                                                    H0 |Ωk |
+
+  The marginalized nuisance parameter [30] for χ2 is expressed as
+
+                                                       B2
+                                                                
+                                             2                   C
+                                            χ =A−         + ln     ,                                                            (12)
+                                                       C        2π
+            P557                                    P557                                   P557
+where A =      i   (µdata − µtheory )2 /σi2 , B =      i    (µdata − µtheory )/σi2 , C =     i    1/σi2 , σi is the 1σ uncertainty of
+the observational data.
+  Note that the expression
+
+                                                                          B2
+                                                           χ2SNe = A −       ,                                                  (13)
+                                                                          C
+
+which coincides to Eq. (12) up to a constant [31], is used in this paper. The constraint results are the same.
+                                         3.3.     Cosmic microwave background
+
+
+  For CMB, the shift parameters R and la are important indicators which are related to the positions of the CMB
+acoustic peaks. These quantities are affected by the cosmic expansion history from the decoupling epoch to today.
+The shift parameter R is given by [32]
+                                                                         Z z∗      
+                                               1/2 −1/2               1/2       dz
+                                          R = Ωm0 Ωk sinn            Ωk               ,                                (14)
+                                                                           0   E(z)
+
+where Ωm0 = Ω̃m (hereafter), since we have defined the generalized dark matter. The redshift z∗ corresponding to
+the decoupling epoch of photons is given by [33]
+
+                                 z∗ = 1048[1 + 0.00124(Ωbh2 )−0.738 (1 + g1 (Ωm0 h2 )g2 )],                            (15)
+
+with g1 = 0.0783(Ωbh2 )−0.238 (1 + 39.5(Ωbh2 )−0.763 )−1 , g2 = 0.560(1 + 21.1(Ωbh2 )1.81 )−1 . Moreover, the acoustic scale
+is related to the distance ratio. It is give by
+                                                       −1/2            1/2 R z∗ dz
+                                                      Ωk      sinn[Ωk       0 E(z)
+                                                                                   ]/H0
+                                           la = π                                         ,                            (16)
+                                                                  rs (z∗ )
+where the comoving sound horizon at photo-decoupling epoch is expressed as
+                                                        Z ∞
+                                       rs (z∗ ) = H0 −1     cs (z)/E(z)dz.                                             (17)
+                                                                  z∗
+
+  From WMAP 7 measurement, the best-fit values of the data set is given by [35]
+                                                                    
+                                             l̄a       302.09 ± 0.76
+                                                                    
+                              P̄CMB =     R̄  =  1.725 ± 0.018  .
+                                                                                                                    (18)
+                                            z̄∗        1091.3 ± 0.91
+
+where ∆PCMB = PCMB − P̄CMB , and the corresponding inverse covariance matrix is
+                                                                    
+                                          2.305   29.698     −1.333
+                                                                    
+                          CCMB −1 =   29.698 6825.270 −113.180  .
+                                                                                                                      (19)
+                                         −1.333 −113.180 3.414
+
+  With these, we can calculate the χ2 by [35]
+
+                                          χ2CMB = ∆PT
+                                                    CMB CCMB
+                                                             −1
+                                                                ∆PCMB .                                                (20)
+
+
+                                           3.4.       Baryon acoustic oscillation
+
+
+  The Baryon Acoustic Oscillations we use measure the distance-redshift relation at two redshifts. One is in the
+clustering of the combined 2dFGRS and SDSS main galaxy samples at z = 0.2, the other is in the clustering of the
+SDSS luminous red galaxies at z = 0.35. Calculated from these samples, the observed scale of the BAO are analyzed
+to constrain the form of the distance scale. The distance scale of BAO is defined as [34]
+                                                                             Z z               1/3
+                                                         z           p               dz ′
+                                    DV (z) = c                sinn2 [ |Ωk |                 ]          .               (21)
+                                                      Ωk H(z)                  0    H(z ′ )
+  The peak positions of the BAO depend on the ratio of Dv (z) to the sound horizon size at the drag epoch. The
+redshift zd corresponding to the drag epoch when baryons were released from photos is given by
+
+                                                  1291(Ωm0h2 )0.251
+                                        zd =                             [(1 + b1 (Ωb h2 )b2 )],                         (22)
+                                               [1 + 0.659(Ωm0h2 )0.828 ]
+
+where b1 = 0.313(Ωm0h2 )−0.419 [1 + 0.607(Ωm0h2 )0.674 ]−1 and b2 = 0.238(Ωm0 h2 )0.223 [36]. In this paper, we choose
+the measurement of the distance radio (dz ) at z = 0.2 and z = 0.35 [37]. This quantity is given by
+
+                                                                   rs (zd )
+                                                            dz =            ,                                            (23)
+                                                                   DV (z)
+where rs (zd ) is the comoving sound horizon. From the SDSS data release 7 (DR7) galaxy sample, the best-fit values
+of the data set (d0.2 , d0.35 ) [37]
+                                                                            
+                                                     d¯0.2     0.1905 ± 0.0061
+                                       P̄matrix =         =                 ,                                        (24)
+                                                    d¯0.35     0.1097 ± 0.0036
+
+where the corresponding inverse covariance matrix is
+                                                                                 
+                                                               30124 −17227
+                                          Cmatrix −1 =                           .                                     (25)
+                                                              −17227 86977
+
+  The χ2 value of this BAO observation from SDSS DR7 can be calculated as
+
+                                           χ2BAO = ∆PT
+                                                     matrix Cmatrix
+                                                                    −1
+                                                                       ∆Pmatrix .                                        (26)
+
+where ∆Pmatrix = Pmatrix − P̄matrix .
+
+
+                                                4.    CONSTRAINT RESULTS
+
+
+  The statistics we use to constrain parameters is the usual maximum likelihood method of χ2 fitting with the Markov
+Chain Monte Carlo (MCMC) method. Our code is based on CosmoMCMC [38]. The corresponding convergence of
+the chains R-1 is set to be less than 0.003 which can guarantee the accuracy well. We combine H(z), SNe Ia, CMB
+and BAO data to give a global fitting on determining the parameters of UDM model. The total χ2 is given by
+
+                                               χ2tot = χ2H + χ2SNe + χ2CMB + χ2BAO .                                     (27)
+
+  Fist, we consider a flat universe. In order to embody the H(z) data, we choose three combinations of data
+sets and show the 1-D probability distribution of each parameter (Ωb h2 , ΩΛ , α) and 2-D plots for parameters
+between each other.        Fitting results from the joint data of H(z)+CMB+BAO are given in Fig 1, the bestvalue for α is α=1.61+3.99     +5.65
+                     −4.58 (1σ)−6.92 (2σ)(×10
+                                               −3
+                                                  ). For comparison, we give the results from SNe+CMB+BAO in
+Fig 2. The best-fit value is α=1.81+8.15        +11.99
+                                      −8.10 (1σ)−11.69 (2σ)(×10
+                                                                −3
+                                                                   ). We can see the observational Hubble parameter
+data gives a more stringent constraint than SNe Ia in this model. In Fig 3, the total combinations of them result in α=1.72+3.92     +5.47
+              −4.79 (1σ)−7.30 (2σ)(×10
+                                       −3
+                                          ). From the result, the parameter α which stands for the speed of sound
+of the unified dark sector seems to be vanishing or slightly larger than 0.                    So ΛCDM model is strongly supported.    We further consider a non-flat universe with curvature.                For H(z)+CMB+BAO in Fig 4, the results
+                                             0.021 0.022 0.023 0.024
+                                                  −3
+                                              x 10
+                                      α
+                                           −5
+                                             0.021 0.022 0.023 0.024       −5       0       5
+                                                                                                   −3
+                                                                                            x 10
+                                          0.75                          0.75
+                                     ΩΛ
+
+
+                                           0.7                           0.7
+
+
+                                          0.65                          0.65
+                                              0.021 0.022 0.023 0.024          −5   0       5               0.65   0.7    0.75
+                                                                                                    −3
+                                                                                                x 10
+                                            74                           74                                 74
+
+                                            72                           72                                 72
+                                      H0
+
+
+                                            70                           70                                 70
+
+                                            68                           68                                 68
+
+                                              0.021 0.022 0.023 0.024          −5   0       5               0.65   0.7    0.75
+                                                        Ωb h2                           α              −3            ΩΛ
+                                                                                                x 10
+
+
+FIG. 1: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ in a flat
+universe, for the data sets H(z)+CMB+BAO.
+
+
+are α=2.21+7.98     +11.06
+          −7.60 (1σ)−10.91 (2σ)(×10
+                                    −3
+                                       ), Ωk =−0.208+2.27    +3.12
+                                                    −1.88(1σ)−2.60 (2σ)(×10
+                                                                            −2
+                                                                               ). Using SNe+CMB+BAO in Fig 5,
+α=0.662+9.80      +13.68
+       −22.52 (1σ)−37.33 (2σ)(×10
+                                  −3
+                                     ), Ωk =−1.41+6.35     +9.38
+                                                 −4.83 (1σ)−6.46 (2σ)(×10
+                                                                          −2
+                                                                             ). This results are consist with the situation in a flat universe. The H(z) data also gives a much more stringent constraint on Ωk . The total joint data in
+Fig 6 give α=2.42+7.87     +11.00
+                 −7.75 (1σ)−10.29 (2σ)(×10
+                                           −3
+                                              ), Ωk =−0.194+2.02    +2.75
+                                                           −1.85(1σ)−2.57 (2σ)(×10
+                                                                                   −2
+                                                                                      ), which suggest both the speed
+of sound and the curvature are very little. Our results are much more stringent than previous work [14]. Our results
+seem to be consistent with α = 0 using the data sets we select. Does that mean there is no need to
+introduce a new parameter? We think although the UDM model is contrived, the sound speed of the
+unified dark matter is related to the microphysics of the dark component while equation of state does
+not. The sound speed leads to the inhomogeneities of dark matter, thus affecting CMB and matter
+power spectra. With the development of technique, more information in CMB, matter power spectra
+and so on may distinguish UDM model from ΛCDM. Moreover, we assume a constant sound speed,
+the whole effective value is very small, however, if when we consider the evolving speed of sound, the
+results may be changed.
+
+
+                                                                5.      CONCLUSIONS
+
+
+  In this paper, we constrain the unified dark matter with constant speed of sound from the latest data: the newly
+revised 15 Hubble data, type Ia supernovae (SNe Ia) from Union2 set, baryonic acoustic oscillation (BAO) ob0.02 0.022 0.024 0.026
+
+
+                                             0.01
+
+
+                                        α
+                                            −0.01
+                                                   0.02 0.022 0.024 0.026     −0.01         0        0.01
+
+                                             0.76                           0.76
+                                             0.74                           0.74
+                                             0.72                           0.72
+                                        ΩΛ
+
+
+                                                 0.7                         0.7
+                                             0.68                           0.68
+                                             0.66                           0.66
+                                                0.02 0.022 0.024 0.026             −0.01        0     0.01    0.66   0.7     0.74
+                                                 80                          80                              80
+
+                                                 75                          75                              75
+                                            H0
+
+
+                                                 70                          70                              70
+
+                                                 65                          65                              65
+                                                   0.02 0.022 0.024 0.026          −0.01        0     0.01    0.66   0.7     0.74
+                                                            Ωb h2                                α                      ΩΛ
+
+
+FIG. 2: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ in a flat
+universe, for the data sets SNe+CMB+BAO.
+
+
+                                                                                   Flat Universe
+                      H(z)+CMB+BAO                                          SNe+BAO+CMB                                               H(z)+SNe+CMB+BAO
+        ΩΛ        0.717+0.0285     +0.0404
+                       −0.0338 (1σ)−0.0506 (2σ)                     0.719+0.0282     +0.0412
+                                                                         −0.0353 (1σ)−0.0532 (2σ)                                    0.719+0.0264     +0.0380
+                                                                                                                                          −0.0305 (1σ)−0.0458 (2σ)
+
+         α      1.61+3.99     +5.65
+                    −4.58 (1σ)−6.92 (2σ)(×10
+                                            −3
+                                               )                1.81+8.15     +11.99
+                                                                    −8.10 (1σ)−11.69 (2σ)(×10
+                                                                                             −3
+                                                                                                )                                   1.72+3.92     +5.47
+                                                                                                                                        −4.79 (1σ)−7.30 (2σ)(×10
+                                                                                                                                                                −3
+                                                                                                                                                                   )
+       Ωb h2     0.0226+0.0012     +0.0017
+                       −0.0010 (1σ)−0.0015 (2σ)                     0.0227+0.0022     +0.0035
+                                                                          −0.0016 (1σ)−0.0022 (2σ)                                   0.0226+0.0011     +0.0016
+                                                                                                                                           −0.0011 (1σ)−0.0015 (2σ)
+
+       χ2min                 11.592                                                        532.142                                              542.354
+
+
+TABLE I: The best-fit values of parameters Ωb h2 , α, ΩΛ for UDM model in a flat universe with the 1-σ and 2-σ uncertainties,
+as well as χ2min , for the data sets H(z)+CMB+BAO, SNe+BAO+CMB, and H(z)+SNe+BAO+CMB, respectively.
+
+
+servation from the spectroscopic Sloan Digital Sky Survey (SDSS) data release 7 (DR7) galaxy sample, as well
+as the cosmic microwave background (CMB) observation from the 7-year Wilkinson Microwave Anisotropy Probe
+(WMAP7) results. We consider two case. In a flat universe, the constraint results are ΩΛ =0.719+0.0264     +0.0380
+                                                                                               −0.0305 (1σ)−0.0458 (2σ),
+
+α=1.72+3.92     +5.47
+      −4.79 (1σ)−7.30 (2σ)(×10
+                               −3
+                                  ), Ωb h2 =0.0226+0.0011    +0.0016
+                                                  −0.0011(1σ)−0.0015 (2σ).                                            In a non-flat universe, the constraint results are ΩΛ =0.722+0.0362     +0.0479              +0.787     +1.10
+                   −0.0447 (1σ)−0.0634 (2σ), α=0.242−0.775 (1σ)−1.03 (2σ)(×10
+                                                                              −2
+                                                                                 ), Ωb h2 =0.0227+0.0015     +0.0021
+                                                                                                 −0.0014 (1σ)−0.0018 (2σ),
+
+Ωk =−0.194+2.02    +2.75
+          −1.85(1σ)−2.57 (2σ)(×10
+                                  −2
+                                     ). This constraint results are much stringent than previous work [14], which
+suggest both the speed of sound of the UDM and the curvature are very little and a flat ΛCDM model is still
+a good choice. In order to know the effects of the observational Hubble data, we also consider the combinations
+H(z)+CMB+BAO and SNe+BAO+CMB. From the results, the H(z) data gives a better constraint especially for α,
+                                                         0.021 0.022 0.023 0.024
+                                                              −3
+                                                          x 10
+                                                   α
+                                                        −5
+
+                                                          0.021 0.022 0.023 0.024              −5   0    5
+                                                                                                                −3
+                                                                                                         x 10
+                                                    0.76                                0.76
+                                                    0.74                                0.74
+
+                                               ΩΛ   0.72                                0.72
+                                                        0.7                              0.7
+                                                    0.68                                0.68
+
+                                                             0.021 0.022 0.023 0.024           −5   0    5                0.68   0.72     0.76
+                                                                                                                −3
+                                                                                                         x 10
+                                                        74                               74                          74
+
+                                                        72                               72                          72
+                                                   H0
+
+
+                                                        70                               70                          70
+
+                                                        68                               68                          68
+
+                                                              0.021 0.022 0.023 0.024          −5   0    5                0.68    0.72     0.76
+                                                                        Ωb h2                        α       −3                  ΩΛ
+                                                                                                         x 10
+
+
+FIG. 3: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ in a flat
+universe, for the data sets H(z)+SNe+CMB+BAO.
+
+
+                                                                                  Non-flat Universe
+                       H(z)+CMB+BAO                                               SNe+BAO+CMB                                                 H(z)+SNe+CMB+BAO
+     ΩΛ            0.721+0.0414     +0.0549
+                        −0.0535 (1σ)−0.0779 (2σ)                          0.734+0.0609     +0.0799
+                                                                               −0.0815 (1σ)−0.124 (2σ)                                      0.722+0.0362     +0.0479
+                                                                                                                                                 −0.0447 (1σ)−0.634 (2σ)
+
+     α           2.21+7.98     +11.06
+                     −7.60 (1σ)−10.91 (2σ)(×10
+                                              −3
+                                                 )                 0.662+9.80      +13.68
+                                                                        −22.52 (1σ)−37.33 (2σ)(×10
+                                                                                                  −3
+                                                                                                     )                                    2.42+7.87     +11.00
+                                                                                                                                              −7.75 (1σ)−10.29 (2σ)(×10
+                                                                                                                                                                       −3
+                                                                                                                                                                          )
+    Ωb h2         0.0227+0.0015     +0.0021
+                        −0.0013 (1σ)−0.0019 (2σ)                        0.0220+0.0039     +0.0056
+                                                                              −0.0030 (1σ)−0.0035 (2σ)                                     0.0227+0.0015     +0.0021
+                                                                                                                                                 −0.0014 (1σ)−0.0018 (2σ)
+
+     Ωk         −0.208+2.27     +3.12
+                      −1.88 (1σ)−2.60 (2σ)(×10
+                                              −2
+                                                 )                  −1.41+6.35     +9.38
+                                                                         −4.83 (1σ)−6.46 (2σ)(×10
+                                                                                                 −2
+                                                                                                    )                                    −0.194+2.02     +2.75
+                                                                                                                                               −1.85 (1σ)−2.57 (2σ)(×10
+                                                                                                                                                                       −2
+                                                                                                                                                                          )
+
+    χ2min                     11.578                                                          531.870                                                 542.309
+
+
+TABLE II: The best-fit values of parameters Ωb h2 , α, ΩΛ , Ωk for UDM model in a non-flat universe with the 1-σ and
+2-σ uncertainties, as well as χ2min , for the data sets H(z)+CMB+BAO, SNe+BAO+CMB, and H(z)+SNe+BAO+CMB,
+respectively.
+
+
+Ωk and Ωb h2 than SNe Ia in this model. We think the H(z) data will paly an important role in cosmology in the
+future [39].
+   Acknowledgments We are grateful to Lixin Xu for introducing the MCMC method. We also thank Hao Wang
+and Jun Wang for helpful discussions. This work was supported by the National Natural Science Foundation of China
+under the Distinguished Young Scholar Grant 10825313 and Grant 11073005, the Ministry of Science and Technology
+national basic science Program (Project 973) under Grant No.2012CB821804, the Fundamental Research Funds for
+                                                        0.022   0.024
+
+                                              0.02
+
+
+                                        ΩK
+                                             −0.02
+
+                                                        0.022   0.024           −0.02    0       0.02
+
+                                              0.01                       0.01
+
+
+                                        α
+                                                   0                       0
+
+
+                                             −0.01                      −0.01
+                                                        0.022   0.024           −0.02    0       0.02     −0.01    0       0.01
+
+
+                                              0.75                       0.75                            0.75
+                                        ΩΛ
+
+
+                                                  0.7                     0.7                             0.7
+
+                                              0.65                       0.65                            0.65
+                                                        0.022   0.024            −0.02       0    0.02     −0.01   0       0.01        0.65   0.7   0.75
+
+                                                  74                       74                             74                      74
+
+                                                  72                       72                             72                      72
+                                             H0
+
+
+                                                  70                       70                             70                      70
+
+                                                  68                       68                             68                      68
+
+                                                        0.022   0.024            −0.02    0       0.02     −0.01   0       0.01        0.65   0.7  0.75
+                                                                                         ΩK                            α                        ΩΛ
+                                                            Ωb h2
+
+
+FIG. 4: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ , Ωk in a
+non-flat universe, for the data sets H(z)+CMB+BAO.
+
+
+the Central Universities and Scientific Research Foundation of Beijing Normal University.
+
+
+ [1] A.G. Riess, et al., Astron. J. 116 (1998) 1009, [arXiv:astro-ph/9805201]; S. Perlmutter, et al., Astrophys. J. 517 (1999)
+    565, [arXiv:astro-ph/9812133]; A.C. Pope, et al., Astrophys. J. 607 (2004) 655, [arXiv:astro-ph/0401249]; D.N. Spergel, et
+    al., Astrophys. J. Suppl. 148 (2003) 175, [arXiv:astro-ph/0302209].
+ [2] G. Lemaitre, Gen. Rel. Grav. 29 (1997) 641; R.C. Tollman, Proc. Nat. Acad. Sci. 20 (1934) 169; H. Bondi, Mon. Not. Roy.
+    Astron. Soc. 107 (1947) 410.
+ [3] L. Randall and R. Sundrum, PRL, 83 (1999) 3370; V. Sahni and Y. Shtanov, JCAP, 0311 (2003) 014; S. Capozziello, et
+    al., PRD, 71 (2005) 043503; B. Li and J.D. Barrow, PRD, 75 (2007) 084010.
+ [4] P.J.E. Peebles and B. Ratra, ApJL, 325 (1988a) 17; P.J.E. Peebles and B. Ratra, PRD, 37 (1988b) 3406.
+ [5] A. Cohen, D. Kaplan and A. Nelson, PRL, 82 (1999) 4971 [arXiv:astro-ph/9803132]; M. Li, PLB 603 (2004) 1
+    [arXiv:astro-ph/0403127].
+ [6] Z.K. Guo, Y.S. Piao, X. Zhang and Y.Z. Zhang, PLB, 608 (2005) 177; B. Feng, X. Wang and X. Zhang, PLB, 607 (2005)
+    35.
+ [7] R. Caldwell, PLB, 545 (2002) 23.
+ [8] M.C. Bento, O. Bertolami and A.A. Sen, PRD, 66 (2002) 043507 [arXiv:astro-ph/0202064]; M.C. Bento, O. Bertolami and
+    A.A. Sen, PRD, 70 (2002) 083519.
+ [9] M. Tegmark, et al., PRD, 69 (2004) 103501 [arXiv:astro-ph/0310723].
+                                                  0.02      0.025
+                                          0.05
+
+
+                                    ΩK
+                                         −0.05
+                                                   0.02      0.025     −0.05     0    0.05
+
+                                          0.01                        0.01
+
+                                              0                          0
+                                    α
+                                         −0.01                       −0.01
+
+                                         −0.02                       −0.02
+                                                   0.02     0.025        −0.05   0    0.05 −0.02−0.01       0       0.01
+
+                                           0.8                         0.8                     0.8
+                                          0.75                        0.75                    0.75
+                                    ΩΛ
+
+
+                                           0.7                         0.7                     0.7
+                                          0.65                        0.65                    0.65
+
+                                                   0.02     0.025       −0.05    0     0.05    −0.02−0.01       0    0.01        0.7   0.8
+
+                                              80                        80                     80                           80
+                                         H0
+
+
+                                              70                        70                     70                           70
+
+                                              60                        60                     60                           60
+                                                    0.02     0.025      −0.05     0    0.05    −0.02−0.01    0       0.01        0.7   0.8
+                                                                                 ΩK                         α                     ΩΛ
+                                                           Ωb h2
+
+
+FIG. 5: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ , Ωk in a
+non-flat universe, for the data sets SNe+CMB+BAO.
+
+
+[10] P.J.E. Peebles and B. Ratra, Rev. Mod. Phys, 75 (2003) 559.
+[11] A.G. Riess, et al., ApJ, 659 (2007) 98 [arXiv:astro-ph/0611572].
+[12] M. Kunz, ArXiv Astrophysis e-prints (2007) [arXiv:astro-ph/0702615].
+[13] T. Chiba, N. Sugiyama and T. Nakamura, MNRAS, 289 (1997) L5 [arXiv:astro-ph/9704199]; M. Visser, Classical
+    and Quantum Gravity, 21 (2004) 2603 [arXiv:astro-ph/0309109]; K.N. Ananda and M. Bruni, PRD, 74 (2006) 023523
+    [arXiv:astro-ph/0512224].
+[14] A. Balbi, M. Bruni and C. Quercellini, PRD, 76 92007) 103519 [arXiv:astro-ph/0702423].
+[15] M. Li, et al., JCAP, 0906 (2009) 36.
+[16] N. Liang, L. Xu and Z.-H. Zhu, Astro. Astrophys. 527 (2011) A11;                                                            H. Li, et al., PLB, 658 (2008) 95
+    [arXiv:astro-ph/0612060]; R. Tsutsui, et al., MNRAS, 394 (2009) L31 [arXiv:astro-ph/0807.2911].
+[17] S.W. Allen, et al., MNRAS, 334 (2002) L11 [arXiv:astro-ph/0205007]; L. Xu and Y. Wang, JCAP 06 (2010) 002 [arXiv:astroph/1006.0296].
+[18] Z.-H, Zhu and M. Sereno, Astro. Astrophys. 487 (2008) 831 [arXiv:astro-ph/0804.2917]; S. Cao and Z.-H, Zhu, Astro.
+    Astrophys. accepted, [arXiv:astro-ph/1105.6182].
+[19] A. Lewis and A. Challinor, http://camb.info/
+[20] R. Jimenez, et al., ApJ, 593 (2003) 622.
+[21] J. Simon, et al., PRD, 71 (2005) 123001.
+[22] L. Samushia and B. Ratra, ApJ, 650 92006) L5; H. Wei and S.-N. Zhang, PLB, 644 (2007) 7; H.S. Zhang and Z.-H. Zhu,
+    JCAP, 0803 (2008) 007.
+[23] T.-J. Zhang, C. Ma, and T. Lan, Adv. Astron. 2010 (2010) 184284.
+                                                      0.022     0.024
+
+                                            0.02
+
+
+                                     ΩK
+                                           −0.02
+
+                                                       0.022        0.024        −0.02      0       0.02
+                                                       −3                            −3
+                                                    x 10                         x 10
+                                              15                            15
+                                              10                            10
+                                                5                            5
+
+
+                                          α
+                                                0                            0
+                                              −5                            −5
+
+                                                                                   −0.02    0       0.02           −5    5              15
+                                                       0.022        0.024
+                                                                                                                                    −3
+                                                                                                                                 x 10
+
+                                           0.75                             0.75                            0.75
+                                      ΩΛ
+
+
+                                              0.7                            0.7                             0.7
+
+
+                                           0.65                             0.65                            0.65
+                                                       0.022    0.024              −0.02        0    0.02           −5       5           15 0.65     0.7     0.75
+                                                                                                                                         −3
+                                                                                                                                  x 10
+                                              74                              74                              74                              74
+                                              72                              72                              72                              72
+                                       H0
+
+
+                                              70                              70                              70                              70
+                                              68                              68                              68                              68
+
+                                                      0.022     0.024               −0.02    0       0.02           −5       5           15   0.65    0.7     0.75
+                                                            Ωb h2                           ΩK                           α               −3             ΩΛ
+                                                                                                                                  x 10
+
+
+FIG. 6: The 2-D regions and 1-D marginalized distribution with the 1-σ and 2-σ contours of parameters Ωb h2 , α, ΩΛ , Ωk in a
+non-flat universe, for the data sets H(z)+SNe+CMB+BAO.
+
+
+[24] P.J. McCarthy, et al., ApJ, 614 (2004) L9.
+[25] D. Stern, et al., JCAP, 02 (2010) 008.
+[26] E. Gaztañaga, A. Cabré, and L. Hui. MNRAS, 399 (2009) 1663.
+[27] A.G. Riess, et al., ApJ, 699 (2009) 539 [arXiv:astro-ph/0905.0695].
+[28] R. Amanullah, et al., ApJ, 716 (2010) 712 [arXiv:astro-ph/1004.1711].
+[29] L. Xu and Y. Wang, PLB, 702 (2011) 114 [arXiv:astro-ph/1009.0963]; Y. Gong, X. Zhu and Z.-H. Zhu, MNRAS, 415
+    (2011) 1943 [arXiv:astro-ph/1008.5010].
+[30] S. Nesseris and L. Perivolarropoulos, PRD, 72 (2005) 123519 [arXiv:astro-ph/0511040].
+[31] A. Riazuelo and J. Uzan, Phys. Rev. D, 66 (2002) 023525; V. Acquaviva and L. Verde, JCAP, 0712 (2007) 001.
+[32] J.R. Bond, G. Efstathiou and M. Tegmark, MNRAS, 291 (1997) L33, [arXiv:astro-ph/9702100].
+[33] W. Hu and N. Sugiyama, ApJ, 471 (1996) 542, [arXiv:astro-ph/9510117].
+[34] D.J. Eisenstein, et al., ApJ, 633 (2005) 560, [arXiv:astro-ph/0501171].
+[35] E. Komatsu, et al., ApJS, 192 (2011) 18, [arXiv:astro-ph/1001.4538].
+[36] D.J. Eisenstein and W. Hu, ApJ, 496 (1998) 605, [arXiv:astro-ph/9709112].
+[37] W.J. Percival, et al., MNRAS, 401 (2010) 2148, [arXiv:astro-ph/0907.1660].
+[38] A. Lewis and S. Bridle, PRD, 66 (2002) 103511 [arXiv:astro-ph/0205436],
+    URL: http://cosmologist.info/cosmomc/.
+[39] Z.X. Zhai, H.Y. Wan and T.J. Zhang, PLB, 689 (2010) 8; C. Ma and T.J. Zhang, ApJ, 730 (2011) 74.
+                             6000
+
+
+                             5000
+
+
+                             4000
+          l(l+1)C /2π[µk ]
+                             3000
+                     l
+
+
+                             2000
+
+
+                             1000
+                                 0       1                   2                    3                   4
+                               10     10                   10                  10                  10
+                                                            l
+
+FIG. 7: The theoretical CMB temperature angular power spectrum of UDM model. α = 0.01(red), 0(black)and − 0.01(green).
+Ωb h2 = 0.022, ΩΛ = 0.71, H0 = 70.

@@ -1,0 +1,120 @@
+Twitter and political culture: Short text embeddings as a window
+                     into political fragmentation
+                                 Amar Budhiraja                                                                           Joyojeet Pal
+                       Amar.Budhiraja@microsoft.com                                                                  jopal@microsoft.com
+                         Microsoft Research, India                                                                  Microsoft Research, India
+ABSTRACT                                                                                          there have been fears that polarization and nationalistic tendencies
+Mapping polarization and relationships in political discourse on                                  may have wide-ranging impacts distracting away attention from sosocial media is challenging since politicians’ positions and relation-                            cial and economic priorities by undermining institutions and harming
+ships can be hard to pin down. In this paper, we attempt to use                                   the plurality of societies [3]. A feature of such politics is that poppoliticians’ tweets as a metric of their affinities using representation                          ulist movements tend to try and centralize the discourse in a uniform
+learning, by modifying the Word2Vec method such that politicians                                  national narrative, to the detriment of marginal politics of smaller
+are directly encoded into a Euclidean space. Our analysis of Indian                               linguistic or regional units within a nation state [10]. Systematically
+politicians shows that the relatively populous, linguistically more                               studying polarization in groups presents significant challenges and
+homogeneous northern states are cohesively clustered based on their                               need for human annotation [8].
+party affiliations, whereas southern states cluster based on geography.                              To explore the use of computational methods in identifying politiWe propose that computational methods can be useful in examin-                                    cal communication, we attempt to understand centralizing tendencies
+ing the tensions of regionalist tendencies against dominant national                              in the political discourse. We select India, a pluralistic society, where
+political narratives.                                                                             much recent press has focused on the increasing dominance of a
+                                                                                                  populist government with an emphasis on a strong national narrative
+CCS CONCEPTS                                                                                      over federalism. We study party activity on Twitter across states to
+                                                                                                  understand if the centralization is reflected in the political discourse.
+• Information systems → World Wide Web; Social networks; •
+Applied computing → Sociology.                                                                    2    METHODOLOGY
+                                                                                                  We took a list of approximate 6 million most recent tweets from
+KEYWORDS                                                                                          an annotated list of 13,111 Indian politicians from over 25 parties
+Political Social Networks; Representation Learning                                                from an archive tracking Indian elections. Our goal was to study how
+ACM Reference Format:                                                                             similar or dissimilar politicians sound based on party or state. We
+Amar Budhiraja and Joyojeet Pal. 2020. Twitter and political culture: Short                       represent each politician as a dense vector based on the content in
+text embeddings as a window into political fragmentation. In ACM SIGCAS                           the tweets that they have written. This enables distance computation
+Conference on Computing and Sustainable Societies (COMPASS) (COM-                                 between any politicians and the distance is indicative of how similar
+PASS ’20), June 15–17, 2020, , Ecuador. ACM, New York, NY, USA, 2 pages.                          their tweets are. We then visualize them by parties and states.
+https://doi.org/10.1145/3378393.3402276                                                              Such representations can give insight about the overlaps in the
+                                                                                                  issues and language used by politicians. These learnt representation
+1     INTRODUCTION AND HYPOTHESIS                                                                 for Indian Politicians are used to validate the following hypothesis
+Representation learning has been employed in Natural Language                                     -do politicians specific state sound more like other politicians from
+Processing (NLP) in tasks like sentiment analysis [2] and sentence                                their own states, or do they sound like their parties at the national
+completion [5]. The notion of representation learning in NLP helps                                level when they tweet.. We use this as a proxy to understand whether
+compute what words are likely to appear near each other due to                                    politicians are "statists" in the federal sense - ie concerned primarily
+contextual co-occurrence. Thus, ‘cat’ and ‘dog’ are closer, more                                  with their local issues, or does a "national" political ideology has a
+likely to co-occur than ‘dog’ and ‘spa’. Representation learning has                              more important role to play on self representation on social media.
+been used in computational social sciences to study phenomena such                                   Using the learning setting of Word2Vec [6], we define the a model
+as and social network analysis [7].                                                               to learn the embeddings of politicians. In Word2Vec, the goal of the
+   In this paper, we explore representation learning as a means to                                model (in Skipgram) is - given a word, predict the context around
+understand political discourse. Political polarization and populist                               the word. We modify this learning setting and define it as given a
+nationalist politics often go hand in hand, and there are fears such                              politician (his/her Twitter handle) and a tweet written by him/her,
+politics are growing worldwide [1, 9]. In parts of the Global South,                              predict random words from the tweets with the politician id as the
+                                                                                                  input. At the end of training, similar to Word2Vec, we get dense
+Permission to make digital or hard copies of part or all of this work for personal or             vector representations for the input politicians.
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation         3    ANALYSIS AND RESULTS
+on the first page. Copyrights for third-party components of this work must be honored.
+For all other uses, contact the owner/author(s).                                                  To validate our hypothesis, we projected the learnt politician repreCOMPASS ’20, June 15–17, 2020, , Ecuador                                                          sentations into 2-D space for visualization using t-SNE [4]. Figure
+© 2020 Copyright held by the owner/author(s).
+ACM ISBN 978-1-4503-7129-2/20/06.                                                                 1 (a) shows the 2-D projections for politicians from all parties for
+https://doi.org/10.1145/3378393.3402276                                                           six states (3 Northern States: Rajasthan (RJ), Madhya Pradesh (MP)
+COMPASS ’20, June 15–17, 2020, , Ecuador                                                                                                                Budhiraja, and Pal.
+
+
+     80                                                            80
+              Tamil Nadu    Karnataka            Madhya Pradesh               BJP                   INC                   OTHER
+     60       Kerala        Uttar Pradesh        Rajasthan         60
+                                                                                                                                       State-Party   State-Party   Corr.
+                                                                   40                                                                  KL BJP        MP BJP        0.7684
+                                                                                                                                       KL BJP        RJ BJP        0.7958
+     20                                                                                                                                MP BJP        RJ BJP        0.9694
+                                                                    0                                                                  KL BJP        KL INC        0.9675
+      0                                                                                                                                KL INC        MP INC        0.7396
+                                                                  −20                                                                  KL INC        RJ INC        0.828
+   −20                                                            −40                                                                  MP INC        RJ INC        0.9485
+                                                                                                                                       MP INC        MP BJP        0.9096
+   −40                                                            −60                                                                  RJ INC        RJ BJP        0.9161
+
+                                                                  −80                                                                Table 1: Correlation of com-
+   −60      −60     −40    −20     0        20       40      60         −80   −60   −40    −20            0   20     40        60    mon words
+                             (a)                                                              (b)
+
+                    Figure 1: Politicians colored according to their states in (a) and parties in (b).
+
+
+and Uttar Pradesh (UP); 3 Southern States: Kerala (KL), Tamil Nadu
+(TN) and Karnataka (KT)). In Figure 1 (a), it can be observed that
+politicians from Southern Indian States are cohesively clustered
+based on their states whereas Politicians from the Northern States
+do not have comparable state based clustering; and are rather spread
+out and have overlapping structure over each other. We only show
+6 states in this visualization but our data shows consistent observations of close amalgamation in all northern states, whereas all give                        (a) Rajasthan-BJP             (b) Rajasthan-INC           (c) M.P.-BJP
+southern states are more cohesively associated geographically. The
+non-cohesive states (meaning they sound like each other) are those
+where the dominant nationalist party, the BJP is in clear majority.
+In Figure 1(b), we plotted the politicians of the same six states and
+it can be seen that the politicians in the northern states are well
+segregated based on their party affiliations: showing that their authorship on Twitter is more influenced by their party than their home
+state. This indicates that "statism" is relatively stronger in Southern,
+non-BJP states.                                                                               (d) M.P.-INC                 (e) Kerala-BJP            (f) Kerala-INC
+   To further understand this, we plotted word clouds of tweets from                  Figure 2: Word Clouds for politicians of respective states: BJP MP and
+the politicians in KL, MP and RJ for INC and BJP. Figure 2 shows                      BJP RJ word clouds look similar to each other; and so do INC MP and
+these word clouds. It can be seen that BJP-MP and BJP-RJ word                         INC RJ. KL BJP word cloud does not look like MP BJP but is rather
+clouds look similar to each other; and so do INC-MP and INC-RJ.                       similar to KL INC; so is the Kerala INC word cloud.
+KL-BJP word cloud does not look like BJP-MP, but rather similar to
+INC-KL, the word cloud of its opposition party. Essentially while
+                                                                                      REFERENCES
+the party handles of northern states have affinity, in the southern state
+                                                                                       [1] Timothy J Conlan and Paul L Posner. 2016. American federalism in an era of partiof Kerala, which is traditionally a non-BJP state, the party sounds                        san polarization: The intergovernmental paradox of Obama’s “New Nationalism”.
+more like its rival than its northern siblings.                                            Publius: The Journal of Federalism (2016).
+                                                                                       [2] Maria Giatsoglou, Manolis G Vozalis, Konstantinos Diamantaras, Athena Vakali,
+   The learnt politician embeddings and the word clouds indicate                           George Sarigiannidis, and Konstantinos Ch Chatzisavvas. 2017. Sentiment analyof Statism in the South and Federalism in the North. To validate                           sis leveraging emotions and word embeddings. Expert Systems with Applications
+our findings, we compute Pearson’s correlation coefficient of the                          (2017).
+                                                                                       [3] Kanishka Jayasuriya and Kevin Hewison. 2004. The antipolitics of good goverfrequencies of the common words for the 3 states discussed above                           nance: from global social policy to a global populism? Critical Asian Studies
+for both INC and BJP. Higher correlation indicates usage of the                            (2004).
+same words in the same amount and, since we have only considered                       [4] Laurens van der Maaten and Geoffrey Hinton. 2008. Visualizing data using t-SNE.
+                                                                                           JMLR (2008).
+common words between any two State-Party combination, it is lan-                       [5] Oren Melamud, Jacob Goldberger, and Ido Dagan. 2016. context2vec: Learning
+guage agnostic. Table 1 shows a subset of these correlations. We                           generic context embedding with bidirectional lstm. In CoNLL.
+                                                                                       [6] Tomas Mikolov et al. 2013. Efficient estimation of word representations in vector
+can see that in MP and RJ, the words used by politicians in tweets                         space. arXiv preprint arXiv:1301.3781.
+sounds alike, whereas in KL, the parties sound like each other across                  [7] Bryan Perozzi, Rami Al-Rfou, and Steven Skiena. 2014. Deepwalk: Online
+party lines. In this paper, we have shown that while AI for social                         learning of social representations. In KDD. ACM.
+                                                                                       [8] Markus Prior. 2013. Media and political polarization. Annual Review of Political
+good is typically seen primarily from an instrumental perspective                          Science (2013).
+of deploying initiatives, sophisticated ML techniques can be use-                      [9] Anton Shekhovtsov and Andreas Umland. 2014. The Maidan and Beyond:
+fully deployed to better understand sociological phenomena that are                        Ukraine’s Radical Right. Journal of Democracy (2014).
+                                                                                      [10] Mark R Thompson. 2016. The moral economy of electoralism and the rise of
+important to our collective political and social future.                                   populism in the Philippines and Thailand. Journal of Developing Societies (2016).

@@ -1,0 +1,473 @@
+1
+
+
+                                            Study of Throughput and Delay in Finite-Buffer
+                                                           Line Networks
+                                                                           Badri N. Vellambi                                      Nima Torabkhani, Faramarz Fekri
+                                                             Institute for Telecommunications Research                      School of Electrical and Computer Engineering
+                                                                     University of South Australia                                 Georgia Institute of Technology
+                                                                       Mawson Lakes, Australia                                         Atlanta, GA 30332-0250
+                                                               E-mail: {badri.vellambi}@unisa.edu.au                            E-mail: {nima, fekri}@ece.gatech.edu
+
+
+                                          Abstract—In this work, we study the effects of finite buffers              attaining optimum network performance, the interest in the
+                                       on the throughput and delay of line networks with erasure                     study of finite buffer networks has been increased.
+arXiv:1103.1403v1 [cs.IT] 7 Mar 2011
+
+
+                                       links. We identify the calculation of performance parameters
+                                       such as throughput and delay to be equivalent to determining
+                                                                                                                        The problem of studying throughput and delay of networks
+                                       the stationary distribution of an irreducible Markov chain. We                with finite buffers has also been studied in queueing theory.
+                                       note that the number of states in the Markov chain grows                      These problems can be seen to be similar, since the packets
+                                       exponentially in the size of the buffers with the exponent scaling            can be viewed as customers and the delay due to packet loss
+                                       linearly with the number of hops in a line network. We then                   in the link as the arbitrary service time. Also, the phenomenon
+                                       propose a simplified iterative scheme to approximately identify
+                                       the steady-state distribution of the chain by decoupling the
+                                                                                                                     of packet overflow in the network can be modeled by a type
+                                       chain to smaller chains. The approximate solution is then used                II blocking (commonly known as blocking after service) in
+                                       to understand the effect of buffer sizes on throughput and                    stochastic networks. However, there is a subtle difference in
+                                       distribution of packet delay. Further, we classify nodes based                the packet-customer analogy when the network has nodes that
+                                       on congestion that yields an intelligent scheme for memory                    can send packets over multiple paths to the destination. When
+                                       allocation using the proposed framework. Finally, by simulations
+                                       we confirm that our framework yields an accurate prediction of
+                                                                                                                     such is the case, the node can choose to duplicate packets on
+                                       the variation of the throughput and delay distribution.                       both the paths, an event that cannot be captured directly in the
+                                                                                                                     customer-server based queueing model. However, that is not
+                                                                I. I NTRODUCTION                                     the case in line networks. Therefore, the problem of finding
+                                                                                                                     buffer occupancy distribution and consequently throughput
+                                          In networks, packets that have to be routed from one node to
+                                                                                                                     and delay in certain networks is then seen to be identical
+                                       the other may have to be relayed through a series of intermedito determining certain arrival/departure processes in an open
+                                       ate nodes. Also, each node in the network may receive packets
+                                                                                                                     stochastic network of a given topology [6]–[9]. Such relevant
+                                       via many data streams that are being routed simultaneously
+                                                                                                                     works in the field of queueing theory consider a continuousfrom their source nodes to their respective destinations. In such
+                                                                                                                     time model for arrival and departure of packets in the network.
+                                       conditions, the packets may have to be stored at intermediate
+                                       nodes for transmission at a later time. If buffers are unlimited,                In [10], Lun et al. consider the discrete-time analogue of
+                                       the intermediate nodes need not have to reject or drop packets                the arrival process by lumping time into epochs (wherein each
+                                       that arrive. For practical reasons, buffers are limited in size.              node can transmit and receive a packet) to analyze the capacity
+                                       Although a large buffer size is preferred to minimize packet                  of a simple two-hop lossy network. In our previous work [11],
+                                       drops, large buffers have an adverse effect on the mean and                   we derived bounds on the throughput of line networks, which
+                                       variance in packet delay. Additionally, as second-order effects,              were unable to provide good approximations for packet delay
+                                       using larger buffer sizes at intermediate nodes would have                    and buffer occupancy statistics. While our approach employs
+                                       practical problems such as on-chip board space and increased                  a model of network similar to that in [10], [11], we extend
+                                       memory-access latency. Though our work is motivated partly                    their results not only to derive estimates for the capacity
+                                       by such concerns, our work is far from modeling realistic                     of line networks of any hop-length and intermediate node
+                                       scenarios. This work modestly aims at providing a theoretical                 buffer size, but also to derive quantitative estimates for packet
+                                       framework to understand the fundamental limits of single                      delay distribution. Our contributions to this area of research
+                                       information flow in finite-buffer line networks and investigate               is summarized below.
+                                       the trade-offs between throughput, packet delay and buffer                     1. We extend a Markov-chain based modeling to present an
+                                       size.                                                                             iterative estimate for the buffer occupancy distribution at
+                                          The problem of computing capacity1 and designing efficient                     intermediate nodes.
+                                       coding schemes for lossy wired and wireless networks has                       2. Using the estimate, we derive expressions for throughput
+                                       been widely studied [1]–[4]. However, the study of capacity                       and packet delay distribution that are seen to be fairly
+                                       of networks with finite buffer sizes has been limited. This can                   accurate in predicting the actual system behavior.
+                                       be attributed solely to the fact that the analysis of finite buffer              This work is organized as follows. First, we present the
+                                       systems are generally more challenging. With the advent of                    formal definition of the problem and the network model in
+                                       network coding [4], [5] as an elegant and effective tool for                  Section II. Next, we introduce our analysis for finite-buffer
+                                         1 Throughout this work, we use capacity to mean the supremum of all rates   line networks in Section III and then investigate packet delay
+                                       of information flow achievable by any coding scheme.                          in Section IV. We compare our analytical results with actual
+             simulations in Section V and in Section VI we briefly discuss                 has a finite buffer of m = 10 packets. Figure 2 presents the
+             trade-offs between throughput, delay and memory. Finally,                     (simulated) capacity for the continuous model and the timeSection VII concludes the paper.                                              discretized models for various epoch durations. It is noticed
+                                                                                           that as the epoch duration is made smaller, the discrete-time
+                  II. P ROBLEM S TATEMENT AND N ETWORK M ODEL                              model becomes more accurate in predicting the capacity. This
+                                                                                           was verified to be the case for all line networks with Poisson
+               As illustrated in Figure 1, a line network is a directed graph
+                                                            →
+                                                            −                              arrivals and service times.
+            of h hops with V = {v0 , v1 , . . . , vh } and E = {(vi , vi+1 ) :
+            i = 0, . . . , h − 1} for some integer h ≥ 2. In the figure, the             10
+
+
+                                                                                               Capacity (in packets/epoch)
+            intermediate nodes are shown by black ovals. The links are                    9
+
+            assumed to be unidirectional, memoryless and lossy. We let εi
+            denote the packet erasure probability over the     link (v
+                                                             PSfrag   i , vi+1 ).
+                                                                    replacements
+            The erasures model only the quality of links (e.g., presence of               7
+
+            noise, interference) and do not represent packet drops due to
+            finite buffers. A lossless hop-by-hop acknowledgement setup                                                     Continuous-Time
+                                                                               2                                            Discrete-Time (0.1 Sec)
+            is in place to indicate the successful receipt of a packet .                  5
+                                                                                                                            Discrete-Time (0.025 Sec)
+                                                                                                                            Discrete-Time (0.001 Sec)
+            Moreover, the packet processes on different links are assumed                 4
+                                                                                              2         4      6        8        10        12       14
+            to be independent. Each node vi ∈ V has a buffer of mi                                            Buffer size (in packets)
+            packets with each packet having a fixed size of S bytes. Note Fig. 2. An illustration of the precision of the discrete-time model.
+            that the buffer size can vary with the node index. Lastly, the
+            source and destination nodes are assumed to have sufficient              Lastly, we use the following notations. (t) denotes the                      G
+PSfrag replacements
+            memory to store any amount of data.                                   geometric distribution with mean inter-arrival time t ∈ .                                   R
+               The system is analyzed using a discrete-time model, where σ(·) denotes the indicator function for >0 . For any x ∈ ,                          Z                R
+            each node can transmit at most one packet over a link per x , 1 − x. Lastly, ⊗ denotes the convolution operator.
+            epoch. We let {Xi (l)}Z≥0 to be the random process denoting
+            the erasure occurrences on the link (vi−1 , vi ) at time l. We set                      III. F INITE -B UFFER A NALYSIS
+            Xi (l) = 0 if a packet is erased on (vi−1 , vi ) at epoch l and
+            Xi (l) = 1 otherwise.                                                    Here, we develop our framework for analyzing finite-buffer
+                                                                                  erasure networks. In the sections that follow, these techniques
+                      v0 ε1 v1 ε2 v2                     vh−1 εh vh               will be used to study various the performance indicators. We
+                     111                                                 111
+                     000
+                     111                                                 000
+                     111
+                     000                                                 111
+                                                                                  proceed as follows.
+                             m1           m2          mh−1
+                                                                                     1) Rate-optimal Schemes: One of the most important performance parameters of a network is its throughput and the
+                                                                                  problem of identifying capacity is directly related to the
+            Fig. 1. An illustration of the line network.
+                                                                                  problem of finding schemes that are rate-optimal. In our model
+                                                                                  of line network, a scheme that performs the following in the
+               The unicast capacity between a pair of nodes is defined to
+                                                                                  same order can be seen to be rate-optimal.
+            be the supremum of all achievable rates of transmission of
+            information packets (in packets per epoch) between a pair of            1. If the buffer of a node is not empty at a particular epoch,
+            nodes. The supremum is calculated over all possible means                  then it must transmit at least one of the packets.
+            used for packet generation and buffer update at intermediate            2. A node deletes the packet transmitted at an epoch if it
+            nodes. Note that the source node can generate innovative                   receives    an acknowledgement from the next hop.
+            packets during each epoch. For instance, in the particular case         3. A   node   accepts   an arriving packet if it has space in its
+            of the line network of Figure 1, we would like to identify the             buffer.  It  then  sends  an ACK to the previous node.
+            unicast capacity between v0 and vh .                                  In the absence of feedback, rate-optimality can be achieved by
+               Before we proceed to the modeling, we briefly motivate employing random linear combinations based network coding
+            the assumed discrete-time model with an example. Consider over a large finite field as is described in [10], [11].
+            a continuous-time model with the discrete-time model for                 2) Markov Chain Modeling of the Buffer States at Intervarying times of epoch for a simple continuous-time two- mediate Nodes: In order to model the network with lossless
+            hop line network with a Poisson packet generation process feedback, we need to track the number of packets that each
+            at the source with parameter λ1 = 10 pkts/sec. The service node possesses at every instant of time. We do so by using
+            time at the intermediate node is also Poisson with parameter the rules of buffer update under the optimal scheme. Let
+            λ2 = 10 pkts/sec, and the links connecting the source to the n(l) = (n1 (l), . . . , nh−1 (l)) be the vector whose ith compointermediate node and the intermediate node to the destination nent denotes the number of packets the ith intermediate node
+            are both packet-erasure channels with erasure probabilities possesses at time l. The variation of state at the lth can be
+            ε1 = ε2 = 0.1. Finally, suppose that the intermediate node tracked using auxiliary random variables Yi (l) defined by
+                                                                                           (
+              2  This assumption is made to simplify modeling. In the absence of perfect                                     σ(ni−1 (l))Xi (l)                            i=h
+             ACK, one can use random linear coding over a large finite field to achieve    Yi (l) =                          Xi (l)σ(mi − ni (l) + Yi+1 (l))              i=1
+             the same desired throughput.                                                                                    σ(ni−1 (l))Xi (l)σ(mi − ni (l) + Yi+1 (l))   1<i<h
+
+
+                                                  PSfrag replacements
+   The above definition is such that Yi (l) = 1 only if all the             is the same for k = 1, . . . , mi . This allows us to track
+following conditions are met.                                               just the blocking probability and not the joint statistics.
+ 1. Node vi−1 has a packet to transmit to vi .                          A3. At any epoch, given the occupancy of a particular node,
+ 2. The link (vi−1 , vi ) does not erase the packet at the lth              the arrival process is independent of the blocking process.
+    epoch, i.e., Xi (l) = 1.                                                                                                                 α
+                                                                                  α0              α            α             α
+ 3. Node vi has space after it has updated its buffer for any
+    changes due to its transmission at that epoch.                         0             1                2                          mi-1         mi
+The dynamics of buffer states can then by seen to be                                                                         β               β
+                                                                                  β               β            β
+                                                                          α0          α−β             α−β                            α−β          β
+ ni (l + 1) = ni (l)+ Yi (l)− Yi+1 (l),      i = 1, . . . , h− 1. (1)
+                                                                        Fig. 3.   The chain for the node vi obtained by the assumptions A1-A3.
+
+Note that since Y(l) = (Y1 (l), . . . , Yh (l)) is a function of n(l)
+                                                                        These assumptions spread the effect of blocking equally over
+and X(l) = (X1 (l), . . . , Xh (l)), n(l + 1) depends only on its
+                                                                        all non-zero states of occupancy at each node. Under these
+previous state n(l) and the channel conditions X(l) at the lth
+                                                                        assumptions, when we are given that the arrival rate of packets
+epoch. Hence, we see that {n(l)}l∈Z≥0 forms a Markov chain.
+                                                                        as seen by vi is ri packets/epoch, and that the probability of
+It is readily checked that this chain has h−1
+                                             Q
+                                                i=1 (mi + 1) states.    blocking by vi+1 is pb i+1 , the dynamics of the state change
+Further, this chain is irreducible, aperiodic, positive-recurrent,
+                                                                        for the node vi is given by the chain in Figure 3 with the
+and ergodic [12] and therefore has a unique steady-state probparameters set to
+ability p∞ . By ergodicity, we can obtain temporal averages
+by statistical averages. We then see that the computation of                                 α        =   ri (εi+1 + εi+1 pb i+1 )
+(throughput) capacity is equivalent to the computation of the                                β        =   (1 − ri )pb i+1 εi+1     .               (2)
+                                                                                             α0       =   ri
+likelihood of the event that Yh = 1.
+   3) Approximated MC for an intermediate node: The ex-                 For this chain in Fig. 3, the steady-state distribution can be
+ponential growth in the size of the chain and the presence              computed to be
+of boundaries (due to finite buffers), exact calculation of the                                                           1
+                                                                                                                     α0 Pmi −1 αl 
+                                                                                                                                       k = 0
+
+                                                                                                                 1+ β l=0 βl
+                                                                                                                
+steady-state probabilities (and hence the throughput) becomes                                                   
+very cumbersome even for networks of reasonable buffer                  Pr[ni = k] = ϕ(k|ri , εi+1 , pb i+1 ) ,        α0 αk−1
+                                                                                                                         βk
+sizes and hop-lengths. The exact chain for the dynamics                                                         
+                                                                                                                 1+ α0 Pm   i −1 αl 
+                                                                                                                                       k 6= 0
+                                                                                                                                 β     l=0   βl
+of the system is such that a state update at a node has a
+strong dependence on the states of both its previous-hop and            The blocking probability that the node vi−1 perceives from
+its next-hop neighbors. Additionally, the process of packet             the node vi , assuming that vi sees an arrival rate of ri from
+transmission over intermediate edge can be shown to be                  vi−1 and a blocking probability of pb i+1 caused by vi+1 3 , can
+non-memoryless. These facts add to the intractability of the            then be calculated as follows.
+exact computation of the distribution. However, it is possible
+                                                                              
+                                                                                (εi+1 +εi+1 pb i+1 )ϕ(mi |ri , εi+1 , pb i+1 ) i < h−1
+to decouple the chain into several Markov chains with a                 pb i =                                                         (3)
+                                                                                εi+1 ϕ(mi |ri , εi+1 , 0)                      i = h−1
+single finite-boundary under some simplifying assumptions.
+To have an approximate decoupled model, we need to identify             Similarly, the arrival rate at on each edge can be seen to be
+the transition probabilities of the decoupled chains, which is          related to the occupancy of the previous node and the channel
+possible only if we know the arrival and departure processes            erasure probability in the following fashion.
+on each edge. The rate of information on any edge is directly
+                                                                                  
+                                                                                     εi (1 − ϕ(0|ri , εi+1 , pb i+1 )) 1 < i < h − 1
+related to the fraction of time the sending node is non-empty             ri+1 =                                                     (4)
+                                                                                     εi (1 − ϕ(0|ri , εi+1 , 0))       i=h−1
+and the fraction of time a successfully delivered packet will
+get blocked (and this happens if the receiving node is full                Given two vectors r = (r1 , . . . , rh ) ∈ [0, 1]h and pb =
+at the time of packet arrival). Hence, to have a model for              (pb 1 , . . . , pb h ) ∈ [0, 1]h , we term (r, pb ) as an approximate
+a node, we need to have the approximate buffer occupancy                solution to the chain, if they satisfy the equations (3), and (4)
+distributions for neighboring nodes. This hints naturally at an         in addition to having r1 = ε1 and pb h = 0. The following
+iterative approach to the problem. In this section, we develop          theorem guarantees both the uniqueness and the method of
+an iterative estimation method that considers the effect of             identifying the approximate solution to the chain.
+blocking with some simplifying assumptions. To develop an                  Theorem 1: Given a line network with link erasures E =
+iterative technique, we assume the following.                           (ε1 , . . . , εh ) and intermediate node buffer sizes M =
+                                                                        (m1 , . . . , mh−1 ), there is exactly one approximate solution
+A1. The packets are ejected from nodes in a memoryless
+                                                                        (r∗ (E, M), pb ∗ (E, M)) to the chain. Moreover, this solution
+    fashion. Equivalently, we assume that Pr[(ni−1 (t) >
+                                                                        can be found iteratively.
+    0) ∧ (Xi (t) = 1)|ni (t) = k] does not vary with the
+                                                                        While the proof of uniqueness is omitted for brevity, the
+    occupancy k of the ith node. This allows us to track just
+                                                                        method of identifying the approximate solution follows a
+    the information rate and not the exact statistics.
+A2. The blocking event occurs independent of the state of a               3 Note that the arrival rate at the node v is r = ε and that the blocking
+                                                                                                                    1    1   1
+    node, i.e., Pr[(Yi+1 (l) = 0)∧(Xi+1 (l) = 1)|(ni (t) = k)]          probability of vh is zero.
+simple iterative scheme. First, pb is set to 0 and 4 is invoked to                       Hence, the delay distribution is known if the steady-state
+estimate r. This estimate is then used in 3 to update pb , which                      distributions of buffer states (πj (·), j = 1, ..., h − 1) as seen
+is then used to find the next estimate of r. These iterations                         by arriving packets is known. However, it is a simple exercise
+repeated until the vectors converge. We omit the details of                           to derive these distributions from the results of Section III-3.
+proof of convergence for lack of space.
+   Finally, the unicast capacity C ∗ (E, M) can be estimated                                   V. R ESULTS ON F INITE -B UFFER A NALYSIS
+using the approximate solution from the following.                                      We have so far presented some fundamental tools for finiteCorollary 1: The approx. solution (r∗ (E, M), pb ∗ (E, M))                         buffer analysis of line networks. In this section, we show
+satisfies the flow conservation relations                                             that they are very helpful to obtain accurate estimates of the
+    C ∗ (E, M) = r1∗ (1 − pb ∗1 ) = ri∗ (1 − pb ∗i ), i = 1, . . . , h.               performance parameters such as throughput, delay distribution
+               IV. PACKET D ELAY D ISTRIBUTION                                        and buffer occupancy distribution for line networks.
+                                                                                        To understand the variation of our capacity estimate of
+    In this section, we use the approximate solution of SecSection III, in each of the figures, the simulation of the actual
+tion III-3 to obtain the estimates on the probability distribution
+                                                                                      capacity is presented in addition to our analytical results.
+of the delay of an information packet. We define the packet
+                                                                                      Figure 4 presents the variation of the capacity with the hop
+delay as the time taken from the instant when the source starts
+sending the packet to the instant when the destination receives
+
+
+                                                                                         Capacity (packets/epoch)
+it. In addition to the discussion in section III-1, we assume a                                                        0.7
+
+
+first-come first-serve treatment of packets atPSfrag   replacements
+                                                the intermediate              Sim. Cap. (ε = 0.25)
+                                                                                                                    0.65
+
+                                                                              Sim. Cap. (ε = 0.50)
+node buffers.                                                                 Iter. Estm. (ε = 0.50)
+                                                                              Iter. Estm. (ε = 0.50)
+                                                                                                                       0.6
+
+
+    In order to compute the distribution of delay that a packet                                                     0.55
+
+
+                                                                                                                       0.5
+
+experiences in the network, one can proceed in a hop-by-                                                            0.45
+
+hop fashion. Considering the last relay node, the additional                                                           0.4
+
+
+delay of an arriving packet (at time l) at node vh−1 depends                                                        0.35
+
+                                                                                                                                     2                 3       4       5       6       7       8        9         10        11        12    13
+on the occupancy of the node vh−1 and the erasure channel                                            Number of hops h
+that follows it to the destination. Suppose at epoch l, node Fig. 4. Capacity of a line network with m = 5 vs. the number of hops h.
+vh−1 has k ≤ mh−1 − 1 packets in addition to the arriving
+packet. Then, the packet has to wait for the first k packets to length for a network with each intermediate node having a
+leave before it can be serviced. Since each transmission takes buffer size of five packets. Moreover, the simulations are
+place independently, the distribution of delay is sum of k + 1 performed when the probability of erasure on every link is set
+independent geometric distribution with mean inter-arrival to either 0.25 or 0.5. It is noticed that the estimate captures the
+time 1−ε 1
+           h
+             , which is denoted by ⊗k+1 ( 1−ε 1
+                                                h
+                                                       G
+                                                  ). Suppose that variation of the actual capacity of the network within about
+the distribution of buffer occupancy at time of packet arrival 1.5% of error.
+is given by πh−1 (i), then the distribution of delay added by
+                                                                                                                    Capacity (packets/epoch)
+
+
+vh−1 to the packet is                                                                                                                          0.75
+
+                                                                                                                                                0.7
+
+                    mh−1 −1                         PSfrag replacements                                                                        0.65
+
+
+                                                       G                                                                                        0.6
+                         X
+          Dh−1 =                  πh−1 (i)⊗i+1 ((1 − ε´h )−1 ).                 (5)                                                            0.55
+
+                                                                                                                                                0.5
+                          i=0
+                                                                                                                                               0.45
+
+However, the situation is different for other intermediate delays                                                                               0.4
+
+                                                                                                                                               0.35
+because of the effect of blocking. The additional delay incurred                                                                                0.3
+                                                                                                                                                                                                            Sim. Cap. (ε = 0.25)
+                                                                                                                                                                                                            Sim. Cap. (ε = 0.50)
+                                                                                                                                                                                                            Iter. Estm. (ε = 0.50)
+while being stored at the node vj , 0 < j < h − 1, is given by                                                                                 0.25
+
+                                                                                                                                                0.2
+                                                                                                                                                                                                            Iter. Estm. (ε = 0.50)
+                                                                                                                                                   2       3       4   5   6       7   8   9       10       11   12    13        14    15
+
+                      mj −1                                                                                                                          Buffer size m
+                                                  G((1 − ε ´ ) ),                     Fig. 5.                                  Capacity of a line network with h = 8 vs. the buffer size m.
+                         X                  i+1                  −1
+              Dj =              πj (i)⊗                    j+1                  (6)
+                         i=0                                                             In order to study the effect of buffer size, we simulated
+where we used the following to consider blocking.                                     a line network of eight hops having the same erasures as
+              
+                  εi + θvi (mi )(1 − εi )           i = 1, 2, . . . , h − 1           in the previous setting. Figure 5 presents the variation of
+      ε′i =                                                                 ,   (7)   our results and the actual capacity as the buffer size of the
+                  εh                                i=h
+                                                                                      intermediate node is varied. It can be seen that as the buffer
+where θvi (k) is the steady state probability of that node
+                                                                                      size is increased, all curves approach the ideal min-cut capacity
+vi already has k packets when the packet is transmitted
+                                                                                      of 1 − ε.
+successfully from vi−1 . πj (i) and θvi (k) are related by
+                                                                                         Figure 6 presents the variation of delay distribution with
+                             θvj (i)
+                     (
+                                             i = 1, 2, . . . , mj − 1                 respect to the buffer size for an eight-hop line network with
+         πj (i) =        1−θvj (mj )                                     .      (8)
+                         0                   i = mj                                   the erasure probability on every link set to 0.25. It can be
+                                                                                      seen that both the mean and the variance of the distribution
+By assuming that the delays incurred by each node and its                             increases with the increase in the buffer size. It is noted that
+adjoining outgoing link is independent of each other, we obtain                       the analytic prediction of the delay is more conservative than
+the total delay considering all hops to be                                            the actual simulation i.e., the analytic estimate of the variance
+              D=    G((1 − ε´ ) ) ⊗ D ⊗ · · · ⊗ D
+                                       −1
+                                                   1             h−1 .          (9)   is higher than the actual simulated one.
+                                          0.08
+                                                                 m=5                                                                                      parameters. However, allocating memory to Type 2 nodes can
+                                                                                                                           Simulation (m=5)
+                                          0.07                                                                             Estimation (m=5)
+                                                                                                                           Simulation (m=10)
+                                                                                                                                                          affect the throughput sufficiently although with a moderate
+    Probability distribution of packets
+
+
+                                          0.06
+                                                                                                                           Estimation (m=10)
+                                                                                                                           Simulation (m=15)
+                                                                                                                                                          increase in the expected delay.
+                                                                                                                           Estimation (m=15)
+
+                                          0.05                                  m=10
+                                                                                                                                                                                                         Type 1
+
+
+                                                                                                                                                                  Average Delay (epochs)
+                                          0.04                                                    m=15
+                                                                                                                                                                                                         Type 2
+                                                                                                                                                                                             40          Type 3
+                                          0.03
+
+
+                                          0.02                                                                                                                                               20
+
+
+                                          0.01                                                                                                                                                0
+                                                                                                                                                                                                   2    4     6     8           10        12       14   16       18   20
+                                                                                                                                                                                                                     Buffer size (in packets)
+                                              0      10    20     30    40     50     60     70         80   90   100    110   120    130    140    150
+
+
+                                                                                                                                                               Throughput (Packets/epoch)
+                                                                                                                                                                                             0.5
+                                                                                       Delay (epochs)
+
+Fig. 6. Delay distribution in an 8 hop line network for varying buffer sizes.                                                                                                               0.45
+
+
+                                                                                                                        PSfrag replacements                                                  0.4
+
+                                                                                                                                                                                                                                                        Type 1
+                                                                                                                                                                                            0.35                                                        Type 2
+         VI. T HROUGHPUT AND D ELAY TRADE - OFFS                                                                                                                                                                                                        Type 3
+   Based on our the computed buffer occupancy distributions,                                                                                                                                       2    4     6     8           10        12
+                                                                                                                                                                                                                        Buffer size (in packets)
+                                                                                                                                                                                                                                                   14   16       18   20
+
+
+we categorize the nodes into 3 types according to their buffer
+                                                                                                                                                          Fig. 8.                              Throughput Vs. Average Delay for different type of nodes
+occupancy. Nodes are of Type 1, 2 or 3 depending on whether
+the rate of incoming rate of innovative packets is larger, same,
+or smaller, respectively, than the possible rate of innovative                                                                                                                                                VII. C ONCLUSIONS
+packets that can be sent on the outgoing edge. The typical oc-                                                                                               We presented an approximate markov-chain based model
+cupancy distributions of such nodes are presented in Figure 7.                                                                                            for analyzing the dynamics of finite-buffer line networks.
+The figure presents a classification of nodes from a four-hop                                                                                             The model provides an iterative procedure for computing the
+line network with ε1 = 0.2, ε2 = 0.5, ε3 = 0.5, ε4 = 0.2                                                                                                  distribution of buffer occupancy as a step in the estimation of
+when the three intermediate nodes have buffer sizes m = 10                                                                                                throughput capacity of such networks. The model was seen
+and m = 30, respectively. Note that in this example, Node vi is                                                                                           to provide an accurate computation of throughput for varying
+of Type i. While Type 3 nodes are generally starved and Type                                                                                              buffer sizes, hop-length and channel erasure probabilities. The
+1 nodes are generally full, Type 2 nodes have a near uniform                                                                                              computed buffer occupancy distribution was then used to
+distribution. Increasing the buffers of Type 1 or Type 3 nodes                                                                                            study the distribution of packet delay in such networks. This
+does not affect their blocking probabilities or the general shape                                                                                         proposed model was used to identify the level of congestion
+of the occupancy distribution. However, increasing the buffer                                                                                             in intermediate nodes, yielding a rule for intelligent memory
+sizes of Type 2 nodes decreases the blocking probability of                                                                                               allocation in such networks. The proposed scheme was seen
+such nodes. Note that while the classification of these nodes                                                                                             to near-precisely track the dynamics and variations of the
+is a trivial exercise, the means to identify/estimate the arrival                                                                                         investigated performance metrics.
+and departure rates is non-trivial.
+                                                                                                                                                                                                                  R EFERENCES
+                                           Buffer occupancy distribution for Type 1 (m=10)
+                                                                                                  Buffer occupancy distribution for Type 1 (m=30)
+                                                                                                                                                           [1] A. F. Dana, R. Gowaikar, R. Palanki, B. Hassibi, and M. Effros,
+                                                                                                                                                               “Capacity of wireless erasure networks.,” IEEE Trans. on Information
+                                           0.5                                                    0.5                                                          Theory, vol. 52, no. 3, pp. 789–804, 2006.
+                                                                                                                                                           [2] P. Pakzad, C. Fragouli, and A. Shokrollahi, “Coding schemes for line
+                                                0 1 2 3 4 5 6 7 8 9 10
+                                                                                                      0          10            20           30                 networks,” IEEE Intl. Symposium on Inform. Theory, Sept. 2005.
+                                           Buffer occupancy distribution for Type 2 (m=10)
+                                           0.1
+                                                                                                  Buffer occupancy distribution for Type 2 (m=30)
+                                                                                                  0.1                                                      [3] R. Koetter and M. Médard, “An algebraic approach to network coding,”
+                                                                                                                                                               IEEE/ACM Trans. Netw., vol. 11, no. 5, pp. 782–795, 2003.
+                                          0.05                                                0.05                                                         [4] S.-Y. R. Li, R. W. Yeung, and N. Cai, “Linear network coding,” IEEE
+                                                                                                                                                               Trans. on Inform. Theory, vol. 49, pp. 371–381, February 2003.
+                                            0                                                      0
+                                                0 1 2 3 4 5 6 7 8 9 10                               0           10           20            30             [5] D. S. Lun, M. Medard, and M. Effros, “On coding for reliable comBuffer occupancy distribution for Type 3 (m=10)        Buffer occupancy distribution for Type 3 (m=30)
+                                            1                                                      1                                                           munication over packet networks,” in Proc. of Allerton conference on
+                                                                                                                                                               communication, control, and computing, Monticello, IL, 2004.
+                                           0.5                                                    0.5
+                                                                                                                                                           [6] T. Altiok, “Approximate analysis of queues in series with phase-type
+                                            0                                                       0
+                                                                                                                                                               service times and blocking,” Oper. Res., vol. 37, pp. 301–310, July 1989.
+                                                  0 1 2 3 4 5 6 7 8 9 10                                0         10           20           30             [7] A. Brandwajn and Y.-L. L. Jow, “An approximation method for tandem
+Fig. 7.                                     Buffer occupancy distribution for different types of nodes                                                         queues with blocking,” Oper. Res., vol. 36, no. 1, pp. 73–83, 1988.
+                                                                                                                                                           [8] K. C. So and K. tsai E. Chin, “Performance bounds on multiserver
+                                                                                                                                                               exponential tandem queues with finite buffers,” European Journal of
+   Figure 8 shows the effect of increasing buffer size of                                                                                                      Operational Research, vol. 63, no. 3, pp. 463–477, 1992.
+nodes of a particular type on the throughput and delay in the                                                                                              [9] R. Serfozo, Introduction to Stochastic Networks. New York: Springermentioned line network example. In order to observe the effect                                                                                                 Verlag, 1st ed., 1999.
+                                                                                                                                                          [10] D. S. Lun, P. Pakzad, C. Fragouli, M. Medard, and R. Koetter, “An
+of the chosen node of a particular type, the buffers of nodes                                                                                                  analysis of finite-memory random linear coding on packet streams,” in
+of other types are fixed at five packets and buffer size of the                                                                                                Proc. of the 2nd Workshop on Network Coding, Theory, and Applications
+desired node is varied. We conclude that by allocating memory                                                                                                  (NetCod 2006), Boston, MA, April 3-7, 2006.
+                                                                                                                                                          [11] B. N. Vellambi, N. Rahnavard, and F. Fekri, “The effect of finite memory
+to Type 1 nodes yields minimal improvement in throughput                                                                                                       on throughput of wireline packet networks,” in the Proc. of Information
+and a large increase in delay. However, the effect of increasing                                                                                               Theory Workshop (ITW 2007), Lake Tahoe, CA, Sept. 2007.
+the buffers of Type 3 nodes has almost no effect on both                                                                                                  [12] J. R. Norris, Markov Chains. Cambridge University Press, 1998.

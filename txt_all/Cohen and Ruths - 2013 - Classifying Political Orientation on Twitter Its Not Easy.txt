@@ -1,0 +1,427 @@
+Proceedings of the Seventh International AAAI Conference on Weblogs and Social Media
+
+
+                     Classifying Political Orientation on Twitter: It’s Not Easy!
+
+                                                  Raviv Cohen and Derek Ruths
+                                                      School of Computer Science
+                                                          McGill University
+                                           raviv.cohen@mail.mcgill.ca, derek.ruths@mcgill.ca
+
+
+                            Abstract                                        including gender, age, education, political orientation, and
+                                                                            even coffee preferences (Zamal, Liu, and Ruths 2012;
+     Numerous papers have reported great success at inferring the political orientation of Twitter users. This paper            Conover et al. 2011b; 2011a; Rao and Yarowsky 2010;
+     has some unfortunate news to deliver: while past work                  Pennacchiotti and Popescu 2011; Wong et al. 2013; Liu and
+     has been sound and often methodologically novel, we                    Ruths 2013; Golbeck and Hansen 2011; Burger, Henderson,
+     have discovered that reported accuracies have been sys-                and Zarrella 2011). In general, inference algorithms have
+     temically overoptimistic due to the way in which vali-                 achieved accuracy rates in the range of 85%, but have strugdation datasets have been collected, reporting accuracy                gled to improve beyond this point. To date, the great suclevels nearly 30% higher than can be expected in popu-                 cess story of this area is political orientation inference for
+     lations of general Twitter users.                                      which a number of papers have boasted inference accuracy
+     Using careful and novel data collection and annotation                 reaching and even surpassing 90% (Conover et al. 2011b;
+     techniques, we collected three different sets of Twitter               Zamal, Liu, and Ruths 2012).
+     users, each characterizing a different degree of political
+     engagement on Twitter — from politicians (highly po-                      By any reasonable measure, the existing work on political
+     litically vocal) to “normal” users (those who rarely dis-              orientation is sound and represents a sincere and successful
+     cuss politics). Applying standard techniques for infer-                effort to advance the technology of latent attribute inference.
+     ring political orientation, we show that methods which                 Furthermore, a number of the works have yielded notable
+     previously reported greater than 90% inference accu-                   insights into the nature of political orientation in online enracy, actually achieve barely 65% accuracy on normal                   vironments (Conover et al. 2011b; 2011a). In this paper, we
+     users. We also show that classifiers cannot be used to                 examine the question of whether existing political orientaclassify users outside the narrow range of political ori-              tion inference systems actual perform as well as reported on
+     entation on which they were trained.
+                                                                            the general Twitter population. Our findings indicate that,
+     While a sobering finding, our results quantify and call
+     attention to overlooked problems in the latent attribute
+                                                                            without exception, they do not, even when the general popinference literature that, no doubt, extend beyond polit-              ulation consider is restricted only to those who discuss polical orientation inference: the way in which datasets are              itics (since inferring the political orientation of a user who
+     assembled and the transferability of classifiers.                      never speaks about politics is, certainly, very hard if not impossible).
+                        Introduction                                           We consider this an important question and finding for
+                                                                            two reasons. Foremost, nearly all applications of latent atMuch of the promise of online social media studies, analyt-                 tribute inference involve its use on large populations of unics, and commerce depends on knowing various attributes                     known users. As a result, quantifying its performance on the
+of individual and groups of users. For a variety of reasons,                general Twitter population is arguably the best way of evalfew intrinsic attributes of individuals are explicitly revealed             uating its practical utility. Second, the existing literature on
+in their user account profiles. As a result, latent attribute in-           this topic reports its accuracy in inferring political orientaference, the computational discovery of “hidden” attributes,                tion without qualification or caveats (author’s note: includhas become a topic of significant interest among social me-                 ing our own past work on the topic (Zamal, Liu, and Ruths
+dia researchers and to industries built around utilizing and                2012)). To the reader uninitiated in latent attribute inference,
+monetizing online social content. Most existing work has                    these performance claims can easily be taken to be an asserfocused around the Twitter platform due to the widespread                   tion about the performance of the system under general conadoption of the service and the tendency of its users to keep               ditions. In fact, we suspect that most authors of these works
+their accounts public.                                                      had similar assumptions in mind (author’s note: we did!).
+   Existing work on latent attribute inference in the Twit-                 Regardless of intentions, as we will show, past systems were
+ter context has made progress on a number of attributes                     not evaluated under general conditions and, therefore, the
+Copyright c 2013, Association for the Advancement of Artificial             performance reported is not representative of the general use
+Intelligence (www.aaai.org). All rights reserved.                           case for the systems.
+   Far from a harsh critique of existing work, our intention                The results are not encouraging. We find that classifiers
+is to establish precisely how good political orientation infer-         trained on any of the datasets are highly non-transferable to
+ence systems actually are and, in doing so, set the stage for           other datasets, despite the fact that they were collected over
+further progress on the problem. It is also noteworthy that,            the same time period and are labeled in consistent ways.
+in the course of this study, we will identify issues and tech-          While much more investigation must be done on this matniques that may be relevant to research on the inference of             ter, we consider this a question that should be attacked more
+other attributes, hopefully improving research in these areas           frequently and seriously in future work in this area.
+as well.                                                                    Overall, while the core contributions of this paper may be
+   The fundamental issues that we address in this study con-            grim, they highlight a number of important open research
+cern (1) the datasets that were used in prior work to eval-             questions that, when tackled, will propel the field of latent
+uate the political orientation inference systems and (2) the            attribute inference forward. To further support research in
+transferability of classifiers trained on one dataset to another        these areas, we have released the three datasets used in this
+dataset (Zamal, Liu, and Ruths 2012; Conover et al. 2011b;              study, which constitutes the first open set of datasets for po2011a; Golbeck and Hansen 2011; Rao and Yarowsky                        litical orientation inference.
+2010).
+   To the first issue, without exception, the datasets in                         Political Orientation Classifiers
+prior work consisted of some mix of Twitter accounts be-                The goal of our study was to evaluate the effect of differlonging to politicians, to people who registered their ac-              ent dataset selection on the performance of political orientacount under political groups in Twitter directories (e.g.               tion classifiers. As a result, we employed existing classifiers
+www.wefollow.com), and to people who self-reported                      for our study. Here we briefly survey how support vector
+their political orientation in their Twitter profiles. It was           machines (SVMs), boosted decision trees (BDTs), and laon these datasets that the reported accuracies of 95% were              tent dirichlet allocation-based (LDAs) methods and strateobtained. In this study, we constructed three Twitter user              gies that have been used in the past.
+datasets: the first consists of the accounts of US politicians,
+the second of users with self-reported political orientation,
+and the third of “modest” users who do not declare their                Latent Dirichlet Allocation. LDAs are topic models that
+political views, but make sufficient mention of politics in             have been employed, to great effect, as text classifiers in a
+tweets such that their political orientation can be deduced             number of areas (Blei, Ng, and Jordan 2003). Despite their
+by manual inspection. We consider this third group of polit-            strong performance elsewhere, they have been little-used in
+ically modest users to the most representative of the general           the domain of latent attribute inference. In the political oriTwitter population. Note that extreme care was taking in col-           entation inference literature, we know of only one study
+lecting these datasets in order to ensure that sources of bias          which used LDAs (Conover et al. 2011b). In this work, the
+could be controlled for. To our knowledge, our collection is            output of an LDA was used as one (of many) features that
+the most exacting in the literature. While improvements cer-            were fed into a larger SVM classifier. As part of the present
+tainly can be made, we consider this level of attention to data         study we employed a Labeled LDA as a stand-alone clascollection to be an important and often-undervalued aspect              sifier and found it to perform as well as SVMs, suggesting
+of successful latent attribute inference.                               that it might be fruitfully used as primary attribute inference
+   Running the classifier on the datasets, not surprisingly, we         system (Ramage et al. 2009). We consider this a promising
+find that the accuracy of the inference systems decreases as            direction for future work.
+visible political engagement decreases. What is remarkable
+is the degree to which the performance decreases - dropping             Support Vector Machines and Decision Trees. In the litto 65% for the modest user dataset. We also evaluated the               erature, support vector machines have enjoyed the most atcapacity for inference classifiers trained on one dataset to be         tention as latent attribute classifiers. Where political orienused on other datasets. We found that classifiers based on              tation is concerned, a number of studies have used SVMs,
+politicians, while achieving 91% labeling accuracy on other             including the study which achieved the best reported perpoliticians, only achieved 11% accuracy on politically mod-             formance to date (95%) (Conover et al. 2011b; Rao and
+est users — further underscoring the dramatic and systemic              Yarowsky 2010; Zamal, Liu, and Ruths 2012; Pennacchiotti
+differences between these sets users and the performance                and Popescu 2011). To our knowledge, only one study has
+that existing classifiers can achieve on them. An analysis of           used boosted decision trees and reported similar perforthe datasets which considered lexical variation and topic di-           mance to SVMs (Pennacchiotti and Popescu 2011).
+versity explained the results obtained.                                    SVMs and BDTs share in common a dependence on the
+   The second issue concerning the transferability of datasets          decomposition of users into fixed-length feature vectors. A
+has not been addressed in the latent attribute inference litera-        recent study employed an SVM which incorporated a superture at all. On one hand, we recognize that the set of cases on         set of user features from prior work (Zamal, Liu, and Ruths
+which a classifier is accurate is limited by the training data          2012). The features included: k-top words, k-top stems,
+with which it was constructed. Nonetheless, from a practical            k-top co-stems, k-top digrams and trigrams, k-top hashperspective, it is instructive to understand how accuracy falls         tags, k-top mentions, tweet/retweet/hashtag/link/mention
+off as the dataset changes. The three datasets we constructed           frequencies, and out/in-neighborhood size. It is noteworthy
+presents the opportunity to evaluate exactly this question.             that the k-top X features (e.g., k-top hashtags) refers to
+collecting the k most discriminating items of that type (e.g.
+hashtags) for each label (e.g., Republicans and Democrats).             Table 1: Basic statistics on the different datasets used. Total size
+                                                                        of the Figures dataset was limited by the number of federal level
+Thus, k-top words is actually 2k features: k words from                 politicians; size of the Modest dataset was limited by the number
+Republicans and k words from Democrats. For further                     of users that satisfied our stringent conditions - these were culled
+details on these features, we refer the reader to the original          from a dataset of 10,000 random individuals.
+paper (Zamal, Liu, and Ruths 2012).
+                                                                               Dataset     Republicans        Democrats       Total
+   For the purposes of this study, we primarily employed                       Figures        203               194            397
+an SVM classifier based on (Zamal, Liu, and Ruths 2012).                       Active         860               977           1837
+While this method did not achieve the best performance to                      Modest         105               157            262
+date (93% vs. 95%), it was benchmarked on a less restric-                      Conover        107                89            196
+tive dataset than (Conover et al. 2011b) which likely contributed to the small different in performance. Furthermore,
+because it incorporates nearly all features from work that              politically verbose users would not properly gauge the perpreceded it, we considered it a more fair representation of             formance of classifiers on the general population. Of course,
+all existing systems proposed to date. Following prior work,            the discovery that the political orientation of ordinary users
+a radial basis function was used as the SVM kernel. The cost            is harder to discern than that of political figures is hardly
+and γ parameters were chosen using a grid search technique.             news. How much harder it is, however, is quite important:
+The SVM itself was implemented using the library libSVM                 this is the difference between the problem still being rather
+(Chang and Lin 2011).                                                   easy and the problem of political orientation inference sudWe also evaluated the accuracy of a Labeled-LDA-based                denly being largely unsolved. As we have already indicated,
+classifier, following work that shows how the LDA can be                our findings suggest the latter to a profound degree.
+used on labeled data (Ramage et al. 2009; Ramage, Dumais,                   To conduct this study, we built three datasets which acted
+and Liebling 2010). Note that little work in latent attribute           as proxies for populations with different degrees of overt poinference has used LDA-based classifiers alone. We applied              litical orientation. Each dataset consisted of a set of Twitter
+it here primarily as a way of characterizing the lexical di-            users whose political orientation was known with high conversity of different datasets. We used a Labeled-LDA imple-             fidence. The basic statistics for these datasets are shown in
+mentation available in Scala as part of the Stanford Mod-               Table 1.
+eling Toolbox1 . In evaluating the accuracy the LLDA, we
+found it to be extremely similar to the SVM and, due to                 Political Figures Dataset (PFD). This dataset was inspace limitations, we do not report results for this classifier         tended to act as a baseline for the study. In many ways it also
+except as a means of characterizing the difference in topics            served to proxy for datasets that were used in other papers
+present across the three datasets we considered. It is worth            since, with the exception of the Conover 2011 dataset denoting that the similar accuracy achieved by both the LDA               scribed below, we were unable to obtain or recreate datasets
+and the SVM methods allayed a concern we had about the                  described and used in other papers (Conover et al. 2011b). In
+SVM’s use of only top-discriminating features. The LDA,                 prior work, the primary way for labeled political orientation
+by construction, employs all words present in the corpus.               datasets to be built was by compiling a list of self-declared
+Thus, if additional accuracy could be gained by incorporat-             Republicans and Democrats. In surveying such lists, we obing less discriminating words, presumably this would have               served that a (super)majority of the Twitter users were, in
+manifested as significant improvement in the LDA perfor-                fact, politicians. To mimic this design, we populated this
+mance. This was not observed under any of the conditions                dataset entirely with state governors, federal-level senators,
+considered in this study.                                               and federal-level representatives.
+                                                                           We created this dataset by scraping the official websites
+          Construction of Testing Datasets                              of the US governors2 , senators3 , and representatives4 . This
+                                                                        provided us a complete list of their individual websites and
+As mentioned earlier, the goal of this study was to evaluate            political orientation. From the individual websites, we obthe extent to which the dataset selection criteria influenced           tained their Twitter username and used the Twitter search
+the performance of political orientation classifiers. In partic-        API to obtain their latest 1000 tweets.
+ular, our concern was to determine the performance of clas-                Once this dataset was constructed, we derived two agsifiers on “ordinary” Twitter users.                                    gregate statistics from it in order to generate the Politically
+    Our definition of “ordinary” primarily concerned the ex-            Modest Dataset (described later): the politically discriminatent to which users employed political language in tweets.              tive hashtag set, H∆ , and the politically neutral hashtag set,
+Our intuition was that very few Twitter users generate po-              HN . These are mutually exclusive hashtag sets that are a
+litically overt tweets. This intuition was proven out by the            subset of all abundant hashtags, HA , in the PFD. By abunfraction of randomly sampled users who had even a single                dant hashtags, we refer to all those that are used at least
+tweet with political content. Given this bias towards little, if
+any, political commentary in Twitter, benchmarks based on                  2
+                                                                             http://www.nga.org/cms/governors/bios
+                                                                             http://www.senate.gov
+   1                                                                       4
+       http://nlp.stanford.edu/software/tmt/tmt-0.4                          http://www.house.gov/representatives
+                                                                            explicit mentions in a user’s profile of a political orientation to construct this second dataset. This dataset represents
+                                                                            a milder set (still) politically vocal Twitter users. A notable
+                                                                            qualitative distinction between the political figures dataset
+                                                                            and this dataset is that nearly all political figure tweets are
+                                                                            political in nature whereas political topics are no longer the
+                                                                            dominating topic in tweets generated by politically active
+                                                                            users.
+                                                                               This dataset was created by first walking the profiles appearing in tweets read off the Twitter gardenhose. To exclude
+                                                                            non-US individuals (to avoid including non-US citizens),
+                                                                            only tweets written in English, geotagged with a location inside the continental United States were considered. FurtherFigure 1: The distribution of hashtags according to their discrim-          more, only profiles explicitly indicating their location to be
+inatory value. τ∆ was selected at the inflection point of the curve.        a US city or state were considered. Subject to these stringent
+                                                                            criteria, any profile which mentioned “Republican”, “Democrat”, “Conservative”, or “Liberal” were flagged as candiτa times, establishing a minimum popularity a hashtag must                  dates for inclusion in the dataset. Users already appearing in
+achieve before it is considered. The discriminative hashtag                 the Political Figures dataset were removed to eliminate any
+set consists of all abundant hashtags used at least τ∆ more                 overlap (and any political figures in this dataset). In a sectimes by one political orientation than another — thus every                ond pass, the remaining accounts were manually inspected
+hashtag in the set is discriminating of one political orienta-              and only those indicating a clear association with one of the
+tion or the other. The neutral hashtag set consists of all re-              two major US parties or political orientations were kept.
+maining abundant hashtags (those that are not preferentially                The second pass was required to avoid the possibility of
+used by one orientation or another). Formally:                              a user invoking a party name without being actually associated with it (e.g., “Can’t stand liberals!”). For each user
+       HA = {h ∈ HP F D : CD (h) + CR (h) > τa },
+                                                                            account that remained, the Twitter API was used to collect
+        H∆ = {h ∈ HA : |CD (h) − CR (h)| ≥ τ∆ },                            their 1000 most recent tweets. This became the Politically
+        HN = {h ∈ HA : |CD (h) − CR (h)| ≤ τ∆ }.                            Active dataset.
+where HP F D is the set of all hashtags used by tweets in the
+PFD and CR (h) (CD (h)) is the number of times the hashtag h is used in Republican-labeled (Democrat-labeled) user                 Politically Modest Dataset (PMD). The goal of this
+tweets. For the remainder of the study, we used τa = 50,                    dataset was to collect a set of “typical” Twitter users who
+though the choice does not seem to matter as long as it is                  expressed some political view. Note that the expression of
+not very large, τa > 500, or very small, τa < 10. We chose                  some political view was important to the purpose of this
+τ∆ by evaluating the fraction of hashtags with a discriminat-               study as it allowed us to label users. Admittedly, many, if
+ing value (|CD (h) − CR (h)|) less than or equal to some τ∆ ,               not most, Twitter users never express any political views.
+shown in Figure 1. The curve levels off around τ∆ ≈ 75, in-                 While it might still be possible to recover the political oridicating that the small number of hashtags beyond this value                entation of such users, this would be done through distinctly
+have similarly high discriminatory value. We used this value                non-political features that correlated with political orientafor the remainder of the study. We considered other values                  tion (e.g., perhaps Democrats talk about sports more than
+in the vicinity of the inflection point without observing any               Republicans). Obtaining high quality political orientation lanotable differences in results.                                             bels for such users given current resources and technology is
+                                                                            virtually impossible. As a result, in this study we opted for
+                                                                            the next best set of users — those who talk about politics,
+Politically Active Dataset (PAD). Despite the fact that
+                                                                            but do not explicitly label themselves in any way. We imdatasets in literature were largely composed of politiplemented this by restricting our pool of candidate users to
+cians, many also included self-identified Republicans and
+                                                                            those geographically restricted to the US (per the methods
+Democrats. Insofar as dataset collection has been concerned,
+                                                                            described for the active users) who do not make any menself-identification is typically done in one of two ways. A
+                                                                            tion of political parties or politically discriminative hashuser may indicate a political orientation in her Twitter profile
+                                                                            tags in their profiles. Using the same method as described
+(e.g., “Republican and loving it!” or “Born a Democrat, will
+                                                                            for the PAD, we easily identified 10,000 users who satisfied
+die a Democrat.”) or be flagged as belonging to one party or
+                                                                            these criteria. As done before, the latest 1000 tweets were
+the other in a Twitter listing such as the WeFollow service5 .
+                                                                            retrieved for each user.
+While Twitter listings generally do not reveal their list construction methods, we observed that in nearly all cases Re-                    At this point, however, we faced a serious problem: the
+publicans and Democrats in these lists featured their orienta-              nature of our selection criteria made these users exceedtion prominently in their profile. As a consequence, we used                ingly difficult to label. In fact, we anticipated that most
+                                                                            of the sampled users could not even be labeled, based on
+       http://www.wefollow.com                                              the assumption that most of the Twitter population never
+says anything political. Left with no explicit signal for po-              However, there is an even more serious issue: since there
+litical orientation that a regular expression could process,           is a strong correlation of these hashtags with political oriany attempt at labeling would involve the nuances of hu-               entation in the PFD, it is plausible that there is a strong
+man judgement (determining non-explicit political orienta-             correlation of these hashtags with the political labels that
+tion from language in individual tweets). One approach fre-            the PMD users would be assigned (Conover et al. 2011a).
+quently employed to doing such work at scale is to use                 The effect of selecting users that use discriminating hasha crowd sourcing platform such as Amazon Mechanical                    tags is that nearly every Democrat-labeled PMD user would
+Turk6 : in this case, having several AMT workers look at each          have tweets that contain a Democrat-discriminating hashsampled user and independently propose a label as either               tag and nearly every Republican-labeled PMD user would
+Republican, Democrat, or Unknown (if too little signal is              have tweets that contain a Republican-discriminating hashpresent in their tweets) (Schnoebelen and Kuperman 2010;               tag. The effect would be a PMD dataset in which a user’s
+Buhrmester, Kwang, and Gosling 2011). Those users for                  tweets literally contain one or more keywords identifying
+which multiple AMT workers applied the same label would                their class. This would be tantamount to picking users who
+be given the corresponding label. This exercise would be               are self-declaring their affiliation in their tweets - a stronger
+theoretically possible except that asking an AMT worker to             signal of political orientation than is even present in the Pocode a single user would involve her parsing through that              litically Active Dataset. Note that using all the political hashuser’s 1000 tweets to find a piece of political signal: reading        tags in the dataset would somewhat soften this effect - but
+1000 tweets is beyond the scope of a reasonable AMT job.               since the dataset still contains strongly discriminative hashIn order to resolve this issue, we elected to subsam-              tags, the effect could persist with severity depending on the
+ple each user’s tweet history — effectively reducing each              relative abundance of politically discriminative hashtags in
+user to 10 politically-relevant tweets that they had gener-            the dataset.
+ated. An AMT worker would then read the 10 tweets for                      By using only the most neutral political hashtags in the
+a user and, based on these tweets, decide on the most ap-              PFD, we avoid using hashtags that strongly correlate with
+propriate label for that user. To identify these 10 political          either party, thereby giving the resulting classifier no advantweets, we made use of the politically neutral hashtag set             tage through dataset construction. It is important to appreciextracted from the PFD as described above. For each user,              ate that we are not guaranteeing that these users are hard to
+a set of (at most) 10 tweets containing at least one politi-           classify — we are simply ignoring any particularly good pocally neutral hashtag were obtained. Any user who had no               litically discriminative signal during the dataset construction
+tweets that intersected with the neutral hashtag set were dis-         phase.
+carded and not included in the AMT labeling exercise. In
+this way, we obtained politically-relevant representations for
+“normal” Twitter users. To run these AMT tasks, each task              Conover 2011 Dataset (C2D). At the outset of the
+consisted of coding 25 users, for which an AMT worker re-              project, we had hoped to incorporate datasets from other
+ceived $0.10. In total 1, 500 Twitter users were assigned a la-        studies in order to evaluate the extent to which our conbel by 5 AMT workers and only Twitter users that received              structed datasets compared to the datasets used in prior
+3 or more labels in agreement on the party were placed in              work. Due to various restrictions in Twitter and university
+the actual Politically Modest Dataset. The final PMD con-              data sharing policies, we were unable to obtain any datasets,
+tained 327 Twitter users, which constitutes approximately              save one. The authors of (Conover et al. 2011b) were able
+3% of the original 10, 000 random, anglophone, US-based                to share their dataset in a restricted form: each user was
+users we started with. This, incidentally, gives a rough sense         represented as a bag of words with no tweet- or user-level
+for the fraction of such users that engage in some form of             features (e.g., tweet frequencies, user degree). The absence
+politically oriented discussion on Twitter.                            of these features certainly impacted classifier accuracy.
+    Why neutral hashtags? Before moving on, it is instruc-             Nonetheless, we included the dataset in the study and report
+tive to explain why we could not use the politically discrim-          results for it. Overall classifier performance on the C2D
+inative hashtag set (or the complete hashtag set) from the             loosely tracks that of the PFD, which is consistent with the
+PFD. Fundamentally, using anything but the neutral hash-               way in which it was constructed.
+tags would favor including an artificially enriched population of politically polarized, easy-to-classify users in the         Other data collection details. With the exception of the
+PMD - key properties we were trying to avoid.                          Conover2011 dataset, all data was collected using a combiTo see this, consider the implications of using politically        nation of the Twitter REST API and access to the Twitter
+discriminative hashtags. All these hashtags, by construction,          firehose. All tweets and user profile data were gathered over
+have a strong statistical association with one party or an-            the time period, May 11-15, 2012. This period falls signifiother. By keeping only users who used those hashtags, the              cantly before the final run up to the 2012 US Presidential
+PMD would consist of a population of users whose political             Election. Most importantly, during the collection period
+hashtag usage would echo the PFD. Thus, at the very least,             there were no major incidents that might have introduced
+the PFD classifier would be guaranteed to do well on the               substantial variation in tweet content collected over this
+resulting PMD.                                                         timeframe. Furthermore, while some top political hashtags
+                                                                       in all three sets involved some referring directly to election
+       http://mturk.amazon.com                                         activities, none referred to particular election events.
+Table 2: Top hashtags in the Political Figures dataset compared to           Table 4: Percentage of tweets that used highly discriminating
+their new ranking in the other datasets. Taking ranking as a rough           hashtags vs. those that did not. Highly discriminating hashtags
+proxy for the importance of political discussion in user tweeting be-        were those that had a discriminating value greater than 75% of all
+haviors, differences in the user groups become immediately clear.            hashtags in the dataset.
+
+                                                                                         Dataset      High Disc.     Low Disc.
+      Hashtag          Figures        Active       Modest                                Figures        44%            56%
+                       Ranking       Ranking       Ranking                               Active         32%            68%
+      #obama              1            147           568                                 Modest         24%            76%
+      #tcot               2            312            26
+      #gop                3            448           482
+      #jobs               4             35           502
+      #obamacare          5            128          4113                        In the results given in Table 3, two trends are apparent.
+      #budget             6             67          2848                     First, we find that the Conover dataset falls somewhere be-
+      #medicare           7            415          4113                     tween the Political Figures and Politically Active Datasets.
+      #healthcare         8            440          1436                     Recall that we were only able to obtain a heavily pre-
+      #debt               9            510          3370                     processed version of the dataset which made a number of
+      #jobsact           10            613          2458                     user-level features impossible to compute. In prior work
+                                                                             these features have been identified as significant contributors to overall classifier accuracy. As a result, we suspect
+                                                                             that the classification accuracy would have been substantially higher on the original dataset - bringing it in line with
+   To underscore, at the outset, the differences present within              the Political Figures Dataset, which it is most similar to. Rethe three datasets, Table 2 shows the rankings of the top                    gardless of exactly how classifiers would fair on the original,
+hashtags present in the PFD across the other two hashtags.                   its reported accuracy is substantially higher than both PAD
+Taking rank simply as a rough proxy for the relative impor-                  and PMD, indicating that our approximation of past datasets
+tance of political discourse in these different datasets, we                 with highly politically active and politician accounts was
+can see how the different sets of users engage differently                   fair.
+with political topics.                                                          A second, and more central, observation is that the accuracy implications of different dataset selection policies are
+               Classifiers on the Datasets                                   evident: politically modest users are dramatically more difTo evaluate the performance of the SVM and LLDA clas-                        ficult to classify than political figures. Surprisingly, politisifiers on each dataset, we ran 10-fold cross validation and                 cally active users also are markedly more difficult to clasreport average accuracy achieved in the individual folds. The                sify. At the outset, we had expected these users would be
+results are shown in Table 3. Note that while accuracy gen-                  more like the political figures, assuming that a willingness
+erally is an insufficient statistic to characterize a classifier’s           to self-identify with a particular political orientation would
+performance, here we are considering a binary classification                 translate into tweets that clearly convey that political orienTP      +T PRep                tation. Evidently this is true for many active users, but is
+problem. In this special case, accuracy ( T otalDem              )
+                                                  Dem +T otalRep             notably less ubiquitous than is the case for politicians.
+correctly reports the overall performance of the classifier.                    In order to better understand the nature of this loss in acWhat we lose is detailed knowledge about how much mem-                       curacy, we evaluated how lexical diversity, a major source of
+bers of each label contributed more to the overall error. In the             noise to both SVM and LLDA classifiers, varied across the
+present study, we do not consider the classifier performance                 datasets. Fundamentally, by lexical diversity, we refer to the
+at this level and, therefore, omit these details.                            extent to which users in a particular dataset simply employ
+   Due to space limitations, we only report the SVM clas-                    a larger, less uniform vocabulary. A more diverse vocabusifier performance here. The LLDA performance was effec-                     lary could mean that individuals are talking about the same
+tively the same in values and trends to the SVM values re-                   political topics, but using a broader lexicon, or that individported.                                                                      uals are actually discussing a wider range of topics. In either
+                                                                             case, a less controlled vocabulary can make a class difficult
+                                                                             to summarize or difficult to discern from another class (when
+Table 3: The average of ten 10-fold cross-validation SVM itera-              the vocabularies overlap).
+tions. The test was performed on each one of our datasets respec-               We evaluated this diversity in two different ways. First,
+tively.                                                                      we looked at the percent of tweets that used highly discriminating hashtags in each dataset, shown in Table 4. The null
+                  Dataset      SVM Accuracy                                  model of interest in this case is one in which Democrats and
+                  Figures         91%                                        Republicans have different lexicons but do not favor any parActive          84%                                        ticular word out of that lexicon. This is equivalent to users
+                  Modest          68%                                        from both groups draw a hashtag from the set of available
+                  Conover         87%                                        Democrat/Republican discriminating hashtags with uniform
+Table 5: Jaccard Similarity between the topics used by Republi-         Table 6: Performance results of training our SVM on one dataset
+cans and Democrats.                                                     and inferring on another, italicized are the averaged 10-fold crossvalidation results
+               Dataset     Jaccard Similarity
+               Figures           37%                                               Dataset     Figures      Active     Modest
+               Active            48%                                               Figures      91%          72%        66%
+               Modest            61%                                               Active       62%          84%        69%
+                                                                                   Modest       54%          57%        68%
+
+probability. In this case, no hashtag would be statistically favored over another. As a result, the hashtags that have a dis-          Table 7: Jaccard Similarity between the features across datasets.
+criminating value greater than or equal to X% of all hashtags would occur in no more than (1 − X)% of tweets —                                          Figures     Active     Modest
+if a particular hashtag were favored (more discriminating),                        Figures      100%        18%         9%
+then it would be chosen more often than the other hashtags                         Active       18%        100%        23%
+in the hashtag set and appear in more tweets. This is ex-                          Modest        9%         23%       100%
+actly what we find is true for the Politically Modest users
+— the top 25% of discriminating hashtags occur in almost
+exactly 25% of the tweets. Politically active users exhibit             be used to classify another dataset. Such a property would
+a high degree of affinity for particular discriminating hash-           be highly desirable in the political orientation case: as we
+tags and Political figures deviating the most from the null             have seen, political figures are easy to find and easy to label
+model. In other words, politically modest users show no col-            whereas ordinary users are quite difficult to label properly.
+lective preference for a particular political (or non-political         Thus, building a classifier on political figures is a much eassince a discriminating hashtag must not be, itself, political           ier endeavor. Can such a classifier be used to obtain meanin nature) hashtag set. As a result, in the modest dataset              ingful labels on arbitrary users?
+neither Democrat or Republican groups of users are distin-                 From the outset, the degree of classifier transferability
+guishing themselves by focusing around a particular set of              across datasets is not clear. While, certainly, the PFD, PAD,
+hashtags. This gives the classifier little within-label consis-         and PMD are different, if the features that correlate with
+tency to hold onto.                                                     Democrat/Republican labels in the PFD also correlate in the
+   Another way of quantifying lexical diversity is by con-              PAD and PMD, then the classifier might maintain a modersidering the cross-label lexical similarities within a dataset          ate degree of accuracy. To evaluate this, we built a classifier
+using the topic models constructed by the LLDA classi-                  for each dataset using all labeled users. This classifier was
+fier. Briefly, the LLDA classifier builds a set of topics for           then used to classify the political orientation of users in the
+the documents it encounters and attempts to associate some              other datasets.
+probability distribution over those topics with each label                 The results of this experiment, shown in Table 6 reveal
+(in this case Republicans and Democrats). Individual top-               that the classifiers not only lose accuracy, but perform proics are probability distributions over the complete vocabu-             foundly worse than even a random classifier, which would
+lary encountered in the document set (e.g., a sports-like topic         achieve ∼50% accuracy on each dataset. Interestingly, the
+would assign high probabilities to “baseball” and “player”,             PFD-based classifier performs just as badly on PAD users as
+low probabilities to “Vatican” and “economy” since these                it does on PMD users. The same phenomenon is observed
+are rarely associated with sports).                                     for the PAD and PMD classifiers as well.
+   In Table 5, we show the average percent overlap in the
+                                                                           This trend also emerges by considering the overlap in featopics associated with Republicans and Democrats. Under
+                                                                        tures employed by the classifiers for the different datasets,
+ideal classification conditions, labels would be associated
+                                                                        shown in Figure 7. Here we find that the chasm between
+with topics distinctive to that category. Here we see that for
+                                                                        classifiers is somewhat exacerbated. On one hand, this is
+modest users, there is extensive overlap between the topics
+                                                                        somewhat to be expected since the classifiers are only able to
+that characterize each label. Thus, not only is the withinincorporate the k-top items of each feature of interest (hashlabel vocabulary diffuse (as evidenced by the hashtag analtags, words, etc...). However, by comparing the k-top feaysis above), but the across-label vocabulary is highly simitures, we obtain a stronger sense of the extent to which these
+lar (giving rise to similar categories being used to characterdatasets differ: no two datasets share more than 20% of their
+ize each label). This combination of lexical features make
+                                                                        most discriminative features in common.
+the Politically Modest dataset exceedingly challenging for
+                                                                           Taken together, these results strongly suggests that, while
+lexicon-based classifier.
+                                                                        politician and politically active users are substantially easier to classify than politically modest users, their actual useCross-Dataset Classification                                ful, politically-discriminating features are utterly different.
+Beyond the raw accuracy of political orientation classifiers,           This is both a remarkable and concerning result. For two
+a question of significant practical and theoretical interest is         collections of users who share the same designations (Rethe extent to which a classifier trained on one dataset can             publican/Democrat) and similar classify-ability to be so different in features suggests substantial behavioral differences
+(Twitter-based behavior, in this case). On one level, this is
+not surprising given that one group consists of politicians.
+Perhaps more remarkable is the gap between politically active and modest users. The behavioral differences suggest
+that, not only are politically active users more politically vocal on Twitter, but what they say politically is also quite different. To our knowledge, this has not been documented in
+the literature. Better understanding the nature of these differences will be an exciting direction for future work.
+   These cross-dataset results have severe implications for
+the immediate utility of political orientation classifiers: they
+simply will not transfer across datasets. This has two practical ramifications. First, model building remains hard: we             Figure 2: The discriminating values for the top 516 discriminating
+cannot assume that we can build models on easy-to-obtain                hashtags in each dataset, in increasing order. The plot shows that
+datasets and then lift these up and apply them to harder-to-            politically modest users utterly lack discriminating hashtags. The
+label, but conceptually similar datasets. Second, one must              discriminating values are normalized by the largest discriminating
+                                                                        value in all the datasets.
+be very attentive to when one can use a particular classifier.
+As the accuracy degradation between the active and modest
+users revealed, even seemingly ordinary users who are perceived to simply exhibit different degrees of a behavior may,           the single greatest root cause for this is illustrated in Figactually, manifest different behaviors that a classifier cannot         ure 2 which shows the normalized differentiating values for
+accommodate.                                                            the 1000 most differentiating hashtags in each of the three
+                                                                        datasets we considered. Politically modest users, “normal”
+                                                                        users, simply lack strongly differentiating language between
+                    Moving Forward                                      political orientation classes (in this case, Republicans and
+The overall implication of this work is that classification of          Democrats). This suggests that in order to identify political
+political orientation, and potentially many other latent at-            leanings (and other attributes that encounter similar issues),
+tributes, in Twitter is a hard problem — harder than por-               it will be necessary to leverage more subtle behavioral sigtrayed in the current literature — in several key ways.                 nals, such as following behavior, the behavior of neighbors,
+                                                                        and the greater network context in which an individual is
+Good, labeled datasets are hard to build. As demon-                     situated (e.g., (Zamal, Liu, and Ruths 2012)).
+strated by the complex process involved in building the po-                Because gaining insight into the behavior of arbitrary and
+litically modest dataset, it seems that, for some latent at-            ordinary users is so central to the goals of research into and
+tributes, assembling unbiased datasets with high-confidence             commercialization of online social environments, recognizlabels is a non-trivial endeavor. Furthermore, beyond being             ing and addressing the lack of support for such users is crucomplicated and intensive, there are subtle pitfalls that must          cial to the forward progress of latent attribute inference and
+be avoided, such as the choice of using neutral vs. all polit-          the delivery of tools which will serve the needs of social sciical hashtags in the construction of the PMD. This calls for            entists, companies, and other organizations.
+renewed attention on the part of researchers and reviewers
+to the assumptions and biases implicit in the construction of
+datasets and assignment of labels. Furthermore, in this pa-             Classifiers do not transfer across types of users. On
+per we have demonstrated one technique that might be used               some level, the fact that applying a classifier to a dataset
+to construct other datasets, both for political orientation and         it was not designed for hurts accuracy is unsurprising. Howfor other attributes. However, more broadly, there is a need            ever, our results quantify, for the first time, just how severe
+for principled approaches to building labelled datasets, par-           the effects of transferring a classifier across seemingly reticularly where latent attribute inference is concerned.                lated datasets can be. We suspect that this issue is not unique
+    In the interest of eliminating the significant time and ef-         to political orientation. An important question for all refort involved in building such datasets, there is also the des-         searchers working in latent attribute inference is the extent
+perate need for existing datasets to be shared. In the case of          to which their methods and classifiers generalize to different
+this study, we have released all three datasets we used in an           populations — populations separated by behavior (as was
+anonymized form. We encourage other researchers to do the               the case in this study), but also separated by other features
+same.                                                                   such as geography and even time. A number of natural, interrelated research topics emerge out of this result as well:
+Existing methods fail on “ordinary” users. While prior                  how can we build classifiers that do transfer across datasets?
+work (including one of the author’s own past papers) has                How can we know when a classifier will transfer? Answers
+suggested that the political orientation inference problem              to these and related questions will significantly advance the
+can be solved with high accuracy, these findings do not apply           utility and theoretical foundations of latent attribute inferto more normal, less politically vocal Twitter users. Perhaps           ence.
+                       Conclusion                                     Conover, M.; Goncalves, B.; Ratkiewicz, J.; Flammini, A.;
+In this work we have shown how the ways in which polit-               and Menczer, F. 2011a. Political polarization on twitter.
+ical orientation-based datasets have been built have lead to          In Proceedings of the International Conference on Weblogs
+significant overestimation of the accuracy of political orien-        and Social Media.
+tation classifiers as applied to populations of normal Twit-          Conover, M.; Goncalves, B.; Ratkiewicz, J.; and Flammini,
+ter users. We showed a painstaking way in which a labeled,            A. 2011b. Predicting the political alignment of twitter users.
+unbiased Twitter dataset could be built for the political ori-        In Proceedings of the International Conference on Social
+entation problem. Using this dataset, we quantified the ex-           Computing.
+tent and nature of the accuracy overestimation. We empha-             Golbeck, J., and Hansen, D. 2011. Computing political prefsize our belief that prior work on this topic has consistently        erence among twitter followers. In Proceedings of Confershown good faith in making sound forward progress on the              ence on Human factors in computing systems.
+problem of political orientation inference. The results we
+                                                                      Liu, W., and Ruths, D. 2013. What’s in a name? using
+have presented here are intended to offer new perspectives
+                                                                      first names as features for gender inference in twitter. In
+on an established problem that, hopefully, will invigorate
+                                                                      Symposium on Analyzing Microtext.
+further productive research on the topic and related areas.
+                                                                      Pennacchiotti, M., and Popescu, A. 2011. A Machine LearnAcknowledgements                                    ing Approach to Twitter User Classification. In Proceedings
+                                                                      of the International Conference on Weblogs and Social MeThe authors thank Twitter for providing elevated Garden-              dia.
+hose access and Conover and co-authors for sharing an                 Ramage, D.; Hall, D.; Nallapati, R.; and Manning, C. D.
+anonymized version of their political orientation dataset.            2009. Labeled lda: a supervised topic model for credit atThis manuscript benefited from the feedback from anony-               tribution in multi-labeled corpora. In The Conference on
+mous reviewers. This work was supported by a grant from               Empirical Methods in Natural Language Processing.
+the Social Sciences and Humanities Research Council of
+Canada (SSHRC Insight #435-2012-1802).                                Ramage, D.; Dumais, S.; and Liebling, D. 2010. Characterizing microblogs with topic models. In International ConReferences                                     ference on Weblogs and Social Media.
+                                                                      Rao, D., and Yarowsky, D. 2010. Detecting latent user propBlei, D. M.; Ng, A. Y.; and Jordan, M. I. 2003. Latent
+                                                                      erties in social media. In Proceedings of the NIPS Workshop
+dirichlet allocation. Journal of Machine Learning Research
+                                                                      on Machine Learning for Social Networks.
+3:993–1022.
+                                                                      Schnoebelen, T., and Kuperman, V. 2010. Using amaBuhrmester, M.; Kwang, T.; and Gosling, S. D. 2011. Amazon mechanical turk for linguistic research. Psihologija
+zon’s mechanical turk: A new source of inexpensive, yet
+                                                                      43(4):441–464.
+high-quality, data? Perspectives on Psychological Science
+6(1):3–5.                                                             Wong, F.; Tan, C. W.; Sen, S.; and Chiang, M. 2013. Media,
+                                                                      pundits and the u.s. presidential election: Quantifying politiBurger, J.; Henderson, J.; and Zarrella, G. 2011. Discrimical leanings from tweets. In Proceedings of the International
+nating gender on twitter. In Proceedings of the Conference
+                                                                      Conference on Weblogs and Social Media.
+on Empirical Methods in Natural Language Processing.
+                                                                      Zamal, F. A.; Liu, W.; and Ruths, D. 2012. Homophily and
+Chang, C., and Lin, C. 2011. LIBSVM: A library for support
+                                                                      latent attribute inference: Inferring latent attributes of twitter
+vector machines. ACM Transactions on Intelligent Systems
+                                                                      users from neighbors. In The International Conference on
+and Technology 2:27:1–27:27.
+                                                                      Weblogs and Social Media.
+
+
+Erratum: Table 6 values were incorrect in the first online version of this paper.
+They have been corrected. The print version contains the corrected values.

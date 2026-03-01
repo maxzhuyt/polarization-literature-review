@@ -1,0 +1,432 @@
+Political Partisanship and Anti-Science Attitudes in Online Discussions about
+                                      Covid-19
+
+               A. Rao, F. Morstatter, M. Hu, E. Chen, K. Burghardt, E. Ferrara, K. Lerman
+                                                      Information Sciences Institute
+                                                     University of Southern California
+
+
+                            Abstract                                    many issues—from the benefits of therapeutics to the need
+                                                                        for lockdowns and face covering. The conflicting viewpoints
+  The novel coronavirus pandemic continues to ravage communities across the US. Opinion surveys identified importance           create conditions for polarization to color perceptions of the
+  of political ideology in shaping perceptions of the pandemic          pandemic.
+  and compliance with preventive measures. Here, we use so-                Polarization is characterized by division of a group by
+  cial media data to study complexity of polarization. We ana-          sharply contrasting opinions. While diverse opinions are
+  lyze a large dataset of tweets related to the pandemic collected      necessary in a healthy society, political scientists have obbetween January and May of 2020, and develop methods to               served a phenomenon called pernicious polarization, where
+  classify the ideological alignment of users along the moderone social or cultural ideology precludes the possibility of a
+  acy (hardline vs moderate), political (liberal vs conservative)
+  and science (anti-science vs pro-science) dimensions. While           rational public discussion on the topic (McCoy and Rahman
+  polarization along the science and political dimensions are           2016). Surveys have identified a partisan gulf in the attitudes
+  correlated, politically moderate users are more likely to be          about COVID-19 and the costs and benefits of mitigation
+  aligned with the pro-science views, and politically hardline          strategies. According to a Pew Report (Pew 2020), partisanusers with anti-science views. Contrary to expectations, we           ship significantly affects perceptions of public health meado not find that polarization grows over time; instead, we see        sures. Polarization has colored the messages of US politiincreasing activity by moderate pro-science users. We also            cal leaders about the pandemic (Green et al. 2020), as well
+  show that anti-science conservatives tend to tweet from the           as discussions of ordinary social media users (Jiang et al.
+  Southern US, while anti-science moderates from the Western            2020). Coupled with a distrust of science and institutions,
+  states. Our findings shed light on the multi-dimensional napolarization can have a real human cost if it leads the public
+  ture of polarization, and the feasibility of tracking polarized
+  opinions about the pandemic across time and space through             to minimize the benefits face coverings or reject a vaccine
+  social media data.                                                    when it becomes available.
+                                                                           Current research measures polarization as divergence of
+                                                                        opinions along the political dimension and its effect on other
+                        Introduction                                    opinions, for example, discussion of scientific topics (Bessi
+Effective response to a health crisis requires society to forge         et al. 2016). However, opinions on controversial issues are
+a consensus on many levels: scientists and doctors have to              often correlated (Baumann et al. 2020b): for example, those
+learn about the disease and quickly and accurately commu-               who support transgender rights also believe in marriage
+nicate their research findings to others; public health profes-         equality, and those who oppose lockdowns also resist unisionals and policy experts have to translate the research into          versal face covering. Inspired by this idea, we capture some
+policies and regulations for the public to follow; and people           of the complexity of polarization by projecting opinions in
+have to follow guidelines to reduce infection threat. How-              a multi-dimensional space, with different axes correspondever, the fast-moving COVID-19 pandemic has brought into                ing to different semantic dimensions. Once we identify the
+sharp relief our critical vulnerabilities at all these levels. In-      dimensions of polarization and define how to measure them,
+stead of orderly consensus-building, we have seen disagree-             we can study dynamics of polarization and interactions bement and controversy that exacerbated the disease. Research             tween opinions.
+papers are rushed through the review, with results some-                   Our work analyzes tweets related to the COVID-19 pantimes disputed or retracted 1 ; policy makers give conflict-            demic collected between January 21, 2020 and May 01,
+ing advice; scientists and many in the public disagree on               2020 (Chen, Lerman, and Ferrara 2020). We study polarizaCopyright © 2020, Association for the Advancement of Artificial         tion along three dimensions— political (liberal vs conservaIntelligence (www.aaai.org). All rights reserved.                       tive) and science (pro-science vs anti-science), and moder1                                                                   acy (hardline vs moderate). User alignments along the scihttps://retractionwatch.com/retracted-coronavirus-covid-19papers/                                                                 ence axis identifies the polarization over scientific discussions related to the pandemic. A user’s political identity         context, this could help explain why initially moderate indiis defined in a two dimensional space. Working in tandem           viduals become more entrenched in the left, right, or antiwith the political axis, the moderacy dimension recognizes         science domains. Polarization is also explored in political
+the intensity of political standing from hardline to moder-        science in order to explain its potential effects on governate. For the hardliners identified along moderacy dimension        ment efficiency and democracy (McCoy and Rahman 2016;
+we leverage the political axis to identify their partisanship as   Somer and McCoy 2019). These results show commonly
+Liberal or Conservative.                                           negative effects of polarization on governments, thus moLeveraging a set of media sources that have been classi-        tivating many explorations into this field. Moreover, they
+fied by nonpartisan sites along these dimensions, we identify      distinguish political polarization—the effect of polarization
+a seed-set that define the poles of each dimension. These          on elections—from societal polarization—its effect on somedia sources include mainstream news and a large vari-            cial connections, with extreme polarization affecting both.
+ety of other sources, such as government agencies, non-               While polarization has traditionally been measured usgovernmental organizations, crowdsourced content, and al-          ing surveys (Pew 2020), in recent years researchers have internative medicine news and health sites. We then describe         stead begun to measure polarization with social media disnetwork and content based inference methods to classify            cussions (Conover et al. 2011; Bessi et al. 2016; Schmidt
+users along these multiple dimensions of polarization. Infer-      et al. 2017; Bail et al. 2018). Three consistent effects in
+ring the polarization of users discussing COVID-19 allows          social media have been observed. First, there is strong pous to study the relationships between polarized ideologies         larization in what people consume, measured directly from
+and their temporal and geographic distributions. We show           content or indirectly from retweets (Conover et al. 2011;
+that political and science dimensions are highly correlated        Smith et al. 2013; Schmidt et al. 2017). In other words,
+and that politically hardline users are more likely to be anti-    people seem to selectively confine what they watch due to,
+science, while politically moderate users are more often pro-      e.g., confirmation bias (Nickerson 1998), thus exacerbatscience. We also identify regions of the US and timepoints         ing polarization. Moreover, viewing information from the
+where the different ideological subgroups are comparably           other ideological side does not necessarily affect ones opinmore active and their topics of conversation.                      ion (Bail et al. 2018). Second, polarization is seen in differThe contributions of this work are as follows:                  ent fields not directly related to left-right political polariza-
+• We describe a framework for quantifying multi-                   tion. This includes climate science (Tyagi, Uyheng, and Cardimensional polarization.                                        ley 2020) and even opinions about the COVID-19 epidemic
+                                                                   (Pew 2020). Our goal in this paper is to combine these sep-
+• We describe two novel methods to infer multi-                    arate findings to better understand how some of these podimensional polarization from the text of online conver-         larizations, such as pro- or anti-science and left and right
+  sations and compare their performance to state-of-the-art        polarization, relate to one another.
+  methods.                                                            Finally, polarization has had real-world consequences
+• We provide empirical evidence for multi-dimensional po-          outside of elections, by shaping people’s perceptions of the
+  larization in Twitter conversations about COVID-19.              pandemic (Chen, Lerman, and Ferrara 2020; Green et al.
+                                                                   2020; Jiang et al. 2020). Recent research finds, for example,
+• We study the relationships between these dimensions,             that polarization has affected the language policy makers use
+  showing that political and science dimensions are highly         (Green et al. 2020), which can drive policies in different dicorrelated.                                                      rections due to a disunited front. Moreover, sentiment to-
+• We study the geographical distribution of users with po-         wards government measures (Jiang et al. 2020) or towards
+  larized opinions and identify US states with larger propor-      medical professionals (Pew 2020), has become more polartion of Twitter users along each polarized axis.                 ized, further reducing the efficacy of public health measures.
+                                                                   Our work extends on these results by exploring how polarAs the amount of COVID-19 information explodes, we
+                                                                   ization is more generally impacting beliefs in science, and
+need the ability to proactively identify emerging areas of poto what degree is this correlates with partisan polarization.
+larization and controversy. Early identification will lead to
+                                                                      Sadly polarization is not altogether unexpected. Simple
+more effective interventions to reduce polarization and also
+                                                                   models of human behavior that were inspired by psycholimprove the efficacy of disease mitigation strategies.
+                                                                   ogy have been created over several years. Under the simple assumptions of social influence and selectively cutRelated Work                                 ting ties with ideological opposites, echo chambers form
+Polarization is a well-recognized issue spanning the fields        with large disparate groups of people (Durrett et al. 2012;
+of psychology (Myers and Lamm 1976; Isenberg 1986),                Baumann et al. 2020b; Sasahara et al. 2020; Baumann et
+political science (McCoy and Rahman 2016), and even                al. 2020a). This is also alike to homophily, in which users
+physics (Sasahara et al. 2020), as well as the present con-        might form ties with people who are similar (McPherson,
+text of computer science (Conover et al. 2011). The foun-          Smith-Lovin, and Cook 2001). Echo chambers could then
+dation of polarization starts with initial studies in psychol-     drive group polarization, and therefore drive the current soogy on group polarization (Myers and Lamm 1976; Isen-              cial media landscape.
+berg 1986), in which opinions of a group become more ex-              Our model work uniquely applies both network and text
+treme than initial opinions of each individual. In the present     analysis to infer the degree of polarization in the network.
+
+
+For text analysis, we apply a number of candidate meth-          Check (https://mediabiasfactcheck.com/), Allsides (https://
+ods inspired by previous research, such as Latent Dirichlet      https://www.allsides.com/) and Newsguard, which tracks
+Allocation (LDA) (Blei, Ng, and Jordan 2003), and hash-          coronavirus misinformation. Table 1 lists exemplar domains
+tag bag-of-words (BOW) (Conover et al. 2011). We, how-           in each category. Domains listed under “Conspiracy” and
+ever, find the best results using text embedding. Text em-       “Questionable Sources” are mapped to our Anti-Science
+bedding was discovered in 2013 (Mikolov et al. 2013), and        category. For the Moderacy axis, we consider the union
+was rapidly extended due to its uniquely useful features as-     of Left and Right domains as a proxy for Hardline catesociated with both words and text (Pennington, Socher, and       gory, while union of “Least-Biased”, “Left-Moderate” and
+Manning 2014; Joulin et al. 2016). The basic nature of these     “Right-Moderate” domains form the proxy Moderate catemethods are to embed text into a vector space such that          gory.
+nearby vectors represent semantically similar text. Finally,
+to analyze networks, we apply a Label Propagation Algo-           Dimension    Polarization along   Domains
+rithm (LPA) proposed by Raghavan et al., 2007. This al-                        dimension
+gorithm, while first applied to community detection in net-                                         cdc.gov,       who.int,     theworks, effectively assumes homophily drives how opinions                                            lancet.com, mayoclinic.org,
+                                                                               Pro-Science (+1)
+                                                                                                    nature.com, newscientist.com
+form, and therefore its performance would test to some de-
+                                                                                                    . . . (150+ domains)
+gree how homophily drives polarization.                           Science
+                                                                                                    911truth.org, althealth-worksOur work differs from these previous methods via sys-                                            .com,         naturalcures.com,
+tematic analysis of multiple polarized dimensions in so-                       Anti-Science (−1)
+                                                                                                    shoebat.com, prison-planetcial media. We also contrast with previous work via multi-                                          .com . . . (450+ domains)
+dimensional polarization of COVID-19. This provides a test
+of some results predicted in polarization models (Baumann                                           democracynow.org,
+et al. 2020b; Baumann et al. 2020a).                                                                huffington-post.com,
+                                                                               Liberal (−1)
+                                                                                                    newyorker.com, occupy.com,
+                                                                                                    rawstory.com,. . .        (300+
+                Dataset and Methods                               Political
+                                                                                                    domains)
+We describe the data and methods for measuring polariza-                                            nationalreview.com,       newstion and also inferring it from text and online interactions.                                       max.com, oann.com, theepConservative (+1)
+                                                                                                    ochtimes.com, bluelivesmatData                                                                                                ter.blue . . . (250+domains)
+                                                                                                    ballotpedia.org, c-span.org,
+In this study, we use a public dataset of COVID-19                                                  hbr.org, wikipedia.org, wetweets (Chen, Lerman, and Ferrara 2020). This dataset com-                     Moderate (+1)
+                                                                                                    forum.org,          snopes.com,
+prises of 115M tweets from users across the globe, collected                                        reuters.com . . . (400+ doModeracy
+over a period of 101 days from January 21, 2020 to May 01,                                          mains)
+2020. These tweets contain at least one of a predetermined                                          gopusa.com, cnn.com, demoset of COVID-19-related keywords (e.g., coronavirus, pan-                                           cracynow.org,        huffingtonHardline (−1)
+demic, Wuhan, etc.). We specifically focus on tweets from                                           post.com, oann.com, theusers located in the US (at state-level granularity) based on                                       epochtimes.com . . . (500+
+                                                                                                    domains)
+information contained in their profile and tweets. This georeferenced dataset consists of 27M tweets posted by 2.4M         Table 1: Curated information and news domains with their
+users over the 101 day period.                                   polarization. Pro-Science domains are mapped to +1 along
+                                                                 the science axis while, Anti-Science domains are mapped to
+Measuring Polarization using Domain Scores                       −1. Along the political axis, Liberal domains are mapped
+We characterize individual opinions along three polarization     to −1 while, Conservative ones are mapped to +1. On the
+dimensions. The political dimension, standard dimension          moderacy axis, we map Hardline domains as −1 and Modfor characterizing partisan polarization, captures the differ-   erate domains as +1.
+ence between Left/ liberal and Right/conservative political
+stances for users with Hardline opinions. The science dimen-        We quantify a user’s position along the dimensions of posion captures an individual’s acceptance of evidence-based       larization by tracking the number of links to curated domains
+Pro-Science views or the propensity to hold Anti-Science         the user shares. Specifically, we extract domains shared by
+views. People believing and promoting conspiracies, espe-        users in the 101 day period and filter for relevant domains
+cially health-related and pseudo-scientific conspiracies, are    present in our curated list of domains (Table 1). This gives
+often grouped in the anti-science camp. Finally, the moder-      us a set of 136K users who shared Science domains, 169K
+acy dimension describes the intensity of partisanship—from       users who shared Political domains and 234K users who
+Moderate or neutral opinions to politically Hardline opin-       shared domains along the Moderacy dimension. After filterions.                                                            ing out users who shared fewer than three relevant domains,
+   We begin with a set of web domains of curated infor-          this leaves us with 18.7K users who have shared domains
+mation sources that were labeled along these dimensions          across all three dimensions. For each user, we compute a
+by non-partisan organizations, such as Media Bias-Fact           domain score δ along each of the three dimensions, as the
+
+
+average of mapped domain values of a dimension:                   Dim         Polarization   Seeds    Statistic   Value
+       ΣDi,d                                                                  Pro-Science    81       Nodes       1,857,028
+δi =           ; ∀d ∈ {Science, Political, Moderacy}              Science
+                                                                              Anti-Science   77       In-deg      39,149
+       |Di,d |                                                                Liberal        96       Out-deg     1,450
+                                                                  Political
+                                                                              Conservative   99       RTs         9,788,251
+where, δi is the domain score of useri and Di,d represents
+                                                                              Hardline       195      Uniq RTs    7,745,533
+the set of domains shared by useri relevant to dimension d.       Moderacy
+                                                                              Moderate       363      SCC         1,818,657
+   Figure 1 shows the distribution of domain scores across
+the three dimensions for users who post domains across all      Table 2: Description of the retweet network. Number of seed
+three dimensions of interest. The distribution are peaked at    handles along each polarization axis for initial node assigntheir extreme values, showing more users sharing informa-       ment in the LPA. Statistics of the network, including maxition from Anti-Science than Pro-Science domains and more        mum in- and out-degree and size of the strongly connected
+Conservative than Liberal domains.                              component (SCC).
+   For network level analysis, we then built a web scraper
+that maps domains to their respective Twitter handles.
+The scraper initiates a simple Google query of the form            LPA proposed by (Raghavan, Albert, and Kumara 2007)
+“Domain N ame Twitter Handle”. This tool relies on              is a widely-used near-linear time network community detecthe search engine to rank results based on relevance            tion algorithm. This greedy learning approach starts off with
+and picks out the title of the first result containing          an initial random label assignment and, iteratively re-assigns
+the sub-string “|T witter”. This substring is of the form       labels to nodes along a dimension. This reassignment even-
+“Account N ame (@handle)| Twitter” which is parsed to           tually converges to a state of equilibrium where all nodes
+retrieve the domain’s corresponding handle. We manually         in the network are assigned labels which are shared by the
+verified the mapped domains.                                    majority of their corresponding neighbors. However, owing
+   The mapped Twitter handles form our seed sets for semi-      to arbitrary tie-breaking, a certain amount of randomness
+supervised learning at the network level. Each dimension’s      creeps into the results produced by this algorithm. Courtesy
+seed-set comprises key-value pairs of Twitter handles and       of this stochasticity, LPA tends to generate different cluster
+their corresponding orientation along the dimension. Table 2    assignments (user polarization) for the same network.
+illustrates the number of seeds along each polarization axis.
+
+Inferring Polarization                                          Hashtag Bag of Words          We extend the method used by
+                                                                (Conover et al. 2011) to measure user’s political ideology
+Using domain scores, we can quantify the polarization of        to additional dimensions of interest. First, we identify seed
+just a small fraction (0.7%) of users in the dataset. In this   hashtags defining the extremes of each dimension of polarsection we describe how we leverage this data to infer the      ization and generate vectors of 100 hashtags that co-occur
+polarization of the remaining users in our dataset along mul-   with these seeds. For the Science dimension, the two seed
+tiple dimensions. In the results, we compare the performance    hashtags we picked are #stayhome and #plandemic. For the
+of these inference methods.                                     Political dimension, we identify hashtags that co-occur with
+   We classify binned domain scores along each dimension        the seeds #trumpvirus and #chinavirus; and for the Modbecause we find classifiers work better than regression in      eracy dimension, we find hashtags co-occurring with two
+this dataset. In light of this fact, we bin the extreme ends    moderate seeds - #pandemic, #lockdown and two hardline
+of domain score distribution into two classes along each di-    seeds - #trumpvirus, #chinavirus . We then, compute the
+mension as shown in Figure 1.                                   dimension-wise TF-IDF transformations of corresponding
+                                                                vectors to generate feature vectors for each user, represenLabel Propagation Label propagation was used in the             tative of each user’s content along a dimension over time.
+past to label user ideology based on the ideology of ac-           However, this method suffers from a critical shortcoming:
+counts the user retweets (see, for example (Badawy, Ferrara,    a significant number of users don’t use any of the hashtags in
+and Lerman 2018)). The idea behind label propagation is         our seed sets. This results in empty feature vectors. Considthat people prefer to connect to—and retweet content posted     ering only users with non-zero feature vectors and domain
+by—others who share their opinions (Boyd, Golder, and           scores along each dimension gives us 1.96K users along the
+Lotan 2010; Metaxas et al. 2015). This gives us an oppor-       Science dimension, 1.6K users along the Political dimension
+tunity to leverage topological information from the retweet     and 4.6K users along the Moderacy dimension.
+network to infer users propensity to orient themselves along
+                                                                   To infer user polarization, we train a simple Logistic Reideological dimensions.
+                                                                gression model on the feature vector matrix with the domain
+   To this end, we build a network from 9.8M retweet in-        scores as ground truth.
+teractions between 1.9M users from the geocoded Twitter
+dataset. In the retweet network, an edge runs from A to
+B if, user A retweets user B. Descriptive statistics of the     Latent Dirichlet Allocation To reduce the dimensionalretweet network are shown in Table 2. We then use a semi-       ity of hashtag feature vectors, we use LDA (Blei, Ng, and
+supervised greedy learning algorithm to identify clustsers in   Jordan 2003) to identify topics, or groups of hashtags, and
+the retweet network.                                            represent users as vectors in this topic space. In contrast to
+
+
+Figure 1: The distribution of domain scores along Science, Political and Moderacy dimensions. The vertical lines at 0.42 and
+−1 in (a), marks the top and bottom 30% cutoffs of distribution along the Science dimension which are binned as P ro −
+Science(+1) and Anti − Science(−1), respectively. The vertical lines at 1 and −0.33 in (b), marks the top and bottom 30%
+cutoffs of distribution along the Political dimension which are binned as Conservative(+1) and Liberal(−1), respectively.
+The vertical lines in (c) at 0.38 and −0.18 indicates the top and bottom 30% cutoffs of distribution along Moderacy dimension
+which are binned as M oderate(+1) and Hardline(−1), respectively.
+
+                    Method           Dimension    Dataset Size   Accuracy   Precision   Recall    F1-Score
+                                     Science      158            92.6%      100%        80%       88.9%
+                    LPA              Political    195            92.3%      86.9%       100%      93.0%
+                                     Moderacy     1205           20.1%      72%         1.4%      2.74%
+                                     Science      1960           88.2%      88.9%       98.8%     93.6%
+                    Hashtag BOW      Political    1610           72.9%      75.4%       61.1%     67.4%
+                                     Moderacy     4684           75.1%      77.7%       90.6%     83.6%
+                                     Science      9983           92.2%      91.6%       92.4%     91.9%
+                    LDA              Political    11020          93.5%      95.1%       93.3%     94.2%
+                                     Moderacy     9565           86.4%      85.6%       85.0%     85.4%
+                                     Science      11202          93.8%      93.9%       93.7%     93.8%
+                    fastText         Political    12425          95.1%      96.5%       94.6%     95.5%
+                                     Moderacy     11197          90.2%      90.1%       90.5%     90.2%
+
+Table 3: Performance of Polarization Classification. Results compare classification performance of LPA and content-based
+methods including Hashtag BOW, topic modeling (LDA) and full text embedding (fastText). Results are averages of 5-fold
+cross validation.
+
+
+the hashtag BOW method, we consider all hashtags gener-           Pennington, Socher, and Manning 2014; Joulin et al. 2016)
+ated by a user as a document representing that user (after        allows us to generate sentence embedding vectors to better
+ignoring hashtags used by fewer than 10 users or more than        represent content.
+75% of the users)—leaving us with 25.2K hashtags. We use             We group the tweets generated by each of the 2.4M users
+20 topics, as that gives the higher coherence score.              over a 101-day period from January to May 2020. More
+   We use the document-topic affinity matrix generated by         specifically, we collect all tweets generated by a user in this
+LDA to represent users. An affinity vector is comprised of        time period and concatenate them to form a text document
+20 likelihood scores, adding up to 1, with each score indi-       for each user. After preprocessing the 2.4M documents to
+cating the probability of corresponding topic being a suit-       remove hashtags, URLs, mentions, handles and stopwords,
+able representation for the set of hashtags generated by the      we use fastText sentence embedding model pretrained on
+user. Using these affinity vectors, we generate feature vec-      Twitter data, to generate tweet embeddings for each user.
+tor matrices for each of the three dimensions of interest. In     The Sent2vec Python package (Gupta, Pagliardini, and Jaggi
+doing so, we can represent over 900K users who use some           2019) provides us with a Python interface to quickly leverhashtag in their tweets with a dense vector of length 20.         age the pretrained model and generate 700-dimension feature vectors representing each user’s discourse.
+Text Embedding Previous methods (see (Conover et al.
+2011)) classified user’s political polarization based on the
+text of their tweets by generating TF-IDF weighted uniResults
+gram vectors for each user. However, the advent of more           First, we visualize the domain scores of the 18.7K user,
+powerful text-embedding techniques (Mikolov et al. 2013;          showing the relationship between the Science, Moderacy
+
+
+                      (a) Science vs Political dimensions              (b) Science vs Moderacy dimensions
+
+Figure 2: Polarization of COVID-19 tweets. (a) Heatmap of polarization (domain scores) along the Science–Partisanship dimensions. Each bin within the heatmap represents the number of users with domain scores falling within that bin. (b) Heatmap
+of polarization along the Science–Moderacy dimensions.
+
+
+and Political dimensions. Then we compare the performance        three dimensions. We represented each user as a vector of
+of algorithms for classifying users along the three dimen-       features generated by different content-based approaches:
+sions of polarization, using domain scores as ground truth       hashtag frequencies for the BOW approach, topic vectors
+data. We used the inferred scores to study the dynamics and      for LDA and sentence embeddings for the fastText approach.
+spatial distribution of polarized opinions of users engaged in   We reserved a subset of users for testing performance.
+online discussions about COVID-19.                                  Table 3 compares the performance of polarization classification methods. LPA works best when it tries to idenVisualizing Polarization                                         tify user alignment along the Political and Science dimenFigure 2 shows the relationship between dimensions of po-        sions. However, it fails to capture the subtler distinctions
+larization, leveraging domain scores of 18.7K users who          along the Moderacy axis. Training is further hampered by
+shared information from curated domains. The heatmap             the low number of retweet interactions with Moderate doshows the density of users with specific domain scores.          mains in comparison to Hardline ones. Of the 1.8M retweet
+Large numbers of users are aligned with Pro-Science-Left         interactions, only 250K involve some Moderate seed nodes,
+(top-left corner) or Anti-Science-Right (bottom-right cor-       whereas over 1M interactions involve some Hardline seed
+ner) extremes, with lower densities along the diagonal be-       nodes. Moreover, poor classification performance with LPA
+tween these extremes (Fig. 2(a)). This illustrates the strong    reveals an important pattern: that moderates surround themcorrelation between political partisanship and scientific po-    selves with diverse opinion and thus a clear distinction canlarization, thereby highlighting the influence of pernicious     not be made by observing who they retweet.
+political divisions on evidence-based discourse during the          Hashtag BOW describes users as vectors of weighted frepandemic, with Conservatives being more likely to share          quencies of hashtags they use. This method critically suffers
+Anti-Science information than Pro-Science sources. Figure        from the curse of dimensionality and the lack of uniformity
+2(b), highlights the interplay between the Science and Mod-      of usage among users. Since the dimensionality of hashtag
+eracy axes. The white region in the bottom right corner          vectors is the entire vocabulary, each vector describing a user
+shows there are few Anti-Science users who are politically       is sparse, resulting in non-competitive performance.
+moderate. The shading also highlights a higher density of           LDA modeling on hashtags allows us to generate reducedPro-Science users identifying as politically moderate.           dimension, dense feature vectors for over 900K users who
+                                                                 use hashtags in their tweets. This representation allows us to
+Classifying Polarization                                         design better learning models that significantly outperform
+To run the LPA, we start from a set of labeled seeds—Twitter     the Hashtag BOW and LPA models.
+handles corresponding to domains categorized along the di-          A Logistic Regression model trained on user-text embedmensions of interest (Tables 1 & 2). We reserve some of the      dings and domain scores (fastText) outperforms all other
+seeds along each dimension for testing LPA predictions and       models described in this study. Coupled with fastText’s abilreport accuracy of 5-fold cross validation.                      ity to better handle out-of-vocabulary terms, the model’s acFor content-based approaches, we used binned domain           cess to finer levels of detail at tweet text, culminates in it betscores of 18.7K users as ground truth data to train Logis-       ter predicting dimensions of polarization. Given the model’s
+tic Regression models to classify user polarization along the    superior performance across all three dimensions, we leverDimension     ¯ 2,1
+                ∆       ¯ 3,2
+                        ∆          ¯ 4,3
+                                   ∆       ¯ 5,4
+                                           ∆       ¯ 6,5
+                                                   ∆       ¯ 7,6
+                                                           ∆       polarization classification results to show biweekly fractions
+                                                                   of active users per ideological category. Figure 3 shows the
+  Political     0.09    0.05       0.03    0.02    0.03    0.02
+  Science       0.13    0.07       0.04    0.02    0.02    0.02    composition of active users in all categories. As time proModeracy      0.21    0.11       0.07    0.04    0.04    0.03    gresses, we can clearly see the growth in the Pro-ScienceModerate category accompanied by a corresponding decline
+Table 4: Average absolute change in domain score along             in Anti-Science-Right users.
+consecutive biweekly intervals.
+                                                                   Topics of Polarization
+                                                                   To better understand what each of the six groups tweets
+age its predictions in subsequent analyses.                        about, we collect the 50 most frequent hashtags used by each
+   We classify users along the three polarization dimensions.      group, after removing hashtags common to all six groups.
+However, since the definition of the Hardline extreme of the       Figure 4 shows the wordclouds of the most common hashModeracy dimension overlaps with the Political dimension,          tags within each group, sized by the frequency of their ocwe need to report only six ideological groups, rather than all     currence. Most striking is the use of topics related to coneight combinations.                                                spiracy theories, such as #qanon, #wwg1wga, by the AntiScience-Right group, along with politically charged references to the #ccpvirus and #chinavirus. This group also uses
+                                                                   hashtags related to President Trump’s re-election campaign,
+                                                                   showing the hyper-partisan nature of COVID-19 discussions. Another partisan issue appears to be #hydroxychloroquine, a drug promoted by President Trump. It shows up in
+                                                                   both Pro-Science-Right and Anti-Science-Right groups, but
+                                                                   is not discussed by other groups.
+                                                                      The polarized nature of the discussions can be seen in
+                                                                   the user of the hashtags #trumppandemic and #trumpvirus
+                                                                   by the Left and Pro-Science groups. However, in contrast to Anti-Science groups, Pro-Science groups talk about
+                                                                   COVID-19 mitigation strategies, using hashtags such as
+                                                                   #stayhomesavelives, #staysafe and #flattenthecurve.
+
+Figure 3: Fraction of active users per ideological group in        Geography of Polarization
+bi-weekly periods.                                                 Responses to the coronavirus pandemic in the US have varied greatly by state. While governors of New York, California, Ohio and Washington reacted early by ordering lockDynamics of Polarization                                           downs, governors of Florida and Mississippi have downplayed the gravity of the situation for a longer time. To exResearch shows that opinions of Twitter users about controplore the geographical variation in ideological alignments,
+versial topics do not change over time (Smith et al. 2013).
+                                                                   we group users by the state from which they tweet and comTo investigate whether user alignments along the three popute the fraction of their respective state’s Twitter users belarization dimensions change over time, we group tweets
+                                                                   longing to an ideological group. We then generate geo-plots,
+by time into seven biweekly intervals: January 21–31,2020;
+                                                                   shown in Figure 5, to highlight the ideological composition
+February 1–15,2020; February 16–29, 2020; March 1–16,
+                                                                   of each state.
+2020; March 17–31, 2020; April 1–15, 2020; April 16-May
+                                                                      We see a higher composition of Pro-Science-Moderates
+1, 2020. There are 3.0K users who tweet consistently in all
+                                                                   (Figure 5(b)) in Washington, Oregon, DC, Vermont. As exthe 7 biweekly intervals. For each of the N users, we compected, these states have a lower fraction of Anti-Science
+pute cumulative domain scores along Science, Political and
+                                                                   users as can be seen from Figures 5 (d),(e) and (f). GoverModeracy dimensions for all time intervals t and compute
+                              ¯ t,t−1 in domain score from         nors of these states were quick to enforce lockdowns and
+the average absolute change ∆
+                                                                   spread pandemic awareness amongst the general public.
+biweekly period t − 1 along each dimension given by,
+                                                                      Over the course of the pandemic, we have seen the strong
+                               N                                   opposition to masking mandates and closing down of busi-
+                ∆¯ t,t−1 = Σi=1 |δi,t − δi,t−1 |                   nesses in California, Nevada, Hawaii, Georgia and Texas.
+                                    N                              These anti-science sentiments are reflective in Figure 5
+   where, δi,t represents the domain score for a user i in bi-     (e), which shows that these states have a comparatively
+weekly period t. The small values of ∆  ¯ t,t−1 in Table 4 con-    higher proportion of their Twitter users in the Anti-Sciencefirm that user alignments do not change significantly over         Moderate ideology group.
+time.                                                                 States such as South Carolina, Mississippi, Louisiana,
+   Although individual’s alignments do not change, the num-        Wyoming, Texas and Arizona have had chequered responses
+ber of users within each ideological group does change over        to the pandemic with political and religious leaders consistime. User alignments do not change, therefore we leverage         tently downplaying the pandemic. The geo-plot is reflective
+
+
+                      (a) Pro-Science-Left           (b) Pro-Science-Moderate            (c) Pro-Science-Right
+
+
+                      (d) Anti-Science-Left          (e) Anti-Science-Moderate          (f) Anti-Science-Right
+
+                                Figure 4: Topics of discussion within the six ideological groups.
+
+
+               (a) Pro-Science-Left                  (b) Pro-Science-Moderate                  (c) Pro-Science-Right
+
+
+               (d) Anti-Science-Left                 (e) Anti-Science-Moderate                 (f) Anti-Science-Right
+
+Figure 5: Fraction of state’s Twitter users per ideological category. Figures (a)-(c) show the fraction of states’ Twitter users who
+are classified as Pro-Science Left, Pro-Science Moderate and Pro-Science Right, respectively. Figures (d)-(f) show the fraction
+of states’ Twitter users who are classified as Anti-Science Left, Anti-Science Moderate and Anti-Science Right, respectively.
+
+
+of the same with these states have a higher fraction of Anti-                                Conclusion
+Science hardline-right users.
+                                                                     Our analysis of a large corpus of online discussions about
+                                                                     COVID-19 confirm the findings of opinion polls and surveys (Pew 2020): opinions about COVID-19 are strongly
+                                                                     polarized along partisan lines. Political polarization strongly
+
+
+ interacts with attitudes toward science: conservatives are            Sokolov, I. M.; and Starnini, M. 2020a. Emergence of polarmore likely to share conspiracy and anti-science informa-             ized ideological opinions in multidimensional topic spaces.
+ tion, while liberals and moderates are more likely to share           arXiv preprint arXiv:2007.00601.
+ information from pro-science sources. On the positive side,         [Baumann et al. 2020b] Baumann, F.; Lorenz-Spreen, P.;
+ we find that the number of pro-science, politically moder-            Sokolov, I. M.; and Starnini, M. 2020b. Modeling echo
+ ate users dwarfs other ideological groups, especially anti-           chambers and polarization dynamics in social networks.
+ science groups. This is reassuring from the public health             Physical Review Letters 124(4):048301.
+ point of view, suggesting that a plurality of people are ready
+ to accept scientific evidence and trust scientists to lead the      [Bessi et al. 2016] Bessi, A.; Zollo, F.; Del Vicario, M.;
+ way out of the pandemic. The geographical analysis of po-             Puliga, M.; Scala, A.; Caldarelli, G.; Uzzi, B.; and Quatlarization identifies regions of the country, particularly in the     trociocchi, W. 2016. Users polarization on facebook and
+ South and the West where anti-science attitudes are more              youtube. PloS one 11(8):e0159641.
+ common. Messaging strategies should be tailored in these            [Blei, Ng, and Jordan 2003] Blei, D. M.; Ng, A. Y.; and Jorregions to communicate with science skeptics.                         dan, M. I. 2003. Latent dirichlet allocation. Journal of
+    A larger issue of polarization is that it creates societal-        machine Learning research 3(Jan):993–1022.
+ scale vulnerabilities by amplifying distrust of authorities and     [Boyd, Golder, and Lotan 2010] Boyd, D.; Golder, S.; and
+ making it easier for malicious actors to influence public             Lotan, G. 2010. Tweet, tweet, retweet: Conversational asopinion through concentrated digital misinformation cam-              pects of retweeting on twitter. In 2010 43rd Hawaii internapaigns (Thorp 2020; Ferrara 2020). Amplifying the nega-               tional conference on system sciences, 1–10. IEEE.
+ tive opinions about face coverings or vaccines within even a
+                                                                     [Chen, Lerman, and Ferrara 2020] Chen, E.; Lerman, K.;
+ fraction of the population could create a cascade of adverse
+                                                                       and Ferrara, E. 2020. Tracking social media discourse
+ effects. Once polarization gets a life of its own it can lead to
+                                                                       about the covid-19 pandemic: Development of a public coropolitical instability, paralysis, and at worst democratic eronavirus twitter data set. JMIR Public Health and Surveilsion (Conover et al. 2011; McCoy and Rahman 2016). If
+                                                                       lance 6(2):e19273.
+ societal trust is weakened, cynicism towards politics intensifies and confidence in public institutions wanes (McCoy           [Conover et al. 2011] Conover, M. D.; Ratkiewicz, J.; Franand Rahman 2016). Because we find a slow-but-steady in-               cisco, M.; Gonçalves, B.; Menczer, F.; and Flammini, A.
+ crease in moderate users, we believe that ongoing efforts to          2011. Political polarization on twitter. In Fifth international
+ inform the public could be benefiting user behavior online.           AAAI conference on weblogs and social media.
+    Although we show good performance on classifying po-             [Durrett et al. 2012] Durrett, R.; Gleeson, J. P.; Lloyd, A. L.;
+ larized opinions, additional work is required to infer finer-         Mucha, P. J.; Shi, F.; Sivakoff, D.; Socolar, J. E. S.; and
+ grained opinions. Namely, by predicting fine-grain polariza-          Varghese, C. 2012. Graph fission in an evolving voter
+ tion among users, we could better infer, for example, net-            model. Proceedings of the National Academy of Sciences
+ work effects such as whether users prefer to interact with            109(10):3682–3687.
+ more polarized neighbors. Moreover, longer-term trends              [Ferrara 2020] Ferrara, E. 2020. What types of covid-19
+ need to be explored in order to better understand how                 conspiracies are populated by twitter bots? First Monday
+ opinions change dynamically. This will better test whether            25(6).
+ whether social influence or selective formations of ties are
+ the drivers of echo chambers and polarization. Finally, we          [Green et al. 2020] Green, J.; Edgerton, J.; Naftel, D.;
+ want to explore polarization across countries to understand           Shoub, K.; and Cranmer, S. J. 2020. Elusive consensus: Pohow different societies and governments are able to address           larization in elite communication on the covid-19 pandemic.
+ polarization and how these polarized dimensions relate to             Science Advances 6(28):eabc2717.
+ one another across the world.                                       [Gupta, Pagliardini, and Jaggi 2019] Gupta, P.; Pagliardini,
+                                                                       M.; and Jaggi, M. 2019. Better word embeddings by disReferences                                    entangling contextual n-gram information. In NAACL-HLT
+                                                                       (1), 933–939. Association for Computational Linguistics.
+[Badawy, Ferrara, and Lerman 2018] Badawy, A.; Ferrara,
+ E.; and Lerman, K. 2018. Analyzing the digital traces of            [Isenberg 1986] Isenberg, D. J. 1986. Group polarization:
+ political manipulation: The 2016 russian interference twit-           A critical review and meta-analysis. Journal of personality
+ ter campaign. In 2018 IEEE/ACM International Confer-                  and social psychology 50(1141).
+ encex on Advances in Social Networks Analysis and Mining            [Jiang et al. 2020] Jiang, J.; Chen, E.; Lerman, K.; and Fer-
+ (ASONAM), 258–265. IEEE.                                              rara, E. 2020. Political polarization drives online conversa-
+[Bail et al. 2018] Bail, C. A.; Argyle, L. P.; Brown, T. W.;           tions about covid-19 in the united states. Human Behavior
+ Bumpus, J. P.; Chen, H.; Hunzaker, M. B. F.; Lee, J.; Mann,           and Emerging Technologies.
+ M.; Merhout, F.; and Volfovsky, A. 2018. Exposure to op-            [Joulin et al. 2016] Joulin, A.; Grave, E.; Bojanowski, P.; and
+ posing views on social media can increase political polar-            Mikolov, T. 2016. Bag of tricks for efficient text classificaization. Proceedings of the National Academy of Sciences              tion. arXiv preprint arXiv:1607.01759.
+ 115(37):9216–9221.                                                  [McCoy and Rahman 2016] McCoy, J., and Rahman, T.
+[Baumann et al. 2020a] Baumann, F.; Lorenz-Spreen, P.;                 2016. Polarized democracies in comparative perspective:
+
+
+ Toward a conceptual framework. In International Political       [Raghavan, Albert, and Kumara 2007] Raghavan, U. N.; AlScience Association Conference, Poznan, Poland, July, vol-       bert, R.; and Kumara, S. 2007. Near linear time algorithm to
+ ume 26.                                                          detect community structures in large-scale networks. Phys.
+[McPherson, Smith-Lovin, and Cook 2001] McPherson, M.;            Rev. E 76:036106.
+ Smith-Lovin, L.; and Cook, J. M. 2001. Birds of a feather:      [Sasahara et al. 2020] Sasahara, K.; Chen, W.; Peng, H.;
+ Homophily in social networks. Annual Review of Sociology         Ciampaglia, G. L.; Flammini, A.; and Menczer, F. 2020.
+ 27(1):415–444.                                                   Social influence and unfollowing accelerate the emergence
+[Metaxas et al. 2015] Metaxas, P. T.; Mustafaraj, E.; Wong,       of echo chambers. Journal of Computational Social Science.
+ K.; Zeng, L.; O’Keefe, M.; and Finn, S. 2015. What do           [Schmidt et al. 2017] Schmidt, A. L.; Zollo, F.; Del Vicario,
+ retweets indicate? results from user survey and meta-review      M.; Bessi, A.; Scala, A.; Caldarelli, G.; Stanley, H. E.; and
+ of research. In ICWSM, 658–661. Citeseer.                        Quattrociocchi, W. 2017. Anatomy of news consumption on
+[Mikolov et al. 2013] Mikolov, T.; Chen, K.; Corrado, G.;         facebook. Proceedings of the National Academy of Sciences
+ and Dean, J. 2013. Efficient estimation of word representa-      114(12):3035–3039.
+ tions in vector space. arXiv preprint arXiv:1301.3781.          [Smith et al. 2013] Smith, L. M.; Zhu, L.; Lerman, K.; and
+[Myers and Lamm 1976] Myers, D. G., and Lamm, H. 1976.            Kozareva, Z. 2013. The role of social media in the discusThe group polarization phenomenon. Psychological bulletin        sion of controversial topics. In 2013 International Confer83(6):602–627.                                                   ence on Social Computing, 236–243. IEEE.
+[Nickerson 1998] Nickerson, R. S. 1998. Confirmation bias:       [Somer and McCoy 2019] Somer, M., and McCoy, J. 2019.
+ A ubiquitous phenomenon in many guises. Review of Gen-           Transformations through polarizations and global threats to
+ eral Psychology 2:175–220.                                       democracy.
+[Pennington, Socher, and Manning 2014] Pennington,         J.;   [Thorp 2020] Thorp, H. H. 2020. Persuasive words are not
+ Socher, R.; and Manning, C. D. 2014. Glove: Global               enough. Science 368(6498):1405–1405.
+ vectors for word representation. In Proceedings of the          [Tyagi, Uyheng, and Carley 2020] Tyagi, A.; Uyheng, J.;
+ 2014 conference on empirical methods in natural language         and Carley, K. M. 2020. Affective polarization in onprocessing (EMNLP), 1532–1543.                                   line climate change discourse on twitter. arXiv preprint
+[Pew 2020] Pew. 2020. Partisan differences over the pan-          arXiv:2008.13051.
+ demic response are growing.

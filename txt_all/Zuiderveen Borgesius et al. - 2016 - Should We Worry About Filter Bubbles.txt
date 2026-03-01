@@ -1,0 +1,835 @@
+INTERNET POLICY REVIEW
+                   Journal on internet regulation                                        Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+Frederik J. Zuiderveen Borgesius
+Institute for Information Law (IViR), University of Amsterdam, Amsterdam, The Netherlands
+
+Damian Trilling
+Department of Communication Science, University of Amsterdam, Amsterdam, Netherlands
+
+Judith Möller
+Department of Communication Science, University of Amsterdam, Amsterdam, Netherlands
+
+Balázs Bodó
+Institute for Information Law (IViR), University of Amsterdam, Amsterdam, Netherlands,
+bodo@uva.nl
+
+Claes H. de Vreese
+Department of Communication Science , University of Amsterdam, Amsterdam, Netherlands
+
+Natali Helberger
+Institute for Information Law (IViR), University of Amsterdam, Amsterdam, Netherlands
+
+Published on 31 Mar 2016 | DOI: 10.14763/2016.1.401
+
+
+Abstract: Some fear that personalised communication can lead to information cocoons or filter
+bubbles. For instance, a personalised news website could give more prominence to conservative
+or liberal media items, based on the (assumed) political interests of the user. As a result, users
+may encounter only a limited range of political ideas. We synthesise empirical research on the
+extent and effects of self-selected personalisation, where people actively choose which content
+they receive, and pre-selected personalisation, where algorithms personalise content for users
+without any deliberate user choice. We conclude that at present there is little empirical evidence
+that warrants any worries about filter bubbles.
+
+Keywords: Filter bubble, Personalisation, Selective exposure
+
+
+    Article information
+    Received: 06 Oct 2015 Reviewed: 15 Feb 2016 Published: 31 Mar 2016
+    Licence: Creative Commons Attribution 3.0 Germany
+    Competing interests: The author has declared that no competing interests exist that have influenced
+    the text.
+
+    URL: http://policyreview.info/articles/analysis/should-we-worry-about-filter-bubbles
+
+    Citation: Zuiderveen Borgesius, F. J. & Trilling, D. & Möller, J. & Bodó, B. & de Vreese, C. H. &
+    Helberger, N. (2016). Should we worry about filter bubbles?. Internet Policy Review, 5(1).
+    DOI: 10.14763/2016.1.401
+
+
+Internet Policy Review | http://policyreview.info        1                            March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+1. INTRODUCTION
+Media content is becoming increasingly personalised. Before the advent of digital media, news
+outlets generally featured exactly the same content for all users. Now, in theory, the same news
+website can show each visitor personalised content. Such personalisation has led to worries
+about filter bubbles and selective exposure: personalised content and services could limit the
+diversity of media content people are exposed to and thus have an adverse effect on the
+democratic discourse, open-mindedness and a healthy public sphere (e.g., Pariser, 2011;
+Sunstein, 2002). For instance, the High Level Expert Group on Media Diversity and Pluralism,
+an independent group advising the European Commission, warned for the impact of
+personalised communication on our democratic society:
+
+
+         Increasing filtering mechanisms make it more likely for people to only get news on
+         subjects they are interested in, and with the perspective they identify with. There are
+         benefits in empowering individuals to choose what information they want to obtain,
+         and by whom. But there are also risks. This new reality will decrease the role of media
+         as editors and interpreters of information. It will also tend to create more insulated
+         communities as isolated subsets within the overall public sphere. (…) Such
+         developments undoubtedly have a potentially negative impact on democracy. (VīķeFreiberga, Däubler-Gmelin, Hammersley, & Pessoa Maduro, 2013, p. 27)
+
+
+A dire warning, but is it true? How personalised are online news media today? What are the
+effects of personalised media on media exposure and the information choices people make?
+Even harder questions concern the long-term effects of personalisation. Does personalised
+content really influence consumers, newsreaders, citizens, and voters in a negative manner? Are
+concerns about filter bubbles supported by empirical evidence?
+
+To address these questions, we provide an overview of concerns that have dominated the public
+information policy discourse, and review the main insights from empirical research. For this
+paper, personalisation is described as the phenomenon that media content is not the same for
+every user, but tailored to different groups or individuals.
+
+In Section 2, we introduce the notion of personalisation, and distinguish self-selected
+personalisation from pre-selected personalisation. In Section 3, a brief overview is given of the
+main concerns about filter bubbles in current public policy discourse, based on a review of
+policy documents. Then, we review empirical evidence of the prevalence (Section 4) and effects
+(Section 5) of personalised communication.
+
+
+2. SELF-SELECTED AND PRE-SELECTED PERSONALISED
+COMMUNICATION
+In his book Being Digital, Negroponte (1995) discussed the idea of the ‘daily me’. He suggested
+that people would soon be able to choose their own personalised media experiences:
+
+
+         “Imagine a future in which your interface agent can read every newswire and
+
+
+Internet Policy Review | http://policyreview.info   2                     March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+         newspaper and catch every TV and radio broadcast on the planet, and then construct
+         a personalized summary. This kind of newspaper is printed in an edition of one.”
+         (Negroponte, 1995, p. 153)
+
+
+Others worry that people can lock themselves in information cocoons or echo chambers. For
+instance, somebody might read only left-leaning blogs and websites, listen only to left-leaning
+radio, and watch only left-leaning television. Pariser coined the term ‘filter bubble’, “a unique
+universe of information for each of us” (Pariser, 2011, p. 9). For example, a personalised news
+website could give more prominence to conservative media items, based on the inferred political
+interests of the user. When they form their political ideas, users of such personalised services
+may encounter fewer opinions or political arguments.
+
+We distinguish between two main types of personalisation: self-selected personalisation and
+pre-selected personalisation. Others have used different terms to describe similar phenomena:
+For instance, self-selected personalisation could also be called ‘explicit personalisation’, and
+pre-selected personalisation could be called ‘implicit personalisation’ (Thurman & Schifferes
+2012; see also Treiblmaier, Madlberger, Knotzer, & Pollach, 2004).
+
+Self-selected personalisation concerns situations in which people choose to encounter likeminded opinions exclusively. For example, a person who opposes immigration might want to
+avoid information that specifies how much a country has gained due to immigration, while
+paying a lot of attention to news stories about problems related to immigration. People tend to
+avoid information that challenges their point of view, for example by avoiding news outlets that
+often feature editorials that favour an opposing political camp. In communication science, this
+phenomenon is conceptualised as selective exposure (e.g. Stroud, 2011).
+
+Pre-selected personalisation concerns personalisation driven by websites, advertisers, or other
+actors, often without the user’s deliberate choice, input, knowledge or consent. Concerns about
+pre-selected personalisation are often summarised with the term ‘filter bubble’ (Pariser, 2011).
+
+Pre-selected personalisation may be chosen by the user, or not. For instance, some people may
+realise that Facebook personalises the content in its newsfeed. If these people explicitly use
+Facebook to see the curated, pre-selected collection of news about ‘friends’, the newsfeed is an
+example of chosen pre-selected personalisation. Other people, however, may not realise that the
+newsfeed on Facebook is personalised; those people do not explicitly choose pre-selected
+personalisation.
+
+
+3. CONCERNS AROUND PERSONALISED
+COMMUNICATION
+Below, we summarise the main concerns regarding personalisation that have been brought
+forward in policy and scholarly circles. We discuss the effects of personalisation on democracy,
+the role of new gatekeepers and influencers of public opinion, autonomy-related concerns, the
+lack of transparency around personalisation, and the possibilities for social sorting. Examining
+the privacy implications of the massive collection of user data that is often involved in
+personalisation lies beyond the scope of this paper (for privacy implications of personalised
+services, see Zuiderveen Borgesius, 2015).
+
+
+Internet Policy Review | http://policyreview.info   3                     March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+EFFECTS ON DEMOCRACY
+Many worry about the effects that personalised communication could have on democracy. When
+the High Level Expert Group on Media Diversity and Pluralism commented on personalisation
+strategies in the media, one of its main concerns was that people would encounter fewer
+opinions, which could have a negative effect on the public sphere and the democratic opinion
+forming process (Vīķe-Freiberga et al., 2013). In a similar vein, the Council of Europe (2012,
+Appendix, Section I, paragraph 2) warned that the ordering and ranking of information in the
+context of search engines can affect information access and the diversity of information people
+are exposed to.
+
+The concerns of the Expert Group echo arguments made in the scholarly debate, including those
+by Sunstein (to whom the group refers) (Vīķe-Freiberga et al., 2013). Sunstein discusses risks of
+too much personalisation. He mainly addresses self-selected personalisation: people locking
+themselves in ‘information cocoons’, which he describes as “communication universes in which
+we hear only what we choose and only what comforts us and pleases us” (Sunstein 2006, p. 9).
+To give a current example: somebody might self-select personalisation by following people on
+Twitter who hold like-minded opinions.
+
+Sunstein discusses two risks of personalisation. First, in a democratic society people need to
+come across opinions that differ from their own opinions, to develop themselves fully.
+Otherwise, people might enter a spiral of attitudinal reinforcement and drift towards more
+extreme viewpoints (Sunstein 2002, p. 9). This is a point also shared by the Expert Group: “The
+concern is people forgetting that alternatives do exist and hence becoming encapsulated in rigid
+positions that may hinder consensus-building in society” (Vīķe-Freiberga et al., 2013, pp. 2728). Sunstein warns that “unplanned, unanticipated encounters are central to democracy itself”
+(2002, p. 9).
+
+Second, if people locked themselves in their own information cocoons, they might have fewer
+common experiences. Sunstein says a diverse democratic society needs shared experiences as
+‘social glue’ (2002, p. 9). The Habermasian understanding of the public sphere, in which
+societally relevant ideas are formulated, negotiated and distributed, and in the process the
+ruling authorities’ actions are kept under control and guided (Habermas, 1989), still serves as an
+important point of reference, despite the extensive critique this idea rightly received.
+
+NEW GATEKEEPERS AND INFLUENCERS OF PUBLIC OPINION
+In the public policy discourse, much attention is given to search engines, app stores, and social
+network sites as new gatekeepers and influencers of public opinion (see e.g., European
+Commission, 2013, p. 13; Vīķe-Freiberga et al., 2013). There is a long tradition in media law and
+policy of regulating gatekeeper control, because such control can threaten the realisation of
+important public policy goals, such as media diversity, public debate and competition on the
+marketplace of ideas.
+
+However, the new information intermediaries, such as providers of search engines, social
+network sites, and app stores, differ in many respects from the more traditional gatekeeper
+categories, like the old press barons and controllers of content and infrastructure. One of the
+most important differences is the set of mechanisms used to exercise gatekeeping control which,
+in the case of the new intermediaries, are often related to interaction with users, the amount of
+knowledge and control they have over the user base, and exposure to diverse information
+(Helberger, Kleinen-von Königslöw, & Van der Noll, 2015).
+
+
+Internet Policy Review | http://policyreview.info   4                      March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+An experiment in which Facebook persuaded its users to vote in the US election demonstrates
+the power of new opinion influencers well. The “results suggest that the Facebook social
+message increased turnout directly by about 60,000 voters and indirectly through social
+contagion by another 280,000 voters, for a total of 340,000 additional votes. That represents
+about 0.14% of the voting age population of about 236 million in 2010” (Bond, Fariss, Jones,
+Kramer, Marlow, Settle, & Fowler, 2012, p. 1). Because of the potential power of gatekeepers,
+various scholars call for meaningful transparency regarding their algorithms and their profiling
+practices (Hildebrandt & Gutwirth, 2008; Pasquale, 2015; Bozdag, 2015).
+
+AUTONOMY-RELATED CONCERNS
+Personalised communication may also restrict people’s autonomy, according to some authors
+(e.g. Zarsky 2002, p. 42). In brief, people’s opinions might be steered by personalised media,
+while they are not aware of being influenced.
+
+However, personalisation, at least self-selected personalisation, could also enhance people’s
+autonomy, because people can express which content they wish to receive. In contrast, in the
+traditional mass media situation, the editor determines which content is presented in which
+form. In other words, personalisation strategies can also have an empowering effect on users. In
+fact, pre-selected personalisation can also be used to help users make more diverse choices
+(Helberger, 2011).
+
+LACK OF TRANSPARENCY
+Another prominent item on the media policy agenda is the lack of transparency regarding preselected personalisation. The lack of transparency could affect the way people respond to
+personalised messages (Vīķe-Freiberga et al., 2013), and could make it harder for regulators to
+monitor the media sector. If people do not realise they see pre-selected content, they might
+think they see the same content as everybody else.
+
+The Council of Europe seems to suggest that transparency about the search algorithm can help
+to promote media diversity and information access, and help to mitigate the filter bubble risk
+(Council of Europe, 2012, paragraph 7 and Appendix, Section 1, paragraph 4). Transparency in
+itself may not promote diversity of supply and exposure, but transparency is a necessary, albeit
+insufficient condition to detect problems with diversity. It is also unclear whether information
+about the way search engines work can cause people to choose more diverse content or can help
+people to avoid being trapped in a filter bubble. However, transparency about personalisation is
+at least essential to inform the policy discussions.
+
+SOCIAL SORTING
+Topics that received little attention in the public policy discourse on personalised
+communication are social sorting and discriminatory practices. Scholars have paid more
+attention to these topics. Social sorting involves, in Lyon’s words, “obtain[ing] personal and
+group data in order to classify people and populations according to varying criteria, to
+determine who should be targeted for special treatment, suspicion, eligibility, inclusion, access,
+and so on” (Lyon, 2003, p. 20). In particular, profiling and classification in one domain (for
+example in advertising) may outgrow its original context and define other domains of our life
+(Turow, 2011). Social sorting, thus, “may further erode the tolerance and mutual dependence
+between diverse groups that enable a society to work” (Turow, 2011, p. 196).
+
+CONCLUSION
+In public policy and academic discourse, personalised communication is regarded with much
+
+
+Internet Policy Review | http://policyreview.info   5                    March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+concern. Much of the existing public policy discourse makes little reference to empirical
+evidence, leaving unclear to what extent concerns are justified, exaggerated, or underestimated.
+
+Empirical research into the extent of personalised communication, and its effects on access to
+diverse information, can serve as a reality check. Empirical research can help to adjust the
+priorities in public policy, and to identify areas in which we simply do not know enough to make
+any conclusive policy statements. Below, we focus on empirical evidence of the spread of
+personalised news services and its likely effects on political polarisation and political
+information.
+
+
+4. HOW COMMON IS PERSONALISATION?
+PREVALENCE OF SELF-SELECTED PERSONALISATION
+Selectively using information that matches pre-existing beliefs is human. People tend to avoid
+media content that conflicts with their beliefs (Festinger, 1957). The first data on this were
+collected during a US election campaign in 1940: Democrats were more likely to be exposed to
+the Democratic Campaign, and Republicans to the Republican campaign (Lazarsfeld, Berelson,
+& Gaudet, 1944). Many European countries have known a strong party press until the first half
+of the 20th century, with people being exposed to mainly like-minded information (Hallin &
+Mancini, 2004). A prime example is the period of pillarisation (verzuiling) in the Netherlands,
+where Catholics were commonly assumed to read a Catholic newspaper, to join a Catholic
+sports club, and to listen to Catholic radio. Left-voting labour workers had their own pillar, as
+did protestants (Lijphart, 1968; Wijfjes, 2004). Although the premise that the cleavages were
+that rigid has been challenged somewhat (Bax, 1988; Blom & Talsma, 2000), being exposed to
+like-minded content was pretty likely.
+
+Nevertheless, in a literature review from as early as 1967, Sears and Freedman (1967) contest
+the idea that selective exposure occurs because of cognitive dissonance. In the decades that
+followed, interest in the topic was lost, in part because media choice was limited to few TV
+channels and newspapers, rendering the mechanism somewhat irrelevant. Once the choice grew
+with the advent of cable TV and the internet, the topic gained renewed scholarly interest.
+
+Whereas it is trivial to show that the audience of partisan media outlets in general is partisan as
+well, this does not have to be problematic from a normative point of view. It is insufficient to
+look at usage of isolated media outlets, because those who use a lot of partisan information also
+use an above-average amount of mainstream news (e.g., Bimber & Davis, 2003; Trilling &
+Schoenbach, 2015; Zaller, 1992). Furthermore, at least in Europe, most people by far still get
+their news via traditional sources, most notably public-service television (Blekesaune, Elvestad,
+& Aalberg, 2012; Trilling & Schoenbach 2013a, 2013b, 2015). The fact that fewer people watch
+mainstream TV news and read newspapers does not mean that people massively turn to
+alternative specialist outlets; most online outlets with a substantial reach are spin-offs of
+traditional media. Thus, those who use extremely partisan outlets are mostly exposed to
+moderate ideas as well. If there are echo chambers, the walls are pretty porous. Therefore,
+Garret distinguishes between selective exposure and selective avoidance: while there is some
+evidence that people select information they agree with, it is much less certain whether people
+actually avoid possibly conflicting information (Garret, 2009a, 2009b; Garret, Carnahan, &
+Lynch, 2011).
+
+In summary, people self-select information they agree with, but the importance of this might not
+
+
+Internet Policy Review | http://policyreview.info   6                     March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+be as dramatic as often suggested, because even if people self-select consonant content, they
+may well be confronted with conflicting content as well.
+
+PREVALENCE OF PRE-SELECTED PERSONALISATION
+In contrast to self-selected personalisation, pre-selected personalisation is not a result of a user’s
+direct choice - but of a choice that is determined by algorithms. This is commonly known from
+recommendations on online shopping sites or on YouTube (O’Callaghan, Greene, Conway,
+Carthy, & Cunningham, 2013) and in the context of online search results (Van Hoboken, 2012;
+Dillahunt, Brooks, & Gulati, 2015). It is debatable how common and far-reaching pre-selected
+personalisation is. For example, there is some evidence that 11% of Google searches differ due to
+personalisation (Hannak, Sapiezynski, Molavi Kakhki, Krishnamurthy, Lazer, Mislove, &
+Wilson, 2013). Whether this 11% is a high percentage or not is impossible to tell as we lack the
+adequate benchmarks.
+
+On news sites, algorithmic personalisation is still less prevalent. People generally have the
+choice whether they want their online news to be personalised or not. Additionally, people who
+choose pre-selected personalisation are more likely to use an above-average amount of generalinterest news as well (Beam & Kosicki, 2014), and to encounter messages that are not in line
+with their own ideas (Beam, 2013). However, as personalisation on news websites is still in its
+infancy, in the future the effects may be different (Thurman & Schifferes, 2012; Turow, 2011).
+
+While personalisation features on news sites themselves are not common yet, de facto
+algorithmic personalisation can arise on two other layers: news aggregators and social networks.
+Purely algorithmic news aggregators like Google News have mostly failed to become a major
+news source for a large audience, but more and more traffic to news sites goes via social media
+sites, which use a blend of algorithmic and human recommendations to define the supply of
+news items for the individual.
+
+Social media sites can lead to two sources of personalisation. First, although people connect
+with different types of contacts (friends, family, colleagues etc.) on such sites, many people
+might mostly connect to people who resemble them. If someone’s network is rather
+homogeneous, this means that the content shared by someone’s contacts may be in line with the
+person’s preferences as well. This argument is based on the assumption that people only share
+content they agree with – an assumption that has been challenged by some (Barbera, Jost,
+Nagler, Tucker, & Bonneau, 2015; Morgan, Shafiq, & Lampe, 2013).
+
+Second, on some sites, most prominently on Facebook, an opaque algorithm determines what
+content is shown in a user’s newsfeed. A recent study suggests that the influence of this
+algorithm is lower than the influence of the user’s choices (Bakshy, Messing, & Adamic, 2015).
+However, the validity of this study is debated among social science scholars and beyond (Lumb,
+2015).
+
+In sum, it looks as if either personalisation is still in its infancy on news sites, or we have too
+little empirical evidence on what is actually happening in this domain. More independent
+research is necessary.
+
+
+5. WHAT ARE THE EFFECTS OF PERSONALISATION?
+An even harder question concerns the long-term effects of personalisation. Does personalised
+
+
+Internet Policy Review | http://policyreview.info   7                       March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+content really influence people? Does, or could, personalisation really harm democracy? While
+the effects of self-selected personalisation on democracy have been studied in a number of
+experiments and surveys, the effects of pre-selected personalisation have not been investigated
+in a comprehensive academic study so far.
+
+In general, we can expect effects of selective exposure or selective avoidance on two different
+variables that are relevant in democratic societies: political polarisation and political knowledge.
+
+POLARISATION AS A CONSEQUENCE OF SELF-SELECTED
+PERSONALISATION
+Numerous scholars of political communication have studied the effects of a selective media diet
+on democratic societies. Most of these studies are concerned with one potential consequence of
+selective exposure that might be harmful to democratic societies: partisan polarisation.
+
+According to this line of research, people who are repeatedly exposed to biased information that
+favours a particular political standpoint that is close to their own will eventually develop more
+extreme positions and be less tolerant with regard to opposite points of view. Empirical evidence
+from the US supports this argument. For example, Stroud (2010) used representative American
+election survey data to show that Americans who adopt a homogenous partisan news diet
+become more extreme in their views during the campaign. Similar effects of self-selective
+exposure to partisan news on polarisation were also found in experimental settings (e.g.
+Knobloch-Westerwick & Meng, 2011).
+
+To understand the importance of cross-cutting information in a democracy, Price, Cappella, and
+Nir (2002) investigated the effects of being exposed to information in the mass media that
+contradicts existing attitudes and beliefs. They found that people who regularly encounter
+diverse opinions in the media are not only better able to provide reasons for their own political
+choices; they also have a better understanding of what motivates the perspective of others.
+
+The effect of personalised news on polarisation is conditional on the political system. Most of
+the research on the effect of polarisation stems from the US, which is characterised by a bipolar
+political system, in which the issue of polarisation is substantially different than, for example, in
+the Dutch political system where more than ten parties compete with each other (e.g., Trilling,
+Van Klingeren, & Tsfati, 2016). This difference between political systems must be kept in mind
+when discussing the effects of personalisation.
+
+POLITICAL LEARNING, AS IMPACTED BY SELF-SELECTED
+PERSONALISATION
+While there is a growing body of studies providing evidence that selective exposure is related to
+polarisation, evidence on the effect of selective exposure or selective avoidance on knowledge
+gains is scarce. Yet, there is a strong theoretical link between political knowledge and selfselected personalised communication.
+
+First, many media users take advantage of the abundance of media outlets to avoid political
+information altogether. Hence, these users lose an important information source to form
+political opinions (Prior, 2007). Second, if media users select political information that is
+attractive to them, they will be better motivated to process the information they encounter.
+
+Hence, personalisation might lead to knowledge gaps in society: News avoiders know little.
+Those who self-select political news learn more from the news. This holds in particular for
+online news sources where users can choose news they are interested in (Kenski & Stroud,
+
+
+Internet Policy Review | http://policyreview.info   8                      March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+2006). However, the effects of self-selection of news on polarisation and political knowledge are
+– like most media effects – small. Additionally, the effect of a personalised and selective news
+menu is different for each individual, and many people are not affected (Valkenburg & Peter,
+2013). The fact that the relationships introduced above are statistically significant means that
+there is convincing empirical proof that selective exposure to news and polarisation and
+differential knowledge gains are related. Yet, the fact that the effect is small means that selective
+exposure to news explains only a small fraction of the variance in political attitudes and political
+knowledge we find in democratic societies.
+
+One of the reasons for the small effect is that hardly anyone lives in an absolute information
+cocoon, as mentioned previously. In the current fragmented media landscape, people can access
+an abundance of news sources. In addition, we often get information about current events
+through conversations with colleagues, friends, or family members. In such conversations
+people may be introduced to news items, or to different perspectives. Cross-cutting
+conversations about politics also can occur online, mostly in an environment that does not
+usually deal with political information, like an online hobby group (Wojcieszak & Mutz, 2009).
+
+EFFECTS OF PRE-SELECTED PERSONALISATION
+Empirical research into the long-term effects of pre-selected personalisation is scarce (see Van
+Hoboken, 2012). The lack of empirical evidence can be partly explained by the fact that
+algorithms which automatically pre-select news items for individual users have only been
+developed in the past few years.
+
+It is, however, possible that potential effects of pre-selected personalisation are in line with
+effects of self-selected personalisation. Being repeatedly exposed to the same news frame, for
+example, may lead to reinforcing framing effects (Lecheler & De Vreese, 2011). Potentially,
+algorithms that favour news items framing events in a perspective close to the reader’s point of
+view will lead to a more polarised society. One of the first studies of news personalisation using
+search behaviour and social media as point of departure indeed found polarising effects, while
+also demonstrating an increase in cross-cutting exposure through social media (Flaxman, Goel,
+& Rao, 2014)
+
+With regard to systematic gaps of knowledge about current events, pre-selected personalisation
+might contribute to social sorting, as explained above. If algorithms are programmed to favour
+news items that cover only a small set of topics that users are assumed to be interested in, users
+will not be exposed to information on many other topics that are important for society at large.
+As interest in news and politics correlates with higher education and higher social economic
+status, this could lead to a divided citizenry.
+
+Moreover, commercial news providers gain power because they can control the algorithm. For
+example, a recent experiment carried out by Facebook shows that they were able to influence
+people’s emotions by manipulating content. The experiment involved manipulating the selection
+of user messages (‘posts’) that 689,003 users saw in their newsfeeds. “When positive
+expressions were reduced, people produced fewer positive posts and more negative posts; when
+negative expressions were reduced, the opposite pattern occurred” (Kramer, Guillory &
+Hancock, 2014, p. 1). Hence, Facebook succeeded in influencing the emotions of users.
+However, the effects were rather small. In another study, the effects appeared to be stronger:
+Epstein and Robertson (2015) claim that differences in Google search results can shift voting
+preferences of undecided voters by 20%.
+
+As outlined in a previous section, news users have always limited their exposure to specific news
+
+
+Internet Policy Review | http://policyreview.info   9                      March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+items themselves: a process of self-selected personalisation. Perhaps pre-selected
+personalisation by algorithms merely anticipates choices that news users would have made
+themselves?
+
+Even if it were true that personalisation could influence people deeply, would the many
+possibilities to broaden one’s horizon outweigh the effects of personalisation? For example, the
+web offers many ways to encounter unexpected content.
+
+The effects of personalisation may be counteracted by other forces. For example, people who
+self-select content on some blogs and encounter a lot of pre-selected content on their Facebook
+newsfeed may still be avid users of non-personalised news sites as well.
+
+Another reason to doubt whether there is a big risk that personalised content will steer people’s
+worldview is that current personalisation technologies may be insufficient. For instance, with
+targeted online advertising (behavioural targeting) the click-through rate on ads is around 0.1%
+to 0.5% (e.g. Chaffey, 2015). This suggests that algorithms of companies do not predict people’s
+interests very accurately. After all, around 999 out of 1,000 people do not click on ads – perhaps
+the ads do not appeal to the interests of most people. On the other hand, the low click-through
+rate on ads could perhaps be explained by scepticism towards advertising rather than by bad
+personalisation.
+
+In sum, there is no reason to worry about pre-selected personalisation leading to filter bubble
+problems, briefly put, because the technology is still insufficient. With technological
+developments, however, problems may arise. As Hildebrandt notes, pre-selected personalisation
+could be seen as an early example of ambient intelligence: technology that senses and
+anticipates people’s behaviour in order to adapt the environment to their inferred needs
+(Hildebrandt, 2010). Consequently, algorithmic accountability through transparency becomes
+more and more important as the technology develops (Diakopoulos, 2014).
+
+
+6. CONCLUSION
+Some fear that personalised communication can lead to information cocoons or filter bubbles.
+In brief, the idea is that democratic society is at risk because personalised content and services
+limit the diversity of media content people are exposed to. In this way, personalisation could
+steer people’s ideas and behaviour surreptitiously.
+
+We discussed whether we should worry about filter bubbles. We distinguish between selfselected personalisation, where people actively choose which content they see, and pre-selected
+personalisation, where algorithms personalise content for users without any deliberate user
+choice. We summarised empirical research on the extent of personalisation in practice and on
+the effects of personalisation.
+
+We conclude that – in spite of the serious concerns voiced – at present, there is no empirical
+evidence that warrants any strong worries about filter bubbles. Nevertheless, the debate about
+filter bubbles is important. Personalisation on news sites is still at an infant stage, and
+personalised content does not constitute a substantial information source for most citizens, as
+our review of literature on media use has shown. However, if personalisation technology
+improves, and personalised news content becomes people’s main information source, problems
+for our democracy could indeed arise, as our review of empirical studies of media effects has
+shown.
+
+
+Internet Policy Review | http://policyreview.info   10                     March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+In the light of the rapidly changing media landscape, many studies become out-dated rapidly. In
+addition, existing studies mainly cover the US situation with its two-party political system,
+which means that the studies are only partly relevant for countries with multiparty systems.
+
+One lesson we should have learned from the past is that panic does not lead to sane policies.
+More evidence is needed on the process and effects of personalisation, so we can shift the basis
+of policy discussions from fear to insight.
+
+
+Internet Policy Review | http://policyreview.info   11                  March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+REFERENCES
+
+
+Bakshy, E., Messing, S., & Adamic, L. (2015). Exposure to ideologically diverse news and
+opinion on Facebook. Science, 58(4), 707–731.
+
+Barbera, P., Jost, J. T., Nagler, J., Tucker, J. A., & Bonneau, R. (2015). Tweeting from left to
+right: Is online political communication more than an echo chamber? Psychological Science,
+Advance online publication.
+
+Bax, E.H. (1988). Modernization and cleavage in Dutch society. A study of long term economic
+and social change. PhD Dissertation, Rijksuniversteit Groningen, Netherlands.
+
+Beam, M. A. (2013). Automating the news: How personalized news recommender system design
+choices impact news reception. Communication Research, 14, 1019-1041
+
+Beam, M. A., & Kosicki, G. M. (2014). Personalized news portals: Filtering systems and
+increased news exposure. Journalism & Mass Communication Quarterly, 91(1), 59–77.
+
+Bimber, B., & Davis, R. (2003). Campaigning online: The Internet in U.S. elections. New York:
+Oxford University Press.
+
+Blekesaune, A., Elvestad, E., & Aalberg, T. (2012). Tuning out the world of news and current
+affairs: An empirical study of Europe’s disconnected citizens. European Sociological Review,
+28(1), 110–126.
+
+Blom, C.H., & Talsma, J. (ed.) (2000). De verzuiling voorbij. Godsdienst, stand en natie in de
+lange negentiende eeuw. Amsterdam, Netherlands: Het Spinhuis.
+
+Bond, R. M., Fariss, C. J., Jones, J. J., Kramer, A. D., Marlow, C., Settle, J. E., & Fowler, J. H.
+(2012). A 61-million-person experiment in social influence and political mobilization. Nature,
+489(7415), 295-298.
+
+Bozdag, E. (2015), Bursting the Filter Bubble: Democracy, Design, and Ethics. Delft University
+of Technology, PhD thesis.
+
+Chaffey Chaffey, D. (2015, April). Display advertising clickthrough rates. Smart Insights.
+Retrieved from
+http://www.smartinsights.com/internet-advertising/internet-advertising-analytics/display-adv
+ertising-clickthrough-rates/
+
+Cohen, S. (1973). Folk devils and moral panics the creation of the Mods and Rockers. St Albans:
+Paladin.
+
+Council of Europe, Recommendation CM/Rec(2012)3 of the Committee of Ministers to member
+States on the protection of human rights with regard to search engines, adopted by the
+Committee of Ministers on 4 April 2012.
+
+Diakopoulos, N. (2014). Algorithmic accountability. Journalistic investigation of computational
+power structures. Digital Journalism, 3, 398–415.
+http://doi.org/10.1080/21670811.2014.976411
+
+Epstein, R., & Robertson, R. E. (2015). The search engine manipulation effect (SEME) and its
+
+
+Internet Policy Review | http://policyreview.info   12                       March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+possible impact on the outcomes of elections. Proceedings of the National Academy of Sciences,
+112(33), E4512–E4521.
+
+European Commission (2013). 'Preparing for a Fully Converged Audiovisual World: Growth,
+Creation and Values (Green Paper) Brussels, COM(2013) 231 final' (24 March 2013)
+<https://ec.europa.eu/digital-agenda/sites/digitalagenda/files/convergence_green_paper_en_0.pdf> accessed on 29 July 2015, p. 14.
+
+Festinger, L. (1957). A theory of cognitive dissonance. Stanford, CA: Stanford University Press.
+
+Flaxman, S. R., Goel, S., & Rao, J. M. (2014). Filter bubbles, echo chambers, and online news
+consumption. Retrieved from https://5harad.com/papers/bubbles.pdf
+
+Gitlin, T. (1998). Public spheres or public sphericules. In T. Liebes & J. Curran (Eds.), Media,
+ritual and identity (pp. 168–174). London: Routledge.
+
+Garrett, R. K. (2009). Echo chambers online?: Politically motivated selective exposure among
+Internet news users. Journal of Computer-Mediated Communication, 14(2), 265–285.
+
+Garrett, R. K. (2009). Politically motivated reinforcement seeking: Reframing the selective
+exposure debate. Journal of Communication, 59(4), 676–699.
+
+Garrett, R. K., Carnahan, D., & Lynch, E. K. (2011). A turn toward avoidance? Selective exposure
+to online political information, 2004–2008. Political Behavior, 35(1), 113–134.
+
+Gutwirth, S. & Hildebrandt, M. eds. (2008). Profiling the European Citizen. Dordrecht:
+Springer 2008.
+
+Habermas, J (1989). The structural transformation of the public sphere: An inquiry into a
+category of bourgeois society. Cambridge, MA: MIT Press.
+
+Hallin, D. C., & Mancini, P. (2004). Comparing Media Systems. Cambridge, UK: Cambridge
+University Press.
+
+Hannak, A., Sapiezynski, P., Molavi Kakhki, A., Krishnamurthy, B., Lazer, D., Mislove, A., &
+Wilson, C. (2013). Measuring personalization of web search. In Proceedings of the 22Nd
+International Conference on World Wide Web (pp. 527–538). Geneva, Switzerland:
+International World Wide Web Conferences Steering Committee.
+
+Helberger, N. (2011). Diversity by design. Journal of Information Policy, 1, 441–469.
+
+Helberger, N., Kleinen-Von Königslöw, K. and Van der Noll, R. (2015). Regulating the new
+information intermediaries as gatekeepers of information diversity, info 17(6), p. 50-71.
+
+Hildebrandt, M. (2010). Privacy en identiteit in slimme omgevingen. Computerrecht, 6, 172182.
+
+Kenski, K., & Stroud, N. J. (2006). Connections between Internet use and political efficacy,
+knowledge, and participation. Journal of Broadcasting & Electronic Media, 50(2), 173–192.
+
+Kim, J., Kim, J., & Seo, M. (2014). Toward a person × situation model of selective exposure:
+Repressors, sensitizers, and choice of online news on financial crisis. Journal Of Media
+Psychology: Theories, Methods, And Applications, 26(2), 59-69.
+
+
+Internet Policy Review | http://policyreview.info   13                    March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+Knobloch-Westerwick, S., & Meng, J. (2011). Reinforcement of the Political Self Through
+Selective Exposure to Political Messages. Journal of Communication, 61(2), 349–368.
+
+Kramer, A. D., Guillory, J. E., & Hancock, J. T. (2014). Experimental evidence of massive-scale
+emotional contagion through social networks. Proceedings of the National Academy of
+Sciences, 111(24), 8788-8790.
+
+Lazarsfeld, P. F., Berelson, B., & Gaudet, H. (1944). The people’s choice: How the voter makes
+up his mind in a presidential campaign. New York: Columbia University Press.
+
+Lecheler, S., & de Vreese, C. H. (2011). Getting real: The duration of framing effects. Journal of
+Communication, 61(5), 959-983.
+
+Lijphart, A. (1968). Verzuiling, pacificatie en kentering in de Nederlandse politiek. Amsterdam:
+De Bussy.
+
+Lumb, D. (2015). Why scientists are upset about the Facebook Filter Bubble story. Retrieved
+from:
+http://www.fastcompany.com/3046111/fast-feed/why-scientists-are-upset-over-the-facebook-fi
+lter-bubble-study
+
+Lyon, D. (2003). Surveillance as social sorting: Computer codes and mobile bodies. In D. Lyon
+(ed.) Surveillance as social sorting: Privacy, risk and automated discrimination (pp. 13–30).
+New York, NY: Routledge.
+
+Morgan, J. S., Shafiq, M. Z., & Lampe, C. (2013). Is news sharing on Twitter ideologically
+biased     ? In Proceedings of the 2013 conference on Computer supported cooperative work (pp.
+887–897). ACM.
+
+Negroponte, N. (1995). Being digital. New York, NY: Knopf.
+
+O'Callaghan, D., Greene, D., Conway, M., Carthy, J., & Cunningham, P. (2013). The extreme
+right filter bubble. arXiv preprint arXiv:1308.6149.
+
+Pariser, E. (2011). The filter bubble: What the Internet is hiding from you. New York, NY:
+Penguin.
+
+Pasquale F (2015). The black box society: The secret algorithms that control money and
+information. Cambridge: Harvard University Press.
+
+Price, V., Cappella, J. N., & Nir, L. (2002). Does disagreement contribute to more deliberative
+opinion? Political Communication, 19(1), 95-112.
+
+Prior, M. (2007). Post-broadcast democracy: How media choice increases inequality in
+political involvement and polarizes elections. Cambridge, UK: Cambridge University Press.
+
+Sears, D. O., & Freedman, J. L. (1967). Selective exposure to information: A critical review.
+Public Opinion Quarterly, 31(2), 194–213.
+
+Stroud, N. J. (2010). Polarization and partisan selective exposure. Journal of Communication,
+60(3), 556–576.
+
+Stroud, N. J. (2011). Niche news: The politics of news choice. Oxford University Press.
+
+
+Internet Policy Review | http://policyreview.info   14                    March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+Sunstein, C. R. (2002). Republic.com. Princeton, NJ: Princeton University Press.
+
+Sunstein C. R. (2006). Infotopia: How many minds produce knowledge. New York, NY: Oxford
+University Press
+
+Dillahunt, T. R., Brooks, C. A., & Gulati, S. (2015, April). Detecting and Visualizing Filter
+Bubbles in Google and Bing. In Proceedings of the 33rd Annual ACM Conference Extended
+Abstracts on Human Factors in Computing Systems (pp. 1851-1856). ACM.
+
+Thurman, N., & Schifferes, S. (2012). The future of personalization at news websites: Lessons
+from a longitudinal study. Journalism Studies, 13(5-6), 775-790.
+
+Treiblmaier, H., Madlberger, M., Knotzer, N., & Pollach, I. (2004, January). Evaluating
+personalization and customization from an ethical point of view: an empirical study. In System
+Sciences, 2004. Proceedings of the 37th Annual Hawaii International Conference on System
+Sciences (pp. 10-pp). IEEE.
+
+Trilling, D., & Schoenbach, K. (2013a). Patterns of news consumption in Austria: How
+fragmented are they? International Journal of Communication, 7, 929–953.
+
+Trilling, D., & Schoenbach, K. (2013b). Skipping current affairs: The non-users of online and
+offline news. European Journal of Communication, 28(1), 35–51.
+
+Trilling, D., & Schoenbach, K. (2015). Investigating people’s news diets: How online news users
+use offline news. Communications: The European Journal of Communication Research, 40(1),
+67–91.
+
+Trilling, D., Van Klingeren, M., & Tsfati, Y. (2016). Selective exposure, political polarization, and
+possible mediators: Evidence from the Netherlands. International Journal of Public Opinion
+Research, online first. doi:10.1093/ijpor/edw003
+
+Turow, J. (2011). The daily you: How the new advertising industry is defining your identity and
+your worth. New Haven, CT: Yale University Press.
+
+Van Hoboken, J. V. J. (2012). Search engine freedom: on the implications of the right to
+freedom of expression for the legal governance of search engines. Alphen aan den Rijn,
+Netherlands: Kluwer Law International.
+
+Valkenburg, P. & Peter, J.(2013). The differential susceptibility to media effects model. Journal
+of Communication 63(2), 221–243.
+
+Vīķe-Freiberga, V., Däubler-Gmelin, H., Hammersley, B., Pessoa Maduro, L.M.P. (2013). A free
+and pluralistic media to sustain European democracy. Retrieved from
+http://ec.europa.eu/digital-agenda/sites/digital-agenda/files/HLG%20Final%20Report.pdf
+
+Wojcieszak, M. E., & Mutz, D. C. (2009). Online groups and political discourse: Do online
+discussion spaces facilitate exposure to political disagreement? Journal of Communication,
+59(1), 40–56.
+
+Wijfjes, H. (ed.) (2004). Journalistiek in Nederland. Beroep, cultuur en organisatie
+1850-2000. Amsterdam, Netherlands: Boom.
+
+Zaller, J. R. (1992). The nature and origins of mass opinion. Cambridge, UK: Cambridge
+
+
+Internet Policy Review | http://policyreview.info   15                      March 2016 | Volume 5 | Issue 1
+
+
+Should we worry about filter bubbles?
+
+
+University Press.
+
+Zarsky, T. Z. (2002). Mine your own business: making the case for the implications of the data
+mining of personal information in the forum of public opinion. Yale Journal of Law and
+Technology 5, 1–56.
+
+Zuiderveen Borgesius, F.J. (2015). Improving privacy protection in the area of behavioural
+targeting, Alphen aan den Rijn, Netherlands: Kluwer Law International.
+
+
+Internet Policy Review | http://policyreview.info   16                  March 2016 | Volume 5 | Issue 1

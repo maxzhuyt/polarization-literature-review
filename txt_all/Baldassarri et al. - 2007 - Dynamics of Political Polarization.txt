@@ -1,0 +1,1252 @@
+Dynamics of Political Polarization
+Delia Baldassarri                                  Peter Bearman
+Princeton University                               Columbia University
+
+
+This article accounts for two puzzling paradoxes. The first paradox is the simultaneous
+absence and presence of attitude polarization—the fact that global attitude polarization
+is relatively rare, even though pundits describe it as common. The second paradox is the
+simultaneous presence and absence of social polarization—the fact that while
+individuals experience attitude homogeneity in their interpersonal networks, their
+networks are characterized by attitude heterogeneity. These paradoxes give rise to
+numerous scholarly arguments. By developing a formal model of interpersonal influence
+over attitudes in a context where individuals hold simultaneous positions on multiple
+issues, we show why these arguments are not mutually exclusive and how they
+meaningfully refer to the same social setting. The results from this model provide a single
+parsimonious account for both paradoxes. The framework we develop may be
+generalized to a wider array of problems, including classic problems in collective action.
+
+
+INTRODUCTION                                             interpersonal networks, these networks retain
+                                                         attitude heterogeneity overall. We do this by
+I n this article we provide a parsimonious
+  account for two puzzling empirical outcomes.
+The first is the simultaneous presence and
+                                                         investigating the joint effects of personal influence on attitudes and social relations.
+                                                            The first paradox emerges most crisply in
+absence of political polarization—the fact that
+                                                         the contrast between the observations of pundits
+attitudes rarely polarize, even though people
+                                                         and expert knowledge. For example, lay
+believe polarization to be common. The second
+is the simultaneous presence and absence of              observers routinely assume that the United
+social polarization—the fact that while indi-            States is increasingly politically polarized, but
+viduals experience attitude homogeneity in their         this belief contrasts rather sharply with the
+                                                         scholarly evidence on political polarization
+                                                         (DiMaggio, Evans, and Bryson 1996; Evans
+                                                         2003; Fiorina, Abrams, and Pope 2005). The eviDirect correspondence to Delia Baldassarri,           dence suggests that, aside from a small set of
+Department of Sociology, Princeton University,           takeoff issues, “the policy preferences of difWallace Hall, Princeton, NJ 08544 (dbalda@
+                                                         ferent social groupings generally move in parprinceton.edu) and Peter Bearman, Institute for Social
+and Economic Research and Policy, 420 W. 118th           allel with each other” (Page and Shapiro
+Street, IAB Building, New York, NY 10027                 1992:288). In general, on moral, social, eco-
+(psb17@columbia.edu). We thank Ivano Bison,              nomic, and foreign-policy issues, there is little
+Mario Diani, Emily Erikson, Andrew Gelman, James         evidence of increasing polarization.
+Moody, Robert Shapiro, Katherine Stovel, Duncan             Against this background, why do pundits
+Watts, Harrison White, and the ASR editors and espe-     believe that attitudes are increasingly polarcially the anonymous reviewers for helpful com-          ized? One answer is trivial: people attend to
+ments. Earlier versions of this article were presented   the wrong population, focusing only on the attiat the Sunbelt XXVI International Social Network         tudes of political elites. The second answer is
+Conference in Vancouver, Canada, and at seminars
+                                                         more substantial: sometimes, typically for very
+at the University of Rome ‘La Sapienza,’ Princeton
+University, Yale University, the University of           short periods, some issues become the focus of
+Washington, and the University of Turin. Financial       intense attention and consequently appear to
+support from the Institute for Social and Economic       radically polarize Americans—for example,
+Research and Policy at Columbia University is grate-     attitudes toward abortion, gays in the military,
+fully acknowledged.                                      or the Iraq war. We call these takeoff issues.
+
+                     AMERICAN SOCIOLOGICAL REVIEW, 2007, VOL. 72 (October:784–811)
+
+
+                                                      DYNAMICS OF POLITICAL POLARIZATION—–785
+
+
+Collective attention to the takeoff issues can          tudes will interact with others with similar attidistract from the larger number of issues in            tudes, but actors also interact with those whose
+which attitudes remain parallel. Individuals thus       positions on attitudes are different. Actors are
+perceive the macrostructure as polarized despite        most likely to interact around the issue that is
+the fact that in the context of a population of         most salient to them, choosing that topic over
+issues, polarization is absent.                         topics they have little interest in. These conThe second paradox emerges most crisply in           versations provide the foundation for personal
+the contrast between everyday experience and            influence, which may operate to bring individexpert knowledge. The everyday experience of
+                                                        uals closer together or induce greater distance.
+Americans is consistent with the idea that their
+                                                           To anticipate the main results—obtained by
+social world is polarized. Here as well, one
+observes a complex duality. On one hand, our            studying the model through computer simulaordinary experience is that the people we talk          tion—we observe that the simultaneous presto about issues salient to us have beliefs simi-        ence and absence of political polarization may
+lar to ours on those issues. Sociologists account       be accounted for by the fact that most attitudes
+for this phenomenon by noting the macrolevel            are not polarized, while some attitudes at some
+dynamics that lead to persistent race, ethnic, and      times attract disproportionate attention and
+social class segregation, thereby enhancing the         become polarized. The simultaneous presence
+probability of contact with categorically simi-         and absence of social polarization arises from
+lar individuals (Abramson and Tobin 1995;               the fact that people discuss important issues
+Jargowsky 1996; Massey 1996). Since there is            selectively. They thus experience homogeneous
+some relationship between attitudes and social          environments, although the actual attitude disbackground, the fact that socially similar indi-        tribution of those around them is heterogeneous.
+viduals are more likely to interact is seen to             In more general terms, we show that simple
+yield segregated social and ideational commu-           mechanisms of social interaction and personal
+nities. On the other hand, there has been no real
+                                                        influence can lead to both social segregation and
+change in the relationship between attitudes
+                                                        ideological polarization. Along the way, we
+and attributes (DiMaggio et al. 1996; Evans
+2003; Fiorina et al. 2005)—that is, the social          identify the social dynamics that underlay issue
+background determinants of attitudes are as             takeoff and describe one of the structural deterweak today as they were 50 years ago. These             minants of ideational change. Because the
+dual views give rise to an asymmetry between            model operates on attitudes that individuals
+lived experience and “sociological reality.” This       hold in the context of “tangible” social relaasymmetry is a consequence of the fact that             tions within an observable network structure, the
+people interact with a limited number of others         framework we develop is amenable to generaland talk to far fewer about political issues impor-     ization to a diverse set of problems, including
+tant to them. Thus, while individuals experi-           classic problems in collective action.
+ence attitude homogeneity, the larger group in             The structure for this article is straightforwhich they are embedded retains attitude het-           ward. We first consider the literature(s) on ideerogeneity.                                             ological and social polarization. Building on
+   To study the simultaneous evolution of polit-        empirical findings arising from public opinion
+ical views and patterns of social interaction,          research and studies of group dynamics, as well
+and thus observe the ideational and structural
+                                                        as previous models of social influence, we
+conditions that underpin those rare moments in
+                                                        describe a model for political influence in the
+which political and social polarization occur, we
+develop a formal model of interpersonal influ-          context of interpersonal relations. We then
+ence over attitudes in a context where individ-         describe simulation results from this model,
+uals hold simultaneous positions on multiple            first for exemplary cases as illustration and subissues—for example, abortion, highway con-              sequently for the entire population of observed
+struction, campaign reform, and pollution abate-        outcomes. In the discussion we relate these
+ment—just as real people do. In our model,              results back to our empirical puzzles. Finally, we
+social-structural dynamics operate to enhance           generalize the model to a wide array of contexts,
+the probability that people with similar atti-          including those relevant for collective action.
+
+
+786—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+POLITICAL AND SOCIAL                                       liberal views and racial integration and gender
+POLARIZATION IN CONTEMPORARY                               and on tougher positions on crime. By contrast,
+                                                           Americans have become more divided in their
+AMERICA
+                                                           attitudes toward abortion and, less dramatically, in
+Scholars who engage the political polarization             their feelings towards the poor.
+debate tend to argue that while political elites            Evans (2003) concurs, although he finds new
+and party activists are increasingly polarized,          evidence of increasing polarization on attitudes
+ordinary citizens are not. Fiorina and colleagues        toward sexuality. In considering changes with-
+(2005:ix), for example, suggest that                     in population subgroups, most empirical work
+  Americans are closely divided, but we are not          shows that intergroup polarization is mild.
+  deeply divided, and we are closely divided because     Specifically, with respect to age, gender, edumany of us are ambivalent and uncertain, and con-      cation, region, and religious affiliation we
+  sequently reluctant to make firm commitments to        observe stability or even instances of depolarparties, politicians, or policies. We divide evenly    ization in intergroup differences. In fact, the
+  in elections or sit them out entirely because we       evidence suggests that variance and bimodaliinstinctively seek the center while the parties and    ty (two measures commonly used for assessing
+  candidates hang out on the extremes.
+                                                         polarization) have not increased for most attiWhile scholars tend to agree that elite and           tudes. Likewise, attitudes are not now more
+activist polarization has increased,1 they also          constrained by categorical group membersuggest that public opinion polarization has not         ships—the attitudes of high school graduates
+followed suit, even though elite polarization            and college graduates, men and women, the old
+has been accompanied by a parallel rise in               and the young, and so on are not increasingly
+wealth disparity in the population (McCarty,             dissimilar.
+Poole, and Rosenthal 2006). Whether or not                  In the same vein, Fiorina and colleagues
+one looks for polarization across all Americans          (2005) dispute “The Myth of a Polarized
+or tracks changes within population subgroups,           America” and suggest that the “culture war”
+empirical data suggest that there is no evidence         commonly conjured up in the media is a fictive
+for polarization, overall, except for some take-         construction. According to their analysis, there
+off issues. Considering the population as a              is no popular polarization, but simply partisan
+whole, DiMaggio and colleagues (1996:715)                polarization—“those who affiliate with a party
+show that                                                are more likely to affiliate with the ‘correct’
+                                                         party today than they were in earlier periods” (p.
+  Americans have become more united in their views       25).2 It is the political elite and a small number
+  on women’s role in the public sphere, in their
+                                                         of party activists that are polarized.3
+  acceptance of racial integration and in their opinions on matters related to crime and justice. These
+                                                            Without getting lost in the details, we can
+  trends represent movement toward consensus on          summarize the three main findings upon which
+                                                         scholars agree. First, while American public
+                                                         opinion since 1990 is increasingly divided on
+   1 This may be more true for the right than for the
+                                                         abortion, and more recently on sexual morality and the war in Iraq (Baker 2005; DiMaggio
+left. For the right, a soft ideological realignment of
+the party elite, initiated under Reagan as a consequence of his economic and social programs, was radically accelerated by a new cohort of strongly             2 Likewise, Bartels (2000) shows that the impact
+
+conservative Republicans from the South who              of partisanship on voting behavior has grown over
+replaced the moderate wing of the Republican Party       time.
+(Wilcox 1995). The collapse of the Democratic Party         3 Of course, others disagree. For example,
+
+in the South led the party as a whole to appear more     Abramowitz and Saunders (2005, abstract) argue
+liberal, even as it was pursuing traditional, centrist   that divisions between red states and blue states, relipolicy agendas. These dynamics led to a decline of       gious voters and secular voters, and Democrats and
+bipartisanship in Congress (Poole and Rosenthal          Republicans “are not confined to a small minority of
+1997) and contributed to the further polarization of     elected officials and activists—they involve a large
+party activists through both persuasion and mecha-       segment of the public and they are likely to increase
+nisms of selective recruitment and derecruitment         in the future as a result of long-term trends affecting
+(Saunders and Abramowitz 2004).                          American society.”
+
+
+                                                      DYNAMICS OF POLITICAL POLARIZATION—–787
+
+
+et al. 1996; Evans 2003; Shapiro and Bloch-             segregation arising from choices and lifestyles.
+Elkon 2006), we observe stability and even              For example, young single adults increasingly
+depolarization on all the remaining issues.             concentrate in center cities, and homosexuals
+Second, we do observe some growth in parti-             have disproportionately relocated to a handful
+san polarization: those who are politically active,     of large cities.
+who identify with a party or place themselves              As spatial segregation has remained stable or
+on the liberal/conservative continuum, tend to          even increased, there is also evidence that the
+have more extreme positions than the rest of the        integrative role of voluntary associations is less
+population. Third, we do not observe popular            salient today than in the relatively recent past.
+polarization along the lines of gender, age, edu-       First, there is a general sense that membership
+cation, race, region, or religious denomination         in such associations is declining. More impor-
+(although church attendance is associated with          tantly, even when not in decline, voluntary assopolarized attitudes). With respect to these demo-       ciations are more homogeneous with respect to
+graphic and social categories, the parallel pub-        social class, race, ethnicity, and religious orilic still holds for the vast majority of issues.        entation today than in the past. Skocpol (2003),
+   Despite these findings, people experience            for example, argues that voluntary groups have
+the world as more polarized than it really is. This     been largely transformed into advocacy groups
+leads pundits to claim increasing polarization,         and nonprofit organizations, which are directinducing the asymmetry between lay and expert           ed by professionals oriented to lobbying activopinions (Abramowitz and Saunders 2005;                 ities. One of the byproducts of a rich
+Greenberg 2004; Kohut et al. 2000). As indi-            associational life—the possibility of building
+cated earlier, making sense of this asymmetry           social relations with a broad, heterogeneous set
+is one contribution of this article. Our account        of other people—is therefore reduced (Putnam
+hinges on the fact that one or two issues, for very     2000).
+short periods of time, monopolize debate and               Persistent spatial segregation and increased
+emerge as highly polarized.                             associational segregation provide the sociologWhile it is a cultural invariant of all soci-        ical foundation for the idea that today, more
+eties that people tend to interact with those who       than in the past, people talk to others who are
+are similar to them (McPherson, Smith-Lovin,            categorically more similar to themselves. This
+and Cook 2001), changes in the overall level of         lays the structural foundation for the everyday
+social segregation—and the lines along which            experience in which the people we talk to share
+segregation is organized—are relevant to under-         our attitudes. At the same time, it is also true that
+standing the dynamics of everyday interaction           the relationship between categorical attributes
+and personal influence. Social structural               and attitudes is no stronger today than in the
+changes that give rise to segregation or inte-          past; people hold contradictory and inconsistent
+gration shape interaction dynamics by shaping           attitudes, and, on many issues, people have only
+the probability of encounters. Against this back-       weak opinions at best. While our conversations
+ground, recent studies on social inequality and         tend toward homogeneity (because we discuss
+segregation provide a detailed picture of the           only a subset of possible political issues with a
+trends in spatial segregation with respect to           subset of possible interlocutors), the networks
+class, life course, race, and ethnicity that have       we are embedded in retain heterogeneity of
+characterized American society during the sec-          interest on diverse attitudes.
+ond half of the twentieth century (Logan, Stults,          In sum, with respect to ideational dynamics,
+and Parley 2004; Massey 1996). From the 1970s           polarization on one issue need not lead to polaron, we observe a rise in residential segregation        ization on all issues. With respect to social segby income and social class (Abramson and                regation, there may not be a mapping between
+Tobin 1995; Jargowsky 1996), and in some                social and attitudinal polarization. In fact, as we
+cases the spatial structuring of affluence and          will suggest, such a mapping is unlikely. The
+poverty has been magnified by race and ethnic           same dynamic that leads to an intense focus on
+differences (Massey and Denton 1989). In addi-          a single issue—and consequent social, struction to the persistence or even amplification of        tural, and attitudinal polarization—maintains
+traditional patterns of segregation, in the last        attitude heterogeneity on others. These twin
+decades scholars have reported new forms of             dynamics make possible the experience of
+
+
+788—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+homogeneity in individual discussion networks           Our goal has been to deploy a model of interwithin heterogeneous social structures.              personal influence sensitive to dynamics of
+                                                     political discussion, where actors hold multiple
+MODEL FRAMEWORK                                      opinions on diverse issues, interact with others
+                                                     relative to the intensity and orientation of their
+Empirical research has greatly contributed to our    political preferences, and through evolving disunderstanding of interpersonal influence (Katz       cussion networks shape their own and others’
+and Lazarsfeld 1955). This research has shown        political contexts. In the model, opinion change
+that social proximity and frequent interaction       depends on two factors: the selection of interusually lead to attitude conformity: from            action partners, which determines the aggreacquaintances to intimates, individuals’ opinions    gate structure of the discussion network, and the
+are shaped by seemingly minor interactions           process of interpersonal influence, which deterarising from diverse social contexts (Huckfeldt      mines the dynamics of opinion change. In the
+and Sprague 1995; Zuckerman 2005). While             next section, we organize the description of the
+small-scale interactions are believed to cumu-       model around these two elements. Table 1 sumlate into macrolevel outcomes, empirical stud-       marizes the simulation algorithm.
+ies focusing on the microsphere of personal
+contacts provide a fragile foundation for a direct
+                                                     STRUCTURE AND CHOICE IN INTERACTION
+appreciation of any macro effect. We develop a
+formal model of social influence that allows us      In general, people interact with people who are
+to link patterns of microinteraction with            similar to them. Rich women marry rich men
+macrostructural outcomes.                            proportionally more often than poor women do.
+   We build on the substantial contributions of      Republicans are more likely to know
+previous scholars who have studied processes         Republicans than Democrats. Overweight indiof social influence and opinion change through       viduals are more likely to eat at fast-food restauanalytical and simulation models. Mainly             rants than thin people and are therefore more
+focused on the generation of group consensus,        likely to meet other overweight individuals.
+the earliest models of interpersonal influence led   There are strong pressures toward homophily in
+to universal agreement (De Groot 1974; French        social relations. At the same time, it happens that
+1956; see also Abelson 1964), while subsequent       overweight persons meet slim ones, Democrats
+models reached equilibrium outcomes different        know Republicans, and rich people fall in love
+from full consensus (Abelson 1979;                   with not so wealthy ones. Despite a clear tenHegselmann and Krause 2002; Marsden 1981;            dency toward homophily, people are also in
+Nowak, Szamrej, and Latané 1990). In this vein,      touch with people different from them. Social
+Friedkin and Johnsen (1990; Friedkin 1999)           similarities affect patterns of interaction, but
+integrate previous work on opinion formation         they do not completely determine them.
+with recent developments in network analysis in      Accordingly, in our model, actors can accoma general framework—social influence network         modate their preferences and enforce homotheory—which is consistent with theories of          geneity in the process, but room for casual
+both social conformity and social conflict and       encounters with new and different actors is
+can thus account for patterns of disagreement        always present.
+in a group.                                             Previous scholars have been sensitive to the
+   Models that involve dynamics of interper-         role of social structure in shaping social influsonal influence differ broadly in their scope,       ence. Most often, the intensity of influence is
+ranging from the study of dynamics of ideo-          seen to be a function of actors’ structural proxlogical polarization (Hegselmann and Krause          imity, modeled as a matrix of influence coeffi2002; Macy et al. 2003; Nowak et al. 1990), col-     cients that vary across pairs of actors. An actor’s
+lective action (Kim and Bearman 1997), and           opinion is then adjusted to other actors’ opincollective decision-making (Marsden 1981) to         ions proportional to these influence coefficients
+the persistence of cultural differences (Axelrod     (DeGroot 1974; French 1956). In this approach,
+1997) and political disagreement (Huckfeldt,         every actor is potentially affected, albeit with difJohnson, and Sprague 2004).                          ferent intensity, by the opinion of all other actors
+
+
+                                                       DYNAMICS OF POLITICAL POLARIZATION—–789
+
+Table 1. Outline of the Simulation Algorithm
+
+Initial Conditions:
+—100 actors
+—4 issues; issue interest ~ normal ( = 0,  = 33.3); interest range (–100; +100)
+—Initialize perceived ideological distance  = mean Euclidean distance among actors
+
+Iteration Flow:
+Selection of interaction partners
+—At each iteration for each actor:
+——Random sample of potential interlocutors ~ to the overall level of interest
+——Draw from the sample the actual interlocutors with p = 1 – 
+
+Process of interpersonal influence
+—For each pair of actors previously selected:
+——Select the issue for discussion
+——Compute the change for each actor based on their interest on the issue
+——Determine the direction of change according to the sign of the issue
+——Update actors’ level of interest
+——Update actors’ perceived ideological distance with the current/actual distance
+—Save all necessary information
+—(Repeat 500 times)
+
+
+(Friedkin and Johnsen 1990; Marsden 1981) or              structure is thus shaped through patterns of
+by a subgroup of similar people (Hegselmann               interaction and evolves over time.4
+and Krause 2002).                                            An extremely fruitful distinction in the basic
+   Other models instead explicitly consider the           features of the system responsible for homophipresence of a spatial context (Axelrod 1997;              ly is between “the individual level propensity to
+Nowak et al. 1990) or a tangible relational struc-        choose similar others (choice homophily) and
+ture (Kim and Bearman 1997; Marsden 1981)                 the composition of the groups in the system,
+within which individuals are embedded and dis-            which dictate the possibilities for friendship
+cuss the relation between structural dynamics             choice (induced homophily)” (Mcpherson and
+and attitude change. In both cases, individuals           Smith-Lovin 1987:371). Empirical studies sugare influenced exclusively by those to whom               gest that a focus on choice homophily is warthey are connected in a relational structure or           ranted, as individuals exert significant freedom
+context that remains stable over time. In a sim-          in selecting among the members of their social
+ilar model, Huckfeldt and colleagues (2004)               groups those with whom they want to talk about
+introduce some freedom in the choice of inter-            important matters and political issues (Huckfeldt
+actants by allowing actors to have multiple con-          and Sprague 1995). In our model, actors learn
+texts and to search for the more agreeable                about other actors’ attitudes through interacdiscussants.                                              tion. This enables actors to map their ideologiTo make our model more sensitive to empir-             cal distance with respect to others. Actors then
+ical evidence arising from studies of public              adjust their future interactions in order to reduce
+opinion and political discussion networks, we             conflict and maximize exposure to actors more
+allow actors to select their discussion partners          similar to themselves. While ideological affinon the basis of their ideological similarity and          ity does not drive all encounters—since actors
+interact more or less often according to their
+overall interest in political matters. Instead of
+fixing actors into a predetermined, stable net-              4 Similarly, Carley (1991) proposed a dynamic
+work structure, we induce actors’ discussion              model in which the probability of interaction changes
+networks from the dynamics of local interactions          over time and is the function of the amount of inforin which they are involved. The political network         mation shared by the actors.
+
+
+790—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+are not stuck in fixed relationships—it does               Attitude involvement induces biased informaaffect the unfolding of personal relations.                tion-gathering strategies that are likely to reinIn sum, the likelihood of actors getting into           force one’s opinion and make it more extreme.
+a discussion with others depends both on their             In turn, attitude extremity makes it more accespersonal level of political commitment and on              sible, thus important to individuals (Lavine,
+the level of ideological affinity they have with           Borgida, and Sullivan 2000). On this ground,
+other people. First, the more one is committed             extremity of opinion can be regarded as a good
+to a cause, the more likely one is to start a con-         proxy for issue interest and vice versa.
+versation. Second, actors tend to interact with               We now describe the process of social selecothers who are ideologically similar to them.              tion that guides the dynamic formation of disThird, actors have some degree of freedom in               cussion dyads. As indicated earlier, two aspects
+deciding with whom they discuss their ideas                are relevant here. On one hand, actors’ overall
+and thus change interlocutors from time to time.           levels of interest affect their frequency of interFourth, through interaction, actors acquire infor-         action; on the other hand, ideological affinity
+mation about the ideological positions of oth-             shapes the selection of specific discussants.
+ers and adjust their future behavior accordingly.          With respect to ideological similarity, actors
+   Despite the necessary simplification that any           are not universally knowledgeable about the
+analytical formalization imposes, the model                attitudes of those around them. Their knowledge
+deployed here retains the multiple and some-               about other actors’ opinions depends on the histimes contradictory dynamics described above.              tory of their personal interactions (Huckfeldt et
+Specifically, the model operates with 100 actors           al. 2004). For each pair of actors, we therefore
+(N = 100), each of whom holds an opinion on                distinguish between their real ideological dis-
+                                                                    (t)
+four different issue-domains (hereafter referred           tance (d ab) and their perceived ideological dis-
+                                                                    (t)
+to simply as issues). In this framework, actors            tance ( ab). The latter is updated to the former
+                                                           when actors interact. Specifically, we define
+may be in favor of or against a social policy                                            (t)
+                                                           the ideological distance d ab between actor a
+associated with each issue. We capture intensiand actor b at time t as the Euclidean distance
+ty of sentiment, either positive or negative, by
+                                                           in the four-dimensional space of the four issues
+values that are allowed to range from –100 to
+                                                           i, normalized to a range 0 to 1 by dividing for
+100.5 An interest of 0 indicates that the actor has
+                                                           the maximum value of all pairs:
+no interest on the issue. Interest increases as val-
+
+                                                                               (a – b )
+ues move toward either 100 or –100. The over-                                         4
+                                                                                            (t)     (t) 2
+all interest distribution follows a normal                        (t)                 i=1   i       i
+distribution centered on 0, with a standard devi-                d ab =                         (1)
+                                                                             max [ (a – b ) ]
+ation of 33. The four issues are independent.6                           {a,b}僆N             i=1
+                                                                                                        (t)
+                                                                                                        i
+                                                                                                              (t) 2
+                                                                                                              i
+   In this way, we model issue interest and
+                                                                                                  (t)
+extremity of opinion with a unique parameter.              The perceived ideological  ab distance is iniAlthough analytically distinct, these two aspects          tialized as the average distance at time 0 (t0) over
+are empirically related: the more interest peo-            all a–b dyads. When actors interact, they acquire
+ple have in an issue, the more people tend to              information about each other’s ideological posihave extreme views (Baldassarri 2007). There               tions and update their perceived ideological disare cognitive and motivational reasons for this.           tance to match the actual ideological distance
+                                                           between them. Formally,
+
+
+                                                                             {
+  5 Algebraically, it is the same as modeling two                             d(t0)  if actors a and b
+                                                                
+qualitatively different features of interest, its arith-         (t)(t)              never interacted before
+                                                                 ab =
+                                                                        ab
+                                                                               (t–c)                          (2)
+metic sign (+ or –) and its strength (ranging from 0                          d ab if actors a and b last
+to 100).                                                                             interacted at time t – c
+   6 We investigated a wide range of alternative models in which we allowed for correlations between           For any pair of actors a and b, the probability
+issues. With respect to the argument and the main          of interaction is proportional to their interest and
+results presented in the article, there is no difference   an inverse function of the perceived ideological
+between a model in which issues are independent and        distance between the two. Combining these two
+one in which issues are correlated.                        elements, actor a’s chance to interact with actor
+
+
+                                                                         DYNAMICS OF POLITICAL POLARIZATION—–791
+
+                     (t)
+b at time t (P ab) is proportional to the overall                          the selection dynamic. In fact, further interacinterest of actor a to the overall interest of actor                       tions are affected by this change in the perb, and inversely related to the perceived ideo-                            ceived distance  ab : positive interactions
+                    (t)
+logical distance ( ab) between the two. Formally,                         increase the probability of future (positive)
+                                                                           political discussions, while disagreement or
+                                    (t)
+                                   P ab =                                  conflict reduces the chances of future encoun4                        4                                     ters.
+
+
+       [( ) ( )]
+          | a |                     | b |
+                           2                          2
+                     (t)                        (t)                           While actors will not pursue disagreement,
+                      i                          i
+  ⫻
+           i=1
+                               +     i=1
+                                                          ⫻ (1 – (t)      there are situations in which people happen to
+                                                                  ab)
+                 4                          4                              have an alternative perspective on relevant
+                                   100                             (3)     aspects of social life. Dog owners are more
+       (t)                                    (t)
+                                                                           likely to become friends with neighbors who
+where P ab ~1 if both actors strongly agree ( ab                          own dogs, but owning a dog also increases one’s
+~ 0) and all four issues are maximally salient to                          probability of contact with neighbors who
+               (t)                               (t)
+them, while P ab ~ 0 if they strongly disagree ( ab                       intensely dislike dogs (after all, even good dogs
+~ 1) or have no interest on the four issues.  7
+                                                                           bark frequently enough to induce complaints
+   While actors a and b have the same proba-                               from dog-haters). Likewise, community groups
+bility to interact with each other—interaction is                          mobilize around specific issues that are proreciprocal!—their respective total number of                               moted by other groups, individuals, or local
+interactions might differ, due to differences in                           institutions. Those with intense opinions on
+their overall levels of interest. By conditioning                          these issues are more likely to interact than are
+the probability of interaction on actors’ overall                          those without, and so on. It follows that not
+levels of interest, we create a context in which                           only similarities but also strong differences can
+a few people almost never engage in political                              induce social interaction. In fact, the persistence
+matters, some discuss politics sometimes, and                              of attitude heterogeneity in discussion networks
+others do so more often, thus introducing a real-                          is well documented empirically. For example,
+istic feature of population heterogeneity into                             Huckfeldt and colleagues (2004) show that
+the model (Delli Carpini and Keeter 1996;                                  “political disagreement was a common event
+Eliasoph 1998).                                                            among citizens .|.|. even within closely held netFinally, with respect to the selection process,                         works of political communication” (p. 63).
+note that the process of information updating,                             Looking at respondent agreement with discusby which, after their first, casual encounter,                             sants who support Bush or Gore by responactors a and b’s perceived ideological distance                            dents’ partisanship, they find that “more than
+matches their real ideological distance, has a key                         one-third of the two party voters report at least
+role in introducing relational historicity into                            one discussant who voted for the opposite
+                                                                           party’s candidate” (p. 37).
+                                                                              Consequently, in our model, discussions are
+  7 Operationally, for each actor at each time peri-                       about the topic in which both actors are most
+od t, we randomly selected from the population a                           interested. This is true even if they do not share
+number of potential interlocutors as a function of the                     the same view. When actors interact, they select
+actor’s overall level of interest. The number of peo-                      from the portfolio of issues available the issue
+ple selected is proportional to the sum of the squared                     with the highest joint relevance, defined as the
+mean of interest over the four issues. Given this set                      issue for which the sum of a and b’s absolute
+of potential interlocutors, the probability of a dis-                      values is maximum. Specifically:
+cussion taking place is inversely proportional to the
+perceived ideological distance. The interaction                            Relevant issue = i such that max (|a(t) i        i )
+                                                                                                                     | + |b(t) |
+between actors a and b is defined as the outcome of                                  for i = (1,.|.|.,4) at time t           (4)
+a random draw from a Bernoulli distribution with
+                                                                              While issue selection is based on the level of
+probability equal to 1 minus the perceived ideological distance between a and b.  is a scaling factor                       interest, actors need not hold the same posi-
+(.005) that limits the number of interactions to a rea-                    tion. Actors might discuss a certain topic
+sonable range. In general, at time 1, actors have                          because they have either strongly complemenbetween 0 and 6 conversations, while at time 500, 0                        tary or strongly competing views on the same
+to 12.                                                                     issue. Baseball fans, if they sit at the same din792—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+ner table, will talk about baseball whatever team       extreme in cases of repeated attitude expression,
+they root for. Those who care deeply about an           an effect augmented by social interaction
+issue—the death penalty, global warming,                (Brauer, Gliner, and Judd 1995). These three
+threats to world peace—will also talk about             mechanisms are consistent with the model
+those issues among friends and kin, certainly           deployed here.
+when they share the same opinion, but also                 Specifically, when interlocutors share the
+when they disagree. Overall, in our model,              same view, interaction leads to a reinforcement
+actors are more likely to discuss issues they           of their beliefs. Where discussants differ, either
+agree on, following from the mechanisms of              compromise or conflict can result (Hovland,
+social selection and information updating pre-          Harvey, and Sherif 1957). In the case of disviously described. Nonetheless, by selecting            agreement, a simple mechanism of dissonance
+discussion issues on the basis of their salience        reduction (Festinger 1957; Hedström 2005)
+and independently from actors’ respective posi-         shapes whether or not the two parties will move
+tions, we allow some room for disagreement.             toward a compromise or exacerbate their differences. In real life, conversations usually
+MECHANISMS OF SOCIAL INFLUENCE                          unfold around a variety of subjects, and this
+                                                        gives one the opportunity to evaluate others’
+Discussion with others about views important            positions on a broad set of issues. If actors have
+to oneself may amplify, reinforce, or reduce            opposite attitudes on a salient issue, their intercommitment to one’s beliefs. In fact, most              action will lead to compromise when comproempirical studies of group dynamics and per-            mising reduces dissonance. Likewise, actors
+suasive communication, as shown by Kitts                will commit to their beliefs when commitment
+(2006), suggest that while interaction with sim-        (amplification of conflict) reduces dissonance.
+ilar (or liked) others reduces distance, interac-          In general, the direction of opinion change
+tion with dissimilar others may increase                depends on interactants’ relative positions. Table
+distance, leading to group polarization.                2 shows, for a pair of actors a and b, the four
+Experimental studies in social psychology sug-          possible combinations of interest orientation
+gest three complementary explanations for the           (+ +, – –, + –, and – +) and the consequent
+“group polarization phenomenon.” The per-               direction of their opinion change. If actors share
+suasive arguments explanation suggests that             the same orientation, interactions reinforce their
+while actors do not originally hold the entire set      respective commitments and they end up closof arguments in support of their perspective,           er to each other (the distance between them is
+through conversation, they come to share a              reduced since actors with lower absolute levels
+broader set of arguments that favor their initial       of interest move more than those with higher
+attitudes and thus move toward more extreme             levels of interest). If they have contrasting views
+positions. The social comparison explanation            on the focal issue, but share similar opinions on
+suggests that polarization occurs when group            the remaining issues, they compromise by
+members, through interaction, become aware of           reducing their commitment on the salient issue,
+the fact that their attitude is shared by a larger      thus moving closer to each other. In contrast, if
+group of people than expected, thereby enhanc-          they disagree on other issues, their commiting commitment (Myers and Lamm 1976).                   ment to the focal issue is reinforced and their
+Lastly, individuals’ attitudes become more              opinions diverge further.
+
+
+Table 2. Directionality of Opinion Change
+
+                                                         ab                                 ab
+                                                         +–                                 –+
+                       ab        ab
+                       ++        ––          conflict     compromise            conflict     compromise
+Change for a          + ai     –ai           +ai            –ai              –ai            +ai
+Change for b          + bi     –bi           –bi            +bi              +bi            –bi
+Relative Movement     →←        →←             ←→              →←                ←→              →←
+
+
+                                                               DYNAMICS OF POLITICAL POLARIZATION—–793
+
+
+   We now consider intensity of opinion change.                  instance, the maximum change is 19.9 points,
+In one modeling tradition, single interactions                   when ai is ± 1 and bi is ±100.
+can radically change individuals’ opinions; atti-                   In sum, we represent opinion change as an
+tudes are seen as categorical and interpersonal                  interpersonal process, where the intensity and
+influence induces categorical changes in indi-                   direction of the change depend on the relative
+viduals’ opinions, that is, a change in states                   positions of discussion partners. Intensity is a
+(Axelrod 1997; Huckfeldt et al. 2004; Watts                      function of the difference in the level of interand Dodds 2007). In contrast, other models—                      est of the two interlocutors. Direction is deterand the model deployed here—assume that                          mined by the signs of their preferences. It may
+opinions are continuous and actors change posistrengthen or weaken an actor’s interest in a
+tion by some constant fraction of the distance
+                                                                 specific issue.
+between actors (Abelson 1964; Marsden 1981).
+                                                                    To exemplify the process of interpersonal
+Of course, people may recall conversations in
+which a sharp argument was enough to change                      influence captured in our model, we consider
+their (or others’) mind, but the fact that they                  three simple scenarios. In Scenario 1, actor a’s
+remember such events tells us that they are                      interest in the four issues is respectively (50,
+quite exceptional. While people usually do not                   –23, 6, 11) while b’s interest is (20, 30, –50, 4).
+keep track of the myriad of unperceivable, small                 Following Condition 4, actors will discuss Issue
+attitudinal changes that occur in their everyday                 1, since it is the issue for which the sum of the
+lives, it is from this crescive unfolding of incre-              absolute values is greatest. Following Equation
+mental tiny modifications in people’s attitudes                  5, the change for actor a is .6 while the change
+that both stability and change in mass opinions                  for b is 1.5. Since actors a and b share the same
+arise.                                                           sign on Issue 1, the conversation reinforces
+   We model interpersonal influence as bidi-                     their respective commitments, shifting their
+rectional—both interlocutors change their opin-                  new values to a1 = 50.6 and b1 = 21.5, thus
+ion as a consequence of the interaction—but the                  reducing their relative distance.
+magnitude of attitude change depends on their                       In Scenario 2, actors a and b have the same
+personal level of commitment. Group dynam-                       absolute values, but they now have different
+ics and political opinion research both suggest                  signs on the most salient issue: a has a negative
+that those least susceptible to influence either                 interest on Issue 1 (–50, –23, 6, 11) while b
+hold strong beliefs or are indifferent to the issue
+                                                                 remains positive (20, 30, –50, 4). In this context,
+at hand. It follows that individuals with modboth the discussion issue and the attitude change
+erate interest in an issue are most susceptible to
+                                                                 for each actor remain the same. Note that the
+influence (Brauer et al. 1995; Converse 1964;
+Zaller 1992). Accordingly, in our model people                   actors in this scenario hold alternative views on
+have a low probability of discussing issues of                   the discussion issue and have contrasting opinlow interest to them, and consequently their                     ions on most of the remaining issues. This is a
+opinion on such issues is rarely modified. In                    conflict situation, which reinforces actors’ comcontrast, while highly committed people inter-                   mitments to the focal issue and thus their opinact frequently with others, their opinions rarely                ions diverge further: a will move more strongly
+change dramatically. In fact, we model opinion                   negative, while b becomes more positive. The
+change as inversely proportional to one’s level                  new values will be a1 = – 50.6 and b1 = 21.5.
+of interest. In sum, changes in people’s opinions                   Lastly, in Scenario 3 actors still have the
+are incremental and sensitive to their level of                  same absolute values and alternative signs on the
+interest—the magnitude of change decreases                       discussion issue, but they agree on the remainas actors’ interest (positive or negative) increas-              ing issues: a now has values (–50, 23, –6, 11)
+es. Formally,                                                    while b remains the same (20, 30, –50, 4). In this
+                   || a(t)i| – |b(t)i||                          case, since the actors share similar opinions on
+      a(t)
+         i=⫻               (t)           for a(t)
+                                               i     0   (5)     the remaining issues, they compromise by
+                         |a i |                                  reducing their commitment on the salient issue.
+Where  is a scaling factor (.1) that restricts the              The new values will thus be a1 = – 49.4 and b1
+range of attitude change given an interaction. For               = 18.5.
+
+
+794—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+RESULTS                                                      The presentation of the results unfolds as
+                                                          follows: we first consider two case studies by
+Computer simulations allow us to study the
+                                                          reporting results from a non-takeoff and a takefunctioning of specific mechanisms in simplioff situation. We then provide a more systemfied social settings and to investigate the range
+                                                          atic analysis of the entire set of outcomes, which
+of outcomes they generate. We run 1,000 simbasically confirms the case study findings.
+ulations of the model. To get to polarization, we
+                                                          Focusing on the ideological conditions for issue
+first consider issues. Figure 1 reports graphs for
+                                                          takeoff, we show that in takeoff situations the
+eight different simulation outcomes. For each
+                                                          most popular issue is highly polarized, relative
+simulation, we plot the selection frequency for
+                                                          to the other issues. We then consider the struceach issue over time. The outcomes differ qualtural properties that arise from people’s patitatively; in some instances, multiple issues are
+                                                          terns of interaction. We model the network
+discussed at comparable rates, while in other
+                                                          structure by tracing the observed social relations
+cases a single issue takes off. To summarize
+                                                          actors engage in over time, and we show that
+the range of outcomes into a synthetic index we
+                                                          network structures in takeoff situations are sigcompute a Herfindahl and Hirschman index of
+                                                          nificantly more polarized than in non-takeoff sitconcentration (hereafter, the HH index):
+                             4                            uations. We consider the relationship between
+                    HH =    P
+                            i=1
+                                  i                (6)
+                                                          ideational and structural polarization and the
+                                                          level of asymmetry in issue popularity; in simwhere Pi represents the probability of discussion         ple terms, takeoff arises when the dynamics
+of issue i at time 500. Pi2 can be interpreted as         that induce ideological and structural polarizathe probability that two actors, randomly select-         tion intersect. We show that the rise of a single
+ed from the population, will speak about issue            issue is associated with an oversimplified social
+i. The HH index is the sum of these values, and           structure, characterized by a single dominant
+it increases according to the relative populari-          cleavage. In contrast, where there are multiple
+ty of some issues. The histogram at the center            foci of discussion, social structure appears more
+of Figure 1 shows the HH distribution for the             complex and nuanced.
+entire set of simulation outcomes. Reading from
+bottom-left to bottom-right the simulation outCASE STUDIES
+comes are ordered by the HH index, reported
+inside the box.                                           The model generates qualitatively different
+    While our interest naturally draws us to con-         outcomes with respect to the level of asymsider the unusual cases where takeoff occurs, it          metry in issue popularity. We describe the ideis important to also understand what happens              ological and structural characteristics that
+most often. Throughout, we distinguish between            distinguish takeoff and non-takeoff situations
+two qualitatively different outcomes: takeoff             by portraying in detail two simulation out-
+(HH > .4), in which the debate polarizes around           comes, which can be regarded as “virtual”
+a single issue (13 percent of the outcomes) and           case studies.
+non-takeoff (HH < .4), in which issues are more
+evenly discussed. Note that in over 90 percent
+                                                            ROUTINE OUTCOMES: THE NON-TAKEOFF CONof the cases in which the HH index is greater
+                                                          TEXT. We start with the more frequent outcome,
+than .4, the most popular issue is discussed at
+                                                          non-takeoff. Specifically, we consider simulaleast twice as often as the second most popular
+                                                          tion #997, the second from the bottom-left in
+issue. While we distinguish between takeoff
+                                                          Figure 1. We first assess the extent of attitude
+and non-takeoff outcomes in order to stress
+                                                          polarization on two dimensions, dispersion and
+qualitative differences, the model generates a
+continuous distribution of outcomes.8                     bimodality. Following DiMaggio and colleagues
+                                                          (1996), we use variance to measure the level of
+                                                          issue dispersion and kurtosis to measure
+   8 We use a cutoff value of .4 to distinguish between   bimodality. Dispersion refers to the average distakeoff and non-takeoff contexts. The differences we      tance between two people randomly chosen
+highlight between these two contexts are robust.          from a population and it captures the intensity
+Cutoff values between .35 and .45 reveal the same         of opinion divergence. The more a population
+substantive dynamics. Analyses available on request.      is polarized, the greater the average distance
+
+
+                                                                           DYNAMICS OF POLITICAL POLARIZATION—–795
+
+
+                   sim n. 485                               sim n. 336                            sim n. 181                      sim n. 104
+200 400 600 800
+
+
+                                        200 400 600 800
+
+
+                                                                               200 400 600 800
+
+
+                                                                                                               200 400 600 800
+                  HH = 0.32                               HH = 0.34                              HH = 0.38                       HH = 0.41
+                                        0
+                                                                                                               0
+                   sim n. 997                                                                                                     sim n. 963
+                                                           HH Concentration Index
+200 400 600 800
+
+
+                                                                                                               200 400 600 800
+                  HH = 0.26                                                                                                      HH = 0.5
+                                                                                                               0
+                   sim n. 518                                                                                                     sim n. 570
+200 400 600 800
+
+
+                                                                                                               200 400 600 800
+                  HH = 0.25                                                                                                      HH = 0.62
+
+
+                                                          0.2    0.3     0.4                     0.5    0.6
+                                                                HH Index at time 500
+                                                                                                               0
+
+
+Figure 1.               Frequency of Issue Discussion Over Time
+Notes: The histogram in the center shows the distribution of the HH index of concentration at time 500. The dashed
+line indicates the .4 cut point that distinguishes between non-takeoff and takeoff outcomes. Reading from bottomleft to bottom-right we display eight simulation outcomes that are ordered by the HH index, reported inside the box.
+For each simulation outcome, the graph shows the frequency of discussion of each issue over time. x-axis: time (from
+1 to 500); y-axis: frequency of discussion.
+
+
+between its members. Kurtosis9 measures the                                       two groups. Kurtosis increases as attitudes radextent to which the population splits evenly into                                 icalize and reaches its maximum value when
+                                                                                  moderation gives way to extremist views on
+                                                                                  either side of the issue. While variance cap9 For each issue i, we compute kurtosis as:
+                                                                                  tures the strength of opinion divergence, kurtosis
+                                  (i – i ) – 3
+                                    N
+                                                          – 4                     refers to the shape of attitude distribution and
+                                    a=1 a
+                      kurtosis =
+                              i                                                   allows us to distinguish between cases in which
+                                  N ⫻ sd(i)4                                      actors’ opinions organize around two alternative
+      -                                                                           positions and cases in which the distribution of
+where i is the average opinion on issue i, sd(i) is the
+standard deviation, and N is the number of actors.                                opinion is unimodal.
+
+
+796—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+   Figure 2 reports the attitude distributions (as            become stronger, either positive or negative.
+histograms) of the four issues at times 1, 100,               Across the whole set of issues and times, both
+200, 350, and 500. For each issue at each time                dispersion and bimodality increase, leading
+we report kurtosis and variance. Initially, all               toward a more polarized, or at least flat, attitude
+issue distributions are essentially normal. As                distribution.
+time passes, the number of actors with a mod-                    We now consider the structure of interperest commitment to issues decreases and attitudes              sonal relations. We induce discussion networks
+
+
+                             Kurtosis                                                 Variance
+Time      Issue 1       Issue 2      Issue 3      Issue 4          Issue 1       Issue 2      Issue 3       Issue 4
+1             .00         –.63           .47         –.71            1108         1138           933         1220
+100          –.47         –.78           .29         –.77            1387         1443          1212         1539
+200          –.79         –.90           .00         –.98            1753         1883          1609         1939
+350         –1.10        –1.20          –.58        –1.27            2374         2678          2281         2710
+500         –1.32        –1.41         –1.05        –1.48            3055         3560          2949         3640
+
+Figure 2. Issue Interest Over Time in a Non-takeoff Case (#997)
+Notes: Columns display the interest distribution of the four issues at times 1, 100, 200, 350, and 500. The table shows
+the values of kurtosis and variance associated with different points in time. The case is simulation #997, an instance
+where takeoff does not occur.
+
+
+                                                          DYNAMICS OF POLITICAL POLARIZATION—–797
+
+
+from patterns of social interaction. Sociologists           specific discussion partners. Technically, to dishave defined relations in numerous ways, how-               tinguish between repeated interactions and more
+ever there is virtually full agreement on the fact          occasional ones, we draw a link between actors
+that sustained interaction is a relevant part of            a and b if their propensity of association is at
+what constitutes a social tie. At different points          least two standard deviations greater than the
+in time, we consider the number of interactions             average propensity of association for actor a.
+each pair of actors has previously had, and we              Relations are then treated as symmetric.
+draw a link between actors a and b when their                                       (t)           (t)
+                                                                       a → b if A ab > 2s.d. (A a+)          (10)
+number of interactions is significantly higher
+than would be expected if they were to select               The derived discussion network can thus be
+their discussion partners at random. Specifically,          considered an indicator of social structure in
+we define a measure of preferential associa-                which only recurrent patterns of interaction
+                                         (t)
+tion between actors a and b at time t (A ab) as the         constitute social ties.
+                                            (t)
+difference between the observed (Obs ab) and                   Figure 3 reports the evolution over time of the
+                 (t)
+expected (Exp ab) number of interactions (x)                emergent structure of political discussion in a
+divided by the expected number of interac-                  non-takeoff situation. Nodes are shaded with
+tions.10                                                    respect to actor position on the most popular
+                       Obs(t)      (t)                      issue—black indicates a positive attitude, white
+                (t)       ab – Exp ab
+              A ab =           (t)                 (7)      negative. The structure of the graph remains
+                          Exp ab
+                                                            remarkably stable over time. Most striking is the
+   The logic here is similar to that used to com-           absence of subgroup formation. In fact, there is
+pute models of independence,11 and it allows us             no indication that a leading logic of association
+to take into account and control for actors’ dif-           between actors emerges. If actors are increasferent interaction frequencies (degrees). For               ingly committed to their ideas, (which they are),
+                         (t)
+each dyad a and b, A ab values close to zero                this commitment—in a non-takeoff situation—
+indicate that they interact at chance levels, while         carries few implications for social structure.
+deviations from zero indicate that social selec-               It is possible that the population is not polartion is operating. Negative values indicate that            ized on the most salient issue and that Figure 3
+actor a avoids interaction with b, while positive           represses nascent conflict on other issues. We
+values indicate that a disproportionately selects           consider this idea in Figure 4, which reproduces
+b as a discussion partner. This measure is not              the discussion network at time 500—shown at
+affected by frequency of interaction since we               the bottom-right in Figure 3—and reports the
+control for degree. Consequently, A captures a              issue discussed most frequently by each actor.
+pure tendency for selection and avoidance of                While actors tend to associate with others who
+                                                            share their viewpoint, the macro structure is
+                                                            integrated with respect to attitudes.
+                (t)
+  10 Where Obs
+                ab is the total number of interactions
+                                                               In sum, the normal outcome is that issues will
+actors a and b had until time t:                            not takeoff, that is, attention is devoted relativeT                            ly evenly to all four issues over time. On each
+
+       (t)
+                  Obs(t)
+                      ab =    
+                            t=1
+                                xab               (8)       issue, as time elapses, opinions diverge slightly
+                                                            and the distribution of attitudes becomes increasand Exp ab is the product of each actor’s total num-        ingly flat. With respect to social structure, there
+ber of interactions divided by the total number of
+                                                            is little change. This does not mean that people
+interactions among all the actors.
+                        T            T
+                                                            do not associate with others who share the same
+              (t)
+           Expa =     (
+                       t=1
+                             xa ⫻
+                               +     x )
+                                     t=1
+                                           b+
+                                                            opinions. More often than not, they do.12 But the
+
+                              T
+
+                             x
+                              t=1
+                                    ++             (9)        12 One reader suggested that the most efficient
+  11 While this strategy might be problematic for rela-     test of this assertion would be to assess dyadic autotional data in which there are triadic tendencies and       correlation. We note that the autocorrelation between
+more complex forms of interaction, it is appropriate        dyadic relations and each of the four issues is sigwhen networks are built starting from dyadic inter-         nificant, with Moran’s I statistic of autocorrelation
+actions.                                                    ranging between .77 and .86 (Cliff and Ord 1973). It
+
+
+798—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+                       time 200                                                time 300
+
+
+                       time 400                                                time 500
+
+
+Figure 3. Discussion Networks Over Time in a Non-takeoff Case (#997)
+Notes: Actors (circles or nodes) are connected (by arcs) if their frequency of interaction is higher than expected by
+chance. Nodes are colored according to the sign of the most frequently discussed issue. Black is positive, white is
+negative. Simulation #997, non-takeoff. The layout of the graph is a variant of Fruchterman and Reingold’s forcedirected placement algorithm implemented in R by Carter Butts. All graphs in the article are visualized using this
+algorithm.
+
+
+structure of interactions is not polarized, giving           off is relatively rare, occurring only 13 percent
+rise to the second puzzle we started with—                   of the time. From a quick glance at our case
+while individuals experience attitude homo-                  study, we can see that one issue (Issue 1) takes
+geneity in their interpersonal networks, these               off; that is, becomes the focus of intense disnetworks retain attitude heterogeneity overall.              cussion. In this instance, Issue 1 is three times
+                                                             more frequently discussed than the other issues.
+   NON-ROUTINE OUTCOMES: THE TAKEOFF CON-                       As before, we first consider attitude disperTEXT. We now consider a takeoff situation,
+                                                             sion and bimodality for each issue. Figure 5
+specifically simulation #963, the second from                reports attitude distributions of the four issues
+the bottom-right in Figure 1. Recall that take-              over time. A direct comparison between Figure
+                                                             5 (takeoff) and Figure 2 (non-takeoff) reveals a
+                                                             different pattern. The takeoff issue (Issue 1)
+has to be this way, given the underlying selection           polarizes rapidly; by time 200 the middle of
+model.                                                       the distribution is largely absent. By time 500,
+
+
+                                                           DYNAMICS OF POLITICAL POLARIZATION—–799
+
+
+Figure 4. Discussion Network at Time 500 in a Non-takeoff Case (#997)
+Notes: Nodes represent the issue discussed most frequently by each actor. Color and shape distinguish different issues:
+dark gray triangles symbolize Issue 1, white squares refer to Issue 2, black pentagons Issue 3, and light grey hexagons Issue 4. Simulation #997, non-takeoff.
+
+
+the distribution is bimodal; everyone is radi-                these actors are not marginalized; they serve as
+calized—almost all of the actors have interest                bridges between the two otherwise disconvalues higher than 50 or lower than –50. This                 nected areas of the polarized graph. This leads
+is not the case for the other issues, on which the            to an interesting irony—marginal issues serve
+majority of actors have positions between –50                 as the glue for social structure. Actors who
+and 50. The values of kurtosis and variance                   focus on marginal issues integrate what would
+provide more detailed quantitative evidence                   otherwise be increasingly disjointed worlds.
+for this clear qualitative finding.                              These results shed some light on the first
+   Takeoff issues are more likely to be salient               puzzle we started with—that attitudes rarely
+issues, and consequently, attitudes on them are               polarize, even though people experience polarmore likely to be polarized. It is not clear,                 ization as common. When an issue becomes the
+though, if ideational polarization induces social             focus of intense attention and consequently
+polarization. We will now consider this prob-                 radically polarizes actors, individuals experilem. Figure 6 reports the emergent structure of               ence polarization in their discussion networks.
+political discussion over time. We observe dra-               With respect to the population of issues, though,
+matic structural polarization visible by time                 polarization is largely absent. The fact that one
+300 and deeply encoded by time 500. Patterns                  issue is polarized carries few implications for
+of political discussion in takeoff situations thus            polarization on other issues. This is observed
+induce polarized structures of interaction.                   empirically as well; when people change their
+Actors’ opinions on the most popular issue                    opinion on pollution abatement (for example)
+divide them into alternative camps.                           there is no reason to expect a corresponding
+   Takeoff contexts are contexts in which salient             change in attitude on other issues, such as aborissues emerge, but they do not completely dom-                tion, gay marriage, or education vouchers. If we
+inate political discourse. As shown in Figure 7,              surveyed actors in our takeoff context, we
+for over 25 percent of the actors some issue                  would discover that their opinions are usually
+other than Issue 1 is the most salient. Moreover,             parallel and only diverge on one issue. This, of
+
+
+800—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+                             Kurtosis                                                 Variance
+Time      Issue 1       Issue 2      Issue 3      Issue 4          Issue 1       Issue 2      Issue 3       Issue 4
+1           –.15         –.79           –.39         –.02            1396          768          1025          957
+100         –.68         –.71           –.43         –.10            2034          896          1361         1300
+200        –1.12         –.44           –.63         –.52            2863         1099          1765         1727
+350        –1.61         –.46          –1.10        –1.00            4192         1449          2417         2401
+500        –1.80         –.88          –1.37        –1.34            5752         1695          3045         3019
+Figure 5. Issue Interest Over Time in a Takeoff Case (#963)
+Notes: Columns display the interest distribution of the four issues at times 1, 100, 200, 350, and 500. The table shows
+the values of kurtosis and variance associated with different points in time. The case is simulation #963, an instance
+where takeoff does occur.
+
+
+course, is what many opinion surveys reveal.                  GENERAL FINDINGS
+Since takeoff issues come and go, different                   We now generalize the qualitative findings from
+actors at different times serve as the glue for the           the case studies to the entire population of 1,000
+social system; their roles change even if their               simulations; this requires a change in focus—
+                                                              and measurement. We first focus on ideologiattitudes do not. This simple fact provides an                cal polarization and show that takeoff issues
+unanticipated foundation for social stability.                are distinguished by their relative polarization—
+
+
+                                                         DYNAMICS OF POLITICAL POLARIZATION—–801
+
+
+                        time 200                                                time 300
+
+
+                        time 400                                                time 500
+
+
+Figure 6. Discussion Network Over Time in a Takeoff Case (#963)
+Notes: Actors (circles) are connected (by arcs) if their frequency of interaction is higher than expected by chance.
+Nodes are colored according to the sign of the most popular issue. Black is positive, white is negative. Simulation
+#963, takeoff.
+
+
+that is, their polarization with respect to other           ization of the other issues. Figure 8 shows the
+issues. We then turn to the intercalation of struc-         dynamic of attitude polarization distinguishing
+tural and ideological polarization and next to the          between non-takeoff (black dots) and takeoff
+consequences that more or less segregated pat-              (white xs) cases. The x-axis reports polarization
+terns of discussion have on the aggregate level             of the most popular issue; the y-axis reports
+of issues closure and individuals’ experience.              polarization of the other issues. Each point represents the coordinates for one simulation. The
+IDEOLOGICAL POLARIZATION                                    goal is to reveal relative levels of polarization.
+                                                               At time 1 (the small box in the bottom-left
+To gain analytic leverage, we compute an index              corner of Figure 8) takeoff and non-takeoff conof polarization that combines dispersion and                texts cannot be distinguished with respect to relbimodality (the product of variance and kurto-              ative polarization, across all issues, whether
+sis) such that the level of ideological polariza-           popular or not. At time 200 (the center box)
+tion increases when the index increases. We                 one can already see a dense cloud of takeoff outthen plot the level of polarization of the most             comes in the lower-right side, signifying that the
+popular issue against the average level of polar-           popular issue in takeoff outcomes is relatively
+
+
+802—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+Figure 7. Discussion Network at Time 500 in a Takeoff Case (#963)
+Notes: Nodes represent the issue that has been discussed most frequently by each actor. The color distinguishes between
+the most popular issue (grey) and all the other issues (black). Simulation #963, takeoff.
+
+
+more polarized than the other issues. The rela-               sis, we partition the social networks into subtion appears even stronger at time 500. Lines                 groups and compute a measure of structural
+show the respective trajectories of the two case              polarization.13 To accomplish this for different
+studies. Figure 8 reveals that while the absolute             time periods, we first run CONCOR on the
+level of polarization of the most popular issue               actor by actor cumulative discussion network to
+tends to be higher in takeoff than in non-take-               induce a two-group solution such that groups are
+off outcomes, takeoff outcomes are distin-                    relatively even in size.14 To identify the best fit
+guished by their relative level of polarization.              to a two-group solution, in the second stage we
+Although the level of polarization of the most                iteratively assess whether or not node out-degree
+popular issue makes a difference, more critical               is disproportionately within group. If so, the
+is the level of polarization with respect to the              assignment is retained. We continue the procepolarization of the other issues. It follows that             dure until convergence. Second, we use a measa polarized public discourse emerges from atti-               ure of modularity, which is often used to assess
+tude polarization on a specific topic, while atti-            the performance of a graph partition, to evalutudes on the remaining issues do not lean toward              ate the level of polarization of the two-group
+extreme values.                                               (module) partition. A good partition is one that
+                                                              maximizes the number of within-module links
+STRUCTURAL AND IDEOLOGICAL                                    (or minimizes between-module links). In a twoPOLARIZATION                                                  module solution, the lower the relative number
+
+From the case studies, we observe that asymmetries in discussion frequency are responsible                  13 We thank James Moody for providing the parboth for dynamics of ideological polarization                 titioning solution.
+and for crystallization of patterns of social inter-              14 We opt for a two-group solution on empirical
+action. This suggests that issue popularity is at             grounds, since this is the most appropriate (and often
+the origin of emergent processes of polarization              the only feasible) partitioning solution for most of the
+of interpersonal relations. To test this hypothe-             cases.
+
+
+                                                          DYNAMICS OF POLITICAL POLARIZATION—–803
+
+
+Figure 8. Relative Level of Polarization of the Issues Over Time
+Notes: (A) Plot of the polarization of the most popular issue against the polarization of the other issues at times 1,
+200, and 500. Takeoff outcomes (white xs) have higher levels of polarization on the most popular issue and lower
+levels of polarization on the other issues than non-takeoff outcomes (black dots). Lines show the trajectory of the
+case studies. (B) Plot of the average polarization of the most popular issue against the average polarization of the
+other issues in takeoff (white) and non-takeoff (black) outcomes.
+
+
+804—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+of links between modules, the higher the mod-       which discussion occurs disproportionately
+ularity measure, and thus the level of polariza-    within groups in which actors share the same
+tion of the graph. Formally, the measure of         attitude on the issue at hand. Consequently, we
+modularity (M) for a two-group partition is:        measure issue closure as the share of individuals who are embedded in completely homo-
+                  [ L – (2L) ]
+                    2    ls   ds 2
+              M=                            (11)    geneous relational networks. Figure 10 plots
+                   s=1                              the level of issue closure of the most popular
+where L is the number of links in the network,      issue against the average level of closure of the
+ls is the number of links between nodes in          other issues. The goal is to compare relative
+module s, and ds is the sum of the degrees of       levels of issue closure across contexts. At time
+the nodes in module s (Guimera and Amaral           100 issue closure is low for all issues in both
+2005:899).                                          contexts, and only around 20 percent of actors
+   Figure 9 summarizes the specific relation        are embedded in completely homogenous netbetween ideological and structural polariza-        works. Over time, systematic differentiation
+tion. We start at time 100, when takeoff out-       between outcomes across contexts becomes
+comes begin to be distinguished by increased        increasingly evident. It is clear that takeoff
+levels of ideological polarization. For both        outcomes are distinguished by higher closure
+takeoff and non-takeoff contexts, there is no       on the most popular issue and, simultaneousevidence of structural polarization. Around         ly, lower levels of closure on the other issues.
+time 200, distinctive dynamics of social polar-        Figure 10 shows that when single issues
+ization that characterize takeoff outcomes          dominate debate, social interactions tend to
+develop, emerge, and strengthen, amplifying         segregate actors who hold contrasting views on
+attitude polarization. We see that takeoff out-     that issue. At the same time, the level of segcomes disproportionately occur when there is        regation with respect to the other issues is
+an intersection of highly polarized structures      lower than in non-takeoff situations. Whereas
+and high levels of ideological polarization.        conversation on the takeoff issue tends to be
+Consequently, the interplay between ideolog-        between actors who share the same opinion,
+ical and structural polarization provides the       conversation on other issues tends to be more
+necessary condition for issue takeoff. It follows   discordant. The experience of disagreement
+that when public discourse polarizes around a       on non-takeoff issues restricts the chance that
+single issue it is possible to observe the con-     actors’ main focus of interest will drift and
+current emergence of both ideological and           that eventually a new issue will take over.15
+structural polarization.                               Of course, the monopolization of discusFurther evidence is provided by the match        sion does not take place only at the aggregate
+between the structural partition of the graph       level—it also occurs in the unfolding of actors’
+and the attitude polarization around the most       experience. To evaluate individuals’ heteropopular issue. Specifically, takeoff contexts       geneity of discussion topics, we compute the
+are six times more likely than non-takeoff con-     index of concentration (HH index) at the inditexts to reveal a pure correspondence between       vidual level. Panel A in Figure 11 shows the
+group membership and ideological position           trend over time of the average HH index in
+(20 percent versus 3 percent). We observe the       takeoff and non-takeoff outcomes. Actors in
+reverse pattern in non-takeoff contexts. In sum,    non-takeoff contexts are more evenly exposed
+in takeoff situations, actors with positive and     to the entire set of issues than are actors in
+negative attitudes on the core issue are split
+apart and embedded within dense ideological
+envelopes that prevent them from interacting           15 This result is consistent with Rokkan’s theory of
+with those who have alternative positions.          cleavage crystallization (Lipset and Rokkan 1967).
+                                                    Rokkan shows that the political systems that emerged
+ISSUE CLOSURE AND ACTORS’                           after WWII were shaped by enduring territorial, reliEXPERIENCE                                          gious, ethnic, and ideological divisions. Such a “freezing effect” can be understood as a consequence of the
+These patterns of segregation carry implica-        structuring of public discourse that prevents the rise
+tions for issue closure—that is, the extent to      of new issue-cleavages.
+
+
+                                                            DYNAMICS OF POLITICAL POLARIZATION—–805
+
+
+Figure 9. Ideological and Structural Polarization Over Time
+Notes: (A) Plot of ideological polarization against structural polarization at times 1, 200, and 500. Takeoff outcomes
+(white xs) show higher values in both ideological and structural measures of polarization than non-takeoff outcomes
+(black dots). Lines show the trajectory of the case studies. (B) Plot of the average issue polarization against the average network polarization in takeoff (white) and non-takeoff (black) outcomes.
+
+
+806—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+Figure 10. Relative Level of Issue Closure Over Time
+Notes: (A) Plot of the level of closure of the most popular issue against the average closure of the other issues. Closure
+is defined as the number of individuals that are embedded in discussion networks homogeneous with respect to issue
+orientation. Takeoff outcomes have higher closure on the popular issue and lower closure on the other issues. Lines
+show the trajectory of the case studies. (B) Plot of the average closure of the most popular issue against the average
+closure of the other issues in takeoff (white) and non-takeoff (black) outcomes.
+
+
+                                                        DYNAMICS OF POLITICAL POLARIZATION—–807
+
+
+Figure 11. Discussion Patterns at the Individual Level: Heterogeneity and Disagreement
+Notes: (A) Trend of the mean HH index over time in takeoff and non-takeoff outcomes. In non-takeoff outcomes
+actors are exposed to more heterogeneous topics of discussion than in takeoff contexts. (B) Trend of mean percentage disagreement experienced by actors in takeoff and non-takeoff outcomes. In both contexts, people experience
+similar, decreasing levels of disagreement.
+
+
+takeoff situations.16 But this does not neces-             DISCUSSION
+sarily mean that people experience hetero-                 We started with the observation that some scholgeneity in interaction with respect to attitudes.          ars argue that the United States is politically
+   In fact, if we look at how frequently people            polarized, although only on one issue at a time.
+experience disagreement, we discover that                  Others, though, argue that we are not politicalthere are no differences between takeoff and               ly polarized, because public opinion is modernon-takeoff contexts. Panel B in Figure 11                 ate (and changes are parallel) on a broad set of
+reports the trend over time of the percentage              relevant issues. With respect to social polarizaof discussions, on average, in which actors                tion, we observe a similar debate. Some scholhave contrasting views on the relevant issue.              ars argue that the country is polarized because
+In both takeoff and non-takeoff contexts, the              people experience homogeneity in their everyfrequency of disagreement decreases as time                day interactions. A second group argues that we
+elapses. It follows that the emergent relation-            are not socially polarized because we do not
+al patterns tend to minimize individual expo-              observe divergence in attitudes along classical
+sure to disag reement (and conflict),                      social categories, such as age, education,
+independent of the overall macrostructural fea-            income, race, and ethnicity. This article protures of the network of interaction. This                  vides a simple model that suggests why these
+                                                           arguments are not mutually exclusive and how
+induces, at the individual level, a mispercepthey meaningfully refer to the same social settion of the macrostructure (Kitts 2003) that
+                                                           ting.
+may carry implications for mobilization.
+                                                              We first consider political polarization. Two
+                                                           results provide insight into the divergence of
+  16 It could be otherwise. One can imagine a non-         views between experts and lay observers. First,
+takeoff context in which individuals are clustered in      takeoff is rare; in the empirical world, only a few
+multiple small subgroups where they discuss only one       issues are takeoff issues. Second, for takeoff to
+issue. Consequently, their individual HH index score       occur one issue has to be relatively more polarwould be high, while the overall HH index is low—          ized than others. It follows therefore, that we can
+as we observe for the non-takeoff context.                 observe ideological polarization on a single
+
+
+808—–AMERICAN SOCIOLOGICAL REVIEW
+
+
+issue at a time. The fact that the takeoff issue is    single attitudes. Radicalization on one dimendisproportionately discussed leads to social           sion of the political space may carry minimal
+structural change: actors compose themselves           potential for “societal disruption,” since opininto new, polarized interactive sets, within which     ions on other issues may maintain their heterothey experience increasing homogeneity. The            geneity.
+focus on the single issue, though, means that the
+opinions they hold on other issues remain het-         EXPANSION TO COLLECTIVE ACTION
+erogeneous. This fact gives rise to the expert
+conclusion that the country is not politically         Our model has applicability to a broader array
+polarized, because public opinion is moderate          of foci. Clearly, processes of identity formaon a broad set of issues.                              tion, such as the simultaneous social and
+   We now turn to the mismatch between the             ideational polarization associated with takeoff
+perceived and actual level of opinion polariza-        outcomes, are central to collective action
+tion across social categories. People will talk        dynamics. As suggested by Gould and others,
+about trivial matters—the weather or what to           identity is doubly meaningful for action when
+have for dinner—with most anyone, but for top-         it is translated into (and transformed through)
+ics that are important to them, they reveal their      patterns of interaction such that class in itself
+views more selectivity, disproportionately             becomes class for itself (Gould 1991; Marx
+choosing people who they believe share views           [1852] 1963). Historically, collective action is
+broadly similar to their own. Because actors           made possible by the simultaneity of identity
+tend to talk to others who share their beliefs,        and interest. Against this background, we offer
+both in takeoff and non-takeoff contexts, the dis-     a simple model of social interaction and influcussion of important issues will always induce,        ence that simultaneously accounts for the emerat the microlevel, the experience of a segregat-       gence of a collective interest—an interest that
+ed discussion network. In non-takeoff contexts,        enters and dominates the public sphere—and for
+actors tend to perceive that their environments        the process of the formation of social identiare polarized, even though this is not the case.       ties—in the form of sustained niches of social
+In takeoff contexts, when a single issue domi-         interaction. Moreover, we show that these two
+nates discussion, individuals will overvalue the       dimensions are interdependent. Meaningful
+extent of ideational homogeneity because their         social partitions cannot arise in the absence of
+contacts are disproportionately within a polar-        salient issues. At the same time, attitude polarized subgroup. But even this experience is mis-        ization is of little significance if it is not crysleading with respect to issue heterogeneity, since     tallized into relational patterns.
+public opinion remains heterogeneous on the                Consequently, the starting point for this analybroad range of other issues. It is this precise fact   sis is the recognition that collective action
+that provides the foundation for scholars’ argu-       involves persuasion and mobilization among
+ments that we do not observe increasing diver-         actors who hold multiple and often alternative
+gence in attitudes along classical social              sets of preferences. To model this empirical
+categories.                                            reality, we need a model of social influence in
+   The relationship between single issue takeoff       which individuals’ attitudes, social structure,
+and polarization reported in this article pro-         and the public interest itself are not fixed, prevides insight into the larger debate on political      defined aspects (exogenous to the model)—
+and social polarization. Experts who minimize          rather they are shaped in interaction sequences.
+the extent of polarization because it is restrict-     This framing shifts the focus of investigation
+ed to single takeoff issues ought to recognize         from what makes collective action possible—
+that polarized interaction structures, and there-      that is, the coordination problem or the free-rider
+fore heightened radicalism, arise from single          problem (Gould 1993; Heckathorn 1990; Kim
+issues. At the same time, those who see in the         and Bearman 1997; Macy 1990; Marwell and
+appearance of such issues the emergence of             Oliver 1993; Olson 1965)—to broader themes,
+fundamental cultural divides (a “culture war”)         specifically the mobilization of identity, struc-
+(Abramowitz and Saunders 2005; Greenberg               tural change, and their intercalation. This focus
+2004; Kohut et al. 2000) ought to recognize            allows us to show that the ideational and structhat polarization dynamics can be confined to          tural preconditions that trigger takeoff depend
+
+
+                                                           DYNAMICS OF POLITICAL POLARIZATION—–809
+
+
+on interaction patterns rather than on individ-              Peter Bearman is Cole Professor of the Social
+ual characteristics. Likewise, we show that only             Sciences and Director of the Institute for Social and
+by referring to the ecology of local interactions            Economic Research and Policy at Columbia
+                                                             University. He is currently working on the autism epican we simultaneously account for issue popudemic. With Peter Hedström, he is editor of the forthlarity and structural polarization.                          coming Oxford Handbook of Analytical Sociology.
+   Finally, our approach reveals an interesting
+gap between experience and reality, a gap that
+turns out to be particularly relevant for the nur-           REFERENCES
+turing of collective action. Is polarization a per-          Abelson, Robert P. 1964. “Mathematical Models of
+ception or a reality? With respect to aggregate                the Distribution of Attitudes Under Controversy.”
+categories and social properties, it seems that                Pp. 142–60 in Contributions to Mathematical
+polarization is often a perception, but it is a                Psychology, edited by N. Frederiksen and H.
+                                                               Gulliksen. New York: Holt, Rinehart, and Winston.
+real perception since the experiences of ordinary
+                                                             ———. 1979. “Social Clusters and Opinion
+people are often structured so as to lead them                 Clusters.” Pp. 239–56 in Perspectives on Social
+into homogeneous and polarized environments.                   Network Research, edited by P. W. Holland and S.
+False perceptions can lead to real outcomes. At                Leinhardt. New York: Academic Press.
+early stages of collective mobilization, activists           Abramowitz, Alan I. and Kyle L. Saunders. 2005.
+are not completely aware of their real chances                 “Why Can’t We All Just Get Along? The Reality
+(they overestimate them, since they do not hold                of Polarized American.” The Forum 3:2
+universal knowledge about the attitudes and                    (http://www.bepress.com/forum/vol3/iss2/art1).
+                                                             Abramson, Alan J. and Mitchell S. Tobin. 1995. “The
+preferences of their fellow citizens). They also
+                                                               Changing Geography of Metropolitan Opportunity:
+perceive society as more polarized than it is.                 The Segregation of the Poor in U.S. Metropolitan
+These misperceptions of the macrostructure                     Areas, 1970–1990.” Housing Policy Debate
+based on inferences from their microcontext                    6:45–72.
+lead them to take chances they would other-                  Axelrod, Robert. 1997. “The Dissemination of
+wise reject as hopeless. The limited perception                Culture: A Model with Local Convergence and
+of the external reality—specifically the fact                  Global Polarization.” Journal of Conflict
+that the people around them share their atti-                  Resolution 41:203–26.
+                                                             Baldassarri, Delia. 2007. “Crosscutting Social
+tudes and the fact that society splits into apparSpheres? Political Polarization and the Social
+ently disjoint groups—can transform, in the                    Roots of Pluralism.” Ph.D. dissertation,
+context of action over the long run, otherwise                 Department of Sociology, Columbia University,
+negligible chances into tangible achievements.                 New York, NY.
+This is exactly why shared identities play such              Baker, Wayne. 2005. America’s Crisis of Values.
+a strong role in fostering actors’ commitments                 Princeton, NJ: Princeton University Press.
+to their political beliefs and consequent actions.           Bartels, Larry M. 2000. “Partisanship and Voting
+Hope springs eternal not because people are                    Behavior, 1952–1996.” American Journal of
+                                                               Political Science 44:35–50.
+hopeful, but because structures organize people
+                                                             Brauer, Markus, Melissa D. Gliner, and Charles M.
+into contexts where hope appears as rational                   Judd. 1995. “The Effects of Repeated Expressions
+inference.                                                     on Attitude Polarization During Group
+                                                               Discussions.” Journal of Personality and Social
+Delia Baldassarri is Assistant Professor of Sociology          Psychology 68:1014–29.
+at Princeton University. Her work focuses on the             Carley, Kathleen. 1991. “A Theory of Group
+cognitive, relational, and structural bases of politi-         Stability.” American Sociological Review
+cal integration and division, addressing topics in             56:331–54.
+collective action, social networks, and public opin-         Cliff, Andrew and J. Keith Ord. 1973. Spatial
+ion. She is currently working on polarization and              Autocorrelation. London, UK: Pion.
+political pluralism in the United States and a study         Converse, Philip E. 1964. “The Nature of Belief
+of militants, soldiers, and partisan resistance in Italy       Systems in Mass Publics.” Pp. 206–61 in Ideology
+(1940 to 1945). She has written on cognitive heuris-           and Discontent, edited by D. Apter. New York:
+tics and voting behavior, ideology, formal models of           Free Press.
+collective action, and interorganizational networks.         De Groot, Morris H. 1974. “Reaching a Consensus.”
+Her recent publications include The Integrative Power          Journal of the American Statistical Association
+of Civic Networks (with Mario Diani) forthcoming               69:118–21.
+in the American Journal of Sociology.                        Delli Carpini, Michael and Scott Keeter. 1996. What
+
+
+810—–AMERICAN SOCIOLOGICAL REVIEW
+
+  Americans Know About Politics and Why It                and Influence in a Election Campaign. New York:
+  Matters. New Haven, CT: Yale University Press.          Cambridge University Press.
+DiMaggio, Paul, John Evans, and Bethany Bryson.        Jargowsky, Paul A. 1996. “Take the Money and Run:
+  1996. “Have Americans’ Social Attitudes Become          Economic Segregation in U.S. Metropolitan
+  More Polarized?” American Journal of Sociology          Areas.” American Sociological Review 61:984–98.
+  102:690–755.                                         Katz, Elihu and Paul F. Lazarsfeld. 1955. Personal
+Eliasoph, Nina. 1998. Avoiding Politics: How              Influence. Glencoe, IL: Free Press.
+  Americans Produce Apathy in Everyday Life. New       Kim, Hyojoung and Peter S. Bearman. 1997. “The
+  York: Cambridge University Press.                       Structure and Dynamics of Movement
+Evans, John W. 2003. “Have Americans’ Attitudes           Participation.” American Sociological Review
+  Become More Polarized?—An Update.” Social               62:70–93.
+  Science Quarterly 84:71–90.                          Kitts, James A. 2003. “Egocentric Bias or Information
+Festinger, Leon. 1957. A Theory of Cognitive              Management? Selective Disclosure and the Social
+  Dissonance. Evanston, IL: Row, Peterson &               Roots of Norm Misperception.” Social Psychology
+  Company.                                                Quarterly 3:222–37.
+Fiorina, Morris P., with Samuel J. Abrams and Jeremy   ———. 2006. “Social Influence and the Emergence
+  C. Pope. 2005. Culture Wars? The Myth of                of Norms Amid Ties of Amity and Enmity.”
+  Polarized America. New York: Pearson Longman.           Simulation Modelling Practice and Theory
+French, John R. 1956. “A Formal Theory of Social          14:407–22.
+  Power.” Psychological Review 63:181–94.              Kohut, Andrew, John C. Green, Scott Keeter, Robert
+Friedkin, Noah E. 1999. “Choice Shift and Group           C. Toth. 2000. The Diminishing Divide.
+  Polarization.” American Sociological Review             Washington, DC: Brookings Institution Press.
+  64:856–75.                                           Lavine, Howard, Eugene Borgida, and John L.
+Friedkin, Noah E. and Eugene C. Johnsen. 1990.            Sullivan. 2000. “On the Relationship Between
+  “Social Influence and Opinions.” Journal of             Attitude Involvement and Attitude Accessibility:
+  Mathematical Sociology 15:193–206.                      Toward a Cognitive-Motivational Model of
+Greenberg, Stanley B. 2004. The Two Americas. New         Political Information Processing.” Political
+  York: St. Martin’s Press.                               Psychology 21:81–106.
+Gould, Roger V. 1991. Insurgent Identities. Chicago,   Lipset, Seymour M. and Stein Rokkan. 1967.
+  IL: University of Chicago Press.                        “Cleavage Structures, Party System and Voter
+———. 1993. “Collective Action and Network                 Alignments: An Introduction.” Pp. 1–64 in Party
+  Structure.” American Sociological Review                System and Voter Alignments, edited by S. M.
+  58:182–96.                                              Lipset and S. Rokkan. New York: Free Press.
+Guimera, Roger and Luis A. Nunes Amaral. 2005.         Logan, John R., Brian J. Stults, and Reynolds Parley.
+  “Functional Cartography of Complex Metabolic            2004. “The Residential Segregation of Minorities
+  Networks.” Nature 433:895–900.                          in Metropolis: Two Decades of Change.”
+Heckathorn, Douglas D. 1990. “Collective Sanctions        Demography 41:1–22.
+  and Compliance Norms: A Formal Theory of             Macy, Michael. 1990. “Learning Theory and the
+  Group Mediated Social Control.” American                Logic of Critical Mass.” American Sociological
+  Sociological Review 55:366–84.                          Review 55:809–26.
+Hedström, Peter. 2005. Dissecting the Social: On       Macy, Michael, James A. Kitts, Andreas Flache, and
+  the Principles of Analytical Sociology. Cambridge,      Steve Benard. 2003. “Polarization in Dynamic
+  UK: Cambridge University Press.                         Networks: A Hopf ield Model of Emergent
+Hegselmann, Rainer and Ulrich Krause. 2002.               Structure.” Pp. 162–73 in Dynamic Social Network
+  “Opinion Dynamics and Bounded Confidence:               Modeling and Analysis, edited by R. Breiger, K.
+  Models, Analysis, and Simulation.” Journal of           Carley, and P. Pattison. Washington, DC: The
+  Artificial Sciences and Social Simulation 5:1–33.       National Academy Press.
+Hovland, Carl I., O. J. Harvey, and Muzafer Sherif.    Marsden, Peter V. 1981. “Introducing Influence
+  1957. “Assimilation and Contrast Effects in             Processes into a System of Collective Decision.”
+  Reactions to Communication and Attitude                 American Journal of Sociology 86:1203–35.
+  Change.” Journal of Abnormal and Social              Marwell, George and Pamela E. Oliver. 1993. The
+  Psychology 55:244–52.                                   Critical Mass in Collective Action: A Microsocial
+Huckfeldt, Robert, Paul E. Johnson, and John              Theory. New York: Cambridge University Press.
+  Sprague. 2004. Political Disagreement: The           Marx, Karl. [1852] 1963. The 18th Brumaire of Louis
+  Survival of Diverse Opinions Within                     Bonaparte. New York: International Publisher.
+  Communication Networks. Cambridge, UK:               Massey, Douglas S. 1996. “The Age of Extremes:
+  Cambridge University Press.                             Concentrated Affluence and Poverty in the TwentyHuckfeldt, Robert and John Sprague. 1995. Citizens,       first Century.” Demography 33:395–412.
+  Politics and Social Communication: Information       Massey, Douglas S. and Nancy A. Denton. 1989.
+
+
+                                                       DYNAMICS OF POLITICAL POLARIZATION—–811
+
+  “Hypersegregation in U.S. Metropolitan Areas:            Congress: A Political Economic History of Roll
+  Black and Hispanic Segregation Along Five                Call Voting. New York: Oxford University Press.
+  Dimensions.” Demography 26:373–93.                     Putnam, Robert D. 2000. Bowling Alone. New York:
+McCarty, Nolan, Keith T. Poole, and Howard                 Simon & Schuster.
+  Rosenthal. 2006. Polarized America: The Dance
+                                                         Saunders, Kyle L. and Alan I. Abramowitz. 2004.
+  of Ideology and Unequal Riches. Cambridge, MA:
+  MIT Press.                                               “Ideological Realignment and Active Partisans in
+McPherson, Miller and Lynn Smith-Lovin. 1987.              the American Electorate.” American Politics
+  “Homophily in Voluntary Organizations: Status            Research 32:285–309.
+  Distance and the Composition of Face to Face           Shapiro, Robert Y. and Yaeli Bloch-Elkon. 2006.
+  Groups.” American Sociological Review                    “Political Polarization and the Rational Public.”
+  52:370–79.                                               Presented at the annual conference of the American
+McPherson, Miller, Lynn Smith-Lovin, and James M.          Association for Public Opinion Research,
+  Cook. 2001. “Birds of a Feather: Homophily in            Montreal, Canada.
+  Social Networks.” Annual Review of Sociology
+                                                         Skocpol, Theda. 2003. Diminished Democracy.
+  27:415–44.
+Myers, David G. and Helmut Lamm. 1976. “The                Norman, OK: University of Oklahoma Press.
+  Group Polarization Phenomenon.” Psychological          Watts, Duncan and Peter Dodds. 2007. “Influentials,
+  Bulletin 83:602–27.                                      Networks and Public Opinion Formation.” Journal
+Nowak, Andrzej, Jacek Szamrej, and Bibb Latané.            of Consumer Research 34.
+  1990. “From Private Attitude to Public Opinion:        Wilcox, Clyde. 1995. The Latest American
+  A Dynamic Theory of Social Impact.”                      Revolution? New York: St. Martin’s Press.
+  Psychological Review 97:362–76.                        Zaller, John R. 1992. The Nature and Origins of
+Olson, Mancur. 1965. The Logic of Collective Action.       Mass Opinion. New York: Cambridge University
+  Cambridge, MA: Harvard University Press.
+                                                           Press.
+Page, Benjamin I. and Robert Y. Shapiro. 1992. The
+  Rational Public: Fifty Years of Trends in              Zuckerman, Alan S., ed. 2005. The Social Logic of
+  Americans’ Policy Preferences. Chicago, IL:              Politics: Personal Networks as Contexts for
+  University of Chicago Press.                             Political Behavior. Philadelphia, PA: Temple
+Poole, Keith T. and Howard Rosenthal. 1997.                University Press.

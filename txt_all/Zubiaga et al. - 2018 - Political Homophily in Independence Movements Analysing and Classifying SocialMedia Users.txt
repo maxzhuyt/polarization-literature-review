@@ -1,0 +1,346 @@
+This is the accepted version of an article accepted for publication in IEEE Intelligent Systems @ 2018 IEEE
+
+
+                                                 Political Homophily in Independence
+                                              Movements: Analysing and Classifying Social
+                                                   Media Users by National Identity
+                                                                          Arkaitz Zubiaga, Bo Wang, Maria Liakata, and Rob Procter
+
+                                              Abstract—Social media and data mining are increasingly being used to analyse political and societal issues. Here we undertake the
+                                              classification of social media users as supporting or opposing ongoing independence movements in their territories. Independence
+                                              movements occur in territories whose citizens have conflicting national identities; users with opposing national identities will then
+arXiv:1702.08388v3 [cs.CL] 21 Mar 2018
+
+
+                                              support or oppose the sense of being part of an independent nation that differs from the officially recognised country. We describe a
+                                              methodology that relies on users’ self-reported location to build large-scale datasets for three territories – Catalonia, the Basque
+                                              Country and Scotland. An analysis of these datasets shows that homophily plays an important role in determining who people connect
+                                              with, as users predominantly choose to follow and interact with others from the same national identity. We show that a classifier relying
+                                              on users’ follow networks can achieve accurate, language-independent classification performances ranging from 85% to 97% for the
+                                              three territories.
+
+                                              Index Terms—social media, national identity, socio-demographics, classification.
+
+                                                                                                                      F
+
+                                         1    I NTRODUCTION
+
+
+                                         S    OCIAL media are an increasingly important source for
+                                              data mining applications, among others for exploratory
+                                         research utilised as a means to analyse political and socitisanship or voting intention of users, (2) we perform a
+                                                                                                                          quantitative analysis focusing on the network and interactions within and across national identities, and (3) we study
+                                         etal issues. One problem with social media is the limited                        language-independent classification approaches using four
+                                         availability of users’ socio-demographic details that would                      different types of features. Our semi-automated data colenable analysis of the many different realities in society. At-                  lection and annotation methodology enables us to collect
+                                         tempting to mitigate this issue, a growing body of research                      datasets for three territories –Catalonia, the Basque Country
+                                         deals with the automated inference of socio-demographic                          and Scotland– with over 36,000 users. Our experiments
+                                         characteristics such as age and gender [1], country of origin                    show that the users’ network can achieve highly accurate
+                                         [2] or political orientation [3].                                                classification, outperforming the use of tweet content. An
+                                             Following this line of research, we describe and as-                         analysis of the user groups highlights the influence of politsess a data collection methodology that enables identify-                        ical homophily in independence movements, where users
+                                         ing two groups of social media users in territories with                         predominantly form ties on the basis of their ideology,
+                                         active independence movements: those who support the                             following and interacting with others that think alike.
+                                         independence (pro-independence), and those who oppose
+                                         it (anti-independence). Independence movements are motivated by conflicting national identities, where different                      2   R ELATED W ORK
+                                         parts of a population identify themselves as citizens of
+                                         one nation or another, such as the Scots feeling Scottish                        Computational approaches to the study of independence
+                                         (pro-independence) or British (anti-independence). These                         movements are scarce. The most relevant work to that which
+                                         situations lead to people with conflicting national identities                   we report here is by Fang et al. [5] attempting to classify
+                                         living together in the same territory, where national identity                   users’ voting intention in the 2014 Scottish independence
+                                         can be defined as “a body of people who feel that they are a                     referendum. However, their work focused on determinnation” [4].                                                                     ing voting intention during a particular referendum rather
+                                             Our study makes the following novel contributions: (1)                       than determining the users’ national identity and, being
+                                         we describe a methodology that relies on Twitter users’                          limited to a single territory – Scotland –, they introduced
+                                         self-reported location for collecting users with conflicting                     a language-dependent approach that identifies topics disnational identities, as opposed to the largely studied par-                      cussed during the referendum campaign for determining
+                                                                                                                          users’ stance. While classification of users by political orientation is also related to our work, such as republicans or
+                                         •   A. Zubiaga, B. Wang, M. Liakata and R. Procter are with the Department       democrats in the US [3], or conservatives or labourists in the
+                                             of Computer Science, University of Warwick, Gibbet Hill Road, Coventry
+                                             CV4 7AL, United Kingdom. B. Wang, M. Liakata and R. Procter are also         UK [6], national identities reflect independent dimensions
+                                             with the Alan Turing Institute, 96 Euston Rd, Kings Cross, London NW1        that are not necessarily linked to partisanship. Citizens with
+                                             2DB, United Kingdom.                                                         common national identities can also vote for parties with
+                                             E-mail: see http://www.zubiaga.org/
+                                                                                                                          different political ideologies, and their national identities
+can be instead motivated by cultural and linguistic back-           #YesScot, #VoteYes and opposers who tweeted one of #NoBegrounds [7]. Similarly, there has been research in predicting       cause, #BetterTogether, #VoteNo, #NoThanks, as suggested by
+the outcome of political elections [8], [9], but this line of       [5]. To make sure that we identify the users’ stance towards
+research again looks at the voting intention of users rather        Scotland’s independence, avoiding noise from tweets that
+than their national identity.                                       are not necessarily endorsements of the hashtag being used,
+    Previous research has suggested that political homophily        we collected the profile metadata of all sampled users. To
+is also reflected in social media [10], [11], that is that sup-     generate the final dataset, we used again the same 12 month
+porters of one political party are more likely to follow one        dataset, from which we retained the profiles of all IndyRef
+another than to follow supporters of other parties. Whether         supporters whose profile location contained Scotland but
+this generalises to users with different national identities has    not UK, United Kingdom, GB or Great Britain, as well as
+not been explored before.                                           all opposers whose profile location contained the name of a
+                                                                    Scottish city (e.g. Glasgow or Edinburgh) or Scotland, along
+                                                                    with UK, United Kingdom, GB or Great Britain.
+3   DATA C OLLECTION                                                    The location strings for the resulting user profiles were
+Our data collection methodology relies on users’ self-              manually verified. The methodology was largely accurate,
+reported location as a proxy for identifying the territory that     with 96.0%, 95.9% and 98.9% correct instances for Catalonia,
+users claim to be citizens of, which is directly indicative of      the Basque Country and Scotland, respectively. Those users
+their stance towards the ongoing independence movement              that did not meet our expected locations were manually
+in their territory. For each territory, we identify distinctive     removed from the datasets. The resulting datasets consist
+location names with which either pro-independence or anti-          of 36,609 users (see Table 1).
+independence people associate themselves, which gives us
+ground truth labels:                                                                  Pro-Independence    Anti-Independence   Total
+Catalonia. Citizens of Catalonia can feel either Catalan             Catalonia        2,361               8,599               10,960
+(pro-independence) or Spanish (anti-independence). For the           Basque Country   5,377               2,033               7,410
+generation of the dataset distinguishing these two national
+                                                                     Scotland         13,114              5,125               18,239
+identities, we rely on the fact that Catalans whose profile
+                                                                     TOTAL            20,852              15,757              36,609
+location contains Paı̈sos Catalans or its acronym PPCC (i.e.
+Catalan Countries) are overtly claiming to be citizens of an
+                                                                    TABLE 1: Distribution of users identified as proindependent Catalonia. The term Paı̈sos Catalans unambiguindependence or anti-independence.
+ously refers to an independent Catalonia, which would instead be Catalunya or Cataluña if not explicitly referring to an
+independent country. Alternatively, we identify users whose
+location contains the name of a Catalan city (e.g. Barcelona        3.1   User Data Collection
+or Girona) or Catalunya/Cataluña along with Espanya or             For each user in our dataset, we collect three different
+España as claiming to be Spanish citizens. Using a dataset         types of data: (1) the user’s 500 most recent tweets, (2)
+of 12 months’ worth of tweets collected from the Twitter            the 500 most recent tweets favourited by the user, and (3)
+streaming API between March 2015 and February 2016, we              the list of users that the user follows and is followed by.
+sampled users that satisfied the above characteristics.             The final collection comprises 27.4 million tweets including
+Basque Country. Citizens of the Basque Country can                  timelines and favourites, as well as 19.1 million different
+feel either Basque (pro-independence) or Spanish (anti-             users occurring in follow networks.
+independence). To generate the dataset, we look for users
+whose profile location contains Euskal Herria or its acronym
+EH (i.e. Greater Basque Country). The term Euskal Herria            4     A NALYSIS OF N ATIONAL I DENTITY G ROUPS
+unambiguously refers to an independent Basque Country,              To begin with the analysis of different national identities,
+unlike Euskadi which refers to a region of Spain. On the            in Figure 1 we look at the interactions and network feaother hand, we look for users whose location field contains         tures by visualising connections within and across national
+the name of a Basque city (e.g. Bilbao or Donostia/San              identities. A look at the interactions shows a confusing
+Sebastián) or Euskadi along with Espainia or España, which        picture where users of different national identities seem to
+identifies users located in the Basque Country who claim to         occasionally interact with each other. However, when we
+be citizens of Spain. We use the same 12 month dataset to           look at the network visualisations, we see a totally different
+look for users that satisfy these characteristics.                  picture where users are mainly connected to others of the
+Scotland. Officially part of the UK, Scotland also has an           same national identity, with a clear separation between
+ongoing independence movement. The dataset generation               national identities, especially for Catalonia and the Basque
+process for Scotland needs to be slightly different from            Country.
+the two above, as the Scots do not use a different name                 To quantify this, we compute the assortativity of these
+to refer to an independent Scotland. To overcome this, we           six networks, which is in turn indicative of the existence
+first use a Twitter dataset pertaining to the 2014 Scottish         or not of political homophily [12], i.e. the users’ preference
+independence referendum, collected between 1st August               to connect to and interact with those of the same ideology.
+and 30th September, 2014 using a list of keywords including         Table 2 shows assortativity values for these six networks,
+‘#IndyRef ’, ‘vote’ and ‘referendum’. In this dataset, we look      along with the analysis of their statistical significance using
+for supporters who tweeted one of #YesBecause, #YesScotland,        MannWhitney U tests [13]. All six networks achieve positive
+assortativity scores indicating statistically significant and      users might not be concerned and/or aware of this.
+positive correlation. These scores are however lower for               We also look at the URL specified in the user profiles
+Scotland, especially in terms of interactions; this suggests       as being one that belongs to the independent TLD (#13,
+that users in Scotland are more likely to follow and interact      .cat/.eus/.scot) or the officially recognised country’s TLD
+with each other than in the other two territories, however         (#14, .es/.uk). We observe significant differences here, for
+they still show a preference to follow those who think             all three territories, showing that pro-independence users
+like them. Separation between communities is much more             tend to use more the independent TLD, with the antiprominent in the Basque Country and Catalonia, where               independence users using more the official country’s TLD.
+connections between users who think alike are much more            Finally, we look at the extent to which the users configure
+prevalent with assortativity scores above 0.6.                     their accounts in the language of the independent nation
+                                                                   (#15) or the official country’s language (#16). There is a
+                              Assortativity (p-value)              significant difference in both Catalonia and the Basque
+                          Network          Interactions            Country, with pro-independence users being more likely to
+        Catalonia         0.657 (1.4e-78)   0.652 (5.0e-161)       set up their accounts in Catalan and Basque, respectively.
+        Basque Country    0.678 (5.7e-16)   0.478 (2.0e-257)       This feature is not as indicative for Scotland as Twitter does
+                                                                   not allow the option to use the service in Scottish Gaelic
+        Scotland          0.311 (1.4e-20)   0.028 (2.2e-76)
+                                                                   or Scots. Instead, our analysis looked at the use of “enTABLE 2: Assortativity or political homophily of follow and        gb” as the country’s official and “en” as the opposite. An
+interaction networks.                                              analysis with one of the Scottish local languages available
+                                                                   in the platform may lead to different results.
+                                                                       Interaction features (#17-#24) and network features (#25To understand behavioural patterns that characterise           #27) show a similar tendency; in Catalonia, it is the prothe different national identity groups, we perform pairwise        independence users who are more likely to follow and
+comparisons using Welch’s t-test [14]. Having two differ-          interact with both groups than the anti-independence users,
+ent user groups in each case (pro-independence and anti-           whereas in the Basque Country and Scotland the proindependence), Welch’s t-test enables us to determine which        independence make more connections within their group
+of the groups is more prominent for a certain feature as well      and the anti-independence connect more with the opposing
+as the statistical significance of that prominence. The results    group than the pro-independence do. Linguistic features
+of this analysis are shown in Table 3, with a set of 30 features   (#28-#30) are processed using the Polyglot Python package
+grouped into 5 types.                                              for language identification and sentiment analysis [15]. As
+    Regarding the tweeting activity of users, we observe that      expected, pro-independence users are more likely to use the
+there is no consistent pattern as to who tweets more, has          language of their territory (Basque, Catalan, Scottish Gaelic
+older accounts or gets more retweeted (#1 to #6), with pro-        or Scots) than the anti-independence, which shows their
+independence users being more active in Catalonia, anti-           passion for their cultural background. Looking at the sentiindependence users being more active in Scotland and both          ment features (#29-#30), however, we do not observe a clear
+users being more active in terms of different aspects in the       pattern across territories. More interestingly, a comparison
+Basque Country. What is interesting is to look at the URLs         of the sentiment in the interactions within and across groups
+that these users post in their tweets (#7 and #8). We see          shows that users tweet positively 67.7% times more often
+that pro-independence users tend to post more URLs whose           within groups than across groups (MWW = 528932618.0, p
+domain belongs to their nation (i.e., .cat for Catalonia, .eus     < 0.01).
+for the Basque Country or .scot for Scotland), whereas antiindependence users tend to post more URLs whose domain
+belongs to the officially recognised country (.es for Spain
+and .uk for the UK). This finding is statistically significant     5     S TANCE C LASSIFICATION
+for Catalonia and the Basque Country, but not for Scotland.
+                                                                   5.1   Task Definition
+    Looking at the user profiles, we see that proindependence users tend to have more followers while               We formulate the problem of determining the stance of
+anti-independence users tend to follow more people in              users towards the independence movement in their territory
+the Basque Country and Scotland, however it is the pro-            as a binary, supervised classification task. Stance classificaindependence users who have both more followers and                tion of users differs from the increasingly popular stance
+follow more people in the case of Catalonia (#9 and #10).          classification of texts [16] in that the stance is explicitly
+There is no significant difference when we look at whether         expressed in each text for the latter, while for users one
+users from both groups are verified accounts or not (#11).         needs to put together behavioural patterns extracted from
+The users who have the geolocation feature enabled in              historical features of their account. The input to the classifier
+their accounts tend to be pro-independence in Catalonia            is a set of users from a specific territory. To build the
+and the Basque Country, and anti-independence in Scotland          classification model, a training set of users labelled for one
+(#12). Initially we hypothesised that pro-independence users       of Y = {P I, AI} is used (P I = pro-independence, AI =
+would be less likely to activate the geolocation feature, given    anti-independence). For a test set including a set of new,
+that in that case Twitter would tag their geolocated tweets        unseen users, the classifier will have to determine if each
+as coming from Spain or the UK, which they might dislike.          of the users is a supporter or opposer of independence,
+However, this only holds true for Scotland and hence the           Ŷ = {P I, AI}.
+        (a) Interactions (Catalonia)           (b) Interactions (Basque Country)              (c) Interactions (Scotland)
+
+
+         (d) Network (Catalonia)                 (e) Network (Basque Country)                  (f) Network (Scotland)
+
+Fig. 1: Interactions and network connections within and across national identities. Blue: pro-independence; Red: antiindependence.
+
+
+5.2   Classification Settings                                         Each of the remaining users belong to a feature in the
+We perform the classification experiments in a stratified,            resulting vectors. For each user, we represent each of
+10-fold cross-validation setting separately for each territory.       the features in the vectors as the count of interactions
+We micro-average the scores to aggregate the performance              the user has had with the user represented by that
+across different folds and report the final accuracy scores.          feature.
+We use four different classifiers: Naive Bayes, Support            3) Favourites: To represent the content of the tweets
+Vector Machines, Random Forests and Maximum Entropy.                  favourited by a user, we use the same approach based
+We use four different types of features, all of which are             on word embeddings as for the timeline above, in this
+independent of the location string we used for determining            case using the content of the tweets favourited by a user
+the ground truth:                                                     instead.
+  1) Timeline: We use Word2Vec embeddings [17] to rep-             4) Network: Similar to the approach used for interactions,
+     resent the content of a user’s timeline of most recent           we aggregate the list of users that appear in the nettweets. The model we use for the embeddings was                  works (followees or followers) in each of our datasets.
+     trained for each territory using the entire collection of        We restrict this list to the 99th percentile formed by the
+     tweets. We represent each tweet as the average of the            most frequent users in each dataset. For each user, we
+     embeddings for each word, and finally get the average            then create a vector with binary values representing
+     of all tweets.                                                   whether each of the users is in the network of the
+  2) Interactions: We consider that a user is interacting with        current user.
+     another when they are retweeting or replying to them.
+     We create a weighted list of all the users that are the
+     target of the interactions in each of our datasets. Given
+                                                                  6   R ESULTS
+     the length of this list, we reduce its size by restricting   Table 4 shows the classification results. Among the four
+     to the 99th percentile of most common interactions.          feature types under study, a user’s network is the most
+                Feature #     Feature                                                 Catalonia   Basque C.   Scotland
+                                                            Tweeting activity
+                   #1         Number of tweets posted                                    **           *         **
+                   #2         Number of tweets favourited                                            **         **
+                   #3         Tweeting rate (avg. tweets per day)                        **                     **
+                   #4         Age of the Twitter account                                 **          **         **
+                   #5         Number of retweets their tweets get                        **          **         **
+                   #6         Number of times their tweets are favourited                **          **         **
+                   #7         User posts URLs belonging to independent nation’s TLD      **          **
+                   #8         User posts URLs belonging to current country’s TLD         **          **          *
+                                                                    User profile
+                    #9        Number of accounts that follow them                        **          **         **
+                   #10        Number of accounts they follow                             **          **         **
+                   #11        User is verified
+                   #12        User has geolocation feature enabled                       **          **         **
+                   #13        User profile URL belongs to independent nation’s TLD       **          **         **
+                   #14        User profile URL belongs to current country’s TLD          **          **         **
+                   #15        User language is that of the independent nation            **          **
+                   #16        User language is that of the current country               **          **
+                                                                    Interactions
+                   #17        Interactions within national identity                      **          **         **
+                   #18        Interactions across national identities                    **                     **
+                   #19        Favouriting within national identity                       **          **         **
+                   #20        Favouriting across national identities                     **          **         **
+                   #21        Mentions with national identity                            **          **         **
+                   #22        Mentions across national identities                        **          **         **
+                   #23        Retweets within national identity                          **          **         **
+                   #24        Retweets across national identities                        **                     **
+                                                                      Network
+                   #25        Number of times added to lists by others                   **                     **
+                   #26        Follow people of their own national identity               **          **         **
+                   #27        Follow people of opposing national identity                **                     **
+                                                                     Linguistic
+                   #28        User tweets in independent nation’s own language           **          **         **
+                   #29        Tweets more positively within national identity            **          **         **
+                   #30        Tweets more negatively across national identities          **          **         **
+
+
+TABLE 3: Comparison of features across national identities for the three territories under study. Colours indicate the group
+for which a feature is more prominent: green for more pro-independence, white for more anti-independence. Statistics are
+computed using Welch’s T-tests (** p < 0.01, * p < 0.05).
+
+
+                               NB       SV    RF    ME                features, suggesting that the content they engage with and
+                              Catalonia                               the people they interact with are not as indicative.
+             Timeline         .940   .954    .955   .944                  Among the classifiers under study, we find that the MaxInteractions     .841   .935    .960   .946              imum Entropy classifier performs better than the rest when
+             Favourites       .919   .932    .932   .923              network features are used. This is consistent for all three
+             Network          .957   .970    .965   .972
+                                                                      territories, achieving 0.972, 0.903 and 0.849 for Catalonia,
+                            Basque Country                            the Basque Country and Scotland, respectively.
+             Timeline         .598   .867    .846   .831
+             Interactions     .799   .826    .857   .842
+             Favourites       .567   .819    .810   .784              7    D ISCUSSION
+             Network          .889   .881    .885   .903
+                                                                      The methodology described here enabled us to gather large
+                               Scotland
+                                                                      datasets to analyse independence movements through social
+             Timeline         .595   .789    .742   .724              media, developing a classifier that can determine the users’
+             Interactions     .620   .727    .803   .779
+             Favourites       .546   .754    .724   .720              national identity. Our methodology and classifier have been
+             Network          .588   .828    .830   .849              tested in three territories with ongoing independence movements: Scotland, Catalonia and the Basque Country. Our
+TABLE 4: Stance classification results. NB: Naive Bayes,              classification experiments show encouraging results with
+SV: Support Vector Machines, RF: Random Forests, ME:                  high performance scores that range from 85% to 97% in
+Maximum Entropy.                                                      accuracy with the use of a Maximum Entropy classifier that
+                                                                      exploits each user’s social network. Moreover, an analysis
+                                                                      of the social networks of users reveals the existence of
+                                                                      political homophily, where users tend to connect with others
+indicative feature for determining their stance. This suggests        from the same group or national identity. Further to this
+that users belonging to different identity groups tend to             experimentation and in a realistic scenario, the classifier
+be connected to different users on Twitter. The rest of the           trained from users whose self-reported location field reveals
+features are significantly behind the performance of network          their national identity can then be applied to other users in
+that particular territory. Classification of users by national                  Dr. Arkaitz Zubiaga Arkaitz Zubiaga is an assisidentity can then be exploited for further analysis of societal                 tant professor at the University of Warwick. His
+                                                                                research interests revolve around social media
+and political issues, as well as to target the segment of users                 mining, natural language processing, computaaccording to one’s interest.                                                    tional social science and human-computer interOur plans for future work include further experiment-                       action.
+ing our data collection and annotation approach to other
+territories such as Palestine or Kurdistan.
+
+
+ACKNOWLEDGMENTS
+This work has been supported by the PHEME FP7 project
+(grant No. 611233) and The Alan Turing Institute under the
+EPSRC grant EP/N510129/1.
+
+
+R EFERENCES
+[1]  D. Rao, D. Yarowsky, A. Shreevats, and M. Gupta, “Classifying              Bo Wang Bo Wang is a PhD student at the
+     latent user attributes in twitter,” in Proceedings of Search and mining    University of Warwick, under the supervision of
+     user-generated contents, 2010, pp. 37–44.                                  Dr. Maria Liakata and Prof. Rob Procter. His
+[2] A. Zubiaga, A. Voss, R. Procter, M. Liakata, B. Wang, and A. Tsaka-         research interests lie in social media mining,
+     lidis, “Towards real-time, country-level location classification of        natural language processing, sentiment analysis
+     worldwide tweets,” IEEE TKDE, vol. 29, no. 9, pp. 2053–2066, 2017.         and automatic text summarisation.
+[3] M. Pennacchiotti and A.-M. Popescu, “Democrats, republicans and
+     starbucks afficionados: user classification in twitter,” in Proceedings
+     of KDD. ACM, 2011, pp. 430–438.
+[4] R. Emerson, From empire to nation: The rise to self-assertion of Asian
+     and African peoples. Beacon Press, 1962.
+[5] A. Fang, I. Ounis, P. Habel, C. Macdonald, and N. Limsopatham,
+     “Topic-centric classification of twitter user’s political orientation,”
+     in Proceedings of SIGIR. ACM, 2015, pp. 791–794.
+[6] A. Boutet, H. Kim, E. Yoneki et al., “What’s in your tweets? i know
+     who you supported in the uk 2010 general election.” in Proc. of
+     ICWSM, 2012, pp. 411–414.
+[7] J. Duany, “Nation on the move: The construction of cultural
+     identities in puerto rico and the diaspora,” American Ethnologist,
+     vol. 27, no. 1, pp. 5–30, 2000.
+[8] A. Tsakalidis, S. Papadopoulos, A. I. Cristea, and Y. Kompatsiaris,
+     “Predicting elections for multiple countries using twitter and             Dr. Maria Liakata Maria Liakata is an associate
+     polls,” IEEE Intelligent Systems, vol. 30, no. 2, pp. 10–17, 2015.         professor at the University of Warwick and a
+[9] A. Tumasjan, T. O. Sprenger, P. G. Sandner, and I. M. Welpe,                Turing Fellow at the Alan Turing Institute. Her
+     “Election forecasts with twitter: How 140 characters reflect the           research interests lie in text mining, natural lanpolitical landscape,” Social science computer review, vol. 29, no. 4,      guage processing, biomedical text mining and
+     pp. 402–418, 2011.                                                         sentiment analysis.
+[10] I. Himelboim, S. McCreery, and M. Smith, “Birds of a feather tweet
+     together: Integrating network and content analyses to examine
+     cross-ideology exposure on twitter,” Journal of Computer-Mediated
+     Communication, vol. 18, no. 2, pp. 40–60, 2013.
+[11] P. Barberá, “Birds of the same feather tweet together: Bayesian
+     ideal point estimation using twitter data,” Political Analysis, vol. 23,
+     no. 1, pp. 76–91, 2015.
+[12] J. Bollen, B. Gonçalves, G. Ruan, and H. Mao, “Happiness is
+     assortative in online social networks,” Artificial life, vol. 17, no. 3,
+     pp. 237–251, 2011.
+[13] H. B. Mann and D. R. Whitney, “On a test of whether one of two
+     random variables is stochastically larger than the other,” The annals
+     of mathematical statistics, pp. 50–60, 1947.
+[14] B. L. Welch, “The generalization of student’s problem when
+     several different population variances are involved,” Biometrika,
+                                                                                Prof. Rob Procter Rob Procter is a Professor at
+     vol. 34, no. 1/2, pp. 28–35, 1947.
+                                                                                the University of Warwick and a Turing Fellow at
+[15] Y. Chen and S. Skiena, “Building sentiment lexicons for all major
+                                                                                the Alan Turing Institute. His research interests
+     languages,” in Proceedings of the 52nd Annual Meeting of the Associlie in social media analysis, computational social
+     ation for Computational Linguistics (Short Papers), 2014, pp. 383–389.
+                                                                                science, natural language processing and mixed
+[16] A. Zubiaga, E. Kochkina, M. Liakata, R. Procter, and M. Lukasik,
+                                                                                methods.
+     “Stance classification in rumours as a sequential task exploiting
+     the tree structure of social media conversations,” in Proc. of COLING, 2016, pp. 2438–2448.
+[17] T. Mikolov, I. Sutskever, K. Chen, G. S. Corrado, and J. Dean,
+     “Distributed representations of words and phrases and their compositionality,” in Advances in neural information processing systems,
+     2013, pp. 3111–3119.

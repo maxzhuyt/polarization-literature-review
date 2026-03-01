@@ -1,0 +1,564 @@
+The Discourse of Online Content Moderation: Investigating Polarized
+         User Responses to Changes in Reddit’s Quarantine Policy
+
+                     Qinlan Shen                                          Carolyn P. Rosé
+               Carnegie Mellon University                            Carnegie Mellon University
+               qinlans@cs.cmu.edu                                     cprose@cs.cmu.edu
+
+
+                      Abstract                                 major platform is that defining what abusive behavior is requires consideration of both behavRecent concerns over abusive behavior on
+                                                               ior and ideology – political ideology is inextritheir platforms have pressured social media
+    companies to strengthen their content modera-              cably tied with abusive language on major plattion policies. However, user opinions on these             forms where sensitive discussion can occur. For
+    policies have been relatively understudied. In             example, Reddit (Statt, 2018) and Twitter (Newthis paper, we present an analysis of user re-             ton, 2019) have faced recent backlash for allowsponses to a September 27, 2018 announce-                  ing racist content to remain on their platforms over
+    ment about the quarantine policy on Reddit as              concerns of bias against right-leaning viewpoints.
+    a case study of to what extent the discourse
+                                                               Prior research (Shen et al., 2018; Jiang et al., 2019)
+    on content moderation is polarized by users’
+    ideological viewpoint. We introduce a novel
+                                                               has also demonstrated that ideology can be used as
+    partitioning approach for characterizing user              a tool to challenge moderation decisions.
+    polarization based on their distribution of par-              In this paper, we argue that ideology is inextriticipation across interest subreddits. We then             cably tied to how abusive language is defined and
+    use automated techniques for capturing fram-               regulated in real-world applications in social meing to examine how users with different view-              dia. To demonstrate the role of political ideology
+    points discuss moderation issues, finding that             in the problem of defining abusive language, we
+    right-leaning users invoked censorship while
+                                                               present the first NLP study of polarized user releft-leaning users highlighted inconsistencies
+    on how content policies are applied. Overall,              sponses towards policy. We examine how users
+    we argue for a more nuanced approach to mod-               frame their arguments in supporting or opposing
+    eration by highlighting the intersection of be-            stronger moderation policies to draw insight into
+    havior and ideology in considering how abu-                ideologically-related user concerns over their imsive language is defined and regulated.                    pact. As a case study, we focus on users’ responses
+                                                               towards changes to the quarantine policy on Red1   Introduction
+                                                               dit.1 Reddit provides an interesting site of study
+In response to the rising surge of abusive behavior            into content moderation issues due to a culture of
+online, large social media platforms, such as Face-            debate over whether free speech is a principal tenet
+book, Twitter, and Youtube have been pressured                 of the platform (Robertson, 2015). Here, we focus
+to strengthen their stances against offensive con-             on a specific policy change to provide an in-depth
+tent and increase their transparency in how content            analysis of the polarized stances users take.
+policies are enforced. Facebook, for example, first               The rest of the paper is organized as follows.
+released its community standards publicly in April             First, we give an overview of related work and
+2018 and has made efforts to ban white nationalist             describe the recent Reddit quarantine policy upand separatist content (Stack, 2018), while Twit-              date. Next, we present a general topic analysis of
+ter announced a new policy against “dehumaniz-                 discussion surrounding the quarantine policy. We
+ing speech” in September 2018 (Matsakis, 2018).                then describe how we operationalized polarization
+   Nevertheless, the problem of how to define what             by characterizing users based on their participabehaviors are abusive and how these behaviors                  tion across subreddits, then examine how different
+should be handled remains a challenge. One ma-                   1
+                                                                   https://www.reddit.com/r/
+jor issue in terms of defining a content policy for a          announcements/comments/9jf8nh/
+                     Proceedings of the Third Workshop on Abusive Language Online, pages 58–69
+                   Florence, Italy, August 1, 2019. c 2019 Association for Computational Linguistics
+
+
+users frame issues within topics. Finally, we dis-          reddit associated with the Gamergate movement,
+cuss the implications and limitations of our work.          view free expression, harassment, and censorship
+                                                            within their own community. Rather than focus2   Related Work                                            ing on users who share certain views within a
+                                                            particular subreddit, however, we focus on users
+One of the primary roles of moderation in on-               who responded to a Reddit-wide moderation polline spacesis the regulation of anti-social behav-          icy change. This allows us to examine how users
+iors (Kiesler et al., 2012), such as spamming, cy-          who have participated across a wide range of subberbullying, and hate speech. The design and                reddits present their opinions, with the goal of unbest practices for moderating abusive content on            derstanding what elements of the debate between
+large social media platforms, however, is a fun-            moderation and censorship are polarized.
+damentally challenging issue (Gillespie, 2018),
+due to the tension between providing a space for            3   Reddit Quarantine Policy
+open and meaningful interaction and determining                 Announcement
+what behaviors are acceptable and how unacceptable behaviors should be handled. While social              On September 27, 2018, Reddit announced
+media companies, as private organizations, can              changes to their quarantine policy in response to
+legally curate content on their platforms (Robert-          growing concerns over the visibility of offensive
+son, 2015), cracking down on content can lead to            content on their platform. The quarantine featension with users, who may view it as setting a            ture allows site administrators to hide “commuprecedent for banning behaviors or even political           nities that, while not prohibited, average reddiideologies in the future. Previous research Shen            tors may nevertheless find highly offensive or upet al. (2018); Jiang et al. (2019), has demonstrated        setting”2 from being searched, recommended, or
+that tensions and backlash can arise in communi-            monetized. While the quarantine function was
+ties if participants perceive moderation decisions          initially announced in August 2015 as part of a
+as biased against minority viewpoints, even if de-          broader initiative to address offensive content, the
+cisions seem “fair” after accounting for behavior.          September announcement specifically focused on
+                                                            expanding use of the quarantine function. The two
+   Previous research on the effect of moderation
+                                                            major aspects of the announcement were 1) a quarpolicies has focused primarily on the effect of
+                                                            antine wave of 20+ communities of interest or submoderation on directly affected users. For exreddits and 2) the introduction of an appeals proample, Chandrasekharan et al. (2017) investigated
+                                                            cess for moderators of quarantined subreddits.
+the impact of the 2015 Reddit hateful content
+ban on users who participated on the banned                    The announcement was posted in the
+subreddits, while Chang and Danescu-Niculescu-              r/announcements subreddit, which allows users to
+Mizil (2019) examined the participation trajecto-           respond to major Reddit-internal policy changes.
+ries of users blocked by community moderators on            To investigate the discourse surrounding the
+Wikipedia. User opinions on moderation policies,            announcement, we collected comments that were
+however, remains relatively understudied from a             posted in response to the r/announcements over
+large-scale quantitative perspective, though previ-         the course of one month using the Pushshift API.3
+ous work has drawn insights from structured in-             After filtering out 6 comments that were deleted
+terviews and surveys with users. Jhaver et al.              by users or removed by moderators, as we no
+(2018) interviewed both users who used block-               longer had access to the original comment texts,
+lists on Twitter and users who have been blocked            we then identified 13 well-known meta-bots4
+on their insights about harassment and blocking.            among the remaining users. Both comments by
+Myers West (2018) surveyed participants on On-              and responses to these meta-bots were removed,
+lineCensorship.org about their experiences with                2
+                                                                 https://www.reddithelp.com/
+content moderation to gather insights into folk the-        en/categories/rules-reporting/
+                                                            account-and-community-restrictions/
+ories about how moderation policies work.                   quarantined-subreddits
+   Most closely related to our work, which focuses               https://pushshift.io/api-parameters/
+on ideologically motivated user viewpoints, Jhaver               CommonMisspellingBot, WikiTextBot, Link-Help-Bot,
+                                                            YTubeInfoBot, HelperBot , LimbRetrieval-Bot, BigLeet al. (2017) used a mixed-methods approach to              bowskiBot, FatFingerHelperBot, RemindMeBot, imguralinvestigate how users on r/KotakuInAction, a sub-           bumbot, opinionated-bot, societybot, svenska subbar
+    Topic                                Top Words
+    T0: Accessibility of                 quarantine, reddit, subs, subreddit, content, community, view, find,
+    Quarantined Content (13.6%)          offensive, list, users, mobile, quarantining, site, access
+                                         shit, fuck, lol, racist, ca [CringeAnarchy], literally, stop,
+    T1: Heated Outbursts (11.7%)
+                                         td [the Donald], stupid, show, love, dude, alt, call, thread, leftist
+    T2: Content in r/The Donald          t d, ban, post, subreddit, the donald, propaganda, admins, rules,
+    (11.2%)                              russian, subs, users, violence, racism, page, link
+    T3: Conservative vs. Liberal         trump, politics, left, time, wing, posts, evidence, comments, day,
+    Politics [U.S.] (10.1%)              stuff, donald, top, ago, hard, conservative
+    T4: Censorship of Political          people, bad, censorship, agree, make, wrong, political, point,
+    Views/Debate (9.8%)                  opinions, disagree, thought, fact, ideas, understand, discussion, feel
+    T5: Moderation/Free Speech           reddit, speech, free, hate, hitler, site, heil, internet, platform, thing,
+    on Social Media (9.2%)               censorship, website, private, open, freedom
+    T6: Far-Right/Far-Left               white, nazi, anti, people, genocide, holocaust, support, great,
+    Ideologies (9.0%)                    fascist, jews, communism, capitalism, country, claim, socialism
+    T7: Personal Experience              people, things, talking, thing, time, men, matter, person, real, years,
+    (7.1%)                               talk, life, made, lot, world
+    T8: Laws/Government-level            people, society, violence, person, power, words, point, world,
+    Policies (6.2%)                      rights, groups, political, majority, control, argue, definition, part
+                                         good, make, ca, yeah, read, back, man, money, question, side, wo,
+    T9: Miscellaneous (12.0%)
+                                         big, end, full, care
+
+Table 1: Identified topics, proportion in our dataset, and top 15 associated words. Topic names were assigned after
+examining both the top words and the top comments associated with each topic.
+
+
+as they are usually formulaic and unrelated to                         For the LDA models, we considered each comthe content of our analyses (e.g. “Good bot”,                       ment to be a document. Comments were tokenized
+complaints about bot responses), leaving us with                    using SpaCy (Honnibal and Montani, 2017) and
+a final announcement dataset containing 9,836                       stopwords and punctuation-only tokens were reposts from 3,640 users.                                             moved. We trained models with 5, 10, 15, 20,
+                                                                    25, 30, 40, and 50 topics. We selected the model
+4     Topical Analysis                                              with 10 topics for further analysis for having the
+Topic choice has been commonly used in NLP                          highest CV coherence, which has been shown to
+(Tsur et al., 2015; Field et al., 2018; Demszky                     more closely correlate with human ratings of inet al., 2019) as a proxy for agenda-setting, the                    terpretability (Röder et al., 2015) than semantic
+strategic highlighting of what aspects of a sub-                    coherence (Mimno et al., 2011). When analyzing
+ject are worth discussing (McCombs, 2002). Here,                    and interpreting the topics discovered, we examwe first describe our preliminary topic analysis for                ined both the highest weighted words and example
+discovering the range of topics discussed.                          comments associated with each topic.
+
+4.1    Models                                                       4.2    Results
+
+We used Latent Dirichlet Allocation (LDA) (Blei                     Table 1 presents the topics discovered by the
+et al., 2003) to construct our topics. While Struc-                 model. The most prevalent topic (T0) in the distural Topic Models (STM) (Roberts et al., 2013)                     cussion thread focuses on accessibility to quarare popular for social science analyses for en-                     antined subreddits. This is unsurprising, as this
+abling document metadata to act as topic co-                        threads are organized in broad semi-topical hierarchical trees
+variates, STM consistently performed worse than                     and threads can contain thousands of comments (Weninger,
+                                                                    2014). As a result, user participation on a single thread can be
+LDA on our data, both in topical coherence mea-                     scattered and upvoted comments in one subthread may subsures and human interpretability.5                                  stantially overlap in content with downvoted comments in another. Thus, the simpler LDA model, with fewer global priors
+      A potential challenge for STM for our data is the lack        on the structure and content of the data, may have better genof global consistency in our metadata. Comments in Reddit           eralization.
+topic directly addresses the short-term impact of              points may highlight different aspects within the
+the quarantine wave, such as the ability to search             general topics discussed here.
+for and list quarantined subreddits, access to quarantined content on the mobile app, and whether                 5     Characterizing User Participation on
+quarantined content will generate ad revenue. The                    Reddit
+proportion of T0 across comments, however, is
+                                                               In order to better understand how different users
+relatively low (13.6%), compared to discussion
+                                                               highlight or frame particular aspects within each
+centered around the broader implications of quartopic (Entman, 2007; Nguyen et al., 2013; Card
+antining. For example, T3: Conservative vs.
+                                                               et al., 2016), we first want to characterize the types
+Liberal Politics and T6: Far-Right/Far-Left Ideof users who participated in the r/announcements
+ologies center around broader ideologies associdiscussion. Because subreddits on Reddit repated with controversial content, while T4: Cenresent interest-based subcommunities, previous
+sorship of Political Views/Debate, T5: Moderawork has used participation across subreddits as
+tion/Free Speech on Social Media Platforms, and
+                                                               a signal of user interests or viewpoint (Olson and
+T8: Laws/Government-Level Policies discuss the
+                                                               Neal, 2015; Chandrasekharan et al., 2017). We
+legal implications of online content moderation.
+                                                               follow in the lines of this work by characterizing
+   One notable topic in our model was T2: Con-                 users using their participation in subreddits prior
+tent in r/The Donald. Despite not being one of                 to the announcement. In this section, we describe
+the subreddits quarantined during the quarantine               a graph-partitioning approach for characterizing
+wave, much of the discussion surrounding the an-               common interests across subreddits.
+nouncement centered around The Donald, due to
+its prominent reputation for controversial behav-              5.1    Constructing the Interest Graph
+ior. We can see evidence of discussion about con-              For each user who participated in the
+troversial behavior on The Donald, as many of                  r/announcements quarantine thread, we colthe highly weighted words in the discussion of                 lect all submissions and comments posted by
+The Donald are words describing negative behav-                the user in the month preceding the quarantine
+iors that have been associated with the subreddit              policy update (August 27 - September 26). We
+in past research, such as propaganda/fake news                 then counted how many times each user posted
+(Kang, 2016), promotion of violence and racism                 in each subreddit. In order to ensure that users
+(Squirrell, 2017), and visibility manipulation and             both showed sustained interest in a subreddit and
+mobilization through bots (Carman et al., 2018;                to limit the number of users who participate in
+Flores-Saviaga et al., 2018). The Donald is often              subreddits to challenge the widely held view of a
+considered an “elephant in the room” with regards              subreddit, we consider a user to be interested in a
+to content moderation on Reddit, as the subreddit              subreddit if they have posted at least 3 times6 in
+remains one of the most visible and active subred-             the preceding month with a positive score.
+dits on the site despite its controversial reputation.            To capture similarities between the subreddits
+   A somewhat surprising omission from the top-                users participate in, we then cluster them by perics discovered was discussion around the new ap-               forming graph partitioning over a subreddit interpeals process for quarantined subreddits. While                est graph (Olson and Neal, 2015). We construct a
+the bulk of the text in the original post of the thread        subreddit interest graph by drawing an undirected
+centered around the introduction of the appeals                edge eij between two subreddit nodes i and j if the
+process, only 0.13% of the posts explicitly used               same user participates in both subreddits. Aij , the
+the words “appeal” and “appeals” in reference to               weight of eij , is set equal to the number of users
+the appeals policy. The addition of an appeals                 in common between i and j. We reduce the numprocess is relatively uncontroversial for increasing           ber of edges in the graph by setting a global edge
+the transparency of quarantines and primarily af-              threshold Aij >= 5.7
+fects moderators of quarantined subreddits. This                   6
+                                                                     The threshold was determined based on the distribution
+suggests that what is driving discussion within the            of user-subreddit participation pairs across users who particthread are the more controversial issues that may              ipated in the r/announcements thread.
+                                                                     While we can threshold the edges of a graph ushave a personal, ideological impact on users. As               ing a significance-based backbone extraction algorithm,
+a result, we expect that users with differing view-            our subreddit graph is based only on the users from the
+ Category                  Central Subreddits                                               Accuracy     Cohen’s κ
+ C0: Tech/Sports           technology, Games, pcmasterrace, nba, PS4,                        56.25         68.31
+ C1: Internet              WTF, WhitePeopleTwitter, trashy,
+                                                                                              84.38         75.13
+ Compilation               BlackPeopleTwitter, mildlyinfuriating
+                           CringeAnarchy, unpopularopinion, the Donald,
+ C2: Right-Leaning                                                                            78.13         66.14
+                           Libertarian, TumblrInAction
+                           greentext, starterpacks, dankmemes, PrequelMemes,
+ C3: Memes                                                                                    50.00         27.64
+                           MemeEconomy
+                           TopMindsOfReddit, SubredditDrama,
+ C4: Left-Leaning                                                                             81.25         52.71
+                           ChapoTrapHouse, The Mueller, FuckTheAltRight
+
+Table 2: Identified subreddit categories, central subreddits, averaged annotator performance and agreement on
+intrusion task.
+
+
+5.2   Louvain Community Detection                                 5.3   Evaluation
+We use the Louvain community detection algo-                      To ensure that the 5 discovered subreddit caterithm (Blondel et al., 2008) to define a partition                gories gave us high-quality and coherent notions
+over the constructed subreddit interest graph. The                of user interests, we run a human evaluation of
+objective of the Louvain algorithm is to maximize                 the discovered categories using a subreddit intruthe modularity of a partition, which measures the                 sion task, analogous to word intrusion tasks used
+density of links within vs. between communities.                  for evaluating topic model interpretability (Chang
+The Louvain modularity Q is defined as                            et al., 2009). The subreddit intrusion task was
+                                                                  presented to two native English speaker annota1 Xh       ki kj i
+        Q=          Aij −         δ(ci , cj )         (1)         tors who used Reddit on a daily basis to ensure
+              2m          2m
+                    i,j                                           familiarity with the types of user interests on RedP                                                    dit. Given a set of four subreddits belonging to
+where ki = j Aij is the sum of the weights of                     one of the categories, and an “intruder” subreddit
+edges attached to node i, δ(ci , cj ) = 1 if nodes i              from another category, annotators were asked to
+and j belong Pto the same community, 0 otherwise,                 identify the intruder. Annotators were provided
+and m = 12 i,j Aij . Because ∆Q from mov-                         with the description and 5 highly-ranked thread
+ing node i from one community to another is easy                  titles for each subreddit for additional context in
+to compute, the algorithm finds the best partition                determining the intruder. For each category, all
+through a simple two-stage process:                               the other categories were selected as an intruder
+  1. Assign each node to its own community                        instance 4 times, giving us 16 sets per category.
+                                                                  After completing the intrusion task, the annota2. Repeat until convergence                                     tors discussed their decision-making process during the intrusion task and assigned labels to the
+      (a) Iterate through nodes i, moving i into
+                                                                  five discovered subreddit categories.
+          the community that gives the highest inResults for the intrusion task for each category
+          crease in modularity, until convergence.
+                                                                  are included in Table 2. For all the subreddit cate-
+      (b) Construct new graph where nodes are
+                                                                  gories except C3: Memes, the annotators achieved
+          communities and edge weights between
+                                                                  moderate-to-high agreement and performed sigcommunities are equal to sum of edge
+                                                                  nificantly better than a random baseline. The catweights between lower-level nodes.
+                                                                  egory of C3: Memes is more abstract compared
+We use a resolution factor (Lambiotte et al., 2008)               to the other categories and contains many subredof 1.0 and select the highest modularity partition                dits that are not easily identifiable by name and deof the dendrogram for our subreddit categories.                   scription alone. Nevertheless, the annotators were
+The resulting 5 categories are shown in Table 2.                  able to reach an agreement on the interests covered
+                                                                  by C3 in discussion after the intrusion task.
+r/announcements thread. As a result, a significance-based
+method of thresholding edges can give uneven results based            From these discovered subreddit categories, for
+on how many users were sampled from each subreddit.               each user, we calculate their distribution of participation across the five categories and an addi-                                                      (a) β = 0.0
+tional category for unidentified subreddits. One                                 0.25
+
+limitation of considering user viewpoints based on                                0.2
+these categories, however, is that only C2: RightProportion
+                                                                                 0.15
+Leaning and C4: Left-Leaning are directly related
+                                                                                                                                          left
+to political viewpoint. Rather, these five categories                             0.1
+                                                                                                                                          right
+more closely represent shared sets of interests or                               0.05
+personas users can engage in. While this limits
+what we can say in terms of polarization across                                         T0   T1   T2   T3   T4   T5   T6   T7   T8   T9
+                                                                                                             Topic
+the traditional definitions of left-leaning vs. rightleaning political ideologies, we argue that consid-                                                    (b) β = 0.1
+ering user participation in these interest categories
+                                                                                 0.25
+is more representative of how users on Reddit en0.2
+gage in politics across the site.
+
+
+                                                                    Proportion
+                                                                                 0.15
+
+                                                                                                                                          left
+                                                                                  0.1
+6     Analyzing Polarized Viewpoints                                                                                                      right
+      Towards the Quarantine Policy                                              0.05
+                                                                                        T0   T1   T2   T3   T4   T5   T6   T7   T8   T9
+In the previous sections, we first identified the gen-                                                       Topic
+eral topics discussed within the r/announcements
+thread about the quarantine policy. We then                                                            (c) β = 0.25
+characterized users who participated in the                                      0.25
+
+r/announcements thread based on their distribution                                0.2
+of participation across different subreddits in the
+                                                                    Proportion
+
+
+                                                                                 0.15
+month preceding the announcement. In this secleft
+tion, we examine the relationship between a user’s                                0.1
+                                                                                                                                          right
+ideological views and how they strategically high-                               0.05
+light particular aspects of each topic. Rather than
+using a static left vs. right framework for opera-                                      T0   T1   T2   T3   T4   T5   T6   T7   T8   T9
+                                                                                                             Topic
+tionalizing user viewpoint, we examine how users
+highlight different aspects as they move along the
+left-right spectrum. We then analyze the relation-            Figure 1: Topic prevalence across left and right-leaning
+                                                              users at different levels of polarization, with 95% conship between users’ polarization and their framing
+                                                              fidence intervals.
+within the topics identified in Section 3 in an unsupervised manner.
+                                                              based on their participation distribution p:
+6.1    User Polarization                                                  
+                                                                          left,
+                                                                                       if pl (ui ) − pr (ui ) > β
+While we can label users strictly as left vs. right             Cβ (ui ) = right,       if pr (ui ) − pl (ui ) > β
+                                                                          
+based on whether they spend more of their time on                         
+                                                                             neutral, otherwise
+left-leaning and right-leaning subreddits in their                                                                (2)
+participation distribution, we can get a more nu-             β = 0 is equal to the majority case. For our reanced view of the differences between left-leaning            maining analyses on agenda-setting and framing,
+and right-leaning users by additionally consider-             we compare results for β = {0, 0.1, 0.25}.
+ing how polarized users are along the left-right
+spectrum. Rather than using a simple majority-                6.2                Polarized Agenda-Setting
+based assignment, we introduce a polarization                 Figure 1 shows the prevalence of each topic across
+margin hyperparameter β that controls for how                 left-leaning and right-leaning users at differing
+skewed a user must be towards one side to be con-             values of β. We found that right-leaning users
+sidered a left-leaning or right-leaning user. For a           were significantly more likely to invoke T0: Acgiven β, we can assign the class of each user ui              cessibility of Quarantined Content, T4: Censorr(t)−l(t)
+ship of Political Views/Debate, and T5: Moder-              score, δw           :
+ation/Free Speech on Social Media for all values
+                                                                                             c(t)  t
+of β. The high prevalence T0 is unsurprising, as                   c(t)                      yw + αw
+                                                                  δw    = log                                      (3)
+the majority of the newly quarantined subreddits                                                        c(t)
+                                                                                    nc(t) + α0t − (yw + αw
+                                                                                                         t )
+(listed in the Supplementary Material) were associated with conservative views and users. Thus,                             r(t)−l(t)    r(t)    l(t)
+                                                                           δw         = δw    − δw                 (4)
+accessibility to the newly quarantined subreddits
+would be a concern for many right-leaning users.                  r(t)−l(t)              1                     1
+                                                               σ(δw         )=        r(t)
+                                                                                                    +    l(t)
+                                                                                                                   (5)
+The increased prevalence of topics T4 and T5,                                              t
+                                                                                     yw + αw                   t
+                                                                                                        yw + α w
+which are focused on the relationship between
+                                                                                           r(t)−l(t)
+content moderation online spaces and censorship,                           r(t)−l(t)      δw
+                                                                        z(δw         )= q                          (6)
+suggests that right-leaning users may be challeng-                                           r(t)−l(t)
+                                                                                         σ(δw          )
+ing the ability or approach of Reddit administrators to expand the quarantine policy as a form
+of censorship. Finally, the higher prevalence of            where nc(t) is the number of words in corpus c,
+                                                              c(t)
+T7: Personal Experience topic, which is focused             yw is the count of word w in corpus c(t), l(t) and
+on users’ personal participation on the quarantined         r(t) are the left-leaning and right-leaning corpora
+or other controversial subreddits, suggests that to         for topic t, and α0t and αw
+                                                                                      t are corpus and word prisome extent, right-leaning users are leaning into           ors from a background corpus. We set the Dirichtheir participation on controversial subreddits in          let prior by using the posts from “neutral” users as
+their responses towards the announcement.                   a background corpus, with the size and count of
+                                                            words in the background corpus as the corpus and
+   Across all values of β, left-leaning users use           word priors respectively.. We extend the salience
+T6: Far-Right/Far-Left Ideologies significantly             score to bigrams and trigrams and sampled posts
+more than right-leaning users. This difference              containing the top 50 salient terms for each topic
+increases as the polarization margin β increases.           and faction to analyze framing strategies at differThis suggests that left-leaning users were likely to        ent levels of polarization.
+invoke the controversial behaviors associated with             First, we found that, across topics, right-leaning
+the extremism, particularly the far-right. Interest-        users framed the issues surrounding content modingly, while extremist ideology is more likely to be        eration in terms of censorship and suppression,
+invoked by left-leaning users, there was no signifi-        while left-leaning users tended to frame issues in
+cant difference in prevalence between left-leaning          terms of consistency. For example, in T4: Censorand right-leaning users for discussion of US poli-          ship of Political Views/Debate, right-leaning users
+tics (T3: Conservative vs. Liberal Politics).               consistently used terms such as “silencing”, “echo
+                                                            chamber”, and “censorship” in reference to imOverall, we note that while the relative prevapact of the announcement, directly accusing the
+lence of topics for left-leaning and right-leaning
+                                                            quarantine policy of being used to silence politiusers generally remained the same at different
+                                                            cal viewpoints. This supports our hypothesis from
+values of β, the major differences between leftSection 5.2 that right-leaning users invoked T4 to
+leaning and right-leaning users became larger as
+                                                            criticize the quarantine policy as a form of censorwe increase the polarity margin.
+                                                            ship. On the other hand, when left-leaning users
+                                                            invoked T4, they used terms such as “picking and
+                                                            choosing”, “bad faith” in reference to uneven and
+                                                            insufficient application of the policy. Left-leaning
+6.3   Within-Topic Framing
+                                                            users also often compared the quarantine feature to
+                                                            “bans” in T4, arguing that many subreddits quarWe expect users who have different positions to             antined under the announcement shared similarihighlight different aspects of each topic. To sep-          ties with subreddits that were banned in the past.
+arate out the salient words within each topic t for            We see similar patterns in T5: Moderation/Free
+left-leaning and right-leaning users, for each word         Speech on Social Media, though many of the
+w, we use the z-score of the log-odds ratio with a          salient terms used are specific to internet platDirichlet prior (Monroe et al., 2008) as a salience         forms. Right-leaning users emphasize the ideal
+of a free and open internet, using terms such                users focused on the how The Donald govas “open platforms” and invoking the name of                 erns itself (“admins”, “moderators”, “users”,
+“Aaron Swartz”, the late Reddit co-founder known             “rules”), left-leaning users explicitly emphasized
+for his anti-censorship views. Left-leaning users,           that the Donald has content encouraging vioon the other hand, consistently highlighted that             lence (“kill”, “doxxing”, “encouraged”, “attackprivate organizations like Reddit (“private com-             ing”, “spread”). One of the most common assopany”, “privately owned”) had the right to remove            ciations between The Donald and incitement of
+or hide content in violation of their policies.              violence cited by left-leaning users was the case
+   One of the more salient framing strategies re-            of u/Seattle4Truth, a The Donald user, who murlated to consistency by left-leaning users is the            dered his own father (Neiwert, 2017).
+comparison of quarantines with Reddit’s han-                    Like with our analysis of topic choice, the spedling of pornographic content, primarily in T0:              cific strategies on each side remained generally
+Accessibility of Quarantined Content and T8:                 consistent at the different levels of polarity.
+Laws/Government-level Policies. While opinions
+about how to handle porn on Reddit are mixed,                7   Discussion
+porn is commonly used as an analogue for many
+                                                             From our analysis, we find that right-leaning users
+of the consistency issues involved with quarantintend to frame the issues surrounding content moding subreddits with abusive language. For exameration in terms of censorship of political viewple, some users argue that the intent and functionpoints, while left-leaning users highlight the isality of quarantining should be similar to the notsues surrounding consistency in how moderation
+safe-for-work (NSFW) filtering system already in
+                                                             is applied, especially in regards to unmoderated
+place for pornographic subreddits, which does not
+                                                             offensive content. On the surface, these findings
+explicitly block a subreddit from being searched
+                                                             seem to reflect stereotypes about how freedom
+or shown in r/all. Others compare the liability of
+                                                             of expression is viewed by liberals and conservahosting pornography vs. other forms of offensive
+                                                             tives offline in the debate over campus free speech
+content, such as violence or hate speech.
+                                                             (Friedman, 2019). However, we argue that the emWe also found that across factions, users tried to        phasis on censorship vs. consistency is not enhighlight controversial, even violent, behavior by           tirely reflective of stereotypical, surface-level difusers on the opposite side. In Section 5.2, while            ferences between conservative and liberal viewwe suggested that left-leaning users invoked T6:             points on the tension between moderation and free
+Far-Right/Far-Left Ideologies to highlight contro-           speech. Both left-leaning and right-leaning users,
+versial behaviors in far-right subreddits, T6 is also        for example, used statements decrying both hate
+associated with talk surrounding the quarantine              speech and censorship and highlighted concerns
+of r/FULLCOMMUNISM, described as a “self-                    with how the Reddit quarantine policy was imaware socialist satire sub”. Thus, invocation of T6          plemented. Instead, we argue that these strategies
+may also be reflective of their personal investment          are employed as a defense of a user’s legitimate
+in participating in a quarantined subreddit. We              participation on Reddit. While previous work has
+see, however, that discussions about “socialism”             examined the use of free speech discourse as a deand “communism” are highly salient for right-                fense against ego or expressive threat (White et al.,
+leaning users, who commonly accused subreddits               2017), further exploration is needed into why the
+associated with these ideologies of supporting dic-          specific strategies of censorship vs. consistency
+tatorships and inciting violence. Similarly, for             are applied in the context of online discussion.
+left-leaning users,“nazi”, “ethnic”, “fascist”, and             As an example for needing more nuance in
+“genocide” are highly salient in T6, which were              understanding how opinions on policy are used
+used to argue that many right-leaning subreddits,            strategically in argumentation, one common framquarantined or not, expressed racist views, sup-             ing strategy we see across both sides is the asported fascism, and denied genocides.                        sociation of opposing viewpoints with the inciteThe framing strategy of highlighting controver-           ment or encouragement of violence. The quessial behavior from the opposing viewpoint was                tion of whether something incites or encourages
+also apparent in T2: Content in r/The Donald.                violence is important, as the encouragement and
+While the most salient terms for right-leaning               incitement of violence is explicitly prohibited by
+Reddit’s content policy.8 While “encouraging and                using the raw distribution of participation across
+inciting violence” provides a more concrete frame               all subreddit categories may give us better insight
+of judgment than broader definitions of offensive               into the range of users’ framing strategies across a
+language, there still is ambiguity in terms of how              wider, more nuanced range viewpoints.
+administrators should respond to content that violates Reddit policy, especially on the level of                7.2       Ethical Considerations
+broader communities. At the level of subreddits,                The investigation of the discourse surrounding the
+it is unclear to what extent a community has to                 Reddit quarantine policy requires us to handle sendemonstrate violent behavior before the adminis-                sitive information related to users’ political leantrators take action to quarantine or ban a subreddit.           ings. To limit the impact of this study on users’
+Many users9 argue that this ambiguity allows for                privacy and participation on Reddit (Fiesler and
+the Reddit administration to protect popular but                Proferes, 2018), usernames were only used to colcontroversial subreddits like The Donald.                       lect user activity outside of the r/announcements
+                                                                thread. After data collection, all usernames were
+7.1   Limitations and Future Work                               anonymized by replacement with a random nuOur work in this paper is focused on polarized                  meric id. Additionally, this study focuses on the
+responses to a specific content moderation policy               relationship between discussion about moderation
+change on Reddit. While we perform an in-depth                  and polarization in aggregate. Though individanalysis of the issues raised by the quarantine pol-            ual researchers viewed example posts, these posts
+icy change, our findings may be specific to the                 were not matched with individual users by either
+context surrounding this particular event, such as              username or id. Finally, while the full anonymized
+the majority of subreddits quarantined in conjunc-              data from the r/announcements thread is publicly
+tion with the announcement being right-leaning.                 available10 , we only release the user distribution
+A longitudinal analysis, where we examine re-                   across subreddit categories to prevent the user
+sponses to announcements affecting content mod-                 tracking across subreddits.
+eration on Reddit over time may give us a more
+general view of how users on Reddit talk about                  8        Conclusion
+free speech and how the discourse of free speech                In this paper, we used techniques for examinon Reddit has evolved in response to major events.              ing agenda-setting and framing to investigate how
+As of June 2019, there have not been other major                users discuss their opinions on an update to Rednotifications regarding moderation policy changes               dit’s quarantine policy. We presented a novel apin the r/announcements subreddit since the quar-                proach for operationalizing user polarization for
+antine policy changes. Nevertheless, finding tex-               our framing analyses, finding that as a whole,
+tual signals of user opinions for other moderation-             right-leaning users tended to invoke censorship
+related events, like the progression and eventual               while left-leaning users tended to invoke consisbanning of quarantined subreddits (e.g. CringeA-                tency in how policies are applied. While this
+narchy, watchpeopledie), remains an interesting                 seems to reflect stereotypes about how freedom of
+area of study.                                                  expression is viewed by conservatives and liberWhile we introduced the polarization margin as               als, we argue for a more nuanced view of formala method for capturing differences beyond a static              izing differences in how users frame their opinions
+left vs. right ideological assignment over users, we            about policy. Overall, this work builds towards unfound very few differences between users in the                 derstanding the relationship between ideology and
+same class at different levels of polarization. One             policy with regards to offensive language.
+limitation of our approach, however, is that we still
+rely on a hard left-right distinction at the different          Acknowledgments
+values of polarization margin β. Relaxing the as-               This research was supported in part by NSF Grant
+sumption that users must be assigned to a class for             DGE1745016 and the K&L Gates Presidential
+our topic choice and salience analyses and instead              Scholarship Fund. We thank Michael Miller Yohttps://www.redditinc.com/policies/                        der, Daniel Clothiaux, and the anonymous reviewcontent-policy                                                  ers for their helpful comments and feedback.
+     See r/AgainstHateSubreddits, which tracks behaviors
+across subreddits that violate Reddit’s content policy.                  https://github.com/qinlans/alw3_data
+References                                                      Claudia I. Flores-Saviaga, Brian C. Keegan, and Saiph
+                                                                  Savage. 2018. Mobilizing the Trump train: UnderDavid M Blei, Andrew Y Ng, and Michael I Jordan.                  standing collective action in a political trolling com2003. Latent dirichlet allocation. Journal of Ma-               munity. In Proceedings of the International AAAI
+  chine Learning Research (JMLR).                                 Conference on Web and Social Media (ICWSM).
+Vincent D Blondel, Jean-Loup Guillaume, Renaud                  Jonathan Friedman. 2019. Chasm in the Classroom:
+  Lambiotte, and Etienne Lefebvre. 2008. Fast un-                 Campus Free Speech in a Divided America. Technifolding of communities in large networks. Journal               cal report, PEN America.
+  of Statistical Mechanics: Theory and Experiment.
+                                                                Tarleton Gillespie. 2018. Custodians of the Internet:
+Dallas Card, Justin Gross, Amber Boydstun, and                    Platforms, content moderation, and the hidden deNoah A Smith. 2016. Analyzing framing through                   cisions that shape social media. Yale University
+  the casts of characters in the news. In Proceedings             Press.
+  of the Conference on Empirical Methods in Natural
+  Language Processing (EMNLP).                                  Matthew Honnibal and Ines Montani. 2017. spaCy 2:
+                                                                 Natural language understanding with Bloom embedMark Carman, Mark Koerber, Jiuyong Li, Kim-                      dings, convolutional neural networks and incremenKwang Raymond Choo, and Helen Ashman. 2018.                     tal parsing. To appear.
+ Manipulating Visibility of Political and Apolitical
+                                                                Shagun Jhaver, Larry Chan, and Amy Bruckman. 2017.
+ Threads on Reddit via Score Boosting. In ProceedThe view from the other side: The border between
+ ings of the IEEE International Conference On Trust,
+                                                                  controversial speech and harassment on kotaku in
+ Security And Privacy In Computing And Communiaction. arXiv preprint arXiv:1712.05851.
+ cations.
+                                                                Shagun Jhaver, Sucheta Ghoshal, Amy Bruckman, and
+Eshwar Chandrasekharan, Umashanthi Pavalanathan,                  Eric Gilbert. 2018. Online harassment and content
+  Anirudh Srinivasan, Adam Glynn, Jacob Eisenstein,               moderation: The case of blocklists. ACM Transacand Eric Gilbert. 2017. You can’t stay here: The                tions on Computer-Human Interaction (TOCHI).
+  efficacy of Reddit’s 2015 ban examined through
+  hate speech. Proceedings of ACM Conference on                 Shan Jiang, Ronald E Robertson, and Christo Wilson.
+  Computer-Supported Cooperative Work and Social                  2019. Bias Misperceived: The Role of Partisanship
+  Computing (CSCW).                                               and Misinformation in YouTube Comment Moderation.
+Jonathan Chang, Sean Gerrish, Chong Wang, Jordan L
+  Boyd-Graber, and David M Blei. 2009. Reading                  Cecilia Kang. 2016.                Fake news ontea leaves: How humans interpret topic models. In               slaught targets pizzeria as nest of childAdvances in Neural Information Processing Systems               trafficking.          The New York Times.
+  (NIPS).                                                         https://www.nytimes.com/2016/11/21/technology/
+                                                                  fact-check-this-pizzeria-is-not-a-child-traffickingJonathan P Chang and Cristian Danescu-Niculescu-                  site.html. Accessed.
+  Mizil. 2019. Trajectories of Blocked Community
+  Members: Redemption, Recidivism and Departure.                Sara Kiesler, Robert Kraut, Paul Resnick, and Aniket
+  arXiv preprint arXiv:1902.08628.                                Kittur. 2012. Regulating behavior in online communities. Building Successful Online Communities:
+Dorottya Demszky, Nikhil Garg, Rob Voigt, James                   Evidence-Based Social Design.
+  Zou, Matthew Gentzkow, Jesse Shapiro, and Dan
+                                                                Renaud Lambiotte, J-C Delvenne, and Mauricio BaraJurafsky. 2019. Analyzing Polarization in Social
+                                                                  hona. 2008. Laplacian dynamics and multiscale
+  Media: Method and Application to Tweets on 21
+                                                                  modular structure in networks. arXiv preprint
+  Mass Shootings. Proceedings of the North AmeriarXiv:0812.1770.
+  can Chapter of the Association for Computational
+  Linguistics (NAACL).                                          Louise Matsakis. 2018.       Twitter releases new
+                                                                  policy on “dehumanizing speech”.           Wired.
+Robert M Entman. 2007. Framing bias: Media in the                 https://www.wired.com/story/twitter-dehumanizingdistribution of power. Journal of communication.                speech-policy/. Accessed.
+Anjalie Field, Doron Kliger, Shuly Wintner, Jennifer            Maxwell McCombs. 2002. The agenda-setting role of
+  Pan, Dan Jurafsky, and Yulia Tsvetkov. 2018. Fram-             the mass media in the shaping of public opinion. In
+  ing and Agenda-setting in Russian News: a Com-                 Proceedings of the 2002 Conference of Mass Media
+  putational Analysis of Intricate Political Strategies.         Economics.
+  Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP).                   David Mimno, Hanna M. Wallach, Edmund Talley,
+                                                                  Miriam Leenders, and Andrew McCallum. 2011.
+Casey Fiesler and Nicholas Proferes. 2018. ”Partici-              Optimizing semantic coherence in topic models. In
+  pant” Perceptions of Twitter Research Ethics. Social            Proceedings of the Conference on Empirical MethMedia + Society.                                                ods in Natural Language Processing (EMNLP).
+Burt L Monroe, Michael P Colaresi, and Kevin M                  Liam Stack. 2018.             Facebook Announces
+  Quinn. 2008. Fightin’words: Lexical feature selec-              New      Policy   to   Ban      White    Nationaltion and evaluation for identifying the content of po-          ist Content”.         The New York Times.
+  litical conflict. Political Analysis.                           https://www.nytimes.com/2019/03/27/business/
+                                                                  facebook-white-nationalist-supremacist.html.
+Sarah Myers West. 2018. Censored, suspended, shad-                Accessed.
+  owbanned: User interpretations of content moderation on social media platforms. New Media & Soci-             Nick Statt. 2018. Reddit CEO says racism is permitted
+  ety.                                                            on the platform, and users are up in arms. The Verge.
+                                                                  https://www.theverge.com/2018/4/11/17226416/
+David Neiwert. 2017.       Alt-righter ’Seattle4Truth’            reddit-ceo-steve-huffman-racism-racist-slurs-arecharged with killing father over conspir-                       okay. Accessed.
+  acy theories.      Southern Poverty Law Center.
+                                                                Oren Tsur, Dan Calacci, and David Lazer. 2015. A
+  https://www.splcenter.org/hatewatch/2017/10/23/altframe of mind: Using statistical models for detecrighter-seattle4truth-charged-killing-father-overtion of framing and agenda setting campaigns. In
+  conspiracy-theories. Accessed.
+                                                                  Proceedings of the Annual Meeting of the Assocation for Computational Linguistics (ACL).
+Casey Newton. 2019.        Why Twitter has been
+  slow to ban white nationalists.       The Verge.              Tim Weninger. 2014. An exploration of submissions
+  https://www.theverge.com/interface/2019/4/26/                   and discussions in social news: Mining collective
+  18516997/why-doesnt-twitter-ban-nazis-white-                    intelligence of Reddit. Social Network Analysis and
+  nationalism. Accessed.                                          Mining.
+
+Viet-An Nguyen, Jordan L Ying, and Philip Resnik.               II White, H Mark, and Christian S Crandall. 2017.
+  2013. Lexical and hierarchical topic regression. In              Freedom of racist speech: Ego and expressive
+  Advances in Neural Information Processing Systems                threats. Journal of Personality and Social Psychol-
+  (NIPS), pages 1106–1114.                                         ogy.
+
+Randal S Olson and Zachary P Neal. 2015. Navigating
+  the massive world of Reddit: Using backbone networks to map user interests in social media. PeerJ
+  Computer Science.
+
+Margaret E Roberts, Brandon M Stewart, Dustin Tingley, Edoardo M Airoldi, et al. 2013. The structural
+ topic model and applied social science. In Advances
+ in Neural Information Processing Systems (NIPS)
+ Workshop on Topic Models: Computation, Application, and Evaluation.
+
+Adi Robertson. 2015.           Was Reddit always
+  about free speech? Yes, and no. The Verge.
+  https://www.theverge.com/2015/7/15/8964995/redditfree-speech-history. Accessed.
+
+Michael Röder, Andreas Both, and Alexander Hinneburg. 2015. Exploring the space of topic coherence measures. In Proceedings of the ACM International Conference on Web Search and Data Mining
+  (WSDM).
+
+Qinlan Shen, Michael Miller Yoder, Yohan Jo, and Carolyn P Rosé. 2018. Perceptions of Censorship and
+  Moderation Bias in Political Debate Forums. In Proceedings of the International AAAI Conference on
+  Web and Social Media (ICWSM).
+
+Tim Squirrell. 2017. Linguistic data analysis of 3 billion Reddit comments shows the alt-right is getting
+  stronger. Quartz. https://qz. com/1056319/what-isthe-alt-righta-linguistic-data-analysis-of-3-billionreddit-comments-shows-a-disparate-group-thatisquickly-uniting/. Accessed.
+A    Quarantined Subreddits
+Here, we list the subreddits included in the quarantine wave associated with the announcement, with
+their status as of May 3rd, 2019. All these following subreddits were quarantined on September 2728th, though some have been banned or privatized
+by their moderators in the meantime:
+
+    • Quarantined:    theredpill, Ice Poseidon,
+      FULLCOMMUNISM, Braincels, 911truth,
+      WhiteBeauty, fragilejewishredditor, WhiteNationalism, GentilesUnited, ZOG, AmericanJewishPower, CringeChaos, NorthwestFront, BritishJewishPower, mayo town,
+      Ice Poseidon2
+
+    • Banned: watchpeopledie, CringeAnarchy,
+      hearpeopledie, SubOfPeace, White Pride,
+      GoyimDefenseForce
+
+    • Privatized: BlackPillCentral, AgainstGayMarriage

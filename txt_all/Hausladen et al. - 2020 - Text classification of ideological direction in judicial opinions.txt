@@ -1,0 +1,1085 @@
+International Review of Law and Economics 62 (2020) 105903
+
+
+                                                                    Contents lists available at ScienceDirect
+
+
+                                            International Review of Law and Economics
+
+
+Text classiﬁcation of ideological direction in judicial opinions
+Carina I. Hausladen a,b,∗ , Marcel H. Schubert a,b , Elliott Ash c
+a
+  Max-Planck Institute for Research on Collective Goods, Germany
+b
+  University of Cologne, Germany
+c
+  ETH Zurich, Switzerland
+
+
+a r t i c l e             i n f o                             a b s t r a c t
+
+Article history:                                             This paper draws on machine learning methods for text classiﬁcation to predict the ideological direction
+Received 31 December 2019                                    of decisions from the associated text. Using a 5% hand-coded sample of cases from U.S. Circuit Courts,
+Received in revised form 19 February 2020                    we explore and evaluate a variety of machine classiﬁers to predict “conservative decision” or “liberal
+Accepted 22 February 2020
+                                                             decision” in held-out data. Our best classiﬁer is highly predictive (F1 = .65) and allows us to extrapolate
+Available online 28 February 2020
+                                                             ideological direction to the full sample. We then use these predictions to replicate and extend Landes and
+                                                             Posner’s (2009) analysis of how the party of the nominating president inﬂuences circuit judge’s votes.
+JEL classiﬁcation:
+                                                                       © 2020 Published by Elsevier Inc. This is an open access article under the CC BY license (http://
+C8
+K0                                                                                                                             creativecommons.org/licenses/by/4.0/).
+
+Keywords:
+Judge ideology
+Circuit courts
+Text data
+NLP
+
+
+1. Introduction                                                                               labor-intensive exercise which has led to frequent use in the empirical legal studies and political science literatures (Ginn et al., 2015;
+    In the United States, judges wield signiﬁcant power due to the                            Reid and Randazzo, 2016; Landes and Posner, 2009, e.g.).
+common law system (Dainow, 1966). The extent of U.S. judges’                                      Notwithstanding its broad use in the literature, the Songer
+inﬂuence is a motivation for the extensive research into the deter-                           database has some limitations. First, the political ideology clasminants of judicial decision-making. In particular, there is a large                          siﬁcation has been assigned by human coders, which could be
+literature on how opinions are affected by the ideology of the                                error-prone. These errors add noise to regressions and complicate
+respective judge (Segal and Cover, 1989; Martin and Quinn, 2002;                              replicability. In particular, as noted by Landes and Posner (2009),
+Martin et al., 2004, e.g.).                                                                   the political positions of conservative/liberal are not constant over
+    A leading paper in this literature is Landes and Posner (2009).                           time. Therefore, data coded in the past may not be categorized corThis paper looks at how the party afﬁliation of U.S. Circuit Court                            rectly, and Songer Project ideology labels for older Circuit Court
+judges affects the political ideology of their votes (conservative                            opinions may be systematically incorrect.
+or liberal) on the court. While judges are nominally non-partisan,                                Another problem with the database is the sampling approach.
+party afﬁliation can be proxied by the party of the appointing pres-                          First, the database is only available for 1925–2002, so empirical
+ident or the party share in the Senate at the time of appointment.                            analysis of vote ideology is only possible for that time period. SecLandes and Posner show that judge party afﬁliation is statistically                           ond, only a small set of cases was labeled (just 5 percent of the
+related to the ideological direction of votes.                                                cases for those years). Finally, the authors used stratiﬁed sampling
+    For their empirical analysis, Landes and Posner (2009) draw                               to get labels for similar numbers of opinions across courts and time.
+upon the Songer database of U.S. Circuit Courts,1 which provides                              Therefore, the dataset is not representative of the full distribution
+rich metadata, e.g., the political ideology of votes for each judge in                        of circuit court cases.
+each case. The classiﬁcation of votes by ideological direction was a                              The goal of this paper is to address these shortcomings using
+                                                                                              machine learning and natural language processing techniques. The
+                                                                                              idea is to treat a machine to code the ideological direction of the
+    ∗ Corresponding author.
+                                                                                              votes. Within the set of labeled case, we can check how well the
+        E-mail address: hausladen@coll.mpg.de (C.I. Hausladen).
+                                                                                              algorithm replicates human labels.
+        The original, as well as the extended versions, are available at songerproject.org.
+
+https://doi.org/10.1016/j.irle.2020.105903
+0144-8188/© 2020 Published by Elsevier Inc. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).
+
+
+2                              C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+
+    The classiﬁer would provide a number of beneﬁts. As soon as the                 Voting behaviour is not necessary, only some hand labels and the
+classiﬁer is trained, predictions even for an extremely large sample                original opinion text.
+cost very little relative to hand-labeling (which require a human to                    The second literature to which we contribute is that on using
+read an opinion). We could potentially take the classiﬁer to cases                  texts as data for social science research. In particular, to produce
+before 1925 and after 2002. Within the 1925–2002 period, we could                   measures of ideology or partisanship. In law, an old study in this
+classify the other 95 percent of unlabeled cases. Besides producing                 vein is Segal and Cover (1989), who use texts from newspaper edinew labels, it could be used to audit and check existing labels for                 torials as a proxy for the ideology of newly appointed Supreme
+probable errors.                                                                    Court judges. More recently, popular methods in political science
+    In this paper, we produce such a model. For the sake of inter-                  for scoring ideology in text include Wordscores (Laver et al., 2003),
+pretability, we focus on linear models. The model which worked                      Wordﬁsh (Slapin and Proksch, 2008), and Wordshoal (Landerdale
+best in our setting is a Ridge Classiﬁer. Our model is trained on the               and Herzog, 2016). These tools use statistical differences in word
+complete opinion text in combination with the circuit, year as well                 frequencies by topic. They are most useful for text corpora for which
+as case type data. After optimization it achieves a cross-validated                 differences in ideology come through in different words. As opinaccuracy of 61.5% on the three label input and 66.5% on the two label               ions of (lower) judicial courts are constrained in their (permitted)
+subset. The ﬁnal calibrated classiﬁer working on the tow-label sub-                 wording opinion texts may only satisfy that criterion in a very limset achieves the same accuracy score while increasing its precision                 ited fashion.
+as well its recall on the test set to 71.1% and 72.4% respectively.                     In the legal domain, our paper is most closely related to literaWith a validated data set in hand, we use it to undertake an                    ture predicting case type (Undavia et al., 2018; Sulea et al., 2017;
+extended replication of Landes and Posner (2009). First, we do our                  Boella et al., 2011) as well as that concerned with dimensions in
+best to replicate the original paper and, despite some problems in                  judicial texts (see for example Ash and Chen, 2018; Ash et al., 2018).
+replicating the original dataset, we could replicate signiﬁcance as                 The three papers closest to ours, in goal as well as methodological
+well as the direction of the most important coefﬁcients. We extend                  approach, are by Landerdale and Clark (2014), Aletras et al. (2016),
+the results and probe their robustness to multi-way clustering,                     and Cao et al. (2018). In Landerdale and Clark (2014), the authors
+group, and additional covariates. Finally, we show that the results                 use an LDA model to estimate how different issues at stake in cases
+hold partly when using our machine-predicted ideological labels as                  are related to Supreme Court judges’ voting behaviour. The paper
+the outcome.                                                                        by Aletras et al. (2016) looks at decision direction of the European
+    This paper contributes to the emerging literature applying                      Court of Human Rights (ECHR) in regard to the violation of speciﬁc
+data science techniques to empirical legal research questions. We                   articles. The third paper, Cao et al. (2018) separates opinion texts
+review some of that literature in Section 2. After that, in Section                 into ideological and fact-driven parts and look at how well these dif3 we describe the supervised learning task to predict ideological                   ferent paragraphs predict case directionality. However, none of the
+labels in circuit court decisions. Next, Section 4 reports the results              approaches in those three papers are viable for our goal or data set.
+of our replication study. Section 5 concludes.                                      Landerdale and Clark (2014) use the underlying text but their focus
+                                                                                    on votes means that the approach is not applicable. In the case of
+2. Literature                                                                       Aletras et al. (2016), in a modelling perspective the approach is similar. However, their results rely on very clean data resulting in very
+    This research sits at the intersection of two literatures. On one               homogeneous directionality criterion. As a consequence, it is more
+side, our paper is related to the research on judge ideology, which                 than a simple question of transferring their results. Last, the paper
+is focused on the positioning judges, mostly for the U.S. Supreme                   by Cao et al. (2018) does look at ideological directionality. The focus
+Court (e.g. Giles et al., 2001; Epstein and Segal, 2005; Epstein et al.,            on paragraphs, however, means that an additional labelling effort
+2012; Johnson et al., 2011; Kassow et al., 2012; Martin and Quinn,                  is needed while we seek to minimize the costs of classiﬁcation.
+2001; Masood and Songer, 2013; Ginn et al., 2015; Sturm and                             To recap, our paper contributes in the technical literature to the
+Pritchett, 2006; Randazzo et al., 2010; Reid and Randazzo, 2016).                   understand how to best implement a machine learning approach in
+    The judge ideology literature has taken two main approaches.                    the domain of judicial opinions. We aim to decrease labelling cost
+The ﬁrst approach is to hand-coded cases by ideological direction.                  and increase scalability and reproduciblity compared to the handThese include the Spaeth database for the Supreme Court and the                     labelling approach while at the same time improving explainability
+Songer database for the Circuit Courts (Epstein et al., 2012; Sturm                 relative to the latent modeling approach.
+and Pritchett, 2006; Martin and Quinn, 2001; Epstein and Segal,
+2005; Giles et al., 2001, e.g.). The second approach is to use a latent             3. Supervised classiﬁcation
+factor model based on the voting behaviour, to estimate a latent
+dimension for ideology based on judge agreement. This approach                          This section focuses on the classiﬁcation algorithm which can
+can identify median judges and the relative judge positioning on a                  reliably predict the political ideology of Circuit Court judges’ writscale over time (Martin and Quinn, 2002).                                           ten opinions. After training the algorithm on existing ideology
+    The advantage of the ﬁrst approach is that the scale is inter-                  labels, it can predict labels for unseen opinions.
+pretable, exists on the case level, and relies on expert judgment.                      The beginning of this section provides information about the
+However, it is costly and there are errors in coding. The advantage                 data necessary for classiﬁcation. What follows is a detailed descripof the second approach is that it is cheap to compute for all judges,               tion of how the classiﬁer is trained. Finally, the classiﬁcation
+but it is not directly interpretable and does not exist at the case                 performance is evaluated.
+level. It also requires that judges vote in panels.
+    Our approach is something of a compromise, as we can form                       3.1. Data
+predictions for all cases and judges cheaply. It requires at least some
+hand-coding, but then can be applied to all cases. Methodologically,                   Broadly speaking, a supervised machine learning classiﬁer maps
+it is different because it uses the directly interpretable ideological              an input to output. This section enumerates the datasets used
+labels of the hand-coded database. It does not assume a latent factor               for the inputs and outputs in our context. For our classiﬁcation
+model, like Martin-Quinn. It also does not rely on contrasting votes                problem, we use the hand-coded ideology labels for these cases,
+of judges in a panel. This is relevant in our context because the large             provided by the Songer Project, as output. As input we use the U.S.
+majority of decisions on the Appellate Courts do not have dissents.                 Circuit Court judges’ written opinions.
+
+
+                             C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                      3
+
+
+                                                                 Fig. 1. Summary statistics.
+
+
+3.1.1. Songer data on decision direction                                          3.1.2. Judicial opinion corpus
+    The output or label of our classiﬁer is the ideological direction                 We matched the Songer data-set with the Lexis data-set, conof the opinion. As the number of Circuit Court judges’ opinions                   taining the full opinion text. With this approach, we could match
+is over 300 thousand, the Songer Project has annotated politi-                    20,052 opinion texts to the 20,355 entries that the Songer database
+cal ideology labels for only a small sample of opinions, equalling                comprises. Regarding the non-matchable cases there is no clear patless than 2.6% of the total published opinions available. The total               tern visible as these cases span nearly the complete time period as
+is 769,986 when only taking those not decided per curiam into                     well as nearly all circuits. The distribution across time and circuits
+account. The cases were decided between 1925 and 2002 and                         does not reveal any peculiarities either.
+the database contains a total of 20,355 cases. Overall, four direc-                   In terms of the matching itself, we subsetted the data according
+tionality codes are available: “liberal”, “conservative”, “mixed”                 to the different circuits. That was only done for speed, as matching is
+and “not ascertained”. While “mixed” refers to the opinion of                     a linear searching process which has to be repeated for each query.
+the case being of unclear directionality, “not ascertained” signals               The actual matching was then done on either federal reporter citathat the coders were unable to assign a label according to the                    tion or docket number. First, we tried to match via the normalized
+codebook’s instructions. Please note that directionality is deﬁned                Lexis id, i.e. the Federal Reporter citation, if the opinion spanned
+for each particular case type, with “conservative” and “liberal”                  more than one page in the Federal Reporter (to avoid confusion
+being exactly opposite outcomes. Fig. 1a shows the distribution of                with other opinions). If such a match was not possible, we matched
+labels for the complete data-set. The categories “conservative” and               via the circuit court and the docket number. The reason why we
+“liberal” dominate, whereas the other two categories are underrep-                preferred the federal reporter citation over the docket number is
+resented.                                                                         that the Songer database uses only encoded docket numbers. While
+    The Songer coders assigned the directionality of a case according             they should be systematically encoded errors often result in decodto speciﬁc rules within case type. The case type of an opinion iden-              ing being little more than guess work. In the case of the federal
+tiﬁes the nature of the conﬂict between the litigants. Over 220 case              reporter citation, errors were less prone.
+type categories are organized into eight major categories: criminal,                  Fig. 1c shows the distribution of opinions’ word counts in our
+civil rights, First Amendment, due process, privacy, labor relations,             dataset. The shortest opinion consists of one word, the longest
+economic activity and regulation, as well as miscellaneous. Fig. 1b               of 69,320 words. The average opinion consists of 2809 words. As
+shows the distribution of the eight major categories for our data-                we use data from Lexis, each opinion had a speciﬁc structure.
+set. “Civil rights” and “economic activity and regulation” are the                We extracted the text and split it into parts when encountering
+two case types most frequent in the data.                                         more than a single newline character. Special characters such as
+    Landes and Posner (2009) mention in their paper that they                     “newline”-characters and roman numbers were removed.
+applied substantial corrections to the raw Songer data, but those                     If a potential heading was found within the text, we excluded
+are not laid out in sufﬁcient detail to reproduce. We approached                  it. The reason being that such a heading would potentially include
+the authors with the request to provide us with their version                     biasing information such as judge names. It is especially imporof the data-set. Unfortunately, they were not able to provide it                  tant to exclude those, as the model could focus on judge names as a
+yet.                                                                              proxy for the directionality as most cases were decided without dissent. This is an issue in our empirical context because we would like
+
+
+4                             C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+
+                                                     Fig. 2. Construction of the methodological approach.
+
+
+to use the predicted data to analyze judge characteristics. Including              naive approach predicts political ideology labels regardless of case
+the judges in the prediction would induce mechanical correlation.                  type. However, the naive approach ignores the fact that directionalIn a second step, we applied regular expressions trying to cap-                ity in the Songer data is assigned dependant on case type according
+ture the part of the opinion in which judges might dissent from                    to explicit rules differing for each case type. Subsetting the data by
+the majority. Including a dissenting part which by its nature goes                 case type factors in this aspect of the coding scheme.
+against the directionality of the majority in the input would not                      However, as Fig. 1b shows, the data set is heavily imbalanced in
+only add noise but may also lead the classiﬁer to average over the                 favour of the case types “economic activity” and “criminal”. As the
+different directions, leading to an overall worse performance. If we               remaining case types are only marginally represented, we restrict
+found a dissent, we split off the relevant paragraph and saved it as               the subset two these two case types, as only for them enough
+an extra entry in the database, marking it as dissent. We excluded                 labelled observations to train the classiﬁer are available.
+those entries and did not use them as input.                                           Moreover, not only case type but also the labels are imbalanced.
+                                                                                   As Fig. 1a shows, there is only a limited amount of observations
+                                                                                   available for the political ideology labels “not ascertained” and
+3.2. Model
+                                                                                   “mixed”. We therefore derive two additional subsets. The subset
+                                                                                   “two labels” only includes the labels “conservative” and “liberal”
+   This section describes how we deploy a supervised learning
+                                                                                   as those two are not only the most frequent ones but also those
+approach to predict the ideological direction of decisions from the
+                                                                                   we are most interested in. Especially if the remaining two labels
+association opinion text.
+                                                                                   (“not ascertained” and “mixed”) are either considered as noise or
+   Our approach, outlined by Fig. 2, is quite uncommon in
+                                                                                   wrongly classiﬁed, this subset should improve the classiﬁer’s perthe literature of classifying a legal text’s ideology. More tradiformance. In particular, the exclusion of the label “not ascertained”
+tional approaches, mainly used for ideology detection in political
+                                                                                   is likely to not be problematic in any case: The number of cases
+speeches, include word scores, word ﬁsh, or word shoal models.
+                                                                                   labelled such are relatively few when compared to the other three
+These approaches are either dictionary-based or require a referlabels. Moreover, the codebook shows that this label may be used in
+ence text to which all other instances are compared. Our approach,
+                                                                                   any case where it was not possible to assign one of the other three
+by contrast, does not require one reference text to be selected and
+                                                                                   labels. This may either be due to the fact that the case truly ﬁts into
+deploys more sophisticated selection mechanisms than naive word
+                                                                                   no other category or merely due to a lack in inter-coder agreement.
+counts.
+                                                                                   However, past results show that such a sparsely represented, misOne characteristic of machine learning approaches is their
+                                                                                   cellaneous category decreases classiﬁcation performance. For this
+exploratory nature. We, too, test multiple combinations of datareason, the ﬁnal subset excludes this category altogether.
+subsets, feature sets, models, and evaluation methods to ﬁnd the
+best performing one. The instances to test are either selected by theoretical considerations, such as choosing only judicial quotations as              3.2.2. Input
+predictive features; Or they are chosen based on popularity, such                      We experimented with four different representations of the
+as choosing support vector machines because they are known for                     input. The most straightforward approach is to feed the complete
+their excellent performance on a broad range of NLP classiﬁcation                  pre-processed opinion text into the model. After screening a sample
+tasks.                                                                             of randomly drawn opinions and cross-referencing them according
+   All calculations were performed on the Max Planck Comput-                       to the labelling instructions from the codebook, we identiﬁed two
+ing and Data Facility’s high-performance cluster Draco, using one                  additional representations.
+node of the type Broadwell with up to 40 CPUs and 256GB memory.                        First, we separately extracted the citations from the cases. The
+Moreover, each step relying on randomness was initialized with a                   topic, as well as the political directionality of a case, might be cappseudo-random seed for replicability. Our code most heavily draws                  tured already by citations. Citation networks, for example used
+upon functionalities provided by the python package sci-kit learn                  by the Supreme Court Mapping Project, is one example using this
+(Pedregosa et al., 2011).                                                          reasoning (Chandler, 2005; Ash et al., 2018).2
+                                                                                       Second, we extracted quotations from the text to serve as input.
+                                                                                   Many quotations immediately preceded citations. It is in the nature
+3.2.1. Subset of data
+                                                                                   of a quotation that it represents the most relevant aspects to a
+   In order to see how different categories or a differing number of
+labels affects a prediction, we constructed different subsets of the
+data for analysis. Four subsets constructed from the original data
+and used for this analysis are listed in the ﬁrst column of Fig. 2. A                2
+                                                                                         see SCOTUS Mapper Library by the University of Baltimore.
+
+
+                                    C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                      5
+
+
+matter at hand. As judges quote legal concepts from statutes and                         stable with respect to unbalanced data-sets like ours. Furthermore,
+precedents relevant to the matter discussed, quotations, in turn,                        in the context of this paper we consider precision as more impormay be associated with either a “conservative” or a “liberal” leaning                    tant as recall, because our dataset contains much less liberal than
+of the opinion.                                                                          conservative cases. Thereby, we consider it as more important to
+    The advantage of the whole opinion text as input is that no infor-                   actually ﬁnd theses few liberals and risk to classify some conservamation is lost. Its downside, however, is that it may include more                       tives as liberal.
+noise than only citations or quotations.                                                     As all performance measures are 5-fold-cross-validated, the
+                                                                                         scores reported are weighted averages. As the label space per cat3.2.3. Text pre-processing                                                               egory is heavily imbalanced in the validation set, accuracy has to
+   For any data subset, the raw text needs to be pre-processed. We                       be interpreted with care, and therefore the best performing clasapplied the prevalent practice of removing capitalization, punctu-                       siﬁer is selected by referring to the weighted f1-score. In our case,
+ation as well as stopwords. Furthermore, we reduced the words to                         an additional model evaluation is the use of the predictions in the
+their word stem, base or root form (stemming).                                           replication analysis below.
+
+3.2.4. Feature engineering                                                               3.3. Evaluation of results
+   The pre-processed text was tokenized, and the tokens were
+then used to form lists of n-grams (phrases) up to length three.                            In the following, we provide in-depth analysis across the differN-grams extract information from text through local word order                           ent classiﬁcation models introduced by Fig. 2.
+(Suen, 1979; Sidorov et al., 2014). In the next step, these tokens
+were mapped to a numerical representation. We computed counts                            3.3.1. Performance metrics
+and frequencies over n-grams. The second speciﬁcation is to weight                           Appendix C depicts the performance metrics f1-score, accuracy,
+the counts (tf) by inverse document frequency (idf), which up-                           precision and recall for all models tested. Fig. 10 shows that the
+weights relatively rare words that could be more informative of                          scores depend more heavily on the subset-input-combination than
+topic or ideology.                                                                       on the speciﬁc classiﬁer used.
+   Apart from converting opinion texts to vectors, we included the                           Based on this observation, we select four models to analyze
+year the case was decided, the circuit at which the case was heard                       and compare in detail. Fig. 3 depicts the model for each of the
+as well as the case type as assigned by the authors of the Songer                        four subsets tested which reaches the highest f1-score. We report
+database to the feature set, as well. Via grid-search, we established                    the accuracy, precision, recall, and f1-score respectively (coded by
+which input and pre-processing combinations worked best, espe-                           color, see legend). Each of the four groups of bars refers to a differcially regarding single words versus n-grams.                                            ent subset of the data, for which we explored different modeling
+                                                                                         approaches. The top row looks only at the liberal and conserva3.2.5. Model                                                                             tive votes, dropping the “other” category. Second, we classify the
+   After vectorization, the next step is the actual classiﬁcation of                     full dataset with all three categories. Third, we limit the dataset to
+the text input,3 listed in the second last column of Fig. 2. In gen-                     criminal cases. In the bottom row, we limit the dataset to economic
+eral, the classiﬁers may be grouped into two families, with the                          cases.
+ﬁrst being statistical methods. The advantages of this family are                            On the y axis, we indicate a feature that all four models have in
+high explainability as well as being well-researched and under-                          common: they perform best on the input opiniontext, rather than on
+stood (Ribeiro et al., 2016). The second family are deep learning                        citations or quotations. While additional calibration and tweaking
+algorithms mostly comprised of some form of neuronal network                             of the model parameters would improve the performance of the
+architecture. In common NLP tasks, these algorithms outperform                           classiﬁer using either citations or quotations as input, the result is
+traditional algorithms (Kim, 2014; Vaswani et al., 2017). However,                       consistently outperformed when using the complete opiniontext
+a downside to these models is that feature introspection, as well                        as input. This observation contrasts with the idea that citations or
+as explainability, is difﬁcult. While there are attempts to develop                      quotations would summarize the information in a meaningful way.
+methods for feature introspection, such as Shrestha et al. (2017) or                     However, instead of subtracting what we considered as noise, it
+Ribeiro et al. (2016), results so far are preliminary. Consequently,                     seems that these input variations subtract important information.
+we focus on well-researched statistical classiﬁers, maximizing the                           As mentioned, the four subsets differ with respect to the subset
+explainability of the results. The classiﬁer, we deploy are a passive                    of cases. Comparing the subsets concerning label, we differentiate
+aggressive classiﬁer (Crammer et al., 2006), a logistic regression                       between two or three label classiﬁcation. The subset displayed at
+(Schmidt et al., 2017), a ridge classiﬁer (Rifkin and Lippert, 2007), as                 the top of Fig. 3 takes two labels into account. A random guess,
+well as a support vector machine with stochastic gradient descent                        assuming a random distribution of labels, should yield an accuracy
+(SGD) learning (Zhang, 2004). All models are trained on a stratiﬁed                      of approximately 1/2. The model reaches an accuracy of 67.04%,
+train-test split with respect to case type.                                              lying clearly above this threshold.
+                                                                                             The second group of statistics are from the three-labels model.
+3.2.6. Model evaluation                                                                  How much performance do we gain when predicting two instead of
+    For model evaluation, we use standard performance metrics for                        three labels? The two models at the top of Fig. 3 show – only these
+machine learning, namely accuracy, precision, recall and f1-score                        two take all case types into account – an increase in accuracy from
+(last column of Fig. 2).4 The f1-score is the harmonic mean of pre-                      62.00% to 67.04%. We believe that this increase in performance may
+cision and recall. As compared to accuracy for example, it is more                       offset the loss of information by excluding the “mixed/other” label
+                                                                                         as less than 1/7 of all cases fall into this category. This opinion is
+                                                                                         shared by other authors, as well: Most studies drawing upon the
+    The classiﬁers are implemented with the python package sci-kit learn and fall        Songer/Auburn do exclude the “mixed/other” cases. However, for
+into the category of supervised learning.                                                the sake of thoroughness we undertake the calibration presented
+    While in traditional statistics measures such as the p-value are more prevalent,     in the following section for both the two and three label subset.
+that measure is not appropriate in machine learning because we are trying to form
+accurate test-set predictions rather than to test for treatment effects. Moreover,
+                                                                                             In the third and fourth groups of performance metrics, we show
+the features in machine learning are often very highly correlated, so the estimated      the three-label model but subset on case type. Interestingly, percoefﬁcients for them are difﬁcult to tease apart.                                        formance depends strongly on the case type. As mentioned in Fig.
+
+
+6                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+
+     Fig. 3. Best performing combinations by subset. (For interpretation of the references to color in the text, the reader is referred to the web version of this article.)
+
+
+3.1, directionality is deﬁned within case type while the number and                                                                           blue arrows
+                                                                                           for the Ridge classiﬁer (left panel) the mass of the                 
+                                                                                                                                                              falls
+quality of rules are quite distinct. Additionally, as Fig. 1 shows, case                   into the simplex spanned by the corner points 12 , 12 , 0 , 12 , 0, 12 ,
+type is heavily imbalanced in favor of economic rather than crim-                          (1, 0, 0). Every arrow point found within this simplex is classiﬁed
+inal. These two facts help to explain why the subset criminal only                         as “liberal”. Consequently, as the mass of blue arrows falls into that
+reaches an accuracy of 55.80% and by contrast, why the subset eco-                         area, the mass of them is categorized correctly. In contrast, for the
+nomic achieves an accuracy of 77.10%. However, in order to increase                        SGD classiﬁer (right panel) a lower amount of the blue arrows falls
+generalizability, we instead opt to focus on classiﬁers trained on                         into that area, meaning that the misclassiﬁcation rate for “liberal”
+data containing all case types as some results from e.g. the case                          is higher. This means the precision for liberal is lower for SGD comtype “economic” may carry over to the case type “criminal”.                                pared to the Ridge classiﬁer. On the other hand, the inverse is true
+                                                                                           for the recall. As the original dataset features fewer liberal cases
+3.3.2. Probability calibration                                                             than conservative, on balance we might prefer to mis-classify conIn the following, we analyze our classiﬁers’ calibration: predict-                     servative cases as liberal instead of liberal ones as conservative. At
+ing a judicial opinion to either be conservative or liberal, we not                        this point, this speaks in favour of the Ridge classiﬁer versus the
+only want to know the label but how conﬁdent the classiﬁer is in                           SGD classiﬁer.
+assigning one particular label versus the other. In order to boost cal-                        When looking at the “mixed/other” cases, we can see that the
+ibration, the classiﬁers were re-calibrated using either a sigmoid or                      Ridge classiﬁer classiﬁes the majority of them correctly. However,
+an isotonic calibration function. The sigmoid function rests on a                          that seems to come at the expense of mis-classifying a disproporparametric approach based on Platt (1999)’s sigmoid model. The                             tionally high amount of liberal cases. For the reasons stated above,
+non-parametric isotonic variant is based on an isotonic regression.                        we consequently exclude the “mixed/other” label to gain perforFig. 4 depicts the Ridge and SGD classiﬁer respectively. For both                      mance in predicting only the labels “conservative” and “liberal”.
+classiﬁers, the calibration methods were applied for visualization                             Fig. 5a provides another visualization to assess how well the
+purposes.5 The three corners of Fig. 4 correspond to the three                             probabilistic predictions of different classiﬁers are calibrated: it
+classes: conservative, liberal, and mixed/other. Arrows point from                         displays reliability curves which show the correct proportion of
+the probability vectors predicted by an uncalibrated classiﬁer to                          conservative cases (vertical axis) against the bins of predicted probthe probability vectors predicted by the same classiﬁer after cal-                         abilities that a case is conservative (horizontal axis). The closer the
+ibration. For clarity of presentation, only each ﬁftieth data point                        reliability curve is to the 45-degree line, the better is the classiﬁfrom the test set is depicted.                                                             cation model’s performance in terms of reproducing the original
+    Fig. 4 shows that calibration results in both classiﬁers shifting                      distribution. The Ridge classiﬁer with isotonic calibration, as well
+from under-conﬁdent to over-conﬁdent predictions. This can be                              as the SGD classiﬁer with sigmoid calibration are highlighted in
+    as themass of predicted points moves away from the center
+seen                                                                                       shades of blue.
+of 13 , 13 , 13 towards the edges. This means that the classiﬁer is                            Consider the Ridge classiﬁer: For all cases which it predicts
+likely to categorize similar cases very differently as the predicted                       to be conservative with a 20% probability, about 40% are actually
+label is further away from the decision boundary for all cases. On                         conservative. In other words, it underestimates conservativeness.
+the other hand, it also means that the classiﬁer gets more conﬁdent                        However, for cases close to the hyperplane (0.5 probability for
+about cases which are hard to classify – that is, the position of which                    either directionality), Ridge approximates the directionality distriis properly close to the decision boundary. We accept this change                          bution very well.6 Finally, at around 70% likelihood, the classiﬁer
+however, as the absolute accuracy as well as the f1-score increases,                       begins to overestimate the number of conservative cases.
+although there may be additional error for boundary cases.                                     Alongside Fig. 5a, Fig. 5b shows that despite calibrating the clasWhile the two classiﬁers do not majorly differ in their con-                           siﬁers, a signiﬁcant part of the predicted directionality’s mass lies
+ﬁdence, they do differ in their error rate of assigning the label                          close to the decision boundary of 0.5. This, in turn, means that the
+“liberal” to liberal cases. If one looks at the blue arrows, which                         classiﬁers have to be relatively precise close to the decision bounddepict cases for which the true label is “liberal”, one can see that                       ary and be able to shift away mass from the decision boundary.
+                                                                                           Fig. 5b shows that the two classiﬁers most successful in this are the
+    Probability calibration was performed on data not used for model ﬁtting. To
+this end, the training set consisting of 80% of the Songer data was cut in thirds and
+the model was then trained with 3-fold cross-validation. During this, 2/3 of the               This is an important aspect as the Ridge classiﬁer is similar to a support vector
+data were used for training and 1/3 was used for calibration. For each classiﬁer the       machine in that it uses the instances closest to the hyperplane for the separation of
+calibration algorithm yielding the best results was chosen.                                the data points.
+
+
+                                     C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                         7
+
+
+Fig. 4. Drift-plots showing the change of predicted probabilities after calibration. (For interpretation of the references to color in the text, the reader is referred to the web
+version of this article.)
+
+
+    Fig. 5. Reliability curves and distribution diagram. (For interpretation of the references to color in the text, the reader is referred to the web version of this article.)
+
+
+ridge classiﬁer, calibrated with the isotonic algorithm, and the SGD                         of errors that the classiﬁer makes into account, as well. Therefore,
+support vector machine, calibrated with the sigmoid algorithm.                               Fig. 6 plots normalized7 confusion matrices for those two models
+                                                                                             deploying the best f1-score: The Ridge as well as the SGD classiﬁer.
+                                                                                                 As mentioned in Section 3.2, we consider it as crucial to correctly
+3.3.3. Heatmaps
+                                                                                             predict as many liberal cases as possible, even if some conservaIn the previous paragraph, we conclude that a two label clastive cases are wrongly predicted as liberal. Fig. 6b shows that as
+siﬁer for all case types will be the basis for predicting political
+ideology labels. In terms of performance metrics, the SGD classiﬁer reaches the highest f1-score. However, the decision for the
+ﬁnal model should not just take the f1-score but rather the types                              7
+                                                                                                   Normalized heat is calculated by dividing each value by the row mean.
+
+
+8                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+
+                                                         Fig. 6. Confusion matrices for the classiﬁers SGD and ridge.
+
+
+far as liberal cases are concerned, the SGD classiﬁer predicts 697
+cases correctly as liberal but almost as many cases (686) wrongly
+as conservative. The Ridge classiﬁer displayed by Fig. 6a, by contrast, predicts 805 liberal cases correctly as liberal and only 578
+liberal cases wrongly as conservative.
+
+3.3.4. Best classiﬁer
+    Based on performance metrics, heat-maps, and calibration
+results, we can select the classiﬁer most suited for the task set out
+in this paper. The f1-score – our preferred performance metric –
+peaks for the Ridge-Classiﬁer, calibrated with an isotonic function
+as well as for the SGD-classiﬁer, calibrated with a sigmoid function.
+The second performance metric we consider as critical is precision,
+for which the Ridge classiﬁer shows better results than SGD. In the                      Fig. 7. Fraction of conservative and liberal cases, each calculated for actual as well
+same vein, the reliability curves show that Ridge is closer to the                       as predicted case directionality, plotted by year. (For interpretation of the references
+45-degree line than SGD, which makes the former preferable. The                          to color in the text, the reader is referred to the web version of this article.)
+only aspect where the SGD support vector machine slightly outperforms the Ridge classiﬁer is in terms of mass, as shown in Fig. 5b.                      type as laid out by Songer10 these features have to be available for
+However, overall, the difference in this regard is negligible. Given                     all out-of-sample cases, as well. Especially the last one constrains
+this reasoning, we chose the Ridge-classiﬁer calibrated with the                         the lexis data set because case type was only available for cases of
+isotonic algorithm as model to perform out of sample predictions.8                       the years 1930 and later. Consequently, Fig. 7 shows out-of-sample
+                                                                                         predictions only for those years.11
+3.4. Analysis                                                                                Fig. 7 shows that for the in-sample predictions on the test set of
+                                                                                         the Songer data (20% hold-out data), the predictions closely approxThis section analyzes and interprets the predictions of the best                       imate the original labels. This is also reﬂected in the high correlation
+two-label classiﬁer. We look at predictions over time and by judge.                      of 0.73 (˛ < 1%). Especially for the years 1950 to 1980, the classiﬁer
+We also interpret the model by examining predictive features.                            performs very well. The out-of-sample predictions for that time
+                                                                                         period approximate the trend observed in the Songer data. Only
+3.4.1. Prediction of the time series in decision direction                               for the years of 1980 on-wards, the out-of-sample data (red line) is
+    Landes and Posner (2009) point out that the accuracy of the orig-                    predicted to be considerably more conservative.
+inal Songer data is susceptible to the year in which a judge decided                         This spread may be caused amongst others by the classiﬁcation
+a case. Coders had more trouble coding older cases as compared to                        error. Another reason could be the sampling process used by Songer
+newer ones. We would like to see if this is reﬂected in differential                     and his team to construct the database.12 To test this presumption,
+performance of our classiﬁer over time.                                                  we plot a subset of the lexis data constructed according to Songer’s
+    Fig. 7 shows the fraction of conservative and liberal cases by year                  rules (“Songer-distributed out-of-sample”, the orange line). Indeed,
+for all circuits.9 We include out-of-sample data which is made up of
+scraped lexis data without the cases already within the Songer data
+set. The original scraped data set holds more than 1 million cases.                       10
+                                                                                              We matched the lexis case types to the one laid out in the Songer database.
+As our classiﬁer uses the year of the case, the circuit, and the case                    However, the match has no bijective property. In order to get a reasonable good
+                                                                                         match, the subcategory case types of both, the Lexis database as well as the Songer
+                                                                                         database were used. This match is surjective with the Lexis subcategory case types
+                                                                                         as a base set. Then the matched Songer sub categories are aggregated to a Songer
+    The ﬁnal speciﬁcations of the classiﬁer are as follows: We preprocess the text       top category. Except for very few cases (<1000) this aggregation is unequivocal.
+by excluding all stop words as well as punctuation. Following that, a lemmatizer is           If one is willing to forgo the performance gain introduced by the case type feature
+applied. This input transformed into bigrams and then fed to a tﬁ-vectorizer. That       (about 2.5% points in the current conﬁguration), one can predict directionality for
+vectorizer calculates the distance based on the “l2”-norm. It also makes uses the        all lexis cases.
+three additional features of year, circuit and case type. The regularization strength         For the original Songer database, at maximum 30 cases per year per circuit were
+parameter ˛ for the Ridge classiﬁer is 2.0.                                              sampled from all available cases after 1961. Before 1961, only 15 cases per year per
+    The cases categorized as “mixed” or “other” are excluded.                            circuit were selected.
+
+
+                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                      9
+
+
+                                        Fig. 8. Fraction of directed votes per judge – comparison actual votes and predicted votes.
+
+
+we ﬁnd that the orange and red lines diverge after 1980, with the                       nal cases by labeling it as conservative. In other words, the classiﬁer
+orange line being closer to the original Songer data. This illustrates                  tends to overpredict the number of conservative cases in criminal
+that indeed the sampling process heavily inﬂuences the distribu-                        law.
+tion of decision directionality: As soon as the total amount of cases
+increases13 by a signiﬁcant amount, a spread appears. As the abso-                      3.4.3. Feature inspection
+lute number of court cases increased over time (Casper and Posner,                          To further understand the two-label classiﬁer, we investigate
+1974), at least for cases after 1980 the Songer data may not be a                       the features that are most important in driving our predictions.
+good sample for the full set of cases. Consequently, the difference                         For this purpose, let feature be a feature, value be a value it
+in out-of-sample predictions as compared to Songer predictions                          could take, and label one of the ideological directions (conservamay simply stem from the fact that there is a structural shift in                       tive or liberal). We ranked the informativeness of each feature by
+conservativeness (either in variation or trend) from 1980 onwards                       the highest value of P(feature = value|label = conservative) divided by
+which is not represented by the Songer sample.                                          P(feature = value|label = liberal). Note that these are equivalent to
+                                                                                        coefﬁcients from a Naive Bayes Classiﬁer. The coefﬁcients of the
+3.4.2. Directed votes per judge                                                         different features are represented by their standardized moments,
+    Next we zoom in on particular judges. We look at performance                        meaning that normalization was performed by dividing through
+for the ten judges who cast most of the votes in the Songer data                        the standard deviation. This means that each coefﬁcient is on the
+set, analyzing performance in civil and criminal cases separately.                      same scale and therefore comparable. The hyperplane separating
+Those judges who did not hear both civil and criminal cases were                        “conservative” from “liberal” lies at 0, meaning a hypothetical case
+excluded. The horizontal axis of Fig. 8 indicates the true proportion                   for which all the decision results would be zero falls into neither
+of conservative votes, while the vertical axis indicates the predicted                  category. The higher the coefﬁcient of a feature, the further away
+proportion of conservative votes. Each point indicates these statis-                    does a single feature move the case instance from the hyperplane
+tics for a single judge. If a judge’s predicted behaviour is the same as                when the feature is present within the case.
+the truth, then his/her data point would lie on the dotted 45-degree                        Table 1 lists the most informative features used by our best perline.                                                                                   forming classiﬁer. Please note that the most informative features for
+    Fig. 8 shows that for civil cases, predicted and actual fractions                   the label “liberal” are constructed such that they are least informaare quite close. A 2 test shows that the distribution of predicted                     tive for the label “conservative”. The features are either opinion-text
+fractions is not statistically different from the distribution of actual                phrases, quotation phrases, or citations.
+fractions (p > 0.1). For case type criminal, however, the distribu-                        Table 1 shows that the coefﬁcients differ vastly in absolute size
+tions of true and predicted fractions across judges are statistically                   across the three different input variations. This corroborates the
+different. The reason for this might be that the majority of crimi-                     results of the metric scores. Especially for citation as input, the
+nal cases is labeled as conservative. Consequently, as the classiﬁer                    range of the coefﬁcients’ values is vary narrow, with −7.49 being the
+uses the case type as feature it can increase performance on crimi-                     minimum and 10.16 being the maximum. Consequently, many features loading clearly either the “liberal” or the “conservative” side
+                                                                                        are needed in order to have the case fall into a category. By conWhere for the year 1945 only slightly more than 100 cases per year per circuit
+                                                                                        trast, the range of the coefﬁcients’ values for opiniontext is much
+were coded with a usable case type in the out-of-sample dataset, for the year 2000      wider, with a minimum of −57.67 and a maximum of 189.96. A case
+there are more than 2000 per year per circuit.                                          including the words “reverse remand” for example would be classi10                                     C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+Table 1
+Best predictive features.
+
+                                     Quotations (Ridge)                                              Citation (Ridge)                              Opiniontext (Ridge)
+
+           Coef           Feature                                                     Coef         Feature                                Coef        Feature
+
+  Best predictive features for label “Conservative”
+
+  1        −17.13         knowingly                                                   −7.49        Humphrey v Moore                       −57.67      motion new
+  2        −13.18         John Doe                                                    −7.43        Dandridge v Williams                   −53.71      plaintiff argue
+  3        −11.97         unique circumstances                                        −6.59        SEC v Chenery Corp                     −51.91      prior art
+  4        −11.47         X                                                           −6.42        Co v Zenith Radio Corp                 −50.86      appellant claim
+  5        −11.40         No                                                          −6.19        Dalehite v United States               −50.78      grant motion
+  6        −11.03         minor                                                       −6.06        Brady v Maryland                       −49.45      plaintiff appellant
+  7        −10.85         search                                                      −5.60        United States v Robinson               −48.85      plaintiff contend
+  8        −10.63         attractive nuisance                                         −5.55        Mal v Riddell                          −45.70      ﬁduciary duty
+  9        −10.09         may                                                         −5.38        Port Gardner Investment Co v U         −45.62      plaintiff appeal
+  10       −10.04         overhead                                                    −5.25        Olim v Wakinekona                      −44.01      judgment afﬁrm
+
+  Best predictive features for label “Liberal”
+
+  1        19.98          that where the State has provided an opportuni. . .         10.16        Yes v United States                    189.96      reverse remand
+  2        19.86          Motion for Judgment                                         9.18         United States v Taylor                 133.90      remand proceeding
+  3        19.57          fairer to those adversely affected by a bond f. . .         9.11         . . .Inc v Commissioner                103.28      case remand
+  4        19.16          take care                                                   9.09         Townsend v Sain                        98.70       remand district
+  5        18.30          urge that the indictment charged the maintenan. . .         8.88         United States v Young                  89.69       government argue
+  6        17.32          good faith                                                  8.43         Dennis v United States                 85.99       remand new
+  7        17.30          anything of value                                           8.21         Coppedge v United States               84.05       proceeding consistent
+  8        16.76          crack a little bit of time to research on the . . .         8.15         . . .Inc v United States               75.33       consiStatent opinion
+  9        16.76          a little bit of time to research on the backgr. . .         8.00         Green v United States                  74.29       new trial
+  10       15.49          clear and convincing                                        7.97         Brown v Board                          60.13       reverse case
+
+
+ﬁed immediately as liberal. In essence, this means that features for                          are predictive of the conservative label. In line with those but not
+the opiniontext or quotations as input are more informative than                              shown here are the features “afﬁrm judgment” and “appeal disfor the citations.                                                                            miss” on place 11 and 14 respectively. This is in line with labelling
+    The ﬁrst column of Table 1a and b have the most predictive                                rules as set out by the Songer team for criminal cases, where the
+quotations. Quotations loading heavily on the label “conservative”                            coding rules state that afﬁrming the decision against an appellant
+are “knowingly” or “unique circumstances”. The court quotes these                             is to be coded as conservative. Conversely, within the most predicphrases, i.e. they are singled out as relevant to the case at hand.                           tive features for “liberal” one can ﬁnd “reverse remand”, “remand
+Both phrases indicate a possible conviction. As the code book by the                          proceeding”, or “reverse cased”, reﬂecting that predictive features
+authors of the Songer database very often label a conviction as “con-                         seem to be driven by criminal cases.
+servative”, this seems to be in line with the data provided. On the
+other side, the quotations for “liberal” are not as easily interpreted.
+    The second column of Table 1a displays those citations loading
+on the label “conservative”. For the most heavily conservative citation, Humphrey v. Moore, the court limited the power of unions
+from infringing too far on employees of a company not part of the                             4. Replication and robustness checks
+union. In Dandridge v. Williams, the court found that the state has
+some right to interpret how it puts into practice federal welfare                                This section focuses on the replication aspect of Landes and
+laws. In consequence, Maryland was found not to be in violation of                            Posner (2009). For comparison, all tables and ﬁgures that Landes
+the anti-discrimination act. Another conservative example would                               and Posner (2009) produce with data of Circuit Courts are listed in
+be United States v. Robinson, in which the court strengthened the                             Table 5, Appendix A. The most relevant tables for our purposes are
+police powers for searches during lawful arrests under the fourth                             Tables 11 and 13 as numbered in the original paper.
+amendment.
+    In comparison, in the second column of Table 1b features cita-                            Summary statistics. This paragraph compares our summary statistions which the classiﬁer ﬁnds to be indicative of a liberal case.                            tics listed in Table 2b to those by Landes and Posner (2009, p. 803)
+The most indicative citation would be United States v. Taylor, a                              listed in Table 2a. As can be seen, the statistics differ. We count a
+case in which the bar for conviction on charges of conspiracy                                 total of 56,602 cases; Landes and Posner (2009) count 55,041 cases.
+was raised. Coppedge v. United States dealt with the fact that the                            Furthermore, we count more opinions classiﬁed as “conservative”
+sentenced petitioner had not received the plenary review of his                               or “other” than Landes and Posner (2009) do.
+conviction to which he is entitled and all his appeals against his                                One possible explanation for these diverging results is that not
+conviction against this ground were dismissed. The Supreme Court                              all of corrections that Landes and Posner (2009) applied in the origreversed the decision to dismiss his appeal and generally strength-                           inal paper were described in sufﬁcient detail to reproduce. We
+ened defendants rights in this regard. In the same vein, Green v.                             were able to apply the corrections concerning political ideology
+United States reversed the sentencing of the defendant under the                              (Landes and Posner, 2009, pp. 830–831) but we were unable to
+Fifth Amendment as he was put in jeopardy twice for the same                                  apply judge-related corrections. Landes and Posner (2009) brieﬂy
+offense. Consequently, while absolute size of the coefﬁcients for                             mention judge-related corrections and refer to a website for a
+citations hint at only a limited quality for the overall classiﬁcation                        detailed description. This website however, is no longer available
+into either “liberal” or “conservative”, the cases as such seem to fall                       online.
+into the right domain.                                                                        Regression. Next we replicate the primary regression analysis of
+    The last column shows the predictive phrases from the full opin-                          circuit court judges in Landes and Posner (2009), focusing only on
+ion text. Features such as “judgment afﬁrm” or “plaintiff appeal”                             the essential part of their analysis. For Table 13, we replicate the
+
+
+                                      C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                     11
+
+Table 2
+Court of appeals votes by subject matter and ideology for 538 court of appeals judges only: 1925–2002.
+
+                           Crim               Civ Rts             First            Due Proc           Priv           Labor            Econ              Misc            Total
+
+  Original by Landes and Posner (2009)
+
+  Conservative             6823               2721                566              461                117            1351             9361              525             21,925
+  Liberal                  1876               1766                477              201                67             1922             9884              559             16,752
+  Mixed                    635                460                 89               51                 13             420              1775              22              3465
+  Other                    5321               210                 102              79                 3              179              6047              958             12,899
+  Total                    14,655             5157                1234             792                200            3872             27,067            2064            55,041
+
+  Replication
+
+  Conservative             7217               2647                397              412                83             1397             11,084            478             23,715
+  Liberal                  1911               1755                379              176                38             0                10,375            596             15,230
+  Mixed                    613                473                 86               48                 9              423              1689              31              3372
+  Other                    5652               212                 40               24                 3              2232             5177              945             14,285
+  Total                    15,393             5087                902              660                133            4052             28,325            2050            56,602
+
+
+regressions focusing on the fraction of conservative votes and only                           ally appears to be stronger in our replication than implied by the
+taking the period from 1925 to 2002 into account.14                                           original study.
+   Regarding the baseline regression, Landes and Posner (2009)                                    Apart from deploying heteroskedasticity-robust errors, we prospecify their regression model as follows:                                                    pose a model speciﬁcation with multi-way clustering (non-nested)
+                                                                                              as recommended by Cameron et al. (2006). Based on the advice
+FrConij = ˇ0 + ˇ1 Xi + w                                                             (1)      from Abadie (2018), we add two-way clustering by circuit and year.
+                                                                                              This allows for correlation in the error term across judges within
+where FrConij denotes the fraction of conservative votes, calcucourt over time, as well as across courts in the same year. Clusterlated as votes per judge over the sample period. Xi encompasses
+                                                                                              ing leaves coefﬁcients unchanged, and a comparison of columns (2)
+several judge characteristics such as the party of the appointing
+                                                                                              and (3) reveals that t-statistics only differ slightly as a result of the
+president, share of Republican senators at the time of nomination,
+                                                                                              two-way clustering.18
+year of appointment, gender, race,15 prior experience as a district
+                                                                                                  While Landes and Posner (2009) grouped the data on judgejudge, as well as judge circuit ﬁxed effects16 According to Landes
+                                                                                              level, we additionally run the empirical analysis with data at the
+and Posner (2009, p. 810), their regressions are weighted either
+                                                                                              vote level. This speciﬁcation allows us to control for case characby the judge’s total votes in civil cases or the total votes in crimteristics with circuit-year ﬁxed effects. For getting at the effect of
+inal cases. Furthermore, Landes and Posner (2009) do not specify
+                                                                                              party afﬁliation on ideology, this is an important step econometrihow they compute their standard errors, but we assume that they
+                                                                                              cally because the number of Republican-appointed judges and the
+use heteroskedasticity-robust standard errors (treating each judge
+                                                                                              proportion of conservatively decided cases could be correlated over
+as an observation) and therefore use errors of that type for the
+                                                                                              time due to unobserved confounding factors.
+replication.
+                                                                                                  The dependent variable is now binary. It equals one for conservative decisions and zero for liberal decisions (cases with the
+4.1. Civil cases                                                                              mixed/undetermined category are dropped). The vote level regression model includes circuit-year ﬁxed effects, as well as clustered
+    In Table 3 we provide our ﬁrst replication table, dealing with civil                      standard errors by judge and year.
+cases only. Column (1) corresponds to Landes and Posner (2009)                                    This speciﬁcation successfully replicates the signiﬁcant posiTable 13 column (6).17 As in the original paper, we report the t-                             tive effect of a conservative appointing president (RepPres) on the
+statistics, rather than standard errors or p-values, for all coefﬁcients                      fraction of conservative votes.
+in parentheses. Landes and Posner (2009) do not specify how they                                  Model speciﬁcations (5) and (6) are estimated not only with
+computed standard errors for their regression Table 13, but we                                hand-labeled but also with predicted data. The predictions on
+inferred that they used heteroskedasticity-robust errors.                                     which estimation results of columns (5) and (6) are based, were
+    The main research interest of Landes and Posner (2009) was                                generated with a calibrated Ridge classiﬁer.
+whether judges follow their party afﬁliation in their decisions. They                             These re-estimations serve as an alternative way to assess the
+ﬁnd a signiﬁcant inﬂuence of being appointed by a Republican pres-                            performance of the classiﬁer. The rationale behind this procedure is
+ident (RepPres) on the fraction of conservative votes for civil cases                         that generating labels is not the end-goal, but using these labels in
+(Table 3, column 1). Our result for civil cases (Table 3, column 2),                          an empirical model is. Therefore, even if the classiﬁer cannot predict
+is quite similar when compared to Landes and Posner’s; in our                                 political ideology with an accuracy of 100 percent, its performance
+data, being appointed by a Republican is associated with a pos-                               can be viewed as appropriate if the results of the empirical model
+itive and signiﬁcant effect of voting conservatively in civil cases.                          do not change drastically when estimated with the classiﬁer’s preThe evidence for a relationship between party and ideology actu-                              dictions.
+                                                                                                  As far as column (5) is concerned, using predicted instead of
+                                                                                              hand-labeled data does not change the results for coefﬁcients RepIn turn, this means that we do not display results for the fraction of liberal votes,
+                                                                                              Pres. Estimating the vote level ﬁxed effects model with predicted
+as displayed in columns (2) and (4) of Landes and Posner (2009) Table 13, nor do we           labels instead of hand-labeled (column 6) results in estimates for
+report results for the period of 1960 to 2002 as reported in Table 14.                        RepPres that are no longer statistically signiﬁcant.
+    Race is a dummy for Black = 1, 0 else.
+    The judge speciﬁc data was acquired from the Auburn database by Gary Zuk,
+Deborah J. Barrow and Gerard Gryski on songerproject.org/attributes.html and then
+matched to the Songer data by a judge identiﬁer code.
+    These are the columns with the “uncorrected” data. We only compare uncorrected data as Table 2 showed that we were not able to replicate even summary                     We provide regression results with errors clustered on the year of appointment,
+statistics for the corrected version.                                                         Circuit Court, and the party of appointing president in Table 3, column (3).
+
+
+12                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+Table 3
+Regression analysis of court of appeals votes: 1925–2002, civil cases.
+
+                                                                                     Dep. variable: fraction of conservative votes
+
+                                                                             true data                                                                     predicted data
+
+                                 Landes (2009)                  Replicated                 Clustered                    Vote                   Clustered                    Vote
+                                      (1)                          (2)                        (3)                        (4)                      (5)                        (6)
+
+  RepPres                           0.035***                      0.069*                    0.069***                  0.092***                  0.032**                    0.031
+                                    (3.860)                       (2.125)                    (4.136)                   (3.821)                  (2.942)                   (1.417)
+  SenRep                             0.072                        −0.017                     −0.017                     0.095                    0.004                     0.219
+                                    (1.710)                      (−0.090)                   (−0.347)                   (0.647)                                            (1.677)
+  YrAppt                             0.0003                        0.001                      0.001                    0.0003                    0.001                     0.001
+                                    (0.790)                       (0.665)                    (1.237)                   (0.202)                  (0.796)                   (0.431)
+  Gender                            −0.006                         0.015                      0.015                    −0.026                  −0.0004                    −0.058
+                                    (0.260)                       (0.344)                    (0.318)                  (−0.681)                 (−0.011)                  (−1.384)
+  Black                             −0.028                        −0.105                     −0.105                     0.007                   −0.125                    −0.001
+                                    (1.180)                      (−1.505)                                              (0.124)                                           (−0.023)
+  DistrictCourt                      0.002                        −0.004                     −0.004                    −0.002                   −0.002                   −0.0005
+                                    (0.330)                      (−1.455)                   (−1.183)                  (−1.712)                 (−0.345)                  (−0.417)
+  FracEcon                          −0.090                        −0.230                    −0.230**                   0.355**                  −0.249                   0.451***
+                                    (1.640)                      (−1.506)                   (−2.690)                   (2.774)                 (−1.918)                   (3.531)
+  FracMisc                          −0.049                        1.345*                     1.345*                    −0.920                  1.464***                   −0.324
+                                    (0.350)                       (2.442)                    (2.107)                  (−1.842)                  (6.118)                  (−0.673)
+
+  Circuit FE                           Yes                          Yes                        No                       No                        No                         No
+  Circuit-year FE                      No                           No                         Yes                      Yes                       Yes                        Yes
+  Observations                         535                          498                        498                     4169                       498                       4169
+  R2                                  0.240                        0.119                      0.119                    0.047                     0.123                      0.066
+  *
+     p < 0.05.
+ **
+     p < 0.01.
+ ***
+     p < 0.001.
+Linear regression with heteroscedasticity robust standard errors.
+Variables: RepPres: Party of the appointing president, conservative or liberal (omitted category); SenRep: Share of republican senators at the point of election; Gender: sex
+of the judge, male or female (omitted category). Black: dummy for the race of the judge; DistrictCourt: Years spent as a district judge; FracEcon: Fraction of economic votes;
+FracMisc: Fraction of miscellaneous votes; Circuit Variables: all regressions include 11 dummy circuit variables – circuits 1 to 11 with the D.C. court the omitted circuit variable.
+
+
+4.2. Criminal cases                                                                          specify the maximum acceptable variance inﬂation factor to be 7.
+                                                                                             Next, we increase the weights of those regression models that betIn Table 4, we provide our second replication table; it deals                            ter ﬁt the data – that is, by its likelihood ratio index according to
+with criminal cases only. Landes and Posner (2009) found a pos-                              McFadden (1973).
+itive and signiﬁcant inﬂuence of being appointed by a Republican                                 Fig. 9 shows histograms for each of the independent variables
+president (RepPres) on the fraction of conservative votes. Our result                        included in the model. The green curve displayed in each histogram
+for criminal cases is quite similar to Landes and Posner’s, our                              is a density curve which approximates the coefﬁcients’ distribution
+coefﬁcient being slightly larger. Furthermore, for criminal cases,                           with a normal distribution.
+Landes-Posner found a negative effect of appointment year. How-                                  A positive coefﬁcient indicates that holding all else equal, a
+ever, we do not ﬁnd such an effect. They also report a negative                              higher value of the examined variable is associated with a higher
+impact of being black (Black) on crime conservatism, which we                                fraction of conservative votes. On the other hand, if most of the area
+replicate.                                                                                   of the histogram’s bins lies to the left of zero, higher values of the
+    Two-way clustering changes t-statistics only slightly. This leads                        corresponding variable are associated with a lower fraction of conto no change in signiﬁcance level for the coefﬁcient (RepPres), but                          servative votes. For the civil cases, Fig. 9a suggests that when the
+it left the coefﬁcient (Black) to no longer be signiﬁcant.                                   appointing president (RepPres) is Republican (rather than DemoThe ﬁxed effects multi-way clustering model on vote level data                           crat), when the judge was appointed in later years (YrAppt), as
+replicates the signiﬁcant and positive effect of the party of the                            well as when the speciﬁc judge participated in a higher fraction
+appointing president (RepPres) as well as of being black (Black) on                          of miscellaneous votes (FracMisc), a judge’s fraction of conservathe fraction of conservative votes.                                                          tive votes increases. Furthermore, circuits 1 and 7 are consistently
+    The multi-way error component model using predicted data                                 associated with a higher fraction of conservative votes. Being black
+could not reproduce the signiﬁcance of the coefﬁcient RepPres.                               (Black), having served more years as a district judge (DistrictCourt),
+Instead, being male turned to have a signiﬁcant negative impact                              as well as an increasing fraction of economic votes (FracEcon), are
+on criminal conservatism. The ﬁxed effects multi-way clustering                              associated with a lower fraction of conservative votes. Furthermodel on vote level with predicted data could neither reproduce                              more, circuits 3, 9, and 10 have a lower fraction of conservative
+the signiﬁcance for coefﬁcient RepPres nor Black.                                            votes.
+                                                                                                 To conclude the visual inspection as well as the interpretation of
+4.3. Extreme bounds analysis                                                                 the statistics, found in Appendix E, the EBA for civil cases suggests
+                                                                                             that the variables RepPres, FracMisc and circuit 1 are very strongly
+    The extreme bounds analysis (EBA) is a sensitivity test that                             associated with the dependent variable.
+examines how robustly the dependent variable of a regression                                     For criminal cases, Fig. 9b shows that being appointed by a
+model is associated with a variety of possible determinants (Hlavac,                         Republican (rather than Democrat) president (RepPres) is consis2016). We estimate an EBA, including all possible combinations                               tently associated with a higher fraction of conservative votes for all
+of independent variables that Landes and Posner (2009) speciﬁed.                             regression models estimated. Furthermore, circuits 1, 5, 7, 8, 9, 10,
+To limit the inﬂuence of coefﬁcient estimates with high multi-                               and 11 are associated with a higher fraction of conservative votes.
+collinearity, we follow the recommendations by Hlavac (2016) and                             By contrast, being black (Black) as well as having served more years
+
+
+                                     C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                     13
+
+
+Fig. 9. Histograms extreme bounds analysis, for civil and criminal cases. (For interpretation of the references to color in the text, the reader is referred to the web version of
+this article.)
+
+
+14                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+Table 4
+Regression analysis of court of appeals votes: 1925–2002, criminal cases.
+
+                                                                                     Dep. variable: fraction of conservative votes
+
+                                                                             true data                                                                     predicted data
+
+                                 Landes (2009)                  Replicated                 Clustered                    Vote                   Clustered                    Vote
+                                      (1)                          (2)                        (3)                        (4)                      (5)                        (6)
+
+  RepPres                           0.056**                      0.077***                   0.077***                  0.051**                    0.038                     0.005
+                                    (4.220)                       (3.634)                   (3.811)                   (3.022)                   (1.734)                   (0.829)
+  SenRep                            −0.076                        −0.151                    −0.151                     0.010                    −0.020                    0.078**
+                                    (1.090)                      (−1.399)                                             (0.141)                  (−0.542)                   (2.844)
+  YrAppt                           −0.001***                     −0.00001                  −0.00001                  −0.0003                    0.001**                  −0.001**
+                                    (3.390)                      (−0.023)                  (−0.032)                  (−0.601)                   (2.876)                  (−2.709)
+  Gender                            −0.014                        −0.019                    −0.019                     0.010                   −0.023*                    −0.012
+                                    (0.710)                      (−0.740)                  (−0.876)                   (0.545)                  (−2.219)                  (−1.750)
+  Black                             −0.057*                      −0.091*                    −0.091                   −0.081**                   −0.020                    −0.027
+                                    (2.060)                      (−1.814)                  (−1.047)                  (−2.717)                  (−0.257)                  (−1.697)
+  DistrictCourt                      0.001                        −0.001                    −0.001                    0.0003                    −0.001                     0.001
+                                    (0.140)                      (−0.817)                  (−0.390)                   (0.360)                  (−0.346)                   (1.917)
+
+  Circuit FE                           Yes                          Yes                       No                         No                       No                          No
+  Circuit-year FE                      No                           No                        Yes                        Yes                      Yes                         Yes
+  Observations                         523                          498                       498                      13,543                     498                       13,543
+  R2                                  0.240                        0.084                     0.084                      0.019                    0.052                       0.014
+  *
+    p < 0.05.
+ **
+    p < 0.01.
+***
+    p < 0.001.
+Linear regression with heteroscedasticity robust standard errors.
+Variables: RepPres: Party of the appointing president, conservative or liberal (omitted category); SenRep: Share of republican senators at the point of election; Gender: sex
+of the judge, male or female (omitted category). Black: dummy for the race of the judge;DistrictCourt: Years spent as a district judge; FracEcon: Fraction of economic votes;
+FracMisc: Fraction of miscellaneous votes; Circuit Variables: all regressions include 11 dummy circuit variables – circuits 1 to 11 with the D.C. court the omitted circuit variable.
+
+
+as a district court judge (DistrictCourt) decrease the fraction of con-                         In order to extend the data set, we experimented with different
+servative votes. Furthermore, circuits 2 and 3 are associated with a                         classifying algorithms, where the best one was a passive-aggressive
+lower fraction of conservative votes.                                                        classiﬁer for economic cases, reaching an f1-score of 74.49%.
+    To conclude the visual inspection, as well as the interpretation                            In order to assess the validity of the classiﬁcation, we compared
+of the statistics found in Appendix E, EBA results for criminal cases                        the regression results obtained by using predicted data to those
+suggest that the variables Pres, Black as well as circuit 8 and 10 are                       obtained by using only hand-labeled data. Coefﬁcients found to
+robustly associated with the fraction of conservative votes.                                 be signiﬁcant with the replication as well as with the robustness
+                                                                                             checks were not replicated with the predicted data, suggesting that
+                                                                                             that (1) the classiﬁer still needs improvement, or (2) researchers
+5. Conclusion and outlook                                                                    should be careful with using predictions as data in downstream
+                                                                                             empirical analysis. Future research should, therefore, take into
+    This paper has two main goals. Our ﬁrst goal was to replicate the                        account that the distribution of the Songer data in regards to cases
+analysis on Circuit Courts proposed by Landes and Posner (2009),                             per circuit per year does not mirror the distribution of the universe,
+and to add multiple robustness checks to assess the validity of the                          and as such it may skew the predictions of any classiﬁer. Oversamregression model initially speciﬁed. Second, we show an approach                             pling is only an imperfect correction for this issue, as is the inclusion
+for extending the data set used in the original study via machine                            of the circuit or year as a feature. Otherwise, the consistency of
+learning, especially in regards to the input used for any future                             results may not be guaranteed.
+algorithm.                                                                                      One aspect that we neglected thus far is that predictions canAs far as replication of the empirical analysis of Landes and                            not be directly plugged into a regression without correcting for the
+Posner (2009) is concerned, we were able to reproduce the most                               classiﬁcation error. Fong and Tyler (2018) proposed one approach
+critical ﬁndings. The robustness checks found, just as Landes and                            to do so. However, Fong and Tyler (2018) describe a case in which
+Posner (2009) did, that the party of the appointing president and                            one or more independent variables are predicted. In our case, howbeing black inﬂuences the fraction of conservative votes. We ﬁnd                             ever, we predict the dependent variable. Therefore, we propose to
+that the result for party afﬁliation is actually stronger than the                           develop a correction approach in order to prevent forward proporiginal article found, as it extend to both civil and criminal cases.                       agation of the prediction error used within a dependent variable
+    What explains our different results? We paid particular atten-                           which at this point may be of the main reason for failure.
+tion to the code generating the fraction of conservative votes. As                              Furthermore, the distributions of the enlarged data set and
+multiple reshaping and grouping operations as well as joining dif-                           that one of the original data are signiﬁcantly distinct. Overall, the
+ferent datasets were necessary in order to obtain this variable, its                         classiﬁer was trained on roughly 0.5 percent as compared to the
+calculation is not exactly trivial. We can imagine that a small mis-                         number of labels that were predicted. As soon as such a considtake in the original code by Landes and Posner (2009), such as an                            erable dissemblance is present, non-random draws or the lack of
+inner instead of an outer join, could change the fraction. In turn, its                      stratiﬁcation is very problematic. Lack of stratiﬁcation is the case
+association with the dependent variable may also change.                                     with the original Songer database, i.e. Songer (1993) does not keep
+    However, we could not replicate the exact summary statistics                             the original distribution of cases per circuit as they focused on preof the data set Landes and Posner (2009) used because they did                               serving other aspects such as the presence of all circuits in each
+not provide replication code and did not sufﬁciently specify their                           year.
+corrections in the original paper. That, in particular, may affect the                          Taking the above into account, our results provide a concise
+rest of their ﬁndings.                                                                       groundwork for future research in this area. First, in order to estabC.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                15
+
+
+lish a ground truth that goes beyond mere statistical signiﬁcance                  Resources, Data curation, Writing - review & editing, Supervision,
+and also looks at distributional aspects more than just regression                 Project administration.
+results are needed. Here, we suggest that taken our results multiway error component modeling as well as an extreme bounds                        Acknowledgements
+analysis should be used on any prior results before trying to take
+them as a baseline for any extension of the Songer database. Sec-                      We would like to thank Prof. Rok Spruk for his extensive feedondly, in regards to machine learning, we show quite clearly that                  back on statistics and evaluation methods, the members of the Max
+any input which does not include the complete opinion text in some                 Planck Institute for Research of Collective Goods as well as the
+form cannot result in a good overall performance. That is important                participants of the second Empirical Legal Studies Replication Conas it shows that other aspects which are otherwise very useful in                  ference for their comments, the ETH Center for Law & Economics
+the domain of law, such as citations for citation networks, do not                 for providing computing capabilities and additional data, and the
+contain enough information for this speciﬁc task. This holds despite               Max Planck Computing and Data Facility for use of their cluster and
+the fact that when using citations as input, the classiﬁer uses many               for supporting us in all technical matters. This work was supported
+citations to which it assigns the correct ideology label if one were               by an IPAK-Travel-Grant, by the Max-Planck Institute for Research
+to label them by hand. However, when taken as an aggregation,                      on Collective Goods as well as the University of Cologne.
+neither citations nor quotations are distinctive enough. Moreover,
+while the Songer database features four labels, our results show                   Appendix A. Replication
+that the error the classiﬁer makes on the “mixed” label is nearly
+equally split between “conservative” and “liberal”. As the “other”
+label is negligible in terms of occurrence, we can, therefore, con-                Table 5
+clude that training a classiﬁer only on the two labels “conservative”              Overview of all tables and ﬁgures in Landes and Posner (2009) dealing with the
+                                                                                   circuit courts.
+and “liberal” does not introduce any systematic. Due to the increase
+in performance, such a setup should consequently be preferred.                       Analysis of court of appeals voting: 1925–2002
+Lastly, looking at the regression results, it may be that text alone is              Table 11                Court of Appeals Votes by Subject Matter and Ideology
+not enough. Future research should therefore also think about tak-                                           for 538 Court of Appeals Judges Only: 1925–2002
+ing meta-information, such as the circuit court it was heard at, into                Figure 3                Total Votes by Year Appointed to the Court of Appeals
+account. Moreover, looking at the literature of the median judge                     Table 12                Fraction of Mixed (M), Conservative (C) and Liberal (L)
+                                                                                                             Votes for 538 U.S. Court of Appeals Judges by President
+(e.g. Martin et al., 2004) it may also be important with which other                                         at Time of Appointment: 1925–2002
+judges a judge sits on a panel. This may be another important aspect,                Table 13                Regression Analysis of Court of Appeals Votes:
+a machine learning classiﬁer may have to take into account.                                                  1925–2002 (t-statistics in parentheses)
+    We hope that our work acts as a baseline on which future work                    Table 14                Regression Analysis of Court of Appeals Votes:
+                                                                                                             1960–2002 (t-statistics in parentheses)
+can build on. The obvious next step is to scale back on the interTable 15                Circuit Effects on Ideology of Judges’ Votes
+pretability of the model in favor of sophistication: Speciﬁcally, we                 Table 16                Regression Analysis of Appellate Court Votes: Current
+propose a modiﬁed doc2vec model in combination with an atten-                                                Judges (t-statistics in parentheses)
+tion mechanism. Furthermore, future work could stack multiple
+classiﬁcation algorithms tailored more closely to the rules of the
+coding book that the Songer database provides.
+                                                                                   Appendix B. Data pre-processing
+    Another exciting avenue for future work is to compare in-depth
+the differences, advantages, and disadvantages of various methodWe applied pre-processing tailored to our data. As we use data
+ological approaches. A particular exciting comparison is a Bayesian
+                                                                                   from Lexis, each opinion had a speciﬁc structure. We extracted the
+framework, as proposed by Martin and Quinn (2002), compared to
+                                                                                   text and split it into parts when encountering more than a single
+machine learning approaches, as suggested by this paper.
+                                                                                   newline character. Special characters such as ‘newline’-characters
+    Apart from methodological extensions, a more content-related
+                                                                                   and roman numbers were removed.
+one is particularly interesting: Most of the literature is targeted
+                                                                                       If a potential heading was found within the text, we excluded
+towards high ranking courts, such that the Supreme Court or Circuit
+                                                                                   it. The reason being that such a heading would potentially include
+Courts. This lack of attention towards lower courts might stem from
+                                                                                   biasing information such as judge names. It is especially importhe fact that the universe of cases to code is vast. Consequently, not
+                                                                                   tant to exclude those, as the model could focus on judge names as a
+even a partially coded data set, as far as political ideology labels
+                                                                                   proxy for the directionality as most cases were decided without disare concerned, is available for lower courts. A classiﬁer trained
+                                                                                   sent. This is an issue in our empirical context because we would like
+on Circuit Courts’ opinions could predict the label for opinions of
+                                                                                   to use the predicted data to analyze judge characteristics. Including
+lower courts and, by that, help to close this particular gap in the
+                                                                                   the judges in the prediction would induce mechanical correlation.
+literature.
+                                                                                       In a second step, we applied regular expressions trying to capture the part of the opinion in which judges might dissent from
+CRediT authorship contribution statement
+                                                                                   the majority. Including a dissenting part which by its nature goes
+                                                                                   against the directionality of the majority in the input would not
+   Carina I. Hausladen: Conceptualization, Methodology, Softonly add noise but may also lead the classiﬁer to average over the
+ware, Validation, Formal analysis, Investigation, Resources, Writing
+                                                                                   different directions, leading to an overall worse performance. If we
+- original draft, Writing - review & editing, Visualization, Project
+                                                                                   found a dissent, we split off the relevant paragraph and saved it as
+administration, Funding acquisition. Marcel H. Schubert: Concepan extra entry in the database, marking it as ‘dissent’. We excluded
+tualization, Methodology, Software, Validation, Formal analysis,
+                                                                                   those entries and did not use them as input.
+Investigation, Resources, Data curation, Writing - original draft,
+Writing - review & editing, Visualization, Project administration,
+                                                                                   Appendix C. All classiﬁer input combinations
+Funding acquisition. Elliott Ash: Conceptualization, Methodology,
+
+
+16                                 C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+
+                                                Fig. 10. Various performance metrics for all different combinations tested.
+
+
+Appendix D. Judges                                                                      votes by a judge. We split the population of judges by the party of
+                                                                                        the appointing president, resulting in four different speciﬁcations.
+   Tables 6–9 present yet another way how to assess the perfor-                         Overall, actual and predicted fractions of votes by the ten highest
+mance of the best classiﬁer. We predict the directionality of an                        ranked judge by the speciﬁcation are pretty similar and reassures
+opinion and use it to calculate the fraction of conservative or liberal                 that our classiﬁer performs sufﬁciently well for our analysis.
+
+
+Table 6
+10 judges with highest fraction of conservative votes, appointed by conservative presidents.
+
+ Frac con                    Sum                    Name                                       Frac con                  Sum               Name
+
+ 0.89                        48                     Barksdale, Rhesa H.                        0.87                      48                Barksdale, Rhesa H.
+ 0.85                        69                     Loken, James B.                            0.87                      69                Loken, James B.
+ 0.84                        65                     Hansen, David R.                           0.83                      66                Arnold, Morris S.
+ 0.83                        110                    Easterbrook, Frank H.                      0.82                      109               Easterbrook, Frank H.
+ 0.82                        28                     O’Scannlain, Diaruid F.                    0.80                      15                Lewis, Robert E.
+ 0.82                        61                     Luttig, J. Michael                         0.80                      65                Hansen, David R.
+ 0.80                        93                     Edmondson, James L.                        0.80                      44                DeMoss, Harold R., Jr.
+ 0.80                        72                     Magill, Frank J.                           0.79                      61                Jones, Edith H.
+ 0.80                        104                    Boudin, Michael                            0.79                      103               Boudin, Michael
+ 0.80                        45                     DeMoss, Harold R., Jr.                     0.78                      97                Higginbotham, Patrick E.
+ Note:                                              Hand-labelled data                         Note:                                       Predicted data
+
+
+                                      C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                17
+
+Table 7
+10 judges with highest fraction of liberal votes, appointed by conservative presidents.
+
+  Frac lib                      Sum                     Name                                      Frac lib                     Sum                    Name
+
+  0.71                          11                      Thomas, Clarence                          0.63                         44                     Hitz, William
+  0.63                          44                      Hitz, William                             0.62                         11                     Thomas, Clarence
+  0.59                          137                     Gibbons, John J.                          0.57                         119                    Wilbur, Curtis D.
+  0.58                          39                      Waddill, Edmund, Jr.                      0.56                         116                    Van Orsdel, Josiah A.
+  0.58                          46                      Miller, William Ernest                    0.56                         70                     Thompson, Joseph W.
+  0.58                          73                      Mansmann, Carol Los                       0.56                         46                     Miller, William Ernest
+  0.58                          43                      Pratt, George C.                          0.56                         55                     Roth, Jane R.
+  0.56                          56                      Roth, Jane R.                             0.56                         142                    Northcutt, Elliott
+  0.56                          142                     Northcutt, Elliott                        0.56                         108                    Lively, Frederick P.
+  0.56                          107                     Lively, Frederick P.                      0.55                         43                     Pratt, George C.
+  Note:                                                 Hand-labelled data                        Note:                                               Predicted data
+
+
+Table 8
+10 judges with highest fraction of conservative votes, appointed by liberal presidents.
+
+  Frac con                      Sum                    Name                                       Frac con                     Sum                   Name
+
+  0.89                          45                     Evans, Terence Thomas                      0.82                         44                    Evans, Terence Thomas
+  0.84                          38                     Parker, Robert Manley                      0.81                         37                    Parker, Robert Manley
+  0.78                          69                     Williams, Jerre S.                         0.80                         20                    Rutledge, Wiley Blount
+  0.76                          83                     Garza, Reynaldo                            0.78                         27                    King, Carolyn Dineen
+  0.75                          60                     Anderson, Robert P.                        0.76                         82                    Garza, Reynaldo
+  0.74                          27                     King, Carolyn Dineen                       0.75                         134                   Breyer, Stephen G.
+  0.74                          78                     Mehaffy, Pat                               0.74                         163                   McMillian, Theodore
+  0.73                          131                    Miller, Wilbur K., Jr.                     0.74                         19                    Cole, Ransey Guy, Jr.
+  0.73                          37                     Murphy, Michael R.                         0.74                         68                    Williams, Jerre S.
+  0.73                          11                     Kravitch, Phyllis A.                       0.73                         30                    Stewart, Carl Edmond
+  Note:                                                Hand-labelled data                         Note:                                              Predicted data
+
+
+Table 9
+10 judges with highest fraction of liberal votes, appointed by liberal presidents.
+
+  Frac lib                 Sum                    Name                                           Frac lib                Sum                  Name
+
+  0.71                     11                     Faris, Charles                                 0.66                    24                   Russell, Robert L.
+  0.71                     11                     Thomas, Sidney Runyan                          0.63                    14                   Sarokin, Haddon Lee
+  0.67                     16                     Hough, Charles M.                              0.63                    22                   Strum, Louie
+  0.66                     24                     Russell, Robert L.                             0.62                    27                   O’Connell, John J.
+  0.66                     51                     Haney, Bert E.                                 0.62                    24                   Clark, William
+  0.65                     29                     Ferguson, Warren J.                            0.61                    16                   Hough, Charles M.
+  0.63                     99                     Higginbotham, Aloyisus Leon                    0.61                    98                   Higginbotham, Aloyisus Leon
+  0.63                     14                     Sarokin, Haddon Lee                            0.60                    150                  Robinson, Spottswood W., III
+  0.63                     22                     Strum, Louie                                   0.60                    51                   Haney, Bert E.
+  0.62                     24                     Clark, William                                 0.57                    31                   Lucero, Carlos
+  Note:                                           Hand-labelled data                             Note:                                        Predicted data
+
+
+Appendix E. Robustness checks                                                              above or below zero, can be interpreted as being robustly connected
+                                                                                           with the dependent variable (Hlavac, 2016). For the variables of
+   Additionally to the histograms found in Fig. 9, we go on to ana-                        being black (96 percent), the years of having served as a district
+lyze the EBA’s statistics on civil cases, displayed by Table 10a.                          court judge (93 percent), as well as for the fraction of economic
+   For civil cases, we estimated 510 regression models. Fig. 9a                            votes (93 percent), more than 90 percent of the cumulative disprovides information about the share of regression coefﬁcients                             tributions lie below zero. By contrast, for the variables of being
+that are statistically signiﬁcant as well as lower (column 1) or                           appointed by a conservative president (99 percent), the fraction
+greater (column 2) than zero. There was no coefﬁcient signiﬁcant                           of miscellaneous votes (98 percent) as well as for circuit 1 (100
+for which the size of at least 50 percent of estimated coefﬁ-                              percent), more than 90 percent of the cumulative distributions lie
+cients lies below zero. By contrast, there were three coefﬁcients                          above zero.
+found to be signiﬁcant while having values larger than zero in at                              EBA statistics for criminal cases, displayed in Table 10b, are
+least 50 percent of the estimated models. These were the frac-                             interpreted below. Overall, 127 regression models were estimated.
+tion of republican senators at the point of election (92 percent),                         Columns 1 and 2 of Table 10b show the fraction of the respective
+the fraction of miscellaneous votes (64 percent) as well as circuit                        regression coefﬁcients that are statistically signiﬁcant and lower
+1 (100 percent). Consequently, Leamer (1985)’s EBA (column 3),                             or greater than zero at the same time. Only for the dummy varideﬁnes circuit 1 as the only robust variable. Furthermore, Table 10a                       able Black, more than 88 percent of the values estimated were
+includes results from Sala-i-Martin (1997)’s EBA (columns 4 and 5).                        signiﬁcant and smaller than zero. By contrast, there were three
+Fig. 9a suggests that a normal distribution does not sufﬁciently well                      coefﬁcients, Pres (100 percent), circuit 8 (100 percent) and circuit
+approximate the regression coefﬁcients’ distribution. For this rea-                        10 (100 percent) found to be signiﬁcant and showing more than
+son, we focus on Sala-i-Martin (1997) EBA results from a model that                        50 percent of its values larger than zero. Table 10b summarizes
+does make assumptions about the coefﬁcients’ distributions. As a                           results from Leamer (1985)’s EBA (column 3). This test concludes
+rule of thumb, those variables for which more than 90 percent of                           that three variables are found to be robustly connected with the
+the regression coefﬁcients’ cumulative distribution is located either                      dependent variable, which are Pres as well as circuits 8 and 10. Fur18                                   C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903
+
+Table 10
+Extreme bounds analysis.
+
+                                     ˇ sign & <0                 ˇ sign & >0                leamer robust                   cdf ˇ <=0 generic                  cdf ˇ > 0 generic
+
+  Civil cases
+
+  (Intercept)                        0.25                        0.50                       FALSE                           0.47                               0.53
+  Pres                               0.00                        0.92                       FALSE                           0.01                               0.99
+  SenRep                             0.00                        0.00                       FALSE                           0.30                               0.70
+  YrAppt                             0.00                        0.50                       FALSE                           0.11                               0.89
+  Gender                             0.00                        0.00                       FALSE                           0.33                               0.67
+  Black                              0.47                        0.00                       FALSE                           0.96                               0.04
+  DistrictCourt                      0.01                        0.00                       FALSE                           0.93                               0.07
+  FracEcon                           0.50                        0.00                       FALSE                           0.95                               0.05
+  FracMisc                           0.00                        0.64                       FALSE                           0.02                               0.98
+  CircuitVariables1                  0.00                        1.00                       TRUE                            0.00                               1.00
+  CircuitVariables2                  0.00                        0.00                       FALSE                           0.52                               0.48
+  CircuitVariables3                  0.00                        0.00                       FALSE                           0.91                               0.09
+  CircuitVariables4                  0.00                        0.00                       FALSE                           0.62                               0.38
+  CircuitVariables5                  0.00                        0.00                       FALSE                           0.29                               0.71
+  CircuitVariables6                  0.00                        0.00                       FALSE                           0.42                               0.58
+  CircuitVariables7                  0.00                        0.00                       FALSE                           0.08                               0.92
+  CircuitVariables8                  0.00                        0.00                       FALSE                           0.21                               0.79
+  CircuitVariables9                  0.00                        0.00                       FALSE                           0.83                               0.17
+  CircuitVariables10                 0.00                        0.00                       FALSE                           0.71                               0.29
+  CircuitVariables11                 0.00                        0.00                       FALSE                           0.43                               0.57
+
+  criminal cases
+
+  (Intercept)                        0.00                        0.50                       FALSE                           0.14                               0.86
+  Pres                               0.00                        1.00                       TRUE                            0.00                               1.00
+  SenRep                             0.00                        0.00                       FALSE                           0.70                               0.30
+  YrAppt                             0.00                        0.00                       FALSE                           0.44                               0.56
+  Gender                             0.00                        0.00                       FALSE                           0.61                               0.39
+  Black                              0.88                        0.00                       FALSE                           0.99                               0.01
+  DistrictCourt                      0.00                        0.00                       FALSE                           0.78                               0.22
+  CircuitVariables1                  0.00                        0.00                       FALSE                           0.06                               0.94
+  CircuitVariables2                  0.00                        0.00                       FALSE                           0.60                               0.40
+  CircuitVariables3                  0.00                        0.00                       FALSE                           0.71                               0.29
+  CircuitVariables4                  0.00                        0.00                       FALSE                           0.46                               0.54
+  CircuitVariables5                  0.00                        0.00                       FALSE                           0.25                               0.75
+  CircuitVariables6                  0.00                        0.00                       FALSE                           0.49                               0.51
+  CircuitVariables7                  0.00                        0.00                       FALSE                           0.07                               0.93
+  CircuitVariables8                  0.00                        1.00                       TRUE                            0.01                               0.99
+  CircuitVariables9                  0.00                        0.00                       FALSE                           0.33                               0.67
+  CircuitVariables10                 0.00                        1.00                       TRUE                            0.01                               0.99
+  CircuitVariables11                 0.00                        0.00                       FALSE                           0.14                               0.86
+
+
+thermore, Table 10b includes results from Sala-i-Martin (1997)’s                          Casper, G., Posner, R.A., 1974. A study of the supreme court’s caseload. J. Legal Stud.
+EBA (columns 4 and 5). As was the case with civil cases, Fig. 9b                              3 (2), 339–375.
+                                                                                          Chandler, S.J., 2005. The Network Structure of Supreme Court Jurisprudence.
+suggests that a normal distribution does not ﬁt the coefﬁcients’ dis-                         University of Houston Law Center, (2005-W):1.
+tribution very well. For this reason, we focus on EBA results from a                      Crammer, K., et al., 2006. Online passive-aggressive algorithms. J. Mach. Learn. Res.
+parameter-free model. For Black (99 percent), more than 90 percent                            7, 551–585.
+                                                                                          Dainow, J., 1966. The civil law and the common law: some points of comparison.
+of the cumulative distributions lie below zero. By contrast, for the                          Am. J. Comp. Law 15, 419.
+variables of being appointed by a conservative president (Pres) (100                      Epstein, L., Martin, A.D., et al., 2012. Ideology and the study of judicial behavior. In:
+percent), for circuit 1 (94 percent), circuit 7 (93 percent), circuit 8                       Ideology, Psychology & Law, 705.
+                                                                                          Epstein, L., Segal, J.A., 2005. Advice and Consent: The Politics of Judicial
+(99 percent) and circuit 10 (99 percent) more than 90 percent of
+                                                                                              Appointments.
+the cumulative distributions lie above zero.                                              Fong, C., Tyler, M., 2018. Machine Learning Predictions as Regression Covariates.
+                                                                                          Giles, M.W., Hettinger, V.A., Peppers, T., 2001. Picking federal judges: a note on
+                                                                                              policy and partisan selection agendas. Polit. Res. Q. 54 (3),
+                                                                                              623–641.
+References                                                                                Ginn, M.H., Searles, K., Jones, A., 2015. Vouching for the court? How high stakes
+                                                                                              affect knowledge and support of the supreme court. Justice Syst. J. 36 (2),
+Abadie, A., 2018. Statistical Non-Signiﬁcance in Empirical Economics., pp. 1–25,              163–179.
+    December.                                                                             Hlavac, M., 2016. ExtremeBounds: extreme bounds analysis in R. J. Stat. Softw. 72
+Aletras, N., et al., 2016. Predicting judicial decisions of the European court of             (9).
+    human rights: a natural language processing perspective. PeerJ Comput. Sci.           Johnson, S.W., Songer, D.R., Jilani, N.A., 2011. Judge gender, critical mass, and
+    2016 (10), e93.                                                                           decision making in the appellate courts of Canada. J. Women Polit. Policy 32
+Ash, E., Chen, D.L., 2018. Mapping the geometry of law using document                         (3), 237–260.
+    embeddings. SSRN Electron. J.                                                         Kassow, B., Songer, D.R., Fix, M.P., 2012. The inﬂuence of precedent on state
+Ash, E., Chen, D.L., Lu, W., 2018. Motivated Reasoning in the Field: Partisanship in          supreme courts. Polit. Res. Q. 65 (2), 372–384.
+    Precedent, Prose, Vote, and Retirement in US Circuit Courts, 1800–2013,               Kim, Y., 2014. Convolutional Neural Networks for Sentence Classiﬁcation,
+    Technical Report.                                                                         Technical report.
+Boella, G., Di Caro, L., Humphreys, L., 2011. Using classiﬁcation to support legal        Landes, W.M., Posner, R.A., 2009. Rational judicial behavior: a statistical study. J.
+    knowledge engineers in the Eunomos legal document management system.                      Legal Anal. 1 (2), 775–831.
+    Fifth International Workshop on Juris-Informatics (JURISIN).                          Lauderdale, B.E., Clark, T.S., 2014. Scaling politically meaningful dimensions using
+Cameron, C., Gelbach, J., Miller, D., 2006. Robust Inference with Multi-Way                   texts and votes. Am. J. Polit. Sci. 58 (3), 754–771.
+    Clustering., pp. 1–34, NBER Working Paper, September.                                 Lauderdale, B.E., Herzog, A., 2016. Measuring political positions from legislative
+Cao, Y., Ash, E., Chen, D.L., 2018. Automated fact-value distinction in court                 speech. Polit. Anal., 1–21.
+    opinions. SSRN Electron. J.
+
+
+                                      C.I. Hausladen, M.H. Schubert and E. Ash / International Review of Law and Economics 62 (2020) 105903                                  19
+
+
+Laver, M., Benoit, K., Garry, J., 2003. Extracting policy positions from political texts   Segal, J.A., Cover, A.D., 1989. Ideological values and the votes of US supreme court
+    using words as data. Am. Polit. Sci. Rev. 97 (2), 311–331.                                 justices. Am. Polit. Sci. Rev. 83 (2), 557–565.
+Leamer, E.E., 1985. Sensitivity analyses would help. Am. Econ. Rev. 75 (3), 308–313.       Shrestha, P., et al., 2017. Convolutional neural networks for authorship attribution
+Martin, A.D., Quinn, K.M., 2001. The Dimensions of Supreme Court Decision                      of short texts. Proceedings of the 15th Conference of the European Chapter of
+    Making: Again Revisiting The Judicial Mind., pp. 1–37.                                     the Association for Computational Linguistics: vol. 2, 669–674, Short Papers.
+Martin, A.D., Quinn, K.M., 2002. Dynamic ideal point estimation via Markov chain           Sidorov, G., et al., 2014. Syntactic n-grams as machine learning features for natural
+    Monte Carlo for the US Supreme Court, 1953–1999. Polit. Anal. 10 (2), 134–153.             language processing. Expert Syst. Appl. 41 (3), 853–860.
+Martin, A.D., Quinn, K.M., Epstein, L., 2004. The Median Justice on the United States      Slapin, J.B., Proksch, S.-O., 2008. A scaling model for estimating time-series part
+    Supreme Court, Technical Report.                                                           positions from texts. Am. J. Polit. Sci. 52 (3), 705–722.
+Masood, A.S., Songer, D.R., 2013. Reevaluating the implications of decision-making         Songer, D.R., 1993. The United States Court of Appeals Database – Documentation
+    models. J. Law Courts 1 (2), 363–389.                                                      for Phase I.
+McFadden, D., 1973. Conditional Logit Analysis of Qualitative Choice Behavior.             Sturm, H.P., Pritchett, H.C., 2006. The roosevelt court, a study in judicial politics
+Pedregosa, F., et al., 2011. Scikit-learn: machine learning in python. J. Mach. Learn.         and values, 1937–1947. West. Polit. Q. 2 (3), 465.
+    Res. 12 (October), 2825–2830.                                                          Suen, C.Y., 1979. N-gram statistics for natural language understanding and text
+Platt, J.C., 1999. Probabilistic outputs for support vector machines and comparisons           processing. IEEE Trans. Pattern Anal. Mach. Intell. 2, 164–172.
+    to regularized likelihood methods. Adv. Large Margin Classif. 10 (3), 61–74.           Sulea Octavia, M., et al., 2017. Exploring the use of text classiﬁcation in the legal
+Randazzo, K.A., Waterman, R.W., Fix, M.P., 2010. State supreme courts and the                  domain. CEUR Workshop Proceedings, 2143.
+    effects of statutory constraint. Polit. Res. Q. 64 (4), 779–789.                       Undavia, S., Meyers, A., Ortega, J., 2018. A comparative study of classifying legal
+Reid, R., Randazzo, K.A., 2016. Statutory language and the separation of powers.               documents with neural networks. In: Proceedings of the 2018 Federated
+    Just. Syst. J. 37 (3), 246–258.                                                            Conference on Computer Science and Information Systems, October, pp.
+Ribeiro, M.T., Singh, S., Guestrin, C., 2016. Why should I trust you?: explaining the          515–522.
+    predictions of any classiﬁer. Proceedings of the 22nd ACM SIGKDD                       Vaswani, A., et al., 2017. Attention is all you need. In: Advances in Neural
+    International Conference on Knowledge Discovery and Data Mining,                           Information Processing Systems., pp. 5998–6008.
+    1135–1144.                                                                             Zhang, T., 2004. Solving large scale linear prediction problems using stochastic
+Rifkin, R., Lippert, R., 2007. Notes on Regularized Least Squares. Massachusetts               gradient descent algorithms. Proceedings, Twenty-First International
+    Institute of Technology, Cambridge, Technical Report.                                      Conference on Machine Learning, ICML 2004, 919–926.
+Sala-i-Martin, X.X., 1997. I Just Ran Four Million Regressions.
+Schmidt, M., Le Roux, N., Bach, F., 2017. Minimizing ﬁnite sums with the stochastic
+    average gradient. Math. Program. 162 (1–2), 83–112.

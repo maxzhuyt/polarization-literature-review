@@ -1,0 +1,539 @@
+Corporate funding and ideological polarization about
+climate change
+Justin Farrell1
+School of Forestry & Environmental Studies, Yale University, New Haven, CT 06511
+
+Edited by Theda Skocpol, Harvard University, Cambridge, MA, and approved October 12, 2015 (received for review May 13, 2015)
+
+Drawing on large-scale computational data and methods, this                 coverage of climate change (16–21), but because of data constraints
+research demonstrates how polarization efforts are influenced               and the difficulty of gathering such complex and furtive data, we still
+by a patterned network of political and financial actors. These             lack a comprehensive data-driven understanding about the actual
+dynamics, which have been notoriously difficult to quantify, are            content and source of contrarian messages, as well as the complex
+illustrated here with a computational analysis of climate change            organizational and financial networks within which they are propolitics in the United States. The comprehensive data include all           duced. This study presents such an approach, and examines how the
+individual and organizational actors in the climate change coun-            production of an alternative discourse is embedded within a partermovement (164 organizations), as well as all written and verbal          ticular social structure and how the content itself is influenced by
+texts produced by this network between 1993–2013 (40,785 texts,             particular funding sources.
+more than 39 million words). Two main findings emerge. First, that             Important to this approach is the fact that in the United States,
+organizations with corporate funding were more likely to have               there are a growing number of grassroots lobbying firms who work
+written and disseminated texts meant to polarize the climate                on behalf of corporations, industry groups, and associations (22,
+change issue. Second, and more importantly, that corporate fund-            23). Along with this growth in corporate lobbying, other social and
+
+
+                                                                                                                                                                       SUSTAINABILITY
+ing influences the actual thematic content of these polarization            political opportunities have opened the door for movements like
+
+
+                                                                                                                                                                          SCIENCE
+efforts, and the discursive prevalence of that thematic content             climate change contrarianism to flourish, such as weakening reover time. These findings provide new, and comprehensive, con-              strictions on political finance (24) and the concentration of corfirmation of dynamics long thought to be at the root of climate             porate wealth more generally (25, 26). With these factors in mind,
+change politics and discourse. Beyond the specifics of climate              and building on prior climate change research, this study asks three
+change, this paper has important implications for understanding             specific—and closely related—empirical research questions: (i) Of
+ideological polarization more generally, and the increasing role of         all of the organizations in the climate contrarian movement, which
+private funding in determining why certain polarizing themes are            ones produced discourse? (ii) What are the specific themes concreated and amplified. Lastly, the paper suggests that future stud-         tained in this contrarian discourse? (iii) Does the reception of
+ies build on the novel approach taken here that integrates large-           corporate funding influence the thematic content and ideological
+scale textual analysis with social networks.                                language of this discourse? And, how do all of these factors
+                                                                            change over time?
+        |
+funding polarization   | politics | computational social science |             These important questions have not been adequately addressed
+climate change                                                              because of the difficulty of collecting and analyzing such large
+                                                                            amounts of longitudinal textual content and funding data. Given
+
+I deological polarization presents increasingly important challenges for sustainability science and solutions for climate
+change. Much attention has been given to the outcomes of pothe breadth of actors in this movement and the sheer volume of
+                                                                            texts produced, scholars have either focused on smaller samples
+                                                                            of text (11–13), or on rigorously identifying the organizations
+larization by demonstrating its effect on individual choices about
+energy-efficient behavior (1), individual attitudes about climate               Significance
+change (2–6), and variation in individuals’ trust in science as a
+whole, especially among Americans who self-identify as politi-                  Ideological polarization around environmental issues—especally conservative (7). Climate change is not the first issue with              cially climate change—have increased in the last 20 years. This
+scientific consensus to become so highly polarized (8, 9), but the              polarization has led to public uncertainty, and in some cases,
+magnitude of its ecological and human-health effects—and the                    policy stalemate. Much attention has been given to unsocio-political roadblocks for mitigating emissions—have led to a               derstanding individual attitudes, but much less to the larger
+wide body of attitudinal research documenting the current socio-                organizational and financial roots of polarization. This gap is
+political environment of polarization that exists.                              due to prior difficulties in gathering and analyzing quantitaDespite this fruitful body of individual-level research, we have             tive data about these complex and furtive processes. This
+considerably less data and understanding about the underlying                   paper uses comprehensive text and network data to show
+organizational and financial factors that made polarization possible            how corporate funding influences the production and actual
+in the first place. Qualitative and historical research has suggested           thematic content of polarization efforts. It highlights the imthat well-funded and well-organized “contrarian” campaigns are                  portant influence of private funding in public knowledge and
+especially important for spreading skepticism or denial where                   politics, and provides researchers a methodological model for
+scientific consensus exist—such as in the present case of global                future studies that blend large-scale textual discourse with
+warming, or in historical contrarian efforts to create doubt about              social networks.
+the link between smoking and cancer (8–15). The primary way
+that contrarian campaigns create skepticism and ideological                 Author contributions: J.F. designed research, performed research, contributed new
+polarization is through the production of an alternative con-               reagents/analytic tools, analyzed data, and wrote the paper.
+trarian discourse (To be clear, the term discourse here refers to           The author declares no conflict of interest.
+communication in an authoritative fashion about a particular                This article is a PNAS Direct Submission.
+topic or debate), which necessarily takes the form of written text          1
+                                                                             Email: justin.farrell@yale.edu.
+and speech from organizations and individuals (11, 14). Indeed,             This article contains supporting information online at www.pnas.org/lookup/suppl/doi:10.
+many scholars have examined climate change discourse in media               1073/pnas.1509433112/-/DCSupplemental.
+
+
+www.pnas.org/cgi/doi/10.1073/pnas.1509433112                                                                                        PNAS Early Edition | 1 of 6
+
+
+                                                                               lobby firms). This population of organizations was built-up
+                                                                               primarily from a published census of organizations and funding
+                                                                               (12, 14, 15), and supplemented with lists from reputable nonprofit organizations (27, 28).
+                                                                                  The second half of the data include a new dataset of every text
+                                                                               about climate change produced by every organization between
+                                                                               1993 and 2013 (n = 40,785 texts with more than 39 million
+                                                                               words). This massive corpus was constructed with the assistance
+                                                                               of automated Python scraping scripts, which gathered, cleaned,
+                                                                               digitized, and prepared for analysis the entirety of current and
+                                                                               archival press releases, website articles, policy statements, conference transcripts, published papers, and blog articles. Any PDFs
+                                                                               were converted to plain text with optical character recognition.
+                                                                               (See SI Appendix for specific information about how these text
+                                                                               and network data were collected and cleaned.)
+                                                                                  These data provide a comprehensive analytical framework for
+                                                                               examining the influence of corporate funding on the discursive
+                                                                               efforts of organizations to create ideological polarization around
+                                                                               climate change. The collection of organization ties and their
+                                                                               total population of texts is the product of a real-life countermovement and do not suffer from the methodological drawbacks
+                                                                               that hamper survey research or social laboratory experiments.
+                                                                               Furthermore, it links the organizations involved in the movement
+                                                                               directly with the texts that they produce, enabling analysis about
+                                                                               how organizational features might influence the actual thematic
+                                                                               content of the texts. With this approach in mind, the data also
+                                                                               include several important organizational covariates, such as the
+                                                                               year the organization was founded, its total assets, its mission
+                                                                               focus, the organization type, and an organization’s influence on
+                                                                               the transfer of information within the network (i.e., betweenness
+                                                                               centrality) (29). Most importantly for the purposes of this study,
+                                                                               the data also include a measure of corporate funding from entities that prior literature on contrarian movements have identified as especially influential (8, 9, 14, 15): ExxonMobil (EM)
+                                                                               and the Koch family foundations (KFF). Relying on this past
+                                                                               research, along with Internal Revenue Service data (see SI Appendix for important details), this measure records whether or
+                                                                               not an organization in the network received funding from either
+                                                                               of these entities between 1993 and 2013. Donations from these
+                                                                               corporate benefactors signals entry into a powerful network of
+                                                                               influence.
+
+                                                                               Analytical Approach
+                                                                               To empirically examine these data in relationship to the research
+Fig. 1. Which organizations produced discourse? Nodes in this network are      questions above regarding the influence of corporate funding
+organizations. The color of the node indicates whether they produced a text,   on textual content, the study employs a combination of social
+and whether they received corporate funding. The shape of the node indi-       network analysis and a form of large-scale computational text
+cates the type of organization. Graphed using the Fruchterman–Reingold         analysis called latent dirichlet allocation (LDA) (30) topic modalgorithm. The data are subsetted by decade based on the year an organi-       eling. Generally stated, topic modeling is a computer-assisted
+zation was founded, giving a sense of younger versus older organizations.      content analysis procedure whereby a set of texts are coded into
+Attention should be paid to the full model (year = 2013), which includes all   substantively meaningful themes called “topics.” These topics are
+nodes and ties, and is the network on which the significant measures were
+                                                                               not given to the machine beforehand, but emerge inductively as
+calculated.
+                                                                               algorithms learn the hidden patterns underlying a collection of
+                                                                               texts. The model assumes a relational theory of meaning by
+who participate in the counter movement (14, 15). This study                   measuring the patterns of co-occurrence of words in individual
+combines—and significantly extends—these important approaches                  texts and across the entire corpus. Thus, in addition to providing
+                                                                               a way to conduct reliable content analysis on massive collections
+with the use of novel computational data-collection methods.
+                                                                               of text that are too big to code by hand, topic models allow reThe first half of the data include a new social network of all
+                                                                               searchers to use machine learning to discover patterns and reknown individuals and organizations who have participated in
+                                                                               lationships that may have otherwise been missed by hand coding
+the climate contrarian movement between 1993 and 2013. As                      methods. Recent research has shown that unsupervised methods
+described in much more detail in SI Appendix, contrarian orga-                 like the ones used here have performed as well as human coders
+nizations are those identified by prior peer-reviewed research as              on the same set of documents (31).
+overtly producing and promoting skepticism and doubt about                        More specifically, this paper uses a recently developed apscientific consensus on climate change. This large bipartite net-              proach to topic modeling called Structural Topic Modeling
+work includes 4,556 individuals (e.g., board members, em-                      (STM) (31, 32), because it enables the discovery of topics and
+ployees, politicians, researchers) with ties to 164 organizations              their prevalence based on document metadata, such as the year
+(e.g., think tanks, foundations, trade associations, grassroots                written, or important organizational attributes examined here,
+
+2 of 6 | www.pnas.org/cgi/doi/10.1073/pnas.1509433112                                                                                      Farrell
+
+
+                                                                                                                                                     People's Knowledge: one, will, peopl, can, just, get, like, think, now, say, know, make, thing, time, way
+                                                                                                                                    Skeptical of IPCC Science: climat, scienc, report, scientist, scientif, ipcc, chang, public, review, research, claim, global, warm, data, evid
+                                                                                                            Warm & Cooling: warm, global, year, temperatur, record, last, will, weather, cool, time, scientist, heat, winter, world, new
+                                                                                                     Fuel Usage: emiss, cost, will, carbon, energi, price, percent, reduc, fuel, increas, per, econom, use, year, gas
+                                                                                             Temperature Trends: climat, temperatur, model, chang, data, trend, observ, increas, surfac, predict, use, result, year, ipcc, figur
+                                                                                         Economic Development: polici, govern, econom, develop, environment, will, market, can, chang, nation, need, system, polit, issu, state
+                                                                                       Kyoto Treaty: kyoto, global, climat, emiss, protocol, treati, cei, nation, warm, countri, develop, will, chang, polici, presid
+                                                                                       C.C. is Long term Cycle: period, climat, warm, temperatur, year, record, centuri, past, age, chang, mediev, ice, littl, variabl, holocen
+                                                                          CO2 is Good: increas, plant, elev, temperatur, coral, effect, studi, soil, speci, chang, concentr, atmospher, growth, tree, respons
+                                                                        Anthropogenic Causes: carbon, climat, atmospher, dioxid, warm, earth, chang, global, greenhous, emiss, human, effect, natur, increas, caus
+                                                                     Presidential Politics: obama, presid, democrat, republican, conserv, elect, senat, american, parti, vote, polit, campaign, hous, support, will
+                                                                   Government Spending: tax, job, govern, million, billion, green, fund, compani, money, spend, year, energi, obama, feder, busi
+                                                                EPA Regulations: epa, regul, rule, agenc, court, state, act, air, feder, administr, law, environment, standard, regulatori, pollut
+                                                                Oil & Gas: oil, gas, energi, natur, industri, product, well, fuel, drill, develop, new, compani, pipelin, use, price
+                                                            Media Coverage: news, bush, report, media, clinton, time, cbs, presid, abc, stori, show, say, new, post, one
+                                                         Human Health: world, human, environment, health, peopl, death, earth, diseas, live, popul, food, green, caus, risk, environmentalist
+                                                        Scientific Authority: climat, scienc, univers, professor, chang, research, new, institut, global, scientist, volum, physic, issu, write, canada
+                                                        State level Politics: state, institut, public, new, school, educ, foundat, california, polici, citi, org, texa, student, center, local
+                                                      Cap & Trade Bills: energi, bill, cap, trade, climat, senat, legisl, polici, american, hous, will, global, job, nation, act
+                                                  Energy Production: energi, electr, power, wind, renew, coal, state, plant, nuclear, solar, generat, percent, colorado, new, util
+                                                 Melting Arctic: ice, sea, level, arctic, rise, polar, glacier, melt, bear, year, greenland, ocean, antarct, sheet, chang
+                                              Military & Defense: china, state, unit, world, nation, secur, european, countri, american, war, intern, europ, will, foreign, america
+                                             Extreme Weather: hurrican, storm, weather, flood, climat, drought, increas, extrem, tropic, event, chang, year, intens, state, atlant
+                                      Agriculture: water, land, speci, food, environment, agricultur, forest, ethanol, area, use, farm, corn, fish, wildlif, farmer
+                                  Al Gore: gore, nobel, light, movi, film, prize, bulb, inconveni, may, use, peac, cfact, articl, one, truth
+                       Washington Energy Lobby: center, nation, polici, public, research, email, protect, compani, said, sharehold, washington, corpor, will, new, support
+
+
+                                                                                                                                                                                                                                                                                     SUSTAINABILITY
+    0.00                                                              0.05                                                                                       0.10                                                                                0.15
+
+
+                                                                                                                                                                                                                                                                                        SCIENCE
+                                                                                                              Topic Proportions
+Fig. 2. Structural topic model results from 40,785 documents, including the topic label and the top 15 words associated with each. The topic proportions
+indicate the proportion of the corpus that belongs to each topic.
+
+
+such as corporate funding. The inclusion of metadata such as the                                                                     understand the ways that private corporate funding influences
+year in which a document was published is especially useful given                                                                    the actual content and prevalence of polarizing discourse.
+that these text data cover such a broad period (1993–2013), and
+given that the climate change discourse during this period was                                                                       Results
+susceptible to thematic change. Building on the standard LDA                                                                         To begin, Fig. 1 provides a broader bird’s-eye-view context with
+model (30), Roberts et al. (31) explain, importantly, that:                                                                          which to interpret the main text analysis findings below. The
+                                                                                                                                     graph describes which organizations (nodes) produced texts and
+    As in LDA, each document arises as a mixture over K topics. In the
+    STM, topic proportions (θ) can be correlated, and the prevalence of                                                              whether the organization received corporate funding. For examthose topics can be influenced by some set of covariates X through a                                                             ple, a dark green circle node is an advocacy or think-tank orgastandard regression model with covariates θ ∼ LogisticNormalðXγ, ΣÞ.                                                             nization that produced texts about climate change and received
+    For each word (w) in the response, a topic (z) is drawn from the                                                                 corporate funding. It is a one-mode network constructed from the
+    response-specific distribution, and conditional on that topic, a word is                                                         original bipartite social network data, where ties between organichosen from a multinomial distribution over words parameterized by                                                               zations are a function of a tie they share with individuals (see SI
+    β, which is formed by deviations from the baseline word frequencies                                                              Appendix for details). To give a sense of change over time, the
+    (m) in log space (βk α expðm + κ k Þ). . .Thus, there are three critical
+    differences in the STM as compared to the LDA model. . .(1) topics
+                                                                                                                                     graph includes cross-sections from each decade that restricts the
+    can be correlated; (2) each document has its own prior distribution                                                              nodes and ties to organizations founded before that year. This
+    over topics, defined by covariate X rather than sharing a global mean;                                                           approach means that 2013 is the final graph that includes all nodes
+    and (3) word use within a topic can vary by covariate U. These ad-                                                               and ties in the data.
+    ditional covariates provide a way of ‘‘structuring’’ the prior distribu-                                                            There are two related findings that emerge from this network
+    tions in the topic model, injecting valuable information into the                                                                analysis and serve to inform the main text analysis below. First,
+    inference procedure.                                                                                                             organizations who produce climate contrarian texts (versus those
+   The STM method is applied to the totality of text data de-                                                                        who did not) are significantly (P < 0.006) more likely to have
+scribed above to (i) map the entire thematic landscape of con-                                                                       higher betweenness centrality scores, which is a reliable indicator
+tent produced by the climate contrarian movement, and (ii) plot                                                                      that they exert more organizational influence in the network
+covariate interactions using text metadata to examine how corpo-                                                                     (29). One can spot this trend in the figure by recognizing that
+rate funding ties influence topic prevalence and change over time. It                                                                these nodes tend to cluster toward the center of the network.
+is important to note that while these are automated computational                                                                    Second, organizations who produced texts and received corpomethods, they require a deep human understanding of the corpus                                                                       rate funds were also significantly more likely (P < 0.002) to have
+that guides the number of topics that are estimated, and a process of                                                                higher betweenness centrality scores. Taken together, these rerecursive interpretation of the model’s results based on prior find-                                                                 sults suggest that organizations within the movement who made
+ings (see SI Appendix for important details about topic model es-                                                                    an effort to produce textual discourse about climate change are
+timation and validation).                                                                                                            the most central to the movement itself, providing them more
+   Taken together, these analyses develop a quantitative account                                                                     influence over the transfer of information. This finding aligns with
+of all public information produced by the climate change coun-                                                                       prior knowledge about resource mobilization (33), discursive intermovement. Most importantly, they assess the substantive con-                                                                      fluence (34), and corporate mobilization (22). The fact that the
+tent of information within the organizational structure of the                                                                       production of discourse was more likely to be corporately funded
+contrarian network, providing important analytical leverage to                                                                       organizations at the core of the network provides an important
+
+Farrell                                                                                                                                                                                                                           PNAS Early Edition | 3 of 6
+
+
+backdrop for the novel analytic focus of this article—namely,                                               news media and Al Gore’s film. Just above this (in blue) is a
+assessing via computational text analysis the influence of corporate                                        cluster of topics pertaining to federal and state-level bureaucratic
+funding on the actual thematic content and ideological polarization                                         politics related to climate change. Lastly, toward the top (in
+of the discourse itself.                                                                                    black) is a cluster of topics related to energy industry concerns,
+   Turning to the results of the computational text analysis, Fig. 2                                        and alarm about the economic and political costs of enacting
+summarizes the results of the structural topic model. This corpus                                           climate change policy. These four broad clusters provide a comlevel visualization displays all of the topics along with the top 15                                        prehensive profile of all discourse produced by climate contrarian
+words associated with each topic. This figure also includes the                                             organizations from 1993 to 2013.
+proportion of the corpus that belongs to each topic. It is im-                                                 Lastly, Fig. 4 examines how the actual prevalence of these
+portant to note that these topics and the words should be                                                   topics might be influenced by corporate funding. It focuses on
+interpreted in light of the purpose of the texts and the larger                                             four topics that have been particularly salient to the recent hisgoals of climate change contrarianism described above (8–15).                                               tory of climate contrarianism (for all topic plots, see SI Appendix,
+Broadly, one can see that these organizations focused their cli-                                            Fig. S1). These interaction plots allow the prevalence of the
+mate change discourse on people’s knowledge of the issue, Intopics to vary by time (by year, 1993–2013) and whether an ortergovernmental Panel on Climate Change science, debates over
+                                                                                                            ganization received corporate funding during this same timespan
+temperature trends, international politics such as the Kyoto
+                                                                                                            (Red Line = Yes, Black line = No). For example, the plot in the
+Treaty, and related energy issues such as fuel, oil, and cap and
+trade bills.                                                                                                top left demonstrates that temperature trends became much
+   How are all of these topics related to one another, and do they                                          more salient between 2007 and 2013 for organizations who recluster together in meaningful ways? Fig. 3 plots the layout of all                                         ceived funding, whereas they became less salient for organizatopic correlations using the Fruchterman–Reingold algorithm. A                                              tions who did not. Similarly, the issue of energy production (top
+tie between two topics indicates a positive topic correlation,                                              right), the positive benefits of CO2 (bottom left), and climate
+meaning that both topics were more likely to be discussed to-                                               change being a long-term cycle (bottom right) all showed disgether within a document. Node sizes correspond to the topic                                                tinctly positive trends over time for organizations who received
+proportions from Fig. 2. The dashed ellipses were overlaid after                                            corporate funding, whereas those who did not receive corporate
+graphing to draw attention to four thematic clusters: First, to-                                            funding remained more constant over the same time period.
+ward the bottom left (in green) is a cluster of topics relating to                                             On the whole, these findings show that despite being part of
+questions about scientific evidence and disputes over the real                                              the same contrarian network, the organizations who received
+causes and effects of CO2, long-term temperature cycles, global                                             corporate funding actually produced discourse that was qualitacooling, and who has scientific authority. Adjacent (in yellow) is                                          tively different from organizations that did not receive such
+a second cluster pertaining to public knowledge and the role of                                             funding, and these differences tended to revolve around energy
+
+
+                                                                                                                           Cap & Trade Bills
+                                                                                                         Fuel Usage
+
+
+                                                                                                                 EPA Regulations                Kyoto Treaty
+                                                                                        Energy Production
+
+                                                                                                                             Government Spending
+                                                                                                         Oil & Gas
+                                                                                                                Washington Energy Lobby
+                                                                                                                                                Presidential Politics
+
+
+                                                                                                                                Economic Development
+                                                                                                                                                                    Military & Defense
+
+                                                                                                                       State level Politics
+
+
+                                                                                           Agriculture
+
+
+                                                                                                                                        People's Knowledge
+                                                                                                                                                                  Media Coverage
+                                                                                                                        Al Gore
+
+
+                                                                                                                                               Human Health
+
+                                                          Extreme Weather
+                                            CO2 is Good
+
+
+                                                                                          Scientific Authority
+                                                           Melting Arctic
+
+
+                                                                                                            Skeptical of IPCC Science
+                               C.C. is Long term Cycle                             Warm & Cooling
+                                                                  Temperature Trends
+
+
+                                                     Anthropogenic Causes
+
+
+Fig. 3. Graphing positive correlations between topics from Fig. 2. Topics near each other, and with a tie, indicate that they are more likely to be discussed
+within a document. Node sizes correspond to the topic proportions from Fig. 2 and are graphed using the Fruchterman–Reingold algorithm. Colored ellipses
+were added after graphing to point the reader toward the emergence of four distinct clusters.
+
+
+4 of 6 | www.pnas.org/cgi/doi/10.1073/pnas.1509433112                                                                                                                                    Farrell
+
+
+                                                                                Temperature Trends                                                                                                                                                                                           Energy Production
+0.12
+
+
+                                                                                                                                                                                                                             0.06
+                       No Funding                                                                                                                                                                                                                  No Funding
+                       Funding                                                                                                                                                                                                                     Funding
+0.10
+
+
+                                                                                                                                                                                                                             0.04
+0.08
+
+
+                                                                                                                                                                                                                             0.02
+0.06
+
+
+                                                                                                                                                                                                                             0.00
+0.04
+
+
+                                                                                                                                                                                                                             −0.02
+0.02
+
+
+                                                                                                                                                                                                                             −0.04
+0.00
+
+          1993
+                    1994
+                              1995
+                                        1996
+                                                  1997
+                                                            1998
+                                                                      1999
+                                                                                2000
+                                                                                          2001
+                                                                                                    2002
+                                                                                                              2003
+                                                                                                                        2004
+                                                                                                                                  2005
+                                                                                                                                            2006
+                                                                                                                                                      2007
+                                                                                                                                                                2008
+                                                                                                                                                                          2009
+                                                                                                                                                                                    2010
+                                                                                                                                                                                              2011
+                                                                                                                                                                                                        2012
+                                                                                                                                                                                                                  2013
+
+
+                                                                                                                                                                                                                                         1993
+                                                                                                                                                                                                                                                1994
+                                                                                                                                                                                                                                                       1995
+                                                                                                                                                                                                                                                              1996
+                                                                                                                                                                                                                                                                     1997
+                                                                                                                                                                                                                                                                            1998
+                                                                                                                                                                                                                                                                                   1999
+                                                                                                                                                                                                                                                                                          2000
+                                                                                                                                                                                                                                                                                                 2001
+                                                                                                                                                                                                                                                                                                        2002
+                                                                                                                                                                                                                                                                                                               2003
+                                                                                                                                                                                                                                                                                                                      2004
+                                                                                                                                                                                                                                                                                                                             2005
+                                                                                                                                                                                                                                                                                                                                    2006
+                                                                                                                                                                                                                                                                                                                                           2007
+                                                                                                                                                                                                                                                                                                                                                  2008
+                                                                                                                                                                                                                                                                                                                                                         2009
+                                                                                                                                                                                                                                                                                                                                                                2010
+                                                                                                                                                                                                                                                                                                                                                                       2011
+                                                                                                                                                                                                                                                                                                                                                                              2012
+                                                                                                                                                                                                                                                                                                                                                                                     2013
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                SUSTAINABILITY
+                                                                                                                                                                                                                                                                                                                                                                                                   SCIENCE
+                                                                                                 CO2 is Good                                                                                                                                                                              C.C. is Long−term Cycle
+   0.20
+
+
+                                                                                                                                                                                                                                 0.20
+
+
+                           No Funding                                                                                                                                                                                                                  No Funding
+                           Funding                                                                                                                                                                                                                     Funding
+                                                                                                                                                                                                                                 0.15
+   0.15
+
+
+                                                                                                                                                                                                                                 0.10
+   0.10
+
+
+                                                                                                                                                                                                                                 0.05
+   0.05
+
+
+                                                                                                                                                                                                                                 0.00
+   0.00
+
+
+                                                                                                                                                                                                                                 −0.05
+             1993
+                       1994
+                                 1995
+                                           1996
+                                                     1997
+                                                               1998
+                                                                         1999
+                                                                                   2000
+                                                                                             2001
+                                                                                                       2002
+                                                                                                                 2003
+                                                                                                                           2004
+                                                                                                                                     2005
+                                                                                                                                               2006
+                                                                                                                                                         2007
+                                                                                                                                                                   2008
+                                                                                                                                                                             2009
+                                                                                                                                                                                       2010
+                                                                                                                                                                                                 2011
+                                                                                                                                                                                                           2012
+                                                                                                                                                                                                                     2013
+
+
+                                                                                                                                                                                                                                            1993
+                                                                                                                                                                                                                                                   1994
+                                                                                                                                                                                                                                                          1995
+                                                                                                                                                                                                                                                                 1996
+                                                                                                                                                                                                                                                                        1997
+                                                                                                                                                                                                                                                                               1998
+                                                                                                                                                                                                                                                                                      1999
+                                                                                                                                                                                                                                                                                             2000
+                                                                                                                                                                                                                                                                                                    2001
+                                                                                                                                                                                                                                                                                                           2002
+                                                                                                                                                                                                                                                                                                                  2003
+                                                                                                                                                                                                                                                                                                                         2004
+                                                                                                                                                                                                                                                                                                                                2005
+                                                                                                                                                                                                                                                                                                                                        2006
+                                                                                                                                                                                                                                                                                                                                               2007
+                                                                                                                                                                                                                                                                                                                                                      2008
+                                                                                                                                                                                                                                                                                                                                                             2009
+                                                                                                                                                                                                                                                                                                                                                                    2010
+                                                                                                                                                                                                                                                                                                                                                                           2011
+                                                                                                                                                                                                                                                                                                                                                                                  2012
+                                                                                                                                                                                                                                                                                                                                                                                         2013
+
+
+Fig. 4. The influence of corporate funding on themes within the climate change contrarian movement, 1993–2013. The y axis indicates how much a topic was
+written about. The red line represents the prevalence of the topic in the texts of contrarian organizations who received money, and the black line represents
+the prevalence of the topic for contrarian organizations who did not receive money. Interaction plots of all other topics are provided in SI Appendix.
+
+
+production, debates about the effects of CO2, and questions                                                                                                                                                                 more likely to have written and disseminated contrarian texts.
+about the scientific veracity of long-term climate change.                                                                                                                                                                  Taken together, these findings are especially important because
+                                                                                                                                                                                                                            they contribute comprehensive empirical evidence to confirm what
+Discussion                                                                                                                                                                                                                  has widely been thought to be the case about climate change
+The main empirical and theoretical contribution of this analysis                                                                                                                                                            knowledge and politics, but has heretofore not been demonstrated
+is that corporate funding influences the actual language and                                                                                                                                                                scientifically with robust data.
+thematic content of polarizing discourse. These effects were visible                                                                                                                                                           While these findings are fundamental to understanding the
+over time, as the prevalence of certain thematic content shifted                                                                                                                                                            past and present of climate change policy in the United States, they
+within the 20-year span of textual data. A secondary finding of this                                                                                                                                                        also have much broader implications for understanding ideological
+analysis is that organizations that received corporate funding were                                                                                                                                                         polarization itself. It is well understood that polarization is an
+
+Farrell                                                                                                                                                                                                                                                                                                                                PNAS Early Edition | 5 of 6
+
+
+effective strategy for creating controversy and delaying policy                                understanding about the sources and influences of polarization on
+progress, especially around environmental issues. However, what is                             sustainability efforts—both presently with climate change, but
+less understood are the complex organizational and financial sys-                              also for predicting and preempting future socio-political contems that affect the creation of ideological polarization in the first                         flicts from becoming fraught with uncertainty, skepticism, and
+place. Thus, a broader contribution of this paper is to uncover                                misinformation.
+empirically the actual social arrangements within which large-scale                               Lastly, this paper provides a novel analytical model for future
+scientific (mis)information is generated, and the important role                               research to rigorously capitalize on the rise of the Internet and the
+private funding plays in shaping the actual ideological content of                             unprecedented flood of available social scientific data, much of
+scientific information that is written and amplified.                                          which is (i) textual and (ii) networked in some way. Unfortunately,
+   A notable limitation of these findings concerns the furtive                                 much of the early analyses of large amounts of naturally occurring
+nature of modern foundation funding and political action com-                                  and digitized text data were first restricted to experts with the
+mittees (8, 9, 11, 22), which creates a causal dilemma about                                   technical expertise to collect and organize it (e.g., computer sciwhether corporate funding leads to the increased production of                                 entists), resulting in “big” data content analyses that lacked thediscourse, or whether the organizations already creating discourse
+                                                                                               oretical depth or meaningful focus (35). This paper provides a
+attracted corporate funding. Of course, the strong correlational
+                                                                                               model that focuses simultaneously on the fine-grained discursive
+evidence provided here cannot untangle with certainty all of the
+                                                                                               content of texts and at the same time the ways in which these texts
+microlevel causal processes, but it can provide traction to reject
+competing explanations. Most importantly, supplementary analy-                                 are embedded and produced within larger, complex, and densely
+sis revealed few discursive differences between organizations that                             connected socio-political networks. This analytical approach, as
+received money before producing discourse (e.g., “front groups”)                               modeled here, allows researchers to examine how discursive and
+versus organizations who received it later (e.g., established think                            ideological content varies within and across organizations in a
+tanks). Thus, the observed effects of money on discourse cannot                                relational field, with a specific focus on the influence of covabe explained by recourse to one static temporal model or another,                              riates such as external funding and other organizational attribbut funding influenced organizations who were already writing                                  utes (e.g., assets, mission focus, location, board interlocks). Thus,
+texts, as well as organizations who were established with the help                             combining cutting-edge machine learning techniques with the
+of such funding. The organizations who were already in operation                               long history of network science approaches, results in a robust
+also created new texts, established and strengthened a relation-                               empirical framework that allows researchers to situate fineship to promulgate shared interests, and ultimately amplified the                              grained discursive results within the larger web of political and
+messages that were central to the countermovement. Investigating                               economic relationships that will continue to influence science and
+how this happens at the microlevel is beyond the scope of this                                 policy into the future.
+paper, and the data cannot address such questions. Future
+research should continue to develop these lines of inquiry about                               Materials and Methods
+the multiple ways in which funding operates. Continued social-                                 Comprehensive information about the data collection, cleaning, and statistical
+scientific research is also needed to further develop the scholarly                            analyses are provided in SI Appendix.
+
+
+ 1. Gromet DM, Kunreuther H, Larrick RP (2013) Political ideology affects energy-effi-         18. Nature Climate Change (2015) The IPCC news circuit. Nat Clim Change 5:281.
+    ciency attitudes and choices. Proc Natl Acad Sci USA 110(23):9314–9319.                    19. Boykoff MT (2014) Media discourse on the climate slowdown. Nat Clim Chang 4:
+ 2. McCright AM, Dunlap RE (2011) The politicization of climate change and polarization            156–158.
+    in the American’s public view of global warming, 2001-2010. Sociol Q 52(2):155–194.        20. Boykoff MT (2013) Public enemy No. 1?: Understanding media representations of
+ 3. Ding D, Maibach EW, Zhao X, Roser-Renouf C, Leiserowitz A (2011) Support for cli-              outlier views on climate change. Am Behav Sci 57:796–817.
+    mate policy and societal action are linked to perceptions about scientific agreement.      21. Neil GT, Marshall T (2011) Mediated climate change in Britain: Skepticism on the web
+    Nature. Clim Change 1:462–466.                                                                 and on television around Copenhagen. Glob Environ Change 21:1035–1044.
+ 4. Leiserowitz A, Maibach EW, Roser-Renouf C, Smith N, Dawson E (2012) Climategate,           22. Walker ET (2009) Privatizing participation: Civic change and the organizational dypublic opinion, and the loss of trust. Am Behav Sci 57(6):818–837.
+                                                                                                   namics of grassroots lobbying firms. Am Sociol Rev 74(1):83–105.
+ 5. Scruggs L, Benegal S (2012) Declining public concern about climate change: Can we
+                                                                                               23. Richter BK, Samphantharak K, Timmons JF (2009) Lobbying and taxes. Am J Pol Sci
+    blame the great recession? Glob Environ Change 22(2):505–515.
+                                                                                                   53(4):893–909.
+ 6. Hart PS, Nisbet EC (2011) Boomerang effects in science communication: How moti24. Citizens United v. Federal Election Commission (2010).
+    vated reasoning and identity cues amplify opinion polarization about climate miti25. Kristal T (2010) Good times, bad times: Postwar labor’s share of national income in
+    gation policies. Communic Res 39(6):701–723.
+ 7. Gauchat H (2012) Politicization of science in the public sphere: A study of public trust       capitalist democracies. Am Sociol Rev 75(5):729–763.
+    in the United States, 1974 to 2010. Am Sociol Rev 77(2):167–187.                           26. Morris M, Western B (1999) Inequality in earnings at the close of the twentieth
+ 8. Oreskes N, Conway EM (2010) Merchants of Doubt (Bloomsbury, London).                           century. Annu Rev Sociol 25:623–657.
+ 9. Coll S (2012) Private Empire: ExxonMobil and American Power (Penguin Group US,             27. Union of Concerned Scientists (2013) Global Warming Skeptic Organizations (Union
+    New York).                                                                                     Concerned Sci, Cambridge, MA).
+10. Brulle R, Antonio R (2011) The unbearable lightness of politics: Climate change denial     28. Union of Concerned Scientists (2006) Smoke, Mirrors and Hot Air. How ExxonMobil
+    and political polarization. Sociol Q 52(2):195–202.                                            Uses Big Tobacco’s Tactics to Manufacture Uncertainty on Climate Science (Union
+11. Jacques PJ, Dunlap RE, Freeman M (2008) The organisation of denial: Conservative               Concerned Sci, Cambridge, MA).
+    think tanks and environmental scepticism. Env Polit 17(3):349–385.                         29. Easley D, Kleinberg J (2010) Networks, Crowds, and Markets: Reasoning About a
+12. McCright AM, Dunlap RE (2000) Challenging global warming as a social problem: An               Highly Connected World (Cambridge Univ Press, New York).
+    analysis of the conservative movement’s counter-claims. Soc Probl 47(4):499–522.           30. Blei DM, Ng AY, Jordan MI (2003) Latent Dirichlet Allocation. J Mach Learn Res 3:
+13. Elsasser SW, Dunlap RE (2013) Leading voices in the denier choir: Conservative col994–1022.
+    umnists’ dismissal of global warming and denigration of climate science. Am Behav
+                                                                                               31. Roberts ME, et al. (2014) Structural topic models for open-ended survey responses.
+    Sci 57:754–776.
+                                                                                                   Am J Pol Sci 58(4):1064–1082.
+14. McCright AM, Dunlap RE (2003) Defeating Kyoto: The conservative movement’s im32. Roberts ME, Stewart BM, Tingley D (2014) stm: An R package for the structural topic
+    pact on US climate change policy. Soc Probl 50(3):348–373.
+15. Brulle RJ (2013) Institutionalizing delay: Foundation funding and the creation of U.S.         model. R package 1.0.12.
+    climate change counter-movement organizations. Clim Change 122:681–694.                    33. McCarthy JD, Zald MN (1977) Resource mobilization and social movements: A partial
+16. Boykoff MT, Boykoff JM (2004) Balance as bias: Global warming and the US prestige              theory. Am Sociol Rev 82(6):1212–1241.
+    press. Glob. Environ. Chang. 14:125–136.                                                   34. Bail C (2012) The fringe effect: Civil society organizations and the evolution of media
+17. Akerlof K, Rowan KE, Fitzgerald D, Cedeno AY (2012) Communication of climate                   discourse about Islam since the September 11th attacks. Am Sociol Rev 77(6):188–205.
+    projections in US Media amid politicization of model science. Nat Clim Chang 2:            35. Bail C (2014) The cultural environment: Measuring culture with big data. Theory Soc
+    648–654.                                                                                       43:465–482.
+
+
+6 of 6 | www.pnas.org/cgi/doi/10.1073/pnas.1509433112                                                                                                                             Farrell

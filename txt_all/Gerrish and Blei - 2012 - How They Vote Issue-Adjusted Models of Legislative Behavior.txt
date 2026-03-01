@@ -1,0 +1,507 @@
+How They Vote:
+       Issue-Adjusted Models of Legislative Behavior
+
+
+                 Sean M. Gerrish∗                                    David M. Blei
+          Department of Computer Science                    Department of Computer Science
+               Princeton University                              Princeton University
+                Princeton, NJ 08540                               Princeton, NJ 08540
+         sgerrish@cs.princeton.edu                           blei@cs.princeton.edu
+
+
+                                              Abstract
+
+         We develop a probabilistic model of legislative data that uses the text of the bills to
+         uncover lawmakers’ positions on specific political issues. Our model can be used
+         to explore how a lawmaker’s voting patterns deviate from what is expected and how
+         that deviation depends on what is being voted on. We derive approximate posterior
+         inference algorithms based on variational methods. Across 12 years of legislative
+         data, we demonstrate both improvement in heldout predictive performance and the
+         model’s utility in interpreting an inherently multi-dimensional space.
+
+
+1   Introduction
+Legislative behavior centers around the votes made by lawmakers. Capturing regularity in these votes,
+and characterizing patterns of legislative behavior, is one of the main goals of quantitative political
+science. Voting behavior exhibits enough regularity that simple statistical models, particularly ideal
+point models, easily capture the broad political structure of legislative bodies. However, some
+lawmakers do not fit neatly into the assumptions made by these models. In this paper, we develop
+a new model of legislative behavior that captures when and how lawmakers vote differently than
+expected.
+Ideal point models assume that lawmakers and bills are represented as points in a latent space. A
+lawmaker’s (stochastic) voting behavior is characterized by the relationship between her position in
+this space and the bill’s position [1, 2, 3]. Given the data of how each lawmaker votes on each bill
+(known as a roll call), we can use ideal point models to infer the latent position of each lawmaker. In
+U.S. politics, these inferred positions reveal the commonly-known political spectrum: right-wing
+lawmakers are at one extreme, and left-wing lawmakers are at the other. Figure 1 illustrates example
+inferences from an ideal point model.
+But there are some votes that ideal point models fail to capture. For example, Ronald Paul, Republican
+representative from Texas, and Dennis Kucinich, Democratic representative from Ohio, are poorly
+modeled by ideal points because they diverge from the left-right spectrum on issues like foreign
+policy. Because some lawmakers deviate from their party on certain issues, their positions on these
+issues are not captured by ideal point models.
+To this end, we develop the issue-adjusted ideal point model, a latent variable model of roll-call
+data that accounts for the contents of the bills that lawmakers are voting on. The idea is that each
+lawmaker has both a general position and a sparse set of position adjustments, one for each issue.
+The votes on a bill depend on a lawmaker’s position, adjusted for the bill’s content. The text of the
+bill encodes the issues it discusses. Our model can be used as an exploratory tool for identifying
+   ∗
+     Use footnote for providing further information about author (webpage, alternative address)—not for
+acknowledging funding agencies.
+                        −2             −1             0              1                2   3
+
+           Figure 1: Traditional ideal points separate Republicans (red) from Democrats (blue).
+
+exceptional voting patterns of individual legislators, and it provides a richer description of lawmakers’
+voting behavior than the models traditionally used in political science.
+In the following sections, we develop our model and describe an approximate posterior inference
+algorithm based on variational methods. We analyze six Congresses (12 years) of legislative data
+from the United States Congress. We show that our model gives a better fit to legislative data and
+provides an interesting exploratory tool for analyzing legislative behavior.
+
+2       Exceptional issue voting
+We first review ideal point models of legislative roll call data and discuss their limitations. We then
+present a model that accounts for how legislators vote on specific issues.
+Modeling politics with ideal points.
+Ideal point models are based on item response theory, a statistical theory that models how members
+of a population judge a set of items. Applied to voting records, one-dimensional ideal point models
+place lawmakers on an interpretable political spectrum. These models are widely used in quantitative
+political science [3, 4, 5].
+One-dimensional ideal point models posit an ideal point xu ∈ R for each lawmaker u. Each bill d is
+characterized by its polarity ad and its popularity bd .1 The probability that lawmaker u votes “Yes”
+on bill d is given by the logistic regression
+                                   p(vud = yes | xu , ad , bd ) = σ(xu ad + bd ),                    (1)
+                   exp(s)
+where σ(s) = 1+exp(s)      is the logistic function.2 When the popularity of a bill bd is high, nearly
+everyone votes “Yes”; when the popularity is low, nearly everyone votes “No”. When the popularity
+is near zero, the probability that a lawmaker votes “Yes” depends on how her ideal point xu interacts
+with bill polarity ad . The variables ad , bd , and xu are usually assigned standard normal priors [3].
+Given a matrix of votes, we can infer the ideal point of each lawmaker. We illustrate ideal points fit
+to votes in the U.S. House of Representatives from 2009-2010 in Figure 1. The model has clearly
+separated lawmakers by their political party (colour) and provides an intuitive measure of their
+political leanings.
+Limitations of ideal point models. A one-dimensional ideal point model fit to the U.S. House from
+2009-2010 correctly models 98% of lawmakers’ votes on training data. But it only captures 83% of
+Baron Hill’s (D-IN) votes and 80% of Ronald Paul’s (R-TX) votes. Why is this?
+The ideal point model assumes that lawmakers are ordered. Each bill d splits them at a cut point
+− abdd . Lawmakers to one side of the cut point are more likely to support the bill, and lawmakers to
+the other side are likely to reject it. For lawmakers like Paul and Hill, this assumption is too strong
+because their voting behavior does not fit neatly into a single ordering. Their location among the
+other lawmakers changes with different bills.
+Lawmakers do not vote randomly, however. They vote consistently within individual areas of policy,
+such as foreign policy and education. For example, Rep. Paul consistently votes against United States
+involvement in foreign military engagements, a position that contrasts with other Republicans.
+We refer to voting behavior like this as issue voting. An issue is any federal policy area, such as
+“financial regulation,” “foreign policy,” “civil liberties,” or “education,” on which lawmakers are
+expected to take positions. Lawmakers’ positions on these issues often diverge from their traditional
+left/right stances. The model we will develop captures these deviations. Some examples are illustrated
+        These are sometimes called the discrimination and difficulty, respectively.
+        Many ideal point models use a probit function instead [1, 3].
+                                                h ll                     l
+                             son         y inic sha ell           son Cau r
+                         ack        Bersr Kuc Mar Mitch o   J ohnel Mc anto                         aul
+                     se
+                        J         t   i     s          a  y
+                               ber nn me rry h C oth cha Eric C                               nald P
+                 Jes        Ro De Ja Ha An Tim Mi                                          Ro
+                                                                                                       Ideal point
+
+
+                                                                                                   Taxation-adjusted
+                                                                                                      ideal point
+                           −2                       0                         2        4
+                                               Ideal point
+
+Figure 2: In a traditional ideal point model, lawmakers’ ideal points are static (top line of each figure).
+In the issue-adjusted ideal point model, lawmakers’ ideal points change when they vote on certain
+issues, such as Taxation.
+
+
+                                                                                                                           ND
+     Terrorism         Commemorations                    Transportation                                          Ad,Bd
+       terrorist           nation                         transportation
+     september             people                              minor                         NW
+        attack               life                              print                                                                 NU
+        nation              world                                tax               W       Z              θd         Vud        Xu
+         york               serve                               land
+   terrorist attack        percent                             guard
+      hezbolah           community                          coast guard                K                             Zu
+   national guard          family                            substitute
+                                                                                   β               α
+
+                           Labeled topics                                         The issue-adjusted ideal point model
+Figure 3: Left: Top words from topics fit using labeled LDA [6]. Right: the issue-adjusted ideal point
+model, which models votes vud from lawmakers and legislative items. Classic item response theory
+models votes v using xu and ad , bd . For our work, documents’ issue vectors θ were estimated fit with
+a topic model (left of dashed line) using bills’ words w and labeled topics β. Expected issue vectors
+Eq [θ|w] are then treated as constants in the issue model (right of dashed line).
+
+
+in Figure 2; Charles Djou is more similar to Republicans on Taxation (right) and more similar to
+Democrats on Health (left), while Ronald Paul is more Republican-leaning on Health and less
+extreme on Taxation. The model we will introduce uses lawmakers’ votes and the text of bills to
+model deviations like this, on a variety of issues. This allows us to take into account whether a bill
+was about Taxation or Education (or both) when predicting a lawmaker’s vote.
+Issue-adjusted ideal points.
+We now describe the issue-adjusted ideal point model, a new model of lawmaker behavior that takes
+into account both the content of the bills and the voting patterns of the lawmakers. We build on the
+ideal point model so that each lawmaker’s ideal point can be adjusted for each issue.
+Suppose that there are K issues in the political landscape. We will use the words wd of each bill d to
+code it with a mixture θd of issues, where each element θdk corresponds to an issue; the components
+of θd are positive and sum to one. (These vectors will come from a topic model, which we describe
+below.) In our proposed model, each lawmaker is also associated with a K-vector zu ∈ RK , which
+describes how her ideal point changes for bills about each issue.
+We use these variables in a model based on the traditional ideal point model of Equation 1. As above,
+xu is the ideal point for lawmaker u and ad , bd are the polarity and popularity of bill d. In our model,
+votes are modeled with a logistic regression
+
+                   p(vud |ad , bd , zu , xu , wd ) = σ (zu> Eq [θd |wd ] + xu )ad + bd ,
+                                                                                      
+                                                                                                     (2)
+
+where we use an estimate Eq [θd |wd ] of the bill’s issue vector from its words wd as described below.
+We put standard normal priors on the ideal points, polarity, and difficulty variables. We use Laplace
+priors for zu : p(zuk | λ1 ) ∝ exp (−λ1 ||zuk ||1 ). This enforces a sparse penalty with MAP inference
+and a “nearly-sparse” penalty with Bayesian inference. See Figure 3 (left) for the graphical model.
+To better understand the model, assume that bill d is only about Finance. This means that θd has a
+one in the Finance dimension and zero everywhere else. With a classic ideal point model, a lawmaker
+u’s ideal point, xu , gives his position on each issue, including Finance. With the issue-adjusted ideal
+point model, his effective ideal point for Finance, xu + zu,Finance , gives his position on Finance. The
+adjustment zu,Finance affects how lawmaker u feels about Finance alone. When zu,k = 0 for all u, k,
+the model becomes the classic ideal point model.
+This model lets us inspect lawmakers’ overall voting patterns by issue. Given a collection of votes
+and a coding of bills to issues, posterior estimates of the ideal points and per-issue adjustments give
+us a window into voting behavior that is not available to classic ideal point models.
+Using Labeled LDA to associate bills with issues.
+Equation 2 adjusts a lawmaker’s ideal point by using the conditional expectation of a bill’s thematic
+labels θd given its words wd . We estimate this vector using labeled latent Dirichlet allocation
+(LDA) [6]. Labeled LDA is a topic model, a bag-of-words model that assumes a set of themes for the
+collection of bills and that each bill exhibits a mixture of those themes. The themes, called topics, are
+distributions over a fixed vocabulary. In unsupervised LDA [7] they are learned from the data. In
+labeled LDA, they are defined by using an existing tagging scheme. Each tag is associated with a
+topic; its distribution is found by taking the empirical distribution of words for documents assigned
+to that tag.3 This gives interpretable names (the tags) to the topics.
+We used tags provided by the Congressional Research Service [8], which provides subject codes
+for all bills passing through Congress. These subject codes describe the bills using phrases which
+correspond to traditional issues, such as Civil rights and National security. Each bill may cover
+multiple issues, so multiple codes may apply to each bill. (Many bills have more than twenty labels.)
+We used the 74 most-frequent issue labels. Figure 3 (right) illustrates the top words from several
+of these labeled topics.4 We fit the issue vectors E [θd |wd ] as a preprocessing step. In the issueadjusted ideal point model (Equation 2), E [θd ] was treated as observed when estimating the posterior
+distribution p(xu , ad , bd , zd |E [θd |wd ] , vud ). We summarize all 74 issue labels in §A.2.5
+Related Work. Item response theory has been used for decades in political science [3, 4, 5]; see
+Enelow and Hinich for a historical perspective [9] and Albert for Bayesian treatments of the model
+[10]. Some political scientists have used higher-dimensional ideal points, where each legislator is
+attached to a vector of ideal points xu ∈ RK and each bill polarization ad takes the same dimension
+K [11]. The probability of a lawmaker voting “Yes” is σ(xTu ad + bd ). The principal component of
+ideal points explains most of the variance and explains party affiliation. However, other dimensions
+are not attached to issues, and interpreting beyond the principal component is painstaking [2].
+Recent work in machine learning has provided joint models of legislative text and the bill-making
+process. This includes using transcripts of U.S. Congressional floor debates to predict whether
+speeches support or oppose pending legislation [12] and predicting whether a bill will survive
+congressional committee by incorporating a number of features, including bill text [13]. Other work
+has aimed to predict individual votes. Gerrish and Blei aimed to predict votes on bills which had not
+yet received any votes [14]. Their model fits ad and bd using supervised topics, but the underlying
+voting model was one-dimensional: it could not model individual votes better than a one-dimensional
+ideal point model. Wang et al. created a Bayesian nonparametric model of votes and text over time
+[15]. We note that these models have different purposes from ours, and neither addresses individuals’
+affinity toward issues.
+The issue-adjusted model is conceptually more similar to recent models for content recommendation.
+Wang and Blei describe a method to recommend academic articles to individuals [16], and Agarwal
+and Chen propose a model to match users to Web content [17]. Though they do not consider roll-call
+data, these recommendation models also try to match user behavior with textual item content.
+     Ramage et al. explore more sophisticated approaches [6], but we found this simplified version to work well.
+     After defining topics, we performed two iterations of LDA with variational inference to smooth the topics.
+     We refer to specific sections in the supplementary materials (appendix) as §A.#.
+3     Posterior estimation
+The central computational challenge in this model is to uncover lawmakers’ issue preferences zu
+by using the their votes v and bills’ issues θd . We do this by estimating the posterior distribution
+p(x, z, a, b|v, θ). Bayesian ideal point models are usually fit with Gibbs sampling [2, 3, 5, 18].
+However, fast Gibbs samplers are unavailable for our model because the conditionals needed are not
+analytically computable. We estimate the posterior with variational Bayes.
+In variational Bayes, we posit a family of distributions {qη } over the latent variables that is likely
+to contain a distribution similar to the true posterior [19]. This variational family is indexed by
+parameters η, which are fit to minimize the KL divergence between the variational and true posteriors.
+Specifically, we let {qη } be the family of fully factorized distributions
+                          Y                                         Y
+       q(x, z, a, b|η) =      N (xu |x̃u , σx2u )N (zu |z̃u , λzu )   N (ad |ãd , σa2d )N (bd |b̃d , σb2d ), (3)
+                            U                                      D
+
+where we parameterize the variational posterior with η = {(x̃u , σx ), (z̃u , σzu ), (ã, σa ), (b̃, σb )}. We
+assumed full factorization to make inference tractable. Though simpler than the true posterior, fitted
+variational distributions can be excellent proxies for it. The similarity between ideal points fit with
+variational inference and MCMC has been demonstrated in Gerrish in Blei [14].
+Variational inference usually proceeds by optimizing the variational objective
+                       Lη = Eqη [log p(x, z, a, b, v, θ)] − Eqη [log qη (x, z, a, b)]                        (4)
+with gradient or coordinate ascent (this is equivalent to optimizing the KL divergence between q and
+the posterior). Optimizing this bound is challenging when the expectation is not analytical, which
+makes computing the exact gradient ∇η Lη more difficult. We optimize this bound with stochastic
+gradient ascent [20, 21], approximating the gradient with samples from qη ;
+                                 1 X ∂qη
+                      ∇η L η ≈                  (log p(ym , v, θ) − log qη (ym ));                (5)
+                                M y ∼q ∂η
+                                        m    η
+
+
+where ym = (xm , zm , am , bm ) is a sample from qη . The algorithm proceeds by following this
+stochastic gradient with decreasing step size; we provide further details in §A.1.
+
+4     Analyzing twelve years of U.S. legislative history
+We used our model to investigate twelve years of U.S. legislative history. We compare the posterior fit
+with this model to the same data fit with traditional ideal points and validate the model quantitatively.
+We then provide a closer look at the collection of issues, lawmakers, and bills and explore several
+interesting results of the model.
+
+4.1   Data and Experiment Setup
+
+We studied U.S. Senate and House of Representative roll-call votes from 1999 to 2010. This period
+spanned Congresses 106 to 111 and covered an historic period in recent U.S. politics, the majority
+of which Republican President George W. Bush held office. Bush’s inauguration and the attacks
+of September 11th, 2001 marked the first quarter of this period, followed by the wars in Iraq and
+Afghanistan. Congress became more partisan over this period, and Democratic President Obama was
+inaugurated in January 2009.
+We provide a more complete summary of statistics for our datasets in §A.3. For context, the median
+session we considered had 540 lawmakers, 507 bills, and 201,061 votes in both the House and Senate.
+Altogether, there were 865 unique lawmakers, 3,113 bills, and 1,208,709 votes.
+Corpus preparation. For each congress, we considered only bills for which votes were explicitly
+recorded in a roll-call. We ignored votes on bills for which text was unavailable. To fit the labeled
+topic model to each bill, we removed stop words and grouped common phrases as n-grams. All bills
+were downloaded from www.govtrack.us [22], a nonpartisan website which provides records
+of U.S. Congressional voting. We fit the Senate and House separately for each two-year Congress
+because lawmakers’ strategies change at each session boundary.
+Table 1: Average log-likelihood of heldout votes using six-fold cross validation. These results cover
+Congresses 106 to 111 (1999-2010) with regularization λ = 1. The issue-adjusted model yields
+higher heldout log-likelihood for all congresses in both chambers than a standard ideal point model.
+Perm. Issue illustrates the issue model fit when bills’ issue labels were randomly permuted. Perm.
+Issue is results for the issue model fit using permuted document labels.
+                          Model                       Senate
+                         Congress    106    107    108     109              110    111
+                           Ideal    -0.209 -0.209 -0.182 -0.189            -0.206 -0.182
+                           Issue    -0.208 -0.209 -0.181 -0.188            -0.205 -0.180
+                        Perm. Issue -0.210 -0.210 -0.183 -0.203            -0.211 -0.186
+                                                      House
+                           Ideal    -0.168 -0.154 -0.096 -0.120            -0.090 -0.182
+                           Issue    -0.166 -0.147 -0.093 -0.116            -0.087 -0.180
+                        Perm. Issue -0.210 -0.211 -0.100 -0.123            -0.098 -0.187
+
+
+4.2   Comparison of classic and exploratory ideal points
+
+How do classic ideal points compare with issue-adjusted ideal points? We fit classic ideal points
+to the 111th House (2009 to 2010) to compare them with issue-adjusted ideal points x̃u from the
+same period, using regularization λ = 1. The models’ ideal points x̃u were very similar, correlated
+at 0.998. While traditional ideal points cleanly separate Democrats and Republicans in this period,
+issue-adjusted ideal points provide an even cleaner break between the parties. Although the issueadjusted model is able to use other parameters—lawmakers’ adjustments z̃u —to separate the parties
+better, the improvement is much greater than expected by chance (p < 0.001 using a permutation
+test).
+
+4.3   Evaluation and significance
+
+We first evaluate the issue-adjusted model by measuring how it can predict held out votes. (This is a
+measure of model fitness.) We used six fold cross-validation. For each fold, we computed the average
+predictive log-likelihood log p(vudTest |vudTrain ) = log p(vudTest |x̃u , z̃u , ãd , b̃d , Eq [θd |w]) of the test
+votes and averaged this across folds. We compared these with the ideal point model, evaluating the
+latter in the same way. We give implementation details of the model fit in §A.1.
+Note that we cannot evaluate how well this model predicts votes on a heldout bill d. As with the ideal
+point model, our model cannot predict ãd , b̃d without votes on d. Gerrish and Blei [14] accomplished
+this by predicting ãd and b̃d using the document’s text. (Combining these two models would be
+straightforward.)
+Performance. We compared the issue-adjusted model’s ability to represent heldout votes with the
+ideal point model. We fit the issue-adjusted model to both the House and Senate for Congresses 106
+to 110 (1999-2010) with regularization λ = 1. For comparison we also fit an ideal point model to
+each of these congresses. In all Congresses and both chambers, the issue-adjusted model represents
+heldout votes with higher log-likelihood than an ideal point model. We show these results in Table 1.
+Sensitivity to regularization. To measure sensitivity to parameters, we fit the issue-adjusted model
+to the 109th Congress (1999-2000) of the House and Senate for a range λ = 0.0001, . . . , 1000 of
+                                       2    2    2    2
+regularizations. We fixed variance σX    , σZ , σA , σB = exp(−5). The variational implementation
+generalized well for the entire range, with heldout log likelihood highest for 1 ≤ λ ≤ 10.
+Permutation test. We used a permutation test to understand how the issue-adjusted model improves
+upon ideal point models. This test strengthens the argument that issues (and not some other model
+change, such as the increase in dimension) help to improve predictive performance. To do this test,
+we randomly permuted topic vectors’ document labels to completely remove the relationship between
+topics and bills: (θ1 , . . . , θD ) 7→ (θπi (1) . . . θπi (D) ), for five permutations π1 , . . . , π5 . We then fit
+the issue model using these permuted document labels. As shown in Table 1, models fit with the
+original, unpermuted issues always formed better predictions than models fit with the permuted issues.
+From this, we draw the conclusion that issues indeed help the model to represent votes.
+                                   n                  ich all ll           son aul r
+                               kso               y
+                                              err cin rsh he            ohn cC      o                                              aul
+                         e Jac        e r t Bnis Kus Ma y Mitc Cao thy J ael M Cant                                            ld P
+                   Jes
+                       s            b             e    r
+                                Ro Den Jam Har Anh Tim Mich
+                                                                  o              c                                       na
+                                                                             Eri                                      Ro
+                                                                                                                                Ideal point
+
+
+                                                                                                                          Finance-adjusted
+                                                                                                                             ideal point
+
+                             −2                           0                             2                       4
+                                                         Ideal point
+
+
+Figure 4: Ideal points xu and issue-adjusted ideal points xu + zuk from the 111th House for the
+Finance issue. Republicans (red) saw more adjustment than Democrats (blue).
+                    Ron Paul Offsets ẑu,k                                                   Donald Young Offsets ẑu,k
+                           Human rights
+                                                                               Commemorative events and holidays
+                     International affairs
+                                                                                            Crime and law enforcement
+            Crime and law enforcement                                          Government information and archives
+
+                                   Health                                                                Anniversaries
+
+                                                                                                           Social work
+                         Special months
+                                                                                                    Natural resources
+                                      Law                                                               Appropriations
+
+             Racial and ethnic relations                                                                      Finance
+
+                                                                                                              Children
+             House rules and procedure
+                                                                                            Racial and ethnic relations
+      Public lands and natural resources
+                                                                                                                Health
+                Congressional sessions                                                                  Land transfers
+
+                                             −3     −1        1        3                                                  −3      −1     1    3
+Figure 5: Significant issue adjustments for exceptional senators in Congress 111. Statistically
+significant issue adjustments are shown with each ×.
+
+4.4     Analyzing issues, lawmakers, and bills
+
+In this section we take a closer look at how issue adjustments improve on ideal points and demonstrate
+how the issue-adjusted ideal point model can be used to analyze specific lawmakers. We focus on an
+issue-adjusted model fit to all votes in the 111th House of Representatives (2009-2010).
+We can measure the improvement by comparing the training likelihoods of votes in the issue-adjusted
+and traditional ideal point models. The training log-likelihood of each vote is
+                              Jud = 1{vud =Yes } p − log(1 + exp(p)),                           (6)
+                     T
+where p = (x̃u + z̃u Eq [θd |w])ãd + b̃d is the log-odds of a vote under the issue adjusted voting
+model. The corresponding log-likelihood Iud under the ideal point model is p = x̃u ãd + b̃d .
+
+4.4.1    Per-issue improvement
+To inspect the improvement of issue k, for example, we take the sum of the improvement in loglikelihood weighted by each issue: P
+                                             Eq [θdv k |w] (Jud − Iud )
+                               Impk = Vud P                             .                         (7)
+                                                Vud Eq [θdv k |w]
+A high value of Impk indicates that issue k is associated with an increase in log-likelihood, while a
+low value indicates that the issue saw a decrease in log-likelihood.
+Procedural issues such as Congressional sessions (in contrast to substantive issues) were among the
+most-improved issues; they were also much more partisan. This is a result predicted by procedural
+cartel theory [23, 24, 25, 26], which posits that lawmakers will be more polarized in procedural
+votes (which describe how Congress will be run) than substantive votes (the issues discussed during
+elections). A substantive issue which was better-predicted was Finance, which we illustrate in
+Figure 4. Infrequent issues like Women and Religion were nearly unaffected by lawmakers’ offsets.
+In §A.4, we illustrate Impk for all issues.
+4.4.2   Per-lawmaker improvement
+                                                        P
+In the 111th House, the per-lawmaker improvement Impu = D (Jud − Iud ) was invariably positive
+or negligible, because each lawmaker has many more parameters in the issue-adjusted model. Some
+of most-improved lawmakers were Ron Paul and Donald Young.
+We corrected lawmakers’ issue adjustments to account for their left/right leaning and performed
+permutation tests as in §4.3 to find which of these corrected adjustments ẑuk were statistically
+significant at p < 0.05 (see supplementary section §A.5 for how we obtain ẑuk from zuk and §A.5 for
+details on the permutation test). We illustrate these issue adjustments for Paul and Young in Figure 5.
+Ron Paul. Paul’s offsets were extreme; he voted more conservatively than expected on Health,
+Human rights and International affairs. He voted more liberally on social issues such as Racial and
+ethnic relations. The issue-adjusted training accuracy of Paul’s votes increased from 83.8% to 87.9%
+with issue offsets, placing him among the two most-improved lawmakers with this model.
+The issue-adjusted improvement ImpK (Equation 7), when restricted to Paul’s votes, indicate significant improvement in International affairs and East Asia (he tends to vote against U.S. involvement
+in foreign countries); Congressional sessions; Human rights; and Special months (he tends to vote
+against recognition of special months and holidays). The model hurt performance related to Law,
+Racial and ethnic relations, and Business, none of which were statistically significant issues for Paul.
+Donald Young. One of the most exceptional legislators in the 111th House was Alaska Republican
+Donald Young. Young stood out in a topic used frequently in House bills about naming local
+landmarks. Young voted against the majority of his party (and the House in general) on a series of
+largely symbolic bills and resolutions. In an Agriculture topic, Young voted (with only two other
+Republicans and against the majority of the House) not to commend “members of the Agri-business
+Development Teams of the National Guard [to] increase food production in war-torn countries.”
+Young’s divergent voting was also evident in a series of votes against naming various landmarks–such
+as post offices–in a topic about such symbolic votes. Notice that Young’s ideal point is not particularly
+distinctive: using the ideal point alone, we would not recognize his unique voting behavior.
+
+4.4.3   Per-bill improvement
+                               P
+Per-bill improvement Impd = U (Jud − Iud ) decreased for some bills. The bill which decreased
+the most from the ideal point model in the 111th House was the Consolidated Land, Energy, and
+Aquatic Resources Act of 2010 (H.R. 3534). This bill had substantial weight in five issues, with most
+in Public lands and natural resources, Energy, and Land transfers, but its placement in many issues
+harmed our predictions. This effect—worse performance on bills about many issues—suggests that
+methods which represent bills more sparsely may perform better than the current model.
+
+
+5   Discussion
+
+Traditional models of roll call data cannot capture how individual lawmakers deviate from their latent
+position on the political spectrum. In this paper, we developed a model that captures how lawmakers
+vary, issue by issue, and used the text of the bills to attach specific votes to specific issues. We
+demonstrated, across 12 years of legislative data, that this model better captures lawmaker behavior.
+We also illustrated how to use the model as an exploratory tool of legislative data.
+Future areas of work include incorporating external behavior by lawmakers. For example, lawmakers
+make some (but not all) issue positions public. Many raise campaign funds from interest groups.
+Matching these data to votes would help us to understand what drives lawmakers’ positions.
+
+
+Acknowledgments
+
+We thank the reviewers for their helpful comments. David M. Blei is supported by ONR N00014-111-0651, NSF CAREER 0745520, AFOSR FA9550-09-1-0668, the Alfred P. Sloan foundation, and a
+grant from Google.
+References
+ [1] Keith T. Poole and Howard Rosenthal. Patterns of congressional voting. American Journal of Political
+     Science, 35(1):228–278, February 1991.
+ [2] Simon Jackman. Multidimensional analysis of roll call data via Bayesian simulation: Identification,
+     estimation, inference, and model checking. Political Analysis, 9(3):227–241, 2001.
+ [3] Joshua Clinton, Simon Jackman, and Douglas Rivers. The statistical analysis of roll call data,. American
+     Political Science Review, 98(2):355–370, 2004.
+ [4] Keith T. Poole and Howard Rosenthal. A spatial model for legislative roll call analysis. American Journal
+     of Political Science, pages 357–384, 1985.
+ [5] Andrew D. Martin and Kevin M. Quinn. Dynamic ideal point estimation via Markov chain Monte Carlo
+     for the U.S. Supreme Court, 1953-1999. Political Analysis, 10:134–153, 2002.
+ [6] Daniel Ramage, David Hall, Ramesh Nallapati, and Christopher D. Manning. Labeled LDA: A supervised
+     topic model for credit attribution in multi-labeled corpora. Proceedings of the 2009 Conference on
+     Empirical Methods in Natural Language Processing, 2009.
+ [7] David M. Blei, Andrew Y. Ng, and Michael I. Jordan. Latent Dirichlet allocation. Journal of Machine
+     Learning Research, pages 993–1022, 2003.
+ [8] Congressional research service. Available http://www.loc.gov/crsinfo/, 2011.
+ [9] James M. Enelow and Melvin J. Hinich. The Spatial Theory of Voting: An Introduction. Cambridge
+     University Press, New York, 1984.
+[10] James Albert. Bayesian estimation of normal ogive item response curves using Gibbs sampling. Journal of
+     Educational Statistics, 17:251–269, 1992.
+[11] James J. Heckman and James M. Snyder. Linear probability models of the demand for attributes with an
+     empirical application to estimating the preferences of legislators. RAND Journal of Economics, 27(0):142–
+     189, 1996.
+[12] Matt Thomas, Bo Pang, and Lillian Lee. Get out the vote: Determining support or opposition from
+     congressional floor-debate transcripts. In Proceedings of the 2006 Conference on Empirical Methods on
+     Natural Language Processing, 2006.
+[13] Tae Yano, Noah A. Smith, and John D. Wilkerson. Textual predictors of bill survival in congressional
+     committees. In Proceedings of the 2012 Conference of the North American Chapter of the Association for
+     Computational Linguistics, page 793802, 2012.
+[14] Sean Gerrish and David Blei. Predicting legislative roll calls from text. Proceedings of the International
+     Conference on Machine Learning, 2011.
+[15] Eric Wang, Dehong Liu, Jorge Silva, David Dunson, and Lawrence Carin. Joint analysis of time-evolving
+     binary matrices and associated documents. Advances in Neural Information Processing Systems, 23:2370–
+     2378, 2010.
+[16] Chong Wang and David M. Blei. Collaborative topic modeling for recommending scientific articles.
+     In Proceedings of the 17th international conference on Knowledge Discovery and Data mining, pages
+     448–456, 2011.
+[17] Deepak Agarwal and Bee-Chung Chen. fLDA: Matrix factorization through latent Dirichlet allocation.
+     Proceedings of the Third ACM International Conference on Web Search and Data Mining, pages 91–100,
+     2010.
+[18] Valen E. Johnson and James H. Albert. Ordinal Data Modeling. Springer-Verlag, New York, 1999.
+[19] Michael I. Jordan, Zoubin Ghahramani, Tommi S. Jaakkola, and Lawrence K. Saul. An introduction to
+     variational methods for graphical models. Learning in Graphical Models, pages 183–233, 1999.
+[20] Herbert Robbins and Sutton Monro. A stochastic approximation method. Annals of Mathematical Statistics,
+     22(3), September 1951.
+[21] Leon Bottou and Yann Le Cun. Large scale online learning. In Advances in Neural Information Processing
+     Systems, 2004.
+[22] Govtrack.us, 2010. Civic Impulse LLC. Available http://www.govtrack.us.
+[23] Richard F. Fenno Jr. The Congress and America’s Future. Prentice-Hall, Englewood Cliffs, NJ, 1965.
+[24] Gary W. Cox and Mathew D. McCubbins. Legislative Leviathon. University of California Press., 1993.
+[25] Gary W. Cox and Keith T. Poole. On measuring partisanship in roll-call voting: The U.S. House of
+     Representatives, 1877-1999. American Journal of Political Science, 46(3):pp. 477–489, 2002.
+[26] Gary W. Cox and Mathew D. McCubbins. Setting the Agenda: Responsible Party Government in the U.S.
+     House of Representatives. Cambridge University Press, 2005.

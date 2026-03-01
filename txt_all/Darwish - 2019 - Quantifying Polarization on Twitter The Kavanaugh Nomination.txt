@@ -1,0 +1,636 @@
+Understanding Gray Networks Using Social
+                     Media Trace Data
+
+                                     Megan Squire(&)
+
+                           Elon University, Elon, NC 27244, USA
+                                  msquire@elon.edu
+
+
+        Abstract. In contrast to dark (illegal, covert, illicit) or bright (legal, overt,
+        above-ground) networks, gray networks conduct a mixture of legal and illegal
+        activities and have an organizational structure that may be only partially known.
+        The goal of this research is to demonstrate techniques for using trace data from
+        Venmo, a payment network, and Facebook, a social networking site, to
+        understand the organizational structure of one particular gray network: a
+        membership organization of self-described “Western chauvinists” called Proud
+        Boys. Using publicly-available data from the Facebook API and from the
+        Venmo web site, this research reveals the underlying organizational structure for
+        this group as it grew and matured from October 2016–March 2019. The payment network is modeled as a one-mode directed network of payers and payees
+        conducting transactions such as dues payments and activity fees. A two-mode
+        network of the Venmo users and their memberships in Proud Boys groups on
+        Facebook further illuminates the structure of the organization. Supplementary
+        data from news reports and arrest records is used to conﬁrm the ﬁndings from
+        this network analysis. Results will be useful for understanding the extent to
+        which trace data from online activities can expose the offline organizational
+        structure of semi-clandestine groups.
+
+        Keywords: Social media data  Venmo  Facebook  Proud boys  Dark
+        network  Gray network  Clandestine network
+
+
+1 Introduction
+
+Founded by far-right political commentator and media personality Gavin McInnes in
+September 2016, “Proud Boys” is a membership organization describing itself as
+“proud Western chauvinists who refuse to apologize for creating the modern world”
+[1]. Claiming chapters in 38 states in the US and internationally [2], membership in the
+group is “limited to persons who were born male, who currently identify as male”
+according to their bylaws [3]. The bylaws also state that the group does not consider
+itself a gang, and its website explains that Proud Boys is “a bona ﬁde men’s club with
+rituals, traditions, and even its own in-house court called ‘The Sharia’” [4]. On its home
+page, the group describes itself as a place for men who have “tried being ashamed of
+themselves and accepting blame for slavery, the wage gap, ableism, and some fagbashing that went on two generations ago” and are now “completely ﬁnished” with
+being “politically correct” and with “apology culture” [4].
+
+© Springer Nature Switzerland AG 2019
+I. Weber et al. (Eds.): SocInfo 2019, LNCS 11864, pp. 202–217, 2019.
+https://doi.org/10.1007/978-3-030-34971-4_14
+
+
+                      Understanding Gray Networks Using Social Media Trace Data        203
+
+    Proud Boys have captured the attention of law enforcement, media, and extremist
+monitoring groups for their anti-Muslim, misogynist rhetoric and for their embrace of
+street ﬁghting and politically-motivated violence [5]. They have sponsored harassment
+of the Muslim town of Islamberg, New York [6]. They afﬁliated with a right-wing
+street ﬁghting group called the “Alt-Knights” [7]. Their members have been arrested
+for violent street brawling in Oregon [8] and convicted of assaults in New York [9].
+Their former lawyer was disbarred in Texas [10], and they have been banned from
+Twitter [11], Facebook, and Instagram [12].
+    Although extolling one’s public allegiance to Proud Boys on social media is a
+requirement for achieving the ﬁrst degree of initiation [3], many members use aliases
+online and in person [13, 14]. The group is also reticent about sharing details of its
+leadership structure. For example, when its bylaws were re-written and re-published in
+November of 2018 following the supposed departure of McInnes from the group [15],
+the names of the new leaders (called “Elders” [16]) were intended to have been
+redacted from the document [17]. However, in the initial release of the bylaws the
+redaction was unsuccessful, and the names of the Elders were in fact visible by using a
+computer mouse to highlight the redacted text [18, 19].
+    Thus, we posit that Proud Boys are a “gray” network: a semi-clandestine group
+with characteristics of both dark (covert, illegal) and bright (overt, legal) networks [31,
+32]. For example, when allowed, Proud Boys will use above-ground social media sites
+to recruit, fundraise, and organize. However, they also use aliases, have secretive
+vetting procedures for new members, and engage in street-ﬁghting and violence. They
+have even developed their own specialized jargon that has evolved to assist in their
+member acculturation and in-group identity. Phrases like POYB (“proud of your boy”)
+and CUAWF (“see you at WestFest”) are used to identify members, while phrases like
+FAFO (“fuck around and ﬁnd out”) and “helicopter rides for commies” are used to
+intimidate people they identify as enemies.
+    The purpose of this research is to use social network analysis and publicly available
+data to understand more about the activities and organizational structure of the Proud
+Boys as a gray network. To map the ﬁnancial organization and fundraising activities of
+the group, we collected 461 transactions between 179 Proud Boys using Venmo, a
+social payments network, to conduct group business during the period October 2016–
+March 2019. To understand more about the social structure of the Proud Boys, we use
+data collected about the membership of 7920 Facebook users in 157 Proud Boysafﬁliated Facebook groups during the period June 2017–March 2018. We use social
+network analysis techniques to demonstrate that trace data from these social media sites
+can indeed reveal pieces of a “gray” network’s geographic organization, leadership
+hierarchy, and activity calendar.
+    Section 2 reviews the literature on the characteristics of dark and clandestine social
+networks and speciﬁes how this work adds to that literature. Section 3 describes how
+the data used in this project was collected from Venmo and Facebook. Section 4
+presents the method for and results of social network analysis on this data. Section 5
+reviews some of the limitations of this approach, suggests avenues for future work with
+this data, and presents a brief conclusion.
+
+
+204     M. Squire
+
+
+2 Background and Prior Work
+
+Dark networks come in many shapes and sizes. Much prior research on covert networks
+comes out of a desire to understand how to deploy effective disruption strategies [20,
+21] for terrorist organizations, criminal gangs, and drug trafﬁckers.
+     Dark networks can be modeled as collections of nodes, usually people, who may all
+be members of the network being studied or who may be co-conspirators or associates.
+These nodes are connected by edges representing some relationship: ﬁnancial, familial,
+social, and so on. Edges usually comprise a single type of relationship but if there are
+multiple ties between people, it is possible to build a multi-graph where multiple edges
+between nodes is expressed as a vector of possible actions, for example in the work of
+Shetty and Adibi on the Enron email dataset [22].
+     Because a key differentiator for dark networks is that they operate under risk, the
+literature on dark network topologies focuses on whether the network exhibits the signs
+of a tradeoff between maintaining secrecy and ease-of-communication [23, 24]. Networks with high requirements for secrecy will sacriﬁce efﬁcient communication by
+distributing it through a less centralized network, thus insulating leaders and avoiding
+single points of failure. Krebs [25] demonstrates this by measuring the average path
+length through the network and distances between the 19 hijacker nodes in the 9/11
+terrorist network, concluding that the network has a “serpent” shape.
+     Morselli et al. [26] agree that terrorist networks and criminal enterprises have
+different shapes (terrorist networks lack a single core, for instance), but they assert that
+different “times to task” drive the shape of the network. Being ﬁnancially motivated,
+criminal networks have a shorter “time to task” and may therefore prioritize communication efﬁciency over secrecy. In doing so, [26] ﬁnds that criminal networks adopt a
+more hierarchical, clustered structure with identiﬁable hubs. Terrorist networks on the
+other hand, are motivated by ideology, and will wait for an optimal time to act. They
+can therefore tolerate a network structure and communication flow that are more dispersed. By way of example, when 18 co-conspirator nodes are added to the 9/11 terror
+network, [26] shows that the path lengths and network distance are decreased (i.e.
+communication flow is improved) but secrecy is jeopardized.
+     Similarly, Xu and Chen [27] ﬁnd that dark networks with “small world” properties
+– those in which nodes that are not neighbors can still reach other nodes in a relatively
+low number of hops – lead to efﬁcient communication paths even in a sparse network.
+In such networks, the hub nodes are less vulnerable than in a hierarchical or highly
+clustered network, and instead it is the bridge nodes connecting multiple subcommunities together that are the most vulnerable. Morselli [28] points out that
+locating key players in a dark network can be more difﬁcult than simply looking for
+nodes with high centrality measures, however, since higher-status individuals may
+purposely insulate themselves from more vulnerable positions in the network.
+Depending on what relationship is being used to create the ties between nodes, highstatus individuals may not appear on the network at all.
+     Magouirk et al. [29] additionally provide evidence that dark networks change over
+time and will change shape based on responses to unplanned events, such as the
+departure of a key leader or the intermarrying of families involved in the network. Kalm
+
+
+                      Understanding Gray Networks Using Social Media Trace Data         205
+
+[30] summarizes structural characteristics of four different types of dark networks
+(traditional criminal, cybercriminal, ideologically motivated, and state-sponsored) and
+compares similarities and differences between types, with special attention to the
+network’s ability to resist disruption.
+    Millward and Raab [31, 32] concede that many “dark” networks are not entirely
+dark, but have elements common to legal, visible/overt networks as well. They term
+these “gray” networks and describe the various circumstances that can put a network
+into a legal or visibility gray area. For example, an organization may have multiple
+layers to it, with some of its actors conducting business below-ground (dark) and some
+above-ground (bright). Or, an organization might be conducting business that is legal
+(bright) in one jurisdiction but illegal (dark) in another.
+    While a few examples of gray networks are listed in these papers, to our knowledge
+no prior work speciﬁcally studies a gray network. Both [31] and [29] stress that classifying a network as “bright” or “dark” or “gray” is less about strict deﬁnitions and more
+about empirical observation of the data driving the network. Thus, our project is datadriven, and advances this prior work in two ways. First, we intentionally investigate a
+gray network, a typology which is understudied in the literature. Second, we collect data
+from publicly-available sources on two different types of relationships – ﬁnancial and
+social – to learn about the Proud Boys gray network as it changes over time.
+
+
+3 Data Collection
+
+The data for this work is comprised of three main subsets: (1) data collected from the
+public ledger of Venmo, a payment social network; (2) data collected from the Facebook public group API; (3) data collected from arrest records, news articles, and from
+the Proud Boys own media channels. In this section, we will describe how the data was
+collected, stored, and cleaned.
+
+3.1   Venmo Data
+Venmo is a social network and payment system. Users can request and send monetary
+payments to one another using the platform, and users can also add people as their
+“friends” on the platform. Friends can be added from a phone contact list or from an
+existing Facebook account. Users who request or send money are encouraged to add a
+comment to each transaction. Venmo user accounts and transactions are “public by
+default” [33]. A 2018 Federal Trade Commission complaint about Paypal, Venmo’s
+parent company, describes Venmo privacy this way:
+    “By default, all peer-to-peer transactions on Venmo are displayed on the Venmo
+social news feed. On this news feed, Respondent displays the names of the payer and
+recipient, the date of the transaction, and a message written by the user that initiated the
+transaction, to anyone using Respondent’s service. In addition, each Venmo user has a
+proﬁle page on Respondent’s website that lists the user’s Venmo transactions. A user’s
+ﬁve most recent public Venmo transactions are visible, by default, to anyone who
+views the user’s Venmo web page, including to visitors who do not have a Venmo
+account.” [34, p.4]
+
+
+206     M. Squire
+
+    For this project, a list of 193 Proud Boys with public Venmo accounts was compiled manually. Accounts were initially discovered using names of 15 known Proud
+Boys who have appeared in news media accounts of their activities [e.g. 19, 35] or in
+feature stories in the Proud Boys Magazine [36]. From these 15 accounts, viewing
+public Venmo transactions and friends lists yielded additional Proud Boy members or
+close afﬁliates. Each person was only added to the list if one or more of the following
+conditions were met:
+• Person had same name, same photo, and similar friends as a conﬁrmed Proud Boy
+  who was openly in Proud Boys groups on other social media; or
+• Person used Proud Boys, PB, POYB or other Proud Boys slogans in their comments
+  on transactions (e.g. “January dues POYB”), or
+• Person was wearing Proud Boys apparel in their Venmo photo or had some Proud
+  Boys signiﬁer in their Venmo name.
+    Of these 193 accounts, 179 accounts had publicly viewable transactions for which
+the comments indicated Proud Boys business was being conducted. We deﬁne Proud
+Boys business as:
+• Paying dues to or collecting dues from another known Proud Boy; or
+• Contributing money to or collecting money for a Proud Boys sponsored event such
+  as travel to a rally; or
+• Buying or selling goods (e.g. shirts, alcohol, food) for a Proud Boys sponsored
+  social event; or
+• Buying or selling tickets to Proud Boys sponsored events (e.g. WestFest or
+  TexFest).
+    In all, 461 transactions were collected between the 179 different user accounts. In
+Venmo it is not possible for a third party to see the amount of a transaction between
+two parties, however most of the payments in this data set included very clear language
+like “dues” or “tickets.” However, humorous comments, emojis, and jokes between
+Venmo users are common [37]. We collected transactions of this nature only if they
+were between two known Proud Boys.
+
+3.2   Facebook Data
+For this portion of the project, we collected data about members and administrators of
+Proud Boys groups on Facebook. On Facebook, groups can be set up as one of three
+types [38]: Public, Closed or Secret. Membership lists are visible for Public groups, and
+until June 15, 2018 Closed group membership lists were also viewable by any Facebook user [39]. In all, 157 Proud Boys groups were located on Facebook.
+    Then, the public Facebook Graph API version 2.10 was used to collect the group
+membership rosters from all 157 Proud Boys groups. The membership roster for each
+group included the group name, each member’s name, and the member’s role in the
+group (e.g. member, administrator). Until April 4, 2018, these membership rosters were
+available via the Facebook developer API to anyone with a valid authentication token
+[39]. All of the data for this portion of the project was collected using the Facebook API between June 20, 2017 and March 31, 2018. Many of these Proud Boys and
+
+
+                       Understanding Gray Networks Using Social Media Trace Data           207
+
+Alt-Knights groups were reported to have been removed by Facebook as of October
+2018 [40], however numerous groups and brand pages for both organizations still
+remain active on Facebook as of this writing.
+    In all, 7920 different Facebook user accounts were collected from the 157 groups.
+Within these groups, 152 of them were “Closed” and 5 were “Public”. 287 different
+user accounts served as administrators for at least one of the 157 groups.
+
+3.3    Other Data
+In this section we describe additional data sources to conﬁrm offline participation and
+geographical location for discovered members, and to construct a timeline of events to
+help explain the growth of the group. We prioritized primary source documents such as
+the Proud Boys’ own bylaws [3, 19] and the web-based Proud Boys magazine [36].
+Newspaper articles with interviews and arrest reports were also helpful to this project.
+The tasks of geolocating as many members as possible and constructing a timeline of
+events was made much easier by newspaper accounts of arrests and interviews at rallies
+and events. Table 1 shows the timeline of key events that helped to inform the network
+analyses in Sect. 4.
+
+
+                        Table 1. Timeline of key Proud Boys events
+Year     Month      Event
+2016     Spring     Proud Boys Facebook page launched (now banned) [41]
+2016     Jul        First ofﬁcial Proud Boys meeting in New York City; media coverage of
+                    Proud Boys begins [41]
+2017     Feb        Proud Boys arrested after ﬁght at McInnes event in NYC [42]
+2017     Spring     Kyle “Based Stickman” Chapman founds Fraternal Order of Alt-Knights
+                    as paramilitary wing of Proud Boys following violence and arrests at
+                    rallies in Berkeley, California [7]
+2017     July       McInnes prohibits Proud Boys from attending August 12 Unite the Right
+                    event in Charlottesville, Virginia [43]; Proud Boys harass residents of
+                    Islamberg, New York [7, 44]
+2017     Aug        Proud Boys, including 2019 chairman Enrique “Henry” Tarrio, attended
+                    Unite the Right event [35]
+2017     Sep        First WestFest held in Las Vegas [45]
+2018     Mar        First TexFest event held in Austin [46]
+2018     Sep        Second WestFest event [45]
+2018     Oct        McInnes speaks at Metropolitan Republican Club in New York City, 10
+                    Proud Boys arrested [47]
+2018     Nov        21st: McInnes announces he is disassociating himself from Proud Boys
+                    [48]; 28th: Texas lawyer Jason Lee Van Dyke is announced as new Proud
+                    Boys leader; eight other “Elders” are announced as part of leadership team
+                    [19]; 29th: Elders remove Van Dyke as leader, promote Enrique “Henry”
+                    Tarrio as leader [49]
+2019     Feb        Arrest warrants issued for two Proud Boys in Oregon [8, 50]
+2019     Mar        Second TexFest event held in Texas
+
+
+208     M. Squire
+
+
+4 Data Analysis
+
+In this section we use the data collected from Venmo, Facebook, and the events
+timeline to understand more about the structure of the Proud Boys as a gray network.
+
+4.1   Venmo Network
+The ﬁrst Venmo transaction in our data set was from October 11, 2016 and the ﬁnal
+was from March 24, 2019. Figure 1 shows the number of transactions per quarter. The
+most noticeable large jump between 3rd (July-September) quarter and 4th quarter
+(October-December) 2017 follows the ﬁrst annual WestFest event, held in Las Vegas
+on September 8-10, 2017. On October 2, 2017, a large chapter in the Northeast region
+of the United States began using Venmo to take dues.
+
+
+             Fig. 1. Count of Proud Boys transactions on Venmo, per quarter.
+
+
+Fig. 2. Proud Boys Venmo users and transactions. Left: elders shown in black, members in
+gray. Right: Proud Boys facebook group administrators shown in black.
+
+
+                      Understanding Gray Networks Using Social Media Trace Data         209
+
+    Figure 2 shows a directed network in which the 179 Venmo user accounts are
+nodes and the payer-payee transactions are directed edges. This graph was generated in
+Gephi [51] using the Yifan Hu layout [52] with node size scaled for degree.
+    Edges are left unweighted for visibility reasons, but labels have been added to show
+geographically-related Venmo users. Regular member and afﬁliate nodes are shown in
+gray. The graph reveals a large component subgraph and two smaller, self-contained
+subgraphs representing the Northeast chapter and a smaller Florida chapter. Both of the
+large Texas nodes are alias accounts set up to take payments for TexFest.
+    The left graph shows in black each of the ﬁve “Elders” who has an account on
+Venmo. These ﬁve represented geographically distinct areas: Northeast, Georgia,
+Midwest, West, and Paciﬁc Northwest. The three remaining Elders hailed from
+Canada, Florida, and Texas but were – to our knowledge – not Venmo users.
+    Our social network analysis of Venmo payments shows that the Elders seem to be
+geographically dispersed, however nothing in the bylaws indicates that geography is a
+criterion for being chosen as an Elder. The lack of an Elder from the New York City
+cluster is surprising, but since New York is the home of Founder Gavin McInnes, this
+may have played a role in whether to appoint an Elder from this area.
+    The right graph in Fig. 2 shows in black the 26 Venmo Proud Boys who were also
+the administrator of at least one Facebook group. All eight Elders administered at least
+one Facebook group. The administrators of the Facebook groups are geographically
+dispersed and not limited to Elders or high-Venmo-degree individuals.
+    Next, to learn how the network grew and changed over time, Fig. 3 (next page)
+shows the social network evolving across 10 quarters. To make this graph, the ﬁrst
+three quarters were combined since they are relatively small and self-similar. The next
+seven quarters show periods of great activity. Table 2 describes each frame.
+
+             Table 2. Explanation of Venmo network activity shown in Fig. 3
+Frame     Quarter        Explanation
+1         4Q16–2Q17      All nodes are geographically located in New York
+2         3Q 2017        A small group is added from California and the mountain West.
+                         WestFest is held in Las Vegas
+3         4Q 2017        A large group of members from the Northeast states (Rhode Island,
+                         Massachusetts, Connecticut) has joined and are paying dues to a
+                         central leader. Eight smaller cells form, shown in the lower left,
+                         including a four-member Florida cell
+4         1Q 2018        Texas cell emerges, sending payments for 2018 TexFest. Three of
+                         the smaller cells merge into the main subgraph
+5         2Q 2018        Georgia/Carolinas nodes merge into main subgraph. Florida, Texas
+                         and Northeast are still separate
+6         3Q 2018        The Paciﬁc Northwest strand is expanded as its smaller cells are
+                         completely absorbed into main subgraph. Only Florida, Texas, and
+                         Northeast remain as separate cells
+7         4Q 2018        New nodes are added to main network, Texas, and Northeast
+8         1Q 2019        Texas is absorbed into main network; second Texas cell emerges as
+                         2019 TexFest tickets are sold
+
+
+210    M. Squire
+
+
+        Fig. 3. Proud Boys Venmo network growth over eight periods, 2016–2019
+
+
+4.2   Facebook Network of Venmo Users
+Next we consider in more depth the network of Proud Boys who were on both Venmo
+and Facebook. What can we learn about the gray network from their participation on
+both social networks? 107 of the Venmo Proud Boys also had identiﬁable Facebook
+accounts. These users joined 118 of the 157 Facebook groups in our collection.
+    Figure 4 (next page) shows a two-mode network [53] in which person nodes only
+connect to groups, not to each other. The OpenOrd [54] layout is used to emphasize
+clustering between people and groups. The settings for OpenOrd were chosen to
+maximize cluster ﬁnding (liquid phase, 25%; expansion, 50%; cooldown, 15%; crunch,
+5%; simmer, 5%). On the left graph, Facebook groups are shown in black and
+
+
+                     Understanding Gray Networks Using Social Media Trace Data     211
+
+individual members of those groups are shown in gray. On the right graph, the ﬁve
+Venmo Elder nodes are shown in black, as well as a sixth (alias) account for the
+Northeast Elder.
+
+
+Fig. 4. Two-mode network of Venmo Proud Boys also using FB. Left: Proud Boys (gray) and
+FB groups (black). Right: Proud Boys elders overlaid on FB network.
+
+
+    As with the network of Venmo transactions shown in Fig. 3, geographic patterns
+emerge here as well. Texas, Northeast, Georgia, and Western region users and groups
+are clearly visible. Examples of geographically-named Facebook groups in this network include: East Texas Proud Boys, Los Angeles Proud Boys, Proud Boys Atlanta
+Vetting Page, Northeast USA Proud Boys - Vetting Group, and the like.
+    Despite these geographical similarities, the Facebook network shows two distinct
+differences from the Venmo network. First, the Paciﬁc Northwest cell is indistinguishable. While the PNW did have some geographically-oriented Facebook pages,
+their members joined enough generic, non-geographic pages (e.g. Proud Boys Gear,
+Proud Boys Armory) that no clusters emerged as clearly as they did on the Venmo
+diagram.
+    Second, two Alt-Knights/FOAK clusters are evident on the upper left of the
+Facebook network, but these were not part of the Venmo network at all. The two
+principal leaders of these FOAK groups were present in the Venmo data set, but their
+impact is much greater in the Facebook network than it was on Venmo. Interestingly,
+following the inclusion of FOAK as a defendant in a lawsuit against leaders of the
+Unite the Right rally [55], neither of the two FOAK leaders were chosen to be Elders in
+the Proud Boys.
+
+
+212     M. Squire
+
+   Differences between the Venmo and Facebook graphs may be due to the 10-month
+time span during which the Facebook data was collected, compared to the longer
+timespan of the Venmo data. More limitations will be addressed in Sect. 5.
+
+4.3   Network Metrics
+We have established that Proud Boys Elders and Facebook group administrators
+occupy geographically dispersed positions in the network, but are these leaders serving
+as hubs and bridges in the Venmo network? Network metrics such as degree,
+betweenness centrality, and the clustering coefﬁcient can provide insight into this
+question.
+Are the Proud Boys on Venmo a “small world” network? Literature on dark networks [31] indicates that “small world” characteristics can smooth communication
+even in sparse networks (such as this one, which has lots of hubs but fewer bridges).
+Small world networks have a higher clustering coefﬁcient, or likelihood that clusters
+will form, than a random network of the same size. The clustering coefﬁcient for the
+directed network is 0.042, and the clustering coefﬁcient for the undirected version of
+the network is 0.216. Random networks of this size measured a clustering coefﬁcient of
+between 0.001 and 0.008, with an average of 0.003. Following [31], this higher
+clustering coefﬁcient indicates that the Proud Boys Venmo network does exhibit “small
+world” characteristics, including clusters, hubs, and bridges.
+
+
+      Table 3. Network metrics for leadership nodes in Proud Boys Venmo network
+                                 Directed        Undirected
+               Position Location In Out Degree Betweenness Role
+               Elder    NE       37 5     42 (1) 894 (13)   Hub
+               Elder    PNW       9 3     12 (5) 1469 (9)   Hub
+               Elder    GA       12 0     12 (6) 1408 (11)  Hub
+               Elder    West      5 0     5 (18) 1853 (7)   Bridge
+               Elder    MW        1 1     2 (41) 129 (41)   –
+               Leader TF18       22 1     23 (3) 4419 (2)   Hub
+               Leader TF19       37 4     41 (2) 2793 (5)   Hub
+               Leader NYC1       17 1     18 (4) 4343 (3)   Hub
+               Leader NYC2        5 3     8 (9)  4429 (1)   Bridge
+
+
+                      Understanding Gray Networks Using Social Media Trace Data         213
+
+
+Fig. 5. Degree and betweenness ranks for elder and leader nodes. Red = bridges; blue = hubs.
+(Color ﬁgure online)
+
+
+Are the Elders and leaders serving as hubs or bridges? Table 3 shows the network
+measures for ﬁve Elders and four other leader nodes, including the two TexFest ticket
+selling nodes (2018 and 2019) and two known NYC leaders. Ranks (1-179) for degree
+and betweenness are given in parentheses.
+     Degree is useful for ﬁnding Proud Boys that serve as hubs on Venmo. Four of the
+ﬁve Elders are found in the top nine highest degree nodes. The TexFest nodes and
+NYC leaders are also in the top nine. Betweenness centrality measures a node’s
+capacity to serve as a bridge, measuring how many times the shortest path between any
+two nodes goes through a given node. Here we switched to an undirected network in
+order to more accurately reflect the two-way relationship opportunities presented by
+Venmo. As shown in Table 3, eight of the nine Elders and leaders are ranked in the top
+13 of all nodes for betweenness.
+     Figure 5 shows a scatter plot of the degree ranks and the betweenness ranks for the
+nine Elders and leaders. Nodes are colorized red for bridges and blue for hubs. Hubs
+get top ranks for degree and rank lower on betweenness. Bridges have good
+betweenness rankings but lower degree rankings. The Midwest Elder is shown in black
+as neither a hub nor a bridge.
+
+
+5 Limitations, Future Work, and Conclusions
+
+There are several limitations to the way we approached understanding the Proud Boys
+as a gray network. First, our Facebook data set was limited to only 10 months of data,
+and while those months did directly overlap with the Venmo data set, the Venmo data
+set continued after our research access to the Facebook data had been removed. Second, not every Venmo transaction was publicly visible, due to privacy settings of each
+individual user. Third, the set of Proud Boys using Venmo is small, compared to
+number of Proud Boys on Facebook. A full analysis of the Facebook network would be
+a valuable addition. Finally, we are missing Venmo data from three Elders and we were
+also unable to determine the real names controlling the two TexFest accounts.
+
+
+214     M. Squire
+
+     In terms of future work, we are excited about ﬁnding additional trace data sources
+that can illuminate a dark or gray network. Venmo and Facebook are just two of many
+possible sources. It was very time-consuming to track down users on these systems, but
+the insight we gained was signiﬁcant compared to what had been reported previously.
+     In this paper we have shown that trace data from ﬁnancial and social systems can
+help to illuminate the structure and organization of a group that heretofore has operated
+in shadows. We established a method for using public social media trace data to
+understand the structure and organization of the Proud Boys, a semi-clandestine, “gray”
+network. Financial data from Venmo and membership data from Facebook groups are
+used to construct two social networks of group membership. Both social networks
+reveal geographically-based clusters. Individual nodes in these clusters are then compared to known Elders and other leaders of the group. We ﬁnd that leaders hold both
+“hub” and “bridge” positions in the network, and the network has a communicationsmoothing “small world” structure. Like many criminal networks described in the
+literature, the Proud Boys network favors communication efﬁciency and leadership
+hierarchy.
+     Finally, we must point out that in the course of conducting this work, we noticed a
+number of Venmo transactions that were concerning. Proud Boys members and Elders
+conducted several transactions in which they paid each other to rent buses and
+otherwise prepare for rallies that included violence against their perceived “enemies.”
+We concede that gray networks are only “gray” until their illegal activities become
+known, at which point they would be considered a full-fledged dark network and would
+likely move further underground. This work presents a method of studying such a
+group while it is still operating on social media, and at least partially without
+concealment.
+
+
+References
+ 1. Culkin, R.: Proud boys: who are they? proud boys magazine (2017). https://
+    ofﬁcialproudboys.com/proud-boys/whoaretheproudboys. Accessed 29 Mar 2019. http://
+    archive.li/BoO1k. Accessed 9 Apr 2019
+ 2. Proud boys chapters. http://proudboysusa.com/chapters. Accessed 29 Mar 2019. http://
+    archive.li/Vv7iR. Accessed 9 Apr 2019
+ 3. The constitution and bylaws of proud boys international L.L.C (2018). https://www.scribd.
+    com/document/394310661/Proud-Boys-Redacted-Bylaws-Adopted-11–25-2018. Accessed
+    29 Mar 2019
+ 4. Proud boys website. http://proudboysusa.com. Accessed 13 Apr 2019. https://archive.is/
+    SxVq9. Accessed 8 Aug 2018
+ 5. Coaston, J.: The Proud Boys, the bizarre far-right street ﬁghters behind violence in New
+    York. explained. Vox (2018). https://www.vox.com/2018/10/15/17978358/proud-boysgavin-mcinnes-manhattan-gop-violence. Accessed 29 Mar 2019
+ 6. Bazile, P.: How to survive driving through Islamberg with the Proud Boys. Proud Boys
+    Magazine (2017). https://ofﬁcialproudboys.com/columns/how-to-survive-driving-throughislamberg-with-the-proud-boys. Accessed 29 Mar 2019. http://archive.li/5OfCa. Accessed
+    9 Apr 2019
+
+
+                       Understanding Gray Networks Using Social Media Trace Data             215
+
+ 7. Feuer, A., Peters, J.W.: Fringe groups revel as protests turn violent. New York Times (2017).
+    https://nytimes.com/2017/06/02/us/politics/white-nationalists-alt-knights-protests-colleges.
+    html. Accessed 29 Mar 2019
+ 8. KATU News. Judge issues arrest warrant for Proud Boys member Tusitala “Tiny” Toese
+    (2019).      https://katu.com/news/local/judge-issues-arrest-warrant-for-proud-boys-membertusitala-tiny-toese. Accessed 29 Mar 2019
+ 9. Feuer, A., Winston, A.: Founder of Proud Boys says he’s arranging surrender of men in
+    brawl. New York Times (2018). https://nytimes.com/2018/10/19/nyregion/the-proud-boysgavin-mcinnes-arrested.html. Accessed 29 Mar 2019
+10. Moritz-Rabson, D.: Former Proud Boys lawyer suspended by Texas bar after series of
+    alleged threats, slurs (2019). https://www.newsweek.com/proud-boys-lawyer-suspendedtexas-bar-after-threats-1340618. Accessed 29 Mar 2019
+11. Roettgers, J.: Twitter shuts down accounts of Vice co-founder Gavin McInnes, Proud Boys
+    ahead of ‘Unite the Right’ rally. Variety (2018). https://variety.com/2018/digital/news/
+    twitter-shuts-down-accounts-of-vice-co-founder-gavin-mcinnes-proud-boys-ahead-of-unitethe-right-rally-1202902397. Accessed 29 Mar 2019
+12. Matthews, K.: Facebook, Instagram ban far-right Proud Boys and founder. AP News (2018).
+    https://apnews.com/2714b6a697d34f59982c398a235858e7. Accessed 29 Mar 2019
+13. Wilson, J.: Who are the Proud Boys, ‘western chauvinists’ involved in political violence?
+    The Guardian (2018). https://www.theguardian.com/world/2018/jul/14/proud-boys-far-rightportland-oregon. Accessed 29 Mar 2019
+14. Barrouquere, B.: Skinhead ‘Irv’ among ﬁve charged in Proud Boys’ New York City assault.
+    Southern Poverty Law Center (2018). https://www.splcenter.org/hatewatch/2018/10/22/
+    skinhead-irv-among-ﬁve-charged-proud-boys-new-york-city-assault. Accessed 29 Mar 2019
+15. Sommer, W.: Proud Boys founder Gavin McInnes claims he’s quitting far-right group. Daily
+    Beast (2018). https://www.thedailybeast.com/proud-boys-founder-gavin-mcinnes-quits-farright-group. Accessed 29 Mar 2019
+16. The Elders. Ofﬁcial statement: We’re not going anywhere. Proud Boys Magazine (2018).
+    https://ofﬁcialproudboys.com/uncategorized/ofﬁcial-statement-were-not-going-anywhere.
+    Accessed 29 Mar 2019. http://archive.li/EokfM. Accessed 9 Apr 2019
+17. The Elders. Announcing the new Proud Boys bylaws, and our chairman. Proud Boys
+    Magazine (2018). https://ofﬁcialproudboys.com/uncategorized/announcing-the-new-proudboys-bylaws-and-our-chairman. Accessed 29 Mar 2019. http://archive.li/ugrdc. Accessed 9
+    Apr 2019
+18. Langton, A.: Tweet (2018). https://twitter.com/AsherLangton/status/1067605372234551297.
+    Accessed 29 Mar 2019. http://archive.li/phFhW. Accessed 28 Nov 2018
+19. Crosbie, J.: Proud Boys failed to redact their new dumb bylaws and accidentally doxxed
+    their ‘Elders’. Splinter (2018). https://splinternews.com/proud-boys-failed-to-redact-theirnew-dumb-bylaws-and-a-1830700905. Accessed 29 Mar 2019
+20. Cunningham, D., Everton, S.: Murphy, P: Understanding Dark Networks. Rowman &
+    Littleﬁeld, Lanham (2016)
+21. Roberts, N., Everton, S.F.: Strategies for combating dark networks. J. Soc. Struct. 12(2), 1–
+    32 (2011)
+22. Shetty, J., Adibi, J.: Discovering important nodes through graph entropy: the case of the
+    Enron email database. In: Proceedings of the Knowledge Discovery in Databases
+    Conference (KDD), Chicago, IL, USA. ACM (2005)
+23. Erickson, B.: Secret societies and social structure. Soc. Forces 60(1), 188–210 (1981)
+24. Baker, W.E., Faulkner, R.R.: The social organization of conspiracy: illegal networks in the
+    heavy electrical equipment industry. Am. Soc. Rev. 58, 837–860 (1993)
+25. Krebs, V.E.: Mapping networks of terrorist cells. Connections 24(3), 43–52 (2002)
+
+
+216      M. Squire
+
+26. Morselli, C., Giguère, C., Petit, K.: The efﬁciency/security trade-off in criminal networks.
+    Soc. Netw. 29(1), 143–153 (2007)
+27. Xu, J., Chen, H.: The topology of dark networks. Commun. ACM 51(16), 58–65 (2008)
+28. Morselli, C.: Hells angels in springtime. Trends in Organized Crime 12, 145–158 (2009).
+    https://doi.org/10.1007/s12117-009-9065-1
+29. Magouirk, J., Atran, S., Sageman, M.: Connecting terrorist networks. Stud. Conflict Terror.
+    31, 1–16 (2008)
+30. Kalm, K.: Illicit network structures in cyberspace. In: 5th International Conference on Cyber
+    Conflict, pp. 1–13 (2013)
+31. MiIward, H.B., Raab, J.: Dark networks as problems revisited: adaptation and transformation
+    of Islamic terror organizations since 9/11. In: 8th Public Management Research Conference
+    (2005)
+32. Milward, H.B., Raab, J.: Dark networks as organizational problems: Elements of a theory.
+    Int. Public Manag. J. 9(3), 333–360 (2006)
+33. Venmo Help Center. Payment activity and privacy. https://help.venmo.com/hc/en-us/
+    articles/210413717-Payment-Activity-Privacy. Accessed 8 Apr 2019
+34. United States before the Federal Trade Commission. In the matter of PAYPAL, Inc., a
+    corporation. 1623102. Docket C-4651. (2018). https://www.ftc.gov/system/ﬁles/documents/
+    cases/1623102_c-4651_paypal_venmo_complaint_ﬁnal.pdf. Accessed 8 Apr 2019
+35. Moynihan, C., Winston, A.: Far-right Proud Boys reeling after arrests and scrutiny. New
+    York Times (2018). https://www.nytimes.com/2018/12/23/nyregion/gavin-mcinnes-proudboys-nypd.html. Accessed 8 Apr 2019
+36. Ofﬁcial Proud Boys Magazine. https://ofﬁcialproudboys.com. Accessed 8 Apr 2019. https://
+    web.archive.org/web/*/ofﬁcialproudboys.com. Accessed 25 Apr 2017
+37. Hampton, R.: In praise of Venmo humor. Slate (2018). https://slate.com/human-interest/
+    2018/07/venmo-transaction-humor-scrolling-through-the-emojis-and-jokes-of-the-paymentplatform.html. Accessed 8 Apr 2019
+38. Facebook. What are the privacy settings for groups? (n.d.) https://www.facebook.com/help/
+    220336891328465. Accessed 8 Apr 2019
+39. Facebook. An update on our plans to restrict data access (2018). https://newsroom.fb.com/
+    news/2018/04/restricting-data-access. Accessed 8 Apr 2019
+40. Hatmaker, T.: Facebook bans the Proud Boys, cutting the group off from its main recruitment
+    platform. TechCrunch (2018). https://techcrunch.com/2018/10/30/facebook-proud-boysmcinnes-kicked-off. Accessed 8 Apr 2019
+41. Disser, N.: Gavin McInnes and his Proud Boys want to make men great again.
+    Bedford + Bowery (2016). http://bedfordandbowery.com/2016/07/gavin-mcinnes-and-hisproud-boys-want-to-make-white-men-great-again. Accessed 9 Apr 2019
+42. Offenhartz, J.: Anti-Fascist protesters clash with ‘Proud Boys’ as Gavin McInnes speaks at
+    NYU. Gothamist (2017). http://gothamist.com/2017/02/03/nyu_proud_boy_protest.php.
+    Accessed 9 Apr 2019. https://web.archive.org/web/20170320150155/. Accessed 20 Mar
+    2017
+43. Barnes, L.: Proud Boys founder disavows violence at Charlottesville but one of its members
+    organized the event. Think Progress (2017). https://thinkprogress.org/proud-boys-foundertries-and-fails-to-distance-itself-from-charlottesville-6862fb8b3ae9. Accessed 13 Apr 2019
+44. Obeidallah, D.: Trump-supporting bigots to target upstate New York Muslims. The Daily
+    Beast (2017). https://www.thedailybeast.com/trump-supporting-bigots-to-target-upstate-newyork-muslims. Accessed 9 Apr 2019
+45. WestFest. Ofﬁcial Proud Boys Magazine. https://ofﬁcialproudboys.com/tag/westfest.
+    Accessed 9 Apr 2019. http://archive.is/LKasN. Accessed 9 Apr 2019
+
+
+                        Understanding Gray Networks Using Social Media Trace Data                 217
+
+46. Biggs, J.: “There’s a shit ton of proud boys in downtown Austin tonight and they have taken
+    over. (This is a pic of one view. There are many more)”. Twitter (2018). Original Twitter
+    URL: https://twitter.com/rambobiggs/status/977388616161943553. Accessed 9 Apr 2019.
+    http://archive.li/uxKmj. Accessed 9 Apr 2019
+47. Madani, D.: Two Proud Boys members plead guilty in New York City brawl case. NBC
+    News (2019). https://www.nbcnews.com/news/us-news/two-proud-boys-members-pleadguilty-new-york-city-brawl-n978481. Accessed 9 Apr 2019
+48. Wilson, J.: Proud Boys founder Gavin McInnes quits ‘extremist’ far-right group. The
+    Guardian (2018). https://www.theguardian.com/world/2018/nov/22/proud-boys-foundergavin-mcinnes-quits-far-right-group. Accessed 9 Apr 2019
+49. The Elders. RELEASE: Proud Boys statement on J.L. Van Dyke. Proud Boys Magazine
+    (2018).     https://ofﬁcialproudboys.com/uncategorized/release-proud-boys-statement-on-j-lvan-dyke. Accessed 9 Apr 2019. http://archive.li/JBCjd. Accessed 2 Dec 2018
+50. Zielinski, A.: Proud Boy arrested in Multnomah County for June assault. Portland Mercury
+    (2019).       https://www.portlandmercury.com/blogtown/2019/03/12/26142565/proud-boyarrested-in-multnomah-county-for-June-assaul. Accessed 9 Apr 2019
+51. Gephi. https://gephi.org
+52. Hu, Y.: Efﬁcient, high-quality force directed graph drawing. Math. J. 10(1), 37–71 (2005)
+53. Borgatti, S.P.: 2-Mode concepts in social network analysis. Encycl. Complex. Syst. Sci. 6,
+    8279–8291 (2009)
+54. Martin, S., Brown, W.M., Klavans, R., Boyack, K.W.: OpenOrd: an open-source toolbox for
+    large graph layout. Vis. Data Anal. 7868, 786806 (2011)
+55. Kessler, S.V., et al.: United States District Court for the Western District of Virginia. https://
+    www.integrityﬁrstforamerica.org/sites/default/ﬁles/Complaint.pdf

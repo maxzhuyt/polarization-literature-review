@@ -1,0 +1,492 @@
+A Frame of Mind: Using Statistical Models for Detection of Framing and
+                      Agenda Setting Campaigns
+
+          Oren Tsur                  Dan Calacci                                            David Lazer
+       Harvard University       Northeastern University                                Northeastern University
+    & Northeastern University dcalacci@ccs.neu.edu                                      & Harvard University
+orentsur@seas.harvard.edu                                                              d.lazer@neu.edu
+
+
+                      Abstract                                using topic models. Moreover, we demonstrate
+                                                              how the models learned are used to construct time
+      Framing is a sophisticated form of dis-                 series of expressed agendas. These time series are
+      course in which the speaker tries to in-                fitted using autoregressive distributive-lag models
+      duce a cognitive bias through consis-                   in order to learn the partisan temporal relations betent linkage between a topic and a spe-                 tween topics and expressed agendas.
+      cific context (frame). We build on po-                      This framework could also be applied in other
+      litical science and communication theory                domains such as ideology divergence in online
+      and use probabilistic topic models com-                 forums of radical groups or for measuring the
+      bined with time series regression analy-                changes in public sentiment toward commercial
+      sis (autoregressive distributed-lag models)             brands.
+      to gain insights about the language dy-                 Contribution (i) To the best of our knowledge
+      namics in the political processes. Pro-                 this is the first work to analyze framing strategies
+      cessing four years of public statements is-             on large scale in an unsupervised manner1 . (ii)
+      sued by members of the U.S. Congress,                   we combine topic models with regression analyour results provide a glimpse into the com-             sis in recovering longitudinal trends. (iii) We furplex dynamic processes of framing, atten-               ther provide evidence for the dynamics of framing
+      tion shifts and agenda setting, commonly                campaigns, commonly known as ‘political spin2 ’.
+      known as ‘spin’. We further provide new                 Finally, (iv) we show how this framework can shed
+      evidence for the divergence in party disci-             new light on the broad scholarship on the diverpline in U.S. politics.                                 gence of party discipline.
+
+  1   Introduction                                            2       Related Work
+  Language is one of the main tools used by politi-           2.1      Political Communication Theory
+  cians to promote their agenda, gain popularity, win
+                                                              Some of the theoretical constructs employed by
+  elections and drive societal change (Luntz, 2007).
+                                                              Political Science scholars to describe features of
+  The growing availability of online archives of pothe political communication mechanism include:
+  litical data such as public statements, bill protopic ownership, framing, and agenda setting. Unposals, floor speeches, interviews or social mederstanding these theoretical concepts is necessary
+  dia streams allows computational analysis of many
+                                                              in laying the ground for our computational apaspects of the political process. The analysis
+                                                              proach. This subsection provides the key definiperformed can increase transparency, facilitate a
+                                                              tions and a brief survey of the relevant literature.
+  better educated constituency and improve underTopic/Issue Ownership We say that a candistanding of the political process.
+                                                              date, a representative or a party owns a topic if this
+      In this paper we propose a framework for autopic, set of ideas or the competence in handling
+  tomatic analysis of a large collection of political
+                                                              specific issues are strongly associated with her/the
+  texts. Specifically, we demonstrate how the use
+  of Bayesian methods and time series analysis cap-               1
+                                                                    We do use some meta data such as the speaker’s party
+  tures the different ways in which political parties         and its timestamp for the time series analysis.
+                                                                    ‘Political spin’ may also refer to fact twisting and factual
+  control the political discourse. We show that topic         distractions promoted using various media outlets. We do not
+  ownership and framing strategies can be inferred            refer to these types of spin in this work.
+
+
+                                                        1629
+                Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics
+              and the 7th International Joint Conference on Natural Language Processing, pages 1629–1638,
+                   Beijing, China, July 26-31, 2015. c 2015 Association for Computational Linguistics
+
+
+party (Petrocik, 1991; Petrocik, 1996; Damore,           comparing word tokens and n-grams to prede2004). For example, environmental issues are tra-        fined lists extracted from labeled data. Hidden
+ditionally associated with specific parties and not      Markov Models are used by (Sim et al., 2013) in
+others (e.g. in U.S. politics, environmental issues      order to measure ideological proportions in politare mostly associated with the Democratic party          ical speech, and (Iyyer et al., 2014) use recursive
+(Dunlap et al., 2001)).                                  neural networks for a similar task.
+   Framing Framing is the psychological schema              Topic models have been used to detect connecwe use in order to organize and process our ex-          tions between contributions and political agendas
+periences. Politicians can use different contextual      as expressed in microblogging platforms (Yano et
+frames when referring to a specific topic, giving        al., 2013) and for reconstructing voting patterns
+the public very different views on the topic at hand     based on the language in congressional bills (Ger-
+(Goffman, 1974; Gamson, 1989; Entman, 1993;              rish and Blei, 2012). The flow of policy ideas has
+Chong and Druckman, 2007). A notable example             been modeled via measuring text reuse in different
+is the divisive partisan rhetoric used by U.S. politi-   versions of bill proposals (Wilkerson et al., 2013).
+cians when referring to the legality of abortion.           Nguyen et al. (2013) use supervised hierarchiDemocratic and Republican positions, framed as           cal topic regression to improve prediction of polit-
+’pro choice’ and ’pro life’, respectively, spin the      ical affiliation and sentiment.
+abortion discourse as an issue of values of individ-        Expressed agendas in press releases issued by
+ual freedom (pro-choice) or validating the sanctity      U.S. Senators have been modeled by Grimmer usof life (pro-life). Similarly, Republicans refer to      ing author topic models (Grimmer, 2010). It is
+the inheritance tax by the overwhelmingly nega-          important to point to some key differences betive coinage ‘death tax’, while Democrats use ‘es-       tween our work and Grimmer’s work. While the
+tate tax’.                                               model used by Grimmer allows attribution of a
+   Framing strategies, however, go beyond the use        single topic per document, we are interested in a
+of fixed phrases such as ‘death tax’ and ‘pro-           mixed membership model as we hypothesize poschoice’. The Affordable Care Act (ACA) and               sible correspondence between topics and frames.
+the debate over raising the minimum wage can be          Moreover, while we are interested in partisan dyframed as an issue of social justice or in the con-      namics, Grimmer is interested in the expressed
+text of the economic burden it incurs on tax payers      agendas of individuals thus focusing on an auand by potential job loss.                               thorship model. Finally, unlike Grimmer, we also
+   Agenda Setting and shifting Agenda setting is         introduce autoregressive distributed-lag models in
+achieved by framing and by increased or decreased        order to capture temporal dynamics between topattention (attention shifts) in order to set or change   ics and parties as reflected in the data.
+the political, media or public agenda (McCombs              Another line of work can be found in the more
+and Shaw, 1972; Scheufele and Tewksbury, 2007).          traditional Political Science scholarship. The sucSome examples of agenda setting campaigns are            cess of framing strategies is studied by the analysis
+the repeated comments about the importance of            of real time reactions to political debates (Boydchild vaccination, highlighting the need for equal       stun et al., 2014). Autoregressive models are used
+pay in the 2015 State of the Union Presidential Ad-      for analyzing adjustment of issue positions with
+dress, or, more broadly, repeatedly addressing the       respect to news items during the Dutch national
+need for affordable healthcare.                          election campaign of 2006 (Kleinnijenhuis and de
+                                                         Nooy, 2013). This approach is based on manual
+2.2   Computational Analysis of Political Data           annotation of data.
+The availability of archives and streams of polit-          Logistic regression on manually coded camical data is driving a growing number of compu-          paign advertisements is used in order to learn the
+tational works that address a wide array of Polit-       dynamics of issue ownership by individual candiical Science questions. Methods vary from sim-           dates (Damore, 2004).
+ple word matching to more sophisticated Bayesian            While some of the works above address related
+models and deep learning techniques.                     research questions (agenda setting, topic ownSlant in news articles has been modeled by            ership) or use similar computational approaches
+(Gentzkow and Shapiro, 2010) and (Lee, 2013),            (topic models, regression models), our work is the
+
+
+                                                     1630
+
+
+Figure 1: Examples of a public statement released on March 10, 2010 by Republican minority leader – Congressman John
+Boehner (now speaker of the U.S. House of Representatives). The highlighted sequences illustrate the different topics/frames
+used - health care (green), economy/budget (yellow) and corruption (orange).
+
+
+first to offer a complete framework for automatic                                                 Congress Term
+                                                                        Chamber     Party
+                                                                                             111th 112th 113th
+detection of topic ownership and attention shifting                                 DEM        57      51       53
+                                                                         Senate
+on a large scale. Additionally, our partisan analy-                                 REP        41      47       45
+sis provides a model for longitudinal partisan com-                                 DEM       257     193      199
+                                                                         House
+                                                                                    REP       178     242      234
+munication strategies without the need for encoding of external events and specific campaigns.                  Table 1: Majority shifts in the House in the 111-113 Congress
+                                                                terms. Independent representatives are omitted.
+3       Data
+A brief overview of the U.S. Congress The
+American political system is a bicameral legislature composed of the Senate (100 senators, two
+from each state) and the House of Representatives
+(435 voting members plus 6 non-voting representatives, number depends on the population of each
+state). Election is held every two years, in which
+one third of the Senators and all members of the
+House face reelection. Members are typically affiliated with either the Democratic Party or the Republican Party. Congressional election and Presidential election coincide every four years.
+                                                                  Figure 2: Monthly average number of statements by party.
+The Corpus We use a corpus of public statements released by members of Congress in both
+                                                                While the administration was Democratic during
+the Senate and The House of Representatives, colall four years of our data, notice the Democratic
+lected by Project Vote Smart3 . An example of a
+                                                                loss of majority in the 112th Congress. We focus
+public statement is presented in Figure 1.
+                                                                on the years 2010-2013 since Project Vote Smart
+   In this work we use all individual statements
+                                                                has better coverage of the political discourse after
+and press releases in a span of four years (20102009.
+2013), a total of 134000 statements made by
+                                                                   It is interesting to note that while the total num641 representatives. This time span encompasses
+                                                                ber of statements per month reflects the change
+two Congressional elections (November 2010 and
+                                                                of majority in the November 2010 and 2012 elec2012). Table 1 gives the number of Demotions (Table 1 and Figure 2), accounting for the
+cratic and Republican representatives in the three
+                                                                number of seats per party it appears that the avCongress terms (111-113) covered in our data.
+                                                                erage Democrat is consistently more ‘productive’
+        http://votesmart.org/                                   with µ = 6.24 , σ 2 = 2.1 (Dem) and µ = 5.5 ,
+
+
+                                                           1631
+
+
+σ 2 = 1.5 (Rep) statements per month. We hence                     therefore reassign topics to each document (statereport all results after normalization by the num-                 ment) d in the following manner:
+ber of seats each party posses at each timestamp.
+                                                                      1. Assign a topic to each word based on distri4     Computational Framework                                            bution of topics over words infferred in the
+                                                                         previous stage.
+In order to automatically discover the correlated                     2. Find a set T 0 of k 0 topics (k 0 < k) that cover
+dynamics of attention shifts, we take a layered ap-                      q% of the document in a greedy way. The
+proach, consisting of the stages described below.                        topic assingment for document d will then be
+4.1    Topic Inference                                                   d → T 0.
+In the first stage, we use topic models in order                   4.3   Data Slicing
+to learn topic distribution over words and identify                We slice the data according to four parameters:
+the set of topics addressed in the corpus. Topic                   topic (or topical cluster), time, party and document
+Modeling describes a general algorithmic frame-                    (statement). These slicing parameters allow us the
+work for unsupervised discovery of a set of top-                   flexibility required to thoroughly analyze the data.
+ics expressed in a collection of documents. The                    In the time parameter, we have four settings: no
+framework is based on the assumption that doc-                     slicing (all data is treated as if it were produced
+uments are generated by mixtures of k topics. It                   simultaneously), monthly slicing, weekly slicing
+is therefore assumed that documents are gener-                     and daily slicing, each gives different granularity
+ated by the following process: for each word in                    of ownership patterns.
+a document, we choose a topic from a given topic
+distribution, then choose a word from the distri-                  4.4    Autoregressive-Distributed-Lag Models
+bution over words that the chosen topic specifies.                                                        P
+                                                                   A linear function b + wT X = b + j wjT X j is
+Latent Dirichlet Allocation (LDA), the framework                   a simple yet robust method for testing dependency
+employed here, assumes that the distribution over                  between X and Y . Ordinary least square regrestopics has a Dirichlet prior. In practice, we as-                  sion finds the coefficientsPthat minimize the mean
+sume a Dirichlet prior on topics and use varia-                    square error of Y = b + j wjT X j given (X, Y ).
+tional Bayes (VB) optimization to infer topic dis-                 In our case (X, Y ) are time series. We argue that
+tributions over words (Blei et al., 2003). In order                a lagged dependency between two time series sugto considerably improve efficiency, we use an on-                  gests a framing or attention shifting campaign.
+line variational Bayes inference algorithm, shown                     Regression analysis of time series assumes into perform similarly to batch LDA (Hoffman et                      dependence between error terms. This key statisal., 2010). It is important to note that our goals                 tical property is often violated in real world data
+and assumptions about the data do not lend them-                   as yt often depends on yt−1 thus the time series
+selvse to the use of dynamic or correlated topic                   residuals tend to correlate. The consequences of
+models (Blei and Lafferty, 2006a; Blei and Laf-                    violating the independence of errors are threefold:
+ferty, 2006b)4 .                                                   i) Statistical tests of significance are uninforma4.2    Topic Assignment and Unification                            tive and cannot be used to prove dependency between the model parameters, ii) The coefficients
+The distribution of ranked topics over documents                   learned lose accuracy, and iii) error terms are corpresents a “long tailed” distribution in which a few               related, and hence contain information that is lost
+topics achieve a significant coverage of a docu-                   in analysis instead of used to leverage the predicment. This is a result of the mixed membership                     tion power of the model. The importance of con-
+“generative” approach and the bag-of-words as-                     trolling for autoregressive properties and for seasumption. In a more realistic setting the number of                sonality effects was recently demonstrated in the
+topics per document is restricted. We wish to re-                  error analysis of the Google Flu Trends algorithm
+strict the number of topics per document while still               (Lazer et al., 2014).
+conforming to the mixture model assumption. We                        In order to control for error dependency we add
+      We are interested in the change of the proportions of top-   the auto regressing component γ T Y n to the ordiics over time and not in the change of the word distribution       nary regression, as shown in Equation 1:
+within topics and we don’t assume inherent correlation of
+topics.                                                                    yt = α + β T X m + γ T Y n + t            (1)
+
+
+                                                               1632
+
+
+        Cluster    Topic ID                                    Top Words
+                                 health care law will obamacare insurance repeal affordable americans costs new reform people president healthcare act coverage mandate american obama
+        Health
+                                 medicare seniors program social medicaid benefits fraud payments security programs
+                                 cost services costs billion payment beneficiaries waste year savings million
+                                 project pipeline president obama keystone jobs climate energy xl construction state
+                                 change permit administration approval oil will canada environmental create
+        Energy
+                                 oil alaska gulf coast spill drilling offshore bp murkowski begich markey resources
+                                 noaa said industry moratorium mexico gas administration sen
+                                 day nation country today americans us american war world people america lives will
+                                 honor families years men many th attacks
+       Security
+                                 nuclear united iran international israel foreign president states security weapons people world syria nations sanctions regime must government peace
+                                 budget spending debt president cuts fiscal government deficit will plan trillion obama
+                                 house congress year federal cut economy washington billion
+       Economy
+                                 jobs small businesses business job economy economic create will new growth work
+                                 american america help creation act manufacturing can sector
+
+                           Table 2: Top twenty words in selected topics in four topical clusters.
+
+where, β T X m indicates the distributed-lag terms:              Where t0 = t−i and i ∈ {0, 1, 2, ..., 28} indicating
+                           m
+                           X                                     no lag, one day lag, 2 days lag, a week’s lag, etc.
+             βT X m =            βi xt−i                 (2)
+                           i=0                                   5     Results
+and γ T Y n indicates the autoregressive component               5.1    Topical Ownership and Framing
+described by:                                         5.1.1 Inferred Topics
+                           n
+                           X                          As an input for the topic modeling module (stage 1
+              γT Y n =      γj yt−j              (3)
+                                                      of the system) we use a lexicon of the 10000 most
+                        j=1
+                                                      frequent words in the corpus. We use k = 100
+for some n ⩽ t (notice that i ranges from 0 while     as the number of topics. Experiments with k ∈
+j ranges from 1).                                     {30, 50, 500, 1000} produced topics that were eiIn order to control for seasonality (such as holi- ther too general or too incoherent. Once the topicdays and recess’) we add a set of categorical vari-   word distributions were inferred, topics were valables indicating the weekday and the week-in-year     idated by two annotators examining the top 50
+of a statement, so the autoregressive model is:       words for each topic. Annotators used hierarchiX
+             T m
+yt = α + β X + γ Y +   T n
+                                    Wl I (t) + t (4) cal labels – an energy related topic ti could be anT l
+
+                                 l
+                                                      notated energy / clean-tech, while another topic tj
+                                                      could be annotated energy / economy / keystoneWhere l ∈ {day, week} thus I l (t) is the identity    xl. Annotations were consolidated to unify the
+matrix with the dimension of the seasonal granu-      coding5 . After consolidation annotators agreed on
+larity, in our case I day  = I7×7 for each day of     all topic annotations. Some examples of topics
+the week and I week = I52×52 for the week of the      labels are ‘health’, ‘energy’, ‘economy’, ‘boilerl = 1 iff t timestamp falls in the i-th dayyear. Ii,i                                            plate’, ‘political process’, ‘local’ and a few ‘ranof-week/week-in-year.                                 dom’ topics.
+   Finally, in practice it is usually sufficient re-     After topic assignment as described in Section
+strict the autoregressive term to one parameter       4.2 each document is associated with only 2–6 topwith j = 1 (accounting to the y value at the pre-     ics. In this work we focus on the 14 most salient
+vious time stamp), this is consistent with the 24     (concise, general and frequent) topics in the corhours news cycle reported by (Leskovec et al.,        pus. These 14 topics fall under four topical clus2009) among others. Since our goal is to find         ters - Health, Energy, Army/Security and Econcorrelated attention shifts we can substitute the     omy/Budget. Table 2 contains examples of top
+summation distributed-lag term by a single lagged     words and labels for some of the topics from four
+term. Thus, we aim to minimize the MSE in the         topical clusters.
+following model:
+                             X                           5
+                                                           For example, if topic ti was labeled energy, cleantech by
+                      n             T l
+ yt = α + βxt0 + γyt−1 +         Wl I (t) + t (5)    one annotator and energy, green by the other, the annotators
+                                  l
+                                                                 would agree to use either cleantech or green consistently.
+
+
+                                                            1633
+
+
+                   (a)                                                           (b)
+
+        Figure 3: Seasonality effect: average number of statements issued per day of week (a) and per week in year (b).
+
+
+             (a) All statements                    (b) Republican statements                 (c) Democrat statements
+
+Figure 4: Normalized Pointwise Mutual Information (PMI) of topic cooccurrence of 14 topics of four topical clusters Health
+(30, 51, 80), Energy (38, 69,71), securtity (34, 74, 89) and Budget & Economy (68, 23, 8, 88, 52)
+
+
+  Cluster      Topic     DEM       REP      DEM        REP           Cluster     Topic    DEM      REP     DEM*        REP*
+                30        1679     4622                                           30        46     154       2          79
+   Health       51         746     233      3169       5386           Health      51       151      22       34          1
+                80         898     437                                            80       157      27       37          2
+                38         128     255                                            38        47      43       2           6
+  Energy        69        1102     948      4042       3415          Energy       69       114      56       18          5
+                71        2859     2119                                           71       144      52       43          5
+                34        6239     5121                                           34       141      63       52          9
+  Security      74        3875     3071     12393     11140          Security     74       144      46       34          8
+                89        3807     4138                                           89        80     113       10         22
+                68       12260    19916                                           68        32     174       7          127
+                23        5221     3742                                           23       151      49       60          9
+ Economy         8        6981     2456     31604     31706          Economy       8       205      2       165          0
+                88       12845    11139                                           88       137      68       63         17
+                52        3479     1154                                           52       190      12      123          0
+
+Table 3: Total number of statements by party in four topical      Table 4: Number of weeks each party “owned” a topic by
+clusters. DEM indicates the Democrat party, REP indicates         issuing more statements (DEM, REP) and number of weeks
+the Republican party.                                             the party owned the topic with statistical significance p <
+                                                                  0.05 (DEM*, REP*).
+
+5.1.2    Partisan Topic Ownership                                 counts in the Economy cluster are quite balanced
+Table 3 shows the partisan ownership by provid-                   (31604 vs. 31706), the counts of the individual
+ing the number of statements issued by each party                 topics in the cluster are polarized. Remember that
+on each topic and for topical clusters. It also il-               these topical classes were all inferred by the LDA
+lustrates that different topical granularities portray            in an unsupervised way. These partisan ownership
+different ownership patterns. For example, while                  patterns were also confirmed by domain experts.
+it seems like the health cluster is owned by the                    Longevity is a crucial factor in topic ownership.
+Republican party (Table 3, cluster level), a closer               A weekly ownership of a topic is achieved by a
+look at specific topics in the cluster reveals a more             party Q if it issued more statements on the topic
+complex picture – the Republicans actually own                    than party R in that particular week. We compute
+only topic 30, which turns to be the most dominant                the significance of the ownership assuming a null
+topic in the cluster. Similarly, while the statement              hypothesis that statements are issued by the parties
+
+
+                                                              1634
+
+
+by two Bernoulli processes with the same parameters. Table 4 provides the number of weeks each
+party owned each topic and the number of weeks
+it had a significant ownership (p < 0.05)6 .
+   Topic 30 illustrates the different perspectives.
+The total statement count (see Table 3) reveals
+a clear ownership by the Republican party, issuing 73% of the statements. While turning to
+weekly ownership (Table 4) we get similar number (Republicans control 77% of the weeks); assuming only significance ownership, Republicans
+significantly own the discourse for 79 weeks while
+Democrats have significant ownership in only 2
+weeks which means the Republicans own 97% of                     Figure 5: Average number of n-grams owned by each party
+the significantly owned weeks.                                   on all topics (top), in Republican owned topics (middle) and
+                                                                 in Democrat owned topics (bottom).
+5.1.3    Topic Cooccurrence                                      guage in public statements. While it is “common
+Topic cooccurrence could approximate the way                     knowledge” among political scientists that Repubtopics are framed. A heatmap of within state-                    licans are more adherent to “talking points” – to
+ment topic cooccurrence based on Pointwise Mu-                   the best of our knowledge there are no large scale
+tual Information (PMI) (Church and Hanks, 1990)                  studies that support (or refute) that.
+is presented in Figure 4. The topical clusters are                  In the absence of official lists of “talking
+characterized by blocks along the diagonal. The                  points”, repeated use of similar phrases (n-grams)
+blocks structure is to be expected due to the inher-             can provide an indication for the level of party disent topical similarity within clusters. It is inter-             cipline. In each topic, we looked at all n-grams
+esting to see the inter-cluster differences in PMI               (n ∈ {2, ..., 14}) that were used by more than five
+between the two parties. At the cluster level, Re-               members of the Congress. For example, the tripublicans tend to use the Budget & Economy top-                  gram “the American people” (topic 38) appears in
+ics with topics in all other topical clusters, evident           81 statements made by 54 members of congress,
+by the stronger colors in the five bottom (left) rows            only two of them were Democrats. Similarly, the
+(columns) in 4b comparing to 4c.                                 tri-gram “social security benefits” (topic 51) apA notable example is the way Republicans                      pears in 123 statements, issued by 89 members,
+frame the controversial Keystone XL project (En-                 71 of which were Democrats. Examining “ownergy, topic 38) with the impact on the job market                ership” of n-grams (per n-gram, per topic) reveals
+and small businesses (Budget & Economy, topic                    that that Republicans do tend to stick to talking
+88), a topic traditionally owned by Democrats (see               points more than Democrats do.
+top topical words in Table 2 and topic ownership                    Figure 5 provides the average number of nat Table 4).                                                     grams owned by each party over all topics (top),
+                                                                 over Republican owned topics (middle) and over
+5.2     Partisan Discipline                                      Democratic owned topics (bottom). While on avParty discipline is of great interest for political sci-         erage Democrats own more n-grams than Repubentists (Crook and Hibbing, 1985; Bowler et al.,                 licans (Figure 5, top), the difference is marginal
+1999; Krehbiel, 2000; McCarty, 2001) . Typically,                and is attributed to the fact that Democrats own
+party discipline is examined by analysis of roll call            more topics than the Republicans (10 vs. 4, see Tavotes on bills. Discipline, however can be also                  ble 3). Comparison between n-gram ownership in
+measured by adherence to party lines in talking                  Democratic owned topics and Republican owned
+points and agenda setting campaigns. Discipline,                 topics (Figure 5, middle and bottom) shows that
+therefore, can be captured by conformity of lan-                 while each party owns more n-grams in the topics it owns, Republicans present stronger ownerThe numbers do not necessarily add up to 208 (the num-      ship over the n-grams in their owned topics than
+ber of weeks in four years) due to weeks with no significant
+ownership , e.g. the parties issued a similar number of state-   Democrats in their respective owned topics. Morements (usually zero) on that topic.                              over, Republicans present relative discipline even
+
+
+                                                             1635
+
+
+in Democratic owned topics.                                                                     Significant
+                                                                Cluster       Dependent         Correlations
+   Manually looking at some sampled n-grams it                                              l=0 l=1 l=2
+appears that mid-length n-grams are shared “talk-             Intra-cluster
+                                                                                DEM          28      1       1
+                                                                                REP          26      4       5
+ing points” and longer n-grams are full citations                               DEM          15      2       0
+from bill proposals and committee reports. These              Inter-cluster
+                                                                                REP          17      0       0
+findings are in line with textual sharing semantics
+                                                          Table 5: Number of statistically significant (p < .05, Bonfer-
+(Lin et al., 2015).                                       roni corrected) daily lagged correlations between cross-party
+                                                          time series.
+5.3   Time Series Analysis
+                                                          correlation may suggest such a pattern. We proTo this end we create two time series for each            vide some evidence in the qualitative analysis in
+topic c ∈ T : ScCD – daily normalized counts for          the next section.
+Democrats and ScCR – daily normalized counts for
+Republicans. Normalization of counts is needed in         5.4    Discussion and Qualitative Analysis
+order to account for the bias introduced by the dif-      Inter and intra-cluster correlations can be interference in the number of seats each party holds and       preted as manifestations of different types of framthe changes in that number in the different terms         ing strategies and campaigns for attention shifts. A
+as apparent from Table 1.                                 detailed analysis of the interplay between the difOur data exhibit two strong seasonality effects:       ferent frames is beyond the scope of this paper and
+a weekly cycle with the lowest point on the week-         is left for political scientists.
+end and peaking on Thursday (Figure 3a), and a               The majority of the significant correlations were
+yearly cycle with low points at the weeks of 4th of       found with no lag. It is important to note that these
+July, Thanksgiving, August recess and Christmas           correlations are found significant even after ac-
+(Figure 3b). These seasonality effects are captured       counting to autoregressive patterns. Zero-lag corby the added terms in Equation 4.                         relations could be interpreted in a number of ways.
+   After time series are constructed we apply first-      Two probable interpretations are (i) daily time sedifference detrending (Enders, 2008) in order to          ries are too crude to model lag patterns, and (ii)
+transform the time series to stationary series and        the parties respond to some external event at the
+avoid trend-incurred correlations.                        same time. While we cannot address (i) due to
+   We fit autoregressive-distributed-lag models for       sparseness and noise7 , we can sample statements
+all pairs in {X = Sc,l , Y = Sc0 }, where c, c0 ∈ T       and examine them manually. Manual examina-
+(topics), l ∈ {0, 1, 2, 3, ..., 7, 14, ..., 28}.          tion reveals a strong responsive pattern in peakIn this setting we fit 5153 pairs of time series       ing trends. One typical example is the Republican
+of which 718 pairs had a significant coefficient for      spike in topic 30 on March 10. The statement at
+X (p < 0.05). Artificial significance due to abun-        Figure 1 is very illustrative as it explicitly refers
+dance of fitted models was accounted to by apply-         to a statement by President Obama. Explicit refing the strict Bonferroni correction (Dunn, 1961)         erences to statements made by the other side are
+on the significance level. The correction resulted        found more frequently in Republican statements
+in 103 significant correlations, most of them with        and reveal a clear responsive pattern that also suglag of up to 3 days. Table 5 gives the number of in-      gest a strong party discipline, in line with the retra/inter significant correlation for lags l ∈ 0, 1, 2.   sults in Section 5.2. This small scale qualitative
+                                                          analysis complements the quantitative results reOne example for such correlation is the Repubported in Section 5.3 and provide evidence for a
+licans “responding” to Democratic topic 88 with
+                                                          responsive pattern even in zero lag series.
+with topic 8 (intra-cluster) in one and two days lag.
+We interpret this as a different spin on the budget       6     Conclusion
+issue. Another example is the Democratic party
+corresponds to Republican topic 30 with topic 88          We presented a statistical framework for the anal-
+(inter-cluster) on the same day (no lag). We in-          ysis of framing strategies and agenda setting camterpret this as a way to place the Acordable Care         paigns in the political sphere. Combining topic
+Act in a specific economic frame. We note that            models and time series analysis, we modeled topic
+while the lagged correlated time series do not im-           7
+                                                               The exact timestamp is sometimes missing, set to midply a responsive pattern, a significance of lagged        night or affected by external factors.
+
+
+                                                      1636
+
+
+ownership and party discipline and analyzed re-            Riley E Dunlap, Chenyang Xiao, and Aaron M Mcsponsive patterns in an unsupervised way and with             Cright. 2001. Politics and environment in america: Partisan and ideological cleavages in public supno prior knowledge of the political system. Our
+                                                              port for environmentalism. Environmental politics,
+work draws from political science theory, validat-            10(4):23–48.
+ing some theoretical constructs and shedding new
+light on others. The proposed framework and the            Olive Jean Dunn. 1961. Multiple comparisons among
+                                                             means. Journal of the American Statistical Associaresults could be further used and interpreted by po-         tion, 56(293):52–64.
+litical scientists and communication scholars.
+                                                           Walter Enders. 2008. Applied econometric time series.
+7   Acknowledgments                                          John Wiley & Sons.
+                                                           Robert M Entman. 1993. Framing: Toward clarificaWe thank Ryan Kennedy, Navid Dianati, Kather-                tion of a fractured paradigm. Journal of communiine Ognyanova, Stefan Vojcik and Shahar Even-                cation, 43(4):51–58.
+Dar Mandel for fruitful discussions. We thank the
+                                                           William A Gamson. 1989. News as framing. Amerianonymous reviewers for their helpful comments.              can Behavioral Scientist, 33(2):157–161.
+This work was supported by the following grants:
+MURI #504026 and ARO #50433.                               Matthew Gentzkow and Jesse M. Shapiro. 2010. What
+                                                            drives media slant? evidence from u.s. daily newspapers. Econometrica, 78:35–71.
+References                                                 Sean Gerrish and David M. Blei. 2012. How they
+                                                             vote: Issue-adjusted models of legislative behavior.
+David Blei and John Lafferty. 2006a. Correlated topic        In Neural Information Processing Systems (NIPS),
+  models. Advances in neural information processing          pages 2762–2770.
+  systems, 18:147.
+                                                           Erving Goffman. 1974. Frame analysis: An essay on
+David M Blei and John D Lafferty. 2006b. Dynamic             the organization of experience. Harvard University
+  topic models. In Proceedings of the 23rd interna-          Press.
+  tional conference on Machine learning, pages 113–
+  120. ACM.                                                Justin Grimmer. 2010. A bayesian hierarchical topic
+                                                              model for political texts: Measuring expressed agenDavid M Blei, Andrew Y Ng, and Michael I Jordan.              das in senate press releases. Political Analysis,
+  2003. Latent dirichlet allocation. the Journal of ma-       18(1):1–35.
+  chine Learning research, 3:993–1022.
+                                                           Matthew Hoffman, Francis R Bach, and David M Blei.
+Shaun Bowler, David M Farrell, and Richard S Katz.          2010. Online learning for latent dirichlet allocation.
+  1999. Party cohesion, party discipline, and parlia-       In advances in neural information processing sysments. Party discipline and parliamentary govern-         tems, pages 856–864.
+  ment, pages 3–22.
+                                                           Mohit Iyyer, Peter Enns, Jordan Boyd-Graber, and
+Amber E Boydstun, Rebecca A Glazier, Matthew T              Philip Resnik. 2014. Political ideology detection
+ Pietryka, and Philip Resnik. 2014. Real-time reac-         using recursive neural networks. In Proceedings of
+ tions to a 2012 presidential debate a method for un-       the 52nd meeting of the Association for Computaderstanding which messages matter. Public Opinion          tional Linguistics.
+ Quarterly, 78(S1):330–343.
+                                                           Jan Kleinnijenhuis and Wouter de Nooy. 2013. Adjustment of issue positions based on network strateDennis Chong and James N Druckman. 2007. Framgies in an election campaign: A two-mode network
+  ing theory. Annu. Rev. Polit. Sci., 10:103–126.
+                                                              autoregression model with cross-nested random efKenneth Ward Church and Patrick Hanks. 1990. Word             fects. Social Networks, 35(2):168–177.
+  association norms, mutual information, and lexicog-      Keith Krehbiel. 2000. Party discipline and measures of
+  raphy. Computational linguistics, 16(1):22–29.             partisanship. American Journal of Political Science,
+                                                             pages 212–227.
+Sara Brandes Crook and John R Hibbing. 1985. Congressional reform and party discipline: The effects      David M Lazer, Ryan Kennedy, Gary King, and
+  of changes in the seniority system on party loyalty        Alessandro Vespignani. 2014. The parable of
+  in the us house of representatives. British Journal of     google flu: Traps in big data analysis. Science MagPolitical Science, 15(02):207–226.                         azine (AAAS).
+David F Damore. 2004. The dynamics of issue own-           Han Soo Lee. 2013. Do national economic and politiership in presidential campaigns. Political Research       cal conditions affect ideological media slant? PolitQuarterly, 57(3):391–397.                                  ical Communication, 30:395–418.
+
+
+                                                       1637
+
+
+Jure Leskovec, Lars Backstrom, and Jon Kleinberg.
+   2009. Meme-tracking and the dynamics of the news
+   cycle. In Proceedings of the 15th ACM SIGKDD international conference on Knowledge discovery and
+   data mining, pages 497–506. ACM.
+Y. Lin, D. Margolin, and D Lazer. 2015. Uncovering social semantics from textual traces: A theorydriven approach and evidence from public statements of u.s. members of congress. Journal of the
+   Association for Information Science and Technology, page (forthcoming).
+Frank I. Luntz. 2007. Words That Work: It’s Not What
+  You Say, It’s What People Hear. Hyperion.
+Nolan McCarty. 2001. The hunt for party discipline
+  in congress. In American Political Science Association, volume 95, pages 673–687. Cambridge Univ
+  Press.
+Maxwell E McCombs and Donald L Shaw. 1972. The
+ agenda-setting function of mass media. Public opinion quarterly, 36(2):176–187.
+Viet-An Nguyen, Jordan Boyd-Graber, and Philip
+  Resnik. 2013. Lexical and hierarchical topic regression. In Neural Information Processing Systems.
+John R Petrocik. 1991. Divided government: Is it all in
+  the campaigns? The politics of divided government,
+  pages 13–38.
+John R Petrocik. 1996. Issue ownership in presidential
+  elections, with a 1980 case study. American journal
+  of political science, pages 825–850.
+Dietram A Scheufele and David Tewksbury. 2007.
+  Framing, agenda setting, and priming: The evolution of three media effects models. Journal of communication, 57(1):9–20.
+Yanchuan Sim, Brice Acree, Justin H Gross, and
+  Noah A Smith. 2013. Measuring ideological proportions in political speeches. In Proceedings of
+  EMNLP.
+John Wilkerson, David A. Smith, and Nick Stramp.
+  2013. Tracing the flow of policy ideas in legislatures: A text reuse approach. In New Directions in
+  Analyzing Text as Data, September.
+Tae Yano, Dani Yogotama, and Noah A. Smith. 2013.
+  A penny for your tweets: Campaign contributions
+  and capitol hill microblogs. In International AAAI
+  Conference on Weblogs and Social Media (ICWSM),
+  July.
+
+
+                                                      1638

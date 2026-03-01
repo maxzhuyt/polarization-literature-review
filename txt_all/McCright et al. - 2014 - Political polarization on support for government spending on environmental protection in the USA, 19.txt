@@ -1,0 +1,531 @@
+Social Science Research 48 (2014) 251–260
+
+
+                                                       Contents lists available at ScienceDirect
+
+
+                                                      Social Science Research
+                                     journal homepage: www.elsevier.com/locate/ssresearch
+
+
+Political polarization on support for government spending on
+environmental protection in the USA, 1974–2012
+Aaron M. McCright a,⇑, Chenyang Xiao b, Riley E. Dunlap c
+a
+  Lyman Briggs College and Department of Sociology, Michigan State University, 919 East Shaw Lane, E-35 Holmes Hall, East Lansing, MI 48825, USA
+b
+  Department of Sociology, American University, 4400 Massachusetts Avenue, NW, Washington, DC 20016, USA
+c
+  Department of Sociology, Oklahoma State University, 431 Murray, Stillwater, OK 74078, USA
+
+
+a r t i c l e           i n f o                        a b s t r a c t
+
+Article history:                                       Since the early 1990s, the American conservative movement has become increasingly hosReceived 15 June 2013                                  tile toward environmental protection and Congressional Republicans have become increasRevised 2 May 2014                                     ingly anti-environmental in their voting records. Party sorting theory holds that such
+Accepted 25 June 2014
+                                                       political polarization among elites will likely extend to the general public. Analyzing GenAvailable online 5 July 2014
+                                                       eral Social Survey data from 1974 to 2012, we examine whether political polarization has
+                                                       occurred on support for government spending on environmental protection over this time
+Keywords:
+                                                       period in the US general public. We ﬁnd that there has been signiﬁcant partisan and ideoEnvironmental concern
+Political polarization
+                                                       logical polarization on support for environmental spending since 1992—consistent with
+US General Social Survey                               the expectations of party sorting theory. This political polarization on environmental conPublic opinion                                         cern in the general public will likely endure save for political convergence on environmenOrdered logistic regression                            tal concern among elites in the near future. Such polarization likely will inhibit the further
+                                                       development and implementation of environmental policy and the diffusion of environmentally friendly behaviors.
+                                                                                                            Ó 2014 Elsevier Inc. All rights reserved.
+
+
+1. Introduction
+
+    Many proponents and observers of environmentalism in the early 1970s characterized protecting environmental quality
+as a politically consensual issue (Dunlap and Gale, 1974). This was reafﬁrmed by the considerable bipartisan support among
+political elites for much of the nation’s landmark environmental legislation passed during the Republican Nixon administration (Layzer, 2012, pp. 33–41).1 Further, some early studies found little if any ideological or partisan differences in environmental concern among members of the US general public (e.g., Buttel and Flinn, 1974).
+    Yet, by the late 1970s and continuing to the present, political elites such as members of Congress diverged signiﬁcantly in
+their support for environmental protection (e.g., Kamieniecki, 1995; Gershtenson et al., 2006). Also, numerous studies since
+the mid-1970s have found a signiﬁcant divide in environmental concern between liberals/Democrats and conservatives/
+Republican within the US general public (see studies reviewed in Dunlap et al., 2001). Interestingly though, while there were
+ﬂuctuations over this time period, the political divide on environmental issues in the American public by the beginning of the
+1990s was comparable to that in the mid-1970s (Jones and Dunlap, 1992). This may partially reﬂect the continuing
+
+
+    ⇑ Corresponding author.
+        E-mail addresses: mccright@msu.edu (A.M. McCright), xiao@american.edu (C. Xiao), riley.dunlap@okstate.edu (R.E. Dunlap).
+        Nevertheless, the support was stronger from Democratic members of congress (Dunlap and Allen, 1976).
+
+http://dx.doi.org/10.1016/j.ssresearch.2014.06.008
+0049-089X/Ó 2014 Elsevier Inc. All rights reserved.
+
+
+252                                                 A.M. McCright et al. / Social Science Research 48 (2014) 251–260
+
+
+popularity of environmentalism during this period, as signiﬁed by the widely celebrated 20th Earth Day in 1990 (Dunlap and
+Mertig, 1992).
+    The early 1990s saw a noticeable shift in the American conservative movement’s position on environmental issues, even
+though it had been critical of environmental regulations since the 1970s (Dunlap et al., 2001; Layzer, 2012; McCright and
+Dunlap, 2011). After the 1991 fall of the Soviet Union, the conservative movement replaced the ‘‘Red Scare’’ with a new
+‘‘Green Scare’’ and became increasingly hostile toward environmental protection (Jacques et al., 2008). In response to the
+international environmental community successfully placing global environmental problems such as anthropogenic climate
+change, ozone depletion, and biodiversity loss on the international policy agenda (most notably via the 1992 Rio Earth Summit), and fearful of the Clinton-Gore Administration’s likely receptivity to that agenda, conservative foundations, think tanks,
+and leaders mobilized to challenge the legitimacy of these problems and thus undercut the need for government action to
+deal with them (Jacques et al., 2008).
+    This was most clearly manifested in the years immediately after the 1995 Republican takeover of Congress during which
+key Republicans challenged environmental science and policy (e.g., Brown, 1997)—especially on the problem of anthropogenic climate change (e.g., Demeritt, 2006; McCright and Dunlap, 2003). The subsequent George W. Bush administration
+continued these attacks on environmental science and policy by appointing conservative activists with strong anti-environmental orientations throughout the executive branch (e.g., McCright and Dunlap, 2010). Most recently, the conservative
+movement’s anti-environmental efforts, supplemented by increased lobbying from industry, have escalated in response to
+the Obama administration’s receptivity to environmental science and policy (e.g., Goodell, 2010). With the Tea Party pulling
+the Republican Party farther to the Right, congressional attacks on environmental regulations have become ever more common (Committee on Energy and Commerce Minority Staff, 2011).
+    Of all environmental issues, anthropogenic global warming (AGW) has become the most conﬂictual, as it poses a serious
+challenge to fossil fuels-based economic growth by generating calls for sweeping regulations to control greenhouse gas
+emissions (e.g., Begley, 2007; McCright and Dunlap, 2010; Oreskes and Conway, 2010). Consequently, it is not surprising that
+Guber (2013)—analyzing data from Gallup polls in 1990, 2000, and 2010—ﬁnds increasing ideological and partisan divergence in the US public’s level of ‘‘worry’’ about global warming (and to a lesser degree, ﬁve other environmental problems)
+each decade, especially from 2000 to 2010. Similarly, McCright and Dunlap (2011) report statistically signiﬁcant ideological
+and partisan polarization on several measures of AGW views among Americans with data from annual Gallup polls from
+2001 to 2010. That is, the views about AGW expressed by liberals and Democrats on one side and conservatives and Republicans on the other increasingly diverged since 1990, most strikingly since 2000 (also see Hamilton, 2011).
+    Both Guber (2013) and McCright and Dunlap (2011) claim that such political polarization—or increasing divergence over
+time—is consistent with party sorting theory (e.g., Fiorina and Abrams, 2008; Layman et al., 2006), whereby party activists
+and ideological leaders drive polarization among political elites and this process sends cues to voters that party positions are
+changing. As Baldassarri and Gelman (2008:408) explain, ‘‘since parties are more polarized, they are now better at sorting
+individuals along ideological lines.’’
+    Since 1970, the League of Conservation Voters has tracked votes on bills related to key environmental issues (ranging
+from air and water quality to wildlife and forest conservation to climate change) and has calculated an environmental voting
+score for each member of the US Senate and House of Representatives. Brieﬂy, a member’s score, which can range from 0 to
+100, is the number of pro-environment votes cast divided by the total number of votes on key environmental issues. Fig. 1
+                            90
+                                  Senate (solid) and House (dash) Democrats
+                            60
+                            40
+                            20    Senate (solid) and House (dash) Republican
+                             0
+                                 1970    1973     1976     1979     1982    1985     1988     1991     1994     1997    2000     2003     2006     2009    2012
+                      Note: Since 1970s, the LCV has tracked votes on bills relating to key environmental issues (ranging from air and water quality to wildlife and forest
+                      conservation to climate change) and has calculated an environmental voting score for each member of the House and the Senate. Briefly, a member’s
+                      score, which can range from 0 to 100, is the number of pro-environment votes cast divided by the total number of votes on key environmental issues.
+
+
+         Fig. 1. Average league of conservation voters environmental voting score for democrats and republicans in congress, 1970–2013.
+
+
+                                              A.M. McCright et al. / Social Science Research 48 (2014) 251–260                                          253
+
+
+reports the mean environmental voting score for Republicans and Democrats in the House and in the Senate for every year
+between 1970 and 2013.
+    Democrats’ environmental voting scores increased only slightly in the 1970s but then increased more sharply over the
+rest of the time period. Republicans’ environmental voting scores were relatively stable across the 1970s and 1980s before
+a noticeably dropping off in the early 1990s. The timing of this substantial decrease in Republicans’ scores coincides with the
+anti-environmental mobilization of the American conservative movement (Jacques et al., 2008; McCright and Dunlap, 2000).
+    Combining these separate patterns for Democrats and Republicans seems to reveal two distinct time periods. From 1970
+to about 1990, the partisan divide in environmental voting scores increased only slightly—largely due to the slight increase
+in Democrats’ average scores. Combining each party’s scores for both the House and Senate, the annual average gap between
+Democrats and Republicans in Congress during these two decades is approximately 26 points. Yet, from 1991 to 2013, the
+partisan divide in environmental voting scores increased substantively. A 29-point gap in 1990 was followed by a 38-point
+gap in 1991—the largest difference up to that date. In the last few years of the time period, the gap has reached the high 70s.
+    It seems reasonable that this widening divide between Congressional Republicans and Democrats since the early 1990s
+has informed citizens of the evolving environmental positions of Republicans (and conservatives) and Democrats (and liberals)—a process consistent with party sorting theory. Not surprisingly then, recent work ﬁnds that political orientation has
+become one of the most powerful predictors of environmental concern in nationally representative samples of the US general public (Guber 2013; Hamilton et al., 2010; Konisky, 2008; Konisky et al., 2008).
+    Indeed, comparing the growth of partisan differences on 15 issues, the Pew Research Center for the People and the Press
+(2012) ﬁnds that the gap between Republicans and Democrats in the US public on environmental protection grew from 5
+percentage points in 1992 to 39 percentage points in 2012, with Democrats being more supportive. This makes environmental protection the second most politically divided issue in 2012 (slightly behind social safety nets).2 Such provocative but
+descriptive evidence highlights the need for more in-depth analyses of political polarization on environmental issues.
+    Using data from the General Social Survey (GSS) between 1974 and 2012, we offer the longest-term empirical examination of political differences in environmental concern with nationally representative samples of the American public. Over
+this time period, the GSS has included an item asking respondents whether we are spending too much, too little, or about
+the right amount of money on protecting the environment. Given the noticeable increase in anti-environmentalism within
+the American conservative movement and the sharp decline in environmental voting behavior of Congressional Republicans
+since the early 1990s, our hypothesis is that there will be greater ideological and partisan polarization on support for government spending on environmental protection within the US public from 1993 to 2012 than from 1974 to 1991. In the process of testing this hypothesis, we extend the broader polarization literature by adding to the small number of analyses of
+polarization in the environmental issue domain (see Baldassarri and Gelman, 2008; Guber, 2013; McCright and Dunlap,
+2011).
+
+2. The study
+
+2.1. The data set
+
+   We utilize the 1973–2012 General Social Survey (GSS) dataset (Smith et al., 2013). Each year of the GSS is based on a
+nationally representative sample. One of our two independent variables, political ideology, was not measured in 1973. In
+addition, due to the use of alternative forms of survey items measuring political ideology in 1983, we also drop the 1983
+data. The key survey items utilized here are administered to the entire sample in some years and to randomly split parallel
+sub-samples in other years. The annual sample sizes for the data we use range from a low of 1340 in 2004 to a high of 2990 in
+2006. The total size of the 1974–2012 pooled sample is 47,734. The AAPOR response rate 5 for the 1975–2012 surveys range
+from a low of 70.0% in 2000 to a high of 82.4% in 1993 (Smith et al., 2012, p. 2886).
+
+2.2. Variables in the study
+
+2.2.1. Dependent variable
+    Our dependent variable is derived from a multi-item survey question asking respondents about national spending priorities. This item has been used as an indicator of ‘‘environmental concern in several studies over the past three decades, and
+despite being a single-item indicator is viewed by environmental researchers as having face and content validity (e.g., Jones
+and Dunlap, 1992). The verbatim question text is:
+   We are faced with many problems in this country, none of which can be solved easily or inexpensively. I’m going to name
+   some of these problems, and for each one I’d like you to tell me whether you think we’re spending too much money on it,
+   too little money, or about the right amount. First (READ ITEM A). . . are we spending too much, too little, or about the right
+   amount on (ITEM)?
+    Similarly, using 2010 Gallup data, Guber (2013:106) ﬁnds greater partisan divergence on ‘‘environmental quality’’ than on 11 other ‘‘problems facing the
+country.’’
+
+
+254                                               A.M. McCright et al. / Social Science Research 48 (2014) 251–260
+
+
+Table 1
+General social survey variables used in the study.
+
+      Variable                          Original GSS itema                                   Coding                                                Meanb       SD
+      Dependent variable
+      Support for spending on           NATENVIR/NATENVIY                                    1 ‘‘too much’’ to 3 ‘‘too little’’                    2.50        0.64
+        environmental protection
+      Independent variables
+      Party                             PARTYID                                                1 ‘‘Republican’’ to 1 ‘‘Democrat’’                  0.14        0.90
+      Ideology                          POLVIEWS                                               1 ‘‘conservative’’ to 1 ‘‘liberal’’                   0.06      0.76
+      Control variables
+      Age                               AGE                                                  Actual age in years                                   45.80       17.47
+      Male                              SEX                                                  0 ‘‘female’’ to 1 ‘‘male’’                            0.44        0.50
+      Non-white                         RACE                                                 0 ‘‘white’’ to 1 ‘‘non-white’’                        0.19        0.39
+      Education                         EDUC                                                 Number of years of school completed                   12.84       3.15
+      Income                            REALINC                                              Family income in constant dollars ($1000s)            31.08       27.85
+      Support for spending index        NATSPAC/NATSPACY, NATHEAL/NATHEALY,                  1 (‘‘too much’’ on all ﬁve items) to 3                2.04        0.32
+                                        NATEDUC/NATEDUCY, NATARMS/                           (‘‘too little’’ on all ﬁve items)
+                                        NATARMSY, NATAID/NATAIDY
+  a
+       Variable names from Smith et al. (2012).
+ b
+       Mean and standard deviation for the 1974–2012 pooled sample.
+
+
+   Respondents are then read a list of several problems (described further in Section 2.2.3 below). For our dependent variable, support for government spending on environmental protection, we used the item of ‘‘improving and protecting the
+environment’’ or ‘‘the environment,’’ coded as follows: ‘‘too much’’ = 1; ‘‘about the right amount’’ = 2; ‘‘too little’’ = 3.3 As
+Smith (2007) points out and we conﬁrmed, there is no statistically signiﬁcant difference in the percentage distributions of
+responses between the two forms of wording. Thus, we combined data from both wordings to form a single measure. Other
+responses (‘‘don’t know’’ and ‘‘no answer’’) were recoded into yearly medians since they were few in number, ranging from
+2.7% in 2002 to 7.6% in 1977.
+
+
+2.2.2. Independent variables
+    We utilize two variables to measure self-identiﬁed political orientation: party identiﬁcation and political ideology. The
+former is coded as ‘‘strong Republican,’’ ‘‘not strong Republican,’’ and ‘‘Independent near Republican’’ = 1; ‘‘Independent’’ = 0; and ‘‘Independent near Democrat,’’ ‘‘not strong Democrat,’’ and ‘‘strong Democrat’’ = 1. The latter is coded as
+‘‘extremely conservative,’’ ‘‘conservative,’’ and ‘‘slightly conservative’’ = 1; ‘‘moderate’’ = 0; and ‘‘slightly liberal,’’ ‘‘liberal,’’
+and ‘‘extremely liberal’’ = 1. For both variables, other answers (‘‘don’t know’’ and ‘‘no answer,’’ as well as ‘‘other party’’ for
+party identiﬁcation) were recoded as 0, which was the yearly median. For party identiﬁcation these responses range from
+0.3% in 1988 and 5.17% in 2012; for political ideology, they range from 1.0% in 2004 to 7.87% in 1987. A robustness check
+indicates that recoding these cases to 0 rather than treating them as missing has no substantive inﬂuence on our results.
+
+
+2.2.3. Control variables
+    We employ ﬁve demographic variables, suggested by past research as potentially related to environmental concern (Jones
+and Dunlap, 1992), as controls in our multivariate analyses: age (in years), gender (‘‘female’’ = 0; ‘‘male’’ = 1), race
+(‘‘white’’ = 0; ‘‘non-white’’ = 1), educational attainment (number of years of school completed), and annual household
+income (in constant dollars, rescaled to thousands of dollars). For gender and race, there are no missing data. For age, education, and income, missing data (ranging from 0.00% in 1990 to 0.81% in 1982 for age, 0.00% in 1985 and 2004 to 0.66% in
+1977 for education, and from 5.57% in 1975 to 13.84% in 2006 for income) were recoded into yearly medians. We also include
+an indicator of the survey year: 1974 = 0, 1975 = 1, 1976 = 2, etc. See Table 1 for detailed coding information and the original
+GSS items.
+    In the US, party identiﬁcation and political ideology are related to overall support for government spending, with Democrats and liberals typically being more supportive of spending than are Republicans and conservatives. To control for this
+general orientation toward government spending, we also include an index made up of ﬁve items from the survey question
+described in Section 2.2.1 above. The GSS has included items on 11 different problems since 1973. Each year since 1984, random sub-samples have received alternative wordings for the original spending items.
+    Smith (2007) tested whether the response distributions for the alternative wordings for these 11 items differed signiﬁcantly from the distributions of the original wordings. He found that the distributions for the alternative wordings of six
+items were not statistically different from the distributions of the original wordings, justifying treating them as single items.
+These six items are: space exploration program/space exploration; improving and protecting the environment/the environGiven that over 92% of cases are concentrated in two categories (‘‘about right’’ and ‘‘too little’’), we performed the following sensitivity check. We recoded
+this variable to binary form (‘‘too much’’ or ‘‘about right’’ = 0 and ‘‘too little’’ = 1), and re-ran all of our analyses using logistic regression. The results of these
+models are similar to those we present here.
+
+
+                                           A.M. McCright et al. / Social Science Research 48 (2014) 251–260                                   255
+
+
+ment; improving and protecting the nation’s health/health; improving the nation’s education system/education; the military, armaments, and defense/national defense; and foreign aid/assistance to other countries.
+   We utilize ﬁve of these six items (excluding spending on the environment) to create an index of general support for government spending by averaging scores on the ﬁve items for each respondent. This support for spending index ranges from a
+low of 1.00 (‘‘too much’’ on all ﬁve items) to a high of 3.00 (‘‘too little’’ on all ﬁve items). When calculating the average, items
+with missing data are ignored. That is, for respondents who did not provide a valid answer to one or more of the ﬁve items,
+their averages were calculated using only valid answers. Respondents who did not give a valid answer to any of the ﬁve items
+were excluded from our analysis (n = 1749; 3.37% of the total sample).
+
+
+2.3. Analytical techniques employed
+
+    We ﬁrst examine the effect of party identiﬁcation and political ideology on support for spending on the environment,
+while controlling for our ﬁve demographic variables and the support for spending index, in ordered logistic regression models for each of the 26 separate years in our study. We checked for multicollinearity using the variance inﬂation factor (VIF)
+statistic and found no problem.
+    After pooling the data together we perform a second round of ordered logistic regression models to test for political polarization on support for government spending on environmental protection over the time period of this study. We speciﬁcally
+utilize DiMaggio et al., 1996 operationalization of polarization as ‘‘consolidation.’’ According to the authors (1996, p.693),
+‘‘Other things being equal, the greater the extent to which social attitudes become correlated with salient individual characteristics or identities, the more likely it is that they will become the foci of social conﬂict.’’ Political polarization occurs
+when these characteristics are political ideology and party identiﬁcation. The polarization literature features three ways
+of measuring consolidation: (1) comparing differences in groups’ means over time (DiMaggio et al., 1996; Evans, 2003);
+(2) examining the performance of a ‘‘group dummy variable * year’’ interaction effect in a regression model (Evans, 2002);
+and (3) examining the correlation between issue items and group membership over time (Baldassarri and Gelman, 2008).
+We employ the second operationalization. To examine political polarization over the time period, we created two slope
+interaction terms, party * year and ideology * year, after centering year.
+    We report three models: one with data from 1974 to 1991; another with data from 1993 to 2012; and a third with data
+from the entire time period (the GSS was not conducted in 1992). In each model, we include three variables in addition to
+those mentioned earlier: an indicator of the year of the survey (1974 = 0, 1975 = 1, 1976 = 2, etc.) and the party * year and
+ideology * year interaction terms to measure political polarization. Across these three models, the mean VIF statistic for
+the groups of independent variables is less than 1.13.
+
+
+3. Results and discussion
+
+    Fig. 2 displays the percentages of self-identiﬁed Democrats and Republicans who believe that we are spending ‘‘too little’’
+on the environment between 1974 and 2012. Respondents identifying as ‘‘strong Democrat,’’ ‘‘not so strong Democrat,’’ and
+‘‘independent near Democrat’’ are considered Democrats, and respondents identifying as ‘‘strong Republican,’’ ‘‘not so strong
+Republican,’’ and ‘‘independent near Republican’’ are considered Republicans. Fig. 3 displays the percentages of self-identiﬁed liberals and conservatives who believe that we are spending ‘‘too little’’ on the environment between 1974 and 2012.
+
+
+         Fig. 2. Percentages of democrats and republicans reporting that national spending on the environment is ‘‘Too Little,’’ 1974–2012.
+
+
+256                                         A.M. McCright et al. / Social Science Research 48 (2014) 251–260
+
+
+          Fig. 3. Percentages of liberals and conservatives reporting that national spending on the environment is ‘‘Too Little,’’ 1974–2012.
+
+
+Respondents identifying as ‘‘extremely liberal,’’ ‘‘liberal,’’ or ‘‘slightly liberal’’ are considered liberals, and respondents identifying as ‘‘extremely conservative,’’ ‘‘conservative,’’ or ‘‘slightly conservative’’ are considered conservatives.
+    In all years in Fig. 2, the percentage of Democrats supporting more spending on environmental protection is higher than
+that of Republicans. In all but two years (1976 and 1990), the difference is statistically signiﬁcant at p < .05. The minimum
+difference is less than 1% in 1990, and the maximum difference is 29.7% in 2010; the average is 13.6%. In all years in Fig. 3, the
+percentage of liberals supporting more spending for environmental protection is higher than that of conservatives. The difference is statistically signiﬁcant at p < .05 in all of the years over the full time period. The minimum difference is 6.0% in
+1989, and the maximum is 29.6% in 2008; the average is 19.6%. Thus, despite the considerable variation in Americans’ overall
+levels of support for more spending on environmental protection from 1974 through 2012, the patterns of greater support by
+Democrats and liberals than their respective counterparts has always persisted—albeit in varying degrees.
+    Figs. 2 and 3 convey two additional trends. First, the divides between Democrats/liberals and Republicans/conservatives
+on support for government spending on environmental protection was holding steady (in Fig. 2) or declining slightly (in
+Fig. 3) between 1974 and 1990—the year in which the 20th anniversary of Earth Day was widely celebrated and around
+which time an unprecedented peak in the US public’s support for environmental protection was observed (Dunlap, 1995).
+Second, these same divides increased substantially after 1991. This is consistent with the expectation that political polarization on environmental protection has occurred because the fall of the Soviet Union and the rise of global environmentalism
+with the 1992 Rio Earth Summit generated a heightened level of anti-environmental activity by the conservative movement
+and Congressional Republicans. Yet, it may be that we are just tapping into polarization on support for government spending
+in general. That is, it is possible that polarization on support for government spending in general took place over this same
+period. To account for this, in our multivariate analyses we control for respondents’ support for government spending in general with our ﬁve-item index.
+    Table 2 displays the results of 26 ordered logistic regression models examining political predictors of support for government spending on environment protection controlling for demographic variables and overall support for government spending. Each row is a separate model for the respective year in the time period. Main entries are odds ratios, and entries in
+parentheses are X-standardized odds ratios (Long and Freese, 2005). An X-standardized odds ratio represents the ratio
+changes in odds associated with every standard deviation change in an independent variable. For example, in 1974 the Xstandardized odds ratio for party is 1.14, which means that the odds of choosing ‘‘too little’’ rather than the other options
+increases by 14% for every one standard deviation increase in party identiﬁcation.
+    The effect of party identiﬁcation here is net of the effects of political ideology (and vice versa), ﬁve demographic characteristics, and general support for government spending. Overall, both party identiﬁcation and political ideology are statistically signiﬁcant predictors of support for spending on the environment in 19 years of the 26 years included in the study, with
+ideology typically being a slightly stronger predictor than is party identiﬁcation. The magnitudes of the effects of both political orientation variables are generally stable between 1974 and 1991. After 1991, the effects of both political variables
+increase—as Guber (2013) similarly reports. This is suggestive, but preliminary, evidence that there has been political polarization on support for spending on the environment in the last twenty years.
+    Age is the only demographic variable that has a statistically signiﬁcant effect in every year, with younger respondents
+showing more support for spending on environmental protection than their older counterparts, while education has a signiﬁcant positive effect in all but four years. The effects of gender, race, and income are small and not statistically signiﬁcant
+in most years—ﬁndings that are fairly consistent with past research on demographic predictors of environmental concern
+
+
+                                               A.M. McCright et al. / Social Science Research 48 (2014) 251–260                                             257
+
+
+Table 2
+Results of ordered logistic regression models—odds ratios of political and demographic factors in predicting support for spending on environmental protection.
+
+  Models       Party           Ideology        Age              Male              Non-white      Education        Income         Spending index         N
+  1974         1.16 (1.14)*    1.31 (1.23)*    0.98 (0.66)*     1.17 (1.08)       1.32 (1.09)    1.09 (1.31)*     1.00 (0.98)    2.74 (1.34)*           1484
+  1975         1.08 (1.07)     1.43 (1.31)*    0.98 (0.68)*     0.79 (0.89)*      1.05 (1.02)    1.03 (1.10)      1.00 (1.03)    2.71 (1.34)*           1490
+  1976         1.07 (1.06)     1.26 (1.19)*    0.98 (0.69)*     0.86 (0.93)       1.07 (1.02)    1.04 (1.14)*     1.01 (1.16)*   4.02 (1.51)*           1499
+  1977         1.14 (1.13)*    1.40 (1.29)*    0.98 (0.69)*     0.96 (0.98)       1.09 (1.03)    1.06 (1.19)*     0.99 (0.88)*   3.78 (1.50)*           1530
+  1978         1.10 (1.09)     1.18 (1.14)*    0.97 (0.63)*     0.65 (0.81)*      1.53 (1.15)*   1.05 (1.17)*     0.99 (0.84)*   2.40 (1.30)*           1532
+  1980         1.14 (1.12)*    1.48 (1.34)*    0.98 (0.65)*     0.78 (0.89)*      1.53 (1.14)*   1.03 (1.11)      0.99 (0.83)*   2.85 (1.38)*           1468
+  1982         1.12 (1.11)*    1.45 (1.32)*    0.98 (0.65)*     0.83 (0.91)       1.46 (1.19)*   1.06 (1.22)*     1.00 (0.98)    3.20 (1.42)*           1860
+  1984         1.34 (1.31)*    1.14 (1.11)     0.98 (0.72)*     0.86 (0.93)       0.88 (0.95)    1.06 (1.21)*     1.00 (0.98)    2.42 (1.31)*           1457
+  1985         1.27 (1.25)*    1.24 (1.18)*    0.98 (0.69)*     1.03 (1.02)       0.85 (0.95)    1.08 (1.29)*     1.00 (0.90)    2.45 (1.32)*           1525
+  1986         1.16 (1.15)*    1.20 (1.15)*    0.98 (0.68)*     1.13 (1.06)       1.12 (1.04)    1.07 (1.22)*     1.00 (0.98)    1.68 (1.17)*           1461
+  1987         1.28 (1.25)*    1.19 (1.14)*    0.98 (0.66)*     1.02 (1.01)       1.16 (1.07)    1.13 (1.50)*     1.00 (0.99)    1.80 (1.21)*           1806
+  1988         1.20 (1.18)*    1.23 (1.17)*    0.98 (0.71)*     0.97 (0.98)       0.77 (0.91)    1.10 (1.35)*     1.00 (1.00)    1.65 (1.17)*           1470
+  1989         1.29 (1.27)*    1.07 (1.06)     0.98 (0.74)*     1.00 (1.00)       0.69 (0.88)*   1.16 (1.56)*     1.00 (1.08)    2.06 (1.23)*           1529
+  1990         1.13 (1.12)     1.21 (1.16)*    0.98 (0.66)*     1.05 (1.02)       0.51 (0.78)*   1.15 (1.55)*     1.00 (0.95)    2.60 (1.32)*           1355
+  1991         1.32 (1.30)*    1.06 (1.05)     0.97 (0.61)*     0.97 (0.99)       0.60 (0.82)*   1.08 (1.26)*     1.00 (1.02)    3.21 (1.40)*           1501
+  1993         1.21 (1.20)*    1.46 (1.34)*    0.97 (0.62)*     0.94 (0.97)       0.97 (0.99)    1.07 (1.24)*     1.00 (0.94)    2.21 (1.27)*           1592
+  1994         1.40 (1.36)*    1.29 (1.22)*    0.97 (0.62)*     0.93 (0.96)       0.96 (0.98)    1.02 (1.07)      1.00 (0.91)*   2.84 (1.37)*           2955
+  1996         1.37 (1.33)*    1.54 (1.39)*    0.98 (0.66)*     0.98 (0.99)       0.91 (0.96)    1.04 (1.13)*     1.00 (0.98)    2.81 (1.36)*           2849
+  1998         1.34 (1.29)*    1.34 (1.26)*    0.98 (0.71)*     0.96 (0.98)       0.88 (0.95)    1.07 (1.21)*     1.00 (0.97)    3.90 (1.52)*           2826
+  2000         1.33 (1.28)*    1.46 (1.33)*    0.98 (0.72)*     0.92 (0.96)       0.87 (0.94)    1.03 (1.10)*     1.00 (0.98)    2.72 (1.36)*           2811
+  2002         1.29 (1.25)*    1.72 (1.52)*    0.98 (0.77)*     1.00 (1.00)       0.98 (0.99)    1.02 (1.08)      1.00 (1.03)    4.35 (1.56)*           1370
+  2004         1.57 (1.51)*    1.63 (1.46)*    0.98 (0.74)*     0.99 (1.00)       0.67 (0.85)*   1.06 (1.19)*     1.00 (0.98)    3.07 (1.42)*           1340
+  2006         1.41 (1.35)*    1.56 (1.41)*    0.99 (0.79)*     0.86 (0.93)       0.70 (0.85)*   1.06 (1.22)*     1.00 (1.09)    3.00 (1.43)*           2990
+  2008         1.47 (1.42)*    1.60 (1.43)*    0.99 (0.80)*     0.91 (0.95)       0.80 (0.91)    1.07 (1.23)*     1.00 (1.12)*   3.50 (1.49)*           2023
+  2010         1.80 (1.68)*    1.34 (1.26)*    0.99 (0.77)*     0.99 (1.00)       0.71 (0.86)*   1.06 (1.20)*     1.00 (1.07)    3.38 (1.50)*           2042
+  2012         1.56 (1.47)*    1.40 (1.30)*    0.99 (0.79)*     0.93 (0.96)       0.94 (0.97)    1.03 (1.10)*     1.00 (1.02)    3.20 (1.54)*           1969
+
+Entries in parentheses are X-standardized odds ratios (Long and Freese, 2005). Year 1983 is excluded because that year uses an alternate item for political
+ideology. For 2002 and 2004, political ideology was only measured in half of the total sample (random split), and in 2006 support for environmental
+spending was measured in two of the three subsamples (random split).
+  *
+    p < 0.05
+
+
+(Jones and Dunlap, 1992). Not surprisingly, support for environmental spending is positively correlated with the index of
+overall support for government spending in all years.
+   To examine more rigorously if there has been political polarization on support for government spending on environmental
+protection over the time period, we ran another set of ordered logistic regression models—the results of which are displayed in
+Table 3. To properly analyze polarization (again, deﬁned as growing divergence between groups over time), we include in our
+models two slope interaction terms: party * year and ideology * year (year is centered). The interaction effects are indicators
+of the divergence or convergence over the time period between liberals/Democrats and conservatives/Republicans.
+
+
+Table 3
+X-standardized odds ratios from ordered logistic regression models predicting support for spending on environmental protection—examining the interaction
+effects between year and political variables.
+
+  Predictors                  1974–1991                                   1993–2012                                     1974–2012
+                              Partisan               Ideological          Partisan               Ideological            Partisan                Ideological
+                              Polarization           Polarization         Polarization           Polarization           Polarization            Polarization
+  Party                       1.15*                  1.15*                1.37*                  1.36*                  1.27*                   1.34*
+  Ideology                    1.20*                  1.20*                1.33*                  1.34*                  1.26*                   1.30*
+  Age                         0.68*                  0.68*                0.72*                  0.72*                  0.70*                   0.70*
+  Male                        0.96*                  0.96*                0.97*                  0.97*                  0.96*                   0.96*
+  Non-white                     1.00                   1.00               0.93*                  0.93*                  0.96*                   0.97*
+  Education                   1.27*                  1.27*                1.16*                  1.16*                  1.22*                   1.23*
+  Income                      0.96*                  0.96*                1.01                   1.01                   0.98                    0.98
+  Spending index              1.30*                  1.30*                1.43*                  1.43*                  1.37*                   1.37*
+  Year                        1.25*                  1.24*                0.96*                  0.97*                  1.03*                   1.06*
+  Party * year                0.99                                        1.06*                                         1.11*
+  Ideology * year                                    0.95*                                       1.03*                                          1.07*
+  N                           22,967                                      24,767                                        47,734
+  Mean VIF                    1.11                   1.11                 1.12                   1.11                   1.13                    1.12
+
+Year 1983 is excluded because that year uses an alternative item for political ideology. For 2002 and 2004, political ideology was only measured in half of
+the total sample (random split), and in 2006 support for environmental spending was measured in two of the three subsamples (random split).
+  *
+    p < 0.05
+
+
+258                                   A.M. McCright et al. / Social Science Research 48 (2014) 251–260
+
+
+A statistically signiﬁcant value greater than 1.00 for an interaction effect represents polarization—or increased divergence
+over time (Evans, 2002). To disentangle the period effects, we ran one pair of models with data from 1974 to 1991 and another
+pair of models with data from 1993 to 2012, before running a ﬁnal pair of models with data from the entire time period. As
+stated at the end of Section 1, we expect to ﬁnd partisan and ideological polarization in the later time period but not necessarily in the earlier one.
+    The entries in Table 3 are X-standardized odds ratios from the three pairs of ordered logistic regression models predicting
+support for spending on the environment. Odds ratios greater than 1.00 represent positive effects, and those less than 1.00
+represent negative effects. Looking speciﬁcally at the 1974–1991 time period, we ﬁnd that there is no partisan or ideological
+polarization, or increasing divergence over time. In fact, we ﬁnd statistically signiﬁcant ideological convergence (X-standardized odds ratio = 0.95) on support for environmental spending between 1974 and 1991. The absence of political polarization
+during this earlier time period is consistent with our initial expectations, and with the earlier work of DiMaggio et al. (1996)
+who found little evidence of polarization between the 1970s and early 1990s. These results further afﬁrm our interpretation
+of trends in Figs. 1 and 2. While there is some year-to-year variability in support for environmental spending by party and
+ideology, the divergence between Republicans/conservatives and Democrats/liberals does not increase over the ﬁrst 18 years
+of this study.
+    This is not the case for the subsequent two decades, from 1993 to 2012. As expected, we ﬁnd statistically signiﬁcant partisan and ideological polarization on support for environmental spending in the last two decades, with respective X-standardized odds ratios of 1.06 and 1.03. Indeed, the ideological polarization between 1993 and 2012 contrasts with the
+ideological convergence we observed between 1974 and 1991 as shown above. These results are similar to Guber’s
+(2013) ﬁndings using data for 1990, 2000 and 2010, and consistent with those of other studies that report a clear pattern
+of political polarization on a range of social, economic, and cultural issues with data from the late 1990s and early 2000s
+(e.g., Abramowitz and Saunders, 2008; Baldassarri and Gelman, 2008; Brewer, 2005; Evans, 2003; Jacobson, 2005).
+    Overall, the partisan and ideological polarization in the later time period (1993–2012) is largely responsible for the statistically signiﬁcant partisan polarization for the entire 1974 to 2012 time period, as seen in the ﬁnal two columns of Table 3.
+Our ﬁnding of political polarization on support for spending on the environment is consistent with the argument that the
+decline of the Red Scare and the emerging threat of international environmental regulations spawned by the Rio Earth Summit was a turning point for the US conservative movement and Congressional Republicans. At this pivot point, conservatives
+and Republicans began to demonstrate a sharp drop in support for environmental protection.
+
+
+4. Conclusion
+
+    Since the early 1990s the US conservative movement has become increasingly hostile towards environmental protection
+(Jacques et al., 2008; McCright and Dunlap, 2000). Conservative foundations, think tanks, and elites have mobilized to challenge the legitimacy of environmental problems and thus undercut the necessity for government action to deal with them
+(McCright and Dunlap, 2003). This is especially the case with respect to anthropogenic climate change (e.g., Demeritt, 2006;
+McCright and Dunlap, 2010), but also holds true for environmental science and policy more generally (e.g., Brown, 1997;
+Goodell, 2010).
+    Political polarization on the environment among political elites (e.g., party activists and members of Congress) has
+resulted from this increasing anti-environmentalism of conservatives and Republicans (e.g., Dunlap et al., 2001;
+Gershtenson et al., 2006), a trend ampliﬁed by the conservative movement-supported Tea Party pulling the Republican Party
+even farther to the Right (Skocpol and Williamson, 2013). Consistent with the expectations of party sorting theory, such
+political polarization on the environment has extended to the US general public (Guber, 2013). Since 1992, there has been
+signiﬁcant partisan and ideological polarization on support for government spending on environmental protection within
+the general public. This political polarization is unlikely to reverse course without a noticeable convergence in support of
+environmental protection among political elites (see, e.g. Brulle et al., 2012), with prominent conservative ﬁgures and
+Republican Party leaders becoming less anti-environmental in their public statements and voting records.
+    Within the general public, political polarization has serious implications for fostering support for environmental protection. For some time now, political orientation (party identiﬁcation and political ideology) has been one of the strongest predictors of environmental concern. Furthermore, recent studies ﬁnd that political orientation moderates the well-established
+positive relationship between education and environmental concern—not only on the issue of anthropogenic climate change
+(e.g., Hamilton, 2011; Hamilton and Keim, 2009; McCright, 2011; McCright and Dunlap, 2011), but also on seemingly less
+controversial issues of urban sprawl impacts, the conservation of natural resources, and support for conservation regulations
+(Hamilton et al., 2010). The effect of increased education on environmental concern is positive for liberals and Democrats,
+but is weaker or negative for conservatives and Republicans, undercutting the efﬁcacy of efforts to ‘‘educate the public’’
+about the seriousness of environmental problems and the importance of taking action to deal with them.
+    Political polarization also shows up in environmentally relevant behaviors and reactions to campaigns to stimulate such
+behaviors. For example, Costa and Kahn (2010, 2013) ﬁnd that liberal homeowners consume less energy than do their conservative counterparts, and are more likely to respond to campaigns designed to encourage energy conservation. In fact, they
+report that ‘‘while energy conservation ‘nudges’ work with liberals, they backﬁre with conservatives’’ (Costa and Kahn, 2010,
+p. 19). Similarly, Gromet et al., 2013) ﬁnd that self-identiﬁed conservatives are less likely than their liberal counterparts to
+
+
+                                               A.M. McCright et al. / Social Science Research 48 (2014) 251–260                                             259
+
+
+support energy efﬁciency when it is framed as a means of reducing carbon dioxide emissions, and less likely than liberals to
+purchase an energy efﬁcient product if its packaging includes a pro-environmental message (e.g., ‘‘Protect the
+Environment’’).
+   The fact that political identiﬁcations among the general public not only inﬂuence their support for environmental protection programs (as suggested by our results), but also their environmentally relevant behaviors and responses to campaigns to
+promote such behaviors, is striking. Further, this is a major departure from earlier decades (1970s and 1980s) when there
+was only a modest political divide on environmental issues in the general public. Combined with the enormous degree of
+current polarization among political elites on the environment, the situation does not bode well for our nation’s ability to
+deal effectively with the wide range of environmental problems—from local toxics to global climate change—we currently
+face.
+
+
+Acknowledgments
+
+    We would like to thank Bob Brulle for sharing with us the League of Conservation Voters data.
+
+
+References
+
+Abramowitz, Alan I., Saunders, Kyle L., 2008. Is polarization a myth? J. Polit. 70, 542–555.
+Baldassarri, Delia, Gelman, Andrew, 2008. Partisans without constraint: political polarization and trends in American public opinion. Am. J. Sociol. 114, 408–
+    446.
+Begley, Sharon, 2007. The Truth About Denial. Newsweek, vol. CL (August 13), pp. 20–29.
+Brewer, Mark D., 2005. The rise of partisanship and the expansion of partisan conﬂict within the American electorate. Polit. Res. Quart. 58, 219–230.
+Brown Jr., Rep. George E., 1997. Environmental science under siege in the U.S. Congress. Environment, vol. 39, pp. 12-31.
+Brulle, Robert J., Carmichael, Jason, Jenkins, J. Craig, 2012. Shifting public opinion on climate change: an empirical assessment of factors inﬂuencing concern
+    over climate change in the US, 2002–2010. Clim. Change 114, 169–188.
+Buttel, Frederick H., Flinn, William L., 1974. The structure of support for the environmental movement: 1968–1970. Rural Sociol. 39, 56–69.
+Committee on Energy and Commerce Minority Staff. 2011. The Anti-Environment Record of the U.S. House of Representatives, 112th Congress, 1st Session.
+    Washington, DC: U.S. House of Representatives.
+Costa, Dora L., Kahn, Matthew E., 2010. Energy conservation ‘nudges’ and environmentalist ideology: evidence from a randomized residential ﬁeld
+    experiment. NBER Working Paper 15939. Washington, DC: National Bureau of Economic Research.
+Costa, Dora L., Kahn, Matthew E., 2013. Do liberal home owners consume less energy? A test of the voluntary restraint hypothesis. Econ. Lett. 119, 210–212.
+Demeritt, David., 2006. Science studies, climate change and the prospects for constructivist critique. Econ. Soc. 35, 453–479.
+DiMaggio, Paul, Evans, John H., Bryson, Bethany, 1996. Have Americans’ social attitudes become more polarized? Am. J. Sociol. 102, 690–755.
+Dunlap, Riley E., 1995. Public opinion and environmental policy. In: Lester, James P. (Ed.), Environmental Politics and Policy. Duke University Press, Durham,
+    NC, pp. 63–114.
+Dunlap, Riley E., Allen, Michael P., 1976. Partisan differences on environmental issues: a congressional roll-call analysis. West. Polit. Quart. 29, 384–397.
+Dunlap, Riley E., Gale, Richard P., 1974. Party membership and environmental politics: a legislative roll-call analysis. Soc. Sci. Quart. 55, 670–690.
+Dunlap, Riley E., Mertig, Angela G., 1992. American Environmentalism: The U.S. Environmental Movement, 1970–1990. Taylor and Francis, Washington, DC.
+Dunlap, Riley.E., Xiao, Chenyang., McCright, Aaron.M., 2001. Politics and environment in America: partisan and ideological cleavages in public support for
+    environmentalism. Environ. Polit. 10 (4), 23–48.
+Evans, John.H., 2002. Polarization in abortion attitudes in U.S. religions traditions, 1972–1998. Sociol. Forum 17, 397–422.
+Evans, John H., 2003. Have Americans’ attitudes become more polarized?—an update. Soc. Sci. Quart. 84, 71–90.
+Fiorina, Morris, Abrams, Samuel, 2008. Political polarization in the American public. Annu. Rev. Polit. Sci. 11, 563–588.
+Gershtenson, Joseph, Smith, Brian W., Mangun, William R., 2006. Friends of the Earth?: Partisanship, party control of congress, and environmental
+    legislation in congress. Polit. Pol. 34 (1), 66–92.
+Goodell, Jeff., 2010. As the world burns. Rolling Stone 1096 (30–33), 62.
+Gromet, Dena M., Kunreuther, Howard, Larrick, Richard P., 2013. Political ideology affects energy-efﬁciency attitudes and choices. Proc. Natl. Acad. Sci. 110
+    (23), 9314–9319.
+Guber, Deborah Lynn, 2013. A cooling climate for change? Party polarization and the politics of global warming. Am. Behav. Sci. 57, 93–115.
+Hamilton, Lawrence C., 2011. Education, politics, and opinions about climate change: evidence for interaction effects. Clim. Change 104 (2), 231–242.
+Hamilton, Lawrence C., Colocousis, Chris R., Duncan, Cynthia M., 2010. Place effects on environmental views. Rural Sociol. 75, 326–347.
+Hamilton, Lawrence C., Keim, Barry D., 2009. Regional variation in perceptions about climate change. Int. J. Climatol. 29, 2348–2352.
+Jacobson, Gary.C., 2005. Polarized politics and the 2004 congressional and presidential elections. Polit. Sci. Quart. 120, 199–218.
+Jacques, Peter, Dunlap, Riley E., Freeman, Mark, 2008. The organization of denial: conservative think tanks and environmental skepticism. Environ. Polit. 17,
+    349–385.
+Jones, Robert Emmet, Dunlap, Riley E., 1992. The social bases of environmental concern: have they changed over time? Rural Sociol. 57, 28–47.
+Kamieniecki, Sheldon, 1995. Political parties and environmental policy. In: Lester, James P. (Ed.), Environmental Politics and Policy. Duke University Press,
+    Durham, NC, pp. 146–167.
+Konisky, David.M., 2008. Bureaucratic and public attitudes toward environmental regulation and the economy. State Local Gov. Rev. 40 (3), 139–149.
+Konisky, David M., Milyo, Jeffrey, Richardson Jr., Lilliard E., 2008. Environmental policy attitudes: issues, geographical scale, and political trust. Soc. Sci.
+    Quart. 89, 1066–1085.
+Layman, Geoffrey C., Thomas M. Carsey, Thomas M., Horowitz, Juliana, 2006. Party polarization in American politics. Annual Review of Political Science, vol.
+    9, pp. 83–110.
+Layzer, Judith A., 2012. Open for Business: Conservatives’ Opposition to Environmental Regulation. MIT Press, Cambridge, MA.
+Long, J. Scott, Freese, Jeremy, 2005. Regression Models for catEGorical Outcomes using Stata, second ed. Stata Press, College Station, TX.
+McCright, Aaron M., 2011. Political orientation moderates Americans’ beliefs and concern about climate change. Clim. Change 104 (2), 243–253.
+McCright, Aaron M., Dunlap, Riley E., 2000. Challenging global warming as a social problem: an analysis of the conservative movement’s counter claims. Soc.
+    Probl. 47, 499–522.
+McCright, Aaron M., Dunlap, Riley E., 2003. Defeating Kyoto: the conservative movement’s impact on U.S. climate change policy. Soc. Probl. 50, 348–373.
+McCright, Aaron M., Dunlap, Riley E., 2010. Anti-reﬂexivity: the American conservative movement’s success in undermining climate science and policy.
+    Theory Cult. Soc. 27 (2–3), 100–133.
+McCright, Aaron M., Dunlap, Riley E., 2011. The politicization of climate change and polarization in the American public’s views of global warming, 2001–
+    2010’’. Sociol. Quart. 52, 155–194.
+Oreskes, Naomi, Conway, Erik M., 2010. Merchants of Doubt. Bloomsbury Press, New York.
+
+
+260                                          A.M. McCright et al. / Social Science Research 48 (2014) 251–260
+
+
+Pew Research Center for the People and the Press. 2012. Trends in American values: 1987–2012: partisan polarization surges in Bush, Obama years. Pew
+   Research Center, Washington, DC.
+Skocpol, Theda, Williamson, Vanessa, 2013. The Tea Party and the Remaking of Republican Conservatism. Oxford University Press, New York.
+Smith, Tom W., 2007. Trends in National Spending Priorities, 1973–2006. National Opinion Research Center, Chicago.
+Smith, Tom W., Marsden, Peter V., Hout, Michael, Kim, Jibum, 2012. General Social Surveys, 1972–2012: Cumulative Codebook. National Opinion Research
+   Center, Chicago.
+Smith, Tom W., Marsden, Peter V., Hout, Michael, Kim, Jibum, 2013. General Social Surveys, 1972–2012 [machine-readable data ﬁle]. Principal Investigator:
+   Smith, Tom W. Co-Principal Investigators: Marsden, Peter V., Hout, Michael. Sponsored by National Science Foundation. National Opinion Research
+   Center, Chicago.

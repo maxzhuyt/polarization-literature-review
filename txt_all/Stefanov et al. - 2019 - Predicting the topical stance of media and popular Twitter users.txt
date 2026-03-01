@@ -1,0 +1,732 @@
+Predicting the Topical Stance and Political Leaning of Media using Tweets
+
+                                                     Peter Stefanov1 , Kareem Darwish2 , Atanas Atanasov3 , Preslav Nakov2
+                                                                       1 SiteGround Hosting EOOD, Bulgaria
+                                                            2 Qatar Computing Research Institute, HBKU, Doha, Qatar
+                                                             3 Sofia University “St. Kliment Ohridski”, Sofia, Bulgaria
+
+                                                      {stefanov.peter.ps,atanas.atanasov.sf}@gmail.com,
+                                                                     {kdarwish,pnakov}@hbku.edu.qa
+
+
+                                                               Abstract                           Here, we make use of this observation to characterize influencers, based on the stances of the Twitter
+                                             Discovering the stances of media outlets and         users that share their content. Ascertaining the
+                                             influential people on current, debatable topics
+arXiv:1907.01260v2 [cs.SI] 21 May 2020
+
+
+                                                                                                  stances of users, also known as stance detection,
+                                             is important for social statisticians and policy
+                                             makers. Many supervised solutions exist for          involves identifying the position of a user with redetermining viewpoints, but manually annotat-        spect to a topic, an entity, or a claim (Mohammad
+                                             ing training data is costly. In this paper, we       et al., 2016). For example, on the topic of abortion
+                                             propose a cascaded method that uses unsuper-         in USA, the stances of left- vs. right-leaning users
+                                             vised learning to ascertain the stance of Twit-      would typically be “pro-choice” vs. “pro-life”, reter users with respect to a polarizing topic by      spectively.
+                                             leveraging their retweet behavior; then, it uses
+                                                                                                     In this paper, we propose to apply unsupervised
+                                             supervised learning based on user labels to
+                                             characterize both the general political leaning      stance detection to automatically tag a large numof online media and of popular Twitter users,        ber of Twitter users with their positions on specific
+                                             as well as their stance with respect to the tar-     topics (Darwish et al., 2020). The tagging identiget polarizing topic. We evaluate the model by       fies clusters of vocal users based on the accounts
+                                             comparing its predictions to gold labels from        that they retweet. Although the method we use
+                                             the Media Bias/Fact Check website, achieving         may yield more than two clusters, we retain the
+                                             82.6% accuracy.
+                                                                                                  two largest ones, which typically include the overwhelming majority of users, and we ignore the rest.
+                                         1   Introduction
+                                                                                                  Then, we train a classifier that predicts which clusOnline media and popular Twitter users, which we         ter a user belongs to, in order to expand our cluswill collectively refer to as influencers, often ex-     ters. Once we have increased the number of users
+                                         press overt political leanings, which can be gleaned     in our sets, we determine which sources are most
+                                         from their positions on a variety of political and       strongly associated with each group based on sharcultural issues. Determining their leaning can be        ing by each group. We apply this methodology to
+                                         done through the analysis of their writing, which in-    determine the positions of influencers and of media
+                                         cludes the identification of terms that are indicative   on eight polarizing topics along with their overall
+                                         of stance (Groseclose and Milyo, 2005; Gentzkow          leaning: left, center or right. In doing so, we can
+                                         and Shapiro, 2011). Performing such analysis auto-       also observe the sharing behavior of right- and leftmatically can be done using supervised classifica-       leaning users, and we can correlate their behavior
+                                         tion, which in turn would require manually labeled       with the credibility of the sources. Further, given
+                                         data (Groseclose and Milyo, 2005; Gentzkow and           the user stances for these eight topics, we train a
+                                         Shapiro, 2011; Mohammad et al., 2016). Alter-            supervised classifier to predict the overall bias of
+                                         natively, leanings can be inferred based on which        sources using a variety of features, including the
+                                         people share the content (blogs, tweets, posts, etc.)    so-called valence (Conover et al., 2011a), graph
+                                         on social media, as social media users are more          embeddings, and contextual embeddings. Using
+                                         likely to share content that originates from sources     a combination of these features, our classifier is
+                                         that generally agree with their positions (An et al.,    able to predict the bias of sources with 82.6% accu2012; Morgan et al., 2013; Ribeiro et al., 2018;         racy, with valence being the most effective feature.
+                                         Wong et al., 2013).                                      Figure 1 outlines our overall methodology.
+
+
+                                                         Concerning media, Ribeiro et al. (2018) used the
+                                                         Facebook advertising services to infer the ideological leaning of online media based on the political
+                                                         leaning of Facebook users who consumed them. An
+                                                         et al. (2012) relied on follow relationships to online
+                                                         media on Twitter to ascertain ideological leaning
+                                                         of media and users based on the similarity between
+                                                         them. Wong et al. (2013) studied retweet behavior
+     Figure 1: General outline of our methodology.       to infer the ideological leanings of online media
+                                                         sources and popular Twitter accounts. Barberá and
+    Our contributions are as follows:                    Sood (2015) proposed a statistical model based
+                                                         on the follower relationships to media sources and
+    • We use unsupervised stance detection to au-        Twitter personalities in order to estimate their ideotomatically determine the stance of Twitter        logical leaning.
+      users with respect to several polarizing topics.
+                                                            As for individual users, much recent work fo-
+    • We then use distant supervision based on these     cused on stance detection to determine a person’s
+      discovered user stances to accurately charac-      position on a topic including the deduction of polititerize the political leaning of media outlets      cal preferences (Barberá, 2015; Barber and Rivero,
+      and of popular Twitter accounts. For classi-       2015; Borge-Holthoefer et al., 2015; Cohen and
+      fication, we use a combination of source va-       Ruths, 2013; Colleoni et al., 2014; Conover et al.,
+      lence, graph embeddings, and contextualized        2011b; Fowler et al., 2011; Hasan and Ng, 2014;
+      text embeddings.                                   Himelboim et al., 2013; Magdy et al., 2016a,b;
+                                                         Makazhanov et al., 2014; Trabelsi and Zaı̈ane,
+    • We evaluate our approach by comparing its          2018; Weber et al., 2013). User stance classifibias predictions for a number of news out-         cation is aided by the tendency of users to form
+      lets against gold labels from Media Bias/Fact      so-called “echo chambers”, where they engage
+      Check. We further evaluate its predictions         with like-minded users (Himelboim et al., 2013;
+      for popular Twitter users against manual judg-     Magdy et al., 2016a), and the tendency of users’
+      ments. The experimental results show sizable       beliefs to be persistent over time (Borge-Holthoefer
+      improvements over using graph embeddings           et al., 2015; Magdy et al., 2016a; Pennacchiotti and
+      or contextualized text embeddings.                 Popescu, 2011b).
+   The remainder of this paper is organized as fol-         Studies have examined the effectiveness of differlows: Section 2 discusses related work. Section 3        ent features for stance detection, including textual
+describes the process of data collection. Section 4      features such as word n-grams and hashtags, netpresents our method for user stance detection. Sec-      work interactions such as retweeted accounts and
+tion 5 describes how we characterize the influ-          mentions, and profile information such as user locaencers. Section 6 discusses our experiments in           tion (Borge-Holthoefer et al., 2015; Hasan and Ng,
+media bias prediction. Finally, Section 7 concludes      2013; Magdy et al., 2016a,b; Weber et al., 2013).
+and points to possible directions for future work.       Network interaction features were shown to yield
+                                                         better results compared to using textual features
+2    Related Work                                        (Magdy et al., 2016a; Wong et al., 2013). SridRecent work that attempted to characterize the           har et al. (2015) leveraged both user interactions
+stance and the ideological leaning of media and          and textual information when modeling stance and
+Twitter users relied on the observation that users       disagreement, using a probabilistic programming
+tend to retweet content that is consistent with their    system that allows models to be specified using a
+world view. This stems from selective exposure,          declarative language.
+which is a cognitive bias that leads people to avoid        Trabelsi and Zaı̈ane (2018) described an unsuthe cognitive overload from exposure to opposing         pervised stance detection method that determines
+views as well as the cognitive dissonance in which       the viewpoints of comments and of their authors.
+people are forced to reconcile between their views       It analyzes online forum discussion threads, and
+and opposing views (Morgan et al., 2013).                therefore assumes a certain structure of the posts.
+
+
+It also assumes that users tend to reply to each        3   Data Collection
+others’ comments when they are in disagreement,
+                                                        We obtained data on eight topics that are considwhereas we assume the opposite in this paper. Their
+                                                        ered polarizing in the USA (Darwish et al., 2020),
+model leverages the posts’ contents, whereas we
+                                                        shown in Table 1.
+only use the retweet behavior of users.
+                                                           They include a mix of long-standing issues such
+   Many methods involving supervised learning           as racism and gun control, temporal issues such as
+were proposed for stance detection. Such meth-          the nomination of Judge Brett Kavanaugh to the US
+ods require the availability of an initial set of la-   Supreme Court and Representative Ilhan Omar’s
+beled users, and they use some of the aforemen-         polarizing remarks, as well as non-political issues
+tioned features for classification (Darwish et al.,     such as the potential dangers of vaccines. Further,
+2018; Magdy et al., 2016b; Pennacchiotti and            though long-standing issues typically show right–
+Popescu, 2011a). Such classification can label          left polarization, stances towards Omar’s remarks
+users with precision typically ranging between          are not as clear, with divisions on the left as well.
+70% and 90% (Rao et al., 2010; Pennacchiotti and           Since we are interested in US users, we filtered
+Popescu, 2011a). Label propagation is a semi-           some tweets to retain such by users who have stated
+supervised method that starts with a seed list of       that their location was USA. We used a gazetteer
+labeled users and propagates the labels to other        that included words that indicate USA as a country
+users who are similar based on the accounts they        (e.g., America, US), as well as state names and
+follow or retweet (Barberá and Sood, 2015; Borge-      their abbreviations (e.g., Maryland, MD).
+Holthoefer et al., 2015; Weber et al., 2013). While        Other data that we used in our experiments is a
+label propagation may label users with high preci-      collection of articles that were cited by users from
+sion (often above 95%), it is biased towards users      the tweets collection and that originate from media,
+with more extreme views; moreover, careful choice       whose bias is known, i.e., is discussed on the Media
+of thresholds is often required, and post-checks are    Bias/Fact Check website.
+needed to ensure quality.
+   Abu-Jbara et al. (2013) and more recently Dar-       4   User Stance Detection
+wish et al. (2020) used unsupervised stance de-         In order to analyze the stance of influencers on
+tection, where users are mapped into a lower di-        a given topic, we first find the stances of Twitter
+mensional space based on user-user similarity, and      users, and then we project them to the influencers
+then clustered to find core sets of users represent-    that the users cite. A central (initial) assumption
+ing different stances. This was shown to be highly      here is that if a user includes a link to some artieffective with nearly perfect clustering accuracy       cle in their tweet, they are more likely to agree or
+for polarizing topics, and it requires no manual        endorse the article’s message. Similarly, when a
+labeling of users. Here, we use the same idea,          user retweets a tweet verbatim without adding any
+but we combine it with supervised classification        comments, they are more likely to agree with that
+based on retweets in order to increase the number       tweet. We label a large number of users with their
+of labeled users (Darwish, 2018). Other methods         stance for each topic using a two-step approach,
+for user stance detection include collective clas-      namely projection and clustering and supervised
+sification (Duan et al., 2012), where users in a        classification.
+network are jointly labeled and classification in a        For the projection and clustering step, we idenlow-dimensional user-space (Darwish et al., 2017).      tify clusters of core vocal users using the unsuperAs for predicting political leaning or sentiment,    vised method described in (Darwish et al., 2020).
+this problem was studied previously as a super-         In this step, users are mapped to a lower dimenvised learning problem, where a classifier learns       sional space based on their similarity, and then they
+from a set of manually labeled tweets (Pla and Hur-     are clustered. After performing this unsupervised
+tado, 2014; Bakliwal et al., 2013; Bermingham and       learning step, we train a supervised classifier using
+Smeaton, 2011). Similarly, Volkova et al. (2014)        the two largest identified clusters in order to tag
+predicted Twitter users’ political affiliation (being   many more users. For that, we use FastText, a deep
+Republican or Democratic), using their network          neural network text classifier, that has been shown
+connections and textual information, relying on         to be effective for various text classification tasks
+user-level annotations.                                 (Joulin et al., 2017).
+
+
+      Topic                     Keywords                                                                                           Date Range                  No. of Tweets
+
+      Climate change            #greendeal, #environment, #climate, #climatechange, #carbonfootprint, #climatehoax, #cli-          Feb 25–Mar 4, 2019              1,284,902
+                                mategate, #globalwarming, #agw, #renewables
+      Gun control/rights        #gun, #guns, #weapon, #2a, #gunviolence, #secondamendment, #shooting, #massshooting,               Feb 25–Mar 3, 2019              1,782,384
+                                #gunrights, #GunReformNow, #GunControl, #NRA
+      Ilhan Omar remarks on     IlhanOmarIsATrojanHorse, #IStandWithIlhan, #ilhan, #Antisemitism, #IlhanOmar, #IlhanMN,            Mar 1–9, 2019                   2,556,871
+      Israel lobby              #RemoveIlhanOmar, #ByeIlhan, #RashidaTlaib, #AIPAC, #EverydayIslamophobia, #Islamophobia, #ilhan
+      Illegal immigration       #border, #immigration, #immigrant, #borderwall, #migrant, #migrants, #illegal, #aliens             Feb 25–Mar 4, 2019              2,341,316
+      Midterm                   midterm, election, elections                                                                       Oct 25–27, 2018                   520,614
+      Racism & police brutal-   #blacklivesmatter, #bluelivesmatter, #KKK, #racism, #racist, #policebrutality, #excessiveforce,    Feb 25–Mar 3, 2019              2,564,784
+      ity                       #StandYourGround, #ThinBlueLine
+      Kavanaugh Nomination      Kavanaugh, Ford, Supreme, judiciary, Blasey, Grassley, Hatch, Graham, Cornyn, Lee, Cruz,           Sept. 28-30, 2018 &             2,322,141
+                                Sasse, Flake, Crapo, Tillis, Kennedy, Feinstein, Leahy, Durbin, Whitehouse, Klobuchar, Coons,      Oct. 6-9, 2018
+                                Blumenthal, Hirono, Booker, Harris
+      Vaccination benefits &    #antivax, #vaxxing, #BigPharma, #antivaxxers, #measlesoutbreak, #Antivacine, #Vac-                 Mar 1–9, 2019                      301,209
+      dangers                   cinesWork, #vaccine, #vaccines, #Antivaccine, #vaccinestudy, #antivaxx, #provaxx, #VaccinesSaveLives, #ProVaccine, #VaxxWoke, #mykidmychoice
+
+
+                                                       Table 1: Polarizing topics used in study.
+
+
+   Once we have expanded our sets of labeled users,
+we identify influencers that are most closely asso-                                               1.00
+ciated with each group using a modified version of                                                0.75
+the so-called valence score, which varies in value                                                0.50
+between −1 and 1. If an influencer is being cited                                                 0.25
+evenly between the groups, then it would be as0.00
+signed a valence score close to zero. Conversely,
+                                                                                                  0.25
+if one group disproportionately cites an influencer
+                                                                                                  0.50
+compared to another group, then it would be as-                                                                  Cluster
+                                                                                                  0.75           Cluster 0
+signed a score closer to −1 or 1. We perform these                                                               Cluster 1
+                                                                                                  1.00           Not clustered
+steps for each of the given topics, and finally we
+                                                                                                          1.00     0.75    0.50   0.25 0.00     0.25    0.50   0.75     1.00
+summarize the stances across all topics. Below, we
+explain each of these steps in more detail.
+                                                                                            Figure 2: Top active users on the midterm topic clustered using UMAP + Mean Shift.
+4.1    Projection and Clustering
+Given the tweets for each topic, we compute the
+similarity between the top 1,000 most active users.                                         Clustering high-dimensional data often yields subTo compute similarity, we construct a vector for                                            optimal results, but can be improved by projecting
+each user containing the number of all the accounts                                         to a low-dimensional space (Darwish et al., 2020).
+that a user has retweeted, and then we compute
+the pairwise cosine similarity between them. For                                            4.2          Supervised Classification
+example, if user A has only retweeted user B 3                                              Since unsupervised stance detection is only able to
+times, user C 5 times and user E 8 times, then                                              classify the most vocal users, which only constitute
+user A’s vector would be (0, 3, 5, 0, 8, 0, 0, ... 0).                                      a minority of the users, we wanted to assign stance
+Solely using the retweeted accounts as features has                                         labels to as many additional users as we can. Given
+been shown to be effective for stance classification                                        the clusters of users that we obtain for each topic,
+(Darwish et al., 2020; Magdy et al., 2016a). Fi-                                            we retain the two largest clusters for each topic,
+nally, we perform dimensionality reduction and we                                           and we assign cluster labels to the users contained
+project the users using Uniform Manifold Approxi-                                           therein. Next, we use all the automatically labeled
+mation and Projection (UMAP). When performing                                               users for each topic to train a supervised classidimensionality reduction, UMAP places users on                                              fier using the accounts that each user retweeted
+a two-dimensional plane such that similar users                                             as features (same as the features we used to comare placed closer together and dissimilar users are                                         pute user similarity earlier). For classification, we
+pushed further apart. Figure 2 shows the top users                                          train a FastText model using the default parameters,
+for the “midterm” topic projected with UMAP onto                                            and then we classify all other users with five or
+the 2D plane. After the projection, we use Mean                                             more retweeted accounts, only accepting the classiShift to cluster the users as shown in Figure 2. This                                       fication if FastText was more than 80% confident
+is the best setup described in (Darwish et al., 2020).                                      (70–90% yielded nearly identical results).
+
+
+  Topic                       No. of Users   Clustered   Classified    We use the above equation to compute valence
+                                                 Users       Users
+                                                                       scores for the retweeted accounts, but we using
+  climate change                  724,470         860        5,851
+  gun control                     973,206         813       11,281     a modified version for calculating the score for
+  Ilhan Omar                      563,706         723       25,484
+  immigration                     940,840         901       22,456     influencers (I):
+  midterm elections               312,954         860       12,765
+  police brutality & racism     1,175,081         891       18,978                                  t f (I,C0 )
+  Kavanaugh                       809,835         891       10,100                                 total(C0 )
+  vaccine                         194,245         545          556               V (I) = 2 t f (I,C )        t f (I,C1 )
+                                                                                                                         −1   (2)
+                                                                                           total(C0 )    +  total(C1 )
+Table 2: Users per topic: total number of users, umber
+of clustered users, and number of automatically labeled                where
+users.                                                                   t f (I,Ci ) = ∑a∈I T Ci [ln(Cnt(a,Ci )) + 1]
+                                                                         total(Ci ) = ∑I t f (I,Ci )
+   In order to obtain a rough estimate of the acIn the latter equation, Cnt(a,Ci ) is the number
+curacy of the model, we trained FastText using
+                                                                       of times article a was cited by users from cluster Ci .
+a random 80% subset of the clustered users for
+                                                                       In essence, we are replacing term frequencies with
+each topic and we tested on the remaining 20%.
+                                                                       the natural log of the term frequencies. We opted to
+The accuracy was consistently above 95% for all
+                                                                       modify the equation in order to tackle the following
+topics. This does not mean that this model can
+                                                                       issue: if users from one of the clusters, say C1 , cite
+predict the stance for all users that accurately —
+                                                                       only one single article from some media source a
+the clustered users were selected to be the most
+                                                                       large number of times (e.g., 2,000 times), while
+active ones. Rather, it shows that the classifier can
+                                                                       users from the other cluster (C0 ) cite 10 other artisuccessfully capture what the previous, unsupercles from the same media 50 times each, then using
+vised step has already learned. Table 2 lists the
+                                                                       equation 1 would result in a valence score of −0.6.
+total number of users who authored the tweets for
+                                                                       We would then regard the given media as having
+each topic, the number of users who were automatan opposing stance to the stance of users in C0 . Alically clustered using the aforementioned unsuperternatively, using the natural log would lead to a
+vised clustering technique, and the number of users
+                                                                       valence score close to 0.88. Thus, dampening term
+who were automatically labeled afterwards using
+                                                                       frequencies using the natural log has the desired
+supervised classification. Given that we applied
+                                                                       effect of balancing between the number of articles
+unsupervised stance detection to the most active
+                                                                       being cited by each group and the total number of
+1,000 users, the majority of the users appeared in
+                                                                       citations. We bin the valence scores between −1
+the largest two clusters (shown in Table 2).
+                                                                       and 1 into five equal size bands as follows:
+4.3    Calculating Valence Scores                                                      
+                                                                                       
+                                                                                         −−, if s ∈ [−1, −0.6)
+Given all the labeled users for each topic, we com-                                    
+                                                                                       −,       if s ∈ [−0.6, −0.2)
+                                                                                       
+                                                                                       
+                                                                                       
+puted a valence score for each influencer. As
+                                                                            Cat(V ) = 0,         if s ∈ [−0.2, 0.2)        (3)
+mentioned earlier, the valence score ranges be-                                        
+                                                                                       +,       if s ∈ [0.2, 0.6)
+                                                                                       
+tween [−1, 1], where a value close to 1 implies
+                                                                                       
+                                                                                       
+                                                                                       
+it is strongly associated with one group of users,                                        ++, if s ∈ [0.6, 1]
+                                                                                       
+−1 shows it is strongly associated with the other
+group of users, and 0 means that it is being shared                    5   Characterizing the Influencers
+or cited by both groups. The original valence score
+                                                                       We use valence to characterize the leaning of all
+described by Conover et al. (2011a) is calculated
+                                                                       cited influencers for each of the topics. Table 3
+as follows:
+                                                                       shows the valence categories for the top-cited met f (u,C0 )
+                               total(C0 )
+                                                                       dia sources across all topics. It also shows each
+             V (u) = 2 t f (u,C ) t f (u,C ) − 1                 (1)   media’s factuality of reporting, i.e., trustworthiness,
+                               0           1
+                       total(C0 ) + total(C1 )                         and bias (ranging from far-left to far-right) as dewhere t f (u,C0 ) is the number of times (term fre-                    termined by mediaBiasFactCheck.com. Since the
+quency) item u is cited by group C0 , and total(C0 )                   choice of which cluster should be C0 and which
+is the sum of the term frequencies of all items cited                  would be C1 is arbitrary, we can multiply by −1
+by C0 . t f (u,C1 ) and total(C1 ) are defined in a sim-               the valence scores for any topic and the meaning
+ilar fashion.                                                          of the results would stay the same.
+                         0          3        24          18         31          110         58
+       --                                                                                                        1.00   0.75   0.50   0.25   0.00   0.25   0.50   0.75   1.00
+                         0          2          8          3           8           9           3         100   Figure 4: The top-200 retweeted accounts, projected on
+                -
+Valence Category
+
+
+                                                                                                              a number line according to their average valence.
+                         0          4        25          13         20            4           0         80
+                                                                                                        60
+                                                                                                                 As for left-leaning accounts, they include those
+                         0          14       45          21         14            2           0         40
++
+
+
+                                                                                                              attacking Trump and the Republicans, and ex3         101     148           70         36            6           3         20    pressing support for the Democratic party and
+       ++
+                                                                                                              for Liberal social positions. If the retweeted account happens to be a media source, we used
+                                          LEFT-CENTER
+
+
+                                                                 RIGHT-CENTER
+                    EXTREME-LEFT
+
+                                   LEFT
+
+
+                                                                                        EXTREME-RIGHT
+                                                        CENTER
+
+
+                                                                                RIGHT                         mediaBiasFactCheck.com. Table 5 compares the
+                                                                                                              per-topic valence for each retweeted account along
+                                                                                                              with the average category and the true label.
+                                                        Bias
+                                                                                                                 It is noteworthy that all top-200 retweeted acFigure 3: Valence category vs. bias: number of media.
+                                                                                                              counts have extreme valence categories on average
+                                                                                                              across all topics. Their average valence scores, with
+                                                                                                              one exception, appear between −0.6 and −1.00 for
+   We resorted to doing so for some topics in order                                                           right, and between 0.6 and 1 for left (see Figure 4).
+to align the extreme valence bands across all topics.                                                            Of those manually and independently tagged acGiven tweet samples from users in a given cluster                                                             counts, all that were tagged as left-leaning have
+for a given topic, labeling that cluster manually was                                                         a strong positive valence score and all that were
+straightforward with almost no ambiguity. Table 4                                                             tagged as right-leaning have a strong negative vashows the most frequently cited media source for                                                              lence score. Only two accounts were manually laeach topic and for each valence band.                                                                         beled as center, namely Reuters and CSPAN, which
+   Of the 5,406 unique media sources that have                                                                is a US channel that broadcasts Federal Governbeen cited in tweets across all topics, 806 have                                                              ment proceedings, and they had valence scores of
+known political bias from mediaBiasFactCheck.                                                                 0.55 and 0.28, respectively. Though their absolute
+com. Figure 3 shows the confusion matrix between                                                              values are lower than those of all other sources,
+our valence categories and the goold labels from                                                              they are mapped to the + valence category.
+mediaBiasFactCheck.com.                                                                                          Table 3 summarizes the valence scores for the
+   We notice that many of the media that have a                                                               media across all topics. Table 4 lists the most cited
+negative valence score (categories − and −−) are                                                              media sources for each topic and for each of the
+classified on the right side of the political spec-                                                           five valence bands. The order of the bands from
+trum by mediaBiasFactCheck.com, while most                                                                    top to bottom is: ++, +, 0, − and −−. The table
+media with positive scores (categories + and ++)                                                              also includes the credibility and the political leanare classified as slightly left-leaning. Although                                                             ing tags from mediaBiasFactCheck.com. The key
+there are almost no extreme-left cases, there is a                                                            observations from the table as follows:
+correlation between bias and our valence score.                                                                  1. Most right-leaning media appear overwhelmmediaBiasFactCheck.com seems to rarely catego-                                                                ingly in the − and −− valence categories. Conrize media sources as “extreme-left”. This could                                                              versely, left-leaning media appear in all valence
+be a reflection of reality or it might imply that                                                             categories, except for the −− category. This
+mediaBiasFactCheck.com has an inherent bias.                                                                  implies that left-leaning users cite right-leaning
+   We also computed the valence scores for the                                                                media sparingly. We looked at some instances
+top-200 retweeted accounts, and we assigned each                                                              where right-leaning users cited left-leaning meaccount a valence category based on the score. In-                                                            dia, and we found that in many cases the cited
+dependently, we asked a person who is well-versed                                                             articles reinforced a right-leaning viewpoint. For
+with US politics to label all the accounts as left, cen-                                                      example, right-leaning users shared a video from
+ter, or right. When labeling accounts, right-leaning                                                          thehill.com, a left-center site, 2,398 times for the
+include those expressing support for Trump, the                                                               police racism topic. The video defended Trump
+Republican party, and gun rights, opposition to                                                               against charges of racism by Lynne Patton, a longabortion, and disdain for Democrats.                                                                          time African-American associate of Trump.
+
+
+                                                                                                                                           police & racism
+                                                                          climate change
+
+
+                                                                                                                   immigration
+
+
+                                                                                                                                                             Kavanaugh
+                                                                                             gun control
+                                           factuality
+
+
+                                                                                                                                 midterm
+                                                                Average
+
+
+                                                                                                                                                                         vaccine
+                                                                                                           ilhan
+                                                         bias
+                  Medium
+                  thehill.com              H             L-C     +         0                ++              +       +             +         +                ++          ++
+                  theguardian.com          H             L-C    ++        ++                ++             ++      ++            ++        ++                ++          ++
+                  washingtonpost.com       H             L-C    ++        ++                ++             ++      ++            ++        ++                ++          ++
+                  breitbart.com            VL           Far R   −−        −−                −−             −−      −−            −−        −−                −−          −−
+                  foxnews.com              M              R     −−        −−                −−             −−      −−            −−        −−                −−
+                  nytimes.com              H             L-C    ++         +                ++              +       +             +        ++                ++          ++
+                  cnn.com                  M              L      +         +                ++              +      ++             +         +                ++           +
+                  apple.news                                     +         0                 0              +       0             0         +                 +          ++
+                  dailycaller.com          M             R      −−        −−                −−             −−      −−            −−        −−                −−
+                  rawstory.com             M             L      ++        ++                ++             ++      ++            ++        ++                ++          ++
+                  huffingtonpost.com        H            L      ++        ++                ++             ++      ++             +        ++                ++          ++
+                  truepundit.com            L                   −−        −−                −−             −−      −−            −−        −−                −−          −−
+                  nbcnews.com               H            L-C     +        −−                ++              +      ++             +         +                ++          ++
+                  westernjournal.com       M              R     −−        −−                −−             −−      −−            −−        −−                −−
+                  reuters.com              VH             C      +         +                ++             ++       +             +         +                 +          ++
+                  washingtonexaminer.com    H             R     −−        −−                −−             −−      −−             0        −−                −−
+                  thegatewaypundit.com     VL           Far R   −−        −−                −−             −−      −−            −−        −−                −−
+                  politico.com              H            L-C     +         +                 +              +       +            ++         +                 +          ++
+                  npr.org                  VH            L-C     +         0                ++             ++      ++             0        ++                ++          ++
+                  townhall.com             M              R     −−        −−                −−             −−      −−            −−        −−                −−          −−
+                  msn.com                   H            L-C     +         +                 +              +       0            ++         0                ++           0
+                  nypost.com               M             R-C     −        −−                 0              −       −             +        −−                 −
+                  vox.com                   H             L     ++        ++                ++             ++      ++            ++         +                ++          ++
+                  thedailybeast.com         H             L     ++        ++                ++              +      ++            ++         +                ++          ++
+                  bbc.com                   H            L-C     +         +                 +             ++      ++             0         +                 +          ++
+                  independent.co.uk         H            L-C    ++        ++                 +             ++      ++            ++         +                ++          ++
+                  ilovemyfreedom.org       VL           Far R   −−        −−                −−             −−      −−            −−        −−                −−
+                  thinkprogress.org        M              L     ++        ++                ++             ++      ++            ++        ++                ++          ++
+                  dailywire.com            M              R     −−        −−                −−             −−      −−            −−        −−                −−          ++
+                  pscp.tv                                        −        −−                −−             −−       0            −−         0                 −
+                  dailymail.co.uk          VL            R       −         −                 0              −       −             −         −                −−          −−
+                  msnbc.com                M             L      ++        ++                ++             ++      ++             +        ++                ++
+                  dailykos.com             M             L      ++        ++                ++             ++      ++             +        ++                ++
+                  bloomberg.com            H            L-C      +         +                ++              0      ++             +         0                 +          ++
+                  usatoday.com             H            L-C      +         +                 +              0       +            ++         +                 0           +
+
+
+Table 3: Media valence categories for each topic with included average column. Plus (+) and minus (−) signify
+left or right leaning, respectively. Factuality: Very High (VH), High (H), Mixed (M), Low (L), Very Low (VL).
+Bias: Left (L), Left-Center (L-C), Center (C), Right-Center (R-C), Right (R), Far Right (Far R). Blank cells mean
+that we did not have information.
+
+
+   2. Most right-leaning sources in the −− cate-                                           Valence Scores. We use valence scores in two
+gory have mixed, low, or very low factuality. Con-                                         ways. First, we average the corresponding vaversely, most left-leaning sites appearing in the −                                        lence across the different polarizing topics to obvalence category have high or very high factuality.                                        tain an average valence score for a given target
+Similarly for the vaccine topic, where high credi-                                         news medium. This is an unsupervised method
+bility sources, such as fda.gov and nih.gov, are                                           for computing polarity. Second, we train a Logisfrequently cited by anti-vaccine users, mostly to                                          tic Regression classifier that uses the calculated
+support their beliefs.                                                                     valence scores as features and annotations from
+                                                                                           mediaBiasFactCheck.com as gold target labels in
+  3. The placements of sources in different cateorder to predict the general political leaning of a targories are relatively stable across topics. For examget news medium. We merged “left” and “extreme
+ple, washingtonPost.com and theguardian.com
+                                                                                           left”, and similarly we merged “right” and “extreme
+exclusively appear in the ++ category, while
+                                                                                           right”. We discarded media labeled as being “leftbreitbart.com and foxnews.com consistently apcenter” and “right-center”. Each news medium was
+pear in the −− category.
+                                                                                           represented by an 8-dimensional vector containing
+6   Predicting Media Bias                                                                  the valence scores for the above topics. In the experiments, we used the lbfgs solver and C = 0.1.
+Given the stances of users on the aforementioned                                           We used two measures to evaluate its performance,
+eight topics, we leverage this information to predict                                      namely accuracy and mean absolute error (MAE).
+media bias. Specifically, we describe in this section                                      The latter is calculated by considering the different
+how we make use of the valence scores, as well                                             classes as ordered and equally distant from each
+as other features, namely graph and contextualized                                         other, i.e., if the model predicts right and the true
+text embeddings, to train supervised classifiers for                                       label is left, this amounts to an error equal to 2.
+this purpose.
+
+
+                   climate change                           gun control                                   Ilhan Omar                                              immigration
+     theguardian.com                H   L-C thehill.com                           H        washingtonpost.com
+                                                                                           L-C                                            H                 L-C
+                                                                                                                                                   theguardian.com                                  H   L-C
+     washingtonpost.com             H   L-C cnn.com                              M         theguardian.com
+                                                                                            L                                             H                 L-C
+                                                                                                                                                   washingtonpost.com                               H   L-C
+     independent.co.uk              H   L-C nytimes.com                           H        mondoweiss.net
+                                                                                           L-C                                            H        cnn.com   L                                     M     L
+     wef.ch                                  npr.org                             VH        L-C
+                                                                                           thinkprogress.org                              M                  L
+                                                                                                                                                   huffingtonpost.com                               H    L
+     vox.com                         H   L washingtonpost.com                     H        haaretz.com
+                                                                                           L-C                                            H        npr.org  L-C                                    VH   L-C
+     nytimes.com                     H L-C politico.com                           H        L-C
+                                                                                           nytimes.com                                    H                 L-C
+                                                                                                                                                   thehill.com                                      H   L-C
+     bbc.com                         H L-C usatoday.com                           H        L-C
+                                                                                           thehill.com                                    H                 L-C
+                                                                                                                                                   nytimes.com                                      H   L-C
+     cnn.com                        M    L msn.com                                H        politico.com
+                                                                                           L-C                                            H                 L-C
+                                                                                                                                                   reuters.com                                     VH    C
+     reuters.com                    VH C bbc.com                                  H        L-C
+                                                                                           cnn.com                                        M                  L
+                                                                                                                                                   politico.com                                     H   L-C
+     bloomberg.com                   H L-C cnbc.com                               H        apple.news
+                                                                                           L-C                                                     usatoday.com                                     H   L-C
+     thehill.com                     H L-C apple.news                                      mediaite.com                                   H    L apple.news
+     apple.news                              sun-sentinel.com                     H R-C usatoday.com                                      H L-C msn.com                                            H    L-C
+     npr.org                        VH L-C nypost.com                             M R-C yahoo.com                                         M L-C pscp.tv
+     seattletimes.com                H L-C dailymail.co.uk                        VL R timesofisrael.com                                  H L-C whitehouse.gov                                     M  R
+     newsweek.com                   M    L mailchi.mp                                      theatlantic.com                                H L-C texastribune.org                                   H  C
+     change.org                      H   L washingtontimes.com                    H R-C nypost.com                                        M R-C dailymail.co.uk                                    VL R
+     latimes.com                     H L-C breaking911.com                        VL       jpost.com                                      H    C nypost.com                                        M R-C
+     dailymail.co.uk                VL R chicagotribune.com                       H R-C dailymail.co.uk                                   VL R zerohedge.com                                       M
+     climatechangedispatch.com               rt.com                               M R-C algemeiner.com                                    H R-C ir.shareaholic.com
+     cnbc.com                        H L-C forbes.com                             M R-C startribune.com                                   H L-C breaking911.com                                    VL
+     forbes.com                     M R-C breitbart.com                           VL Far R foxnews.com                                    M    R breitbart.com                                     VL Far R
+     breitbart.com                  VL Far R foxnews.com                          M    R breitbart.com                                    VL Far R illegalaliencrimereport.com
+     dailycaller.com                M    R ammoland.com                           H    R townhall.com                                     M    R washingtonexaminer.com                            H    R
+     tambonthongchai.com                     dailycaller.com                      M    R change.org                                       H    L foxnews.com                                       M    R
+     wattsupwiththat.com             L       bearingarms.com                      M    R hannity.com                                               westernjournal.com                              M    R
+
+                       midterm                          police & racism                                 Kavanaugh                                                                        vaccine
+     washingtonpost.com            H L-C washingtonpost.com                          H     L-C
+                                                                                          thehill.com                                     H                 L-C          thehill.com               H    L-C
+     theguardian.com               H L-C rawstory.com                                M      L
+                                                                                          washingtonpost.com                              H                 L-C          theguardian.com           H    L-C
+     rawstory.com                  M     L huffingtonpost.com                        H    cnn.com
+                                                                                            L                                             M                  L           washingtonpost.com        H    L-C
+     tacticalinvestor.com                  theguardian.com                           H    nytimes.com
+                                                                                           L-C                                            H                 L-C          vaxopedia.org
+     vox.com                       H     L nytimes.com                               H    huffingtonpost.com
+                                                                                           L-C                                            H                  L           nytimes.com                H   L-C
+     thehill.com                   H L-C thehill.com                                 H     L-C
+                                                                                          politico.com                                    H                 L-C          cnn.com                   M     L
+     reuters.com                  VH C apple.news                                         apple.news                                                                     statnews.com               H    C
+     nytimes.com                   H L-C cnn.com                                 M    L yahoo.com                                         M                 L-C          latimes.com                H   L-C
+     cnn.com                       M     L nbcnews.com                            H L-C apnews.com                                        VH                 C           cbc.ca                     H   L-C
+     dailykos.com                  M     L thedailybeast.com                      H   L latimes.com                                        H                L-C          usatoday.com               H   L-C
+     apple.news                            msn.com                                H L-C usatoday.com                                       H                L-C          cdc.gov                   VH
+     sagagist.com.ng                       pscp.tv                                        mediaite.com                                     H                 L           medium.com                M    L-C
+     bbc.com                       H L-C bloomberg.com                            H L-C theweek.com                                        H                L-C          newsroom.fb.com
+     alzwaaj.com                           politics.theonion.com                          lawandcrime.com                                                                help.senate.gov
+     washingtonexaminer.com        H     R rollcall.com                          VH C cnbc.com                                            H                 L-C          msn.com                   H    L-C
+     dailymail.co.uk              VL R mediaite.com                               H   L pscp.tv                                                                          change.org                H     L
+     pbs.org                       H L-C dailymail.co.uk                         VL R nypost.com                                          M                 R-C          fda.gov
+     zerohedge.com                 M       news.sky.com                           H L-C ir.shareaholic.com                                                               variety.com
+     ajc.com                       H L-C newsone.com                              H L-C rollcall.com                                      VH C
+     veritablenouvelordre.forumcanada.org  aol.com                                H L-C c-span.org                                        VH C
+     breitbart.com                VL Far R breitbart.com                         VL Far R foxnews.com                                     M    R ncbi.nlm.nih.gov                                  VH
+     foxnews.com                   M     R defensemaven.io                                truepundit.com                                   L       vaccineimpact.com
+     dailycaller.com               M     R foxnews.com                           M    R dailycaller.com                                   M    R naturalnews.com                                   M
+     ilovemyfreedom.org           VL Far R thegatewaypundit.com                  VL Far R breitbart.com                                   VL Far R vaccines.me
+     westernjournal.com            M     R nypost.com                            M R-C thegatewaypundit.com                               VL Far R thevaccinereaction.org
+
+
+                                        Table 4: Top 5 websites per valence category for each topic.
+                                                                                                                                          police & racism
+                                                                          climate change
+
+
+                                                                                                                  immigration
+
+
+                                                                                                                                                                  Kavanaugh
+                                                                                            gun control
+
+
+                                                                                                                                midterm
+                                                                Average
+
+
+                                                                                                                                                                               vaccine
+                                                        Truth
+
+
+                                                                                                          ilhan
+
+
+                                    Account
+                                    realdonaldtrump     R       −−                          0             −−      −−            −−        −−                  −−              −−
+                                    charliekirk11       R       −−                         −−             −−      −−            −−        −−                  −−
+                                    kylegriffin1        L       ++        ++               ++                     ++            ++        ++                  ++              ++
+                                    dbongino            R       −−        −−               −−             −−      −−            −−        −−                  −−
+                                    kamalaharris        L       ++        ++               ++                     ++            ++        ++                  ++
+                                    mitchellvii         R       −−        −−               −−             −−      −−            −−        −−                  −−
+                                    realsaavedra        R       −−        −−               −−             −−      −−                      −−                  −−
+                                    krassenstein        L       ++                         ++             ++      ++            ++        ++                  ++              ++
+                                    realjack            R       −−        −−               −−             −−      −−            −−        −−                  −−              −−
+                                    nbcnews             L       ++        ++               ++              +      ++            ++        ++                  ++              ++
+                                    education4libs      R       −−        −−               −−             −−      −−            −−        −−                  −−
+                                    nra                 R       −−                         −−                     −−            −−                            −−
+                                    donaldjtrumpjr      R       −−                         −−                     −−            −−        −−                  −−
+                                    shannonrwatts       L       ++                         ++             ++                    ++        ++                  ++
+                                    thehill             L       ++        ++               ++              +      ++             +         +                  ++              ++
+                                    realjameswoods      R       −−                         −−             −−      −−            −−        −−                  −−
+                                    gopchairwoman       R       −−                                        −−      −−            −−                            −−
+                                    jackposobiec        R       −−        −−               −−             −−      −−            −−        −−                  −−
+                                    funder              L       ++        ++               ++             ++      ++            ++        ++                  ++
+                                    cnn                 L       ++        ++               ++             ++      ++             0        ++                  ++              ++
+                                    ajplus              L       ++        ++               ++             ++      ++            ++        ++                   0              ++
+                                    rashidatlaib        L       ++                         ++             ++      ++                      ++                   +
+                                    stevescalise        R       −−                         −−                     −−                                          −−
+                                    jordan sather       ?       −−        −−                                      −−            −−                            −−              −−
+                                    aoc                 L       ++        ++                              ++      ++                      ++
+
+
+Table 5: User valence categories for each topic, preceded by an average column, and a ground truth label. When a
+cell is blank, there is insufficient data for that particular topic.
+
+
+                                         No Valence   With Valence   System Combination. We combined different
+                                        Acc    MAE    Acc     MAE
+                                                                     setups including using all the aforementioned modBaseline 1 (majority class)             43.3   .856   43.3    .856
+Baseline 2 (average valence)             –       –    68.0    .330   els in combination. Using graph embeddings
+Valence scores                           –       –    75.2    .278
+                                                                     (GraphH + GraphM) with BERT embeddings
+BERT (article title)                    60.6   .539   78.3    .264
+BERT (article content)                  61.1   .526   79.2    .255   (Tweet+Title+Content) and valence yielded the
+BERT (title+content)                    62.2   .510   80.8    .228   best results with accuracy of 82.6% and MAE of
+BERT(Tweet)                             64.0   .485   73.6    .302   .206. If we remove valence from the combination,
+GraphEmbM                               63.5   .468   69.1    .380   the accuracy drops by 4.5% while MAE jumps by
+GraphEmbH                               66.9   .425   71.8    .347
+GraphEmbM+H                             68.0   .400   79.0    .251   .078, absolute. This suggests that valence is a very
+GraphEmbM+H+BERT (tweet)                72.5   .358   80.5    .230   effective feature that captures important informaGraphEmbM+H+BERT (tweet, content)       76.1   .311   81.2    .221
+GraphM+H+BERT (tweet, title, content)   78.1   .284   82.6    .206   tion, complementary to what can be modeled using
+                                                                     graph and contextualized text embeddings.
+                Table 6: Predicting media bias.
+                                                                     7    Conclusion and Future Work
+
+  The results are shown in Table 6, where we can                     We have presented a method for predicting the gensee that using the average valence score yields                      eral political leaning of media sources and popular
+68.0% accuracy (0.330 MAE) compared to 75.2%                         Twitter users, as well as their stances on specific
+accuracy (0.278 MAE) when using the eight indi-                      polarizing topics. Our method uses retweeted acvidual valence scores as features.                                   counts, and a combination of dimensionality reduction and clustering algorithms, namely UMAP and
+Graph embeddings. We further use graph em-                           Mean Shift, in order to produce sets of users that
+beddings, generated by building a User-to-Hashtag                    have opposing opinions on specific topics. Next,
+graph (U2H) and a User-to-Mention (U2M) graph                        we expand the discovered sets using supervised
+and then running node2vec on both (Atanasov et al.,                  learning that is trained on the automatically discov2019), producing two types of graph embeddings.                      ered user clusters. We are able to automatically
+When using graph embeddings, we got worse re-                        tag large sets of users according to their stance of
+sults compared to our previous setup with valence                    preset topics. Users’ stances are then projected to
+scores (see Table 6). However, when we combine                       the influencers that are being cited in the tweets for
+them with the valence scores, we observe a sizable                   each of the topics using the so-called valence score.
+boost in performance, up to 11% absolute.                            The projection allows us to tag a large number of
+Tweets. We also experimented with BERT-base.                         influencers with their stances on specific issues and
+We used the text of the tweets that cite the me-                     with their political leaning in general (i.e., left vs.
+dia we are classifying. For classification, we fed                   right) with high accuracy and with minimal human
+BERT representations of tweets to a dense layer                      effort. The main advantage of our method is that it
+with softmax output to fine-tune it with the textual                 does not require manual labeling of entity stances,
+contents of the tweets. We trained at the tweet level,               which requires both topical expertise and time. We
+and we averaged the scores (from softmax) for all                    also investigated the quality of the valence features,
+tweets from the same news medium to obtain an                        and we found that valence scores help to predict
+overall label for that news medium. The accuracy                     media bias with high accuracy.
+is much lower than for the valence scores: 64.0%                        In future work, we plan to increase the number
+accuracy vs. 75.2% for supervised and 68.0% for                      of topics that we use to characterize media. Ideally,
+unsupervised.                                                        we would like to automatically identify such polarizing topics. Doing so would enable us to easily
+Article titles and text. Using the BERT setup                        retarget this work to new countries and languages.
+for Tweets, we used the titles and the full text of
+up to 100 articles from each of the target media.                    Acknowledgments
+When using the full text of articles, we balanced the
+                                                                     This research is part of the Tanbih project1 , which
+number of articles per news medium. We trained
+                                                                     aims to limit the effect of “fake news,” propaganda
+two separate BERT models, one on the titles and
+                                                                     and media bias by making users aware of what they
+another one on the full text (content). Both models
+                                                                     are reading.
+did worse than using valence alone, but the combi1 http://tanbih.qcri.org/
+nation improved over valence only.
+
+
+References                                                 Elanor Colleoni, Alessandro Rozza, and Adam Arvidsson. 2014. Echo chamber or public sphere? PredictAmjad Abu-Jbara, Ben King, Mona Diab, and                    ing political orientation and measuring political hoDragomir Radev. 2013. Identifying opinion sub-              mophily in Twitter using big data. Journal of Comgroups in Arabic online discussions. In Proceed-            munication, 64(2):317–332.
+ ings of the 51st Annual Meeting of the Association
+ for Computational Linguistics, ACL ’13, pages 829–        Michael Conover, Jacob Ratkiewicz, Matthew R Fran835, Sofia, Bulgaria.                                       cisco, Bruno Gonçalves, Filippo Menczer, and
+                                                             Alessandro Flammini. 2011a. Political polarization
+Jisun An, Meeyoung Cha, Krishna Gummadi, Jon                 on Twitter. In Proceedings of the Fifth InternaCrowcroft, and Daniele Quercia. 2012. Visualizing         tional AAAI Conference on Weblogs and Social Memedia bias through Twitter. In Proceedings of the         dia, ICWSM ’11, pages 89–96, Barcelona, Spain.
+   International AAAI Conference on Web and Social
+   Media, Dublin, Ireland, pages 2–5.                      Michael D Conover, Bruno Gonçalves, Jacob
+                                                             Ratkiewicz, Alessandro Flammini, and Filippo
+Atanas Atanasov, Gianmarco De Francisci Morales,             Menczer. 2011b. Predicting the political alignment
+  and Preslav Nakov. 2019. Predicting the role of po-        of Twitter users. In Proceedings of the 2011 IEEE
+  litical trolls in social media. In Proceedings of the      Third International Conference on Privacy, Security,
+  2019 SIGNLL Conference on Computational Natu-              Risk and Trust (PASSAT) and 2011 IEEE Third
+  ral Language Learning, CoNLL ’19, pages 1023–              Inernational Conference on Social Computing
+  1034, Hong Kong, China.                                   (SocialCom), pages 192–199, Boston, MA, USA.
+
+Akshat Bakliwal, Jennifer Foster, Jennifer van der Puil,   Kareem Darwish. 2018. To Kavanaugh or not to KaRon O’Brien, Lamia Tounsi, and Mark Hughes.                vanaugh: That is the polarizing question. arXiv
+  2013. Sentiment analysis of political tweets: To-          preprint arXiv:1810.06687.
+  wards an accurate classifier. In Proceedings of the
+  Workshop on Language Analysis in Social Media,           Kareem Darwish, Michael Aupetit, Peter Stefanov, and
+  pages 49–58, Atlanta, GA, USA.                             Preslav Nakov. 2020. Unsupervised user stance detection on Twitter. In Proceedings of the InternaPablo Barberá. 2015. Birds of the same feather tweet        tional AAAI Conference on Web and Social Media,
+  together: Bayesian ideal point estimation using Twit-      ICWSM ’20, Atlanta, GA, USA.
+  ter data. Political Analysis, 23(1):76–91.
+                                                           Kareem Darwish, Walid Magdy, Afshin Rahimi, Timothy Baldwin, and Norah Abokhodair. 2018. PrePablo Barberá and Gaurav Sood. 2015. Follow your
+                                                             dicting online islamophobic behavior after #ParisAtideology: Measuring media ideology on social nettacks. The Journal of Web Science, 4(3):34–52.
+  works. In Proceedings of the Annual Meeting of
+  the European Political Science Association, Vienna,
+  Austria.                                                 Kareem Darwish, Walid Magdy, and Tahar Zanouda.
+                                                             2017. Improved stance prediction in a user similarity feature space. In Proceedings of the 2017
+Pablo Barber and Gonzalo Rivero. 2015. Understand-           IEEE/ACM International Conference on Advances
+  ing the political representativeness of Twitter users.     in Social Networks Analysis and Mining 2017,
+  Social Science Computer Review, 33(6):712–729.             ASONAM ’17, pages 145–148, Sydney, Australia.
+
+Adam Bermingham and Alan Smeaton. 2011. On us-             Yajuan Duan, Furu Wei, Ming Zhou, and Heung-Yeung
+  ing Twitter to monitor political sentiment and pre-        Shum. 2012. Graph-based collective classification
+  dict election results. In Proceedings of the Workshop      for tweets. In Proceedings of the 21st ACM Interon Sentiment Analysis where AI meets Psychology,           national Conference on Information and Knowledge
+  SAAIP ’11, pages 2–10, Chiang Mai, Thailand.               Management, CIKM ’12, pages 2323–2326, Maui,
+                                                             HI, USA.
+Javier Borge-Holthoefer, Walid Magdy, Kareem Darwish, and Ingmar Weber. 2015. Content and net-           James H Fowler, Michael T Heaney, David W Nickwork dynamics behind Egyptian political polariza-          erson, John F Padgett, and Betsy Sinclair. 2011.
+   tion on Twitter. In Proceedings of the 18th ACM           Causality in political networks. American Politics
+  Conference on Computer Supported Cooperative               Research, 39(2):437–480.
+  Work & Social Computing, CSCW ’15, pages 700–
+   711, Vancouver, BC, Canada.                             Matthew Gentzkow and Jesse M Shapiro. 2011. Ideological segregation online and offline. The QuarRaviv Cohen and Derek Ruths. 2013. Classifying po-          terly Journal of Economics, 126(4):1799–1839.
+  litical orientation on Twitter: It’s not easy! In Proceedings of the 7th International AAAI Conference        Tim Groseclose and Jeffrey Milyo. 2005. A measure
+  on Weblogs and Social Media, ICWSM ’13, pages              of media bias. The Quarterly Journal of Economics,
+  91–99, Cambridge, MA, USA.                                 120(4):1191–1237.
+
+
+Kazi Saidul Hasan and Vincent Ng. 2013. Stance clas-        Marco Pennacchiotti and Ana-Maria Popescu. 2011b.
+  sification of ideological debates: Data, models, fea-      A machine learning approach to Twitter user classitures, and constraints. In Proceedings of the Sixth In-    fication. In Proceedings of the Fifth International
+  ternational Joint Conference on Natural Language           AAAI Conference on Weblogs and Social Media,
+  Processing, IJCNLP ’13, pages 1348–1356, Nagoya,           ICWSM ’11, pages 281–288, Barcelona, Spain.
+  Japan.
+                                                            Ferran Pla and Lluı́s-F. Hurtado. 2014. Political tenKazi Saidul Hasan and Vincent Ng. 2014. Why are               dency identification in Twitter using sentiment analyou taking this stance? Identifying and classifying         ysis techniques. In Proceedings of the 25th Interreasons in ideological debates. In Proceedings of the       national Conference on Computational Linguistics,
+  2014 Conference on Empirical Methods in Natural             COLING ’14, pages 183–192, Dublin, Ireland.
+  Language Processing, EMNLP ’14, pages 751–762,
+                                                            Delip Rao, David Yarowsky, Abhishek Shreevats, and
+  Doha, Qatar.
+                                                              Manaswi Gupta. 2010. Classifying latent user attributes in Twitter. In Proceedings of the 2nd InItai Himelboim, Stephen McCreery, and Marc Smith.
+                                                              ternational Workshop on Search and Mining User2013. Birds of a feather tweet together: IntegratGenerated Contents, SMUC ’10, pages 37–44,
+   ing network and content analyses to examine crossToronto, ON, Canada.
+   ideology exposure on Twitter. Journal of ComputerMediated Communication, 18(2):40–60.                     Filipe N Ribeiro, Lucas Henrique, Fabricio Benevenuto, Abhijnan Chakraborty, Juhi Kulshrestha,
+Armand Joulin, Edouard Grave, Piotr Bojanowski, and            Mahmoudreza Babaei, and Krishna P Gummadi.
+  Tomas Mikolov. 2017. Bag of tricks for efficient text        2018. Media bias monitor: Quantifying biases of
+  classification. In Proceedings of the 15th Confer-           social media news outlets at large-scale. In Proceedence of the European Chapter of the Association for          ings of the Twelfth International AAAI Conference
+  Computational Linguistics, EACL ’17, pages 427–              on Web and Social Media, ICWSM ’18, pages 290–
+  431, Valencia, Spain.                                        299, Stanford, CA, USA.
+Walid Magdy, Kareem Darwish, Norah Abokhodair,              Dhanya Sridhar, James Foulds, Bert Huang, Lise
+ Afshin Rahimi, and Timothy Baldwin. 2016a. #isi-             Getoor, and Marilyn Walker. 2015. Joint models of
+  sisnotislam or #deportallmuslims?: Predicting un-           disagreement and stance in online debate. In Prospoken views. In Proceedings of the 8th ACM Con-            ceedings of the 53rd Annual Meeting of the Associaference on Web Science, WebSci ’16, pages 95–106,           tion for Computational Linguistics and the 7th InterHannover, Germany.                                          national Joint Conference on Natural Language Processing, AXLL-IJCNLP ’15, pages 116–125, BeiWalid Magdy, Kareem Darwish, and Ingmar Weber.                jing, China.
+  2016b. #FailedRevolutions: Using Twitter to study
+  the antecedents of ISIS support. First Monday,            Amine Trabelsi and Osmar R Zaı̈ane. 2018. Unsuper21(2).                                                     vised model for topic viewpoint discovery in online
+                                                             debates leveraging author interactions. In ProceedAibek Makazhanov, Davood Rafiei, and Muhammad                ings of the Twelfth International AAAI Conference
+  Waqar. 2014. Predicting political preference of Twit-      on Web and Social Media, ICWSM ’18, pages 425–
+  ter users. Social Network Analysis and Mining,             433, Stanford, CA, USA.
+  4(1):1–15.
+                                                            Svitlana Volkova, Glen Coppersmith, and Benjamin
+Saif Mohammad, Svetlana Kiritchenko, Parinaz Sob-             Van Durme. 2014. Inferring user political preferhani, Xiaodan Zhu, and Colin Cherry. 2016.                  ences from streaming communications. In ProceedSemEval-2016 task 6: Detecting stance in tweets.            ings of the 52nd Annual Meeting of the Association
+  In Proceedings of the 10th International Workshop           for Computational Linguistics, ACL ’14, pages 186–
+  on Semantic Evaluation, SemEval ’16, pages 31–41,           196, Baltimore, MD, USA.
+  San Diego, CA, USA.                                       Ingmar Weber, Venkata R. Kiran Garimella, and
+                                                              Alaa Batayneh. 2013. Secular vs. Islamist polarJonathan Scott Morgan, Cliff Lampe, and Muham-                 ization in Egypt on Twitter. In Proceedings of
+  mad Zubair Shafiq. 2013. Is news sharing on Twit-            the 2013 IEEE/ACM International Conference on
+  ter ideologically biased? In Proceedings of the             Advances in Social Networks Analysis and Min2013 Conference on Computer Supported Coopera-               ing, ASONAM ’13, pages 290–297, Niagara, ON,
+  tive Work, CSCW 13, pages 887–896, San Antonio,              Canada.
+  TX, USA.
+                                                            Felix Ming Fai Wong, Chee Wei Tan, Soumya Sen, and
+Marco Pennacchiotti and Ana-Maria Popescu. 2011a.             Mung Chiang. 2013. Quantifying political leaning
+ Democrats, Republicans and Starbucks afficionados:           from tweets and retweets. In Proceedings of the Sevuser classification in Twitter. In Proceedings of            enth International AAAI Conference on Weblogs and
+ the 17th ACM SIGKDD International Conference on              Social Media, ICWSM ’13, pages 640–649, Boston,
+ Knowledge Discovery and Data Mining, KDD 11,                 MA, USA.
+ pages 430–438, San Diego, CA, USA.

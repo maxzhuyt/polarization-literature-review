@@ -1,0 +1,151 @@
+DOI: http://dx.doi.org/10.14236/ewic/FDIA2015.10
+
+
+               Topic-centric Classification of Twitter
+                    User’s Political Orientation
+
+                      Anjie Fang1 , Iadh Ounis2 , Philip Habel2 , Craig Macdonald2 and Nut Limsopatham2
+                                                   University of Glasgow, UK
+                            a.fang.1@research.gla.ac.uk, 2 {firstname.secondname}@glasgow.ac.uk
+
+
+     We aim to classify people’s voting intentions by the content of their Tweets about the Scottish Independence
+     Referendum (hereafter, IndyRef). By observing the IndyRef dataset, we find that people not only discussed
+     the vote, but raised topics related to an independent Scotland including oil reserves, currency, nuclear
+     weapons, and national debt. We show that the views communicated on these topics can inform us of
+     the individuals’ voting intentions (“Yes” vs. “No”). In particular, we argue that an accurate classifier can
+     be designed by leveraging the differences in the features’ usage across different topics related to voting
+     intentions. We demonstrate improvements upon a Naive Bayesian classifier using the topics enrichment
+     method. Our new classifier identifies the closest topic for each unseen tweet, based on those topics identified
+     in the training data. Our experiments show that our proposed Topics-Based Naive Bayesian classifier
+     improves accuracy by 7.8% over the classical Naive Bayesian baseline.
+
+                    Keywords: Classification, Topic model, Bayesian theorem, Feature selection, Twitter
+
+ 1. INTRODUCTION                                                  of discussion in a tweet and subsequently it leverages this topic to classify the user’s voting intention.
+ Twitter emerged as an especially popular platform                Our approach, called Topics-Based Naive Bayesian
+ during the IndyRef held in 2014. We propose a tech-              (TBNB) demonstrates marked improvements over a
+ nique to analyse the voting intentions of users, based           classical Naive Bayes (NB) classification baseline.
+ on data mining and machine learning approaches.
+ The general approach we propose could also be
+ used to understand users’ voting intentions in other             2. BACKGROUND AND RELATED WORK
+ major elections. To analyse voting intentions, we
+                                                                  Cohen and Ruths (2004) demonstrated that
+ capture two months of Twitter data related to the Inclassification of political orientation was still a difficult
+ dyRef. To form a ground truth, we label users based
+                                                                  problem and that the earlier result in Al Zamal et
+ upon hashtags appearing in their tweets, and we
+                                                                  al. (2004) was exaggerated since it used easily
+ verify the reliability of this approach using the users’
+                                                                  classifiable political data. We focus on the content of
+ followee networks. After removing the hashtags from
+                                                                  tweets to classify the users’ voting intentions. We use
+ these tweets, we then focus on the remaining terms,
+                                                                  as a starting point a classical Naive Bayesian (NB)
+ treating each term as a feature. However, the referclassifier. Since the number of features can be very
+ endum created an evolving discourse, with different
+                                                                  large, we use several feature selection approaches
+ topical themes (such as oil, currency, and debt ),
+                                                                  in Mladenic and Grobelnik (1999). Each selection
+ which make the accurate classification of users’
+                                                                  approach ranks and selects F informative features
+ voting intentions more challenging. For instance, the
+                                                                  based on the training data. Of course, not every seword “change” is indicative of a “No” voter in the
+                                                                  lected feature will appear in the unseen test tweets.
+ currency topic, and of a “Yes” voter in the nuclear
+ weapons topic. That is, there was a significant
+ discussion over whether Scotland would need to                   3. TOPICS-BASED NAIVE BAYESIAN
+ “change” its currency if it obtained independence,
+                                                                  The IndyRef discussions on Twitter revolved around
+ while the “Yes” camp purported that the nuclear arsea number of topics, for which people’s opinions
+ nal base could “change” in an independent Scotland.
+                                                                  usually reflected their vote intentions. Let us continue
+ The dichotomy of the term “change” in indicating
+                                                                  the example of the word “change” usage in Section 1.
+ voting intentions across different topics highlights the
+                                                                  The difference in usage of “change” across
+ main benefit of our approach. Indeed, this paper condifferent topics is high. Furthermore, the conditional
+ tributes the use of topical clusters to identify the topic
+                                                                  probability of “change” in the “Yes” category is higher
+
+© Fang et al. Published by BCS
+Learning and Development Ltd.                                 38
+Proceedings of the 6th Symposium on Future Directions in Information Access 2015
+
+
+                             Topic-centric Classification of Twitter User’s Political Orientation
+                                    Fang • Ounis • Habel • Macdonald • Limsopatham
+
+than in the “No” category in the “currency” topic.                  Scottish National Party politicians (“Yes” campaign
+Typically, the feature selection approaches just select            supporters), their vote intention is more likely to
+features with higher differences between categories.               be “Yes”. We then examined the networks of the
+If a feature differs between topics (e.g. “change”),               7337 users in our dataset, and identified who
+it will be treated as different features in the TBNB               these users follow among the 536 public Twitter
+model. Thus TBNB can capture term dependencies                     accounts corresponding to Members of the British
+between topic and user voting intentions. Our TBNB                 or Scottish Parliaments. We find that, of the 7337
+classifier leverages both the features’ dissimilarities            users, 87% can be verified into “Yes” or “No” voters,
+across topics and in the categories. In the training               demonstrating that our ground-truth produced by the
+step, the topics are first detected by Latent Dirichlet            hashtags labeling method is reasonable and reliable.
+Allocation (LDA). For each topic, a corresponding
+probability table is produced, where each feature                  We use our IndyRef dataset to compare the
+has two associated conditional probabilities related               performances of the NB and TBNB classifiers.
+to the two possible voting intentions (“Yes”/“No”).                We vary the number of selected features F and the
+Consequently, during the training step, we produce                 deployed feature selection approach for both NB and
+as many feature tables as the number of used topics.               TBNB. We also vary the number of topics T in the
+In the testing step, we treat a user as a virtual docu-            TBNB classifier. We use a 10-fold cross validation
+ment and this document contains the users’ tweets.                 process over the 7337 users and use accuracy to
+For each tweet in the user’s virtual document, the                 measure the performance. Our results show that
+topic that is closest to the tweet’s content is selected.          all TBNB classifiers markedly outperform the NB
+Terms in an unseen tweet are then examined using                   baseline when F ranges from 10K to 50K. The
+the probability table generated during the training                highest accuracy of TBNB (90.4%) is achieved when
+step for the topic with which this tweet is associated.            applying the weighted odds ratio feature selection
+In this way, terms in different tweets are treated                 approach with T =10 and F =30K, while the accuracy
+differently based on their associated topics, and                  of the baseline is 82.6%. In an additional experiment
+the TNBN classifier applies, for each unseen                       aiming to check the generalisation of our conclutweet, those features that were learned from the                   sions, we obtained similar results using a different
+corresponding topic. Note that the feature selection               IndyRef dataset (collected from different period) with
+approaches can naturally be applied to the TBNB                    the same aforementioned T and F values.
+classifier. For example, if F is set to 1000, the top
+1000 features learned from each topic are selected.                5. CONCLUSIONS AND FUTURE WORK
+                                                                   We classified the users’ voting intentions on Twitter
+4. REFERENDUM DATA AND EXPERIMENTS                                 during the IndyRef. We noted that the users tended
+                                                                   to focus their discussions on topics, reflecting their
+Our IndyRef dataset was collected from Twitter
+                                                                   voting intentions. We proposed to enrich the Naive
+by searching for a number of referendum-specific
+                                                                   Bayes classifier by leveraging the underlying topics
+hashtags and keywords using the Twitter API from
+                                                                   covered in the tweets. Our proposed approach
+August 1, 2014 to September 30, 2014. In our
+                                                                   leverages the difference of the features across
+dataset, certain “Yes” hashtags (e.g. #YesBecause)
+                                                                   the topics and voting categories to increase the
+were associated with a “Yes” vote, and “No”
+                                                                   classification confidence. Our results demonstrate
+hashtags (e.g. #NoBecause) with a “No” vote. To
+                                                                   the effectiveness of our resulting TBNB classifier
+generate our ground truth, we assume that if a user’s
+                                                                   on two datasets. In the future, we plan to analyse
+tweets are only tagged by “No” hashtags, this user
+                                                                   the effect of the evolving discussions on the users’
+is labeled as a “No” voter. Similarly, if a user’s tweets
+                                                                   voting intentions over time.
+contain only “Yes” hashtags, this user is labeled as
+a “Yes” supporter, favoring independence. Using this
+method, we find 5326 “Yes” users and 2011 “No”                     6. ACKNOWLEDGEMENTS
+users. Together these 7337 users account for more                  We thank ACM SIGIR for the awarded scholarship
+than 420K tweets. After labelling, all “Yes” and “No”              for participating in ESSIR 2015 and the FDIA
+hashtags are removed from their original tweet text.               Symposium.
+The resulting tweets constitute our classification
+dataset. Without the hashtags, the classification task
+                                                                   REFERENCES
+is naturally more challenging, but importantly, the
+resulting generalisable classifier does not require                Cohen, Raviv and Ruths, Derek (2013) Classifying
+the presence of hashtags. We verify our ground-                      Political Orientation on Twitter: It’s Not Easy!, ICWSM.
+truth’s reliability using the users’ followee networks.            Al Zamal, Faiyaz and Liu, Wendy and Ruths, Derek (2012)
+In particular, If a user mainly follows Conservative                  Homophily and Latent Attribute Inference: Inferring Lapoliticians (“No” campaign supporters), this person                   tent Attributes of Twitter Users from Neighbors, ICWSM.
+is likely to be a “No” voter. If a user follows
+                                                                   Mladenic, Dunja and Grobelnik, Marko (1999) Feature
+                           Topic-centric Classification of Twitter User’s Political Orientation
+                                  Fang • Ounis • Habel • Macdonald • Limsopatham
+selection for unbalanced class distribution and Naive
+Bayes, ICML.

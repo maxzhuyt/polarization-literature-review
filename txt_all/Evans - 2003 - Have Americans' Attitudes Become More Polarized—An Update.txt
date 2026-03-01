@@ -1,0 +1,859 @@
+Have Americans’ Attitudes Become More
+Polarized?—An Update n
+
+John H. Evans, University of California, San Diego
+
+Objective. I examine polarization in public opinion using the method of DiMaggio,
+Evans, and Bryson (DEB) (1996), but go further than DEB by using newly
+available years of survey data. Method. Like DEB, I derive aggregate distributional
+parameters for social groups in each year of the surveys, and then regress the year of
+the surveys on each parameter. Results. As in DEB’s original paper, there is little
+evidence of general polarization in attitudes between the early 1970s and today.
+However, while DEB found some evidence that polarization in the public may be
+the result of polarization in our political system, with the additional years of data
+this conclusion is inescapable. Conclusions. Although political scientists have
+recently found polarization among our elected officials on economic issues, it
+seems clear that members of the public who identify with the partisan labels of our
+political system are becoming polarized on moral issues.
+
+
+  Many scholars have claimed that the American public has become
+increasingly polarized over a range of social issues in recent decades. Scholars
+have claimed, for example, that there have been trends toward ‘‘ideological
+polarization in domestic and social concerns’’ (Wyszomirski, 1994:37), that
+there had been ‘‘sharpening cultural polarization of U.S. society after the
+mid-1970s’’ (Ellison and Musick, 1993:379) and, most famously, that
+American society is engaged in a ‘‘culture war’’ (Hunter, 1991, 1994). Are
+these claims correct? In 1996, DiMaggio, Evans, and Bryson (DEB) wrote a
+paper called ‘‘Have Americans’ Social Attitudes Become More Polarized?’’
+Using more than 20 years of General Social Survey (GSS) and National
+Election Studies (NES) data, and examining four types of polarization for
+18 social issues, in DEB we found little evidence of polarization. The only
+exceptions were polarization in the general public and most subgroups on
+the issue of abortion, and a growing polarization between people who selfidentify as Democrats and Republicans.
+
+
+   n
+     Direct all correspondence to John H. Evans, Department of Sociology, UCSD, 9500
+Gilman Drive, La Jolla, CA 92093-0533 /jhevans@ucsd.eduS. The author will share all data
+and coding information with anyone interested in replicating the study. Thanks to the
+Princeton Center for Arts and Cultural Policy Studies for funding and Vincent Fu for
+conducting analyses. Paul DiMaggio and Mike Hout gave helpful comments on an earlier
+draft of this paper, not of all of which could be closely followed due to page constraints.
+
+SOCIAL SCIENCE QUARTERLY, Volume 84, Number 1, March 2003
+r2003 by the Southwestern Social Science Association
+
+
+                                                                                  15406237, 2003, 1, 72                                                   Social Science Quarterly
+   The most recent data sets available to us for the DEB paper were the 1992
+NES and the 1994 GSS. We found little polarization, despite the
+predictions of social commentators, which could have been for one of
+three reasons. First, and most obviously, it could be because there is indeed
+little polarization in the public. Second, it could be because our statistical
+models were based on at most 15 cases, with an average of 10, which
+resulted from our methods, which required aggregation of the data for each
+year of the survey. Despite using a generous p value of 0.10 to give the
+benefit of the doubt to the polarization argument, trends must be quite
+strong to be significant with only 10 cases. Third, we might not have found
+polarization because it had not occurred yet. That is, the social critics might
+have been prescient, observing the first indications of the underlying
+causes of general polarization that would take nearly a decade more to
+become apparent. The events of the 1990s, such as the ‘‘Contract with
+America’’ and the Clinton presidency, may have finally created the predicted
+polarization.
+   With additional years of data I can evaluate the latter two interpretations. In this article I replicate our DEB study with the only
+difference being that I have taken advantage of the completion of the
+1994, 1996, 1998, and 2000 NES, and the 1996, 1998, and 2000 GSS.
+The purpose is to see whether, with the additional years of data and
+additional statistical power, the conclusions of the DEB paper should be
+modified.
+
+
+Measuring Polarization
+
+   There is a severe challenge in writing a paper such as this. In DEB we
+committed large sections of our paper to deriving four types of polarization,
+why they might be of substantive importance for social scientists, how they
+might interact, and, most important, how they could be measured. Given
+that my purpose is to replicate our earlier paper with additional data, and
+given that I do not change or challenge any of these preliminaries, I do not
+repeat this information, but refer the reader to DEB for an explanation and
+justification of the measures.
+   In DEB we offered a multidimensional and fairly comprehensive
+theory and method for analyzing increasing or decreasing polarization in opinions. Below, I describe the four dimensions along which a
+particular population may be considered more or less polarized across
+time.
+  1. The dispersion of opinions found in a given population may affect a
+     group’s ability to arrive at political consensus. In DEB we used sample
+     variance to measure dispersion. Increasing sample variance indicates
+     increasing dispersion of opinion.
+
+
+                                                                                 15406237, 2003, 1, Update on Polarization of American Attitudes                               73
+  2. Bimodality—rifts in a distribution of opinions—is the extent to which
+     opinions cluster into separate ‘‘camps.’’ Bimodality differs from
+     dispersion in that it measures gaps in the distribution of responses
+     rather than the average distance between them. DEB measured
+     bimodality using kurtosis, with lower values of kurtosis indicative of
+     greater polarization in this bimodal sense.
+  3. Consolidation of opinion along some other set of socially significant
+     lines (such as religious affiliation or social position). In DEB we
+     operationalized this dimension as differences in the mean of variable
+     between pairs of groups. This is the measure that has traditionally been
+     used (alone) to measure opinion polarization (Page and Shapiro,
+     1992:ch. 7; Brint, 1984:110–21).
+  4. In DEB we also presented data on a fourth dimension—opinion
+     constraint. This is ‘‘the extent to which opinions on any one item in an
+     opinion domain y are associated with opinions on any other’’
+     (DiMaggio, Evans, and Bryson, 1996:696). This is an indicator of
+     ideological cohesion, where a person’s views on one issue are
+     increasingly predictable by their views on a related one. In DEB we
+     measured constraint with Cronbach’s alpha, which, while usually used
+     to measure scale reliability, can also be interpreted as the degree of
+     association among the items in the scale due to the latent variable
+     beneath them.
+
+
+Data, Measures, and Analytic Strategy
+
+   Following DEB, I use the General Social Survey (GSS) (Davis and Smith,
+1972–2000) and the National Election Studies (NES) (Sapiro et al., 2001).
+I defined the same attitude scales and subpopulations as we did in DEB. I
+refer the reader to DEB for details of the various coding decisions we made
+(see primarily pp. 699–705). From the NES I have indicators of attitudes
+toward government aid to minorities, abortion, women’s roles, and feelings
+toward African Americans, poor people, liberals, and conservatives. I also
+have an omnibus scale that combines these scales into one measure. For the
+GSS I have scales for attitudes toward abortion, women’s public roles, family
+gender roles, sexuality, racism, crime and justice, sex education, school
+prayer, divorce law, and an omnibus scale. The individual components of all
+these scales have been recoded so that more ‘‘conservative’’ responses receive
+higher numbers. Because all the attitude measures in the NES except the
+omnibus measure are single questions, there are no Cronbach’s alpha
+analyses (constraint) for these variables. Because the sex education, school
+prayer, and divorce law variables of the GSS are dichotomous, and because
+the variance and kurtosis of a dichotomous variable provides no more
+information than its mean, those attitude measures are used only in the
+analyses that compare the means of groups over time.
+
+
+                                                                                    15406237, 2003, 1, 74                                                    Social Science Quarterly
+Analytic Strategy
+
+   I have decided to exactly replicate the methods we used in DEB, not only
+so that direct comparisons can be made, but also because other possible
+methods are impractical. There are other possible methods that could have
+been used to measure polarization, although they typically can be used only
+for one dimension of polarization. For example, public opinion researchers
+have long examined interaction terms between a group and a year variable to
+determine whether the means of two groups are diverging (Page and
+Shapiro, 1992). DEB’s consolidation measure is a close relative of this
+technique. Similarly, others have split data into two time periods and
+compared the variances of a group between the two periods using a F test
+(Gay, Ellison, and Powers, 1996). This method, while related to our use of
+dispersion (variance) in DEB, requires that two years or two sets of years
+be focused upon, often without substantive justification for the choice
+of years.
+   Since the publication of DEB, Hoffmann and Miller (1998) have built on
+DEB’s framework to control for other variables that may be causing
+polarization over time—essentially creating multivariate variance and
+kurtosis trend models. Unfortunately, their method cannot determine the
+relative contribution of each variable toward a polarization trend: it only
+removes that part of the polarization attributable to the control variable. In a
+subsequent paper, I (2002) used Hoffmann and Miller’s technique, as well
+as the logic of sensitivity analysis, to try to determine the underlying cause of
+polarization on abortion. While this is an interesting and useful approach,
+the data-reporting requirements are so immense that it cannot be used for
+more than a few comparisons.
+   Recently, Mouw and Sobel (2001) criticized the methodology used in
+DEB for, among other things, not being sensitive to the fact that none of the
+attitude scales in DEB were truly continuous variables, and suggested an
+analysis using contingency tables. As we pointed out in a response (Evans,
+Bryson, and DiMaggio, 2001), this method is quite useful for examination
+of dispersion over time, but cannot be used to examine the other forms of
+polarization, and explicitly assumes that there is no bi-modality. Like
+Hoffmann and Miller’s approach, it is also impractical for large numbers of
+analyses. Moreover, Mouw and Sobel report that their method can be used
+only with single variables, not with additive scales, which make up a
+majority of the analyses in the original paper. I was therefore unable to use
+the innovation of Mouw and Sobel.
+   Finally, Downey and Huffman (2001) recently determined that kurtosis,
+while still measuring bi-modality, is insensitive to the fact that some opinion
+distributions may actually be tri-modal. They found that 22 percent of the
+variables they examined in the GSS had ‘‘truly trimodal’’ distributions.
+Unfortunately, they find it ‘‘impossible to offer a satisfactory alternative at
+this point,’’ but simply suggest that researchers look for tri-modality in the
+
+
+                                                                                                  15406237, 2003, 1, Update on Polarization of American Attitudes                                               75
+actual distributions before assessing summary statistics (2001:501). Given
+that no superior alternative is offered, I examined the actual distributions
+and found little evidence of tri-modality.1
+  As with DEB, a summary statistic that corresponds with a type of
+polarization is created for each group in each year under study. For example,
+the variance on the omnibus scale for respondents with a college education
+in 1977 is one data point. To make claims about trends in polarization, I
+examine the change over time in each of these parameters for each of the
+groups under study. For examination of within-group polarization, I simply
+regress the year of the survey on the value of the parameter (mean, variance,
+kurtosis, or alpha). An increase in variance and/or alpha, and a decrease in
+kurtosis, is indicative of increased polarization.2
+  For examination of between-group polarization (consolidation), I regress
+the year of the study on the absolute difference between the mean of the two
+groups. An increase in this difference is indicative of increased betweengroup polarization. To emphasize again, these are all simple regressions
+because (1) multivariate models, while developed, are not practical (see
+above), and (2) there are very few cases in each model. Since there are few
+cases in each model, formal statistical analyses to determine whether the
+degree of polarization has changed in recent years cannot be conducted.
+Instead, I am left with making a somewhat more limited analysis, which is
+whether, after replicating the entire study, we are left with different
+conclusions about polarization in the United States.
+
+
+Regression Strategies
+
+   As in DEB, I rely on ordinary least squares regression to summarize the
+trend in polarization. One challenge to this approach is that because DEB
+used group/year as the unit of analysis, there are at best as many cases as
+there are years of the survey, but often fewer, because not all questions were
+asked in all years. The largest number of cases in any of the analyses is then
+    I am unaware of any measure of tri-modality. Rather, one must look at a histogram and
+decide whether it has three distinct humps. Combining all the years of data and looking at
+the distribution for each variable, the only variable that might be interpreted as tri-modal is
+the GSS sexual morality scale, but even this is questionable. A more difficult question is what
+to make of the NES feeling thermometers, which are 100-point Likert scales. As is well
+known, respondents do not pick the ‘‘in between’’ numbers (e.g., 62), but rather the ‘‘round’’
+numbers (e.g., 60). Therefore, the feeling thermometer variables are all multimodal, with
+responses concentrated at the ‘‘round’’ numbers. My understanding of the behavior of the
+kurtosis statistic suggests that this does not create the sort of problem that Downey and
+Huffman identify, but, clearly, additional research is required on the topic of measuring bimodality in noncontinuous variables.
+    The GSS does not provide sampling weights. There are, however, a few years where the
+GSS oversampled African Americans. Due to the complexity of using weights in the analysis
+(see below), instead of weighting the cases in these years, we followed the common practice of
+removing the respondents who were part of the oversample. Therefore, there were no weights
+used for the GSS.
+
+
+                                                                                   15406237, 2003, 1, 76                                                    Social Science Quarterly
+18 and the lowest is seven. In any analysis with so few cases one must be
+particularly concerned that idiosyncratic cases do not unduly influence the
+analysis. To guard against this possibility, I reran all of the analyses in this
+article using a robust regression model where influential cases are downweighted so as to not unduly influence the results (Western, 1995;
+StataCorp, 2001). Neither type of analysis is more true than the other, they
+are simply different ways of summarizing the data.
+
+
+Results
+
+  DEB presented graphical depictions of the change in polarization over
+time as well as tables summarizing the graphs. In this article, to save space, I
+do not present graphs and present tables summarizing only the parts of the
+analysis I discuss most extensively. Full tables, equivalent in form to those
+presented in DEB, as well as similar tables with the robust regression results,
+are available at /www.sociology.ucsd.edu/BjhevansS. In the text, I describe
+only the OLS models and note when the robust models differ. As we did in
+DEB, I start with examining polarization in the entire sample, move on to
+polarization within subsamples of the population and finally to polarization
+between groups.
+
+
+Within-Group Polarization in the Population as a Whole
+
+  The most general examination of polarization is whether the entire
+population is polarizing on social issues in general (see Column 1 in
+Table 1). To examine this I analyze trends in the omnibus scales, which are
+compilations of all the different variables. As in DEB I found no evidence of
+overall polarization. Even with the additional years of data, the NES scale is
+constant over time in variance, kurtosis, and alpha. As in DEB, the GSS
+scale continues to show a decrease in the dispersion (variance) type of
+polarization (–1.944). Therefore, as with DEB, the conclusion is that
+polarization in this most general of senses is not occurring within the general
+public. However, these variables are very blunt instruments. As a first step
+toward sharpening our tools, I examine whether the general public is
+becoming more polarized on individual issues.
+
+   Race and Poverty. As in DEB, the GSS racial-attitude scale demonstrates
+a trend toward less polarization in racial attitudes, with declines in variance
+and increases in kurtosis (see Column 1 in Table 1). A change from DEB is
+that now alpha is also shown to be decreasing (–0.005), suggesting an even
+fuller decline in polarization. As in DEB, the variance indicator of
+polarization in the NES aid to minorities variable suggests decreasing
+polarization (–0.029), but with the additional years of data, the kurtosis
+
+
+                                                                                                   15406237, 2003, 1, Update on Polarization of American Attitudes                                                77
+measure suggests decreasing polarization as well (0.015). The feelings
+toward African Americans variable in the NES shows no change in
+polarization over time.3
+   With the additional data there is then a slight change in interpretation
+from DEB. While DEB reported that attitudes toward government aid for
+minorities seemed to become more polarized from the mid-1980s on, with
+more data we see that this was not actually a trend. Finally, as in DEB,
+feelings toward poor people have polarized over the time period as indicated by
+an increasing variance (2.524) and decreasing kurtosis (–0.018). Therefore, the
+conclusion from this replication is the same as in DEB for poverty, but there is
+now more evidence of a decline in polarization over race.
+
+  Gender. In DEB, the three scales representing gender issues become less
+polarized over time in all available measures. This conclusion remains
+unchanged with the additional years of data.
+
+   Crime and Justice. Although the GSS crime and justice scale, as in DEB,
+shows a decline in variance (–0.004) and a rise in kurtosis (0.022), a
+previously significant decline in constraint is now showing no change. This
+suggests slightly less evidence for declining polarization than we reported in
+DEB.
+
+   Attitudes Toward Liberals and Conservatives. In DEB we were interested
+in whether Americans have become more polarized in their reaction to
+political labels. As in DEB, the answer from the NES data is that Americans
+are not becoming more polarized, with the exception of a slight polarizing
+trend in bi-modality (kurtosis) on feelings toward conservatives (–0.017).
+
+    Abortion and Sexuality. Abortion was the one issue where we found
+unambiguous evidence of polarization in the general population. Here I find
+that the extent of polarization on abortion remains the same as reported in
+DEB, with the GSS and NES showing polarization in all senses of the term.
+However, in DEB we did not put too much interpretive weight on the
+across-time analysis of the NES abortion variable because we suspected that
+a change in wording mid-way through the series would affect the results—a
+suspicion confirmed by Mouw and Sobel (2001). I will therefore not discuss
+the NES abortion measure separately from this point forward.4
+   In DEB we found no polarization in the sexual morality scale. With the
+additional years of data I do find evidence of increasing polarization. Despite
+    There is a significant polarizing trend in kurtosis in the OLS model shown in Table 1, but
+the coefficient in the robust model is not significant (not shown). Therefore, because this
+trend seems to be due to outliers, I note the different conclusions here but will interpret this
+variable as not changing from that reported in DEB.
+    The NES abortion variable remains in the omnibus measure so that this study can be
+compared to DEB. The change is slight enough that it should not unduly perturb the
+omnibus scale since it is comprised of so many elements.
+                                                                                                                                                                           TABLE 1
+                                                              OLS Regression Coefficients for Time Trend (Year): Variance and Kurtosis, NES and GSS, 1972–2000
+                                                                                                                                                                                                                      Group of Respondents
+
+                                                                                                                                                                                                                                                                                 College                    Under 30 Years
+                         Social Issue                                                                 Parameter                                        Full Sample                                Voters                             Politically Active                         Educated                       of Age
+
+                         NES omnibus                                                                  Variance                                         –14.068                                     2.772                                    92.994 n                            15.053                             2.081
+                                                                                                      Kurtosis                                           0.005                                    –0.001                                    –0.012                               0.002                             0.010
+                                                                                                      Alpha                                             –0.001                                     0.001#                                    0.005#                              0.001                            –0.001
+                         GSS omnibus                                                                  Variance                                          –1.944 n n                                –1.496 n                                     —                                –0.093                            –1.888#
+                                                                                                      Kurtosis                                           0.003                                    –0.011                                       —                                –0.009                             0.004
+                                                                                                      Alpha                                             –0.002#                                   –0.001                                       —                                 0.001                            –0.004
+                         GSS racial attitudes                                                         Variance                                          –0.068 n n                                –0.067 n                                     —                                –0.048 n                          –0.078 n
+                                                                                                      Kurtosis                                           0.032 n                                   0.029#                                      —                                –0.006                             0.044
+                                                                                                      Alpha                                             –0.005 n                                  –0.004                                       —                                –0.004                            –0.011#
+                         NES aid to minorities                                                        Variance                                          –0.029 n                                  –0.028 n                                  –0.023                              –0.009                            –0.003
+                                                                                                      Kurtosis                                           0.015 n                                   0.015 n                                   0.013                               0.001                             0.002
+                         NES feeling thermometers
+                           Blacks                                                                     Variance                                             0.138                                  –0.764                                     0.805                                1.709                            2.622
+                                                                                                      Kurtosis                                            –0.018 n                                –0.030 n n                                 –.019                               –0.036 n                         –0.038 n n
+                               Poor                                                                   Variance                                             2.524 n n                               1.950 n                                   2.642#                               1.778                            4.570 n n
+                                                                                                      Kurtosis                                            –0.018#                                 –0.024 n n                                –0.014                               –0.043 n                         –0.003
+                         NES women’s roles                                                            Variance                                            –0.081 n n n                            –0.075 n n n                              –0.056 n n n                         –0.049 n n n                     –0.079 n n n
+                                                                                                      Kurtosis                                             0.086 n n n                             0.083 n n n                               0.060 n n n                          0.089 n n n                      0.128 n n n
+                         GSS family gender roles                                                      Variance                                            –0.051 n                                –0.039                                       —                                 –0.024                           –0.043 n
+                                                                                                      Kurtosis                                             0.014 n                                 0.011#                                      —                                  0.005                            0.008
+                                                                                                                                                                                                                                                                                                                                                     Social Science Quarterly
+
+
+                                                                                                      Alpha                                               –0.000                                   0.000                                       —                                  0.000                            0.002
+
+
+15406237, 2003, 1,
+
+                                                                                                                                                             TABLE 1—continued
+
+                         GSS women’s public roles                                                    Variance                                            –0.029 n n n                             –0.027 n n n                                    —                               0.015 n n n                    –0.021 n n n
+                                                                                                     Kurtosis                                             0.178 n n n                              0.186 n n n                                    —                               0.274 n n n                     0.240 n n n
+                                                                                                     Alpha                                               –0.002 n n                               –0.002 n                                        —                               0.000                          –0.004 n
+                         GSS crime and justice                                                       Variance                                            –0.004 n                                 –0.003#                                         —                               0.006 n                        –0.004#
+                                                                                                     Kurtosis                                             0.022 n n                                0.017 n n                                      —                               0.016#                          0.022 n
+                                                                                                     Alpha                                               –0.000                                    0.000                                          —                               0.004                          –0.000
+                         NES feeling thermometers
+                          Liberals                                                                   Variance                                             1.610                                    2.617                                      9.364 n n                           1.821                           2.479
+                                                                                                     Kurtosis                                            –0.009                                   –0.014                                      0.025 n                             0.001                          –0.011
+                              Conservatives                                                          Variance                                             1.773                                    2.260                                      4.285 n                             0.570                           2.561
+                                                                                                     Kurtosis                                            –0.017 n                                 –0.017 n                                    0.019 n                             0.021 n n                      –0.028#
+                         NES abortion                                                                Variance                                             0.010 n n n                              0.008 n n                                  0.005#                              0.004#                          0.011 n n
+                                                                                                     Kurtosis                                            –0.009 n n n                             –0.005 n                                    0.008                               0.014                          –0.007 n n
+                         GSS abortion                                                                Variance                                             0.034 n n n                              0.042 n n n                                  —                                 0.077 n n n                     0.0031#
+                                                                                                     Kurtosis                                            –0.008 n n                               –0.011 n n                                    —                                 0.042 n n n                    –0.012 n n n
+                                                                                                     Alpha                                                0.001 n n n                              0.001 n n n                                  —                                 0.001 n n n                     0.001#
+                                                                                                                                                                                                                                                                                                                                                     Update on Polarization of American Attitudes
+
+
+                         GSS sexuality                                                               Variance                                             0.004                                    0.008                                        —                                 0.025                           0.002
+                                                                                                     Kurtosis                                            –0.026 n                                 –0.030 n                                      —                                 0.003                          –0.011
+                                                                                                     Alpha                                               –0.003 n                                 –0.003 n                                      —                                 0.003#                         –0.003
+                         NOTE: # 5 po0.10, n 5 po0.05, n n 5 po0.01, n n n 5 po0.001.
+15406237, 2003, 1,
+
+                                                                                                 15406237, 2003, 1, 80                                                             Social Science Quarterly
+increasing liberalism on the issue (e.g., a declining mean, not shown),
+compared to DEB the coefficient for kurtosis is statistically significant
+(–0.026).
+
+   Conclusions about Polarization in the General Public. Attitudes toward
+race, gender, crime and justice, and feelings toward liberals and conservatives
+all are declining in polarization, as found in DEB. I also find the
+polarization that DEB found in the general public in attitudes toward
+abortion, but I find more evidence that attitudes toward sexuality are
+polarizing. I will discuss possible explanations and interpretations of these
+findings after presenting all the results.
+
+
+Within-Group Polarization in Subgroups
+
+   Although looking at individual issues is a sharper tool than looking at all
+issues combined, it will sharpen our tools even more to look at polarization
+for each issue within particular subgroups in the population. In Columns
+2–5 of Table 1 I report these findings, but will describe only the findings
+that are different from the polarization (or lack thereof) found in the general
+population. By ‘‘different’’ I mean a situation where a polarization trend is
+statistically significant in one case and not in another.
+
+   Participants in the Political System. DEB had two ways of measuring
+political participation—voting and a series of questions that asked about
+engagement in political acts. DEB found that people who had voted in the
+last presidential election had a slight tendency toward more polarization.
+With additional years of data that difference has disappeared—voters are not
+appreciably different from the rest of the population in terms of polarization
+(see Column 2 in Table 1).
+   On the other hand, and in contrast to DEB, the politically active in the
+NES show polarization in variance on the omnibus scale (Column 3 in
+Table 1).5 DEB found that the politically active were not polarizing in
+attitudes to the poor while the general population was. I find here that the
+politically active are, like the public, becoming more polarized. DEB also
+found that this group was more polarized in variance in their feelings toward
+liberals, while the general public was not. Now I find polarization in both
+variance and kurtosis not only on feelings toward liberals, but toward
+conservatives as well.6 In sum, there is now evidence that the politically
+    They also show increasing alpha (constraint) in OLS models, but this is contradicted by
+the robust models.
+    A difference from DEB in the variance trend in aid to minorities, shown in Table 1, is not
+supported by the robust models.
+
+
+                                                                                   15406237, 2003, 1, Update on Polarization of American Attitudes                                 81
+active are becoming more polarized—and particularly polarized on the most
+political of matters, feelings toward liberals and conservatives.
+
+   College Graduates. Like the politically active, it is plausible that the more
+highly educated members are more attentive to discourse on social issues and
+therefore may become more polarized. We may also expect to find
+polarization due to the higher levels of political activism among the
+educated, as well as the growing racial and religious diversity of the college
+educated population.
+  In DEB we found scattered evidence of not so much increases in
+polarization among college graduates but a resistance to the declines that the
+general population was making. We found that unlike the general public,
+college graduates showed no decline in variance on the GSS omnibus scale,
+which is still true in the present analysis, or in attitudes toward racial
+integration, which is no longer true (see Column 4 in Table 1). DEB found,
+and the present analysis concurs, that college graduates show no increase in
+kurtosis for racial attitudes, while the general population has. Both DEB and
+this analysis also find no decline in alphas for attitudes toward women’s
+public roles, while the general population had such a decline. As before,
+there is no consistent story to tell about polarization among the college
+educated.
+   Young People. It could be the next generation that is polarizing,
+suggesting that concerns of general polarization are simply ahead of their
+time. Looking for polarization among those between the ages of 18 and 29
+when they filled out the survey, DEB found that the ‘‘differences between
+young people and the general public are numerous but inconclusive’’
+because some measures suggested increased polarization and some decreased
+polarization (DiMaggio, Evans, and Bryson, 1996:720). All but a few of the
+differences with the general public noted in DEB have disappeared with the
+addition of the extra years of data, but additional differences have replaced
+them (see the final column in Table 1). In the present analysis, the young are
+different from the general public in not exhibiting declining polarization in
+family gender roles (kurtosis), racial attitudes (kurtosis), and aid to
+minorities (kurtosis and variance). Yet, they are also different from the
+general public in not exhibiting a decrease in kurtosis (increasing
+polarization) in sexual morality or attitudes toward the poor. In sum, the
+polarization among the young remains inconclusive.
+   Summary. Like we did in DEB, I looked for polarization in each separate
+issue within each of a number of subpopulations. In DEB we concluded that
+this exercise resulted in no clear pattern of polarization within any one
+population. Additional years of data result in similar conclusions. However,
+there does seem to be more evidence now for polarization among the
+politically active than there was in DEB.
+                                                                                                                                                                           TABLE 2
+                                     OLS Regression Coefficients for Time Trend in Absolute Difference in Means: Between-Group Comparisons, NES and GSS
+                                                                                                                                                                                    Between-Group Comparison
+
+                         Social Issue                                                            Age                     Education                         Gender                            Race                         Religion                        Region                        Ideology                           Party
+
+                         NES omnibus scale                                               –0.546 n n                      –0.531                           0.426 n n                    –1.390 n n                          —                           –0.236#                       –0.020                            1.287 n n
+                         GSS omnibus scale                                               –0.211 n                        –0.246 n                         0.054                        –0.225                          –0.399 n n n                    –0.013                         0.007                            0.266 n n
+                         GSS racial attitudes                                            –0.036 n n                      –0.029 n                        –0.005                        –0.040                          –0.047 n n                      –0.024 n                      –0.009                            0.030 n
+                         NES aid to minorities                                           –0.014 n                        –0.011 n                         0.002                        –0.044 n n n                        —                           –0.005 n                      –0.005                            0.014 n n
+                         NES feeling thermometers
+                           African Americans                                             –0.032                          –0.013                          –0.028                        –0.430 n n                          —                            0.082#                       –0.054#                          0.017
+                           Poor                                                          –0.080#                         –0.124#                          0.040                        –0.275 n n                          —                           –0.012                        –0.040 n                         0.005 n
+                         NES women’s roles                                               –0.010 n                        –0.029 n n n                     0.000                         0.000                              —                           –0.003                        –0.001                           0.009#
+                         GSS family gender roles                                         –0.045 n n                      –0.035 n                         0.013                        –0.008                          –0.025 n n                      –0.002                         0.005                           0.027 n
+                         GSS women’s public roles                                        –0.018 n n n                    –0.016 n n n                    –0.001                        –0.002                          –0.016 n n n                    –0.009 n n                    –0.005                          –0.003
+                         GSS crime and justice                                           –0.005 n n                       0.001                          –0.004 n n                    –0.002                          –0.002                          –0.000                        –0.001                           0.007 n n
+                         NES feeling thermometers
+                           Liberals                                                       0.027                           0.005                           0.079 n                      –0.227#                             —                           –0.016                         0.012                            0.262 n n
+                           Conservatives                                                 –0.159 n                        –0.080 n                         0.027                        –0.302 n n n                        —                           –0.011                         0.043                            0.202 n n n
+                         NES abortion                                                    –0.011 n n n                    –0.006 n                         0.000                        –0.008 n n                          —                            0.000                         0.012 n n n                      0.008 n n
+                         GSS abortion                                                    –0.009                          –0.017 n                         0.003                        –0.024 n                        –0.035 n n n                    –0.006                         0.051 n n n                      0.029 n n
+                         GSS sexuality                                                   –0.041 n n n                    –0.013 n                        –0.009                         0.019                          –0.020#                         –0.001                         0.011                            0.025 n
+                         GSS sex education                                               –0.004 n n n                    –0.005 n n n                    –0.001 n n                    –0.001                          –0.002 n                        –0.002 n                       0.002#                           0.002
+                         GSS school prayer                                               –0.000                           0.004 n                         0.001                         0.002                          –0.001                           0.002                         0.003#                           0.002#
+                         GSS divorce law                                                 –0.009 n n n                    –0.008 n                        –0.002 n                      –0.001                          –0.012 n n n                    –0.001                        –0.000                            0.007 n n n
+                         NOTE: # 5 po0.10, n 5 po0.05, n n 5 po0.01, n n n 5 po0.001.
+                                                                                                                                                                                                                                                                                                                                                     Social Science Quarterly
+
+
+15406237, 2003, 1,
+
+                                                                                         15406237, 2003, 1, Update on Polarization of American Attitudes                                       83
+Polarization as Between-Group Difference
+
+   In this section I examine whether polarization is occurring not within
+groups, but between groups (consolidation). For each pair of contrasting
+groups I calculate the absolute value of the difference in means of the two
+groups, and regress this value on the year of the survey. If the difference is
+increasing, then this is evidence of polarization between the groups.
+   As in DEB, if I find polarization between two groups, I also consider
+whether there is increasing bi-modality within each of the two groups,
+although these statistics are not reported in the tables. The reasoning here is
+that I am only interested in between-group difference because of its potential
+for conflict. However, if one or both of the groups is becoming internally
+polarized, then its ability to conflict with the other group—despite its
+growing distance—is greatly diminished and any observed between-group
+difference is of lessened importance.
+   Age. In DEB we found no instances of increasing between-group
+difference between those less than 35 years old and those over 45. Indeed,
+we found that 12 of 18 measures showed convergence in attitudes. The
+additional data used in this article does not change this finding (see Column
+1 in Table 2). With the full 1972–2000 data, I find that 13 of 17 measures
+showed convergence, and four showed no convergence or divergence.7
+   Educational Attainment. Much sociological theory, such as the theory of
+the ‘‘new class’’ (Gouldner, 1979; Brint, 1984), would suggest that there is a
+growing divide between groups based on their education. Instead,
+comparing those with a college degree to those with no more than a high
+school diploma, in DEB we found convergence on 9 of 18 measures, and
+polarization on none. With the additional years of data I now find
+convergence on 12 of 17, but with polarization on one—school prayer. (In
+DEB, school prayer was just short of showing polarization.) However, the
+overall theme is clear: if anything, there is even less evidence of polarization
+between educational groups than when we conducted the analyses for DEB.
+   Gender. Political scientists have identified a gender gap in voting
+behavior, but in DEB we found little evidence of the gender gap in
+attitudes. We found a small degree of polarization on the NES omnibus
+scale, convergence in attitudes toward crime and sex education, and no
+convergence or divergence on the other issues. With the additional data
+there remains no large amount of polarization by gender.
+   Race. In DEB we found no instances of increasing polarization and many
+instances of decreasing polarization between African Americans and whites.
+With the new data the results are substantively identical. On no issue is there
+    There is one less measure because I am no longer considering the NES abortion item
+separately.
+
+
+                                                                                              15406237, 2003, 1, 84                                                           Social Science Quarterly
+increasing polarization, but there is decreasing polarization in the NES
+omnibus scale, feelings toward African Americans, the poor, liberals, and
+conservatives, as well as on aid to minorities and abortion (GSS). The issues
+where opinion is not converging generally have to do with the status of
+women and sexuality. That is, African-American and white attitudes toward
+women’s roles (NES), family gender roles (GSS), women’s public roles
+(GSS), sexual morality,8 sex education, and divorce law are not converging.
+Additionally, African Americans and whites are not converging on school
+prayer, racial attitudes (GSS), and the GSS omnibus scale. The only change
+from DEB is that African Americans and whites are no longer converging on
+the crime and justice scale.
+
+    Religion. To many, polarization between religious groups is what is
+assumed to be driving all polarization (Hunter, 1991, 1994). DEB relied on
+a fairly crude religious division between ‘‘religious conservatives’’ and
+‘‘religious liberals’’ to not only make measurement possible, but to
+operationalize the central claims about polarization that had been made
+by others. Others have broken religious groups into smaller categories to
+look for polarization on particular variables, with interesting results (Evans,
+2002; Hoffmann and Miller, 1997, 1998). For comparability with DEB, I
+retain the coding we used then.
+   In DEB we found that religious liberals and conservatives were not
+polarizing, as is commonly assumed, but instead had been converging on
+seven of nine issues. Of the GSS variables, the only issues where they did not
+converge were crime and justice and school prayer. With the additional data
+used in this article, the results remain exactly the same.
+
+   Region. In DEB we hypothesized that the well-documented differences in
+opinion between residents of the South and residents of the rest of the
+country may reflect polarization processes at work. While the continued
+growth of a national culture through television and other media would
+suggest a declining polarization, the growth of the Republican party in the
+South, which emphasized social issues, suggests at least the possibility that
+polarization may be occurring. In DEB we found no evidence of
+polarization. Instead, moderate to large differences in attitudes between
+the South and the non-South either remained constant over the time series
+or declined. The additional data used in this article makes absolutely no
+difference—the same variables that were converging then are converging
+now.9
+   Inspection of a scatter plot (not shown) reveals that this nonconvergence is actually
+masking a rapid merger in views from 1974 to about 1990, and then a rapid polarization,
+with African Americans starting off as very liberal and ending up as very conservative, and
+whites starting out as very conservative and ending up as very liberal.
+   In the OLS models, there is a slight polarization in attitudes toward African Americans
+(NES). This trend was present but smaller and nonsignificant in DEB. However, in the
+
+
+                                                                                                 15406237, 2003, 1, Update on Polarization of American Attitudes                                              85
+    Ideology. Polarization may be a political reality if political identities
+become linked to particular social attitudes. For example, people who selfidentify as ‘‘conservatives’’ may come to think that being a ‘‘conservative’’
+means being opposed to abortion, women’s participation in public life, sex
+education, etc. ‘‘Liberals’’ might think of themselves as defined by their
+support of these issues. Thus, polarization could be occurring between selfidentified conservatives and liberals.
+   In DEB we found a few cases of convergence in attitudes (attitudes toward
+the poor, aid to minorities, and women’s public roles), but primarily no
+change in the gulf that separates liberals and conservatives. We did, however,
+find one clear case of polarization: in attitudes toward abortion. To ‘‘be a
+conservative’’ or to ‘‘be a liberal’’ became more tightly connected to abortion
+attitudes over the years of that study (for a similar result, see Hout (1999)).
+   With the additional years of data, we now see that this polarization was
+indicative of a broader trend that was only beginning to appear when DEB
+was written. The polarization we found in DEB is also found with the
+expanded data, but I also find polarization between liberals and conservatives
+in attitudes toward sex education and school prayer. Additionally, while in
+DEB attitudes toward women’s public roles were converging between
+liberals and conservatives, with the additional years of data this no longer
+holds true. It appears that the ‘‘liberal’’ and ‘‘conservative’’ labels have
+increasingly become markers of positions on social issues over time (Miller
+and Hoffmann, 1999).
+
+    Party Identification. In DEB we concluded that the mechanisms that
+political scientists have identified that attract parties to the political center
+seem to have broken down because we identified nine issues where
+Democrats and Republicans had become more polarized, and eight where
+they had remained constant in their differences. While this polarization has
+been observed among elected officials (Poole and Rosenthal, 2001), it has
+not been observed in the general public. With the additional years of data we
+see that when the data used by DEB ended in 1994 we were simply
+seeing the early signs of a much more significant trend. With the additional
+data, 14 of 17 variables I examined show polarization between Democrats
+and Republicans, while only three do not change (there are no
+convergences).
+   In DEB we noted divergence in the NES and GSS omnibus scales,
+abortion, feelings toward the poor, liberals, and conservatives, as well as in
+attitudes toward crime and justice, racial attitudes, and divorce law. These
+trends all continued in the new analyses. However, there is now polarization
+between the parties in attitudes toward aid to minorities, women’s roles
+(NES), family gender roles (GSS), sexual morality, and school prayer.
+
+robust model (not shown), there is not polarization, suggesting that this finding is driven by
+outliers.
+
+
+                                                                                               15406237, 2003, 1, 86                                                            Social Science Quarterly
+   While this might suggest increasing conflict between the parties,
+examination of the extent of internal polarization within each party (results
+not shown) suggests that on some of the issues this may not occur. While the
+two groups are separating in their mean opinion, the Republicans are
+becoming increasingly internally polarized over feelings toward the poor,
+feelings toward liberals, and abortion. Both groups are becoming more
+internally polarized on attitudes toward sexual morality. Internal divisions
+should lessen the willingness of the group to do battle on an issue. If there
+are any issues that are more prone to conflict due to the increasing
+polarization between the groups, it is in aid to minorities and women’s roles
+(NES), because in these two cases polarization between groups is
+accompanied by decreasing polarization within both groups, suggesting
+that there will be greater support for any conflict within each group. That
+said, it is clear that with additional years of data there is evidence that
+instances of polarization between the parties has increased since the analyses
+conducted for DEB.10
+   Conclusions. As DEB found, there is little evidence of increasing
+polarization and more evidence of decreasing polarization between groups,
+including groups commonly thought to be polarizing, such as men and
+women, the young and the old, those with greater and lesser amounts of
+education, African Americans and whites, residents of the South and
+residents of the rest of the country, and religious conservatives and liberals.
+The one exception found in DEB was increasing polarization between those
+who identify as Democrats and those who identify as Republicans. With the
+additional years of data this polarization has broadened to encompass more
+issues. Also, whereas DEB found polarization only between self-identified
+liberals and self-identified conservatives on the abortion issue, polarization
+between these two groups has broadened as well, with polarization now
+occurring on the issues of sex education and school prayer.
+
+
+Summary and Discussion of Differences in Polarization Findings
+
+  The last years of data used for the DEB paper were the 1992 NES and the
+1994 GSS. Much has transpired in U.S. society since that point, and
+replicating the analysis of DEB with updated data allows me to see if any
+changes in our conclusions about polarization in American society should be
+made.
+  A secondary theme in the DEB paper was the idea that polarization may
+simply be the result of the agendas of political movements. We had framed
+our analysis not to test this idea explicitly, but more to assess the claim that
+     With robust models, the school prayer variable does not show significant polarization.
+However, while the OLS model for the sex education variable is not significant, it is in the
+robust model.
+
+
+                                                                                   15406237, 2003, 1, Update on Polarization of American Attitudes                                 87
+polarization was the result of some macro-societal phenomena. Evidence for
+the influence of political movements was at best suggestive, so it was not
+emphasized. The particular patterns of newfound polarization in this article
+suggest that the primary polarization occurring in the United States is that
+political activists are becoming more polarized over the issues that have been
+of concern to politically active religious conservatives.
+  Support for this interpretation comes from the following. First,
+polarization seems to be occurring on issues that are important to politically
+active religious conservatives, such as abortion, sexuality, divorce law, school
+prayer, and the like. Second, it is now clear that the primary instances of
+between-group polarization are between people who are somehow identified
+with politics, not with their gender, religion, race, or some other identity.
+Note that it is not the marginally politically involved who are polarizing—
+such as voters—but those who identify with the partisan labels in the
+political system—people who label themselves liberals or conservatives,
+Democrats or Republicans.
+  In sum, with the additional years of data we have a more fine-grained
+interpretation of polarization in America. In contrast to our conclusion in
+DEB that there was really little polarization in America with the exception of
+abortion and some polarization between Democrats and Republicans, it is
+now safe to say that these are simply indicative of what is now a broader
+pattern of polarization between those who identify with the labels of
+political life in the United States.
+  It is important to add that this polarization over the issues of concern to
+politically active religious conservatives is not accompanied by polarization
+between religious conservatives and religious liberals. This could be for any
+number of reasons. First, the categories could be too blunt. Second, there is
+a difference between the politically active in the religious traditions and
+everyone else. Third, the political agendas of politically active religious
+organizations might actually not have religious traditions as their base.
+
+
+Conclusions
+
+  In DEB we concluded by asking why there was the perception of
+polarization when there was little evidence of polarization among the
+population. We outlined 12 possible explanations. In light of the additional
+years of data, which found an even more striking polarization based on
+political identifications, I think I can narrow those 12 down to two prime
+suspects—the polarization of political parties and a crystallization of the
+meaning of ‘‘liberal’’ and ‘‘conservative.’’
+  Political scientists have found that polarization between Democrats and
+Republicans in Congress declined from the beginning of the 20th century
+until World War II, was stable until the late 1970s, and since then has been
+increasing (Poole and Rosenthal, 2001:18–19). If anything, Poole and
+
+
+                                                                                                    15406237, 2003, 1, 88                                                               Social Science Quarterly
+Rosenthal conclude, the 1990s show an acceleration of the trend. While
+Bartels has noted that ‘‘we know less than we should about the nature and
+extent of mass-level reactions to these elite-level developments’’ (2000:44),
+other political scientists have concluded that the increasing partisanship of
+our elected officials has increased the partisanship of the general public
+(Hetherington, 2001:629). The present study suggests that polarization is
+occurring between people who identify with the two parties. Of course, it is
+beyond the scope of this article to determine whether polarization in the
+attitudes of the party identifiers changed the voting behavior of our
+representatives or the behavior of our representatives has changed the view of
+the party identifiers. I will leave that to my colleagues in political science to
+determine.
+    Poole and Rosenthal also emphasize that this polarization is increasingly
+between the (Republican) rich and the (Democratic) poor and see the
+primary issue as the redistribution of wealth (McCarty et al., 1997). In DEB
+and in this article I examined only two attitude questions that pertain to
+income redistribution—attitudes toward the poor and aid to minorities—
+and the results were ambiguous. While Poole and Rosenthal briefly mention
+that ‘‘gender, sexual orientation, abortion and other issues areas generally
+also map onto this dimension’’ (2001:7), they retain their focus on
+redistribution, partly due to the limitations of their data, I believe. Scholars
+in this tradition should consider whether social issues polarize our elected
+officials, given that these issues seem to be polarizing the rank-and-file
+political activists.
+    One final analysis using the GSS (not shown) reveals an increase over time
+in the likelihood that a person identifying as a Republican also identifies as a
+‘‘conservative,’’ and that a person identifying as a Democrat identifies as a
+‘‘liberal.’’11 This suggests that the polarization observed in the people who
+identify with these terms is related to the polarization between the parties.
+Additionally, Miller and Hoffmann (1999) find that the label ‘‘conservative’’ is increasingly used by the religiously orthodox and the label ‘‘liberal’’
+by the religiously progressive. This all points to attitude polarization driven
+by elites associated with the political system.
+    A final point should be made. DEB’s stated motivation was to test claims
+by Hunter and others that America is in a ‘‘culture war.’’ A tension in
+Hunter’s claims was that at times he would use public opinion data to
+investigate polarization (Hunter, 1991, 1994:ch. 4), but at other times
+would argue that the conflict he identified would not be observed in the
+general public (1994:vii), but was restricted to elites in the political system,
+     This was a regression using the GSS data with party identification as the dependent
+variable, and the liberal/conservative scale, year and a liberal/conservative-year interaction as
+independent variable. The interaction term was significant, indicating that conservatives have
+become more associated with the Republican party over time and that liberals have become
+more associated with the Democratic party over time. See /http://www.scoiology.ucsd.edu/
+BjhevansS for details.
+
+
+                                                                                                15406237, 2003, 1, Update on Polarization of American Attitudes                                             89
+such as social movement activists. The findings above suggest that the latter
+strand in Hunter’s work is more accurate, and should be pursued. If so, we
+would then need to ask why this elite polarization does not spread to the
+average citizen.
+
+
+REFERENCES
+
+Bartels, Larry M. 2000. ‘‘Partisanship and Voting Behavior, 1952–1996.’’ American Journal
+of Political Science 44(1):35–50.
+Brint, Steven. 1984. ‘‘‘New Class’ and Cumulative Trend Explanations of the Liberal
+Political Attitudes of Professionals.’’ American Journal of Sociology 90:30–71.
+DiMaggio, Paul, John Evans, and Bethany Bryson. 1996. ‘‘Have Americans’ Social Attitudes
+Become More Polarized?’’ American Journal of Sociology 102:690–755.
+Downey, Dennis J., and Matt L. Huffman. 2001. ‘‘Attitudinal Polarization and Trimodal
+Distributions: Measurement Problems and Theoretical Implications.’’ Social Science
+Quarterly 82(3):494–505.
+Ellison, Christopher G., and Mark A. Musick. 1993. ‘‘Southern Intolerance: A
+Fundamentalist Effect.’’ Social Forces 72:379–98.
+Evans, John H. 2002. ‘‘Polarization in Abortion Attitudes in U.S. Religious Traditions
+1972–1998.’’ Sociological Forum 17(3):397–422.
+Evans, John H., Bethany Bryson, and Paul DiMaggio. 2001. ‘‘Opinion Polarization:
+Important Contributions, Necessary Limitations.’’ American Journal of Sociology 106(4):
+944–59.
+Gay, David A., Christopher G. Ellison, and Daniel A. Powers. 1996. ‘‘In Search of
+Denominational Subcultures: Religious Affiliation and ‘Pro-Family’ Issues Revisited.’’ Review
+of Religious Research 38:3–17.
+Gouldner, Alvin. 1979. The Future of the Intellectuals and the Rise of the New Class. New
+York: Continuum Publishing Company.
+Hetherington, Marc J. 2001. ‘‘Resurgent Mass Partisanship: The Role of Elite Polarization.’’
+American Political Science Review 95(3):619–31.
+Hoffmann, John P., and Allan S. Miller. 1997. ‘‘Social and Political Attitudes Among
+Religious Groups: Convergence and Divergence Over Time.’’ Journal for the Scientific Study
+of Religion 36(1):52–70.
+———. 1998. ‘‘Denominational Influences on Socially Divisive Issues.’’ Journal for the
+Scientific Study of Religion 37(3):528–46.
+Hout, Michael. 1999. ‘‘Abortion Politics in the United States, 1972–1994: From Single Issue
+to Ideology.’’ Gender Issues 17(2):3–34.
+Hunter, James D. 1991. Culture Wars. New York: Basic Books.
+———. 1994. Before the Shooting Begins. New York: Free Press.
+McCarty, Nolan M., Keith T. Poole, and Howard Rosenthal. 1997. Income Redistribution
+and the Realignment of American Politics. Washington, D.C.: American Enterprise Institute
+Press.
+
+
+                                                                                                15406237, 2003, 1, 90                                                            Social Science Quarterly
+Miller, Alan S., and John P. Hoffmann. 1999. ‘‘The Growing Divisiveness: Culture Wars or
+a War of Words?’’ Social Forces 78(2):721–52.
+Mouw, Ted., and Michael E. Sobel. 2001. ‘‘Culture Wars and Opinion Polarization: The
+Case of Abortion.’’ American Journal of Sociology 106(4):913–43.
+Page, Benjamin I., and Robert Y. Shapiro. 1992. The Rational Public: Fifty Years of Trends in
+Americans’ Policy Preferences. Chicago, Ill.: University of Chicago Press.
+Poole, Keith T., and Howard Rosenthal. 2001. ‘‘D-NOMINATE After 10 Years: A
+Comparative Update to Congress: A Political-Economic History of Roll-Call Voting.’’
+Legislative Studies Quarterly 26(1):5–29.
+StataCorp 2001. Stata Statistical Software: Release 7.0. College Station, Tex.: Stata
+Corporation.
+Western, Bruce. 1995. ‘‘Concepts and Suggestions for Robust Regression Analysis.’’
+American Journal of Political Science 39(3):786–817.
+Wyszomirski, Margaret Jane. 1994. ‘‘From Accord to Discord: Arts Policy During and After
+the Culture Wars.’’ Pp. 1–46 in D. V. Mulcahy and M. J. Wyszomirski, eds., America’s
+Commitment to Culture: Government and the Arts. Boulder, Colo.: Westview Press.

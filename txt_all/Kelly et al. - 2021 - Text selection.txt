@@ -1,0 +1,1437 @@
+Journal of Business & Economic Statistics
+
+
+       ISSN: (Print) (Online) Journal homepage: https://www.tandfonline.com/loi/ubes20
+
+
+Text Selection
+
+Bryan Kelly, Asaf Manela & Alan Moreira
+
+To cite this article: Bryan Kelly, Asaf Manela & Alan Moreira (2021): Text Selection, Journal of
+Business & Economic Statistics, DOI: 10.1080/07350015.2021.1947843
+
+To link to this article: https://doi.org/10.1080/07350015.2021.1947843
+
+
+       View supplementary material
+
+
+       Published online: 29 Jul 2021.
+
+
+       Submit your article to this journal
+
+
+       Article views: 124
+
+
+       View related articles
+
+
+       View Crossmark data
+
+
+                       Full Terms & Conditions of access and use can be found at
+             https://www.tandfonline.com/action/journalInformation?journalCode=ubes20
+
+
+JOURNAL OF BUSINESS & ECONOMIC STATISTICS
+2021, VOL. 00, NO. 0, 1–21
+https://doi.org/10.1080/07350015.2021.1947843
+
+
+Text Selection
+Bryan Kellya , Asaf Manelab , and Alan Moreirac
+a
+    AQR Capital Management, Yale University, New Haven, CT; b IDC Herzliya, Washington University, St. Louis, WA; c University of Rochester, Rochester, NY
+
+
+      ABSTRACT                                                                                                                        ARTICLE HISTORY
+      Text data is ultra-high dimensional, which makes machine learning techniques indispensable for textual                          Received January 2021
+      analysis. Text is often selected—journalists, speechwriters, and others craft messages to target their audi-                    Accepted June 2021
+      ences’ limited attention. We develop an economically motivated high-dimensional selection model that
+      improves learning from text (and from sparse counts data more generally). Our model is especially useful                        KEYWORDS
+                                                                                                                                      High-dimensional forecast;
+      when the choice to include a phrase is more interesting than the choice of how frequently to repeat it. It
+                                                                                                                                      Hurdle; Intermediary capital;
+      allows for parallel estimation, making it computationally scalable. A first application revisits the partisanship               Machine learning;
+      of the U.S. congressional speech. We find that earlier spikes in partisanship manifested in increased                           Multinomial regression;
+      repetition of different phrases, whereas the upward trend starting in the 1990s is due to distinct phrase                       Partisanship; Selection
+      selection. Additional applications show how our model can backcast, nowcast, and forecast macroeconomic                         model; Text analysis; Zero
+      indicators using newspaper text, and that it substantially improves out-of-sample fit relative to alternative                   inflation
+      approaches.
+
+
+1. Introduction                                                                    attention to positive counts, however, then a (truncated) Poisson is a good approximation for the data. This sparsity—
+Digital text is increasingly available to social scientists in the
+                                                                                   the additional probability mass on zero counts—is a feaform of newspapers, blogs, tweets, regulatory filings, congresture of many text samples (and is why most text analysis
+sional records, and more. Two attributes of text differentiate it
+                                                                                   software packages use sparse matrices to store word counts
+from other types of data typically used by economists. First, text
+                                                                                   efficiently).1
+data are inherently ultra-high dimensional—unique phrases in
+                                                                                       We propose a new methodology for text regression. Our
+a corpus (roughly equivalent to the set of variables) often numhurdle distributed multinomial regression (HDMR) model is
+ber in the millions—because many words are used to describe
+                                                                                   tailored to the twin challenges of high dimensionality and sparsimilar phenomena. Second, phrase counts are sparse—most
+                                                                                   sity of text data. To accommodate the dimensionality of text,
+phrases have a count of zero in the most documents. Due
+                                                                                   we build on Taddy’s DMR insight of independent phrase-level
+to these attributes, statistical learning from text requires techmodels. However, we replace each phrase-level Poisson regresniques commonly used in machine learning (Gentzkow, Kelly,
+                                                                                   sion with a hurdle model that has two parts. The first part is
+and Taddy 2019). This article proposes a new methodology
+                                                                                   a selection equation, which models the text producer’s choice
+that fully embraces the sparseness of text data. We show that
+                                                                                   of whether or not to include a particular phrase. The second
+modeling the extensive margin decision to use a particular word
+                                                                                   part is a positive counts model, which describes the choice of
+reveals information that leads to large improvements in out-ofhow many times a word is repeated (conditional on being used
+sample prediction.
+                                                                                   at all).2
+   A standard econometric approach for describing counts data
+                                                                                       Our two-part HDMR model thus generalizes DMR by
+is multinomial logistic regression. Unfortunately, this model
+                                                                                   decomposing language choice into an extensive margin (the
+is computationally intractable in the most text-related appliselection equation) and intensive margin (the positive counts
+cations because the number of categories is extremely large.
+                                                                                   model). Explicitly, modeling the extensive margin of phrase
+Taddy (2015) showed that one can overcome this dimensionality
+                                                                                   choice has two advantages. The statistical advantage is that it
+problem by approximating the multinomial with cleverly shifted
+                                                                                   introduces a modeling component dedicated to capturing the
+independent Poisson regressions, one for each word. This disexcess probability mass on zero counts. We use the hurdle
+tributed multinomial regression (DMR) has the great advantage
+that the Poisson regression can be distributed across parallel
+computing units.                                                                   1
+                                                                                     Zipf (1935) observed that language follows a power law. Rennie et al. (2003)
+   The Poisson model has the disadvantage that it provides                            suggested a multinomial naive Bayes modification to emulate such power
+                                                                                      law distributions. Wilbur and Kim (2009) found that in some cases, word
+a poor description of word counts. In particular, there tends                         “burstiness” is so strong that additional occurrences of a word essentially
+to be a much higher proportion of phrases having zero                                 add no useful information to a classifier.
+counts than the Poisson distribution allows. If one restricts                        We use L1 regularization (lasso) to further manage model dimensionality.
+
+
+CONTACT Bryan Kelly     bryan.kelly@yale.edu         Yale University, AQR Capital Management, 165 Whitney Ave, New Haven, CT 06520.
+  Supplementary materials for this article are available online. Please go to www.tandfonline.com/UBES.
+© 2021 American Statistical Association
+
+
+2        B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+approach of Mullahy’s (1986) to model selection because it                         Our model also serves as a basis for exploring the relationallows the extensive and intensive components to be estimated                  ships between phrases and numerical covariates such as macroeindependently, and therefore, can also be distributed at essen-                conomic state variables or financial markets prices, which enter
+tially no additional computation cost relative to DMR.3                        as conditioning variables for the distribution of phrase counts.
+    The economic advantage of our model is that it adapts                      First, the model doubles as a dimension reduction method for
+the selection methodology of Heckman (1979) to a high-                         text. Like DMR, HDMR generates sufficient reductions of text by
+dimensional setting. HDMR provides a means for estimat-                        projecting phrase counts onto covariates. Sufficient reductions
+ing models in which sparsity is of the first-order economic                    serve as indices that best summarize the text as it relates to each
+importance. In text data, HDMR is particularly useful when                     covariate after controlling for other covariates. HDMR produces
+an author’s choice to cover or not cover a topic is more eco-                  two such sufficient reductions per covariate: one for word inclunomically interesting than the choice of coverage intensity. For               sion (the extensive margin) and the other for repetition (the
+example, newspaper publishers’ extensive margin of coverage                    intensive margin). Second, the model can be flipped in order
+is informative about their news production technology and the                  to predict covariates based on text via an inverse regression.
+constrained attention of its audience. The selection decision is               This is useful, for example, to backcast key macro variables
+a key lever that writers use to signal their ideological type to               that have limited histories or missing data, or for “nowcastreaders (e.g., Mullainathan and Shleifer 2005; Gentzkow and                    ing” when text is available in a more timely manner than the
+Shapiro 2006). Politicians carefully select phrases that resonate              forecast target.
+with voters in congressional speech (Gentzkow, Shapiro, and                        Our second application illustrates this feature by using
+Taddy 2019), and fixed costs of using censored or socially taboo               HDMR to backcast a measure of equity capitalization in the
+words may generate further sparsity (Michel et al. 2011). Spar-                financial sector using the text of The Wall Street Journal. The
+sity reflects the suboptimality of writing about a particular topic            intermediary capital ratio (icr) is the central state variable in
+just a little bit: In order for the signal to be comprehensible                the growing literature on intermediary-based asset pricing, and
+there must be a minimum amount of exposition, yet the total                    helps explain the behavior of risk premia in a wide array of
+amount of text cannot exceed the audience’s attention span.4                   asset classes (He, Kelly, and Manela 2017). However, it is only
+Gabaix (2014) showed that, when agents are boundedly rational,                 available beginning in 1970. From our long sample of Wall
+sparsity emerges in equilibrium for a wide variety of economic                 Street Journal text, we estimate an icr series starting in 1927
+settings under otherwise general conditions.                                   to investigate the historical interaction between intermediary
+    In the first application, we revisit the partisanship of the               capital and asset prices.
+U.S. congressional speech. Gentzkow, Shapiro, and Taddy (2019)                     We find that HDMR gives substantially improved out-ofrecently suggested a new measure of partisanship, which relies                 sample predictions of icr compared to DMR, which indicates
+on DMR to alleviate a finite-sample bias that arises in high-                  that modeling selection helps with forecasting in this context.
+dimensional choice settings. They defined partisanship as the                  HDMR also outperforms support vector regression (Vapnik
+ease with which an observer could infer a congressperson’s party               2000), which Manela and Moreira (2017) used for text-based
+from a single phrase. They documented a fairly low and constant                backcasting of the VIX stock market volatility index. Unlike
+level of partisanship starting in 1873 until the early 1990s when              support vector regression, both DMR and HDMR can conit starts increasing sharply. Our two-part method allows us                    centrate on individual variables that behave differently from
+to refine their findings by decomposing partisanship into two                  word counts (i.e., non-text control variables), but are useful for
+parts. One part measures the ease with which an observer could                 prediction. We find that the out-of-sample advantage of HDMR
+infer a congressperson’s party from a single phrase inclusion,                 over DMR is humped-shaped, increasing with the sparsity of
+that is, the fact that the congressperson uses a particular phrase             the text up to a point where repetition is rarely observed. On
+in their vocabulary. The second part focuses on phrase repeti-                 one extreme, if we keep only highly frequent words—a common
+tion, conditional on inclusion, that is, how much emphasis they                approach to ad hoc prefiltering of words—the document term
+place on a particular issue. We find that repetition partisanship              matrix becomes dense and the text is similarly described by a
+spikes in the late 1890s and late 1920s to levels similar to those             selection-free DMR model. At the same time, however, more
+seen in the 2000s. But inclusion partisanship remains low for                  stringent phrase filters lead to a large deterioration in predicmost of the sample, until it starts rising gradually in the 1970s,             tion accuracy from either method. Less filtering (allowing for
+before spiking up in the 1990s. These findings mean that politi-               more phrases) makes for a better prediction model, and also
+cians belonging to different parties have previously emphasized                magnifies the benefits of accounting for text selection with a
+different phrases or issues to a varying degree, while using the               hurdle. However, if so many infrequent phrases are kept, that
+same language. What is new about the recent upward trend                       repetition is rarely observed, the advantage of HDMR over DMR
+starting in the 1990s is that Democrats and Republicans choose                 diminishes. At this other extreme, inclusion choice dominates
+to communicate with distinct language.                                         the analysis, and a one-part model like a binomial or a Poisson
+                                                                               would suffice.
+                                                                                   The news-implied intermediary capital ratio series provides
+                                                                               for more powerful tests that support central predictions of interThe hurdle model is widely used, for example, in health economics. Greene    mediary asset pricing theory. The results show that times when
+   (2007) surveys models for counts.                                           intermediaries are highly capitalized are “good times” when
+  Academic researchers know this well, and therefore tend to use consistent
+   wording to clarify their argument, rather than alternate between synonyms   these marginal investors demand a relatively low premium to
+   to expound the same contention.                                             hold risky assets. Our findings imply that news text of The Wall
+
+
+                                                                                                          JOURNAL OF BUSINESS & ECONOMIC STATISTICS                3
+
+
+Street Journal provides a strong signal about stock market risk                     its usefulness with three applications. Section 3 analyses the
+premia, over and above common financial market covariates                           partisanship of congressional speech. Section 4 backcasts the
+such as the price–dividend ratio and stock volatility.                              intermediary capital ratio using newspaper text and analyzes
+    In our third application, we ask whether HDMR can extract                       its historical asset pricing properties. Section 5 uses newspaper
+information from text of The Wall Street Journal that is useful                     text to forecast and nowcast key macroeconomic indicators. Secfor forecasting U.S. macroeconomic indicators (beyond that of                       tion 6 concludes. An online appendix provides further robusta benchmark principal components method suggested by Stock                          ness tests and theoretical detail.
+and Watson 2012). We find that the information in newspaper
+text significantly improves over benchmark forecasts for key
+macroeconomic indicators such as nonfarm payroll employ-                            2. A Model for Text Selection
+ment and housing starts, and that the advantages of text-based                      Let ci be a vector of
+information increase as we expand the dimensionality (and                                                  counts in d categories for observation i,
+                                                                                    summing to mi = j cij , and let vi be a pv -vector of covariates
+along with it, the sparsity) of the text. In a related analysis, we                 associated with each observation i = 1 . . . n. In a text applicashow that this text is valuable for nowcasting macroeconomic                        tion, cij are counts of word or phrase (n-gram) j in document i
+series, which are released at a lower frequency and with a delay                    with attributes vi .6 An econometrician confronted with modelrelative to news text.                                                              ing counts data may first consider using a multinomial logistic
+    This article contributes to a rapidly growing literature that                   regression
+incorporates insights from machine learning into econometrics.
+Recent work applies prediction algorithms in policy analysis                                                                    
+(Kleinberg et al. 2015; Bajari et al. 2015; Athey 2017; Ludwig,                                p (ci |vi , mi ) = MN ci ; qi , mi for i = 1 . . . n,          (1)
+Mullainathan, and Spiess 2017; Einav et al. 2018; Kleinberg et al.
+2018) and considers parameter uncertainty and causal inference                                                 eηij
+in high dimensional settings (Belloni et al. 2012; Belloni, Cher-                                      qij = d                     for j = 1 . . . d,        (2)
+                                                                                                                              ηik
+nozhukov, and Hansen 2014; Belloni et al. 2017; Mullainathan                                                          k=1 e
+
+and Spiess 2017; Athey et al. 2017; Athey, Tibshirani, and Wager
+2019). Our model allows economists interested in analyzing                                                          ηij = αj + vi ϕj .                       (3)
+counts data like text, to model selection in the process that                       When the number of categories d is very large, as is the case in
+generates their data in a flexible, robust and scalable way. We                     many natural language processing applications,         estimating
+show that adding structure that is well-grounded in economic                                                                                    the
+                                                                                    parameters of the multinomial, α = αj and ϕ = ϕij , is
+theory can substantially improve prediction in high dimensional                     computationally prohibitive.7 Equation (2), which makes sure
+settings.5                                                                          that word probabilities qij add up to one, is the main barrier
+    HDMR allows one to analyze text within a regression frame-                      to parallelization across categories because every parameter
+work familiar to economists, and strikes a balance between                          change must be communicated to all other category estimators.
+prediction and interpretation. Dictionary-based approaches are                         It is well known that the multinomial can be decomposed
+easy to interpret, but are no match to regularized regression in                    into independent Poissons conditional on the intensities eηij ,
+prediction tasks (e.g., Manela and Moreira 2017; Chebonenko,                        scaled by a poisson for total word counts mi ,
+Gu, and Muravyev 2018). At the other extreme, neural network                                                                           
+                                                                                                                                     ηij
+models are great nonlinear predictors, but also harder to inter-                                                      j Po cij ; e
+pret (Gu, Kelly, and Xiu 2018, 2019).                                                             MN ci ; qi , mi =                       .         (4)
+    Our technology is publicly available via the HurdleDMR                                                          Po mi ; dj=1 eηij
+package for Julia, which can be called from many other proMotivated by this decomposition, Taddy (2015) developed the
+gramming languages like Python and R. The package allows for
+                                                                                    distributed multinomial regression (DMR), a parallel (indepencomputationally efficient distributed estimation of the multiple
+                                                                                    dent) Poisson plug-in approximation to the multinomial,
+hurdles over parallel processes, generating sufficient reduction
+projections, and inverse regressions with selected text. It allows                                                                           
+                                                                                           p (ci |vi , mi ) = MN ci ; qi , mi ≈ Po cij ; mi eηij . (5)
+for elastic net type convex combinations of L1 (Lasso) and L2                                                                                j
+(Ridge) regularization as in glmnet (Friedman, Hastie, and
+Tibshirani 2010), and for concave regularization paths as in                        The parameters for each category j can then be estimated indegamlr (Taddy 2017).                                                                 pendently with negative log likelihood
+    We start Section 2 by describing the DMR model of Taddy                                                    n                         
+                                                                                                                                
+(2015), and then extend it to introduce our main contribution,                           l αj , ϕ j |cj , v =          mi eαj +vi ϕj − cij αj + vi ϕ j   .   (6)
+a text selection model, which we refer to as HDMR. We illustrate                                                i=1
+                                                                                                                                                               
+                                                                                    Intuitively, each independent Poisson intensity λij = mi eαj +vi ϕj
+    See Athey (2018) for a recent survey and Hoberg and Phillips (2016), Hanley     is shifted to account for the fact that all words are more
+     and Hoberg (2019), and Jiang et al. (2019) for recent text analysis applications. We also provide new tools for summarizing high-dimensional coverage to a literature studying the media in economics (Gentzkow and Shapiro        For example, in a finance application, vi could be the market response to an
+     2006; Durante and Zhuravskaya 2018; Qin, Strömberg, and Wu 2018), and             earnings release or return volatility.
+     finance (Antweiler and Frank 2004; Tetlock 2007; Fang and Peress 2009;           For example, our application in Section 3 has a vocabulary d of more than
+     Engelberg and Parsons 2010; García 2013).                                         five hundred thousand phrases.
+
+
+4         B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Figure 1. Mean distribution of WSJ front page articles monthly phrase counts.
+NOTES: The figure shows the mean histogram for phrases that appear in the title or lead paragraph of front page Wall Street Journal articles, aggregated to form a monthly
+sample from July 1926 to February 2016. We construct the mean histogram by first calculating a histogram for each phrase across documents, and then averaging over
+phrases and normalizing to unit scale. The left panel shows that the entire range is highly sparse (has many zeros). The right panel omits zero counts, and shows that a
+Poisson density fitted to the entire range (dashed line) is a poor description of the positive range. The corpus includes the 10,000 most frequent two-word phrases (bigrams)
+in separate sentences, after removing case, stopwords, nonletters and Porter stemming. Including less frequent phrases makes the corpus sparser and the pattern above
+more pronounced.
+
+
+likely to appear in longer (high mi ) documents. Approxima-                             Table 1. Notation.
+tion (5) removes the communication bottleneck of recomput-
+               
+                                                                                        Symbol            Meaning
+ing dj=1 eαj +vi ϕj and allows for fast and scalable distributed                             cij          Counts for n-gram j in document i
+estimation.                                                                                  cij∗         Preselection counts for n-gram j in document i
+   Taddy (2013, 2015) used DMR to estimate a low-dimensional                                 hij          Variable that indicates if n-gram j is used in document i
+sufficient reduction projection                                                              h∗ij         Selection index for n-gram j in document i
+                                                                                             γi           Coefficient that controls number of unique n-grams use in doczi = ϕ̂  ci ,                                            wi
+                                                                                                          ument i (vocabulary size)
+                                                                                                          Selection equation co-variates associated with document i
+                                                                                             vi           Count equation co-variates associated with document i
+and shows that vi is independent of ci conditional on zi . This                              κj           Selection equation coefficient that controls probability of nmeans that, within this model, z i is a sufficient statistic that                                         gram j in a document
+                                                                                             δj           Selection equation n-gram j vector of coefficients that Detersummarizes all of the content that the text has for predicting the                                        mine how covariates wi change selection index hij
+covariates vi (or its individual elements). For example, suppose                             υij          Selection equation unobservable for ngram j document i
+viy is the first element of vi , which is available in a subsample, but                      μi           Coefficient that controls overal size of document i
+                                                                                             αj           Coefficient that controls average count of n-gram j in a docuneeds to be predicted for other subsamples. The first step would                                          ment
+be to run a multinomial inverse regression of word counts on                                 ϕj           Count equation vector of coefficients that determine How
+the covariates v in the training sample to estimate ϕ̂. Second,                                           covariates vi change preselection counts cij
+estimate a forward regression (linear or higher order)                                       εij          Count equation unobservable for ngram j document i
+                                                                                             λ            Function that maps linear model for n-gram counts into non-
+                                                                                                     negative model
+                    E viy = β0 + ziy , vi,−y , mi β,                (7)
+                 
+where ziy = j ϕ̂jy cij is the projection of phrase counts in the
+direction of viy . Finally, the forward regression can be used to                       this sparsity. Furthermore, the economics of content selection
+predict viy using text and the remaining covariates vi,−y .                             suggests that relationships between covariates and text could be
+                                                                                        better captured by allowing for a separate inclusion choice. For
+                                                                                        example, the decision to start writing about a topic could be
+2.1. Hurdle Distributed Multinomial Regression                                          more informative than writing more about a topic.
+                                                                                           To model text selection, we replace the independent Poissons
+In many cases, and specifically in text applications, the Poisson
+                                                                                        with a two part hurdle model for counts cij , which we label the
+is a poor description of word counts cij . For example, Figure 1
+                                                                                        hurdle distributed multinomial regression (HDMR):8
+shows the mean histogram (across documents) for the corpus we use below, which consists of 10,000 two-word phrases                                                   h∗ij = γi + κj + wi δ j + υij ,                           (8)
+(bigrams) appearing in the title and lead paragraph of front page                                                      
+Wall Street Journal articles. The left panel shows a substantial                                              hij = 1 h∗ij > 0 ,                                         (9)
+mass point at zero that is hard to reconcile with a Poisson. The                                                       
+panel on the right shows that if we restrict attention to positive                                            cij∗ = λ μi + αj + vi ϕ j + εij ,                       (10)
+                                                                                                                     
+counts, the Poisson density fitted to the entire range (dashed
+                                                                                                              cij = 1 + cij∗ hij .                                     (11)
+line) is a poor approximation for the data. This sparsity is a
+feature of many text samples. As alluded to above, the economics of natural language selection provides many reasons for                          8
+                                                                                            We summarize the notation of the model below in Table 1.
+
+
+                                                                                                                           JOURNAL OF BUSINESS & ECONOMIC STATISTICS                        5
+
+
+The first two equations describe the choice to include (hij = 1)                                   conditions. We discuss these plug in estimators in Section 2.3
+or exclude (hij = 0) word j in document i, often referred to                                       and in the online appendix.
+as the model for zeros or participation. This choice depends                                           A useful feature of the hurdle is that exclusion (hij = 0)
+on observable covariates wi ∈ Rpw and an unobservable υij .                                        is the only source of zero counts. As a result, it decomposes
+Equation (10) is the model for word repetition given inclusion                                     as in Equation (14) into two parts that can be estimated indein the document, which can depend on the same or other                                             pendently, which facilitates further parallelization.10 Specificovariates vi ∈ Rpv and an unobservable εij . The function λ (·)                                   cally, the parameters that govern inclusion (κj , δ j ) only depend
+and the distribution of εij are restricted to be nonnegative so                                    on word j indicators hj and on the covariates w, whereas the
+that that excess counts are nonnegative too (cij∗ ≥ 0). The last                                   parameters that govern repetition (αj , ϕ j ) only depend on word
+equation says that we only observe positive counts for included                                    repetition cj − 1 and the covariates v and can be estimated
+words.9                                                                                            separately in the subsample of word repetitions.
+   Let 0 denote the discrete density for zeros                                                         HDMR therefore allows one to estimate text selection in Big
+                                                                                               Data applications of previously impossible scale, by distributing
+             p hij = 0|wi = 0 γi + κj + wi δ j .                                                  computation across categories and across the two parts of the
+Natural choices for 0 are the probit and logit binary choice                                       selection model.
+models. Let P+ denote the model for word repetition, so that
+conditional on inclusion,                                                                          2.2. Regularization
+                                      
+      p cij∗ |vi , hij = 1 = P+ cij∗ ; λ μi + αj + vi ϕ j .                                       In many machine learning applications, the feature space
+                                                                                                   (words) is much larger than the number of observations. In our
+Natural choices for P+ are the Poisson and the negative bino-                                      setting, even though each word selection model is “small” with
+mial. Combining terms, the joint density is                                                        number of parameters growing with the number of covariates
+                                      1−hij
+                                                                                                   w, our approach requires one model estimate per word. Thus,
+                                    
+    p cij |vi , wi =   0 γi + κj + wi δ j                                                   (12)   the number of estimated coefficients grows with the number of
+                                                                                   hij     words and the potential for overfitting is large. In such cases, reg-
+       × 1 − 0 γi + κj + wi δ j P+ cij − 1; λ μi + αj + vi ϕ j                               .
+                                                                                                   ularization by penalizing nonzero or large ϕ and δ coefficients is
+The negative log likelihood takes a convenient form                                                key to avoid overfit. Our results use L1 regularization separately
+                                                                                                   for each category j and for each of the two parts of the hurdle
+                                                 d
+                                                                                            
+     l (μ, α, ϕ, γ , κ, δ|c, v, w) =                 l μi , αj , ϕj , γi , κj , δj |cj , v, w ,                                                                
+                                                                                                                                                                          pw
+                                                                                                                                                                                 
+                                             j=1                                                           κ̂j , δ̂ j = arg minκj ,δ j l0 γ̂i , κj , δ j |hj , w + nλ0j         δjk 
+                                                                                           (13)                                                                           k=1
+                                                                                                                      where λ0j ≥ 0,                                                   (17)
+             l μi , αj , ϕj , γi , κj , δj |cj , v, w
+                                                      
+                = l0 γi , κj , δ j |hj , w + l+ μi , αj , ϕ j |cj , v ,                    (14)
+                                                                                                                                                                     pv
+                                                                                                                                                                          
+                                                                                                        α̂j , ϕ̂ j = arg minαj ,ϕ j l+ μ̂i , αj , ϕ j |cj , v + n+ λ+    ϕjk 
+                                                                                                                                                                    j
+                                         n
+                                                                                                                                                                        k=1
+     l0 γi , κj , δ j |hj , w = −                log            γi + κj + wi δ j          (15)                      where λ+
+                                                                                                                            j ≥ 0.                                                       (18)
+                                      i|hij =0
+                                         n
+                                                                                                   The penalties λ0j and λ+ j shrink the loadings toward zero,
+                                                                                 
+                                  −              log 1 −           0 γi + κj + w i δ j ,           and because of the Lasso-type L1 penalties, result in many zero
+                                      i|hij =1                                                     loadings (Tibshirani 1996).11 Because the model for positive
+                                                                                                   counts only depends on documents i that include word j, the
+                                                                                                  penalty is normalized by the number of such documents n+ ≡
+       l+ μi , αj , ϕ j |cj , v                                                                      n
+                                                                                                      i=1 hij . Fast coordinate descent algorithms for these minin                                                                           mization problems have been proposed by Friedman, Hastie,
+           =−                log P+ cij − 1; λ μi + αj + vi ϕ j                      .    (16)    and Tibshirani (2010), which trace out regularization paths of
+                  i|hij =1                                                                         solutions, one for each of a grid of λ’s, for the class of generalized
+                                                                                                   linear models (GLM, McCullagh and Nelder 1989). We follow
+Note that the coefficients γi and μi introduce dependence across
+                                                                                                   Taddy (2017) in selecting the model that minimizes a corrected
+the log likelihood of different words j. To allow for separation
+                                                                                                   AIC, though in relatively modest applications one could use
+across words, and parallelized estimation, we adapt the argument in Taddy (2015) and use plug in estimators γ̂i and μ̂i that                                   10
+                                                                                                      Zero inflation models are alternative approaches that allow for latent cij∗ =
+approximate the maximum likelihood estimators under certain
+                                                                                                      0, in which case zero count observations could result either from exclusion
+                                                                                                      or from inclusion of zero counts. While this distinction is philosophically
+9                                                                                                     interesting, the hurdle is more tractable and faster to estimate.
+    Our two part model is simpler and faster to estimate than Mullahy’s (1986)
+    hurdle, which models positive counts as drawn from a truncated Poisson,                           We focus on Lasso penalties here to simplify the exposition. Our
+    as opposed to a regular Poisson for counts in excess of one (repetitions). In                     HurdleDMR package allows for more general elastic net-type regularizathe previous draft, we used the truncated Poisson and found very similar                          tion as in glmnet (Friedman, Hastie, and Tibshirani 2010), and for concave
+    results.                                                                                          regularization paths as in gamlr (Taddy 2017).
+
+
+6       B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+cross validation to select the optimal penalty. To apply the coor-      plug-in estimators δ̂hi and ϕ̂(ci − hi ). Whether these provide
+dinate descent algorithms developed by Friedman, Hastie, and            useful approximations is a setting-dependent empirical matter.
+Tibshirani (2010) to our selection model, we frame its two parts        In prediction problems, to which we turn next, such gains can
+as GLMs: a binomial-logit for the inclusion part and a Poisson-         be evaluated in terms of out-of-sample fit compared with other
+log for the repetition part (McCullagh and Nelder 1989).                computationally feasible methods.
+
+2.3. Sufficient Reduction Projections                                   2.4. Inverse Regression for Prediction
+For simplicity, in what follows we focus on the case where hij is       The end goal of many machine learning or natural language
+binomial (bernoulli) distributed                                        processing applications is out-of-sample prediction. Result 1
+                                      
+                                                1−hij                 provides a guide to supervised learning from text via an inverse
+          p hij |wi =       0 γ̂i + κj + wi δ j                         regression of the text on the target variable and other covari-
+                                                      h
+                            1 − 0 γ̂i + κj + wi δ j ij     (19)        ates (Taddy 2013). The parameters from the HDMR inverse
+                                                                        regression in the training sample are used to form a bivariate
+with a logit link,                                                      sufficient reduction projection of the text. A forward regression
+                                                                       (still in the training sample) of the target variable on these
+              log ((1 −      0) /    0 ) = κj + wi δ j + γ̂i .   (20)
+                                                                        projections plus the other covariates is then used to construct
+In this case, we show in the online appendix that for a large           the predictor.
+enough number                                                               More concretely, suppose the target variable viy = wiy is an
+               of categories d, the 
+                                     MLE estimator for γi condi                     d                                element of both vi and wi . We first construct two univariate
+verges to log d−di , where di =        j=1 hij is the number of                                             0 = δ h and z+ = ϕ (c −h ).
+                                                                        sufficient reduction projections ziy      y i       iy     y i   i
+categories used
+               in document   i (vocabulary  size). We therefore
+                                                                        Because the estimated loadings δ y and ϕ y are partial effects,
+                di
+use γ̂i = log d−d    i
+                        as our plug in estimator.                       controlling for the other covariates, wi,−y and vi,−y , the proThe distribution of word repetitions cij∗ is assumed to be                      0 and z + correspond to partial associations as well.
+                                                                        jections ziy        iy
+Poisson,                                                                Conditional on the parameters, ziy   0 contains all the information
+                                               cij −1                that is useful for predicting viy from the selection of words used
+           P+ cij∗ ; λij = Po cij − 1; λij = λij e−λij , (21)                                                                +
+                                                                        in the text (the extensive margin). Similarly, ziy     contains the
+with log intensity                                                      incremental predictive information in repeating words within
+                                                                        document i (the intensive margin). Intuitively, HDMR can learn
+                      log λij = αj + vi ϕ j + μ̂i .             (22)   separately from both the extensive and intensive margins, and
+                                                                        use them for more efficient prediction. We would then estimate
+Here, we follow Taddy (2015) and use μ̂i = log(mi − di ) as
+                                                                        a forward regression (linear or higher order)
+our plug in estimator. The only difference from Taddy (2015)
+is that here we are modeling word repetition so the estimator                                0 +
+                                                                                                                                  
+is log(mi − di ) instead of log(mi ). See the online appendix for                E viy = β0 + ziy , ziy , wi,−y , vi,−y , mi , di β,     (23)
+details.
+    We next show that under these functional forms, the entire          which can be used to predict viy using text and the remaining
+empirical content of the text that is useful for predicting a vari-     covariates wi,−y and vi,−y . If the target variable is only an element
+                                                                        of w (v), then one would only use ziy        0 (z + ) in the forward
+able in w or v, is summarized by two low-dimensional sufficient                                                           iy
+                                                                                                                               +        0 grow
+statistics.                                                             regression. Note that because the variance of ziy        and ziy
+                                                                        with mi − di and di respectively, more extreme forecasts will
+Proposition 1. Assuming a binomial-logit model for inclusion            tend to come from larger documents (high mi − di and/or high
+and a Poisson-log model for word repetition, the projection δhi         di documents). As in Taddy (2013), we adjust for this scale
+is a sufficient statistic for wi and the projection ϕ(ci − hi ) is      effect by normalizing the sufficient reduction projections by the
+a sufficient statistic for vi , conditional on total counts mi and                                +
+                                                                        document size, that is, ziy    = ϕ y (ci − hi )/(mi − di ) and ziy 0 =
+vocabulary size di . Specifically,                                      δ y hi /di .
+               vi , wi ⊥⊥hi , ci |δhi , ϕ(ci − hi ), mi , di .
+                                                                        3. Application I: Partisanship of Congressional
+Proof. See the online appendix.
+                                                                           Speech
+   Proposition 1 means that once we estimate the HDMR                   Gentzkow, Shapiro, and Taddy (2019) recently suggested a new
+parameters, we can reduce the high-dimensional (d) text into            measure of partisanship, defined as the posterior probability that
+low-dimensional (pv + pw ) sentiment scores from the text in the        an observer with a neutral prior expects to identify a speaker’s
+direction of the covariates in v or w. The projections provide          party after hearing the speaker utter a single phrase. In this
+useful summaries of the text, which can be plotted or used              section we apply our methodology to refine our understandas a dimensionality reduction first-step into a more elaborate          ing of partisanship by decomposing speech into the choice of
+analysis. As in Taddy (2015), the sufficient statistics δhi and         vocabulary (the inclusion decision) and choice of emphasis (the
+ϕ(ci − hi ) rely on population parameters, but in practice we use       repetition decision). We use their data to construct a phrase
+
+
+                                                                                                  JOURNAL OF BUSINESS & ECONOMIC STATISTICS            7
+
+
+                                                                                              rijt = αjtr + xit γ rjt + ϕjtr 1i∈Rt .
+counts matrix ct with rows that represent speakers and columns                                 P(i)
+                                                                                                                                                   (31)
+that represent unique two-word phrases (bigrams). We next
+provide a summary of both methods, and refer the reader to               We estimate these conditional probabilities with HDMR, reguGentzkow, Shapiro, and Taddy (2019) for a detailed description           larizing the group difference coefficients ϕjth and ϕjtr with Lasso
+of their data.                                                           penalties.
+                                                                              We then define two natural variants of partisanship by replacing the phrase probabilities in (26) and (27) with qhP   jt or with
+3.1. Methods
+                                                                         qrP
+                                                                           jt , to form inclusion partisanship  and  repetition partisanship.
+Formally, Gentzkow, Shapiro, and Taddy’s (2019) model, the               Inclusion partisanship measures what an observer would expect
+             P(i)
+probability qij that a speaker i affiliated with party P (i) ∈           to learn about a speaker’s party affiliation from the inclusion of a
+{R, D} in congressional session t utters phrase j, given a vector        phrase in a speech. By contrast, repetition partisanship measures
+of speaker characteristics xit , as                                      what they expect to learn from an additional repetition of a
+                 P(i)                                                    phrase already observed.
+               qjt (xit ) = euijt /                 euilt ,       (24)
+                                      l
+                        uijt = αjt + xit γ jt + ϕjt 1i∈Rt ,      (25)   3.2. Results
+where Rt is the set of Republicans and Dt the set of Democrats           Figure 2 reports the two new HDMR-based measures of conwho spoke at least one phrase in session t. The uijt terms can be        gressional speech partisanship. For comparison, we reproduce
+interpreted as speaker i’s utility from saying phrase j at time t.       the Gentzkow, Shapiro, and Taddy (2019) DMR-based meaTheir preferred estimator for these probabilities is DMR, which          sure of partisanship. It clearly shows that average partisanship
+regularizes the group difference coefficients ϕjt with a Lasso           based on any utterance is fairly low starting in 1873 until the
+(L1) penalty. The ϕjt ’s quantify the divergence in phrase j use         early 1990s when it starts increasing sharply, as documented by
+between Republicans and Democrats. Given estimates of phrase             Gentzkow, Shapiro, and Taddy (2019).12
+probabilities, the partisanship of speech is defined as                     Our decomposition reveals that earlier spikes in partisanship
+                1                  1                                   manifested in increased repetition of different phrases, whereas
+     πt (x) = qRt (x) ρ t (x) + qD           
+                                       t (x) 1 − ρ t (x) ,    (26)
+                2                  2                                     the upward trend starting in the 1990s is due to distinct phrase
+where                                                                    selection. We find that repetition partisanship spikes to 0.504 in
+                                    qRjt (x)                             the late 1890s and to 0.505 in the late 1920s. These levels are
+                    ρjt (x) = R                    ,          (27)       similar to those seen in the 2000s. These peaks are comparaqjt (x) + qD  jt (x)                       ble with the highest level of partisanship based on DMR. But
+is the posterior belief that an observer with a neutral prior            inclusion partisanship remains close to the 0.5 prior for most of
+assigns to a speaker being Republican if she utters phrase j in          the sample, until it starts rising gradually in the 1970s, before
+session t and has characteristics x.                                     spiking up in the 1990s to previously unseen levels.
+    Average partisanship in session t is the average partisanship           These findings mean that politicians belonging to the two
+across speakers i of πt (xit ). It provides a concise summary of         parties have previously emphasized different phrases or issues to
+how well an observer with knowledge of the true model can                a varying degree, while using similar vocabularies. By contrast,
+guess a speaker’s party upon hearing them utter a single phrase.         the recent spike in partisanship is quite different as political
+It takes into account both how revealing is a given phrase j about       parties seem to be using distinct vocabularies or speaking about
+its speaker’s identity (ρjt ), and how likely is this phrase to be       completely different issues.
+uttered by a Republican (qRt ) or a Democrat (qD    t ).                    The placebo lines are based on hypothetical data where each
+    We depart from their approach by assuming that phrase                speaker’s party is randomly drawn. The placebo estimates for
+choice is a two part process. The speaker first chooses which            repetition are often above 0.5, suggesting the finite-sample bias
+phrases to include in a speech, and then separately chooses              emphasized by Gentzkow, Shapiro, and Taddy (2019) is quite
+how many times to repeat each phrase. Both choices depend                severe for this margin, while the inclusion margin is more
+on the same set of covariates x as before, and potentially on            accurately estimated in this sample.
+party affiliation. Specifically, we assume phrase inclusion choice
+is governed by a product of binomial logits, as in Equation (20),
+with probabilities                                                       3.3. Partisan Phrases
+                                       hPjt (x)        P               To better understand these changes in the nature of congresqhP
+        jt (x) = Pr inclusionj |x = e             /   ehlt (x) , (28)
+                                                              l
+                                                                         sional speech, we next investigate which phrases drive these
+                                                                         results. For this purpose, Gentzkow, Shapiro, and Taddy (2019)
+        hijt = αjth + xit γ hjt + ϕjth 1i∈Rt ,
+         P(i)
+                                                                  (29)   defined phrase partisanship as the average effect on the expected
+whereas repetition choice is governed by a multinomial, as in            posterior that speaker i is Republican of removing a given
+Equation (21), with log intensity
+                                                  
+           qrP
+            jt (x) = Pr repetitionj |x, inclusionj
+                            rP (x)              P                             The line labeled DMR is quite similar to the one reported in Gentzkow,
+                        = e jt       /       erlt (x) ,           (30)        Shapiro, and Taddy (2019) as their preferred estimator, despite slight difl                                    ferences in the software packages we use to run DMR.
+
+
+8        B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Figure 2. Partisanship of congressional speech.
+NOTES: Average partisanship of U.S. congressional speech is the posterior mass that an observer with a neutral prior expects to place on a speaker’s true party after
+hearing the speaker utter a single phrase averaged over speakers in each congressional session (see Section 3). DMR-based partisanship is the preferred estimator of
+Gentzkow, Shapiro, and Taddy (2019). HDMR-based estimates decompose divergence between Democrats and Republicans into two: inclusion partisanship measures
+what an observer would expect to learn about a speaker’s party affiliation from the inclusion of a phrase in a speech, while repetition partisanship measures what they
+expect to learn from an additional repetition of a phrase already observed. The congressional speech data is from Matthew Gentzkow’s website. The “actual” series is from
+actual data and the “placebo” series is from hypothetical data in which each speaker’s party is randomly assigned with the probability that the speaker is Republican equal
+to the average share of speakers who are Republican in the sessions in which the speaker is active. The shaded region around each series represents a 90% pointwise
+confidence interval obtained via subsampling (see Gentzkow, Shapiro, and Taddy 2019, Section 4.4).
+
+
+phrase j,                                                                                   are more likely to repeatedly refer to private property and the
+                                                                                          Internal Revenue Service; while Democrats often mention the
+               1 1                  qRkt (xit )           qD
+                                                           kt (xit )                        Postal Service and Public Service. Despite its decline, inclusion
+ζjt (xit ) =    −                                   +                        ρkt (xit ) .
+               2 2                1 − qRjt (xit )       1 − qD                              partisanship is still visible as Republicans prefer to discuss tax
+                        k=j                                  jt (xit )
+                                                                                            policy and terrorism, while Democrats are more likely to include
+                                                                 (32)
+                                                                                            gun violence and civil rights in their speeches.
+Larger positive ζjt phrases are more likely to be spoken by
+                                                                                                DMR-based partisanship on the rightmost column, is comRepublicans and more negative ζjt phrases by Democrats.
+                                                                                            posed of a mix of both inclusion and repetition choice. For
+Averaging ζjt across speakers i in a congressional session t
+                                                                                            example, during the 114th session, the list of most partisan
+provides an intuitive ranking of the most partisan phrases per
+                                                                                            phrases according to this single metric, combines top inclusession.
+                                                                                            sion phrases (e.g., “taxpayer dollar,” and “gun violence”) and
+    Table 2 reports the most partisan phrases in several key
+                                                                                            top repetition phrases (e.g., “American people,” “men and
+periods along the history reported in Figure 2. For each session,
+                                                                                            women”).
+the first column is based on inclusion partisanship, the second
+                                                                                                Back in the late 1920s, however, there is little divergence
+on repetition partisanship, and the third corresponds to any
+                                                                                            in the congressmembers’ choice of phrases to include in their
+utterance as in Gentzkow, Shapiro, and Taddy (2019). We also
+                                                                                            speeches, but there is ample divergence in their choice of phrases
+report the predicted number of occurrences for each phrase by
+                                                                                            to emphasize. For example, during the 70th session, Republicans
+each party per 100,000 phrases. More partisan phrases, exhibit
+                                                                                            are much more likely to emphasize the American people and
+a sharper imbalance in these predicted occurrences.
+                                                                                            state government, while Democrats are more likely to emphasize
+    The upward spike in inclusion partisanship, visible in FigGreat Britain and the interior department. Finally, an example
+ure 2, is hard to miss in the partisan phrases of the 110th session
+                                                                                            of the low level of partisanship of the late 1960s is provided by
+of congress. Republicans exclusively use the term “war on terror”
+                                                                                            the 90th session of congress—a time when both parties include
+to refer to the same war that Democrats call the “war in Iraq.”
+                                                                                            and repeat similar phrases.
+Republicans say “tax increases” while Democrats say “fiscal
+response.” Even with their common language, the two parties
+emphasize different issues in their speeches, as can be seen from
+                                                                                            4. Application II: Backcasting the Intermediary
+the second column. For example, conditional on its inclusion
+                                                                                               Capital Ratio
+in a speech, Democrats are more likely to repeatedly mention
+the growing national debt while Republicans emphasize tax                                   A rapidly growing body of work finds empirical support
+payments.                                                                                   for intermediary asset pricing theories (He and KrishnaRepetition partisanship attains its the highest level at the very                       murthy 2013; Brunnermeier and Sannikov 2014; Adrian, Etula,
+end of the sample, during the 114th session of congress, which                              and Muir 2014; Haddad and Muir 2018; Baron and Muir
+adjourned in January 2016, at the same time that inclusion parti-                           2018; He and Krishnamurthy 2018; Koijen and Yogo 2019).
+sanship is waning. Republican members of congress at the time                               In particular, He, Kelly, and Manela (2017) found that a
+
+
+Table 2. Most partisan phrases in U.S. congressional speech.
+                                                                                                                               Repetition (HDMR)
+                                   Inclusion (HDMR)                                                                                                                                                                     Any Utterance
+                                                                                                Republican             #R         #D     Democratic               #R     #D
+  Republican              #R          #D      Democratic             #R        #D                                                                                                            Republican            #R        #D        Democratic         #R    #D
+                                                                                                postal servic         600        272     san francisco           679    1947
+  subject overflow         1           0      tile farmer                2         3                                                                                                         muscl shoal           93        75        great kanawha       3     35
+                                                                                                american peopl       1053        776     great britain          2117    2619
+  cove creek               4           3      great kanawha              0         1                                                                                                         boulder dam           28        17        arrest drunken      5     35
+                                                                                                state govern          718        488     interior depart         597     975
+  reapportion bill         2           2      proper locat               1         2                                                                                                         navi yard             41        31        feder reserv       58     86
+                                                                                                pay tax               609        452     secretari interior     1756    1888
+  repres assign            2           1      notion agre                0         0                                                                                                         roman cathol          15         6        san francisco      23     48
+                                                                                                intern revenu         553        406     secretari navi          812     929
+  fertil made              1           0      leav discretionari         0         1                                                                                                         regular armi          34        24        leagu nation       18     33
+                                                                                                treasuri depart       998        882     build road              185     295
+  year ago               220         220      lie tri                    0         1                                                                                                         american peopl        64        55        reserv board       18     32
+                                                                                                american citizen      832        717     depart interior         496     586
+  assign construct         3           3      might furnish              0         1                                                                                                         emerg offic           26        17        great britain      98    112
+                                                                                                make differ           365        284     right way               272     293
+  fire trap                0           0      fix court                  0         0                                                                                                         veteran bureau        37        28        help farmer        12     26
+                                                                                                foreign countri       649        583     bill becom              198     216
+  time manufactur          1           0      suppli san                 0         0                                                                                                         air corp              21        14        control product     6     18
+                                                                                                oppos bill            390        350     class peopl             172     184
+  auxiliari time           0           0      charact war                0         0                                                                                                         allamerican canal     13         6        ship board         72     83
+                                                                                                                          (a) Session 70 (1927-1928
+                                                                                                Republican           #R          #D      Democratic               #R      #D
+  Republican                  #R     #D     Democratic             #R        #D                                                                                                            Republican                  #R         #D     Democratic        #R    #D
+                                                                                                treasuri depart     635         494      american peopl         2680    2823
+  distinguish colleagu        53      52    year ago               437       437                                                                                                           educ act                    29         22     interest rate     44     54
+                                                                                                state depart       1198        1062      distinguish friend      384     525
+  high regard                  5       5    control crime            2         2                                                                                                           higher educ                 27         22     human right       25     35
+                                                                                                intern revenu       641         542      state legislatur        480     537
+  draft card                   2       2    sentinel system          0         1                                                                                                           vocat educ                  15         10     feder reserv      30     40
+                                                                                                support bill        610         516      western state           210     259
+  safe street                  4       4    member congress        247       248                                                                                                           latin america               30         25     soviet union      82     88
+                                                                                                depart interior     659         578      san francisco           329     378
+  headstart program            3       3    mani year              240       241                                                                                                           insert record               22         17     american peopl    91     96
+                                                                                                postal servic       619         544      bill right              244     285
+  justic forta                 1       1    american peopl         175       175                                                                                                           job corp                    23         19     farm bureau       10     16
+                                                                                                public servic       799         727      foreign govern          194     230
+  postmast general             6       6    situat must              1         2                                                                                                           distinguish colleagu        32         27     tax increas       37     42
+                                                                                                depart state        413         364      take away               209     240
+  nation foundat               1       1    feder bureaucrat         0         0                                                                                                           even star                   10          7     social secur      93     97
+                                                                                                year age            284         245      secretari interior      773     800
+  ambassador goldberg          1       1    charg involv             0         0                                                                                                           elementari secondari        23         20     public health     20     25
+                                                                                                urg passag          193         154      year ago               2977    3002
+  join effort                  2       2    feder bureaucraci        1         2                                                                                                           state depart                39         36     war poverti       21     25
+                                                                                                                          (b) Session 90 (1967-1968
+                                                                                               Republican              #R         #D      Democratic              #R      #D
+  Republican             #R         #D      Democratic             #R         #D                                                                                                           Republican             #R        #D         Democratic          #R     #D
+                                                                                               pay tax               583         384      american peopl        7253    7770
+  war terror             38         30      war iraq               77        113                                                                                                           tax increas            62         20        health care        237    292
+                                                                                               one thing            1404        1210      pay interest           262     468
+  tax increas            15          9      civil war              43         58                                                                                                           natur gas              48         19        african american    31     63
+                                                                                               year ago             3151        2966      men women             3361    3493
+  continent shelf        10          6      dog coalit              1         13                                                                                                           rais tax               31         10        war iraq            50     79
+                                                                                               foreign countri       295         163      secretari interior     265     357
+  american energi         7          3      african american       14         24                                                                                                           side aisl             123        106        oil compani         40     64
+                                                                                               san francisco         411         321      nation govern          165     254
+  global war              9          5      fiscal respons         23         30                                                                                                           american energi        18          3        american peopl     257    280
+                                                                                               privat properti       319         235      interest nation        187     271
+  oil shale               5          1      iraq war               18         25                                                                                                           reserv balanc         123        109        nobid contract       2     25
+                                                                                               get rid               335         258      support bill          1411    1485
+  rais tax               11          7      civil right            21         27                                                                                                           continent shelf        21          8        urg colleagu       155    170
+                                                                                               circuit court         647         569      postal servic          565     634
+  nonbind resolut         6          2      support resolut        55         61                                                                                                           illeg immigr           19          7        paygo rule          10     24
+                                                                                               american citizen      479         407      peopl countri          543     609
+  general petraeus       11          8      troop iraq             33         38                                                                                                           tax rate               15          4        civil war           33     46
+                                                                                               everi year            706         636      step toward            371     429
+  outer continent        10          6      spend iraq              1          7                                                                                                           outer continent        19          8        children health     31     44
+                                                                                                                          (c) Session 110 (2007-2008
+                                                                                                 Republican               #R        #D     Democratic           #R      #D
+  Republican             #R         #D      Democratic              #R        #D                                                                                                          Republican              #R        #D         Democratic          #R     #D
+                                                                                                 american peopl      7100         5451     postal servic        966    1870
+  taxpay dollar          39         27      background check        39        65                                                                                                          american peopl         272        209        homeland secur     140    203
+                                                                                                 men women           2714         2097     year ago            2840    3130
+  american taxpay        20         14      depart homeland         43        60                                                                                                          men women              105         81        climat chang        60     99
+                                                                                                 privat properti      475          221     public servic        611     791
+  sponsor terror         12          7      fund bill               21        33                                                                                                          colleagu support       108         90        gun violenc         40     75
+                                                                                                 intern revenu        452          211     year old             770     925
+  death america           6          1      civil right             19        30                                                                                                          side aisl              116         98        vote right          26     59
+                                                                                                 state depart        1006          776     citizen unit         329     476
+  tax dollar             10          6      gun violenc             37        47                                                                                                          human traffick          42         26        public health       50     80
+                                                                                                 support bill        1318         1121     million peopl        910    1039
+  radic islam             5          1      african american        13        22                                                                                                          taxpay dollar           35         19        depart homeland     67     98
+                                                                                                 san francisco        535          384     take away            592     694
+  state sponsor           9          4      moment silenc           13        21                                                                                                          radic islam             16          0        african american    41     70
+                                                                                                 author act           609          472     take action          644     741
+  job creator             7          3      middl class             22        28                                                                                                          religi freedom          19          4        civil right         32     55
+                                                                                                 great state          672          536     honor repres         198     295
+  ballist missil         10          6      vote right               7        13                                                                                                          balanc budget           24         10        puerto rico         56     80
+                                                                                                 bill right           341          210     find way             453     541
+  trillion debt           5          1      mass shoot               9        14                                                                                                          nation defens           34         21        afford care         58     81
+                                                                                                                          (d) Session 114 (2015-2016
+                                                                                                                                                                                                                                                                          JOURNAL OF BUSINESS & ECONOMIC STATISTICS
+
+
+NOTES: We report the ten most Republican and Democratic phrases in select sessions of the US congress. Phrase partisanship is based on congressional speeches and defined in Section 3.3. For each session, we separately sort on inclusion partisanship, on repetition
+ partisanship, and on any utterance partisanship. We also report the predicted number of occurrences per 100,000 phrases for each phrase by Republicans (#R) and Democrats (#D).
+10           B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Table 3. Summary statistics: backcasting application.
+Variable                    Mean             Std             Min             p10            Median             p90             Max              Obs               Available
+Phrase counts, ctj          0.086           0.379           0.000           0.000               0.003         0.114            4.576           1075           192607–201602
+Phrase indic. htj           0.054           0.212           0.000           0.000               0.002         0.089            1.000           1075           192607–201602
+icr                         6.235           2.399           2.230           3.616               5.548         9.578           13.400            557           197001–201605
+pd                          3.442           0.402           2.213           2.960               3.394         4.017            4.564           1075           192611–201605
+rvfint−1→t                  0.061           0.144           0.002           0.006               0.022         0.133            2.059           1079           192607–201605
+rvfint−12→t                 0.061           0.094           0.004           0.010               0.026         0.159            0.636           1068           192706–201605
+NOTES: Reported are summary statistics for the Wall Street Journal front page articles text and for variables in the monthly sample from July 1926 to May 2016. The corpus
+ includes the 10,000 most frequent two-word phrases (bigrams) in separate sentences, after removing case, stopwords, nonletters and Porter stemming. To summarize
+ the text, we report the mean of per phrase statistics, for counts ctj and for inclusion indicators, htj ≡ 1{ctj >} . Intermediary capital ratio (icrt ) is the aggregate ratio of
+ market equity to market equity plus book debt of New York Fed primary dealers in percentage terms. The log price over past year dividends (pdt ) is from CRSP. Realized
+ variance (rvfin) is the annualized daily variance of financial stock returns over the prior month (t − 1 → t) or year (t − 12 → t).
+
+
+simple two-factor model that includes the excess stock mar-                                4.2. Newspaper Coverage Choice
+ket return and the aggregate capital ratio of major financial
+                                                                                           Our selection model is parametrically identified and therefore
+intermediaries—primary dealers—can explain cross-sectional
+                                                                                           technically does not require that different variables be used
+variation in expected returns across a wide array of asset classes.
+                                                                                           in the inclusion and repetition equation. However, Heckman’s
+They also present preliminary results on return predictability
+                                                                                           (1979) selection models are known to be nonparametrically
+(time-series regressions), but their conclusions are limited by a
+                                                                                           identified if a continuous variable enters the selection equation
+relatively short time-series that starts in 1970. Prior to 1970, the
+                                                                                           but can be excluded from the second equation (Gallant and
+most primary dealers were private, which precludes a calculaNychka 1987; Heckman and MaCurdy 1986). Proving such a
+tion of their capital ratio.
+                                                                                           result in our setting can be useful, but left for future work.
+   We conjecture that as a publication catering to investors, text
+                                                                                           Motivated by their insight, we seek an instrument for word
+that appears on the front page of the Wall Street Journal would
+                                                                                           inclusion.
+be informative about the aggregate state of the intermediary
+                                                                                              Boydstun (2013) suggested that prior attention to an issue
+sector. Dire language on financial intermediaries’ failure is used
+                                                                                           may influence its coverage by the press. The idea is that once
+to cover unfolding crises like the financial crisis of 2008, the
+                                                                                           fixed costs such as journalist travel and familiarization with an
+LTCM liquidity crisis following Russia’s default in 1998, and
+                                                                                           issue have been incurred, a marginal article is easier to produce.
+the failure of important dealers like Drexel Burnham Lambert
+                                                                                           To capture prior attention to the financial sector, we add prior
+in 1990.
+                                                                                           year realized variance of financial stocks (rvfint−13→t−1 ) as an
+                                                                                           explanatory variable in the model for inclusion alone, exclud4.1. Data                                                                                  ing it from the repetition equation. This choice assumes that
+                                                                                           after conditioning on the intermediary capital ratio, the price–
+Our text data includes all titles and lead paragraphs that appear                          dividend ratio, current and lagged monthly rvfin, and on phrase
+on the front page of the Wall Street Journal from July 1926                                j being included in the Journal, the number of times this phrase
+to February 2016. We include the 10,000 most frequent two-                                 is repeated does not depend on the prior year’s volatility of
+word phrases (bigrams) in separate sentences, after removing                               financial stocks.14
+case, stopwords, nonletters and Porter stemming. We aggregate
+the data to the monthly frequency so that ct are phrase counts
+observed during month t.                                                                   4.3. Sparsity and Out-of-Sample Fit
+
+Figure 1 shows the mean histogram for phrase counts in this                                A key choice in the preprocessing stage of many text analyses, is
+sample. The left panel shows that the entire range is highly                               to omit words or phrases that rarely appear in the sample. For
+sparse (has many zeros). The right panel omits zero counts,                                example, we may keep the X most frequent phrases. From the
+and shows that a truncated (at zero) Poisson distribution is a                             vantage point of our selection model, this choice is important.
+reasonable approximation for the positive range of counts.                                 If the “cleansed” word counts matrix c is highly dense because
+                                                                                           phrases that often do not appear in the text are excluded from
+    We match these data with the monthly intermediary cap-                                 the analysis, then the benefit of modeling the extensive margin
+ital ratio icrt of He, Kelly, and Manela (2017).13 This ratio is                           is likely to be low. Therefore, we assess the improvement in outour prediction target and is therefore the first element of both                           of-sample fit as a function of the number of the most frequent
+covariate vectors vt and wt . We additionally include in both                              phrases kept in the sample.
+vectors, two natural covariates that are likely to be correlated                               Figure 3 compares the out-of-sample root mean squared
+with the icrt : the log price dividend ratio (pdt ) from CRSP, and                         error from a 10-fold cross-validation exercise. It compares
+the realized variance of financial stocks (rvfin) over the same                            HDMR with DMR, which is provided with the same covariates
+month and the prior one. Table 3 reports summary statistics for
+these variables.
+                                                                                                We have experimented with business news pressure (Manela 2014), a
+                                                                                                variant of television news pressure (Eisensee and Stromberg 2007), that
+                                                                                                is available for a shorter sample starting 1967, and found similar out-ofThe icr is available at http://apps.olin.wustl.edu/faculty/manela/data.html                sample fit improvements.
+
+
+                                                                                                                 JOURNAL OF BUSINESS & ECONOMIC STATISTICS                    11
+
+
+Figure 3. Predicting the intermediary capital ratio with text and covariates: 10-fold cross validation.
+NOTES: The top panel reports out-of-sample root mean squared error from a 10-fold cross validation exercise that tries to predict the intermediary capital ratio (icrt ) using
+the log price dividend ratio (pdt ), realized variance of financial stocks (rvfin) over the same month, over the prior month, and over the prior year, and monthly WSJ front page
+phrase counts, over the subsample when the capital ratio is available, January 1970 to February 2016. Our proposed model, the hurdle distributed multinomial regression
+(HDMR) is compared with two benchmarks: (a) The distributed multinomial regression (DMR), which is provided with the same covariates and text, is a state-of-the-art
+approach to prediction with high-dimensional text, and (b) a linear regression of the target on the same covariates without the text (No Text). The figure shows how the
+advantage of HDMR in terms of out-of-sample fit changes as a function of the number of most frequent phrases included in the corpus. Dashed lines indicate the 95%
+confidence interval. The bottom panel shows how sparsity increases with this choice, that is, it shows that average frequency that a word is used in a document.
+
+
+and text, and with a linear regression of the target on the same                          appears often in the period around the 2008 financial crisis when
+covariates but without the text. Both DMR and HDMR improve                                intermediary capital was low, but not in earlier parts of the samconsiderably over the No Text benchmark and reduce the error                              ple, then random cross-validation, which would likely include
+by more than 40 percent. We can see that when only a few                                  observations around the same period in the test subsamples,
+hundred words are considered in vocabulary, both DMR and                                  may give an overly optimistic measure of out-of-sample fit.
+HDMR generate similar improvements, but as rarer phrases are                                  Figure 4, therefore, uses pseudo out-of-sample prediction,
+included in the vocabulary, selection plays a bigger role, and the                        starting with the latter half of the sample and rolling back
+benefit from using HDMR increases. The advantage is hump-                                 with wider training subsamples, predicting one observation at
+shaped, and eventually, as rarely used phrases enter, repetition                          a time. Even though this validation approach results in somechoice becomes less important (bottom panel), and the out-of-                             what wider confidence intervals, the results are quite similar
+sample fit of HDMR suffers.15                                                             to random cross-validation. Table 4 focuses on the optimal
+    Because our prediction exercise involves using data in one                            model by cross-validation, the one that uses the 10,000 most fretime period to predict out-of-sample in a different time, cross-                          quent phrases. We find that regardless of the validation method,
+validation with random folds may be misleading when both the                              HDMR provides a significant reduction in out-of-sample roottext and target variable are persistent. For example, if the model                        mean-squared-error.
+relies heavily on the fact that the phrase “subprime mortgage”
+
+                                                                                          4.4. News-Implied Intermediary Capital Ratio, 1927–2016
+     In the online appendix, we show that for richer text, the repetition margin
+     remains important and HDMR’s advantage persists even with half a million             Having established that our model improves out-of-sample fit
+     phrases.                                                                             relative to the No Text and DMR benchmarks, we use it to
+
+
+12         B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Figure 4. Predicting the intermediary capital ratio with text and covariates: Pseudo out-of-sample.
+NOTES: The top panel reports out-of-sample root mean squared error for predicting the intermediary capital ratio (icrt ) using the log price dividend ratio (pdt ), realized
+variance of financial stocks (rvfin) over the same month, over the prior month, and over the prior year, and monthly WSJ front page phrase counts, over the subsample
+when the capital ratio is available, January 1970 to February 2016. Unlike the random folds used before for validation, here we assess fit of a pseudo out-of-sample rolling
+back prediction exercise, starting with the later half of the sample, predicting one observation earlier, then extending the training sample by one earlier observation and
+rolling backward to assess fit in a backcasting exercise. Our proposed model, the hurdle distributed multinomial regression (HDMR) is compared with two benchmarks:
+(a) The distributed multinomial regression (DMR), which is provided with the same covariates and text, is a state-of-the-art approach to prediction with high-dimensional
+text, and (b) a linear regression of the target on the same covariates without the text (No Text). The figure shows how the advantage of HDMR in terms of out-of-sample
+fit changes as a function of the number of most frequent phrases included in the corpus. Dashed lines indicate the 95% confidence interval. The bottom panel shows how
+sparsity increases with this choice, that is, it shows that average frequency that a word is used in a document.
+
+
+backcast the intermediary capital ratio back to the June 1927,                          pattern, for the more recent Great Recession period, with all
+the first month when a full year of financial volatility is available.                  predictors showing a sharp fall in the aggregate capital ratio of
+Figure 5(a) shows that the intermediary capital ratio predicted                         financial intermediaries, that matches the actual icr’s behavior.
+by HDMR closely follows the actual one in the period when the                           Interestingly, financial variables without the text overstate the
+latter is available, 1970–2016. Financial variance and the price-                       recovery of the icr starting in 2010. Compared with HDMR,
+dividend ratio, which alone can explain much of the variation                           DMR understates the icr’s recovery between 2012 and 2013. To
+in the icr, provide a back-bone for the predictor, as can be seen                       better understand the source of this difference, we next focus on
+from the No Text benchmark. DMR, HDMR, and SVR, all use                                 individual phrases and their importance.
+these covariates plus the text to improve prediction, but generate somewhat different time-series. For example, the HDMR                             4.5. Which Phrases Are Pivotal for Out-of-Sample Fit?
+predicted values appear lower than those of DMR and feature
+more negative spikes in the capital ratio. The SVR predictor                            To better understand the improvements in out-of-sample fit
+makes clear that it does not find the variation in rvfin and                            that HDMR generates, we report in Table 5 the phrases whose
+pd important.                                                                           removal from the corpus causes the largest deterioration in
+    Figure 5(b) zooms in on the Great Depression period. With                           out-of-sample root-mean-squared-error.16 We report results
+the exception of the SVR predicted series, all predictors indicate that financial intermediaries were substantially undercap-                         16
+                                                                                             Gentzkow, Shapiro, and Taddy (2019) identified partisan phrases with a
+italized between 1929 and 1939. Figure 5(c) shows a similar                                  similar approach.
+
+
+                                                                                                          JOURNAL OF BUSINESS & ECONOMIC STATISTICS        13
+
+
+Table 4. Predicting the intermediary capital ratio with text and covariates.            negatively associated too, suggesting that political uncertainty
+                     Out-of-sample                             In-sample                as opposed to specific policies may be the culprit (Pastor and
+Model        Text      No Text     Difference      Text        No Text     Difference   Veronesi 2012; Baker, Bloom, and Davis 2016; Manela and
+                                                                                        Moreira 2017; Hassan et al. 2017).
+                     (a) Cross-validation with 10 random folds
+                                                                                           Panel (b) uses pseudo out-of-sample rolling validation
+HDMR        0.711       1.338       −0.627         0.557      1.322        −0.765
+           (0.020)     (0.021)       (0.019)      (0.002)    (0.002)        (0.002)     instead, and shows as conjectured, greater focus on robust
+DMR         0.818       1.338       −0.520         0.717      1.322        −0.606       fundamentals that are likely to be relevant over the entire
+           (0.017)     (0.021)       (0.022)      (0.003)    (0.002)        (0.004)     sample. Pivotal phrases have to do with government policy
+FHDMR       0.789       1.338       −0.549         0.674      1.322        −0.648
+           (0.016)     (0.021)       (0.020)      (0.002)    (0.002)        (0.003)     (tax report, washington wire) and economic conSVR         1.256       1.334       −0.078         0.641      1.326        −0.685       ditions (busi bulletin, labor letter). We therefore
+           (0.042)     (0.020)       (0.046)      (0.005)    (0.002)        (0.005)     find this validation approach more likely to approximate true
+                       (b) Pseudo out-of-sample rolling back                            out-of-sample fit.
+HDMR        0.798       1.249      −0.452          0.580        1.341      −0.760
+           (0.043)     (0.036)      (0.033)       (0.001)      (0.003)      (0.002)
+DMR         0.858       1.249      −0.392          0.771        1.341      −0.570       4.6. Focusing on a Single Phrase for Intuition
+           (0.028)     (0.036)      (0.022)       (0.003)      (0.003)      (0.002)
+FHDMR       0.828       1.249      −0.422          0.733        1.341      −0.608       For a more intuitive understanding of how inverse regression
+           (0.028)     (0.036)      (0.024)       (0.003)      (0.003)      (0.002)
+SVR         1.911       0.956        0.955         0.633        1.358      −0.725       loadings translate into forward regression prediction, we next
+           (0.055)     (0.042)      (0.065)       (0.001)      (0.003)      (0.003)     focus on a single phrase, financi crisi. We expect front
+NOTES: Reported is in- and out-of-sample root mean squared error (RMSE) for             page reports of financial crises to be negative signals about the
+ predicting the intermediary capital ratio (icrt ) using the log price dividend ratio   capital ratio of the intermediary sector.
+ (pdt ), realized variance of financial stocks (rvfin) over the same month, over            The backward hurdle regression estimates in the first two
+ the prior month, and over the prior year. Models with text additionally include
+ monthly WSJ front page phrase counts, over the subsample when the capital ratio        columns of Table 6(a) show that the icr is indeed negatively
+ is available, January 1970 to February 2016. The corpus includes the 10,000 most       correlated with repeated mentions of financi crisi, but
+ frequent two-word phrases (bigrams) in separate sentences, after removing case,        also that the mere inclusion of this phrase on the front page is
+ stopwords, nonletters and Porter stemming. Panel (a) uses 10 random folds for
+ validation while Panel (b) uses pseudo out-of-sample prediction, starting with         a strong negative signal, conditional on the price-dividend ratio
+ the latter half of the sample and rolling back one observation at a time. Our          and financial volatility. The positive coefficient on rvfint−13→t−1
+ proposed model, the hurdle distributed multinomial regression (HDMR), which            means that above average prior year financial volatility is folexcludes prior year rvfin from the repetition equation, is compared with three
+ benchmarks:(a) distributed multinomial regression (DMR, Taddy 2015), which is          lowed by higher financial crisis coverage on the front page.
+ provided with the same   covariates
+                                     and text, (b) a “fabricated” variant of HDMR      Specifically, a one standard deviation rise in this instrument
+ which adds hij = 1 cij > 0 indicators to the text counts matrix c and then runs        relative to its mean implies a 22% increase in the log odds
+ DMR (FHDMR), and (c) support vector regression (SVR). For each model we report
+ RMSE with and without the text, the change in the measure of fit. Standard errors      ratio for a financial crisis inclusion (from 0.17 to 0.21). The last
+ are in parentheses.                                                                    column shows that a Poisson regression (DMR) treats inclusion
+                                                                                        and repetition as a single object, and assigns a relatively low
+                                                                                        weight to this instrument compared to contemporaneous finanseparately for the two validation methods discussed earlier in                          cial volatility (both variables are in annual variance units).
+Section 4.3 because our intuition is that time-series persistence                           These coefficients are used to construct the two sufficient
+can lead to overstatement of out-of-sample fit using random                             reduction projections, zty  0 = δ h /d and z + = ϕ (c −
+                                                                                                                             y t t          ty       y t
+cross-validation.                                                                       ht )/ (mt − dt ), and plugged into a forward regression of the
+   A related concern is that language changes over time, so the                         icr on these and the remaining covariates, as described in Secphrases associated with movements in the icr in the fitted sam-                         tion 2.4:
+ple, are not useful its prediction in the earlier, 1926–1969 period.
+For example, subprime mortgage mentions in the Wall                                                       +
+                                                                                            yt = b0 + bz zty       0
+                                                                                                             + bs zty + bv vt,−y + bm mt + bd dt + εt .
+Street Journal are unlikely to be related with financial distress
+prior to the 2007–2009 financial crisis. But the important question for our purposes is whether HDMR can avoid overfitting to                          The contribution of a single phrase j to the predicted value is
+such phrases. Manela and Moreira (2017, sec. 2.3) analyzed this                         therefore
+possibility in detail for the same corpus and a different financial                                                                                
+variable as target. They found that while language does change                                 ŷtj = bz ϕ jy ctj − htj / (mt − dt ) + bs δ jy htj /dt .
+over time, the deterioration it induces in out-of-sample fit is
+quite modest. Examining the list of pivotal phrases can shed                            Table 6(b) reports the forward regression coefficients’ products
+light on this issue.                                                                    with those of the backward regression, bz ϕ jy and bs δ jy for
+   Table 5, Panel (a) shows that some of the predictive ability of                      HDMR, and contrasts it with the corresponding single coeffithe text stems from phrases that capture fairly robust economic                         cient product of DMR. We can see that much of the contribution
+fundamentals, such as the positively associated jobless                                 of financi crisi to the predicted value in HDMR comes
+marri. Other phrases such as barack obama, a U.S. pres-                                 from the extensive margin. A different way to see this is by
+ident elected at the peak of the 2008 financial crisis, show up as                      looking at the time series ŷtj , which appears in Figure 6. A single
+negatively correlated with the icr, even though they are unlikely                       mention of financial crises is all it takes for HDMR to predict
+to be useful for its prediction before 2008. Interestingly, his                         a lower intermediary capital, with repeated mentions having a
+main opponent during the 2012 election, mitt romney, is                                 much lower effect.
+
+
+14         B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Figure 5. Backcasting the intermediary capital ratio with text and covariates.
+NOTES: The figure shows the predicted intermediary capital ratio (icrt ) using the log price dividend ratio (pdt ), realized variance of financial stocks (rvfin) over the same
+month, over the prior month, and over the prior year, and monthly WSJ front page phrase counts, over the extended sample, June 1927 to February 2016. The intermediary
+capital ratio is only available starting January 1970. Our proposed model, the hurdle distributed multinomial regression (HDMR), which excludes prior year financial stocks
+variance (rvfint−13→t−1 , bottom line) from the repetition equation, is compared with three benchmarks: (a) distributed multinomial regression (DMR, Taddy 2015), which
+is provided with the same covariates and text, (b) support vector regression (SVR), and (c) linear regression of the target on the same covariates without the text (No Text).
+
+
+4.7. Time-Varying Risk Premia and the Intermediary                                        marginal investors demand a relatively low risk premium to
+     Capital Ratio                                                                        hold investment assets. Preliminary time-series predictability
+                                                                                          regression reported in He, Kelly, and Manela (2017) supported
+A central prediction of the intermediary asset pricing model
+                                                                                          this prediction, but the short time-series used there limits the
+(He and Krishnamurthy 2012, 2013) is that times when interpower of these tests.
+mediaries are highly capitalized are “good times,” when these
+
+
+                                                                                                               JOURNAL OF BUSINESS & ECONOMIC STATISTICS                   15
+
+
+Table 5. Pivotal phrases for predicting the intermediary capital ratio out-of-sample.
+Phrase                                OOS RMSE                          δ                         ϕ                      Mean counts                      Mean inclusions
+                                                                  (a) Cross-validation with 10 random folds
+Busi bulletin                            0.006                          2.333                     0.195                       4.863                             0.602
+Barack obama                             0.006                        −7.054                     −0.171                       1.224                             0.195
+Tax report                               0.006                          1.945                     0.254                       4.929                             0.604
+Euro zone                                0.005                        −1.170                     −1.689                       0.508                             0.132
+Washington wire                          0.005                          1.456                     0.184                       5.430                             0.618
+Labor letter                             0.005                          2.090                     0.177                       3.273                             0.535
+Penn central                             0.005                          1.375                     2.024                       0.063                             0.042
+Feder reserv                             0.004                        −0.443                     −0.434                       1.629                             0.682
+Jobless marri                            0.004                          1.583                     0.460                       0.291                             0.260
+Presid nixon                             0.003                          1.209                     0.528                       0.291                             0.123
+Instal credit                            0.003                          2.514                     0.000                       0.020                             0.020
+Mitt romney                              0.003                        −1.477                     −1.662                       0.221                             0.056
+Iran contra                              0.002                          0.321                    −2.557                       0.067                             0.042
+Nixon administr                          0.002                          1.428                     0.788                       0.087                             0.065
+Aluminum output                          0.002                          1.328                     0.753                       0.206                             0.177
+Credit trend                             0.002                          3.177                     0.000                       0.016                             0.016
+Dow industri                             0.002                        −1.221                     −0.385                       0.864                             0.237
+al qaeda                                 0.002                        −1.190                     −0.231                       1.665                             0.264
+Hedg fund                                0.002                        −1.303                     −0.308                       1.186                             0.302
+Lead indic                               0.002                          1.108                    −0.163                       0.492                             0.391
+                                                                    (b) Pseudo out-of-sample rolling back
+Tax report                               0.094                        1.945                     0.254                         4.929                             0.604
+Busi bulletin                            0.084                        2.333                     0.195                         4.863                             0.602
+Labor letter                             0.071                        2.090                     0.177                         3.273                             0.535
+Washington wire                          0.065                        1.456                     0.184                         5.430                             0.618
+Steel product                            0.018                        0.923                     0.567                         0.577                             0.512
+Factori shipment                         0.018                        0.795                     0.036                         0.629                             0.530
+and unfil                                0.018                       −0.188                     0.000                         0.219                             0.215
+Hour earn                                0.017                        0.986                     0.000                         0.570                             0.524
+Week earn                                0.016                        0.912                     0.000                         0.544                             0.499
+Jobless marri                            0.015                        1.583                     0.460                         0.291                             0.260
+Lead indic                               0.015                        1.108                    −0.163                         0.492                             0.391
+Presid nixon                             0.014                        1.209                     0.528                         0.291                             0.123
+Los angel                                0.011                        0.361                     0.255                         1.931                             0.714
+and paperboard                           0.011                        0.000                     0.000                         0.174                             0.152
+Paper and                                0.011                        0.000                     0.000                         0.174                             0.152
+and backlog                              0.010                       −0.776                     0.000                         0.206                             0.206
+Inventori and                            0.009                       −0.916                     0.000                         0.203                             0.203
+San Francisco                            0.009                        0.364                     0.162                         1.430                             0.638
+Construct spend                          0.008                        0.367                    −0.598                         0.354                             0.351
+Person incom                             0.008                        0.584                     0.294                         0.544                             0.447
+NOTES: The table reports the top 20 phrases whose removal from the corpus causes the largest deterioration in out-of-sample root-mean-squared-error ( OOS RMSE),
+ when predicting the intermediary capital ratio (icrt ) using text and the log price dividend ratio (pdt ), realized variance of financial stocks (rvfin) over the same month,
+ over the prior month, and over the prior year. The text includes monthly WSJ front page phrase counts, over the subsample when the capital ratio is available, January
+ 1970 to February 2016. Panel (a) uses 10 random folds for validation while Panel (b) uses pseudo out-of-sample prediction, starting with the latter half of the sample and
+ rolling back one observation at a time. We also report full sample HDMR coefficients on icrt for phrase inclusion (δ) and repetition (ϕ), and mean counts and inclusions
+ across observations. The corpus includes the 10,000 most frequent two-word phrases (bigrams) in separate sentences, after removing case, stopwords, nonletters and
+ Porter stemming.
+
+   The news-implied intermediary capital ratio allows us to test                         the regression R-squared, more than doubling it relative to icr at
+this prediction in a larger sample that goes back to 1927. Return                        the one month horizon.
+predictability tests are reported in Table 7 for the monthly,                                To understand better whether the predictive ability comes
+quarterly and annual horizons. Because such regressions use                              from covariates that are known predictors like price-dividend
+overlapping observations, we use the standard Hodrick (1992)                             ratio or from the text, we regress future stock market excess
+correction to the standard errors. We report results for the 1927–                       returns at various horizons on a variant that does not use the text
+2016 sample. For each horizon, the first column shows that                                 No Text , which shows similar results but with lower explanaicr
+restricting attention to the actual icr, which is only available                         tory power as measured by R-squared. We also decompose the
+from 1970, which yields a significant negative coefficient of                            text-based icr into lagged sufficient reduction projections z0 ,
+                                                                                                                                                          t−1
+roughly –3 across all horizons, meaning that a one standard                               +
+                                                                                         zt−1 , and the covariates. From the decomposition we find that
+deviation deterioration in intermediary capital translates into                          the inclusion projection zt−10     is a strong predictor of future
+a rise in the equity risk premium of roughly three annualized                            market returns in the postwar sample, over and above the pricepercentage points. By comparison, the news-implied icr,   which                         dividend ratio, and that the repetition projection zt−1+
+                                                                                                                                                   is statistiis available over a much longer period, is notable larger and                            cally significant only in the full sample.
+implies 4–5 percentage points rise in risk premium for a one                                 The results imply that there is a set of phrases whose inclusion
+standard deviation deterioration in icr. Furthermore, we see that                        on the front page of the Journal provides a strong signal about
+over the longer sample, the news-implied icr substantially raises                       stock market risk premia, over and above the valuation ratio
+
+
+16           B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Figure 6. Focusing on the phrase “financial crisis” for intuition.
+                                                                   t ) due only to a single stemmed phrase, “financi crisi.” Our proposed model, the hurdle distributed
+NOTES: The figure shows the predicted intermediary capital ratio (icr
+multinomial regression (HDMR) gives more weight to the mere inclusion of this phrase on the front page of the Wall Street Journal, as opposed to its repeated use. Distributed
+multinomial regression (DMR) estimates, which does not break the variation into inclusion versus repetition, are shown for comparison.
+
+
+Table 6. Focusing on the phrase “financial crisis” for intuition.                         predictors with dynamic factor model (DFM) forecasts using a
+                                           HDMR                               DMR         U.S. macroeconomic dataset with 143 quarterly variables spanRepetition               Inclusion                           ning 1960–2008. They find that for most series, DFM-5 forecasts, which are based on a simple linear regression of the target
+                              (a) Backward regressions
+                                                                                          on the top 5 principal components of the lagged variables, are
+Intercept                     −10.78                 −9.62                  −16.69
+icrt                           −0.43                 −0.60                   −0.61        superior to shrinkage forecasts. A large literature has explored
+pdt                               2.05                 4.02                   3.50        ways of improving on their results (e.g. Stock and Watson
+rvfint−1→t                        1.41                 0.90                   1.44        2011, 2016; Kim and Swanson 2014; Kelly and Pruitt 2013, 2015;
+rvfint−2→t−1                   −0.41                   1.00                  −0.54
+rvfint−13→t−1                                          2.66                   1.26        Bitto and Frühwirth-Schnatter 2018; Chudik, Kapetanios, and
+                                                                                          Pesaran 2018; Boot and Nibbering 2019; Cepni, Güney, and
+                                       HDMR                               DMR             Swanson 2019; Medeiros et al. 2021).
+                               (b) Forward regressions                                       Our question is different. We ask whether the text that
+Repetition                            −1.07                              −4.71            appears in the Wall Street Journal contains additional informaInclusion                             −5.33
+                                                                                          tion that is useful for forecasting these macroeconomic indicaNOTES: Panel (a) reports backward HDMR coefficient estimates for the (stemmed)            tors beyond that of the DFM-5 benchmark, and whether HDMR
+ phrase “financi crisi” on the covariates, which excludes prior year financial stocks
+ volatility (rvfin) from the repetition equation. Panel (b) reports the forward regrescan extract such information from the text.
+ sion coefficient products with those of the backward regression, bz ϕjy and bs δjy
+ for HDMR, and contrasts it with the corresponding single coefficient product of
+ DMR. The hurdle distributed multinomial regression (HDMR) gives more weight
+ to the mere inclusion of this phrase on the front page of the Wall Street Journal, as    5.1. Data
+ opposed to its repeated use. Distributed multinomial regression (DMR) estimates,
+ which do not break the variation into inclusion versus repetition, are shown for         Because we are interested in forecasting, we focus on more
+ comparison. The corpus includes the 10,000 most frequent two-word phrases                recent data for which we have a much richer body of text—
+ (bigrams) in separate sentences, after removing case, stopwords, nonletters and          the full text of all Wall Street Journal articles that appear on
+ Porter stemming.
+                                                                                          the front page of the from January 1990 to December 2010. We
+                                                                                          include two-word phrases (bigrams) in separate sentences, after
+                                                                                          removing case, stopwords, nonletters and Porter stemming, and
+(pd). HDMR provides an efficient way to identify these phrases
+                                                                                          aggregate the data to the monthly frequency so that ct are phrase
+and their relative weights in a data driven approach while avoidcounts observed during month t.
+ing overfit.
+                                                                                             We match the text with the monthly macroeconomic indica5. Application III: Forecasting Key Macroeconomic                                         tors dataset made available for replication by Stock and Watson
+                                                                                          (2012). Following their categorization and normalization, while
+   Indicators
+                                                                                          restricting the analysis to monthly series, we use 92 lower-level
+Stock and Watson (2012) compared forecasts from various fore-                             disaggregated series to compute principal components, and use
+casting methods designed for a large number of orthogonal                                 12 headline indicators as prediction targets. Table 8 reports
+
+
+                                                                                                                   JOURNAL OF BUSINESS & ECONOMIC STATISTICS                           17
+
+
+Table 7. Time-varying risk premia and the news-implied intermediary capital ratio.
+                                               em
+                                              rt→t+1                                               em
+                                                                                                  rt→t+3                                                 em
+                                                                                                                                                        rt→t+12
+                         (1)            (2)              (3)       (4)        (5)           (6)            (7)        (8)           (9)          (10)             (11)          (12)
+icrt                  −3.10                                                 −3.33                                                 −2.94
+                       (2.34)                                                (2.57)                                                (2.49)
+t
+icr                                   −4.25                                              −4.48                                                 −4.88
+                                       (1.99)                                             (3.00)                                                (2.43)
+ No
+icr t
+      Text
+                                                    −3.68                                              −4.04                                                 −4.13
+                                                     (1.99)                                             (3.25)                                                (2.59)
+zt0                                                                 2.12                                              1.91                                                       3.03
+                                                                   (2.36)                                            (3.88)                                                     (2.76)
+zt+                                                               −3.27                                             −3.51                                                      −3.97
+                                                                   (2.28)                                            (1.90)                                                     (1.81)
+pdt                                                               −5.74                                             −6.03                                                      −6.56
+                                                                   (2.21)                                            (3.95)                                                     (2.78)
+rvfint−1→t                                                        −4.17                                             −1.31                                                      −0.98
+                                                                   (2.60)                                            (2.59)                                                     (1.29)
+rvfint−2→t−1                                                        4.24                                              0.08                                                     −0.15
+                                                                   (2.78)                                            (2.45)                                                     (1.31)
+rvfint−13→t−1                                                     −3.45                                             −2.16                                                      −2.89
+                                                                   (2.67)                                            (3.53)                                                     (3.51)
+N                     552         1, 062          1, 062       1, 061       552        1, 062        1, 062      1, 061          544        1, 054         1, 054           1, 053
+Adjusted R2 , %         0.14           0.33            0.23         0.46      0.84          1.16          0.93        1.58         3.02          5.73           4.05             9.81
+NOTES: Reported are time-series predictability regression estimates of future stock market excess returns (rt→t+τem       ) at one to twelve month horizons on the intermediary
+                                                                                                                                                     t No Text that conditions
+ capital ratio (icrt ) in the short sample in which it is available, on the news-implied icrt that is available for a much longer time-series, or on icr
+ only on the non-text covariates. We additionally decompose the icr    t into the sufficient reduction projections z0 , z+ that summarize the text, the log price dividend ratio
+                                                                                                                      t t
+ (pdt ), realized variance of financial stocks (rvfin) over the same month, over the prior month, and over the prior year. Explanatory variables are demeaned and scaled to
+ unit variance. The corpus includes the 10,000 most frequent two-word phrases (bigrams) in separate sentences, after removing case, stopwords, nonletters and Porter
+ stemming. Hodrick (1992) standard errors are in parentheses. Estimates use the 192707–201602 sample.
+
+Table 8. Summary statistics: Macroeconomic forecasting dataset.
+Variable                       Mean              Std             Min            p10               Median          p90              Max            Obs                    Available
+Phrase counts, ctj          2.971                2.732           0.178         0.590               2.342          6.190          16.909           252              199001–201012
+Phrase indic. htj           0.680                0.409           0.032         0.161               0.860          0.998           1.000           252              199001–201012
+IP: total                   0.873                3.225         −16.153        −2.760               1.081          4.423          12.172           602              195901–200902
+Emp: total                  0.606                1.075          −4.177        −0.679               0.769          1.718           5.830           602              195901–200902
+U: all                      0.004                0.183          −0.700        −0.200               0.000          0.200           0.900           602              195901–200902
+HStarts: Total              7.306                0.236           6.190         6.990               7.326          7.602           7.822           602              195901–200902
+PMI                        52.867                6.927          29.400        44.100              53.500         60.780          72.100           603              195901–200903
+CPI-ALL                     0.000                1.089          −5.401        −1.187              −0.003          1.099           7.175           602              195902–200903
+Real AHE: goods             0.295                1.318          −4.700        −1.187               0.272          1.688           6.274           602              195901–200902
+FedFunds                    0.002                0.371          −1.560        −0.420               0.010          0.380           1.600           602              195901–200902
+M1                          0.012                2.188         −10.512        −2.347              −0.000          2.414           7.485           601              195902–200902
+Ex rate: avg               −0.172                6.017         −21.276        −8.339               0.038          6.961          21.450           601              195901–200901
+S&P 500                     1.807               14.500         −91.237       −14.479               2.821         17.014          45.411           603              195901–200903
+Consumer expect            −0.053                3.975         −16.500        −4.600              −0.200          4.600          22.500           603              195901–200903
+NOTES: Reported are summary statistics for the Wall Street Journal full text and for target variables in the monthly sample of Stock and Watson (2012). The corpus includes
+ the 100,000 most frequent two-word phrases (bigrams) in separate sentences, after removing case, stopwords, nonletters, and Porter stemming. To summarize the text,
+ we report the mean of per phrase statistics, for counts ctj and for inclusion indicators, htj ≡ 1{ctj >} . For each of the 12 categories of variables we use the headline variable
+ as the prediction target. The transformed series are generally first differences of logarithms (growth rates) for real quantity variables, first differences for nominal interest
+ rates, and second differences of logarithms (changes in rates of inflation) for price series.
+
+
+summary statistics for these target variables. The transformed                             is especially appealing given recent evidence of time-varying
+series are generally first differences of logarithms (growth rates)                        predictability (Farmer, Schmidt, and Timmermann 2019).
+for real quantity variables, first differences for nominal interest                                 τ
+                                                                                               Let Yt+τ denote the variable to be forecasted in a τ -period
+rates, and second differences of logarithms (changes in rates of                                             τ . In each training sample (fold), we use the
+                                                                                           ahead forecast Yt+τ
+inflation) for price series.                                                               following methods for fitting.
+                                                                                               For DFM-5, we simply form principal components of the
+                                                                                           entire sample once, and keep the top 5. We expect this to give
+5.2. Methods                                                                               DFM-5 a slight advantage over the competing methods. We
+We compare the out-of-sample root-mean-squared error for                                   then run an ordinary least-square regression of the target on
+HDMR against the DFM-5 benchmark and against DMR with                                      the PCs
+the same data. We assess out-of-sample fit via (i) random cross-                                                                       
+                                                                                                          τ
+                                                                                                        Yt+τ  = β0 + pct1 , . . . , pct5 β + εt+τ .    (33)
+validation and via (ii) pseudo out-of-sample rolling forward predictions (starting with half the available timeseries as training                             For HDMR, we use these same 5 PCs as well as the target
+sample and forecasting one month ahead). The latter approach                               as explanatory variables in inverse regressions (8) and (10). We
+
+
+18           B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+Table 9. Forecasting macroeconomic series.
+Months forward:                               τ =1                                                τ =3                                               τ = 12
+Folds:                         Random                     Rolling                  Random                     Rolling                  Random                     Rolling
+ τ \ Benchmark:
+Yt+τ                      DFM-5         DMR         DFM-5           DMR       DFM-5         DMR         DFM-5           DMR       DFM-5        DMR         DFM-5            DMR
+                                                        (a) Wall Street Journal full text, 10,000 most frequent phrases
+IP: total                  0.986       1.027        0.956        0.966        0.857          0.961       0.826      0.955         0.697        0.880        0.671        0.855
+                          (0.396)     (0.802)      (0.147)      (0.104)      (0.005)        (0.031)     (0.000)    (0.004)       (0.000)      (0.000)      (0.000)      (0.000)
+Emp: total                 0.829       0.965        0.825        0.876        0.763          0.917       0.755      0.848         0.682        0.876        0.642        0.782
+                          (0.000)     (0.083)      (0.000)      (0.000)      (0.000)        (0.000)     (0.000)    (0.000)       (0.000)      (0.003)      (0.000)      (0.000)
+U: all                     0.953       1.005        1.000        0.995        0.805          0.955       0.733      0.910         0.644        0.852        0.619        0.823
+                          (0.179)     (0.575)      (0.497)      (0.454)      (0.000)        (0.041)     (0.000)    (0.000)       (0.000)      (0.003)      (0.000)      (0.000)
+HStarts: Total             0.675       1.034        0.690        0.901        0.631          0.993       0.653      0.845         0.622        1.089        0.771        1.015
+                          (0.000)     (0.931)      (0.000)      (0.000)      (0.000)        (0.358)     (0.000)    (0.000)       (0.000)      (0.998)      (0.000)      (0.851)
+PMI                        0.836       1.026        1.016        1.030        0.854          1.019       1.011      1.093         0.714        0.951        0.820        0.891
+                          (0.000)     (0.810)      (0.608)      (0.857)      (0.000)        (0.778)     (0.573)    (0.998)       (0.000)      (0.008)      (0.003)      (0.000)
+CPI-ALL                    1.088       0.995        1.139        0.961        1.064          0.977       1.105      1.047         1.028        1.008        1.102        1.104
+                          (1.000)     (0.354)      (1.000)      (0.096)      (1.000)        (0.206)     (1.000)    (0.917)       (0.957)      (0.692)      (0.994)      (0.999)
+Real AHE: goods            0.968       0.972        1.021        1.008        0.889          0.964       0.990      0.959         0.614        0.982        0.845        0.939
+                          (0.231)     (0.214)      (0.684)      (0.597)      (0.007)        (0.174)     (0.414)    (0.094)       (0.000)      (0.241)      (0.007)      (0.000)
+FedFunds                   0.913       0.995        1.042        0.986        0.814          0.976       1.042      1.029         0.647        0.972        0.864        0.938
+                          (0.000)     (0.434)      (0.776)      (0.321)      (0.000)        (0.210)     (0.743)    (0.814)       (0.000)      (0.185)      (0.022)      (0.053)
+M1                         1.096       1.014        1.182        1.009        1.114          1.019       1.260      1.111         1.008        1.008        1.071        0.962
+                          (1.000)     (0.851)      (1.000)      (0.655)      (0.998)        (0.761)     (1.000)    (1.000)       (0.611)      (0.648)      (0.941)      (0.156)
+Ex rate: avg               1.066       1.008        1.094        0.927        1.009          1.038       0.999      0.923         0.889        1.064        0.848        0.981
+                          (1.000)     (0.685)      (0.962)      (0.008)      (0.615)        (0.969)     (0.497)    (0.013)       (0.002)      (0.999)      (0.012)      (0.236)
+S&P 500                    1.029       1.007        1.069        1.064        0.937          0.995       0.938      1.047         0.750        0.955        0.690        0.937
+                          (0.812)     (0.796)      (0.929)      (0.989)      (0.076)        (0.364)     (0.120)    (0.966)       (0.000)      (0.011)      (0.000)      (0.003)
+Consumer expect            1.098       0.946        1.240        0.833        1.032          1.009       1.115      0.975         0.951        1.037        0.865        1.017
+                          (1.000)     (0.006)      (1.000)      (0.000)      (0.851)        (0.629)     (0.995)    (0.241)       (0.127)      (0.980)      (0.015)      (0.715)
+Fraction < 1               0.583       0.417        0.333        0.667        0.667          0.667       0.583      0.583         0.833        0.583        0.833        0.750
+Fraction < 1 at 95%        0.333       0.083        0.167        0.333        0.583          0.250       0.333      0.417         0.750        0.417        0.833        0.500
+                                                       (b) Wall Street Journal full text, 100,000 most frequent phrases
+IP: total                  0.981       1.020        0.981        0.981        0.833          0.942      0.843       0.985         0.606        0.783        0.638        0.829
+                          (0.371)     (0.712)      (0.305)      (0.267)      (0.000)        (0.022)    (0.000)     (0.208)       (0.000)      (0.000)      (0.000)      (0.000)
+Emp: total                 0.754       0.905        0.875        0.951        0.670          0.834      0.771       0.881         0.494        0.670        0.560        0.716
+                          (0.000)     (0.012)      (0.003)      (0.085)      (0.000)        (0.000)    (0.000)     (0.000)       (0.000)      (0.000)      (0.000)      (0.000)
+U: all                     0.941       0.994        0.976        0.982        0.790          0.959      0.866       1.096         0.541        0.766        0.654        0.898
+                          (0.111)     (0.431)      (0.311)      (0.345)      (0.000)        (0.201)    (0.000)     (0.989)       (0.000)      (0.000)      (0.000)      (0.000)
+HStarts: Total             0.545       0.842        0.520        0.679        0.510          0.817      0.511       0.671         0.495        0.883        0.515        0.679
+                          (0.000)     (0.003)      (0.000)      (0.000)      (0.000)        (0.002)    (0.000)     (0.000)       (0.000)      (0.014)      (0.000)      (0.000)
+PMI                        0.804       1.038        0.960        0.962        0.836          1.062      0.931       0.996         0.797        1.102        0.908        0.975
+                          (0.000)     (0.922)      (0.250)      (0.109)      (0.000)        (0.992)    (0.109)     (0.445)       (0.000)      (0.986)      (0.040)      (0.272)
+CPI-ALL                    1.071       0.931        1.059        0.851        1.069          0.946      1.032       0.934         1.072        1.033        1.053        1.021
+                          (0.999)     (0.000)      (1.000)      (0.000)      (0.999)        (0.002)    (0.938)     (0.016)       (0.998)      (0.847)      (0.974)      (0.771)
+Real AHE: goods            1.001       0.989        1.073        1.045        0.977          1.079      1.019       1.019         0.631        1.063        0.808        0.912
+                          (0.520)     (0.339)      (0.966)      (0.889)      (0.228)        (0.987)    (0.679)     (0.755)       (0.000)      (1.000)      (0.001)      (0.000)
+FedFunds                   0.950       1.049        1.158        1.115        0.873          1.086      0.988       1.014         0.724        1.202        0.707        0.835
+                          (0.034)     (0.916)      (1.000)      (0.990)      (0.000)        (0.983)    (0.399)     (0.662)       (0.000)      (1.000)      (0.000)      (0.000)
+M1                         1.039       0.887        1.089        0.775        1.026          0.885      1.127       0.848         1.039        1.034        1.074        0.945
+                          (1.000)     (0.000)      (1.000)      (0.000)      (0.993)        (0.000)    (1.000)     (0.000)       (0.908)      (0.902)      (0.992)      (0.077)
+Ex rate: avg               1.064       0.986        1.089        0.853        1.076          1.111      1.065       0.938         0.742        0.922        0.830        0.975
+                          (1.000)     (0.249)      (0.984)      (0.000)      (1.000)        (1.000)    (0.905)     (0.053)       (0.000)      (0.001)      (0.004)      (0.162)
+S&P 500                    1.082       1.048        1.046        1.030        0.892          0.956      0.905       1.033         0.632        0.824        0.612        0.854
+                          (0.998)     (0.967)      (0.872)      (0.906)      (0.023)        (0.019)    (0.018)     (0.910)       (0.000)      (0.000)      (0.000)      (0.000)
+Consumer expect            1.029       0.852        1.055        0.712        1.063          1.026      1.057       0.907         0.880        0.968        0.949        1.111
+                          (1.000)     (0.000)      (0.993)      (0.000)      (0.987)        (0.805)    (0.957)     (0.009)       (0.004)      (0.183)      (0.177)      (0.999)
+Fraction < 1               0.500       0.667        0.417        0.750        0.667          0.583      0.583       0.667         0.833        0.583        0.833        0.833
+Fraction < 1 at 95%        0.333       0.417        0.167        0.417        0.583          0.500      0.417       0.417         0.833        0.500        0.750        0.583
+NOTES: Reported are out-of-sample RMSE for HDMR-based τ -month ahead forecasts that use the lagged text plus the top 5 PCs of the Stock and Watson (2012) monthly
+ macroeconomic series, relative to DFM-5, which uses only these PCs without the text, and relative to DMR with the same data. The transformed macroeconomic series
+ used as prediction targets and for calculation of the PCs are generally first differences of logarithms (growth rates) for real quantity variables, first differences for nominal
+ interest rates, and second differences of logarithms (changes in rates of inflation) for price series. Diebold and Mariano (1995) p-values testing the null hypothesis that
+ the RMSE of HDMR is larger than the benchmark’s are in parentheses.
+                                                                                                           0 + 1                                  
+                                                                                                τ
+                                                                                               Yt+τ = β0 + ztY , ztY , pct , . . . , pct5 , mi , di β + εt+τ                 (34)
+then form sufficient reduction projections in the direction of
+the target. These projections summarize all the information in                             For DMR, we follow essentially the same procedure as for
+                                  0 ) and repetition (z+ ) that is
+the text from phrase inclusion (ztY                      tY                                HDMR, with the same variables used to explain the text, and
+                                    τ
+useful for predicting the target Yt+τ   after controlling for the                          use its single sufficient reduction projection in the forward
+PCs. We then run a forward regression (23) of the target on                                regression. For each of the three models, we use the predicted
+the sufficient reduction projections and the PCs, still using only                         values from the forward regression model, but applied to outtraining sample data:                                                                      of-sample validation observations.
+
+
+                                                                                                                  JOURNAL OF BUSINESS & ECONOMIC STATISTICS                    19
+
+
+Table 10. Nowcasting macroeconomic series.
+                                                       100,000 Phrases                                                                 10,000 Phrases
+    Folds:                                  Random                          Rolling                                        Random                           Rolling
+    Yt1 \ Benchmark:               DFM-5              DMR             DFM-5           DMR                          DFM-5             DMR              DFM-5           DMR
+    IP: total                      0.953              1.011           0.951             0.985                     0.948              1.006            0.984              1.011
+                                  (0.041)            (0.848)         (0.081)           (0.263)                   (0.004)            (0.610)          (0.317)            (0.622)
+    Emp: total                     0.805              0.948           0.771             0.870                     0.756              0.921            0.869              0.994
+                                  (0.000)            (0.015)         (0.000)           (0.000)                   (0.000)            (0.005)          (0.002)            (0.429)
+    U: all                         0.965              1.023           0.927             0.988                     0.939              0.995            0.958              1.011
+                                  (0.219)            (0.971)         (0.063)           (0.343)                   (0.098)            (0.415)          (0.180)            (0.615)
+    HStarts: Total                 0.653              1.010           0.666             0.881                     0.530              0.826            0.519              0.693
+                                  (0.000)            (0.602)         (0.000)           (0.000)                   (0.000)            (0.000)          (0.000)            (0.000)
+    PMI                            0.852              1.015           1.040             1.061                     0.818              1.020            0.955              0.974
+                                  (0.000)            (0.656)         (0.769)           (0.970)                   (0.000)            (0.713)          (0.224)            (0.208)
+    CPI-ALL                        1.028              0.950           1.170             0.935                     0.975              0.848            1.061              0.739
+                                  (0.972)            (0.016)         (1.000)           (0.013)                   (0.102)            (0.000)          (0.997)            (0.000)
+    Real AHE: goods                1.038              1.021           1.044             1.001                     1.025              1.001            1.110              1.059
+                                  (0.808)            (0.897)         (0.840)           (0.519)                   (0.814)            (0.512)          (0.996)            (0.942)
+    FedFunds                       0.918              1.017           1.076             1.070                     0.940              1.058            1.120              1.112
+                                  (0.032)            (0.765)         (0.926)           (0.981)                   (0.074)            (0.994)          (0.999)            (0.994)
+    M1                             1.123              0.973           1.267             0.842                     1.086              0.855            1.122              0.714
+                                  (1.000)            (0.231)         (1.000)           (0.000)                   (0.999)            (0.000)          (1.000)            (0.000)
+    Ex rate: avg                   1.043              0.980           1.060             0.947                     1.037              0.952            1.038              0.868
+                                  (0.947)            (0.084)         (0.869)           (0.032)                   (0.940)            (0.033)          (0.835)            (0.000)
+    S&P 500                        1.007              0.987           1.033             1.025                     1.017              0.995            0.991              0.969
+                                  (0.596)            (0.289)         (0.781)           (0.816)                   (0.661)            (0.429)          (0.410)            (0.139)
+    Consumer expect                1.172              0.997           1.271             0.940                     1.032              0.835            1.017              0.697
+                                  (1.000)            (0.433)         (1.000)           (0.019)                   (0.982)            (0.000)          (0.800)            (0.000)
+    Fraction < 1                   0.500              0.500           0.333             0.667                     0.583              0.667            0.500              0.667
+    Fraction < 1 at 95%            0.417              0.167           0.167             0.500                     0.333              0.500            0.167              0.417
+NOTES: Reported are out-of-sample RMSE for HDMR-based nowcasts that use the contemporaneous text plus the top 5 PCs of the Stock and Watson (2012) monthly
+ macroeconomic series, relative to DFM-5, which uses only these PCs without the text, and relative to DMR with the same data. The transformed macroeconomic series
+ used as prediction targets and for calculation of the PCs are generally first differences of logarithms (growth rates) for real quantity variables, first differences for nominal
+ interest rates, and second differences of logarithms (changes in rates of inflation) for price series. Diebold and Mariano (1995) p-values testing the null hypothesis that
+ the RMSE of HDMR is larger than the benchmark’s are in parentheses.
+
+5.3. Forecasting Results                                                                   be seen for M1 and consumer expectations. These findings
+                                                                                           suggest that HDMR can better learn from high dimensional
+Table 9 reports out-of-sample RMSE for HDMR, relative to
+                                                                                           sparse data like business newspaper coverage, which is selected
+DFM-5, which uses only the PCs without the text, and relative
+                                                                                           based on newsworthiness.
+to DMR with the same data. Lower reported ratios indicate
+larger improvements from using HDMR. We find significant                                   5.4. Nowcasting Results
+improvements in out-of-sample forecasts for a few variables
+at the monthly horizon (τ = 1). For example, in Panel (a),                                 Nowcasting is a related but distinct strand of the forecasting
+total nonfarm payroll employment (“Emp: total”) sees a 17%                                 literature, which focuses on predicting activity that occurs now
+(18%) improvement from using HDMR relative to DFM-5 and                                    but that will only be reported later. A growing body of work
+housing starts sees a 32% (31%) improvement using random                                   starting with Giannone, Reichlin, and Small (2008) and surcross validation (rolling validation).                                                     veyed in Bańbura et al. (2013) compared different methods for
+    We find that the text appearing in the Journal is more infor-                          nowcasting macroeconomic indicators using lagged and conmative about longer horizons, where HDMR generates signif-                                 temporaneous macroeconmic series that is available before the
+icant improvements in most forecasts. For example, using the                               actual measurements are released publicly.
+text improves industrial production and employment forecasts                                   We can evaluate whether the text of the Journal is informative
+by about 20–30% at the annual horizon (τ = 12). Newspaper                                  about the present, by lagging one month both the target and the
+coverage also considerably improves asset pricing forecasts at                             PCs so that the predictive forward regression becomes
+this longer horizon, generating large reductions in RMSE for                                                     0 + 1                            
+                                                                                                    Yt1 = β0 + ztY                             5
+                                                                                                                     , ztY , pct−1 , . . . , pct−1    β + εt . (35)
+interest rates, exchange rates, and stocks.
+    We further find that the advantage of HDMR over DMR                                    We then follow the same out-of-sample validation procedure
+increases as we increase the dimensionality of the text and use                            of the forecasting exercise. But now, the question we ask is
+less frequent and more sparse phrases. Because of the compu-                               whether the text of the Journal that is reported over month
+tational cost of this exercise, we simply compare a restricted                             t is informative about macroeconomic activity over the same
+sample with the most frequent 10,000 phrases in Panel (a) with                             month Yt1 .
+a larger vocabulary of the most frequent 100,000 phrases in                                    Table 10 shows that this body of text, and our approach
+Panel (b). We find, for example, that even though the quarterly                            to learning from it in particular, are valuable for nowcasting.
+inflation (CPI-ALL) forecasts of HDMR are comparable to those                              The improvements in out-of-sample fit are, on average, better
+of DMR when we use 10,000 phrases, they are substantially                                  than in the forecasting exercise of Table 9. These results suggest
+better when we use 100,000 phrases. Similar improvements can                               that nowcasting with text offers substantial gains over using
+
+
+20        B. KELLY, A. MANELA, AND A. MOREIRA
+
+
+macroeconmic series alone. We leave a detailed investigation of                           (2018), “The Impact of Machine Learning on Economics,” in The
+nowcasting for future research, as well as whether our methods                     Economics of Artificial Intelligence: An Agenda, Chicago, IL: University
+can improve upon state-of-the-art nowcasting models that use                       of Chicago Press. [3]
+                                                                                Athey, S., Imbens, G., Pham, T., and Wager, S. (2017), “Estimating Average
+several factor lags, daily data, or mixed frequency VAR, and that                  Treatment Effects: Supplementary Analyses and Remaining Challenges,”
+deal with the jagged edge of macroeconomic news in realtime.                       American Economic Review, 107, 278–81. [3]
+                                                                                Athey, S., Tibshirani, J., and Wager, S. (2019), “Generalized Random
+                                                                                   Forests,” The Annals of Statistics, 47, 1148–1178. [3]
+6. Conclusion                                                                   Bańbura, M., Giannone, D., Modugno, M., and Reichlin, L. (2013), “NowText data is inherently high-dimensional, which makes machine                      Casting and the Real-Time Data Flow,” in Handbook of Economic Forecasting, (Vol. 2), Elsevier, pp. 195–237. [19]
+learning techniques natural tools for its analysis. Text is often               Bajari, P., Nekipelov, D., Ryan, S. P., and Yang, M. (2015), “Machine Learnselected by journalists, speechwriters, and others who cater to                    ing Methods for Demand Estimation,” American Economic Review, 105,
+an audience with limited attention.                                                481–85. [3]
+   We develop an economically motivated high-dimensional                        Baker, S. R., Bloom, N., and Davis, S. J. (2016), “Measuring Economic Policy
+selection model that can improve machine learning from text                        Uncertainty,” Quarterly Journal of Economics, 131, 1593–1636. [13]
+                                                                                Baron, M., and Muir, T. (2018), “Intermediaries and Asset Prices: Evidence
+in particular and from sparse counts data more generally. Our
+                                                                                   from the U.S., U.K., and Japan, 1870–2016,” Working Paper. [8]
+highly scalable approach to modeling coverage selection is espe-                Belloni, A., Chen, D., Chernozhukov, V., and Hansen, C. (2012), “Sparse
+cially useful in cases where the phrase inclusion choice is sep-                   Models and Methods for Optimal Instruments With an Application to
+arate or more interesting than the repetition choice. It allows                    Eminent Domain,” Econometrica, 80, 2369–2429. [3]
+one to analyze text within a regression framework familiar to                   Belloni, A., Chernozhukov, V., Fernández-Val, I., and Hansen, C. (2017),
+economists, and strikes a balance between prediction and inter-                    “Program Evaluation and Causal Inference With High-Dimensional
+                                                                                   Data,” Econometrica, 85, 233–298. [3]
+pretation. The three applications we analyze show considerable                  Belloni, A., Chernozhukov, V., and Hansen, C. (2014), “Inference on Treatgains from injecting the economic structure of selection into                      ment Effects After Selection Among High-Dimensional Controls,” The
+machine learning models.                                                           Review of Economic Studies, 81, 608–650. [3]
+                                                                                Bitto, A., and Frühwirth-Schnatter, S. (2018), “Achieving Shrinkage in a
+                                                                                   Time-Varying Parameter Model Framework,” Journal of Econometrics,
+Acknowledgments                                                                    210, 75–97. [16]
+                                                                                Boot, T., and Nibbering, D. (2019), “Forecasting Using Random Subspace
+We are grateful for helpful comments by Xavier Gabaix, Matthew
+                                                                                   Methods,” Journal of Econometrics, 209, 391–406. [16]
+Gentzkow, Christian Hansen (editor), Steven Kou (discussant), Hongyi
+                                                                                Boydstun, A. E. (2013), Making the News: Politics, the Media, and Agenda
+Liu, Andy Neuhierl (discussant), Markus Pelger (discussant), Jesse Shapiro,
+                                                                                   Setting, Chicago, IL: University of Chicago Press. [10]
+Nitish Sinha (discussant), Matt Taddy, Paul Tetlock (discussant) and by
+                                                                                Brunnermeier, M. K., and Sannikov, Y. (2014), “A Macroeconomic Model
+seminar participants at École Polytechnique Fédérale de Lausanne, Hebrew
+                                                                                   With a Financial Sector,” American Economic Review, 104, 379–421. [8]
+University, IDC Herzliya, Indiana University, INSEAD, Kansas City Fed,
+                                                                                Cepni, O., Güney, I. E., and Swanson, N. R. (2019), “Nowcasting and
+Ohio State, Syracuse University, Tel-aviv University, Rice University, UniForecasting GDP in Emerging Markets Using Global Financial and
+versity of Michigan, NBER SI AP, AEA, WFA, and the University of Chicago
+                                                                                   Macroeconomic Diffusion Indexes,” International Journal of Forecasting
+CITE Conference. Jimmy Wu provided excellent research assistance. AQR
+                                                                                   35, 555–572. [16]
+Capital Management is a global investment management firm, which may
+                                                                                Chebonenko, T., Gu, L., and Muravyev, D. (2018), Text Sentiment’s Ability to
+or may not apply similar investment techniques or methods of analysis as
+                                                                                   Capture Information: Evidence from Earnings Calls, SSRN Scholarly Paper
+described herein. The views expressed here are those of the authors and not
+necessarily those of AQR.                                                          ID 2352524, Rochester, NY: Social Science Research Network. [3]
+                                                                                Chudik, A., Kapetanios, G., and Pesaran, M. H. (2018), “A One Covariate
+                                                                                   at a Time, Multiple Testing Approach to Variable Selection in HighSupplementary Materials                                                            Dimensional Linear Regression Models,” Econometrica 86, 1479–1512.
+                                                                                   [16]
+Our technology is publicly available via the HurdleDMR package for Julia,       Diebold, F. X., and Mariano, R. S. (1995), “Comparing Predictive Accuracy,”
+which can be called from many other programming languages like Python              Journal of Business & Economic Statistics 13, 134–144. [18,19]
+and R. We also provide an online appendix where we provide additional           Durante, R., and Zhuravskaya, E. (2018), “Attack When the World Is Not
+empirical analysis to evaluate the robustness of our methodology, and have         Watching? US News and the Israeli-Palestinian Conflict,” Journal of
+additional theoretical details about our estimation method including the           Political Economy, 126, 1085–1133. [3]
+proof of Proposition 1.                                                         Einav, L., Finkelstein, A., Mullainathan, S., and Obermeyer, Z. (2018),
+                                                                                   “Predictive Modeling of US Health Care Spending in Late Life,” Science
+                                                                                   360, 1462–1465. [3]
+Funding                                                                         Eisensee, T., and Stromberg, D. (2007), “News Droughts, News Floods, and
+                                                                                   U.S. Disaster Relief,” Quarterly Journal of Economics, 122, 693–728. [10]
+Computations were performed using the facilities of the Washington UniEngelberg, J., and Parsons, C. A. (2010), “The Causal Impact of Media in
+versity Center for High Performance Computing, which were partially
+                                                                                   Financial Markets,” Journal of Finance, 66, 67–97. [3]
+provided through NIH grant S10 OD018091.
+                                                                                Fang, L., and Peress, J. (2009), “Media Coverage and the Cross-section of
+                                                                                   Stock Returns,” Journal of Finance, 64, 2023–2052. [3]
+References                                                                      Farmer, L., Schmidt, L., and Timmermann, A. (2019), “Pockets of Predictability,” Working Paper. [17]
+Adrian, T., Etula, E., and Muir, T. (2014), “Financial Intermediaries and the   Friedman, J., Hastie, T., and Tibshirani, R. (2010), “Regularization Paths
+  Cross-Section of Asset Returns,” Journal of Finance, 69, 2557–2596. [8]          for Generalized Linear Models Via Coordinate Descent,” Journal of
+Antweiler, W., and Frank, M. Z. (2004), “Is All That Talk Just Noise?              Statistical Software 33, 1. [3,5,6]
+  The Information Content of Internet Stock Message Boards,” Journal of         Gabaix, X. (2014), “A Sparsity-Based Model of Bounded Rationality,” QuarFinance 59, 1259–1293. [3]                                                       terly Journal of Economics, 129, 1661–1710. [2]
+Athey, S. (2017), “Beyond Prediction: Using Big Data for Policy Problems,”      Gallant, A. R., and Nychka, D. W. (1987), “Semi-Nonparametric Maximum
+  Science, 355, 483–485. [3]                                                       Likelihood Estimation,” Econometrica, 55, 363–390. [10]
+
+
+                                                                                                      JOURNAL OF BUSINESS & ECONOMIC STATISTICS                21
+
+
+García, D. (2013), “Sentiment During Recessions,” Journal of Finance, 68,        Kleinberg, J., Ludwig, J., Mullainathan, S., and Obermeyer, Z. (2015), “Pre1267–1300. [3]                                                                   diction Policy Problems,” American Economic Review, 105, 491–95. [3]
+Gentzkow, M., Kelly, B. T., and Taddy, M. (2019), “Text as Data,” Journal of     Koijen, R. S. J., and Yogo, M. (2019), “A Demand System Approach to Asset
+   Economic Literature. [1]                                                         Pricing,” Journal of Political Economy, 127. [8]
+Gentzkow, M., and Shapiro, J. M. (2006), “Media Bias and Reputation,”            Ludwig, J., Mullainathan, S., and Spiess, J. (2017), “Machine Learning Tests
+   Journal of Political Economy, 114, pp. 280–316. [2,3]                            for Effects on Multiple Outcomes,” arXiv: 1707.01473. [3]
+Gentzkow, M. and Taddy, M. (2019), “Measuring Group Differences in               Manela, A. (2014), “The Value of Diffusing Information,” Journal of FinanHigh-Dimensional Choices: Method and Application to Congressional                cial Economics, 111, 181–199. [10]
+   Speech,” Econometrica, 87, 1307–1340. [2,6,7,8,12]                            Manela, A., and Moreira, A. (2017), “News Implied Volatility and Disaster
+Giannone, D., Reichlin, L., and Small, D. (2008), “Nowcasting: The Real-            Concerns,” Journal of Financial Economics, 123, 137–162. [2,3,13]
+   Time Informational Content of Macroeconomic Data,” Journal of Mon-            McCullagh, P., and Nelder, J. A. (1989), Generalized Linear Models, Chapetary Economics, 55, 665–676. [19]                                               man & Hall. [5,6]
+Greene, W. (2007), “Functional Form and Heterogeneity in Models for              Medeiros, M. C, Vasconcelos, G. F. R., Veiga, Á., and Zilberman, E. (2021),
+   Count Data,” Foundations and Trends in Econometrics, 1, 113–218.                 “Forecasting Inflation in a Data-Rich Environment: The Benefits of
+   [2]                                                                              Machine Learning Methods,” Journal of Business & Economic Statistics,
+Gu, S., Kelly, B. T., and Xiu, D. (2018), “Empirical Asset Pricing via Machine      39, 98–119. [16]
+   Learning,” SSRN Scholarly Paper ID 3159577, Social Science Research           Michel, J.-B., Shen, Y. K., Aiden, A. P., Veres, A., Gray, M. K., Pickett, J. P.,
+   Network Rochester, NY. [3]                                                       Hoiberg, D., Clancy, D., Norvig, P., Orwant, J., Pinker, S., Nowak, M. A.,
+             (2019), Autoencoder Asset Pricing Models, SSRN Scholarly               Aiden, E. L. (2011), “Quantitative Analysis of Culture Using Millions of
+   Paper ID 3335536, Rochester, NY: Social Science Research Network.                Digitized Books,” Science, 331, 176–182. [2]
+   [3]                                                                           Mullahy, J. (1986), “Specification and Testing of Some Modified Count Data
+Haddad, V., and Muir, T. (2018), “Do Intermediaries Matter for Aggregate            Models,” Journal of Econometrics, 33, 341–365. [2,5]
+   Asset Prices?,” Working Paper. [8]                                            Mullainathan, S., and Shleifer, A. (2005), “The Market for News,” American
+Hanley, K. W., and Hoberg, G. (2019), “Dynamic Interpretation of Emerg-             Economic Review, 95, 1031–1053. [2]
+   ing Risks in the Financial Sector,” The Review of Financial Studies. [3]                (2017), “Machine Learning: An Applied Econometric Approach,”
+Hassan, T. A., Hollander, S., van Lent, L., and Tahoun, A. (2017), “Firm-           Journal of Economic Perspectives, 31, 87–106. [3]
+   Level Political Risk: Measurement and Effects,” SSRN Scholarly Paper ID       Pastor, L., and Veronesi, P. (2012), “Uncertainty About Government Policy
+   2838644, Social Science Research Network Rochester, NY. [13]                     and Stock Prices,” Journal of Finance, 67, 1219–1264. [13]
+He, Z., Kelly, B., and Manela, A. (2017), “Intermediary Asset Pricing: New       Qin, B., Strömberg, D., and Wu, Y. (2018), “Media Bias in China,” American
+   Evidence From Many Asset Classes,” Journal of Financial Economics, 126,          Economic Review, 108, 2442–2476. [3]
+   1–35. [2,8,10,14]                                                             Rennie, J. D., Shih, L., Teevan, J., and Karger, D. R. (2003), “Tackling the
+He, Z., and Krishnamurthy, A. (2012), “A Model of Capital and Crises,” The          Poor Assumptions of Naive Bayes Text Classifiers,” in Proceedings of the
+   Review of Economic Studies, 79, 735–777. [14]                                    20th International Conference on Machine Learning (ICML-03), pp. 616–
+          (2013), “Intermediary Asset Pricing,” American Economic Review,           623. [1]
+   103, 732–770. [8,14]                                                          Stock, J. H., and Watson, M. (2011), “Dynamic Factor Models,” in Oxford
+            (2018), “Intermediary Asset Pricing and the Financial Crisis,”          Handbook on Economic Forecasting, eds. M. P. Clements and D. F.
+   Annual Review of Financial Economics 10, 173–197. [8]                            Hendry, Oxford: Oxford University Press. [16]
+Heckman, J. J. (1979), “Sample Selection Bias as a Specification Error,”                    (2012), “Generalized Shrinkage Methods for Forecasting Using
+   Econometrica, 47, 153–161. [2,10]                                                Many Predictors,” Journal of Business & Economic Statistics 30, 481–493.
+Heckman, J. J., and MaCurdy, T. E. (1986), “Labor Econometrics,” in Hand-           [3,16,17,18,19]
+   book of Econometrics. (Vol. 3), eds. Z.Griliches and M. D. Intriligator,                  (2016), “Dynamic Factor Models, Factor-Augmented Vector
+   Amsterdam: Elsevier, pp. 1917–1977. [10]                                         Autoregressions, and Structural Vector Autoregressions in MacroecoHoberg, G., and Phillips, G. (2016), “Text-Based Network Industries and             nomics,” in Handbook of Macroeconomics, (Vol. 2), Elsevier, pp. 415–525.
+   Endogenous Product Differentiation,” Journal of Political Economy, 124,          [16]
+   1423–1465. [3]                                                                Taddy, M. (2013), “Multinomial Inverse Regression for Text Analysis,”
+Hodrick, R. J. (1992), “Dividend Yields and Expected Stock Returns: Alter-          Journal of the American Statistical Association, 108, 755–770. [4,6]
+   native Procedures for Inference and Measurement,” Review of Financial                   (2015), “Distributed Multinomial Regression,” Annals of Applied
+   Studies, 5, 357–386. [15,17]                                                     Statistics 9, 1394–1414. [1,3,4,5,6,13,14]
+Jiang, F., Lee, J., Martin, X., and Zhou, G. (2019), “Manager Sentiment and                (2017), “One-Step Estimator Paths for Concave Regularization,”
+   Stock Returns,” Journal of Financial Economics, 132, 126–149. [3]                Journal of Computational and Graphical Statistics, 1–12. [3,5]
+Kelly, B., and Pruitt, S. (2013), “Market Expectations in the Cross-Section      Tetlock, P. C. (2007), “Giving Content to Investor Sentiment: The Role of
+   of Present Values,” Journal of Finance, 68, 1721–1756. [16]                      Media in the Stock Market,” Journal of Finance, 62, 1139–1168. [3]
+           (2015), “The Three-Pass Regression Filter: A New Approach to          Tibshirani, R. (1996), “Regression Shrinkage and Selection Via the Lasso,”
+   Forecasting Using Many Predictors,” Journal of Econometrics, 186, 294–           Journal of the Royal Statistical Society, Series B, 58, 267–288. [5]
+   316. [16]                                                                     Vapnik, N. V. (2000), The Nature of Statistical Learning Theory, New York:
+Kim, H. H., and Swanson, N. R. (2014), “Forecasting Financial and Macroe-           Springer-Verlag. [2]
+   conomic Variables Using Data Reduction Methods: New Empirical Evi-            Wilbur, W. J., and Kim, W. (2009), “The Ineffectiveness of Withindence,” Journal of Econometrics, 178, 352–367. [16]                              Document Term Frequency in Text Classification,” Information
+Kleinberg, J., Lakkaraju, H., Leskovec, J., Ludwig, J., and Mullainathan,           Retrieval, 12, 509–525. [1]
+   S. (2018), “Human Decisions and Machine Predictions,” The Quarterly           Zipf, G. K. (1935), The Psychology of Language, Boston, MA: HoughtonJournal of Economics, 133, 237–293. [3]                                          Mifflin. [1]

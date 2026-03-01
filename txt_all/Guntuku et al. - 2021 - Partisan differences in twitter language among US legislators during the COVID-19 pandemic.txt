@@ -1,0 +1,488 @@
+JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                         Guntuku et al
+
+     Original Paper
+
+     Partisan Differences in Twitter Language Among US Legislators
+     During the COVID-19 Pandemic: Cross-sectional Study
+
+     Sharath Chandra Guntuku1,2,3, PhD; Jonathan Purtle4, DrPH; Zachary F Meisel3,5,6, MPH, MD; Raina M Merchant2,3,5,6,
+     MD; Anish Agarwal2,3,5,6, MPH, MS, MD
+      Department of Computer and Information Science, University of Pennsylvania, Philadelphia, PA, United States
+      Penn Medicine Center for Digital Health, University of Pennsylvania, Philadelphia, PA, United States
+      Leonard Davis Institute of Health Economics, University of Pennsylvania, Philadelphia, PA, United States
+      Department of Health Management & Policy, Drexel University Dornsife School of Public Health, Philadelphia, PA, United States
+      Department of Emergency Medicine, University of Pennsylvania, Philadelphia, PA, United States
+      Center for Emergency Care Research and Policy, University of Pennsylvania, Philadelphia, PA, United States
+
+     Corresponding Author:
+     Sharath Chandra Guntuku, PhD
+     Department of Computer and Information Science
+     University of Pennsylvania
+     3300 Walnut St
+     Philadelphia, PA, 19103
+     United States
+     Phone: 1 215 615 3211
+     Email: sharathg@cis.upenn.edu
+
+
+     Abstract
+     Background: As policy makers continue to shape the national and local responses to the COVID-19 pandemic, the information
+     they choose to share and how they frame their content provide key insights into the public and health care systems.
+     Objective: We examined the language used by the members of the US House and Senate during the first 10 months of the
+     COVID-19 pandemic and measured content and sentiment based on the tweets that they shared.
+     Methods: We used Quorum (Quorum Analytics Inc) to access more than 300,000 tweets posted by US legislators from January
+     1 to October 10, 2020. We used differential language analyses to compare the content and sentiment of tweets posted by legislators
+     based on their party affiliation.
+     Results: We found that health care–related themes in Democratic legislators’ tweets focused on racial disparities in care (odds
+     ratio [OR] 2.24, 95% CI 2.22-2.27; P<.001), health care and insurance (OR 1.74, 95% CI 1.7-1.77; P<.001), COVID-19 testing
+     (OR 1.15, 95% CI 1.12-1.19; P<.001), and public health guidelines (OR 1.25, 95% CI 1.22-1.29; P<.001). The dominant themes
+     in the Republican legislators’ discourse included vaccine development (OR 1.51, 95% CI 1.47-1.55; P<.001) and hospital resources
+     and equipment (OR 1.22, 95% CI 1.18-1.25). Nonhealth care–related topics associated with a Democratic affiliation included
+     protections for essential workers (OR 1.55, 95% CI 1.52-1.59), the 2020 election and voting (OR 1.31, 95% CI 1.27-1.35),
+     unemployment and housing (OR 1.27, 95% CI 1.24-1.31), crime and racism (OR 1.22, 95% CI 1.18-1.26), public town halls (OR
+     1.2, 95% CI 1.16-1.23), the Trump Administration (OR 1.22, 95% CI 1.19-1.26), immigration (OR 1.16, 95% CI 1.12-1.19), and
+     the loss of life (OR 1.38, 95% CI 1.35-1.42). The themes associated with the Republican affiliation included China (OR 1.89,
+     95% CI 1.85-1.92), small business assistance (OR 1.27, 95% CI 1.23-1.3), congressional relief bills (OR 1.23, 95% CI 1.2-1.27),
+     press briefings (OR 1.22, 95% CI 1.19-1.26), and economic recovery (OR 1.2, 95% CI 1.16-1.23).
+     Conclusions: Divergent language use on social media corresponds to the partisan divide in the first several months of the course
+     of the COVID-19 public health crisis.
+
+     (J Med Internet Res 2021;23(6):e27300) doi: 10.2196/27300
+
+     KEYWORDS
+     Twitter; COVID-19; digital health; US legislators; natural language processing; policy makers; social media; policy; politics;
+     language; cross-sectional; content; sentiment; infodemiology; infoveillance
+
+     https://www.jmir.org/2021/6/e27300                                                                      J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 1
+                                                                                                                           (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                               Guntuku et al
+
+                                                                         Language Feature Extraction
+     Introduction
+                                                                         We extracted the relative frequency of single words and phrases
+     The novel COVID-19 pandemic continues to surge throughout           from tweets by using the Differential Language Analysis
+     the world. The United States’ federal and state policy responses    ToolKit package [8] and created two sets of features—(1) an
+     continue to shift and vary throughout the stages of the pandemic    open vocabulary that was defined by using latent Dirichlet
+     [1]. Notable divisions related to public health measures and        allocation [9], an unsupervised clustering algorithm, to create
+     frameworks for closing and reopening local economies have           50 data-driven word clusters (topics) and (2) sentiment, which
+     proliferated [2]. A unique aspect of the COVID-19 pandemic          was measured by using the National Research Council (NRC)
+     is the role that social media plays in housing, disseminating,      Canada lexicon [10], a data-driven dictionary containing words
+     and amplifying information and opinions [3,4]. US legislators       associated with positive and negative valence. The NRC lexicon
+     have also taken to social media to connect with their               was developed by using a corpus of 77,500 positive and negative
+     constituents, comment on the pandemic, and provide information      tweets, and consists of 54,129 weighted unigrams and 316,531
+     across a spectrum of pandemic-related content to individuals.       bigrams in which the weight corresponds to the degree of
+                                                                         association between a token and sentiment [10].
+     Understanding what content US legislators are sharing through
+     social media posts (eg, Twitter) and how they are relaying          Statistical Analyses
+     COVID-19–related information is important, as these issues          To distinguish linguistic differences across political parties
+     guide public knowledge and public opinion and inform policy         (coded as a dichotomous outcome), each feature set was input
+     change. By using social media data, prior studies have identified   in a logistic regression model, and those that were significantly
+     growing partisan differences among Republican and Democrat          different according to a cutoff Benjamini-Hochberg–corrected
+     legislators as the pandemic has progressed [5]. It has also been    P value of <.001 were reported [11]. Two authors independently
+     found that tweets about specific topics (eg, social distancing)     evaluated each topic for thematic meanings by reviewing the
+     from legislators are often associated with the time when policies   top 10 posts per topic and coded them into health care–related
+     are put into action, and the effect of such tweets are larger in    and nonhealth care–related themes.
+     democratic counties [6].
+                                                                         Data on changes in the prevalence and sentiment of topics that
+     The objective of this study was to analyze the language in posts    were significantly associated with either party and occurred
+     on Twitter—a leading social media platform—that were posted         over time were obtained by calculating the mean scores across
+     by US legislators over the course of the pandemic to identify       all posts per week, stratified by party, and visualized via locally
+     potential health care–related themes in COVID-19–related posts      estimated scatterplot smoothing [12].
+     and to analyze the associated sentiment within tweet language
+     across partisans.
+                                                                         Results
+     Methods                                                             US Legislators’ Tweets
+     Data                                                                We identified 309,438 COVID-19–related tweets from the 4224
+                                                                         unique accounts of US legislators. The descriptive statistics of
+     We identified state legislators’ Twitter posts that were related    the data set are in Table 1. The number of tweets per legislator
+     to COVID-19 and posted from January 1 to October 10, 2020,          over the selected time period is shown in Multimedia Appendix
+     by using Quorum (Quorum Analytics Inc) [7], a software              1. Tweet language that correlated with US legislature party
+     platform that collects policy-related documents, including social   affiliation is displayed in Figure 1. Of the statistically significant
+     media posts from politicians that were posted during their time     topics, we identified 7 health care–related themes and 14
+     in office. This study was considered exempt from review by          nonhealth care–related themes associated with the two major
+     the University of Pennsylvania Institutional Review Board, as       party affiliations.
+     it involves the analysis of public-facing data.
+
+
+     https://www.jmir.org/2021/6/e27300                                                            J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 2
+                                                                                                                 (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                       Guntuku et al
+
+     Figure 1. Words and phrases that were significantly associated with tweets from Democratic legislators (blue) and Republican legislators (red). Bar
+     length indicates effect size and shade indicates relative word frequency (P<.001; Benjamini-Hochberg p-correction). CCP: Chinese Communist Party.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                    J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 3
+                                                                                                                         (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                         Guntuku et al
+
+     Table 1. Descriptive statistics of the data collected from Quorum from January 1 to October 10, 2020.
+      Category                                                                  Value, n (%)
+      Number of tweets
+           All legislators                                                      309,438 (100)
+           Republican legislators                                               88,146 (28.4)
+           Democrat legislators                                                 221,292 (71.5)
+      Number of retweets
+           Republican retweets                                                  38,120 (12.3)
+           Democrat retweets                                                    96,469 (31.1)
+      Number of individual accounts
+           All legislators                                                      4224 (100)
+           Democrat legislators                                                 2432 (57.6)
+           Republican legislators                                               1792 (42.4)
+
+                                                                                Nonhealth care–related topics were also identified across
+     Thematic Differences by Party Affiliation                                  parities. The themes associated with a Democratic affiliation
+     Health care–related themes (Table 2) associated with a                     included the following: protections for essential workers, the
+     Democratic party affiliation included the following: racial                2020 election and voting, unemployment and housing, crime
+     disparities in care (odds ratio [OR] 2.24, 95% CI 2.22-2.27),              and racism, public town halls, the Trump Administration,
+     health care and insurance (OR 1.74, 95% CI 1.70-1.77), public              immigration, and the loss of life. The themes associated with a
+     health guidelines (OR 1.25, 95% CI 1.22-1.29), and COVID-19                Republican affiliation included the following: China,
+     testing (OR, 1.15, 95% CI 1.12-1.19). Health care–related                  congressional relief bills, small business assistance, press
+     themes associated with a Republican party affiliation included             briefings, and economic recovery (Table 3). The prevalence of
+     the following: vaccine development (OR 1.51, 95% CI                        the themes over time stratified by affiliation is shown in
+     1.47-1.55) and hospital resources and equipment (OR 1.22, 95%              Multimedia Appendices 2 and 3. The set of topics that did not
+     CI 1.18-1.25).                                                             significantly correlate with affiliation are shown in Multimedia
+                                                                                Appendix 4.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                      J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 4
+                                                                                                                           (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                               Guntuku et al
+
+     Table 2. Health care–related topics that are more likely to be posted by Democrat legislators and Republican legislators. Effect size is shown by using
+     odds ratios (ORs) along with 95% CIs. Only significant topics after Benjamini-Hochberg p-correction (P<.001) are shown.
+         Affiliation and topic theme      Top words                          ORs (95% CI)       Example tweets
+         Democrat
+             Racial disparities           “communities,” “black,” “color,” 2.24 (2.22-2.27)     “COVID-19 is disproportionately harming communities of color
+                                          “racial,” “disparities,” “dispropor-                  and exposing generations of systemic racism. We need to collect
+                                          tionately,” “impact,” “hit,”                          racial and ethnic data for coronavirus testing and treatment so
+                                          “women,” and “latino”                                 we can address these health disparities and begin rectifying
+                                                                                                decades of injustice.”
+             Health care and insur-       “healthcare,” “americans,” “ac-    1.74 (1.70-1.77)   “The #MedicareCrisisProgram would: Expand Medicare to the
+             ance                         cess,” “insurance,” “coverage,”                       recently unemployed & cap out-of-pocket costs Expand Medicaid
+                                          “affordable,” “millions,” “medi-                      to cover even more people Ensure no out-of-pocket costs for
+                                          caid,” and “court”                                    COVID-19 testing/treatment for everyone”
+             Public health guidelines “mask,” “social,” “distancing,”        1.25 (1.22-1.29)   “The pandemic is nowhere near over. Continue practicing social
+                                      “wear,” “spread,” “hands,”                                distancing & WEAR A MASK”
+                                      “stay,” “home,” “wash,” “practice,” and “stop”
+             COVID-19 testing             “testing,” “free,” “county,”       1.15 (1.12-1.19)   “New COVID-19 mobile testing site opens. Scheduled Locations
+                                          “sites,” “appointment,” “center,”                     for Free Drive-Through COVID-19 Testing” [retweet]
+                                          “residents,” “open,” “city,” “visit,” and “symptoms”
+         Republican
+             Vaccine development          “vaccine,” “research,” “drug,”     1.51 (1.47-1.55)   “Three Coronavirus Vaccine Developers Report Promising Initial
+                                          “production,” “effective,” “vac-                      Results” [retweet]
+                                          cines,” “treatments,” “development,” and “defense”
+             Hospital resources and       “medical,” “patients,” “hospi-     1.22 (1.18-1.25)   “Kansans everywhere are stepping up to fight the #Coronequipment                    tals,” “masks,” “equipment,”                          avirus.…,which manufactures aircraft parts in…, is using their
+                                          “supplies,” “ppe,”a “donate,”                         3D printing capabilities to work with local area hospitals on
+                                          “blood,” “needed,” and “plasma”                       prototypes of N-95 surgical masks and protective face shields.”
+
+     a
+         PPE: personal protective equipment.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                            J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 5
+                                                                                                                                 (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                                  Guntuku et al
+
+     Table 3. Nonhealth care–related topics that are more likely to be posted by Democratic legislators and Republican legislators. Effect size is shown by
+     using odds ratios (ORs) along with 95% CIs. Only significant topics after Benjamini-Hochberg p-correction (P<.001) are shown.
+      Affiliation and topic theme         Top words                                           OR (95% CI)        Example tweets
+      Democrat
+           Protections for essential “workers,” “essential,” “leave,” “sick,” “pay,”          1.55 (1.52-1.59)   “Essential workers--like farmworkers, first responworkforce                 “employees,” “safety,” “job,” “frontline,” “gro-                            ders, health care workers, and grocery store
+                                     cery,” “protections,” and “deserve”                                         workers--deserve hazard pay from their government or their company for their service during the
+                                                                                                                 #coronavirus pandemic.”
+           2020 election and vot-         “vote,” “mail,” “voters,” “ballot,” “elections,”    1.31 (1.27-1.35)   “To make sure this virus doesn't keep people from
+           ing                            “absentee,” “november,” “census,” “primary,”                           the ballot box, states and localities should bring
+                                          “voter,” “ballots,” and “2020”                                         the ballot box to them through expanded vote-bymail and no-fault absentee voting.
+                                                                                                                 #SAFEDemocracy”
+           Unemployment and               “unemployment,” “assistance,” “benefits,”           1.27 (1.24-1.31)   “Wisconsin residents who have exhausted their
+           housing assistance             “rent,” “program,” “housing,” “insurance,”                             regular unemployment insurance (UI) benefits
+                                          “eviction,” “eligible,” “lost,” and “claims”                           may now apply for Pandemic Emergency Unemployment Compensation (PEUC).”
+           Crime and racism               “violence,” “police,” “domestic,” “racism,”         1.22 (1.18-1.26)   “As coronavirus fears have intensified, incidents
+                                          “asian,” “stand,” “hate,” “gun,” “survivors,”                          of violence & discrimination against Chinese
+                                          “protests,” “discrimination,” and “victims”                            Americans have increased. Joined hundreds of
+                                                                                                                 San Franciscans marching in Chinatown today to
+                                                                                                                 protest prejudice and racial profiling. #TogetherWeStand #StandWithChinatown”
+           Public town halls              “join,” “hall,” “town,” “live,” “questions,”        1.2 (1.16-1.23)    “Tomorrow evening, at 7:30 pm EST [Eastern
+                                          “discuss,” “tomorrow,” “tune,” “facebook,”                             Standard Time], I am hosting another Coronavirus
+                                          “virtual,” “i'll,” “telephone,” “tonight”                              Telephone Town Hall.”
+           Trump Administration
+                Word set 1                “trump,” “national,” “service,” “global,” “admin- 1.22 (1.19-1.26)     “Donald Trump and Mike Pence's handling of
+                                          istration,” “postal,” “guard,” “security,” “deci-                      COVID-19 is the greatest failure of any American
+                                          sion,” “usps,”a and “members”                                          presidency.…#Debate2020 #TrumpFailure
+                                                                                                                 #IwillVote”
+                Word set 2                “trump,” “president,” “white,” “house,”             1.17 (1.13-1.2)    “Democratic presidential candidate Joe Biden
+                                          “trump's,” “donald,” “don't,” “biden,” “he's,”                         criticized President Donald Trump's 'callousness'
+                                          “joe,” “administration,” “campaign,” “pence,”                          in handling the coronavirus pandemic” [retweet]
+                                          “force,” and “rally”
+           Immigration                    “letter,” “release,” “colleagues,” “risk,” “pris-   1.16 (1.12-1.19)   “ICE must suspend immigration enforcement
+                                                                b                                                during the #COVID19 pandemic.”
+                                          ons,” “urging,” “ice,” “immigration,” “inmates,” “detention,” and “vulnerable”
+           Loss of life
+                Word set 1                “trump,” “americans,” “lives,” “president,”       1.38 (1.35-1.42)     “In trump's catastrophic zeal to lie about the
+                                          “american,” “died,” “100,” “million,” “deaths,”                        coronavirus threat, innumerable Americans' lives
+                                          “200,” “states,” “lost,” “dead,” and “leadership”                      are in danger.”
+                Word set 2                “family,” “lost,” “friends,” “loved,” “died,”       1.13 (1.09-1.16)   “Within a few short days, 200,000 mothers fathers
+                                          “life,” “heart,” “loss,” “years,” “god,” “prayers,”                    daughters sons children parents lovers wives
+                                          “remember,” “thoughts,” and “honor”                                    husbands friends grandparents aunts uncles
+                                                                                                                 cousins DEAD of coronavirus. We dare not get
+                                                                                                                 numb. That equates to every person...EVERY
+                                                                                                                 single person in my community.”
+      Republican
+           China                          “china,” “world,” “chinese,” “accountable,”         1.89 (1.85-1.92)   “Pompeo slams communist China for lying about
+                                          “communist,” “global,” “hold,” “party,”                                Wuhan coronavirus” and “The Wuhan virus is
+                                          “wuhan,” “china's,” “outbreak,” “government,”                          #MadeInChina.” [retweet]
+                                          “travel,” “held,” and “organization”
+           Small business assis-          “small,” “businesses,” “program,” “relief,”         1.27 (1.23-1.3)    “Small businesses impacted by the #coronavirus
+           tance                          “loans,” “impacted,” “apply,” “owners,” “eco-                          can apply for a low-interest SBA [Small Business
+                                          nomic,” “grants,” “assistance,” “grant,” and                           Association] disaster loan here”
+                                          “disaster”
+
+
+     https://www.jmir.org/2021/6/e27300                                                                               J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 6
+                                                                                                                                    (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                                 Guntuku et al
+
+         Affiliation and topic theme      Top words                                           OR (95% CI)        Example tweets
+             Government relief funds
+                 Word set 1               “funding,” “federal,” “local,” “state,” “million,” 1.22 (1.18-1.25)    “Democrats Filibuster Covid Relief” [retweet]
+                                          “act,” “support,” “relief,” “communities,”
+                                          “cares,” “resources,” “governments,” “provide,”
+                                          and “emergency”
+                 Word set 2               “relief,” “senate,” “bill,” “republicans,”          1.23 (1.2-1.27)    “In the CARES [Coronavirus Aid, Relief, and
+                                          “democrats,” “house,” “americans,” “mc-                                Economic Security] Act,…received money to be
+                                          connell,” “pass,” “american,” “pelosi,”                                disbursed ASAP [as soon as possible] to help local
+                                          “congress,” “package,” “politics,” and “gop”c                          communities fight coronavirus. Grants were disbursed through specific programs, including
+                                                                                                                 Community Development Block Grants-flexible
+                                                                                                                 funding to states and local governmentsSteubenville awarded $365,667!”
+             Press briefings
+                 Word set 1               “governor,” “update,” “press,” “north,” “confer- 1.22 (1.19-1.26)      “What is Montana doing in response to coronence,” “gov,” “watch,” “live,” “carolina,”                             avirus?” COVID-19 Montana state response up-
+                                          “#ncpol,”d “michigan,” “nc,”e “south,” “state's,”                      date.”
+                                          and “briefing”
+                 Word set 2               “hearing,” “response,” “discuss,” “committee,”      1.14 (1.1-1.17)    “#ICYMI [in case you missed it] I discussed the
+                                          “watch,” “force,” “joined,” “task,” “meeting,”                         #Coronavirus in depth on the latest episode of
+                                          “dr,”f “morning,” “impact,” “talk,” “yesterday,”                       #TheBreakDown.”
+                                          and “hear”
+             State politics               “georgia,” “court,” “power,” “supreme,” “restric- 1.16 (1.12-1.19)     “6th Circuit unanimously rules DWP (drunk-withtions,” “republican,” “politics,” “tennessee,”                         power) Beshear ban on church services unconsti-
+                                          “decision,” “law,” “abortion,” and “wisconsin”                         tutional! Kentucky coronavirus”
+             Economic recovery and news
+                 Word set 1               “economy,” “economic,” “back,” “jobs,” “recov- 1.19 (1.15-1.22)        “As a nation, we will defeat the coronavirus and
+                                          ery,” “plan,” “recover,” “america,” “future,”                          rebuild the greatest economy. #Commitment-
+                                          “nation,” “forward,” “industry,” “climate,” “en-                       ToAmerica”
+                                          ergy,” and “safely”
+                 Word set 2               “news,” “times,” “york,” “data,” “good,”            1.20 (1.16-1.23)   “Germany's R0 coronavirus experiment: Berlin
+                                          “washington,” “thread,” “study,” “post,”                               tries to manage a variable no one can measure
+                                          “breaking,” “shows,” “found,” and “months”                             accurately”
+
+     a
+         USPS: US Postal Service.
+     b
+         ICE: Immigration and Customs Enforcement.
+     c
+         GOP: Grand Old Party.
+     d
+         NCPOL: North Carolina Political News.
+     e
+         NC: North Carolina.
+     f
+      DR: doctor.
+
+                                                                                          sentiment was associated with content from both parties across
+     Sentiment Differences by Party Affiliation                                           the following themes: health care and insurance, COVID-19
+     We performed an analysis of sentiment for the language used                          testing, and racial disparities. Positive sentiment was associated
+     in tweets and found that overall, Republican-affiliated tweets                       with content within the theme of government public health
+     used more positive sentiment, which increased over time. The                         expertise. Sentiment within themes over time and across parities
+     variation in overall sentiment is shown in Figure 2. Negative                        is identified in Multimedia Appendices 5 and 6.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                              J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 7
+                                                                                                                                   (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                        Guntuku et al
+
+     Figure 2. Sentiment analysis of US legislators’ language on Twitter across party affiliations.
+
+
+                                                                                  results indicated that legislators with a Democratic party
+     Discussion                                                                   affiliation focused their COVID-19 content more toward social
+     By using machine learning techniques, we investigated narrative              services      and     racial   disparities.   Content      from
+     content in over 300,000 twitter posts from US legislators over               Republican-affiliated legislators focused thematically on
+     the course of the COVID-19 pandemic to date. Investigating                   government relief and economic aid. This finding is consistent
+     the language within posts on social media platforms has become               with surveys of elected officials and the general public, which
+     more common and has been specifically used to study aspects                  suggests that awareness and concern about health disparities
+     of health and health care. This study is among the first to analyze          among Democrats are greater than those among Republicans
+     US legislators’ Twitter-based language to identify the                       [13,14].
+     COVID-19–related themes that policy makers are discussing                    There are limitations to this study, including the fact that content
+     on Twitter with a specific focus on health care–related topics.              was collected from publicly available Twitter posts; thus,
+     Additionally, this study deployed advanced language                          legislators who do not post content were not included. If a
+     assessments that use machine learning to analyze how legislators             legislator did not have a party affiliation (as noted by the
+     are talking about these themes by conducting sentiment analyses              Quorum database), we could not include them in this analysis.
+     throughout the phases of the pandemic.                                       We also did not control for demographic or health access data,
+     We noted key differences across the two major US political                   as our analysis was performed on the language of individual
+     parties. Health care–related themes that correlated with a                   legislators. Further, a topic’s significant association with a
+     Democratic party affiliation focused on the health care access               particular affiliation does not imply that other party legislators
+     and disparities across race. The themes that correlated with a               did not tweet about it; it only indicates the relative frequency
+     Republican party affiliation focused on initial and persistent               of tweets containing the words that were associated with each
+     vaccine progress, access to equipment (eg, personal protective               topic.
+     equipment), and government expertise. Furthermore, in the                    This study highlights the ability to understand how legislators
+     language analysis, we identified that across content posted by               use social media (eg, Twitter); what information they choose
+     Republican legislators, there was considerably more content                  to share; and how they frame their content, which was
+     about the pandemic and approaches for managing the pandemic                  determined through sentiment analysis [15]. These are key
+     across health care topics. Language analysis was also used to                insights that will remain important to the public and health care
+     detect thematic differences in narrative content within Twitter              systems as policy makers continue to shape the national and
+     posts across the two major political parties. In this study, our             local responses to the pandemic [16].
+
+     Acknowledgments
+     The authors thank Garrick Sherman for inputs on visualizations. SCG received support from Google Cloud. Support for this
+     study, including data acquisition, was provided by the Center for Health Economics of Treatment Interventions for Substance
+     Use Disorder, HCV (hepatitis C virus), and HIV and a National Institute on Drug Abuse research center (R21DA050761-02).
+     This study was conducted in partnership with the Research-to-Policy Collaboration, which is affiliated with The Pennsylvania
+     State University's Edna Bennett Pierce Prevention Research Center.
+
+     Conflicts of Interest
+     None declared.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                     J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 8
+                                                                                                                          (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                          Guntuku et al
+
+     Multimedia Appendix 1
+     Mean number of COVID-19–related tweets per legislator by party affiliation. The tweets in our data set were posted from January
+     1 to October 10, 2020.
+     [PNG File , 140 KB-Multimedia Appendix 1]
+
+     Multimedia Appendix 2
+     Prevalence of health care–related topics over time by party affiliation.
+     [PNG File , 277 KB-Multimedia Appendix 2]
+
+     Multimedia Appendix 3
+     Prevalence of nonhealth care–related topics over time by party affiliation.
+     [PNG File , 286 KB-Multimedia Appendix 3]
+
+     Multimedia Appendix 4
+     Topics that were associated with Democrat (top) and Republican (bottom) legislators' Twitter language but did not pass the
+     statistical significance threshold.
+     [DOCX File , 15 KB-Multimedia Appendix 4]
+
+     Multimedia Appendix 5
+     Sentiment of COVID-19–related legislator tweets on health care topics.
+     [PNG File , 281 KB-Multimedia Appendix 5]
+
+     Multimedia Appendix 6
+     Sentiment of COVID-19–related legislator tweets on nonhealth care topics.
+     [PNG File , 304 KB-Multimedia Appendix 6]
+
+     References
+     1.     Gadarian SK, Goodman SW, Pepinsky TB. Partisanship, health behavior, and policy attitudes in the early stages of the
+            COVID-19 Pandemic. SSRN. Preprint posted online on March 27, 2020. [doi: 10.2139/ssrn.3562796]
+     2.     Bromfield N, McConnell A. Two routes to precarious success: Australia, New Zealand, COVID-19 and the politics of crisis
+            governance. International Review of Administrative Sciences 2020 Dec 01:1-18 [FREE Full text] [doi:
+            10.1177/0020852320972465]
+     3.     Mheidly N, Fares J. Leveraging media and health communication strategies to overcome the COVID-19 infodemic. J Public
+            Health Policy 2020 Dec;41(4):410-420 [FREE Full text] [doi: 10.1057/s41271-020-00247-w] [Medline: 32826935]
+     4.     Ojo A, Guntuku SC, Zheng M, Beidas RS, Ranney ML. How health care workers wield influence through Twitter hashtags:
+            Retrospective cross-sectional study of the gun violence and COVID-19 public health crises. JMIR Public Health Surveill
+            2021 Jan 06;7(1):e24562 [FREE Full text] [doi: 10.2196/24562] [Medline: 33315578]
+     5.     Green J, Edgerton J, Naftel D, Shoub K, Cranmer SJ. Elusive consensus: Polarization in elite communication on the
+            COVID-19 pandemic. Sci Adv 2020 Jul 10;6(28):eabc2717 [FREE Full text] [doi: 10.1126/sciadv.abc2717] [Medline:
+            32923600]
+     6.     Grossman G, Kim S, Rexer J, Thirumurthy H. Political partisanship influences behavioral responses to governors’
+            recommendations for COVID-19 prevention in the United States. SSRN. Preprint posted online on April 17, 2020. [doi:
+            10.2139/ssrn.3578695]
+     7.     Best-in-class public affairs software. Quorum. URL: https://www.quorum.us/ [accessed 2021-05-10]
+     8.     Schwartz HA, Giorgi S, Sap M, Crutchley P, Ungar L, Eichstaedt J. DLATK: Differential Language Analysis ToolKit. In:
+            Proceedings of the 2017 Conference on Empirical Methods in Natural Language Processing: System Demonstrations. 2017
+            Sep Presented at: 2017 Conference on Empirical Methods in Natural Language Processing: System Demonstrations;
+            September 2017; Copenhagen, Denmark p. 55-60. [doi: 10.18653/v1/d17-2010]
+     9.     Blei DM, Ng AY, Jordan MI. Latent dirichlet allocation. J Mach Learn Res 2003 Mar:993-1022 [FREE Full text] [doi:
+            10.5555/944919.944937]
+     10.    Mohammad SM, Turney PD. Crowdsourcing a word–emotion association lexicon. Comput Intell 2012 Sep 04;29(3):436-465.
+            [doi: 10.1111/j.1467-8640.2012.00460.x]
+     11.    Benjamini Y, Hochberg Y. Controlling the false discovery rate: A practical and powerful approach to multiple testing. J R
+            Stat Soc Series B Stat Methodo 2018 Dec 05;57(1):289-300. [doi: 10.1111/j.2517-6161.1995.tb02031.x]
+
+
+     https://www.jmir.org/2021/6/e27300                                                       J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 9
+                                                                                                            (page number not for citation purposes)
+XSL• FO
+RenderX
+
+
+     JOURNAL OF MEDICAL INTERNET RESEARCH                                                                                                     Guntuku et al
+
+     12.    Cleveland WS. Robust locally weighted regression and smoothing scatterplots. J Am Stat Assoc 1979;74(368):829-836.
+            [doi: 10.1080/01621459.1979.10481038]
+     13.    Purtle J, Henson RM, Carroll-Scott A, Kolker J, Joshi R, Roux AVD. US mayors' and health commissioners' opinions about
+            health disparities in their cities. Am J Public Health 2018 May;108(5):634-641. [doi: 10.2105/AJPH.2017.304298] [Medline:
+            29565663]
+     14.    Gollust SE, Vogel RI, Rothman A, Yzer M, Fowler EF, Nagler RH. Americans' perceptions of disparities in COVID-19
+            mortality: Results from a nationally-representative survey. Prev Med 2020 Dec;141:106278 [FREE Full text] [doi:
+            10.1016/j.ypmed.2020.106278] [Medline: 33027615]
+     15.    Hansen MA, Johansson I, Sadowski K, Blaszcynski J, Meyer S. The partisan impact on local government dissemination
+            of COVID-19 information: Assessing US county government websites. Can J Polit Sci 2020 Oct 12;54(1):150-162 [FREE
+            Full text] [doi: 10.1017/s0008423920000918]
+     16.    Bavel JJV, Baicker K, Boggio PS, Capraro V, Cichocka A, Cikara M, et al. Using social and behavioural science to support
+            COVID-19 pandemic response. Nat Hum Behav 2020 May;4(5):460-471. [doi: 10.1038/s41562-020-0884-z] [Medline:
+            32355299]
+
+     Abbreviations
+              HCV: hepatitis C virus
+              NRC: National Research Council
+              OR: odds ratio
+
+
+              Edited by C Basch; submitted 20.01.21; peer-reviewed by D Huang, A Weichselbraun; comments to author 19.02.21; revised version
+              received 25.02.21; accepted 16.04.21; published 03.06.21
+              Please cite as:
+              Guntuku SC, Purtle J, Meisel ZF, Merchant RM, Agarwal A
+              Partisan Differences in Twitter Language Among US Legislators During the COVID-19 Pandemic: Cross-sectional Study
+              J Med Internet Res 2021;23(6):e27300
+              URL: https://www.jmir.org/2021/6/e27300
+              doi: 10.2196/27300
+              PMID: 33939620
+
+
+     ©Sharath Chandra Guntuku, Jonathan Purtle, Zachary F Meisel, Raina M Merchant, Anish Agarwal. Originally published in the
+     Journal of Medical Internet Research (https://www.jmir.org), 03.06.2021. This is an open-access article distributed under the
+     terms of the Creative Commons Attribution License (https://creativecommons.org/licenses/by/4.0/), which permits unrestricted
+     use, distribution, and reproduction in any medium, provided the original work, first published in the Journal of Medical Internet
+     Research, is properly cited. The complete bibliographic information, a link to the original publication on https://www.jmir.org/,
+     as well as this copyright and license information must be included.
+
+
+     https://www.jmir.org/2021/6/e27300                                                                 J Med Internet Res 2021 | vol. 23 | iss. 6 | e27300 | p. 10
+                                                                                                                       (page number not for citation purposes)
+XSL• FO
+RenderX

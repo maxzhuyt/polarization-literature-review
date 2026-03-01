@@ -1,0 +1,638 @@
+Received February 7, 2020, accepted March 1, 2020, date of publication March 6, 2020, date of current version March 18, 2020.
+Digital Object Identifier 10.1109/ACCESS.2020.2978950
+
+
+Learning Political Polarization on Social
+Media Using Neural Networks
+LORIS BELCASTRO 1 , RICCARDO CANTINI 1 , FABRIZIO MAROZZO                                                        1,2 ,
+
+DOMENICO TALIA 1,2 AND PAOLO TRUNFIO 1,2
+1 DIMES - University of Calabria, 87036 Rende, Italy
+2 DtoK Lab Srl, 87036 Rende, Italy
+
+Corresponding author: Fabrizio Marozzo (fmarozzo@dimes.unical.it)
+This work was supported in part by the SMART Project, CUP J28C17000150006, funded by Regione Calabria under Grant POR
+FESR-FSE 2014-2020, and in part by the ASPIDE Project funded by the European Union’s Horizon 2020 Research and Innovation
+Programme under Grant 801091.
+
+
+  ABSTRACT Social media analysis is a fast growing research area aimed at extracting useful information
+  from social media platforms. This paper presents a methodology, called IOM-NN (Iterative Opinion Mining
+  using Neural Networks), for discovering the polarization of social media users during election campaigns
+  characterized by the competition of political factions. The methodology uses an automatic incremental
+  procedure based on feed-forward neural networks for analyzing the posts published by social media users.
+  Starting from a limited set of classification rules, created from a small subset of hashtags that are notoriously
+  in favor of specific factions, the methodology iteratively generates new classification rules. Such rules are
+  then used to determine the polarization of people towards a faction. The methodology has been assessed
+  on two case studies that analyze the polarization of a large number of Twitter users during the 2018 Italian
+  general election and 2016 US presidential election. The achieved results are very close to the real ones and
+  more accurate than the average of the opinion polls, revealing the high accuracy and effectiveness of the
+  proposed approach. Moreover, our approach has been compared to the most relevant techniques used in the
+  literature (sentiment analysis with NLP, adaptive sentiment analysis, emoji- and hashtag- based polarization)
+  by achieving the best accuracy in estimating the polarization of social media users.
+
+
+  INDEX TERMS Social media analysis, opinion mining, user polarization, neural networks, sentiment
+  analysis, political events.
+
+I. INTRODUCTION                                                                                opinion polls, since it is able to capture the opinion of
+Every day millions of people use social media and produce                                      a larger number of people more quickly and at a lower cost.
+huge amount of digital data that can be effectively exploited                                  In particular, IOM-NN uses an automatic incremental proceto extract valuable information concerning human dynamics                                      dure based on feed-forward neural networks for analyzing the
+and behaviors. Such data, commonly referred as Big Data,                                       posts published by social media users. Starting from a limited
+contains valuable information about user activities, interests,                                set of classification rules, created from a small subset of
+and behaviors, which makes it intrinsically suited to a very                                   hashtags that are notoriously in favor of specific factions, our
+large set of applications [1]. Big Social Data analysis is a sub-                              methodology iteratively generates new classification rules.
+field of Big Data analysis aimed at studying the interactions                                  A classification rule allows to determine if a post is in favor of
+of users on social media for extracting useful information,                                    a faction based on the words/hashtags it contains. Then, such
+such as moods or opinions on topics or events of interest [2].                                 rules are used to determine the polarization of social media
+   This paper presents a new methodology, namely IOM-                                          users - who wrote posts about the political event - towards a
+NN (Iterative Opinion Mining using Neural Networks), for                                       faction.
+estimating the polarization of public opinion on political                                        The proposed methodology has been applied to two case
+events characterized by the competition of factions or parties.                                studies for analyzing the polarization of a large number of
+It can considered as an alternative technique to traditional                                   Twitter users during the 2018 Italian general election and
+                                                                                               the 2016 US presidential election. The results obtained by
+   The associate editor coordinating the review of this manuscript and                         IOM-NN have been compared to opinion polls collected
+approving it for publication was Vlad Diaconita            .                                   before voting and the most relevant techniques used in
+
+                     This work is licensed under a Creative Commons Attribution 4.0 License. For more information, see https://creativecommons.org/licenses/by/4.0/
+VOLUME 8, 2020                                                                                                                                                        47177
+
+
+                                                             L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+the literature (i.e., sentiment analysis with NLP [3], adap-           through social media. As suggested in [9] and [10], the existtive sentiment analysis [4], emoji-based polarization [5],             ing techniques can be divided into three main categories:
+hashtag-based polarization [6]). The results achieved by               volume-based, sentiment-based and network-based. For each
+IOM-NN are very close to the real ones and more accu-                  category, the main proposed solutions and their differences
+rate than opinion polls and other relevant techniques, reveal-         with respect to our technique are discussed.
+ing the high accuracy and effectiveness of the proposed                   Volume-based techniques counts the number of mentions
+approach. For example, considering the 2018 Italian gen-               (e.g., posts, likes, retweets) related to a candidate/party for
+eral election and the four parties that received the highest           predicting the election results. In many cases, such technumber of votes (M5S, PD, LEGA, FI), IOM-NN achieved                   niques analyze social media data for predicting the outcome
+a mean average error (MAE) of 1.13 percentage points and               of an election. For example, Gaurav et al. [11] proposed a
+a log accuracy ratio (LogAcc) very close to 1. Opinion                 technique based on moving average aggregate probability,
+polls achieved a MAE of 3.74 percentage points and a                   which infers the results of an election by counting how
+LogAcc of 0.81. Compared with the other existing tech-                 many times a candidate’s name is mentioned in tweets.
+niques, IOM-NN turned out to be the most accurate in fore-             Tumasjan et al. [12] used micro-blogging data for undercasting the winning candidate. For example, considering the            standing how people express their political orientation,
+2016 US presidential election, IOM-NN has been able to                 showing a high closeness between the volume of tweets
+correctly identify the winning candidate in 8 out of 10 states,        mentioning a party and the election results. Burnap et al. [13]
+while the other techniques identified the winner in up to 6 out        analyzed the volume of mentions for calculating an overall
+of 10 states.                                                          score for each party.
+    Compared to existing techniques, our methodology                      Unlike volume-based techniques, which consider the numincludes the following innovative aspects: i) it allows to             ber of posts in favor of a faction, our technique takes into
+classify a much high number of users, which in our case                account the number of users supporting a faction. In this
+studies results to be ten times larger than that involved in           way, IOM-NN obtains more accurate results since it is not
+traditional opinion polls; ii) it measures the political consen-       influenced by users who published a large number of posts.
+sus of a faction considering the number of users supporting               Sentiment- or opinion-based techniques exploit natural
+it, without being influenced by users who published a large            language processing (NLP) or text mining algorithms for
+volume of posts; iii) it is able to process posts written in any       understanding the opinion of users towards political candilanguage without the need to use dictionaries or translation           dates or parties. Such techniques result to be more advanced
+systems; iv) at the best of our knowledge, it is the first             than the volume-based ones as they analyze the textual conmethodology in this research field that exploits an iterative          tent of posts to calculate a score.
+learning approach to increase the amount of classified data;              The techniques based on natural language processing
+v) collected data has been statistically validated for assessing       consider the hierarchical structure of a text to understand
+the representativeness of users involved in the analysis.              its meaning and sentiment. For example, Oikonomou and
+    This manuscript significantly extends a previous work [7]          Tjortjis [3] exploited Textblob,1 a Python library for natin the following main aspects: i) it provides an in-depth              ural language processing, to predict the outcome of USA
+definition of the steps of the methodology and a formal                presidential elections in three states of interest (i.e., Florida,
+description through pseudo-code of the algorithms used for             Ohio and North Carolina). Wong et al. [14] combined convex
+classifying the posts and predicting the users’ polarization           optimization techniques with SentiStrength,2 a lexicon-based
+(see Sections III-B and III-C); ii) it presents and discusses          sentiment analysis tool, for modeling the political behaviors
+a new case study on which the methodology has been applied             of users by analyzing tweets and retweets. Alashri et al. [15]
+and tested (see Section IV); iii) it includes the evaluation of        analyzed Facebook posts about the 2016 US presidential
+the statistical significance of the collected data for the two         election with CoreNLP3 [16], one of the most popular tool
+case studies; and iv) it reports more extensive and detailed           for natural language processing, to calculate a score for each
+tests and comparisons with relevant techniques used in the             political candidate.
+literature (see Section IV).                                              Techniques based on text mining discover the sentiment
+    The remainder of the paper is organized as follows.                of a text by considering only the words it contains without
+Section II discusses related work. Section III describes the           analyzing its structure. For example, El Alaoui et al. [4] proproposed methodology. Section IV presents the case studies             posed an adaptive sentiment analysis approach that generates
+and Section V concludes the paper.                                     dictionaries from tweets classified as positive/negative for the
+                                                                       different factions. Such dictionaries are then used to calculate
+II. RELATED WORK                                                       a score for each faction. Similarly, Marozzo and Bessi [6]
+In recent years, social media analysis is arousing great interest      calculated a polarization score for each faction by considering
+in various scientific fields, such as sociology, political science, linguistics, and computer science [8]. In this section,             1 https://textblob.readthedocs.io/
+we focus on the main techniques and algorithms proposed                   2 http://sentistrength.wlv.ac.uk/
+for measuring public opinion and predicting election results              3 https://stanfordnlp.github.io/CoreNLP/
+
+
+47178                                                                                                                                  VOLUME 8, 2020
+
+
+L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+                 FIGURE 1. Execution flow of IOM-NN.
+
+
+only the hashtags in tweets labeled as positive. Chin et al. [5]                           notoriously in favor of specific factions, the methodolexploited the emojis contained in a post to determine its                                  ogy iteratively generates new classification rules.
+sentiment (e.g., positive or negative). Other studies exploited                          • Data imbalance. To avoid the learning process being
+machine learning techniques for discovering the political ori-                             biased towards majority classes, a random underentation of users, such as classification models based on the                              sampling approach is used to balance the dataset at each
+Naïve Bayes algorithm [17] or logistic regression [18].                                    training phase (see Algorithm 1).
+   IOM-NN is a text mining technique that uses bag-of-words                              • Data reliability. The statistical significance of the coland neural networks to classify posts, and consequently users                              lected data has been evaluated for assessing the repwho wrote such posts about a political event. Compared to                                  resentativeness of users, i.e., understanding whether
+existing text mining techniques, its iterative approach allows                             they can be considered voters in the political event
+to greatly increase the number of classified posts, while the                              under analysis.
+use of neural networks permit to automatically discover classification rules with a high level of accuracy. With regard to                        III. PROPOSED METHODOLOGY (IOM-NN)
+NLP techniques, it is worth noting that their usability and                          As mentioned in Section I, IOM-NN is a methodology for
+accuracy depend on the specific tool used and the supported                          estimating the polarization of public opinion during a politlanguages. In fact, the most popular tools for natural language                      ical event, which is characterized by the rivalry of different
+processing (e.g., CoreNLP) support sentiment analysis only                           factions. As shown in Figure 1, the proposed methodology
+for English texts. Instead IOM-NN classifies users by ana-                           consists of three main steps:
+lyzing the words/hashtags contained in the posts that can be                            1) Collection of posts: posts are collected by using a set
+written in any language, without using dictionaries or trans-                               of keywords related to the selected political event (see
+lation systems.                                                                             Section III-A).
+   Network-based techniques analyze the network structure                               2) Classification of posts: the collected posts are then clasof social media users, which support or discuss about cer-                                  sified by using an incremental procedure implemented
+tain candidates or parties, for understanding the dynamics of                               through neural networks (see Section III-B).
+public opinion. Such analysis can provide useful insights for                           3) Polarization of users: the classified posts are analyzed
+estimating the standing of political events or identifying the                              for determining the polarization of users towards a
+opinion leaders on a social media platform [19]. In fact, some                              faction (see Section III-C).
+studies have demonstrated a relation between the centrality
+of political candidates on social networks and their electoral
+                                                                                     TABLE 1. Meaning of the most important symbols used in the proposed
+consensus [20], [21]. However, it should be noticed that such                        methodology.
+techniques require the use of specific data that represents the
+social network structure, which is often visualized through
+graphs or sociograms. In our study, we collected and analyzed
+tweets containing specific keywords or hashtags on the political event under analysis, without capturing the structure of
+the related social network. For this reason, in this paper we
+cannot make a comparison with network-based techniques.
+   Some studies highlighted the issues related to the use of
+social media data for predicting the outcome of political
+events, which are language barrier, misclassification, data
+imbalance and reliability [10]. During the design of IOM-NN
+we faced such issues by proposing the following solutions:
+   • Language barrier. Our technique classifies users by
+      analyzing the words/hashtags contained in their posts,                            For each step, a formal description and practical examples
+      regardless of the language used to write them.                                 are provided in the following sections. For the sake of clarity,
+   • Misclassification. Starting from a limited set of classifi-                     Table 1 reports the meaning of the main symbols used to
+      cation rules, created from a small set of hashtags that are                    describe the different steps.
+
+VOLUME 8, 2020                                                                                                                                     47179
+
+
+                                                                  L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+A. COLLECTION OF POSTS
+A political event E is characterized by the rivalry of different
+factions F = {f1 , f2 , . . . , fn }. Examples of political events and
+relative factions are: i) municipal election, in which a faction
+supports a mayor candidate; ii) parliament election, in which
+a faction supports a party; iii) presidential election, in which
+a faction supports a presidential candidate. The posts are                  FIGURE 2. Example of how the collection of posts step works.
+collected by using the keywords that people commonly use
+to refer the political event E on social media. Such keywords
+                                                                            Algorithm 1 Classification of the Posts
+K can be divided in two groups:
+                                                                               Input : Set of posts P, set of positive faction keyword KF⊕ ,
+   - Kcontext , which contains generic keywords that can be                              threshold th, minimum increment eps, maximum
+      associated to E without referring to any specific faction                          number of iterations maxiters
+      in F.                                                                    Output: Classified posts C
+   - KF⊕ = Kf⊕1 ∪ . . . ∪ Kfn⊕ , where Kfi⊕ contains the keywords            1 C ← ∅;
+                                                                                                              ⊕
+                                                                             2 M ← textualModel.build(KF );
+      used for supporting fi ∈ F (positive faction keywords).
+                                                                             3 for p ∈ P do
+   The keywords in K are given as input to public APIs                       4     vb ← classify(M 0 , p);
+provided by social media platforms, which permit to col-                     5     if sum(vb ) = 1 then
+lect posts containing one or more keywords. Posts are not                    6          f ← argmax(v);
+collected in real time, but downloaded at a given time after                 7          C 0 ← C 0 ∪ hp, f i;
+their publication (e.g., 24 hours). In this way, we are able
+                                                                             8 C ← C 0;
+to get some statistics related to the popularity of a post                   9 N 0 ← P \ C 0;
+(e.g., number of shares, number of likes). Since data collec-               10 for i = 1; i <= maxiters ; i + + do
+tion is usually a continuous process, new keywords can be dis-              11      C i ← ∅;
+covered and integrated in K during the collection procedure.                12      M i ← neuralNetwork.train(C 0 ∪ . . . ∪ C i−1 );
+It is important to highlight that obtaining a representative                13      for p ∈ N i−1 do
+collection of posts depends on two factors: i) the quality and              14          vp ← classify(M i , p);
+the number of keywords used; ii) the amount of data that                    15          if max(vp ) > th then
+                                                                            16               f ← argmax(v);
+can be downloaded from social media. Regarding the latter
+                                                                            17               C i ← C i ∪ hp, f i;
+factor, it is increasingly difficult to obtain complete data from
+social media platforms due to the restrictions introduced for               18       C ← C ∪ C i;
+protecting the privacy of users.                                            19       N i ← N i−1 \ C i ;
+                                                                                           |C i |             i
+   The collected posts are pre-processed before the analysis.               20       if            < eps ∨ |Ci−1| > 1 − eps then
+                                                                                          |N i−1 |        |N |
+In particular, they are modified and filtered as follows:                   21             break
+   • The text of posts is normalized by transforming it to
+                                                                            22   return C
+      lowercase and replacing accented characters with regular ones (e.g., IOVOTOSI or iovotosí → iovotosi).
+   • Words are stemmed for allowing matches with declined
+      forms (e.g., vote or votes or voted → vot).                           B. CLASSIFICATION OF POSTS
+   • Stop words are removed from text by using preset lists.                Algorithm 1 shows the pseudo-code used for classifying the
+   • All the posts written in a language different from the                 posts. The input is composed of: the posts P generated in
+      one(s) spoken in the nation(s) hosting the considered                 the previous step, the set of positive faction keywords KF⊕ ,
+      political event are filtered out.                                     the maximum number of iterations maxiters , the minimum
+   The output of this step is a collection of posts P. Figure 2             increment of the classified posts eps at each iteration, and a
+shows an example of how posts are collected using keywords                  threshold th. The output is a collection of posts C that have
+about the 2016 US presidential election. Some of these key-                 been classified in favor of a faction.
+words are generic (e.g., election2016), and others are used to                 The algorithm is divided in two parts. The fist part
+support a specific candidate (e.g., #imwithher for Clinton and              (lines 1-9) performs the preliminary iteration (iteration 0).
+#votetrump for Trump).                                                      At this iteration, IOM-NN exploits the set of positive faction
+   Before the analysis, the statistical significance of the col-            keywords (KF⊕ ) for classifying a part of the posts. Specifilected data has to be evaluated. We studied the age, gender                 cally, it classifies a post in favor of a faction if it contains
+and geographical distribution of social media users who gen-                only positive keywords for such faction. In general, at the
+erated such data. The aim is to assess the users’ represen-                 end of this iteration, a small amount of posts are classified,
+tativeness by understanding whether they can be considered                  since not all users use keywords in KF⊕ for declaring their
+voters of the political event under analysis (more details in               support to factions. The second part (lines 10-21) iteratively
+Sections IV-A.1 and IV-B).                                                  generates new classification rules for classifying other posts.
+
+47180                                                                                                                                       VOLUME 8, 2020
+
+
+L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+At each iteration, such rules are inferred by exploiting the
+posts that have been classified at the previous iterations. In the
+following of this section, we discuss in detail the code of
+Algorithm 1.
+   The algorithm initializes an empty set C 0 for storing the
+classified posts and builds a classification model M 0 based
+on the positive faction keywords KF⊕ (lines 1-2). The model
+defines a set of rules for calculating a binary vector vb ,
+where vb [i] is 1 if p contains at least one keyword from Kfi⊕ ,
+0 otherwise. The algorithm iterates (lines 3-7) on each post p
+in P performing the following operations:
+   - classifies p using M 0 , which produces a vector vb
+      (line 4);
+   - if p is in favor of a single faction f (lines 5-6), the classified post (i.e., a pair hp, f i) is added to C 0 (line 7).                   FIGURE 3. Example of the classification of posts algorithm terminating in
+                                                                                     three iterations.
+   At the end of iteration 0, the set of classified posts C 0
+is stored in C (line 8). The set of unclassified posts (N 0 )
+is obtained as the difference between P and C 0 (lines 9).                           posts (N 0 ) respectively. At iteration 1, a new model M 1 is
+It is important to note that the number of keywords has                              trained using C 0 and is used to classify the unclassified posts
+to be balanced among the different factions for avoiding a                           generated at the previous iteration (N 0 ). The classification
+classification process biased towards a faction.                                     process splits N 0 in two new subsets: C 1 for classified posts
+   The second part of the algorithm (lines 10-21) performs                           and N 1 for unclassified ones. Then, at the i − th iteration,
+at most maxiters iterations. Specifically, at the i-th iteration,                    the model M i is trained using C 0 ∪ . . . ∪ C i−1 . For example,
+the following operations are performed:                                              at iteration 2 the model M 2 is trained using C 0 ∪ C 1 . The
+   - It initializes an empty set C i for storing the classified                      process is repeated in subsequent iterations until the ratio
+      posts at i-th iteration (line 11).                                             between the size of C i and the size of N i−1 is lower than
+   - It builds a classification model M i by training a neural                       eps or greater that 1 − eps. At the end, the whole set of
+      network using the classified posts at previous iterations                      classified posts is obtained as the union of the C i produced at
+      C 0 ∪ . . . ∪ C i−1 (lines 12). The training set is balanced                   each iteration, while the remaining posts (N 2 ) are classified
+      by using a random under-sampling approach to avoid a                           as neutrals.
+      learning process biased towards majority classes.                                 Table 2 shows an example of post classification on ten
+   - For each unclassified post at the previous iteration N i−1                      tweets about the 2016 US presidential election. The input of
+      (line 13), the algorithm classifies p using M i , which                        the algorithm is composed of a set of tweets regarding the
+      produces a vector of probabilities vp (line 14), where                         political event and a set of faction keywords KF⊕ :
+      vp [i] is the probability that p supports fi . If the maximum                          ⊕
+                                                                                        • KClinton = {#voteHillary, #imwithher, #strongertogether,
+      value of vp is greater than the given threshold th, the post
+                                                                                           #hillary2016}
+      is assigned to the most likely faction f (lines 15-16) and                             ⊕
+                                                                                        • KTrump = {#voteTrump, #maga, #americafirst, #wakeuadded to C i (line 17).
+                                                                                           pamerica}
+   - The set of classified posts C i is added to C (line 18),
+      and the unclassified posts N i are obtained as difference                         At iteration 0, KF⊕ is used to generate M 0 , which allows to
+      between N i−1 and C i (line 19).                                               classify 5 tweets. At iteration 1, classified tweets at iteration
+   - If the ratio between the size of C i and the size of N i−1                      0 are used to train M 1 . This model generates new classificais lower than eps or greater that 1 − eps, then it breaks                      tion rules, such as:
+      the loop (lines 20-21).                                                           • since Donald Trump has been accused of sexual assault
+   Finally, the algorithm returns the dictionary C containing                              by some women, tweets with keywords #sex and
+all the posts classified at the various iterations (line 22). Since                        #woman are classified in favor of Clinton;
+the parameters of the neural network are randomly initialized,                          • similarly, since Hillary Clinton contravenes the federal
+IOM-NN repeats the post classification phase with a new                                    laws by using personal email account for government
+random seed for nseeds times, in order to reduce the risk of                               business, tweets with keywords email and #hillary are
+getting stuck in local minima or saddle points.                                            classified in favor of Trump.
+   Figure 3 shows how the post classification algorithm                                 At iteration 2, the algorithm learns other classification rules
+(Algorithm 1) works starting from a set of posts P. At the                           about immigration, a topic on which the two candidates had
+iteration 0, the classification model M 0 is created using the                       an opposite opinion. The iterative learning process ends when
+faction keywords KF . This model is used to classify P, which                        the algorithm is no longer able to generate new classification
+generates two subsets for classified (C 0 ) and unclassified                         rules and therefore to classify new tweets.
+
+
+VOLUME 8, 2020                                                                                                                                         47181
+
+
+                                                                   L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+TABLE 2. Example of how the classification of posts algorithm works.
+
+
+Algorithm 2 Prediction of User Polarization                                       users who published a number of posts below a given
+   Input : Classified posts C, filtering function filter, filtering               threshold are skipped.
+               function parameters parf , polarization function                 - Using the classified posts Pu , it computes vus a vector
+               polarize, polarization function parameters parp .                  containing the score of user u for each faction (line 6).
+   Output: Classified users U , faction score S
+ 1 CU ← aggregateByUser(C);
+                                                                                  The score vector is calculated by using the function
+ 2 U ← ∅;                                                                         polarize.
+ 3 S ← ∅;                                                                       - It adds the pair hu, vs i to U (line 7).
+ 4 for hu, Pu i ∈ CU do                                                         Then, the algorithm calculates the overall faction score
+ 5      if filter(hu, Pu i, parf ) then                                      S as the normalized sum of the user vector scores hu, vus i
+ 6            vus ← polarize(Pu , parp );
+ 7            U ← U ∪ hu, vus i;                                             (lines 8-10). Finally, the two output are returned (line 11).
+                                                                                The filter and polarize functions, used for analyzing the
+ 8   for hu, vus i ∈ U do                                                    data collected for our case studies (see Section IV), have been
+ 9        S ← S + vus ;                                                      configured as follows. Specifically, a user u is considered
+10   S ← S/sum(S);                                                           only if he/she fulfills the following criteria: i) u posted at least
+11   return U , S                                                            minPosts on the political event of interest; ii) it exists a faction
+                                                                             f for which u has published more than 2/3 of his/her posts.
+                                                                             For each user u, the polarize function returns a vector score
+                                                                             as follows: the percentage of posts written by u in favor of
+C. POLARIZATION OF USERS
+                                                                             preferred faction f , 0 for the other factions.
+Algorithm 2 shows the pseudo-code of the algorithm used for
+determining the polarization of users. The input is a collection
+of classified posts C (i.e., output of Algorithm 1), a filtering
+function filter and its parameters parf , and a polarization
+function polarize and its parameters parp . The output is composed of a collection of classified users U and a faction score
+(S) containing the polarization percentages of each faction.
+   As first step, the classified posts are aggregated by user to
+produce a dictionary (CU ), which contains the list of classified posts Pu for each user u (line 1). Two empty variables are
+initialized for storing the output (lines 2-3).
+                                                                             FIGURE 4. Example of how the user polarization algorithm works.
+   On each pair hu, Pu i of CU , the algorithm performs the
+following operations (lines 4-7):                                              Figure 4 shows how the user polarization algorithm
+     - It filters out all the pairs that do not match the criteria           (Algorithm 2) works on the classified posts shown in Table 2.
+       defined by the filter function (line 5). For example,                 For each user, the posts if favor of Clinton and Trump
+
+47182                                                                                                                                        VOLUME 8, 2020
+
+
+L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+are counted. Users who fulfill the criteria of filter function are                   coalition as the most voted, with about 37% of votes, while
+considered and added to the set of classified users U . Then U                       the most voted list was the Movimento 5 Stelle, which
+is combined and normalized to obtain the vector S containing                         received over 32% of votes. The electorate was composed
+the overall polarization percentages.                                                of 50,782,650 voters for the Chamber of Deputies and
+                                                                                     46,663,202 for the Senate,4 with a turnout of about 73%,
+IV. CASE STUDIES                                                                     the lowest in Italian republican history.
+In this section we describe and analyze two case studies:                               In order to assess the validity of the proposed methodology,
+the 2018 Italian general election and 2016 US presiden-                              the analysis we carried out focused on the four most successtial election. In both case studies, for each faction fi we                          ful political factions, in decreasing order of consensus: M5S
+defined three set of keywords Kfi⊕ , Kfi and Kfi} that are                          (Movimento 5 Stelle), PD (Partito Democratico), LEGA, FI
+respectively positive, negative and neutral keywords for fac-                        (Forza Italia). In the following, we show how the classification fi . For example, for the Movimento 5 Stelle (M 5S)                             tion model has been trained and discuss the main achieved
+                                                    ⊕
+faction in the 2018 Italian general election, KM      5S contains                    results.
+keywords used to clearly support M 5S party (e.g., #iovo-
+            
+toM5S), KM    5S contains keywords to speak negatively about                         1) MODELS TRAINING AND ITERATION-LEVEL RESULTS
+                              }
+M 5S (e.g., #maiM5S), KM       5S contains neutral keywords for                      IOM-NN has been used to classify 60,782 tweets posted by
+M 5S (e.g., m5s or movimento5stelle).                                                21,883 users from February 1, 2018 to March 3, 2018 (the
+   As described in Section III, IOM-NN exploits only positive                        day before the election). By following the approach described
+faction keywords (Kf⊕    i
+                           ) for classifying posts and then for                      in [6] we can assess that collected data is statistically signifidetermining the polarization of users. For evaluating the accu-                      cant for the event under analysis, since:
+racy of IOM-NN, we carried out an extensive comparison                                  • All the tweets under analysis have been written in Italian,
+with the most relevant techniques used in literature:                                     that means they have the lang field set to it (Italian). With
+   1) Sentiment analysis with NLP [3], [15]. For each post,                               very few exceptions, the Italian language is used only by
+       we used CoreNLP [16] for calculating a sentiment                                   Italians people who reside in Italy or abroad.5
+       score that ranges from 0 (very negative) to 4 (very                              • 92% of the users who set a location in their profile,
+       positive). The neutral keywords (Kfi} ) are then used for                          specified a region in Italy. Moreover, there is a strong
+       grouping posts and calculating an overall score for each                           correlation between the number of users that can be
+       faction.                                                                           assigned to a region and the number of people actually
+   2) Adaptive sentiment analysis [4]. Starting from the                                  living in that region according to official statistics (the
+       positive and negative keywords of each faction                                     Pearson correlation coefficient is equal to 0.8 with a
+       (Kfi⊕ and Kfi ), this technique generates two word-                               confidence interval of 99%).
+       polarity dictionaries, which are built from a set of posts                       • About 98% of the Italian social media users are adults
+       containing such positive and negative keywords. Also                               and equally divided by gender (51.2 females and
+       in this case, a score for each faction is returned.                                48.8 males)6 .
+   3) Emoji-based polarization [5]. This technique groups                               IOM-NN exploits the following positive faction keywords
+       the posts of each faction by using keywords (Kfi} ), then                     for analyzing the collected data:
+       classifies their sentiment by using emojis and returns a                              ⊕
+                                                                                        • KM 5S = {#iovotom5s,#m5salgoverno, #dimaiopresiscore for each faction.
+                                                                                          dente}
+   4) Hashtag-based polarization [6]. The posts are classi-
+                                                                                              ⊕
+       fied as in favor of a given faction based on the positive                         •   KPD = {#sceglipd,#iovotopd,#pdvinci}
+       faction keywords (Kfi⊕ ). Then the posts are aggregated                           •
+                                                                                               ⊕
+                                                                                             KLEGA   = {#4marzovotolega,#iovotolega, #salviniby users and the polarization of each user is computed.                               premier}
+   To allow a direct comparison with the real percentages,                               •
+                                                                                             ⊕
+                                                                                           KFI  = {#berlusconipresidente,#votoforzaitalia, #4marthe results obtained by the different techniques have been                                 zovotoforzaitalia}
+normalized with respect to the sum of the real ones.
+                                                                                        The threshold th and the minimum increment eps have
+                                                                                     been set to 0.9 and 5% respectively. In our test, the post
+A. 2018 ITALIAN GENERAL ELECTION
+                                                                                     classification algorithm terminated in 4 iterations by annoHere we discuss the case study carried out to analyze the
+                                                                                     tating 23,997 tweets, which represents about 39.5% of the
+polarization of a large number of Twitter users during the
+                                                                                     total. Table 3 shows the obtained results at each iteration by
+2018 Italian general election. Twitter users have been classispecifying the number of classified and unclassified tweets,
+fied using the polarization rules extracted from our methodol-                                      i
+                                                                                     the ratio |N|Ci−1| | and the accuracy of the neural network.
+ogy and the results have been compared to: i) official results;
+ii) main opinion polls collected before voting; and iii) other                          4 http://www.interno.gov.it/it/notizie/elezioni-2018-come-vota-corpotechniques present in the literature.                                                elettorale-tessera-elettorale (in Italian)
+   Italians voted to elect 630 deputies and 315 senators of                             5 https://en.wikipedia.org/wiki/Italian_language
+the XVIII legislature: the results decreed the center-right                             6 https://wearesocial.com/it/digital-2019-italia
+
+
+VOLUME 8, 2020                                                                                                                                            47183
+
+
+                                                                      L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+TABLE 3. Partial results for each iteration achieved by IOM-NN (2018 Italian general election).
+
+
+TABLE 4. Obtained percentages and accuracy evaluation on the 2018 Italian general election dataset.
+
+
+2) POLARIZATION OF USERS AND FINAL RESULTS
+The algorithm described in Section III-C has been used for
+analyzing the users who have written the 23,997 classified
+tweets so as to determine their polarization degree towards
+the considered factions. The first three rows of Table 4
+shows a comparison between the official results, the average
+of the latest polls and the percentages obtained by IOMNN. We evaluated the accuracy through different statistical indexes, comparing the obtained results with the latest
+opinion polls published before the elections. Considering the
+four most supported parties, our methodology obtained the
+following approval percentages: M5S 31.64%, PD 19.89%,
+LEGA 18.45%, and FI 12.80%. These results are extremely
+close to the real ones (i.e., M5S 32.68%, PD 18.72%, LEGA
+17.37%, FI 14.01%), even more than the average of polls.                        FIGURE 5. Comparison among real percentages, opinions polls and
+                                                                                IOM-NN results (2018 Italian general election).
+In addition, the obtained results are characterized by very
+good values of log accuracy ratio, as well as a negligible
+value of mean percentage and absolute errors. In particu-                               
+                                                                                   •   KLEGA ={#maiconsalvini, #iononvotolega} and
+lar, our methodology achieved a mean average error (MAE)
+                                                                                        }
+of 1.13 percentage points and a log accuracy ratio (LogAcc)                            KLEGA ={lega, salvini, leganord}
+very close to 1. On the other hand, opinion polls achieved a                            
+                                                                                   •   KFI ={#maipiuberlusconi, #stopberlusconi} and
+MAE of 3.74 percentage points and a LogAcc of 0.81, which                               }
+                                                                                      KFI  = {forzaitalia, berlusconi}
+confirm the ability of the proposed methodology to foreCompared to such techniques, IOM-NN turned out to be
+cast election results. Figure 5 shows an info-graphic about
+                                                                                the most accurate in estimating the voting percentages, outthe comparison of the real percentages, opinions polls and
+                                                                                performing the competitors in terms of achieved LogAcc,
+obtained results.
+                                                                                MAPE and MAE. Compared to the emoji- and hashtagTable 4 also presents the results obtained by the other
+                                                                                based techniques, IOM-NN is able to classify a much greater
+techniques in the literature (rows 4-7). These techniques have
+                                                                                number of tweets and users, which ensures greater statistical
+been configured with the positive faction hashtags used by
+                  ⊕      ⊕     ⊕          ⊕                                     representativeness of data and robustness of results.
+IOM-NN (see KM     5S , KPD , KLEGA and KFI ) and the following                    It should be noticed that, differently from other techniques
+negative and neutral faction keywords:
+                                                                               (i.e., sentiment analysis with NLP and adaptive sentiment
+   • KM 5S ={#nom5stelle, #rimborsopolim5s, #maim5s}
+            }                                                                   analysis), IOM-NN is not volume-based. This means that,
+      and KM  5S = {m5s, movimento5stelle, dimaio}                              since it gives the same weight to each user regardless of
+        
+   • KPD ={#nonvotopd, #maipd, #bastapd} and                                    the number of published posts, the results obtained are not
+       }
+      KPD = {pd, partitodemocratico, renzi}                                     influenced by users who published a large number of posts.
+
+47184                                                                                                                                           VOLUME 8, 2020
+
+
+L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+TABLE 5. Obtained percentages and accuracy evaluation on the 2016 US presidential election dataset. For each technique, when the winning candidate is
+correctly identified, the percentage is written in bold.
+
+
+Since CoreNLP provides a well-trained model for sentiment                                About 94% of the social media users in USA are adults
+                                                                                         •
+analysis only for the English language, all the tweets down-                             (at least 18 years old) and almost equally divided by
+loaded in Italian have been translated in English before being                           gender (42.7% females and 57.3% males).7
+processed.                                                                             The following keywords have been used in our experiments:
+B. 2016 US PRESIDENTIAL ELECTION                                                            ⊕
+                                                                                       • KClinton = {#voteHillary, #imwithher, #strongertogether,
+After the presentation of the Italian use case, here we discuss                          #hillary2016},
+the analysis we carried out on the 2016 US presidential elec-                                 
+                                                                                         •   KClinton = {#neverhillary, #lockherup}
+tion, which was characterized by the rivalry between Hillary                                  }
+Clinton and Donald Trump.                                                                •   KClinton = {clinton, hillary, democrats, dems}
+                                                                                               ⊕
+   The analysis has been performed on data collected for ten                             •   KTrump = {#voteTrump, #maga, #americafirst, #wakeuUS Swing States: Colorado, Florida, Iowa, Michigan, Ohio,                                    pamerica}
+New Hampshire, North Carolina, Pennsylvania, Virginia, and                               •
+                                                                                              
+                                                                                             KTrump = {#nevertrump, #dumpfortrump}
+Wisconsin. Swing states are those characterized by greater                                   }
+political uncertainty, in which neither major political party                            •KTrump   = {trump, donald, republicans, gop}
+holds a lock on the outcome of presidential elections. These                            Table 5 shows the results obtained using IOM-NN in comstates are considered of strategic importance, as their votes                        parison with the real voting percentages, the main opinion
+have a high probability of being the deciding factor in a                            polls, and the other related techniques. For each state in the
+presidential election. For each state, data have been collected                      table, we reported the results obtained by the two candithrough the standard Search Twitter API, which allows for                            dates, where ‘‘C’’ stands for Clinton and ‘‘T’’ for Trump.
+collecting tweets published in a given area or place. Overall                        In addition, for the winning candidate that has been correctly
+about 2.5 million of tweets, posted by 521,291 users, have                           identified, the value is written in bold. As shown in Figure 6,
+been collected from October 10, 2016 to November 7, 2016                             IOM-NN is able to correctly identify the winning candidate
+(the day before the election). From such data we filtered                            in 8 out of 10 cases, outperforming the opinion polls that
+out all the tweets posted by users with a not defined loca-                          correctly classifies 6 out 10 states.
+tion or with a location that does not belong to any of the                              Also in comparison with the other techniques, IOM-NN
+considered states. Filtered data (818,403 tweets posted by                           turned out to be the most accurate in discovering the win141,959 users) are statistically significant for the event under                     ning candidate. In fact, emoji- and hashtag-based techniques
+analysis, since:                                                                     classified a much smaller amount of tweets and correctly
+   • All the tweets under analysis have the lang field set to
+                                                                                     identified the winning candidate in 6 and 3 cases respectively.
+      en (English).                                                                  The results of the adaptive sentiment analysis were very
+   • For each state, there is a strong correlation between the
+                                                                                     poor, since it correctly identified the winning candidate in
+      number of analyzed users and the number of people                              only one case, while sentiment analysis with NLP produced
+      actually living in that state according to official statistics                 right predictions in 4 out 10 cases. Compared to IOM-NN,
+      (the Pearson correlation coefficient is equal to 0.95 with                        7 https://www.statista.com/statistics/376128/facebook-global-user-agea confidence interval of 99%).                                                 distribution/
+
+VOLUME 8, 2020                                                                                                                                            47185
+
+
+                                                                                   L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+        FIGURE 6. Comparison among the real winning candidate and that identified by IOM-NN and opinions polls. The Democratic Donkey
+        symbolizes the party of Hillary Clinton, while the Republican Elephant that of Donald Trump.
+
+
+some techniques (i.e., adaptive sentiment analysis and                                        [2] D. Talia, P. Trunfio, and F. Marozzo, Data Analysis in the Cloud. Amsteropinion polls) achieved slightly better results in terms of log                                   dam, The Netherlands: Elsevier, 2015.
+                                                                                              [3] L. Oikonomou and C. Tjortjis, ‘‘A method for predicting the winner of
+accuracy ratio, MAPE, and MAE, because their predictions                                          the USA presidential elections using data extracted from Twitter,’’ in Proc.
+are quite balanced by assigning almost the same score to the                                      South-Eastern Eur. Des. Autom., Comput. Eng., Comput. Netw. Soc. Media
+two candidates in the different states.                                                           Conf. (SEEDA-CECNSM), Sep. 2018, pp. 1–8.
+                                                                                              [4] I. El Alaoui, Y. Gahi, R. Messoussi, Y. Chaabi, A. Todoskoff, and A. Kobi,
+                                                                                                  ‘‘A novel adaptable approach for sentiment analysis on big social data,’’
+V. CONCLUSION                                                                                     J. Big Data, vol. 5, no. 1, p. 12, Dec. 2018.
+This paper proposes a methodology, named IOM-NN, for                                          [5] D. Chin, A. Zappone, and J. Zhao, ‘‘Analyzing Twitter sentiment of the
+                                                                                                  2016 presidential candidates,’’ Amer. J. Sci. Res., vol. 1, pp. 128–137,
+estimating the polarization of public opinion regarding                                           Jan. 2016.
+political events characterized by the competition of fac-                                     [6] F. Marozzo and A. Bessi, ‘‘Analyzing polarization of social media users
+tions or parties. The designed methodology uses an auto-                                          and news sites during political campaigns,’’ Social Netw. Anal. Mining,
+                                                                                                  vol. 8, no. 1, p. 1, Dec. 2018.
+matic incremental procedure based on feed-forward neural
+                                                                                              [7] L. Belcastro, R. Cantini, F. Marozzo, D. Talia, and P. Trunfio, ‘‘Discovering
+networks for analyzing the posts published by social media                                        political polarization on social media: A case study,’’ in Proc. 15th Int.
+users. IOM-NN can be considered an alternative technique to                                       Conf. Semantics, Knowl. Grids, Guangzhou, China, 2019, pp. 1–8.
+traditional opinion polls since it is able to capture the opinion                             [8] M. Bilal, A. Gani, M. I. U. Lali, M. Marjani, and N. Malik, ‘‘Social
+                                                                                                  profiling: A review, taxonomy, and challenges,’’ Cyberpsychology, Behav.,
+of a larger number of people more quickly and at a lower                                          Social Netw., vol. 22, no. 7, pp. 433–450, Jul. 2019.
+cost. In addition, it can capture the public opinion for topics                               [9] K. Jaidka, S. Ahmed, M. Skoric, and M. Hilbert, ‘‘Predicting elections from
+perceived as embarrassing or offensive, for which people are                                      social media: A three-country, three-method comparative study,’’ Asian
+                                                                                                  J. Commun., vol. 29, no. 3, pp. 252–273, May 2019.
+reluctant to declare their true opinion during the polls.
+                                                                                             [10] M. Bilal, A. Gani, M. Marjani, and N. Malik, ‘‘Predicting elections:
+   IOM-NN has been validated through two case studies that                                        Social media data and techniques,’’ in Proc. Int. Conf. Eng. Emerg. Techanalyzed the polarization of a large number of Twitter users                                      nol. (ICEET), Feb. 2019, pp. 1–6.
+during the 2018 Italian general election and 2016 US pres-                                   [11] M. Gaurav, A. Srivastava, A. Kumar, and S. Miller, ‘‘Leveraging candidate
+                                                                                                  popularity on Twitter to predict election outcome,’’ in Proc. 7th Workshop
+idential election. The achieved results are very close to the                                     Social Netw. Mining Anal. (SNAKDD). New York, NY, USA: ACM, 2013,
+real ones and more accurate than the average of the opinion                                       p. 7.
+polls, thus revealing the high accuracy and effectiveness of                                 [12] A. Tumasjan, T. O. Sprenger, P. G. Sandner, and I. M. Welpe, ‘‘Predicting elections with twitter: What 140 characters reveal about political
+the proposed approach. Moreover, our approach has been                                            sentiment,’’ in Proc. 4th Int. AAAI Conf. Weblogs Social Media, 2010,
+compared to the most relevant techniques used in the liter-                                       pp. 178–185.
+ature (sentiment analysis with NLP, adaptive sentiment anal-                                 [13] P. Burnap, R. Gibson, L. Sloan, R. Southern, and M. Williams, ‘‘140
+ysis, emoji- and hashtag- based polarization). Results show                                       characters to victory?: Using Twitter to predict the UK 2015 general
+                                                                                                  election,’’ Electoral Stud., vol. 41, pp. 230–233, Mar. 2016.
+that IOM-NN achieved the best accuracy in estimating the                                     [14] F. M. F. Wong, C. W. Tan, S. Sen, and M. Chiang, ‘‘Quantifying political
+polarization of social media users.                                                               leaning from tweets, retweets, and retweeters,’’ IEEE Trans. Knowl. Data
+   As future work, IOM-NN can be adapted to pro-                                                  Eng., vol. 28, no. 8, pp. 2158–2172, Aug. 2016.
+                                                                                             [15] S. Alashri, S. S. Kandala, V. Bajaj, R. Ravi, K. L. Smith, and
+cess real-time data, also coming from different sources                                           K. C. Desouza, ‘‘An analysis of sentiments on Facebook during the 2016
+(e.g, e-commerce and news sites blogs). Furthermore, its                                          U.S. Presidential election,’’ in Proc. IEEE/ACM Int. Conf. Adv. Social
+effectiveness can be evaluated also in other application                                          Netw. Anal. Mining (ASONAM), Aug. 2016, pp. 795–802.
+domains, such as reputation evaluation of companies and                                      [16] C. Manning, M. Surdeanu, J. Bauer, J. Finkel, S. Bethard, and
+                                                                                                  D. McClosky, ‘‘The stanford CoreNLP natural language processing
+competitive product analysis.                                                                     toolkit,’’ in Proc. 52nd Annu. Meeting Assoc. Comput. Linguistics, Syst.
+                                                                                                  Demonstrations, 2014, pp. 55–60.
+                                                                                             [17] M. K. Olorunnimbe and H. L. Viktor, ‘‘Tweets as a vote: Exploring political
+REFERENCES                                                                                        sentiments on twitter for opinion mining,’’ in Foundations of Intelligent
+ [1] L. Belcastro, F. Marozzo, and D. Talia, ‘‘Programming models and systems                     Systems, F. Esposito, O. Pivert, M.-S. Hacid, Z. W. Rás, and S. Ferilli,
+     for big data analysis,’’ Int. J. Parallel, Emergent Distrib. Syst., vol. 34, no. 6,          Eds. Cham, Switzerland: Springer, 2015, pp. 180–185. [Online]. Available:
+     pp. 632–652, Nov. 2019.                                                                      https://link.springer.com/chapter/10.1007/978-3-319-25252-0_19
+
+47186                                                                                                                                                          VOLUME 8, 2020
+
+
+L. Belcastro et al.: Learning Political Polarization on Social Media Using Neural Networks
+
+
+[18] A. Bovet, F. Morone, and H. A. Makse, ‘‘Predicting election                                              DOMENICO TALIA is currently a Professor of
+     trends with Twitter: Hillary clinton versus Donald Trump,’’ CoRR,                                        computer engineering with the University of Calvol. abs/1610.01587, pp. 1–12, Oct. 2016.                                                                abria and an Adjunct Professor with Fuzhou Uni-
+[19] F. Bodendorf and C. Kaiser, ‘‘Detecting opinion leaders and trends in                                    versity. His research interests include parallel and
+     online social networks,’’ in Proc. 2nd ACM Workshop Social Web Search                                    distributed data mining algorithms, cloud computMining (SWSM). New York, NY, USA: ACM, 2009, pp. 65–68.                                                  ing, distributed knowledge discovery, peer-to-peer
+[20] E. M. Hafner-Burton and A. H. Montgomery, ‘‘Centrality in politics: How                                  systems, and parallel programming models. He is a
+     networks confer power,’’ Southern Illinois Univ., Carbondale, IL, USA,
+                                                                                                              member of the Editorial Boards of Future GenerTech. Rep. 9, 2010.
+                                                                                                              ation Computer Systems, the IEEE TRANSACTIONS
+[21] P. R. Miller, P. S. Bobkowski, D. Maliniak, and R. B. Rapoport, ‘‘Talking
+                                                                                                              ON PARALLEL AND DISTRIBUTED SYSTEMS, the Internapolitics on Facebook: Network centrality and political discussion practices in social media,’’ Political Res. Quart., vol. 68, no. 2, pp. 377–391,    tional Journal of Web and Grid Services, the Journal of Cloud Computing—
+     Jun. 2015.                                                                      Advances, Systems and Applications, Scalable Computing: Practice and
+                                                                                     Experience, and the International Journal of Next-Generation Computing.
+
+                           LORIS BELCASTRO received the Ph.D. degree
+                           in information and communication engineering
+                           from the University of Calabria. In 2012, he
+                           held a scholarship at the Institute of HighPerformance Computing and Networking, Italian
+                           National Research Council (ICAR–CNR). He is
+                           currently a Research Fellow of computer engineering with the University of Calabria, Italy.
+                           His research interests include cloud computing,
+                           social media and Big Data analysis, distributed
+                           knowledge discovery, and data mining.
+
+                           RICCARDO CANTINI graduated in computer science, in 2019. He is currently pursuing the Ph.D.
+                           degree in information and communication technologies with the University of Calabria. His
+                           research interests include social media and Big
+                           Data analysis, deep learning, edge/fog computing,
+                           distributed knowledge discovery, and data mining.
+
+
+                                                                                                              PAOLO TRUNFIO was a Research CollaboFABRIZIO MAROZZO received the Ph.D. degree                                          rator with the Institute of Systems and Comin systems and computer engineering from the                                        puter Science, Italian National Research Council
+                          University of Calabria. From 2011 to 2012 he                                        (ISI-CNR), from 2001 to 2002. In 2007, he was
+                          visited the Barcelona Supercomputing Center for                                     a Visiting Researcher with the Swedish Institute
+                          a research internship with the Grid Computer                                        of Computer Science (SICS), Stockholm. He is
+                          Research Group with the Computer Sciences                                           currently an Associate Professor of computer engiDepartment. He is currently an Assistant Profes-                                    neering with the University of Calabria. He is in
+                          sor of computer engineering with the University                                     the Editorial Board of Future Generation Comof Calabria. He is serving as an Associate Editor                                   puter Systems, the IEEE TRANSACTIONS ON CLOUD
+                          for IEEE ACCESS and the International Journal of           COMPUTING, and Journal of Big Data. His research interests include cloud
+Intelligent Systems Technologies and Applications. His research interests            computing, social-media analysis, service-oriented architectures, distributed
+include distributed systems, data mining, cloud computing, social media and          knowledge discovery, and peer-to-peer systems.
+Big Data analysis, and peer-to-peer networks.
+
+
+VOLUME 8, 2020                                                                                                                                             47187

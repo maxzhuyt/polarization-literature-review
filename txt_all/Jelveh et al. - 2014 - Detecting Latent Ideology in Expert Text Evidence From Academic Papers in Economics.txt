@@ -1,0 +1,346 @@
+Detecting Latent Ideology in Expert Text: Evidence From Academic
+                              Papers in Economics
+                            Zubin Jelveh1 , Bruce Kogut2 , and Suresh Naidu3
+
+                       1 Dept. of Computer Science & Engineering, New York University
+                   2 Columbia Business School and Dept. of Sociology, Columbia University
+                              3 Dept. of Economics and SIPA, Columbia University
+
+                   zj292@nyu.edu, bruce.kogut@columbia.edu, sn2430@columbia.edu
+
+
+                        Abstract                              views itself as a science (Chetty, 2013) carefully
+                                                              applying rigorous methodologies and using instiPrevious work on extracting ideology                    tutionalized safe-guards such as peer review. The
+      from text has focused on domains where                  field’s most prominent research organization exexpression of political views is expected,              plicitly prohibits researchers from making policy
+      but it’s unclear if current technology can              recommendations in papers that it releases (Nawork in domains where displays of ide-                  tional Bureau of Economic Research, 2010). Deology are considered inappropriate. We                  spite these measures, economics’ close proximity
+      present a supervised ensemble n-gram                    to public policy decisions have led many to see it
+      model for ideology extraction with topic                as being driven by ideology (A.S., 2010). Does
+      adjustments and apply it to one such do-                this view of partisan economics have any empirimain: research papers written by academic               cal basis?
+      economists. We show economists’ polit-                     To answer the question of whether economics
+      ical leanings can be correctly predicted,               is politicized or neutral, we present a supervised
+      that our predictions generalize to new do-              ensemble n-gram model of ideology extraction
+      mains, and that they correlate with public              with topic adjustments.1 Our methodology is most
+      policy-relevant research findings. We also              closely related to Taddy (2013) and Gentzkow and
+      present evidence that unsupervised models               Shapiro (2010), the latter of which used χ2 tests
+      can under-perform in domains where ide-                 to find phrases most associated with ideology as
+      ological expression is discouraged.                     proxied by the language of U.S. Congresspersons.
+                                                              We improve on this methodology by accounting
+1     Introduction                                            for ideological word choice within topics and inRecent advances in text mining demonstrate that               corporating an ensemble approach that increases
+political ideology can be predicted from text –               predictive accuracy. We also motivate the need to
+often with great accuracy. Standard experimen-                adjust for topics even if doing so does not improve
+tal settings in this literature are ones where ide-           accuracy (although it does in this case). We further
+ology is explicit, such as speeches by American               provide evidence that fully unsupervised methods
+politicians or editorials by Israeli and Palestinian          (Mei et al., 2007; Lin et al., 2008; Ahmed and
+authors. An open question is whether ideology                 Xing, 2010; Paul and Girju, 2010; Eisenstein et
+can be detected in arenas where it is strongly dis-           al., 2011; Wang et al., 2012) may encounter difcouraged. A further consideration for applied re-             ficulties learning latent ideological aspects when
+searchers is whether these tools can offer insight            those aspects are not first order in the data.
+into questions of import for policymakers. To ad-                Our algorithm is able to correctly predict the
+dress both of these issues, we examine one such               ideology of 69.2% of economists in our data
+domain that is both policy-relevant and where ide-            purely from their academic output. We also show
+ology is not overtly expressed: research papers               that our predictions generalize and are predictors
+written by academic economists.                               of responses by a panel of top economists on isWhy economics? Economic ideas are important                sues of economic importance. In a companion
+for shaping policy by influencing the public debate           paper (Jelveh et al., 2014), we further show that
+and setting the range of expert opinion on various              1
+                                                                  Grimmer and Stewart (2013) provide an overview of
+policy options (Rodrik, 2014). Economics also                 models used for ideology detection.
+
+
+                                                         1804
+    Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing (EMNLP), pages 1804–1809,
+                     October 25-29, 2014, Doha, Qatar. c 2014 Association for Computational Linguistics
+
+
+predicted ideologies are significantly correlated      20 most conservative and liberal bigrams ranked
+to economists’ research findings. The latter re-       by χ2 scores from a Pearson’s test of indepensult shows the relevance and applicability of these    dence between phrase usage by left- and righttools beyond the task of ideology extraction.          leaning economists. It appears that top ideological phrases are related to specific research
+2   Data                                               subfields.     For example, right-leaning terms
+                                                       ‘free bank’, ‘stock return’, and ‘feder reserv’ are
+Linking Economists to Their Political Activity:        related to finance and left-leaning terms ‘menWe obtain the member directory of the Ameri-           tal health’, ‘child care’, and ‘birth weight’ are recan Economics Association (AEA) and link it to         lated to health care. This observation leads us to
+two datasets: economists’ political campaign con-      ask: Are apparently ideological phrases merely
+tributions and petition signing activities. We ob-     a by-product of an economist’s research interest
+tain campaign contribution data from the Federal       rather than reflective of true ideology?
+Election Commission’s website and petition signTo see why this is a critical question, consider
+ing data from Hedengren et al. (2010). From this
+                                                       that ideology has both direct and indirect effects
+data, we construct a binary variable to indicate the
+                                                       on word choice, the former of which is what we
+ground-truth ideologies of economists. See our
+                                                       wish to capture. The indirect pathway is through
+companion paper (Jelveh et al., 2014) for further
+                                                       topic: ideology may influence the research area
+details on the construction of this dataset. Rean economist enters into, but not the word choice
+vealed ideology through contributions and petiwithin that area. In that case, if more conservations is largely consistent. Of 441 economists
+                                                       tive economists choose macroeconomics, the obappearing in both datasets, 83.4% showed agreeserved correlation between macro-related phrases
+ment between contributions and petitions. For
+                                                       and right-leaning ideology would be spurious. The
+the final dataset of ground-truth authors we inimplication is that accounting for topics may not
+clude all economists with campaign contribunecessarily improve performance but provide evitions and/or petition signatures, however, we drop
+                                                       dence to support an underlying model of how idethose economists whose ideologies where differology affects word choice. Therefore, to better
+ent across the contribution and petition datasets.
+                                                       capture the direct effect of ideology on phrase usOverall, 60% of 2,204 economists with imputed
+                                                       age we adjust our predictions by topic by creating
+ideologies in this final dataset are left-leaning
+                                                       mappings from papers to topics. For a topic mapwhile 40% lean rightwards.
+                                                       ping, we predict economists’ ideologies from their
+   Economic Papers Corpus: To create our corword choice within each topic and combine these
+pus of academic writings by economists, we colresults to form and overall prediction. We comlect 17,503 working papers from NBER’s website
+                                                       pare different supervised and unsupervised topic
+covering June 1973 to October 2011. We also obmappings and assess their predictive ability.
+tained from JSTOR the fulltext of 62,888 research
+articles published in 93 journals in economics for        To create supervised topic mappings, we take
+the years 1991 to 2008. Combining the set of           advantage of the fact that economics papers are
+economists and papers leaves us with 2,171 au-         manually categorized by the Journal of Economic
+thors with ground truth ideology and 17,870 pa-        Literature (JEL). These codes are hierarchical inpers they wrote. From the text of these papers we      dicators of an article’s subject area. For examcreate n-grams of length two through eight. While      ple, the code C51 can be read, in increasing order
+n-grams greater than three words in length are un-     of specificity, as Mathematical and Quantitative
+common, Margolin et al. (2013) demonstrate that        Methods (C), Econometric Modeling (C5), Model
+ideological word choice can be detected by longer      Construction and Estimation (C51). We construct
+phrases. To capture other expressions of ideol-        two sets of topic mappings: JEL1 derived from
+ogy not revealed in adjacent terms, we also in-        the 1st-level codes (e.g. C) and JEL2 derived from
+clude skipgrams of length two by combining non-        the 2nd-level codes (e.g. C5). The former covadjacent terms that are three to five words apart.     ers broad areas (e.g. macroeconomics, microecoWe remove phrases used by fewer than five au-          nomics, etc.) while the latter contains more refined
+thors.                                                 ones (e.g. monetary policy, firm behavior, etc.).
+   Topic Adjustments: Table 1 presents the top            For unsupervised mappings, we run Latent
+
+
+                                                   1805
+
+
+    Left-Leaning Bigrams   Right-Leaning Bigrams        χ2 test within each fold. For each topic, we keep
+                                                        phrases that are consistently ideological across all
+        mental health             public choic
+                                                        folds. This greatly reduces the number of ideopost keynesian             stock return
+                                                        logical phrases. For LDA50, the mean number of
+          child care              feder reserv
+                                                        ideological phrases per topic before the cross vallabor market                 yes yes
+                                                        idation filter is 12,932 but falls to 963 afterwards.
+          health care             market valu
+                                                           With the list of ideological phrases in hand, the
+          work time             journal financi
+                                                        second step is to iterate over each topic and predict
+     keynesian econom               bank note
+                                                        the ideologies of economists in our test set. To
+         high school             money suppli
+                                                        compute the predictions we perform partial least
+        polici analys               free bank
+                                                        squares (PLS): With our training data, we conanalys politiqu            liquid effect
+                                                        struct the standardized frequency matrix Ft,train
+         politiqu vol            journal financ
+                                                        where the (e, p)-th entry is the number of times
+         birth weight             median voter
+                                                        economist e used partisan phrase p across all of
+          labor forc              law econom
+                                                        e’s papers in t. This number is divided by the total
+         journal post               vote share
+                                                        number of phrases used by e in topic t. For papers
+        latin america               war spend
+                                                        with multiple authors, each author gets same count
+           mental ill              journal law
+                                                        of phrases. About 5% of the papers in our dataset
+          medic care            money demand
+                                                        are written by authors with differing ideologies.
+       labour market               gold reserv
+                                                        We do not treat these differently. Columns of
+         social capit                 anna j
+                                                        Ft,train are standardized to have unit variance. Let
+        singl mother               switch cost
+                                                        y be the vector of ground-truth ideologies, test set
+        Table 1: Top 20 bigrams and trigrams.           ideologies are predicted as follows:
+                                                          1) Compute w = Corr(Ft,train , y), the correlations between each phrase and ideology
+Dirichilet Allocation (Blei et al., 2003) on our cor-     2) Project to one dimension: z = Ft,train w
+pus. We use 30, 50, and 100 topics to create              3) Regress ideology, y, on the constructed variLDA30, LDA50, and LDA100 topic mappings.                      able z: y = b1 z
+We use the topic distributions estimated by LDA           4) Predict ideology yˆe of new economist by
+to assign articles to topics. A paper p is assigned                       0
+                                                              ŷe = b1 f˜e w, (f˜e is scaled frequency vector)
+to a topic t if the probability that t appears in p        To avoid over-fitting we introduce an ensemble
+is greater than 5%. While 5% might seem to be a         element: For each t, we sample from the list of
+lower threshold, the topic distributions estimated      significant n-grams in t and sample with replaceby LDA tend to be sparse. For example, even with        ment from the authors who have written in t.2 PLS
+50 topics to ‘choose’ from in LDA50 and a thresh-       is performed on this sample data 125 times. Each
+old of 5%, 99.5% of the papers would be assigned        PLS iteration can be viewed as a vote on whether
+to five or fewer topics. This compares favorably        an author is left- or right-leaning. We calculate
+with JEL2 codings where 98.8% of papers have            the vote as follows. For each iteration, we prefive or fewer topics.                                   dict the ideologies of economists in the training
+                                                        data. We find the threshold f that minimizes the
+3     Algorithm                                         distance between the true and false positive rates
+                                                        for the current iteration and the same rates for the
+There are two components to our topic-adjusted
+                                                        perfect classifier: 1.0 and 0.0, respectively. Then,
+algorithm for ideology prediction. First, we focus
+                                                        an author in the test set is voted left-leaning if
+on n-grams and skipgrams that are most correlated
+                                                        yt,test ≤ f and right-leaning otherwise.
+with ideology in the training data. For each topic
+                                                           For a given topic mapping, our algorithm rewithin a topic mapping, we count the total numturns a three-dimensional array with the (e, t, c)-th
+ber of times each phrase is used by all left- and
+                                                        entry representing the number of votes economist
+all right-leaning economists. Then, we compute
+                                                        e received in topic t for ideology c (left- or rightPearson’s χ2 statistic and associated p-values and
+keep phrases with p ≤ 0.05. As an additional fil-          2
+                                                             The number of phrases sampled each iteration is the
+ter, we split the data into ten folds and perform the   square root of the number of ideological phrases in the topic.
+
+
+                                                    1806
+
+
+leaning). To produce a final prediction, we sum                      (1)               (2)             (3)         (4)
+across the second dimension and compute ideol-                    Topic              Accu-           Corr. w/     AUC
+ogy as the percentage of right-leaning votes re-                  Map               racy(%)           Truth
+ceived across all topics within a topic-mapping.
+                                                                  LDA50               69.2             0.381      0.719
+Therefore, ideology values closer to zero are asLDA100              66.3             0.364      0.707
+sociated with a left-leaning ideology and values
+                                                                  LDA30               65.0             0.313      0.674
+closer to one are associated with a rightward lean.
+                                                                  NoTopic             63.9             0.290      0.672
+   To recap, we start with a topic mapping and then
+                                                                  JEL1                61.0             0.263      0.647
+for each topic run an ensemble algorithm with PLS
+                                                                  JEL2                61.8             0.240      0.646
+at its core.3 The output for each topic is a set of
+                                                                  TAM2/30             61.5             0.228      0.580
+votes. We sum across topics to compute a final
+prediction for ideology.
+                                                                               Table 2: Model comparisons
+4       Validation and Results
+                                                                                          (1)          (2)        (3)
+We split our ground-truth set of 2,171 authors                    LDA50               1.814∗∗∗      2.457∗∗∗    2.243∗∗∗
+into training (80%) and test sets (20%) and com-                  Log-Lik.            -1075.0        -758.7      -740.6
+pute predictions as above. As our data exhibits
+skew with 1.5 left-leaning for every right-leaning                JEL1                1.450∗∗∗      2.128∗∗∗    1.799∗∗∗
+economist, we report the area under the curve                     Log-Lik.            -1075.3        -757.4      -740.5
+(AUC) which is robust to class skew (Fawcett,                     No Topic            0.524∗∗∗      0.659∗∗∗    0.824∗∗∗
+2006). It’s worth noting that a classifier that ran-              Log-Lik.            -1075.3        -760.5      -741.0
+domly predicts a liberal economist 60% of the
+                                                                  Question               No           Yes         Yes
+time would have an AUC of 0.5. To compare
+                                                                  Demog./Prof.           No           No          Yes
+our model with fully unsupervised methods, we
+                                                                  Observations           715          715         715
+also include results from running the Topic-Aspect
+                                                                  Individuals             39           39          39
+Model (TAM) (Paul and Girju, 2010) on our data.
+                                                                  ∗
+TAM decomposes documents into two compo-                              p < 0.10, ∗∗ p < 0.05, ∗∗∗ p < 0.01
+nents: one affecting topics and one affecting a latent aspect that influences all topics in a similar            Table 3: IGM correlations. Column (1) shows remanner. We run TAM with 30 topics and 2 aspects                sults of regression of response on predicted ideol-
+(TAM2/30). We follow Paul and Girju and use the                ogy. Column (2) adds question dummies. Column
+learned topic and aspect distributions as training             (3) adds demographic and professional variables.
+data for a SVM.4
+   Columns 2 to 4 from Table 2 show that our                   conducted by the University of Chicago.5 Each
+models’ predictions have a clear association with              survey question asks for an economists opinion on
+ground-truth ideology. The LDA topic mappings                  an issue of political relevance such as minimum
+outperform the supervised mappings as well as a                wages or tax rates. For further details on the data
+model that does not adjust for topics (NoTopic).               see Gordon and Dahl. Of importance here is that
+Perhaps not surprisingly, TAM does not perform                 Gordon and Dahl categorize 22 questions where
+well in our domain. A drawback of unsupervised                 agreement (disagreement) with the statement immethods is that the learned aspects may not be re-             plies belief a conservative (liberal) viewpoint.
+lated to ideology but some other hidden factor.                   To see if our predicted ideologies are correFor further insight into how well our model                 lated with survey responses, we run an orderedgeneralizes, we use data from Gordon and Dahl                  logistic regression (McCullagh, 1980). Survey
+(2013) to compare our predictions to potentially               responses are coded with the following order:
+ideological responses of economists on a survey                Strongly Disagree, Disagree, Uncertain, Agree,
+                                                               Strongly Agree. We regress survey responses onto
+      Other predictions algorithms could be dropped in for
+PLS. Logistic regression and SVM produced similar results.     predicted ideologies. We also include questionAuthors are treated as documents. TAM is run for 1,000   level dummies and explanatory variables for a reiterations with the following priors: α = 1.0, β = 1.0, γ0 =
+1, γ1 = 1, δ0 = 20, δ1 = 80.                                              http://igmchicago.org
+
+
+                                                           1807
+
+
+spondent’s gender, year of Ph.D., Ph.D. university, NBER membership, and experience in federal
+                                                                                  NOTOPIC
+government. Table 3 shows the results of these re-        60
+gressions for three topic mappings. The correla-          40
+tion between our predictions and survey respon-           20
+dents are all strongly significant.                        0
+                                                                                   LDA50
+   One way to interpret these results is to com-                                                                50
+pare the change in predicted probability of pro-                                                                30
+viding an Agree or Strongly Agree answer (agree-                                                                10
+ing with the conservative view point) if we change                                 JEL1
+predicted ideology from most liberal to most con-         50
+servative. For NoTopic, this predicted probabil-          30
+ity is 35% when ideology is set to most liberal           10
+and jumps to 73.7% when set to most conserva-                  Str. Dis.   Dis.    Uncert.   Agr.   Str. Agr.
+tive. This difference increases for topic-adjusted                         conservative
+models. For LDA50, the probability of a conser-                            liberal
+vative answer when ideology is set to most liberal
+is 14.5% and 93.8% for most conservative.              Figure 1: The predicted probability of agreeing
+   Figure 1 compares the predicted probabilities of    with a conservative response when ideology is
+choosing different answers when ideology is set        set to most liberal (gray) and most conservative
+to most liberal and most conservative. Our topic-      (black).
+adjusted models suggest that the most conservative economists are much more likely to strongly       Acknowledgement
+agree with a conservative response than for the
+most liberal economists to strongly agree with a       This work was supported in part by the NSF (unliberal response. It is worthwhile to note from        der grant 0966187). The views and conclusions
+the small increase in log-likelihood in Table 3        contained in this document are those of the authors
+when controls are added, suggesting that our ide-      and should not be interpreted as necessarily repology scores are much better predictors of IGM         resenting the official policies, either expressed or
+responses than demographic and professional con-       implied, of any of the sponsors.
+trols.
+
+
+5   Conclusions and Future Work
+
+
+We’ve presented a supervised methodology for extracting political sentiment in a domain where it’s
+discouraged and shown how it even predicts the
+partisanship calculated from completely unrelated
+IGM survey data. In a companion paper (Jelveh et
+al., 2014) we further demonstrate how this tool can
+be used to aid policymakers in de-biasing research
+findings. When compared to domains where ideological language is expected, our predictive ability
+is reduced. Future work should disentangle how
+much this difference is due to modeling decisions
+and limitations versus actual absence of ideology.
+Future works should also investigate how fully unsupervised methods can be extended to match our
+performance.
+
+
+                                                   1808
+
+
+References                                                 National Bureau of Economic Research.         2010.
+                                                             Amended and restated by-laws of national bureau of
+Amr Ahmed and Eric P. Xing. 2010. Staying in-                economic research, inc.
+ formed: supervised and semi-supervised multi-view
+ topical analysis of ideological perspective. In Pro-      Michael Paul and Roxana Girju. 2010. A twoceedings of the 2010 Conference on Empirical Meth-          dimensional topic-aspect model for discovering
+ ods in Natural Language Processing, pages 1140–             multi-faceted topics. Urbana, 51.
+ 1150. Association for Computational Linguistics.
+                                                           Dani Rodrik. 2014. When ideas trump interests:
+A.S. 2010. Is economics a right-wing conspiracy?             Preferences, worldviews, and policy innovations .
+  The Economist, August.                                     Journal of Economic Perspectives, 28(1):189–208,
+                                                             February.
+David M. Blei, Andrew Y. Ng, and Michael I. Jordan.
+  2003. Latent dirichlet allocation. the Journal of ma-    Matt Taddy. 2013. Multinomial inverse regression for
+  chine Learning research, 3:993–1022.                      text analysis. Journal of the American Statistical Association, 108.
+Raj Chetty. 2013. Yes, economics is a science. The
+  New York Times, October.                                 William Yang Wang, Elijah Mayfield, Suresh Naidu,
+                                                             and Jeremiah Dittmar. 2012. Historical analysis
+Jacob Eisenstein, Amr Ahmed, and Eric P. Xing. 2011.         of legal opinions with a sparse mixed-effects latent
+   Sparse additive generative models of text. In Pro-        variable model. In Proceedings of the 50th Annual
+   ceedings of the 28th International Conference on          Meeting of the Association for Computational LinMachine Learning (ICML-11), pages 1041–1048.              guistics: Long Papers-Volume 1, pages 740–749.
+T. Fawcett. 2006. An introduction to ROC analysis.           Association for Computational Linguistics.
+   Pattern recognition letters, 27(8):861–874.
+Matthew Gentzkow and Jesse M. Shapiro. 2010. What
+ drives media slant? evidence from U.S. daily newspapers. Econometrica, 78(1):35–71.
+Roger Gordon and Gordon B Dahl. 2013. Views
+  among economists: Professional consensus or pointcounterpoint?      American Economic Review,
+  103(3):629–635, May.
+J. Grimmer and B. M. Stewart. 2013. Text as data:
+   The promise and pitfalls of automatic content analysis methods for political texts. Political Analysis,
+   21(3):267–297, January.
+David Hedengren, Daniel B. Klein, and Carrie Milton. 2010. Economist petitions: Ideology revealed.
+  Econ Journal Watch, 7(3):288–319.
+Zubin Jelveh, Bruce Kogut, and Suresh Naidu. 2014.
+  Political language in economics.
+Wei-Hao Lin, Eric Xing, and Alexander Hauptmann.
+  2008. A joint topic and perspective model for
+  ideological discourse. In Machine Learning and
+  Knowledge Discovery in Databases, pages 17–32.
+  Springer.
+Drew Margolin, Yu-Ru Lin, and David Lazer. 2013.
+  Why so similar?: Identifying semantic organizing
+  processes in large textual corpora.
+Peter McCullagh. 1980. Regression models for ordinal
+  data. Journal of the royal statistical society. Series
+  B (Methodological), pages 109–142.
+Qiaozhu Mei, Xu Ling, Matthew Wondra, Hang Su,
+  and ChengXiang Zhai. 2007. Topic sentiment mixture: modeling facets and opinions in weblogs. In
+  Proceedings of the 16th international conference on
+  World Wide Web, pages 171–180. ACM.
+
+
+                                                       1809

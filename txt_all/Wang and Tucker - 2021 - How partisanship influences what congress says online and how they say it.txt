@@ -1,0 +1,813 @@
+939498
+research-article2020
+                       APRXXX10.1177/1532673X20939498American Politics ResearchWang and Tucker
+
+
+                                                                  Research Article
+
+                                                                                                                                                                              American Politics Research
+
+                                                                  How Partisanship Influences What                                                                            ﻿1­–15
+                                                                                                                                                                               © The Author(s) 2020
+                                                                                                                                                                               Article reuse guidelines:
+                                                                  Congress Says Online and How They                                                                            sagepub.com/journals-permissions
+                                                                                                                                                                               https://doi.org/10.1177/1532673X20939498
+                                                                                                                                                                               DOI: 10.1177/1532673X20939498
+
+                                                                  Say It                                                                                                       journals.sagepub.com/home/apr
+
+
+                                                                  Richard T. Wang1               and Patrick D. Tucker2
+
+
+                                                                  Abstract
+                                                                  We investigate the influence of partisanship on congressional communication by analyzing 180,000 press releases issued
+                                                                  by members of Congress (MCs) between 2005 and 2019. Specifically, we examine whether partisan factors such as party
+                                                                  control of the White House and/or Congress influence the tone used by MCs and whether MCs are more likely to focus on
+                                                                  issues that their respective party owns. Our analyses include the use of multiple OLS models, the machine learning approach
+                                                                  gradient boosting, and Grimmer’s topical modeling software “expAgenda.” We find that (1) partisanship influences the tone
+                                                                  MCs use when communicating online; and (2) MCs are unable to prioritize discussing issues that their respective party own
+                                                                  but devote slightly greater attention to their party’s issues than MCs from the opposite party. Our study ultimately finds
+                                                                  strong evidence of partisan influence in the way MCs design their press releases and has important implications for online
+                                                                  congressional communication.
+
+                                                                  Keywords
+                                                                  political communication, congress, partisan communication
+
+
+                                                                  Does partisanship influence what members of Congress               are not filtered through journalists (Lipinski & Neddenriep,
+                                                                  (MCs) say online and how they say it? To answer our research       2004, p. 7; Malecha & Reagan, 2012, p. 59). They encapsuquestion, we exploit a vast database of press releases pub-        late how MCs generally communicate to their constituents
+                                                                  lished by MCs on their official websites. With these press         (Adler et al., 1998; Grimmer, 2010; Lee, 2017, p. 117;
+                                                                  releases, we specifically examine whether party control of the     Mayhew, 1974) as well as how they behave in Congress
+                                                                  White House and/or Congress influences the tone used by            (Grimmer, 2013). In addition, MCs consider them to be
+                                                                  MCs when communicating and whether MCs prioritize their            “instrumental” in providing information about local services,
+                                                                  communication on issues owned by their respective parties.         “communicating their views[,] and explaining their actions
+                                                                  Our analyses include the use of several multiple regression        to their constituents” (Malecha & Reagan, 2012, p. 18).1
+                                                                  models regressing the tone of press releases on party control          While press releases may not be consumed often by the
+                                                                  of the White House and of Congress, while controlling for          average constituent directly, they remain an essential part of
+                                                                  other sources of influence such as legislators’ effectiveness.     the congressional communication process. Traditionally,
+                                                                  We also employ gradient boosting machine learning models           MCs’ communications staff understand that constituents
+                                                                  to assign sentiment scores to press releases. Finally, using the   consume a great deal of their information through local
+                                                                  “expAgenda” software, we assign press releases topic labels.       media and they take great care to develop relationships with
+                                                                      We observe several findings from our study, such as that       local press to build a receptive audience (Cook, 1989). In
+                                                                  partisanship influences the tone MCs use when communicat-          turn, local reporters report on press releases and hopefully
+                                                                  ing online, and that MCs are unable to prioritize discussing       present them in positive terms. As the resources for local outissues that their respective party owns, but they devote           lets continue to decline, the importance of the press release
+                                                                  slightly greater attention to their party’s issues than MCs        has not necessarily diminished. Grimmer demonstrates that
+                                                                  from the opposite party. Our findings have important impli-        local papers often engage in what he terms “ventriloquism”
+                                                                  cations for congressional communication on the Web.
+                                                                                                                                      Cornell University Law School, Ithaca, NY, USA
+                                                                  Press Releases                                                      Yale University, New Haven, CT, USA
+
+                                                                                                                                     Corresponding Author:
+                                                                  Press releases serve as an appropriate medium for the type of      Richard T. Wang, Cornell University Law School, Myron Taylor Hall,
+                                                                  analysis to evaluate our question as they are low-cost (Adler      Ithaca, NY 14853-4901, USA.
+                                                                  et al., 1998), spatially limitless (Druckman et al., 2010), and    Email: rtw65@cornell.edu
+
+
+2                                                                                                  American Politics Research 00(0)
+
+
+(Grimmer, 2013, p. 32). Rather than report on the MC’s press        ignores the strength of the direction. A continuous variable
+release, the press will simply lift text from the press release     for tone may provide a more nuanced analysis of partisanand print it in the local paper as a news story. In this way, the   ship’s influence on communication since MCs’ behavior
+constituent may not come into contact with the press release        may vary by electoral context.2 Finally, Lipinski only considin its original form, but the likelihood that they will encoun-     ers majority control of Congress and does not include party
+ter it in their daily newspaper, perhaps with minimal filter-       control of the presidency—another potential source of partiing, is relatively high.                                            sanship’s influence.
+                                                                        Issue ownership theory suggests that partisanship also
+                                                                    influences the policies discussed by elites. The theory posits
+Previous Studies of Legislator                                      that the public “believe[s] that one of the major parties is betCommunication Using Press Releases                                  ter suited to deal with particular issues” (Druckman et al.,
+Congressional communication not only provides constituents          2010, p. 5) as a result of the party’s “history of attention,
+a window into the legislative activities of their MCs, but may      initiative, and innovation” towards those issues (Petrocik,
+also shape their attitudes (Ansolabehere et al., 1993;              1996, p. 826). Previous research on issue ownership has
+Druckman, 2001; Grimmer, 2013; Jacobs & Shapiro, 2000,              mainly focused on congressional candidates’ strategies rather
+pp. 50, 61; Krosnick & Kinder, 1990; Malecha & Reagan,              than incumbents (Ansolabehere & Iyengar, 1994; Simon,
+2012; McCombs & Shaw, 1972; McGraw & Ling, 2003;                    2002; Spiliotes & Vavreck, 2002; Xenos & Foot, 2005).
+Miller & Wanta, 1996; Page et al., 1987). As citizens and MCs       Although Grimmer’s (2013) study of US senator press
+devote more attention to Internet modes of communication            releases finds that “both parties engage in debates about the
+and information gathering (Esterling et al., 2013; Fitch, 2016;     same topic[s]” (p. 103), Grimmer does not consider House
+Fitch et al., 2005; Johnson, 2013, p. 84; Lupia & Philpot,          members’ press releases and thus potentially neglects the
+2005), understanding how MCs behave online becomes more             effects of the institutional differences between the two chamimportant as such behavior may differ from more traditional         bers (Smith, 2007).
+mediums of communication (Esterling et al., 2013).
+   Although several studies focus on the Internet’s influence       Framework
+on the political process more broadly (Davis, 1999; Johnson,
+2013; Malecha & Reagan, 2012; Oleszek, 2007), as well as            Partisanship Influence on Tone
+the Internet’s impact on certain congressional behavior (Adler      We argue that party control of the White House leads MCs to
+et al., 1998; Bimber, 1999; Carter, 1999; Druckman et al.,          employ a more positive tone. The president’s copartisans
+2010; Owen et al., 1999; Simon, 2002; Xenos & Foot, 2005),          have a vested interest in ensuring that the president’s agenda
+very few studies have attempted to “understand the content of       and his performance is viewed favorably by the public for
+Congressional communication through the capturing and cat-          several interrelated reasons: First, the increase in political/
+egorizing of individual messages” (Golbeck et al., 2010) and        ideological polarization among voters has largely aligned the
+how such content is specifically influenced by partisanship.        president’s constituents with those of his copartisans
+   Furthermore, few studies consider the relationship               (Jacobson, 2017, pp. 56–57). Consequently, the policy goals
+between partisanship and tone of congressional communica-           of the president and his copartisans should largely be aligned
+tions. Tone may reveal systematic patterns of partisanship          (Smith, 2007, p. 72). Second, even if the president’s policy
+influence in congressional communication. Tone is also a            agenda diverges from his copartisans on several key issues,
+significant component of framing (Brunken, 2006; Gunther,           copartisan MCs still possess an interest in supporting the
+1998; Hester & Gibson, 2003), which in turn influences the          president’s general image since, following the increase in
+public in various policy debates (Druckman, 2001; Jacobs &          political polarization, MCs are closely attached to their parShapiro, 2000, pp. 50, 61; Krosnick & Kinder, 1990; Malecha         ty’s reputation which, in turn, is closely linked to the presi-
+& Reagan, 2012; McCombs & Shaw, 1972; McGraw &                      dent and his platform (Bond & Fleisher, 1990; Jacobson,
+Ling, 2003; Miller & Wanta, 1996; and Page et al., 1987).           2017, p. 59; Malecha & Reagan, 2012, p. 21; Smith, 2007,
+Consequently, understanding MCs’ use of tone is essential to        p. 28). Indeed, midterm elections are often perceived as a
+understand MCs’ framing practices. For example, Lipinski            referendum on the president’s performance (Groeling, 2010,
+(2004) finds that MCs are more likely to communicate posi-          p. 88; Campbell, 2015, p. 71). Finally, by shoring up public
+tively about Congress’ legislative activities should their party    support for the president, copartisan MCs potentially assist
+control both chambers (pp. 53–56). However, Lipinski’s              in the president’s ability to prime voters on issues desirable
+analysis is limited to district-wide and targeted mailings by       to the president (and thus the party) (Miller & Wanta, 1996).
+MCs rather than internet communication—a different                      The relationship between the copartisans’ desire to supmedium that may entail differences in strategic behavior            port the president and their increased likelihood to employ a
+(Davis, 1999, p. 97). Second, Lipinski only considers the           more positive tone for press releases have two hypothetical
+direction of sentiment (i.e., positive, negative, or neutral) and   grounds for support.3 The first theory is that the president’s
+
+
+Wang and Tucker                                                                                                                      3
+
+
+copartisans will publish a nontrivial amount of positive press        We also propose another cause in the potential tone differreleases defending the president’s actions. While MCs are         ence across party: blame. Since MCs are unable to pass legnot restricted to using positive sentiment in their defenses      islation most of the time (Lee, 2017, p. 139), and since MCs
+(e.g., Democrats defending President Obama’s healthcare           of both parties are expected by their constituents to fulfill
+plan by arguing: “Repealing the ACA with no replacement           their legislative promises, MCs have an incentive to blame
+isn’t only a broken promise—it’s dangerous. Repeal would          the other party for their legislative failures (Lee, 2017,
+leave millions without the care they need”),4 they will none-     pp. 125–126). However, while MCs of both parties engage in
+theless make defenses that are positive. Furthermore, we can      such behavior, members of the majority party should do so
+reasonably expect copartisan MCs to make positive defenses        less frequently. As Lee argues:
+of the President more frequently than MCs of the opposite
+party (Lee, 2017, p. 127; Groeling, 2010, pp. 61, 83).5 We           . . .majority parties bear a greater burden of expectations to
+expect MCs of the opposite party to negatively attack the            deliver on legislation, both from their base voters and (probably)
+president in an attempt to turn public opinion against the           from the public at large. A majority party that successfully
+president, thus limiting his legislative influence (Malecha &        legislates will likely be seen as more competent in terms of
+Reagan, 2012, p. 3; Ostrom & Simon, 1985; Page et al.,               government management, assuming that the legislation passed
+                                                                     is not unpopular (Lee, 2017, p. 120).
+1987; Reeves & Rogowski, 2015).
+    The second theory is more subtle: research suggests that
+the president is often “portrayed by the media and perceived      Since the public has higher expectations for majority-party
+by the public as the government’s central actor” (Hetherington,   MCs to pass legislation, majority-party MCs will limit their
+1998, p. 793). Consequently, the president’s congressional        blame tactics, relative to the minority party, as doing so
+copartisans will likely refrain from publishing an over-          would highlight their failures to pass legislation.6
+whelming amount of negative criticism because the public
+may associate such mood with the president’s performance.            Congress Control Hypothesis (Congress Control
+Instead, they would likely focus on positive outcomes and            Hypothesis): MCs will employ a more positive tone if
+claim credit, either explicitly or implicitly, for the current       their party controls Congress.
+administration. Thus, the president’s copartisans should publish positive press releases more frequently (Malecha &               Next, we suspect that the MCs’ reelection context will
+Reagan, 2012, p. 73). Conversely, MCs of the opposite party       mediate their strategies. For example, competitive districts or
+may criticize outcomes to sway public opinion against the         states will be associated with less partisan communication
+president.                                                        since MCs fear alienating their constituents.7 Indeed, Lipinski
+                                                                  noted that “several [communication staffers] admitted that
+   White House Control Hypothesis (White House                    their bosses did not faithfully employ [their party’s] scripted
+   Control Hypothesis): MCs of the president’s party will         messages because they wanted to avoid drawing public or
+   employ a more positive tone than those of the opposite         media attention to an unpopular party message that might turn
+   party.                                                         off the folks back home” (Lipinski, 2004, pp. 61–63). MCs
+                                                                  that serve in competitive districts have instead been found to
+   Party control of Congress may also influence MCs’ tone.        prioritize credit claiming (Grimmer et al., 2012; Grimmer,
+Previous literature indicates that when Congress is controlled    2013; Yiannakis, 1982, pp. 1055–1056) and emphasize conby a single party, voters will often hold the majority party      stituent casework (Adler et al., 1998) in their communicaresponsible for social and economic outcomes (Jones &             tions. Since these types of press releases are generally more
+McDermott, 2004; Nicholson & Segura, 1999). The close             positive in tone, we make the following hypotheses:
+connection between individual MCs and their party incentivizes MCs to promote a favorable party brand lest they risk           Close Election Tone Partisan Influence Hypothesis
+facing electoral consequences (Lipinski, 2004, p. 24). Indeed,       (Close Election Tone Partisan Influence Hypothesis):
+survey responses from Congress indicate that “more than              MCs elected under a close (less than five percent) margin
+two-thirds [of Congress] agree[d] that when a voter disap-           will employ a tone that is not statistically influenced by
+proves of Congress, she is less likely to vote for an incum-         partisan factors.
+bent member of the majority party” (Lipinski, 2004, p. 29).          Close Election Tone Hypothesis (Close Election Tone
+Consequently, we suspect that legislators of the majority            Hypothesis): MCs will employ a more positive tone if
+party will communicate a more optimistic narrative of the            they were elected under a close margin.
+state of the nation, in general, to portray Congress and the
+majority party as responsible for achieving such prosperity
+                                                                  Issue Ownership
+(Lipinski, 2004, p. 24). Conversely, MCs of the opposite
+party are incentivized to negatively criticize the state of       Both parties may devote different levels of attention to difaffairs.                                                          ferent issues when communicating to the public. Although
+
+
+4                                                                                                  American Politics Research 00(0)
+
+
+much of the literature on issue ownership concerns congres-             Similarly, MCs from different chambers may engage in difsional candidates and their incentive to communicate “largely       ferent partisan communications strategies. The obligations
+within the policy space defined by their respective parties”        and electoral contexts for Senators and House members differ
+(Spiliotes & Vavreck, 2002, p. 258; see also Ansolabehere &         in many ways (e.g., Fenno, 1982; Lee & Oppenheimer, 1999)
+Iyengar, 1994; Simon, 2002; and Xenos & Foot, 2005), MCs            and we posit many possible mechanisms for heterogeneity in
+share the same incentive. Incumbents craft their communica-         their potential to discuss issues owned by the opposing party.
+tion efforts to improve their reelection prospects (Davis,          The legislative norms have the potential to influence how leg1999, p. 122; Lipinski, 2004, p. 20). However, we suggest           islators talk about policy. For example, senators serve on more
+that while MCs in the House majority will concentrate on            committees than House members and thus may be involved in
+issues they own, House minority members and senators will           more policy realms than House members, including those
+communicate both about issues they own as well as issues            areas typically owned by the opposing party. Furthermore, the
+owned by the opposing party. We suggest that only MCs in            Senate grants the majority party less influence over the legislathe House majority will be able to communicate primarily            tive agenda and senators of either party are unable to commuabout issues that they own since the House’s structural rules       nicate solely about issues they own. Consequently, they will
+grant the majority party extensive control over the floor and       dedicate a significant portion of their communications addressthus the legislative agenda. Consequently, it is unlikely that      ing issues owned by the opposite party (Smith, 2007, p. 77).
+the minority’s policy initiatives will pose a serious legisla-      Structurally, senators typically represent much more diverse
+tive threat to the majority party—allowing the majority party       constituencies. To adapt to this heterogeneity, they are much
+to concentrate their communication efforts towards focusing         less parochial in their media strategy because they need to gain
+the public’s attention to issues in which they have an advan-       state-wide coverage to build a reelection coalition (Fenno,
+tage discussing (Sellers, 2010, pp. 6, 7).8                         1982). For this reason, they may be pressured to discuss a
+                                                                    wider array of issues in their press releases, including those
+    Own Party Issues Point of Interest: Members of the              owned by the opposing party.
+    House majority will communicate largely about issues
+    owned by their party.9                                             Senators Discussing Opposing Party Issues Hypothesis
+                                                                       (Senator Hypothesis): Members of the Senate majority
+    Although the House minority party will similarly attempt           party will communicate about issues owned by the opposto focus on issues they own, we suggest that the minority              ing party more frequently than the House majority party.
+party will nonetheless be inclined to dedicate a considerable
+amount of their communications responding to the majori-            Data and Methods
+ty’s agenda. That is, the minority party will “trespass” on the
+                                                                    The main study population includes MCs serving continuother party’s issues, particularly if it is possible to point out
+                                                                    ously between January 3, 2005 and January 3, 2019.10 This
+shortcomings on an issue where the majority party will be
+                                                                    includes 10 Democratic senators, fifteen Republican senators,
+seen accountable (Damore 2004; Dulio and Trumbore 2009).
+                                                                    69 Democratic representatives, and 34 Republican representaFor example, Dulio and Trumbore (2009) find that
+                                                                    tives, totaling 184,873 press releases.11 This set of press
+Democratic challengers to Republicans in 2006 were likely           releases will hence be referred to as the “Main Data Set.”12 We
+to discuss the Iraq War, an issue area typically owned by           also created a “Close Elections Data Set,” which includes
+Republicans. To be sure, others find that trespassing occurs        press releases from MCs who were elected under a close (less
+in political campaigns (Sides, 2007) and in online messaging        than five percentage points) margin in 2014. This population
+(Sulkin et al., 2007). The strategy’s effects are uncertain         includes two Democratic senators, three Republican senators,
+since a politician is effectively discussing an issue where         eight Democratic representatives, and nine Republican repretheir opponent may appear more credible and competent               sentatives, totaling 9,825 press releases.13 Since several mem-
+(Simon, 2002). Yet, the approach provides those out of              bers elected under a close election in 2014 subsequently lost
+power, specifically the minority party and challengers, an          reelection, and since the population size for the Close Elections
+opportunity to attribute blame to those in power (i.e., the         Data Set is relatively small, we retrieved press releases from
+majority party and incumbents). The benefits for the major-         former MCs in this set using the Internet Archive’s “Wayback
+ity party talking about an issue that is owned by the minority      Machine.”14 We include three representative examples of
+are less clear, since they will not wish to draw attention to       MCs’ press releases coded under Mayhew’s (1974) frameissues that they do not prioritize.                                 work in Supplemental Appendix C.
+
+    Minority Party Hypothesis (Minority Party
+    Hypothesis): Members of the House minority will comTone
+    municate about issues owned by the opposing party more          To test our hypotheses regarding tone, we performed text
+    frequently than the majority party.                             sentiment analysis on press releases in both the Main Data
+
+
+Wang and Tucker                                                                                                                    5
+
+
+Set and Close Elections Data Set. We omitted press releases         set, the training set may not be entirely accurate. Consequently,
+written in any non-English language, such as Spanish. Since         to validate our model’s results, we randomly sampled fifty
+MCs sometimes simply embed a video as their press release,          press releases with positive [0, 1] sentiment scores and fifty
+we also removed any text equal to or shorter than a hundred         press releases with negative [–1, 0) sentiment scores. Using
+words.15 Finally, we removed any special characters, URLs,          a pairwise comparison approach detailed in Montgomery
+and email addresses from the texts.                                 and Carlson (2016), we generated a thousand random comWe then built a natural language processing (NLP)                parisons while making sure that each press release is in
+machine learning model to assign each press release a value         exactly twenty comparisons.20 We then uploaded all one
+between −1 (denoting negative sentiment) and 1 (denoting            thousand comparisons as Human Intelligence Tasks (HITs)
+positive sentiment). To reduce the costs of manually review-        via Amazon Mechanical Turk (AMT). Each HIT was manuing thousands of press releases to create training and testing      ally reviewed by a human worker on AMT who chose which
+sets for our model, we used two open-source text sentiment          of the two press releases carried a more positive tone.21
+analysis packages—sentimentR and TextBlob—to score                  Comparisons were coded as a “1” if the worker identified the
+each text’s sentiment. We then retrieved the set of press           text with the higher sentiment score as reading more positive
+releases whose two scores were within 0.05 of each other.16         or if the worker believed that neither of the two texts was
+We considered the texts’ scores to be fairly accurate and           more positive and the sentiment scores of the two texts were
+robust if similar results were achieved between the two sepa-       within 0.005 of each other. Otherwise, the comparison was
+rate packages and thus have confidence in using these texts         coded as a “0.” We found that 683 of the 1,000 comparisons
+to train our model. We ultimately extracted 50,000 press            were coded as “1,” suggesting that the accuracy of our sentireleases that fit our criteria. Our goal was to predict the rela-   ment model lies around 68%.22
+tionship between features extracted from press releases and             As further validation, we randomly sampled another
+the sentiment using XGBoost linear model.17 Each of the             200 press releases and determined whether the sentiment
+50,000 press releases underwent a bag of words preprocess-          score was in the appropriate direction (i.e., positive or neging before it could be fed to the model. This included tokeni-      ative). We include the results of this validation step in
+zation, lower casing, stop word removal, and stemming               Supplemental Appendix E. We note that our model tended
+(Grimmer & Stewart, 2013); as well transforming to docu-            to inflate sentiment scores. We do not believe this poses an
+ment-term matrix (dtm).                                             issue to our analysis, although we note that we conseTo account for the fact that longer documents will have          quently cannot make precise absolute labels (e.g., “posihigher individual term counts and frequency of term appear-         tive” or “negative”).
+ance in all documents, we applied the term frequency-inverse            With the press release scores, we examined our tone
+document frequency (TFIDF) function to normalize all doc-           hypotheses by estimating three models using ordinary least
+uments to be length-independent and penalize terms that             squares (OLS).23 For the first model, the dependent variable
+occurred frequently and have no predictive power. Doing so          is the sentiment scores for press releases in the Main Data
+calculated the importance of a term to a document in the bag        Set. We included two dummy covariates that address partisan
+of words. Since the TFIDF matrix does not take word context         control. First, we used a measure of White House control
+into consideration and can become a very large sparse matrix,       that was coded as 1 if the author of the text belonged to the
+we applied LSA to extract relationships between the docu-           president’s party and 0 otherwise. Second, we employed a
+ments and terms assuming that terms close in meaning will           variable for Congress control that is coded as 1 if the author
+appear in similar pieces of text. The process uses a singular       is a member of the party that controls both chambers of
+value decomposition (SVD) factorization of the transposed           Congress, and 0 otherwise.
+TFIDF matrix. The matrix factorization has the effect of                MCs may communicate more positively because they win
+combining columns by collapsing highly correlated terms             more legislative battles and thus have more opportunities to
+down into a single concept, potentially enriching signal in         react positively than minority party MCs. We thus included a
+the data. By selecting a fraction of the most important singu-      key votes control that “measures the percentage of key votes
+lar values, latent semantic analysis (LSA) dramatically             (as defined by Congressional Quarterly) for which the memreduces dimensionality. The selected singular vectors are the       ber votes on the winning side” (Lipinski, 2004, p. 50).24 We
+most significant feature-rich representations of data, the          slightly modified the variable so that the percentage is cumuhigher-level concept extracted out of the transposed TFIDF          lative rather than aggregated by session since we considered
+matrix.18 They were converted to a DMatrix and fed to a             each piece of text the day it is published.25 We also employed
+XGBoost model that generates the sentiment prediction for           a votes with party score (Lipinski, 2004). The party unity
+our sentiment analysis.                                             score is calculated as a proportion between 0 and 1, with 1
+   Using our model, we rescored each press release in both          representing a MC who votes with the majority of Republicans
+population sets.19 Since we used an automated method to cre-        100 percent of the time and 0 representing a MC who votes
+ate our training set (agreement in sentiment scores generated       with the majority of Democrats 100 percent of the time. In
+by sentimentR and TextBlob) rather than manually code the           addition, we include the Legislative Effectiveness Score
+
+
+6                                                                                                American Politics Research 00(0)
+
+
+(LES), developed by Volden and Wiseman (2014). The LES            releases issued by Senate majority MCs that discuss issues
+measures a legislator’s “ability to advance [his or her] agenda   owned by the opposing party. We expect the quartile numitems through the legislative process and into law” (Volden       bers for the Senate majority to be higher than those of the
+& Wiseman, 2014, p. 18). MCs with higher LES may be               House majority. We limited this analysis to congressional
+more positive since they can advertise their achievements.        sessions in which the same party controlled both the House
+Members with lower LES might blame others for their legis-        and the Senate.
+lation’s failures, producing negative sentiment. Finally, we
+include a variable for monthly presidential approval as the
+                                                                  Results
+president’s copartisans may criticize the president if presidential approval declines (Groeling, 2010).26 To test whether     Tone (White House Control Hypothesis-Close
+MCs in close elections are more likely to be positive than the    Election Tone Hypothesis)
+average MC, we estimated our OLS models with press
+releases from both data sets. In this model we included a         Figure 1 illustrates the semimonthly-average sentiment ratvariable identifying whether the author of the text belongs to    ings for press releases (in the Main Data Set) by party affilithe Main Data Set population or the Close Elections Data Set      ation, and their respective 95-percent confidence intervals.
+population, labeled Close to Main.                                The trend appears to match our expectations for the White
+                                                                  House Control Hypothesis: Republicans were, on average,
+                                                                  consistently more positive than Democrats during George W.
+Issue Ownership                                                   Bush’s second term. Upon Obama taking office, Democrats
+To examine the Own Party Issues Point of Interest and test        became on average consistently more positive. A second flip
+our hypotheses Minority Party Hypothesis and Senator              occurred in November 2016, when Republican nominee
+Hypothesis, we performed topical modeling on press releases       Donald Trump defeated Democrat nominee Hillary Clinton.
+in the Main Data Set. We generated thirty-seven topic labels      Figure 2 mimics Figure 1 using the Close Elections Data Set.
+using Grimmer’s (2010) “expAgenda” package.27 We referred         The trend appears to match our expectations for the Close
+to Gallup to determine which issues were owned by which           Election Tone Partisan Influence Hypothesis: unlike MCs
+party (“Party Images”, 2019). Using this as a reference,          in the main population, MCs facing close elections use tones
+we treated six of the thirty-seven topics as issues owned         that are (for the most part) very similar, regardless of party
+by Democrats: “Civil/Human Rights,” “Environment,”                affiliation. Figure 3 illustrates the sentiment in both data sets
+“Financial System/Consumer Protection,” “Gun violence,”           by party affiliation. The trend provides tentative support for
+“Healthcare,” and “Higher Education.”28 Likewise, we treated      the Close Election Tone Hypothesis: Democrats and
+five topics as issues owned by Republicans: “Agriculture,”        Republicans in the Close Elections Data Set use more posi-
+“Federal Budget,” “Law Enforcement/Crime,” “Military/             tive tones than those in the Main Data Set; however, the difDefense,” and “Veterans’ Affairs.”                                ferences are only largely distinguishable between May and
+    Next, we calculated the percentage of press releases each     October 2016 for Republicans; and between November 2016
+MC in the main population dedicated to Democrat-owned             and January 2019 for Democrats.
+issues and Republican-owned issues, respectively. To                  The results for all three models estimated with OLS are
+observe the Own Party Issues Point of Interest, we calcu-         shown in Table 1. In Column I, both the White House and
+lated the quartile numbers (the minimum, the first quartile,      Congress control are positively and significantly associated
+the median, the third quartile, and the maximum) for the per-     with sentiment, supporting the White House Control
+centages of press releases issued by House majority MCs           Hypothesis and the Congress Control Hypothesis: MCs
+that discussed issues owned by their party. According to the      from the president’s party and those from a majority party
+Own Party Issues Point of Interest, we expect these num-          that controls both chambers are more likely to be positive in
+bers to be relatively high. To test the Minority Party            sentiment than those from members of the party out of power.
+Hypothesis, we calculated quartile numbers for the percent-       The dependent variable, the score of the press release tone,
+ages of press releases issued by House majority MCs that          ranges from −0.48 to 0.55 with a mean of 0.12 and a standard
+discuss issues owned by the opposing party. We then calcu-        deviation of 0.08. This result suggests that all else equal, a
+lated quartile numbers for the percentages of press releases      press release issued by an MC from the president’s party will
+issued by House minority MCs that discussed issues owned          roughly be one-fourth of a standard deviation more positive
+by the opposing party. According to the Minority Party            than a member of the opposition’s press release. While the
+Hypothesis, we expect the quartile numbers for the House          Key Votes coefficient is in the direction predicted—MCs
+majority to be lower than those of the House minority.            who are winning a higher percentage of significant legislaTo test the Senator Hypothesis, we calculated quartiles       tive battles are more likely to be positive—the coefficient for
+for the percentages of press releases issued by House major-      the LES variable is surprisingly negative, indicating that
+ity MCs that discuss issues owned by the opposing party. We       MCs with greater influence are more likely to be negative in
+then calculated quartile numbers for the percentages of press     their communications. Since LES likely correlate with
+
+
+Wang and Tucker                                                                                                                           7
+
+
+Figure 1. Semimonthly-average sentiment ratings and their 95-percent confidence intervals for press releases (Main Data Set) by party
+affiliation, January 2005 to January 2019.
+
+
+Figure 2. Semimonthly-average sentiment ratings and their 95-percent confidence intervals for press releases (Close Elections Data Set)
+by party affiliation, January 2015 to January 2019.
+
+
+Figure 3. Semimonthly-average sentiment ratings and their 95-percent confidence interval for press releases (both Main Data Set and
+Close Elections Data Set) by party affiliation, January 2015 to January 2019.
+
+
+seniority and leadership positions, this estimate may be neg-         frequently in contentious partisan messaging (which are usuative because of a function of the leadership office. For             ally negative).
+example, committee chairs may have to discuss more contro-               We also considered the possibility of heterogeneous
+versial or difficult policies, which involves a less positive         effects under different types of divided and united governtone.29 It is also possible that leadership MCs issue fewer           ment. Under unified government, the accountability process
+press releases detailing constituency work (which, as men-            between government performance and voters may be more
+tioned above, are usually positive) and instead engage more           apparent (Norpoth, 2001). Only one party controls the
+
+
+8                                                                                                                     American Politics Research 00(0)
+
+Table 1. Predicting Press Release Tone.
+
+                                                     Main data set                      Close elections data set                 All press releases
+                                                109th to 115th Congress                114th to 115th Congress                114th to 115th Congress
+White House control                                        0.018**                                0.008*                                 0.017***
+                                                          (0.002)                                (0.003)                                (0.002)
+Congress control                                           0.010**                               −0.030                                  0.024
+                                                          (0.003)                                (0.053)                                (0.069)
+Key votes                                                  0.014**                               −0.001                                  0.019***
+                                                          (0.003)                                (0.005)                                (0.005)
+Vote with party                                           −0.000                                  0.000                                 −0.000
+                                                          (0.000)                                (0.001)                                (0.001)
+Influence                                                 −0.004**                               −0.001                                 −0.007***
+                                                          (0.001)                                (0.003)                                (0.002)
+Approval                                                   0.000                                  0.000                                  0.0003***
+                                                          (0.000)                                (0.000)                                (0.0001)
+Close to main                                                                                                                           −0.012*
+                                                                                                                                        (0.005)
+Constant                                                    0.109***                              0.126***                               0.120***
+                                                           (0.004)                               (0.013)                                (0.006)
+Adjusted R^2                                                0.028                                 0.004                                  0.035
+F-Statistic                                               37.94***                                1.92*                                 38.81***
+N                                                         180,937                                 9,121                                  72,009
+
+Note. Regressions estimated using ordinary least squares. The dependent variable of each model is the tone of press release, the unit of observation, in
+which positive press releases are higher values. The first column estimates the tone using our Main Data Set sample. The second column estimates the tone
+of press releases for MCs using elections decided by five percentage points or fewer. The third column includes all press releases for all MCs in our sample.
+*p < .05. **p < .01. ***p < .001.
+
+
+executive and legislative branches and MCs may anticipate                        effects across the main and close elections populations.31 We
+that voters will hold that party accountable. Thus, they may                     found that party control of the White House had a stronger
+be more likely to be negative if their party is out of power or                  effect on the tone of press releases issued by MCs in the
+more positive if their party is in power since the accountabil-                  Main population than those issued by MCs in the close elecity process is clearer to voters. For this reason, we might                      tions population, providing further support for Close
+expect White House control’s effect to be stronger under a                       Election Tone Partisan Influence Hypothesis. We repliunified government rather than under a divided government                        cated the approach from Column I of Table 1, but instead
+scenario. When the government is divided, we might expect                        standardize the coefficients to gauge the relative strength of
+these relationships to be weaker since the accountability                        White House and Congress control. We found that the stanchain is less clear. Drawing negative attention to the govern-                   dardized White House estimate was nearly twice the size of
+ment could backfire against an MC’s copartisan in the White                      the Congress Control’s magnitude.32
+House or Speaker of the House. Furthermore, we might                                In Table 1, Column III, we find that the “Close to Main”
+expect weaker effects partisan control effects when Congress                     is negative and statistically significant, indicating that press
+is divided by chambers.                                                          releases in the Main Data Set are more negative in tone than
+    In an ancillary analysis, we replicate Table 1, Column 1 in                  those in the Close Elections Data Set (thus providing support
+the Supplemental Appendix Table G7 by subsetting the Main                        for Close Election Tone Hypothesis).
+Data Set into unified government, divided chamber, and
+divided government with unified chambers subsamples. Our                         Issue Ownership (Own Party Point of Interest and
+results indicate that the strongest effect for the White House
+                                                                                 Minority Party Hypothesis-Senator Hypothesis)
+control variable is in fact when the chambers are divided by
+party, perhaps suggesting that when accountability is less                       Figure 4 shows the quartile numbers for the percentage of
+clear for Congress, MCs are much more sensitive to the pres-                     press releases issued by Democratic/Republican MCs dediident’s partisanship in their messaging strategy.30                              cated to discussing Democrat/Republican-owned issues for
+    Table 1, Column II provides modest support for Close                         each of the seven congressional sessions. Under the Own
+Election Tone Partisan Influence Hypothesis. While the                           Party Issues Point of Interest, we expect the House majorWhite House Control estimate is still significant, the                           ity to largely focus on issues they own. However, in Figure 4,
+Congress Control estimate is not. We conducted an addi-                          we find that most House majority members dedicated no
+tional regression model to compare the White House control                       more than 21% of their press releases to party’s issues. When
+
+
+Wang and Tucker                                                                                                                 9
+
+
+Figure 4. Quartile numbers for percentages of press releases dedicated by Senate/House Democrats and Republicans to Democrat/
+Republican-owned issues for each congressional session, respectively.
+
+
+ignoring outliers, we see that no MC dedicated more than          discussed Republican issues more frequently than Democrats
+38% of their press releases to their party’s issues.              by roughly 5.07% points. We next examine Democratic
+Consequently, the Own Party Issues Point of Interest does         issues in Columns III and IV. While we do not find a reliable
+not find as strong of support as we had expected.                 effect for partisanship in the Senate, the estimated coefficient
+   Nonetheless, we find that MCs devoted a slightly higher        for House members is negative and precise. A Republican is
+percentage of press releases to issues that their party owns      estimated to talk about Democratic issues less frequently
+than MCs of the other party. For example, Figure 4 illustrates    than a Democrat by approximately 5.21% points.
+that most or all of the quartile numbers for Republican MCs’         Per Minority Party Hypothesis, we expect the House
+percentages are higher than the respective numbers for            majority party’s quartile numbers concerning percentages of
+Democratic MCs’ percentages when discussing Republican            press releases dedicated to issues owned by the opposing
+issues. Similarly, most or all of the quartile numbers for        party to be lower than the respective quartile numbers for the
+Democratic MCs’ percentages are higher than the respective        House minority party. However, according to Figure 4, we
+numbers for Republican MCs’ percentages when discussing           find an inconsistent pattern of this occurring in only four of
+Democratic issues. Only two exceptions occur in this general      the seven sessions. In Table 3, we regressed the percentage of
+pattern regarding senators discussing Democrat-owned              press releases dedicated to the other party’s issues on a
+issues in the 111th and 113th sessions.                           dummy variable for MC party affiliation and whether the
+   We regressed the percentage of press releases MCs              MC was a member of the majority. Surprisingly, we find that
+devoted to discussing Republican and Democratic issues,           Republicans were more likely to talk about Democratic
+respectively, on party affiliation using OLS while controlling    issues than Democrats were to talk about Republican issues.
+for the legislative session.33 Column I of Table 2 demon-         This finding could be due to issue topics such as “Healthcare”
+strates that a Republican senator was estimated to discuss        and “Environment”—two Democrat-owned issues—being
+Republican issues by 4.16% points more than a Democratic          quite salient in the given period. In addition, representatives
+senator, a statistically significant difference. In the House     in the majority party were less likely to talk about issues
+(Table 2, Column II), we find a similar result: Republicans       owned by the opposite party than were representatives in the
+
+
+10                                                                                                                 American Politics Research 00(0)
+
+Table 2. OLS Regression Testing Whether Differences in Attention Towards Republican Issues are Significant Between Democratic
+and Republican Senators and Representatives.
+
+                                             % of press releases dedicated to                                  % of press releases dedicated to
+                                                    republican issues                                                 democratic issues
+
+                                            Senate                           House                           Senate                           House
+Republican                                   4.156***                        5.065***                        −0.512                          −5.213***
+                                            (1.037)                         (0.608)                          (1.433)                         (0.692)
+110th Congress                               3.920*                          0.616                            2.628                           2.582*
+                                            (1.972)                         (1.225)                          (2.726)                         (1.396)
+111th Congress                               2.711                          −0.442                           11.462***                        8.344***
+                                            (1.953)                         (1.165)                          (2.700)                         (1.327)
+112th Congress                               5.371***                        3.494***                         4.106                           5.363***
+                                            (1.972)                         (1.163)                          (2.726)                         (1.324)
+113th Congress                               4.320**                         3.289***                         3.911                           5.408***
+                                            (1.934)                         (1.159)                          (2.674)                         (1.319)
+114th Congress                               3.879**                         0.335                            3.241                           5.579***
+                                            (1.934)                         (1.159)                          (2.674)                         (1.319)
+115th Congress                               2.101                           1.188**                          4.938*                          5.856***
+                                            (1.934)                         (1.156)                          (2.674)                         (1.317)
+Constant                                     7.798***                        8.209*                           8.630***                       10.134***
+                                            (1.544)                         (0.926)                          (2.134)                         (1.054)
+Adjusted R^2                                 0.104                           0.126                            0.079                           0.125
+N                                            166                              644                             166                              644
+
+Note. Regressions estimated using ordinary least squares. The dependent variable of each model is the percentage of press releases a MC devoted to
+the issues of a given party. The unit of analysis is MC. The first two columns present estimates of the percentage or press releases devoted to issues
+traditionally owned by Republicans, while the third and fourth columns present estimates for issues traditionally owned by Democrats. The first and third
+columns are estimates for the US Senate, while the second and fourth columns are estimates for the US House.
+*p < .05. **p < .01. ***p < .001.
+
+
+Table 3. OLS Regression Testing Whether Differences in                         press releases discussing issues owned by the opposing party
+Attention Towards Issues Owned by the Opposite Party are                       are always equal to or higher than those of the House majorSignificant Between the House Majority and the House Minority.                 ity across all five sessions. Furthermore, as displayed in
+Republican                                                     1.422**
+                                                                               Table 4, regressing the percent of press releases dedicated to
+                                                              (0.644)          issues owned by the opposite party on a dummy variable for
+House Control                                                 −1.492**         chamber demonstrates evidence of a difference between
+                                                              (0.606)          chambers: the estimated coefficient suggests House memConstant                                                       9.909***        bers are slightly less likely to talk about issues owned by the
+                                                              (0.367)          opposite party than senators.34
+Adjusted R^2                                                   0.009
+N                                                               644
+                                                                               Limitations
+Note. Regression estimated using ordinary least squares. The dependent
+variable of each model is the percentage of press releases a House             Our study faces several limitations. First, press releases are
+member devoted to the issues of the opposing party. The unit of analysis       not always a source of clean data for analysis. For example,
+is legislator.                                                                 MCs may cite quotations that they find disagreeable.
+*p < .05. **p < .01. ***p < .001.
+                                                                               However, this phenomenon rarely occurs: in a random sampling of 200 press releases, we find that 85 percent did not
+minority party. In summary, the results support the Minority                   cite a direct quote; 13 percent cited a quote in which the
+Party Hypothesis.                                                              author of the text shared the same sentiment; and the remainPer Senator Hypothesis, we expect the Senate majority                       ing 2 percent cited a quote with which they disagreed. In all
+quartile numbers to be higher than the respective quartile                     of the press releases that included a quote that the author
+numbers of the House majority party. Limiting our compari-                     disagreed with, the quote took less than 5 percent of the total
+sons to sessions in which the same party controlled both the                   word count of the press release. Consequently, we do not
+House and the Senate, we find evidence supporting the                          believe that members used direct quotations in a manner that
+Senator Hypothesis: as illustrated in Figure 4, we find that                   raises serious concerns over the model’s accuracy. MCs may
+the quartile numbers for the Senate majority’s percentages of                  also divide press releases into several sections, with each
+
+
+Wang and Tucker                                                                                                                                 11
+
+Table 4. OLS Regression Testing Whether Differences in                             respectively. We performed the same analyses regarding tone
+Attention Towards Issues Owned by the Opposite Party are                           using both packages individually and found no significant
+Significant Between the Senate Majority and House Majority.                        differences in results. Third, from our second validation
+Republican                                                            0.836        approach of manually reviewing 200 press releases and the
+                                                                     (0.549)       direction of their sentiment scores, we found that negative
+Senate                                                                2.087**      press releases number relatively low in general (please see
+                                                                     (0.658)       Supplemental Appendix E for more information).
+110th Congress                                                        0.732            Another limitation in our study is the lack of information
+                                                                     (1.092)       concerning the distribution of true issue topics that are
+111th Congress                                                        2.987**      grouped into the “Other” category by expAgenda. Since the
+                                                                     (1.047)
+                                                                                   percentage of press releases in the “Other” category is fairly
+112th Congress                                                        3.250**
+                                                                     (1.040)       consistent across all seven congressional sessions, we are not
+113th Congress                                                        2.697**      concerned by potential issues as a result of inconsistent
+                                                                     (1.040)       labeling. However, we are uncertain as to whether the distri114th Congress                                                        0.793        bution may affect our analysis regarding issue ownership
+                                                                     (1.040)       and, if so, by how much. We mitigate this uncertainty by ran115th Congress                                                        0.471        dom sampling 200 press releases labeled “Other.” We manu-
+                                                                     (1.038)       ally coded each press release in the sample with an issue
+Constant                                                              7.787***     topic and assigned forty-four different issue topics in total.
+                                                                     (0.836)       Twenty-nine percent of these issue topics were not topics
+Adjusted R^2                                                          0.036        previously generated by “expAgenda” and included topics
+N                                                                      810
+                                                                                   concerning Native Americans, the swearing in of MCs, and
+Note. Regression estimated using ordinary least squares. The dependent             advertisements for internships. We also found that there is a
+variable of each model is the percentage of press releases a legislator            slightly higher percentage of press releases dedicated to
+devoted to the issues of the opposing party. The unit of analysis is legislator.   Democrat issues (18%) than Republican issues (9%),
+*p < .05. **p < .01. ***p < .001.
+                                                                                   although we do note that these percentages likely reflect the
+                                                                                   greater number of texts authored by Democrats in the overall
+section dedicated to a different issue topic. Such practice                        dataset. The top three most frequent issue topics for press
+poses a challenge to the accuracy of our analyses concerning                       releases in the “Other” category were “Honorary,”
+topic as expAgenda assigns each press release a single topic                       “Memorial,” and “Appropriations”—constituting twenty-six
+label. This practice, however, is rare as well. Using the same                     percent of the sample. We ultimately believe that the distrirandom sample of 200 press releases, we found only one                             bution of issue topics within the “Other” category does not
+press release that was divided into distinct issue sections.                       pose a significant challenge to our analyses.
+Grimmer (2013) also considered this phenomenon to be
+infrequent and to be of little challenge to expAgenda’s utilConclusion
+ity (p. 42). Finally, press releases may also be jointly issued
+by several MCs (as denoted within the text of the press                            As MCs increasingly use the Internet to communicate with
+release) but only published on a subset of the authoring                           their constituents, and as the public gathers political informaMCs’ websites. Again, we found this practice to be rare—                           tion from the internet more frequently, it becomes increasoccurring in less than five percent of the 200 press release                       ingly important to understand congressional behavior on the
+sample.                                                                            Web. We contribute to this understanding by examining
+    Second, as previously mentioned, we noticed that our sen-                      online congressional communication under existing theories
+timent analysis model inflated sentiment scores for all press                      of strategic partisan communication. Specifically, our study
+releases. However, such an issue does not challenge our find-                      analyzes the influence of partisanship on MCs’ use of tone
+ings for three reasons: First, we make a comparative analysis                      and examines whether MCs prioritize communicating about
+in regard to tone—we examine under which circumstances                             issues that their party owns. In the process, we provide what
+texts are more positive or negative rather than whether they                       we believe is the most comprehensive and contemporary
+are, in absolute terms, positive or negative. Moreover, as                         analysis of MCs’ press releases thus far.
+indicated by our validation step using AMT, the accuracy                              In particular, we observe several findings from our study:
+score for the relativity of our model’s ratings is fairly high—                    First, party control of the White House and of Congress both
+68%. Second, the findings of our study are robust, regardless                      influence MCs to communicate more positively. We find eviof how we assign sentiment scores to texts. For example, our                       dence that the differences in tone regarding the former varimodel only assigns four percent of texts with a score in the                       able are caused by nonpresidential party MCs attacking the
+negative direction; sentimentR and TextBob observe more                            President and the Administration more frequently; and by
+reasonable percentages, at sixteen percent and ten percent,                        presidential party MCs communicating more optimistically
+
+
+12                                                                                                  American Politics Research 00(0)
+
+
+when discussing the general state of the nation. However,         congressional Web communication. Our study attempts to
+party control of the White House possesses a smaller effect       supplement the latter.
+for MCs serving in competitive districts or states while party
+control of Congress has no effect. We find that these mar-        Acknowledgments
+ginal MCs engage more frequently in credit claiming instead.      We thank Lilly Wang and Charles for their generous and invaluable
+Furthermore, when marginal MCs do discuss policy issues,          assistance regarding the statistical analyses used in this study. We
+they employ a more positive tone regardless of partisan affil-    also thank Betsy Sinclair for inspiring the conception of this project
+iation. Party control of the White House also appears to pos-     during its initial phases. Finally, we would like to thank Justin Fox,
+sess a greater influence on tone than party control of Congress   John D. Wilkerson, Brian F. Crisp, Justin Grimmer, Patrick Cunha
+for all MCs.                                                      Silva, Douglas L. Kriner, Kevin M. Esterling, Kenneth Lowande,
+    Second, MCs devote slightly greater attention to issues       Douglas Knox, Stephen Pentecost, Andreu Casas, Derek Willis,
+that their respective party owns than MCs from the opposite       Steven S. Smith, and the two anonymous reviewers for their helpful
+                                                                  comments, all of which were instrumental in shaping and improvparty. However, MCs are largely unable to prioritize their
+                                                                  ing the final version of our paper.
+party’s issues in their communications. We also find that
+MCs in the House minority discuss issues owned by the
+                                                                  Declaration of Conflicting Interests
+opposite party slightly more frequently than do MCs in the
+House majority, and that the Senate majority does devote a        The author(s) declared no potential conflicts of interest with respect
+larger percentage of press releases discussing issues owned       to the research, authorship, and/or publication of this article.
+by the opposite party than the House majority.
+    Our results have important implications for congressional     Funding
+communication on the Web. Ultimately, we find that MCs            The author(s) received no financial support for the research, authorengage in strategic behavior when communicating on the            ship, and/or publication of this article.
+Web—partisanship not only affects what MCs say, but how
+they say it. Such behavior can potentially be troubling as        ORCID iD
+political polarization increases within Congress (Lee, 2017;      Richard T. Wang       https://orcid.org/0000-0003-4645-4959
+Theriault, 2008) and may have a profound impact on the lack
+of genuine or meaningful discourse by MCs on the Web. For         Supplemental Material
+example, if MCs’ attitudes when discussing policy is more
+                                                                  Supplemental material for this article is available online.
+easily influenced by partisanship rather than the merits of
+said policy, MCs may ultimately offer an incomplete or even
+fallacious set of information to their constituents, who then     Notes
+use such information when deciding whether to support the          1.   Although a significant portion of press releases is likely to
+policy. Indeed, previous literature has found that what MCs             have been written by MCs’ press secretaries, we believe this
+choose to discuss in their press releases (and, as importantly,         distinction is irrelevant as such power is delegated by the
+what they choose not to discuss in their press releases) has a          MCs. Press secretaries are also highly unlikely to publish a
+                                                                        piece of communication inconsistent with the MCs’ views
+significant impact on the information constituents use to
+                                                                        (Lipinski, 2004, p. 12).
+evaluate their representatives (Grimmer, 2013). Cohen              2.   For example, it is possible that MCs from competitive dis-
+(2003) also finds that the public’s evaluation of a policy is           tricts or states publish positive/negative press releases at simiinfluenced by the political affiliations of supporters for that         lar rates as their copartisans, but use less extreme tones.
+policy. For example, Cohen found that “for both liberal and        3.   We note that our discussion (and subsequent analysis), focus
+conservative participants, the effect of reference group infor-         mostly on behavior in the aggregate. To be sure, exogenous
+mation overrode that of policy content. . . If their party              events can occur that may influence members of the majority
+endorsed it, liberals supported even a harsh welfare program,           party or the president’s party to take on a more negative tone.
+and conservatives supported even a lavish one” (p. 811).                Overall, however, we expect that copartisans of the president
+Consequently, we should not only be concerned with the                  will be more positive than the opposition.
+selection of content presented within MCs’ press releases,         4.   TheDemocrats, 2017.
+but also the presentation of such content as both have signifi-    5.   Analyzing evening newscasts, Groeling finds a relatively
+                                                                        high percentage of positive evaluations of the president by
+cant influence on constituents’ decision-making in the politihis copartisans and that, even under unfavorable conditions
+cal process. Although previous literature has captured the              (see page 87), presidential party members were more likely to
+influence of partisanship on congressional communication in             give positive evaluations of the president than nonpresidential
+more traditional mediums of communication, such as televi-              party members (Groeling, 2010, p. 83).
+sion and newspapers (Callaghan & Schnell, 2005; D’Angelo           6.   Groeling (2010) appears to suggest this. Using 6 years of
+& Kuypers, 2010; Reese, 2001, pp. 49–61; Schaffner &                    newscast data, Groeling finds that under a unified government
+Sellers, 2010), few have observed such an influence on                  there is a greater amount of news coverage of presidential
+
+
+Wang and Tucker                                                                                                                              13
+
+      party members praising each other (15%) than presidential           22.   While Montgomery and Carlson (2016, SI-2) and Socher
+      party members attacking nonpresidential members (8%). In                  et al. (2013) find much higher validation scores for the posicontrast, there is greater coverage of nonpresidential party              tivity of text (91% and 85%), we must note that in this context
+      members attacking presidential party members (38%) than                   our validation measure of 68% is relatively strong. For one,
+      nonpresidential party members praising each other (7%)                    workers in those studies were asked to evaluate film reviews,
+      (Groeling, 2010, p. 170). However, it should be noted that                which tend to be either positive or negative by their nature.
+      news coverage may not be representative of the true number                Furthermore, workers read from two reviews that were preof cases in which the above occurs (Groeling 2010, p. 87; see             determined to be negative or positive by a star rating. Press
+      also Baum & Groeling, 2009).                                              releases may be much more nuanced in their positivity, and
+ 7.   Electoral concerns should trump MCs’ partisan interests as                thus we might expect slightly lower scores. Nonetheless, we
+      “being in Congress is necessary to achieve anything else                  find that, on average, our measurement of sentiment matches
+      there” (Jacobson, 2017, p. 35).                                           with the readers.
+ 8.   Indeed, unnecessarily mentioning policy initiatives raised by       23.   We cluster standard errors by MC.
+      the minority party may provide the minority party an advan-         24.   Since Congressional Quarterly did not publish the House and
+      tage by providing their issues greater exposure.                          Senate key votes for 2018 at the time of our study, we used
+ 9.   This is a point of interest as it is not a testable hypothesis.           ProPublica’s “major votes” as a substitute for 2018 only.
+      Unlike the other hypotheses, which make comparative evalu-          25.   The Key Votes cumulative percentages reset at the beginning
+      ations, this point of interest observes the attention of House            of each year. “No votes” are treated as null; this also explains
+      majority MCs in absolute.                                                 the discrepancy between the number of press releases retrieved
+10.   However, we only collected press releases from active gov-                and the number used in our OLS models. Lipinski’s approach
+      ernment websites. We have chosen this timeframe because                   of considering only key votes is more appropriate than conit provides an accessible, comprehensive sample of press                  sidering all votes as MCs may strategically propose legislareleases. Furthermore, it also provides variation with respect            tion doomed to fail to serve their political needs—members
+      to Congress and White House Control, allowing our hypoth-                 may intentionally lose a greater number of legislative battles
+      eses to be tested.                                                        with the intention of behaving more negatively (Lee, 2017).
+11.   See Supplemental Appendix A.1 for the list of MCs in the            26.   Although we argued earlier that the president’s copartisans
+      main study population.                                                    will defend and/or praise the president in an attempt to influ12.   See Supplemental Appendix B.1 for the date distribution of                ence public approval of the president, MCs may strategipress releases for the Main Data Set.                                     cally criticize the president to dissociate with an unpopular
+13.   See Supplemental Appendix A.2 for the list of MCs in the                  president.
+      close elections population. See Supplemental Appendix               27.   See Supplemental Appendix F for the list of issue topics as
+      B.2 for the date distribution of press releases in the Close              well as the number of press releases assigned to each topic.
+      Elections Data Set.                                                       The topics of 15.7% of press releases could not be determined
+14.   Web.archive.org.                                                          and are labeled as “Other.”
+15.   Less than 1% of our total press releases measured 100 words         28.   We chose not to assign the topic label “Memorial/Women’s
+      or less.                                                                  Issues” to either party as the label includes both a Democrat
+16.   Both sentimentR and TextBlob assigned sentiment scores                    issue (women’s issues) and a Republican issue (memorial).
+      within the range of −1 and 1.                                       29.   We thank Dr. Justin Fox for raising this possible explanation.
+17.   For documentation regarding XGBoost’s linear booster, please        30.   We also investigated whether district-specific connections
+      refer to the following: https://xgboost.readthedocs.io/en/latest/         to a certain issue may influence the tone of how an issue is
+      parameter.html#parameters-for-linear-booster-booster-gblinear.            discussed. In Supplemental Appendix Table G2, we ran the
+18.   For more information concerning TFIDF, SVD, and LSA,                      model from Table I, Column I on all those press releases referplease see https://towardsdatascience.com/latent-semantic-                ring to agriculture, while controlling for the acres of farmland
+      analysis-distributional-semantics-in-nlp-ea84bf686b50.                    in each legislative district. While we found no evidence of an
+19.   See Supplemental Appendix D for the distribution of the sen-              effect that the proportion of district devoted to farming influtiment scores.                                                            enced tone, our main results with respect to partisan control
+20.   We required that each text be in exactly twenty comparisons.              held. In Supplemental Appendix Table G13, we investigated
+      As Montgomery and Carlson found, when “generat[ing] valid                 whether partisan control’s effect is conditioned by an issue
+      estimates of latent traits embedded in texts,” there is a “very           being owned by a party. We find that the majority party is
+      mild gain in precision” moving beyond twenty comparisons                  significantly more likely to discuss an issue positively if they
+      (Montgomery & Carlson 2016, p. 12).                                       own it, relative to an issue not owned by their party.
+21.   As Montgomery and Carlson mention, the use of pairwise              31.   See Supplemental Appendix Table G8.
+      comparisons “can reduce the cognitive burden for respondents        32.   See Supplemental Appendix Table G9.
+      [and] improve the reliability of responses” (Montgomery &           33.   For the ease of interpretation, we estimated and present modCarlson 2016, p. 8). Nonetheless, in an effort to maintain even           els using OLS. In this way, it is possible to get a sense of
+      higher accuracy, we impose a “Masters” qualification for our              the baseline for the percentage of press releases that MCs
+      HITs—a status awarded to workers who have “demonstrated                   devote to discussing their own and the other party’s issues.
+      a high degree of success in performing a wide range of HITs               We are then able to show how our variables of interest are
+      across a large number of Requesters” (https://www.mturk.                  associated with expected shifts in the messaging strategy.
+      com/worker/help).                                                         An OLS approach is limited in that it allows for nonsensical
+
+
+14                                                                                                       American Politics Research 00(0)
+
+      out-of-sample predicted estimates. For this reason, we also      Esterling, K. M., Lazer, D. M., & Neblo, M. A. (2013). Connecting
+      estimated our models using a fractional logit approach. The           to constituents: The diffusion of representation practices among
+      results are consistent with the findings presented in the main        congressional websites. Political Research Quarterly, 66(1),
+      text and may be found in Supplemental Appendix Table G3.              102–114.
+34.   We conducted several ancillary analyses to identify patterns     Fenno, R. F. (1982). The United States senate: A bicameral perof press release behavior. Supplemental Figure G1 and Tables          spective (Vol. 362). AEI Press.
+      G6 and G10 demonstrate that close elections are associated       Fitch, B. (2016). Moving Beyond the Gold Mouse Awards – the
+      with more credit-claiming. Supplemental Table G11 shows               Next Phase of Congress Online. Congressional Management
+      those in close elections are slightly more positive.                  Foundation. www.congressfoundation.org/news/blog/1176moving-beyond-the-gold-mouse-awards-the-next-phase-ofReferences                                                                  congress-online
+                                                                       Fitch, B., Goldschmidt, K., Fulton, E., & Griffin, N. (2005). Commu­
+Adler, E. S., Gent, C. E., & Overmeyer, C. B. (1998). The home
+                                                                            nicating with congress: How Capitol Hill is coping with the surge
+    style homepage: Legislator use of the world wide web for conin citizen advocacy. Congressional Management Foundation.
+    stituency contact. Legislative Studies Quarterly, 23(4): 585–
+                                                                       Golbeck, J., Grimes, J. M., & Rogers, A. (2010). Twitter use by the
+    595.
+                                                                            U.S. Congress. Journal of the American Society for Information
+Ansolabehere, S., Behr, R., & Iyengar, S. (1993). Media game:
+                                                                            Science and Technology, 61(8), 1612–1621.
+    American politics in the television age. Macmillan.
+                                                                       Grimmer, J. (2010). A Bayesian hierarchical topic model for
+Ansolabehere, S., & Iyengar, S. (1994). Riding the wave and claimpolitical texts: Measuring expressed agendas in Senate press
+    ing ownership over issues: The joint effects of advertising and
+                                                                            releases. Political Analysis, 18(1), 1–35.
+    news coverage in campaigns. Public Opinion Quarterly, 58(3),
+                                                                       Grimmer, J., Messing, S., & Westwood, S. J. (2012). How words
+    335–357.
+                                                                            and money cultivate a personal vote: The effect of legislaBaum, M. A., & Groeling, T. (2009). Shot by the messenger:
+                                                                            tor credit claiming on constituent credit allocation. American
+    Partisan cues and public opinion regarding national security
+                                                                            Political Science Review, 106(4), 703–719.
+    and war. Political Behavior, 31(2), 157–186.
+                                                                       Grimmer, J. (2013). Representational style in Congress: What legBimber, B. (1999). The internet and citizen communication with
+                                                                            islators say and why it matters. Cambridge University Press.
+    government: Does the medium matter? Political communicaGrimmer, J., & Stewart, B. M. (2013). Text as data: The promise
+    tion, 16(4), 409–428.
+                                                                            and pitfalls of automatic content analysis methods for political
+Bond, J. R., & Fleisher, R. (1990). The President in the legislative
+                                                                            texts. Political analysis, 21(3), 267–297.
+    arena. University of Chicago Press.
+                                                                       Groeling, T. (2010). When politicians attack: Party cohesion in the
+Brunken, B. L. (2006). Hurricane Katrina: A content analysis of
+                                                                            media. Cambridge University Press.
+    media framing, attribute agenda setting, and tone of governGunther, A. C. (1998). The persuasive press inference: Effects
+    ment response. LSU Master’s Theses, 1502.
+                                                                            of mass media on perceived public opinion. Communication
+Callaghan, K., & Schnell, F. (2005). Framing American politics.
+                                                                            Research, 25(5), 486–504.
+    University of Pittsburgh Press.
+                                                                       Hester, J. B., & Gibson, R. (2003). The economy and secondCampbell, J. E. (2015). The presidential pulse of congressional
+                                                                            level agenda setting: A time-series analysis of economic news
+    elections. University Press of Kentucky.
+                                                                            and public opinion about the economy. Journalism & Mass
+Carter, M. (1999). Speaking up in the Internet age: Use and value of
+    constituent e-mail and congressional web-sites. Parliamentary           Communication Quarterly, 80(1), 73–90.
+    Affairs, 52(3), 464–479.                                           Hetherington, M. J. (1998). The political relevance of political trust.
+Cohen, G. L. (2003). Party over policy: The dominating impact of            American Political Science Review, 92(4), 791–808.
+    group influence on political beliefs. Journal of Personality and   Jacobs, L. R., & Shapiro, R. Y. (2000). Politicians don’t pander:
+    Social Psychology, 85(5), 808–822.                                      Political manipulation and the loss of democratic responsiveCook, T. E. (1989). Making laws and making news: Media strat-               ness. University of Chicago Press.
+    egies in the U.S. house of representatives. The Brookings          Jacobson, G. C. (2017). The electoral connection, then and now. In
+    Institution.                                                            A.S. Gerber & E. Schickler (Eds.), Governing in a polarized
+Davis, R. (1999). The web of politics: The Internet’s impact on the         age: Elections, parties, and political representation in America
+    American political system. Oxford University Press.                     (pp. 35–64). Cambridge University Press.
+Damore, D.F. (2004). The dynamics of issue ownership in presiden-      Johnson, D. W. (2013). Congress online: Bridging the gap between
+    tial campaigns. Political Research Quarterly, 57(3), 391–397.           citizens and their representatives. Routledge.
+D’Angelo, P., & Kuypers, J. A. (Eds.). (2010). Doing news framing      Jones, D. R., & McDermott, M. L. (2004). The responsible party
+    analysis: Empirical and theoretical perspectives. Routledge.            government model in house and senate elections. American
+Druckman, J. N. (2001). The implications of framing effects for             Journal of Political Science, 48(1), 1–12.
+    citizen competence. Political behavior, 23(3), 225–256.            Krosnick, J. A., & Kinder, D. R. (1990). Altering the foundations of
+Druckman, J. N., Hennessy, C. L., Kifer, M. J., & Parkin, M. (2010).        support for the president through priming. American Political
+    Issue engagement on congressional candidate web sites, 2002–            Science Review, 84(2), 497–512.
+    2006. Social Science Computer Review, 28(1), 3–23.                 Lee, F. E. (2017). Legislative parties in an era of alternating majoriDulio, D. A., & Trumbore, P. F. (2009). Running on Iraq or running          ties. In A.S. Gerber & E. Schickler (Eds.), Governing in a
+    from Iraq? Conditional issue ownership in the 2006 midterm              polarized age: Elections, parties, and political representation
+    elections. Political Research Quarterly, 62(2): 230–243.                in America (pp. 115–142). Cambridge University Press.
+
+
+Wang and Tucker                                                                                                                           15
+
+Lee, F. E., & Oppenheimer, B. I. (1999). Sizing up the Senate: The       Reeves, A., & Rogowski, J. C. (2015). Public opinion toward
+    unequal consequences of equal representation. University of               presidential power. Presidential Studies Quarterly, 45(4),
+    Chicago Press.                                                            742–759.
+Lipinski, D. (2004). Congressional communication: Content and            Schaffner, B. F., & Sellers, P. J. (Eds.). (2010). Winning with
+    consequences. University of Michigan Press.                               words: The origins and impact of political framing. Routledge.
+Lipinski, D., & Neddenriep, G. (2004). Using “new” media to get          Sellers, P. (2010). Cycles of spin: Strategic communication in the
+    “old” media coverage: How members of congress utilize their               U.S. Congress. Cambridge University Press.
+    web sites to court journalists. Harvard International Journal of     Sides, J. (2007). The consequences of campaign agendas. American
+    Press/Politics, 9(1), 7–21.                                               Politics Research, 35(4): 465–488.
+Lupia, A., & Philpot, T. S. (2005). Views from inside the net: How       Simon, A. F. (2002). The winning message: Candidate behavior,
+    websites affect young adults’ political interest. The Journal of          campaign discourse, and democracy. Cambridge University
+    Politics, 67(4), 1122–1142.                                               Press.
+Malecha, G. L., & Reagan, D. J. (2012). The public Congress:             Smith, S. S. (2007). Party influence in congress. Cambridge
+    Congressional deliberation in a new media age. Routledge.                 University Press.
+Mayhew, D. R. (1974). Congress: The electoral connection (Vol.           Socher, R., Bauer, J., Manning, C. D., & Ng, A. Y. (2013). Parsing
+    26). Yale University Press.                                               with compositional vector grammars. In Proceedings of the
+McCombs, M. E., & Shaw, D. L. (1972). The agenda-setting func-                51st Annual Meeting of the Association for Computational
+    tion of mass media. Public opinion quarterly, 36(2), 176–187.             Linguistics (Volume 1: Long Papers) (pp. 455–465).
+McGraw, K. M., & Ling, C. (2003). Media priming of presidential          Spiliotes, C. J., & Vavreck, L. (2002). Campaign advertising:
+    and group evaluations. Political Communication, 20(1), 23–40.             Partisan convergence or divergence? The Journal of Politics,
+Miller, R. E., & Wanta, W. (1996). Sources of the public agenda:              64(1), 249–261.
+    The president-press-public relationship. International Journal       Sulkin, T., Moriarty, C. M., & Hefner, V. (2007). Congressional
+    of Public Opinion Research, 8(4), 390–402.                                candidates’ issue agendas on- and off-line. Press/Politics,
+Montgomery, J. M., & Carlson, D. (2016). Human computation                    12(2): 63–79.
+    scaling for measuring meaningful latent traits in political texts.   TheDemocrats. (2017, July 18). Repealing the ACA with no
+    http://pages.wustl.edu/montgomery/sentimentit                             replacement isn’t only a broken promise—it’s dangerous.
+Nicholson, S. P., & Segura, G. M. (1999). Midterm elections and               Repeal would leave millions without the care they need.
+    divided government: An information-driven theory of electoral             [Twitter Post]. https://twitter.com/TheDemocrats/status/88739
+    volatility. Political Research Quarterly, 52(3), 608–629.                 0765864767489
+Norpoth, H. (2001). Divided government and economic voting. The          Theriault, S. M. (2008). Party polarization in congress. Cambridge
+    Journal of Politics. 63(2):414–435.                                       University Press.
+Oleszek, W. J. (2007). Congress and the internet: Highlights.            Volden, C., & Wiseman, A. E. (2014). Legislative effectiveness
+    Congressional Research Service.                                           in the United States congress: The lawmakers. Cambridge
+Ostrom, C. W., & Simon, D. M. (1985). Promise and perfor-                     University Press.
+    mance: A dynamic model of presidential popularity. American          Xenos, M. A., & Foot, K. A. (2005). Politics as usual, or politics
+    Political Science Review, 79(2), 334–358.                                 unusual? Position taking and dialogue on campaign websites
+Owen, D., Davis, R., & Strickler, V. J. (1999). Congress and the              in the 2002 U.S. elections. Journal of Communication, 55(1),
+    internet. Harvard International Journal of Press/Politics, 4(2),          169–185.
+    10–29.                                                               Yiannakis, D. E. (1982). House members’ communication Styles:
+Page, B. I., Shapiro, R. Y., & Dempsey, G. R. (1987). What moves              Newsletters and press releases. The Journal of Politics, 44(4),
+    public opinion? American Political Science Review, 81(1), 23–43.          1049–1071.
+“Party Images.” (2019). Gallup. Retrieved February 14, 2019, from
+    www.news.gallup.com/poll/24655/party-images.aspx.                    Author Biographies
+Petrocik, J. R. (1996). Issue ownership in presidential elections,
+                                                                         Richard T. Wang graduated from Washington University in St.
+    with a 1980 case study. American Journal of Political Science,
+                                                                         Louis and is currently a law student at Cornell Law School.
+    40, 825–850.
+Reese, S. D., Gandy Jr, O. H., & Grant, A. E. (Eds.). (2001).            Patrick D. Tucker is a postdoctoral research associate at the Center
+    Framing public life: Perspectives on media and our under-            for the Study of American Politics and Institution for Social and
+    standing of the social world. Routledge.                             Policy Studies at Yale University.

@@ -1,0 +1,655 @@
+Fe a t u r e s
+
+
+Has the Tea Party Era Radicalized the
+Republican Party? Evidence from Text
+Analysis of the 2008 and 2012 Republican
+Primary Debates
+Juraj Medzihorsky, Central European University
+Levente Littvay, Central European University
+Erin K. Jenne, Central European University
+
+
+  ABSTRACT Much ink has been spilled to describe the emergence and likely inﬂuence of the Tea
+Party on the American political landscape. Pundits and journalists declared that the emergence
+of the Tea Party movement pushed the Republican Party to a more extreme ideological position, which is generally anti-Washington. To test this hypothesis, we analyzed the ideological
+positions taken by candidates in the 2008 and 2012 pre-Iowa caucus Republican presidentialprimary debates. To establish the positions, we used the debate transcripts and a text-analytic
+technique that placed the candidates on a single dimension. Findings show that, overall, the
+2012 candidates moved closer to an anti-Washington ideology—associated with the Tea Party
+movement—and away from the more traditional social conservative Republican ideology,
+which was more salient in the 2008 debates. Both Mitt Romney and Ron Paul, the two candidates who ran in both elections, shifted signiﬁcantly in the ideological direction associated with
+the Tea Party.
+
+
+T
+               he so-called Tea Party movement came into its                                  and (2) the electoral success of so-called Tea Party candidates
+               own in the 2010 midterm elections, when popular                                (particularly in Republican primary elections).
+               discontent with the recession, Obama-initiated                                     In this article, we take a diﬀerent approach to test directly
+               bailouts, and the Obama presidency in general led                              the proposition that the positions associated with the Tea Party
+               to historic Republican legislative victories in federal                        movement (i.e., antitaxation, antigovernment, and antiregulation—
+and state legislatures. This led to “Tea Party” demonstrations                                comprising an “anti-Washington” ideology) found their way into
+against the federal government as well as numerous Republican                                 the messaging of mainstream Republican candidates. In fact, the
+primary challenges from “Tea Party candidates” on the right. In                               2012 Republican candidate positions reﬂected the radicalized Tea
+addition to extensive coverage of the movement by journalists                                 Party discourse more so than the traditional social conservative
+and pundits, social scientists began to publish research on the                               Republican discourse, which dominated the 2008 elections. To assess
+Tea Party (see, e.g., Gervais and Morris 2012; Karpowitz et al.                               this claim, we examined the ideological stances taken by the Repub2011; Mead 2011; Williamson, Skocpol, and Coggin 2011). Until                                 lican candidates in televised presidential-primary debates in 2008
+recently, this research tended to focus narrowly on (1) the identity                          and 2012—speciﬁcally, the debates early in the primary competiand motivations of sympathizers with the Tea Party movement,                                  tions. Our ﬁndings indicate that the positions taken by Republican
+                                                                                              presidential candidates in 2012—measured by their words spoken
+                                                                                              and ideological positions they revealed in the presidential-primary
+Juraj Medzihorsky is a PhD candidate specializing in methodology and comparative              debates—were less representative of traditional social conservapolitics in the department of political science at Central European University. He can be
+                                                                                              tive Republican positions than those of anti-Washington Tea Party
+reached at medzihorsky_juraj@ceu-budapest.edu.
+                                                                                              themes. This suggests that either (1) the emergence of the Tea Party
+Levente Littvay is an associate professor in the department of political science at Central
+European University. He can be reached at littvayl@ceu-budapest.edu.                          has indeed had an impact on the Republican messaging and ideoErin K. Jenne is an associate professor in the department of international relations and      logical positions, or (2) the conditions that led to the emergence
+European studies at Central European University. She can be reached at Jennee@ceu.hu.         of the Tea Party simultaneously pushed the Republican Party in
+
+806 PS • October 2014                                          © American Political Science Association, 2014                     doi:10.1017/S1049096514001085
+
+
+an anti-Washington direction. In either case, it appears that the             Speciﬁcally, we test the claim that the messages of mainstream
+Republican Party has been radicalized in a direction consistent with      Republican presidential candidates in 2012 were signiﬁcantly
+the libertarian, small-government ideology.                               diﬀerent than those of Republican candidates in the 2008 primaries.
+                                                                          If, as we claim, the emergence of the Tea Party movement in 2009
+EXISTING LITERATURE                                                       had a radicalizing eﬀect on the Republican presidential candidates
+Much of the earliest work about the Tea Party was written                 in 2012, then we should expect that they had an overall more antiby journalists who placed a premium on enhancing its                      Washington (versus traditional social conservative) message in
+general understanding of the Tea Party as a social movement,              the 2012 versus the 2008 primary elections. Our claim receives even
+particularly with respect to its base (see, e.g., Zernike 2010).          stronger support if we can observe ideological radicalization of
+
+
+…in the course of presidential primaries, candidates produce numerous shorter written
+and spoken statements that encompass their positions on all important campaign issues,
+particularly those that concern their general approach toward governance.
+
+Academics, meanwhile, debated the individual-level determinants           individual candidates who ran in both elections (i.e., Mitt Romney
+of Tea Party support—namely, whether they tend to have latent             and Ron Paul).
+racist attitudes (Arceneaux and Nicholson 2012; Barreto et al. 2011;          Candidates in US presidential primaries are expected to take posiWilliamson, Skocpol, and Coggin 2011).                                    tions on a number of issues, yet they rarely generate manifestos that
+    Other researchers explored the electoral impact of the move-          reliably address all important issues. However, in the course of presiment. Karpowitz et al. (2011) demonstrated that an endorsement by         dential primaries, candidates produce numerous shorter written and
+a Tea Party group had a negligible impact on the outcome of general       spoken statements that encompass their positions on all important
+elections; however, in some cases, it helped to secure the victory of     campaign issues, particularly those that concern their general approach
+Tea Party favorites over Republican moderates in primary elec-            toward governance. We used a subset of these statements to extract the
+tions. Jacobson (2011) found that the movement energized an older,        positions of the main Republican candidates in 2008 and 2012.
+whiter, more conservative electorate, which helped to deliver a his-          Scholarly analysis of texts approaches the problem as either
+toric victory to the Republicans in the 2010 midterms. Abramowitz         discourse or content. The most widely used text-analytic methods are
+(2011) analyzed survey data, which revealed that Tea Party members        highly labor-intensive, relying heavily on human judgment. Computeroverwhelmingly identiﬁed with the Republican Party and were, by           assisted content analysis is largely free of these problems.1 We applied
+far, the most conservative and most activist bloc within the party.       a computer-assisted content-analytic method, known as Wordﬁsh
+Libby (2013) argued that the Tea Party movement had already an
+important impact on the Republican Party and was likely to retain
+its inﬂuence for many years to come. Others tested the “Tea Party
+                                                                            Table 1
+eﬀect” by evaluating the messaging of Tea Party candidates versus
+establishment candidates (Livne et al. 2011).                               Candidates
+    For this article, we devised a direct test of whether the language                            2008                                     2012
+and principles associated with the Tea Party movement have had
+                                                                                              (11 DEBATES)                             (13 DEBATES)
+a radicalizing eﬀect on the positions taken by Republican candidates in the 2012 primaries as compared to those of 2008. If we                                                 Included
+are correct, then the candidates in 2012 voiced positions more              Brownback                       7                 Bachmann                    13
+characteristic of an anti-Washington Tea Party ideology than the
+                                                                            Giuliani                        9                 Cain                         11
+traditional social conservative ideology. We tested this proposition
+                                                                            Huckabee                       10                 Gingrich                    13
+using text analysis, extracting the candidates’ respective positions
+from their announcements and primary debates in both 2008 and               Hunter                         10                 Huntsman                     9
+2012 and announcements in 2012.                                             McCain                          9                 Paul                        13
+                                                                            Paul                           10                 Perry                       10
+HYPOTHESES AND METHODS
+                                                                            Romney                          9                 Romney                      13
+Williamson, Skocpol, and Coggin (2011) discussed a range of
+                                                                            Tancredo                       10                 Santorum                    12
+scenarios likely to emerge as a result of the Tea Party movement
+and concluded that the most likely outcome was that “the pres-                                                  Excluded
+
+ence of newly elected Tea Party representatives will only reinforce         Gilmore                         3                 Johnson                       1
+the 2009–10 Republican strategy of total opposition to the Obama            Keyes                           2                 Pawlenty                     2
+agenda.” This suggested that rather than serving as a political side-       F. Thompson                     5
+show, the Tea Party would radicalize the mainstream Republican
+                                                                            T. Thompson                     4
+position in national (i.e., presidential) elections. Our study directly
+                                                                            Candidates who took part in the debates selected for the analysis and the number
+tested this hypothesis by analyzing shifts in the messaging                 of the selected debates they have attended. Candidates excluded from the analysis
+of Republican politicians in two presidential elections that                are at the bottom of the list.
+“bookended” the emergence of the Tea Party movement.
+
+                                                                                                                                      PS • October 2014 807
+
+
+Fe a t u r e s : H a s t h e T e a P a r t y E r a R a d i c a l i z e d t h e R e p u b l i c a n P a r t y ?
+
+(Slapin and Proksch 2008) and as implemented by Lowe (2013), that                              Iowa caucus—that is, in at least seven of the 11 pre-Iowa debates of
+relies on factor analysis of word frequencies. The method has been                             the 2008 cycle or nine of the 13 pre-Iowa debates of the 2012 cycle.
+shown to produce valid estimates of positions,2 and it has been applied                        Included and excluded candidates are listed in table 1. Tables 5 and 6
+to a variety of political documents.3 Each count W of word j in document                       in the online appendix (available on the PS website at http://dx.doi.
+i is modeled as a draw from a Poisson distribution with rate λij (1).                          org/10.1017/S1049096514001085) report details about the debates
+In the following equations, (2) the rate is modeled as a function of                           and announcements, including the sources of their transcriptions.
+the sum of the document ﬁxed eﬀect αi, the word ﬁxed eﬀect ψj, and                                 We treated all utterances of each candidate in all selected debates
+the product of the word slope βj with the document position θi.                                as a single document. The resulting compiled texts can be expected
+
+
+Much of the scholarship on the Tea Party focuses on what is driving the movement, what
+attracts people to it, and what inﬂuence it has on policy. Our study asked whether the movement
+directly inﬂuences the positions of Republicans running for national oﬃce.
+
+The document positions and word slopes are the crucial inferential                             to encompass the majority of relevant issues because individual
+quantities. The ﬁxed eﬀects account for the fact that some documents                           debates tend to focus on a narrow subset.
+are longer and some words are more common.                                                        In our analysis, we made no ex-ante assumptions about how
+                                                                                               informative each word (i.e., “stem”) is relative to an ideological posiWij ~ Poisson(λij)                                     (1)      tion other than assuming that the most common function words are
+                                                                                               not informative. Instead, we used the data and the model to assess
+                            log(λij) = αi + ψj + βj θi                                (2)      how informative each included word is. Thus, we excluded only the
+                                                                                               most common function words (i.e., “stop-words”) and numbers.5
+DATA                                                                                           Including primary-speciﬁc issues would have artiﬁcially inﬂated the
+Our analysis focused on the pre-Iowa caucus Republican presi-                                  diﬀerences between the 2008 and 2012 candidates because related
+dential debates because, in this period, the candidates had yet                                words often are common in one cycle but rare in the other. Thereto maneuver in response to competition in the primary battles.                                 fore, we selected the stems that were used in each cycle by at least
+Therefore, their positions were more likely to reﬂect their own                                two (i.e., 15%) of the selected candidates; we included a total of 1,513
+ideological positions. For the sensitivity analysis, we used the                               stems in our analysis.6
+candidates’ presidential candidacy announcements. The debates
+and candidacy announcements diﬀer substantially—the debates                                    RESULTS
+are spoken words whereas the announcements are prewritten.                               The positions of candidates on the extracted dimension are
+The sensitivity analysis was restricted to the 2012 cycle because                        shown in ﬁgure 1 and reported in table 2. The most widely used
+the 2008 cycle announcements were not in a consistent format.4                           word stems and the extent to which they discriminate on the
+    For the analysis, we selected those candidates who participated                      dimension are shown in ﬁgure 2. When we discuss the extracted
+in at least two thirds of the televised presidential debates before the                  dimension, we use the labels “negative” and “positive” in a purely
+                                                                                                                         numerical sense.
+                                                                                                                            Several factors are immediately
+   Figure 1                                                                                                              apparent  in ﬁgure 1. First, in both
+                                                                                                                         campaigns, Ron Paul staked out
+   Candidate Positions                                                                                                   the farthest position on one end of
+                                                                                                                         the dimension. This corresponds
+   Paul ’12
+   Paul ’08                                                                                                              with the popular assessment
+   Cain ’12                                                                                                              of his position as the most
+   Perry ’12                                                                                                             extreme among the mainstream
+   Bachmann ’12
+                                                                                                                         Republican candidates. Paul’s 2012
+   Huckabee ’08
+   Huntsman ’12
+                                                                                                                         position also was signiﬁ cantly
+   Romney ’12                                                                                                            more extreme than his 2008
+   Tancredo ’08                                                                                                          position. Furthermore, his
+   Gingrich ’12                                                                                                          distance from the second mostSantorum ’12
+                                                                                                                         extreme candidate decreased in
+   Brownback ’08
+   McCain ’08                                                                                                            2012: in 2012, Herman Cain was
+   Hunter ’08                                                                                                            considerably closer to Paul than
+   Romney ’08                                                                                                            was the second most-extreme
+   Giuliani ’08
+                                                                                                                         candidate of 2008, Mike Huckabee.
+                                                                                                                         The Republican candidate ﬁeld
+                        −1                           0                          1                        2
+   Candidate positions extracted from their pre-Iowa debate speeches with bootstrapped 95% confidence intervals (1,000
+                                                                                                                         of 2012 moved so signiﬁcantly
+   replications). 2008 candidates denoted by circles (blue) and 2012 candidates by diamonds (red).                       toward the positive end that only
+                                                                                                                         two 2008 candidates other than
+
+808 PS • October 2014
+
+
+  Table 2                                                                              Table 3
+  Candidate Positions                                                                  Linear Regression with Normally Distributed
+                              CANDIDATE                                 POSITION
+                                                                                       Error
+  Bachmann                               ‘12                             −.03                                                                                       COEFF.
+                                                                         (.04)          Constant                                                                    −.6
+
+  Brownback                              ‘08                             −.66                                                                                        (.1)
+                                                                                        2012                                                                          .6
+                                                                         (.04)
+                                                                                                                                                                     (.2)
+  Cain                                   ‘12                              .82
+                                                                                        Ron Paul                                                                    2.6
+                                                                         (.05)                                                                                      (.3)
+  Gingrich                               ‘12                             −.32          Conditioned (i.e., left-hand side) variable: candidate placement on the extracted
+                                                                        (0.3)          dimension. Conditioning (i.e., right-hand side) variables: binary variables indicating
+                                                                                       whether the campaign was in 2012, and whether the candidate was Ron Paul. Standard
+  Giuliani                               ‘08                            −1.07          errors in parentheses. N = 16, residual S.D. = 0.4, and multiple R2 = 0.9.
+                                                                         (.03)
+  Huckabee                               ‘08                             −.04
+                                                                         (.05)           In short, it appears that the entire 2012 ﬁeld—and the RepubHunter                                 ‘08                             −.75
+                                                                                     lican Party as a whole—clearly moved to the positive end of the
+                                                                         (.03)
+                                                                                     dimension. The question is how to substantively characterize
+                                                                                     this position. Given the popular perception of Ron Paul, our ﬁrst
+  Huntsman                               ‘12                             −.18
+                                                                                     intuition is to look for libertarianism.
+                                                                         (.04)
+                                                                                         To understand what is captured by the extracted dimension,
+  McCain                                 ‘08                             −.74        it is helpful to look at the stem parameters. Figure 2 shows the
+                                                                         (.03)       parameters of stems used by at least ﬁve candidates in each priPaul                                   ‘08                             2.21        mary. Word stems that correspond to Paul’s side of the dimen-
+                                                                         (.04)       sion strongly suggest opposition to government—especially the
+  Paul                                   ‘12                             2.42        federal government in Washington—and, in particular, federal
+                                                                         (.04)       taxation and regulations.
+                                                                                         To better understand the extracted dimension, we divided the
+  Perry                                  ‘12                              .07
+                                                                                     candidate speeches into all possible segments of ﬁve consecutive
+                                                                         (.04)
+                                                                                     sentences by a single candidate. We then reviewed several hunRomney                                 ‘08                             −.88
+                                                                                     dred of those segments positioned close to −1, 0, +1, and +2. Table 4
+                                                                         (.03)       shows six representative ﬁve-sentence sequences from the debates,
+  Romney                                 ‘12                             −.20        positioned within ±0.1 of −1 or +2 on the extracted dimension.
+                                                                         (.03)       The speech segments in table 4 reveal a marked contrast between
+  Santorum                               ‘12                             −.35        the two parts of the dimension. The displayed speech segments
+                                                                         (.03)       close to −1 are concerned with issues such as cooperation with
+  Tancredo                               ‘08                             −.27
+                                                                                     Democrats and unions, as well as using the federal government
+                                                                         (.05)
+                                                                                     to achieve policy goals. Similarly positioned speech segments
+                                                                                     not shown in table 4 refer to national policies on security, foreign
+  Note: Candidate positions extracted from pre-Iowa debates. Bootstrapped standard
+  errors (1000 replications) in parentheses.
+                                                                                     policy, energy, schooling, and family. By contrast, displayed speech
+                                                                                     segments close to +2 strongly favor restricting the scope of federal
+                                                                                     government. In short, they agree that the best federal policy is
+Paul (i.e., Tancredo and Huckabee) took positions that resembled                     no federal policy. Based on this evidence, we labeled the negative
+those of the 2012 ﬁeld. The median 2008 candidates (i.e., Brown-                     and positive ends of the dimension as “pro-Washington” and
+back and McCain) were signiﬁcantly more moderate than the                            “anti-Washington,” respectively.
+median 2012 contenders. The only candidate from both 2008                                There is good reason to associate this position with the Tea
+and 2012 other than Paul (i.e., Mitt Romney) also moved signifi-                     Party movement, broadly construed. Indeed, the tenets of the
+cantly to the positive end of the dimension. In 2008, Romney                         Tea Party movement include a massive rollback of the federal
+was the second farthest on the negative end of the dimension,                        government and a corresponding devolution of competencies to
+whereas in 2012, his estimated position was above both the 2008                      the states. Among the candidates we analyzed, Ron Paul most
+median position and Tancredo’s position. The results of the linear                   embodies these ideals, and a compelling interpretation of the
+regression reported in table 3 summarize the fact that a 2012                        scale is that it represents a traditional Republican versus Tea
+candidate who is not Ron Paul was, on average, more than                             Party (arguably, Libertarian) dimension. It is interesting that
+0.5 point to the right of a 2008 candidate. The distance between                     Michele Bachmann, the founder of the Congressional Tea Party
+Ron Paul and the other candidates as well as the shift of the                        Caucus, falls much closer to a traditional social conservative
+overall field to the right in 2012 are so prominent that they                        Republican position. This may be due to her preoccupation with
+jointly account for most—almost 90%—of the variance in the                           traditional social issues as well as issues that the Tea Party moveextracted positions.                                                                 ment claims as its own.
+
+                                                                                                                                                  PS • October 2014 809
+
+
+Fe a t u r e s : H a s t h e T e a P a r t y E r a R a d i c a l i z e d t h e R e p u b l i c a n P a r t y ?
+
+
+   Figure 2
+   Stems Used by At Least Five Candidates in Each Primary
+                                                                                                                                                                                              peopl
+
+
+                                                                                                                                                                                       that
+                                                                                                                                                                             countri
+
+                                                                                                                                                                    presid               tax                      dont
+                                                                                                                                                                   american                                   govern
+
+                                                                                                                                                                                     job
+                                                                                                                                                                             time
+                                                                                                                                                                                     believ
+                                                                                                                                      america      unit                           look
+                                                                                                                                                                                   nation
+                                                                                                                                                                            secur
+                                                                                                                                                                       issu weve
+                                                                                                                                                                               world
+                                                                                                                                                                       percent          talk           care            feder
+                                                                                                                                             ive                                                            lot theyr
+                                                                                                                                                                                                     economi
+                                                                                                                                                  governor           tell                 plan               spend there                  money
+                                                                                                                                                                                  creat                                                     war
+                                                                                                                                           health                                              tri              mean
+                                                                                                                                                                                                              busi
+                                                                                                                   life                                           border                                       systemcut polici
+                                                                                                                                                                                                         lawyour
+    Stem fixed effects
+
+
+                                                                                                                                                                                         didnt
+                                                                                                                                                                                    happen          understand        cant
+                                                                                                                                       illeg                   abl program
+                                                                                                                                                            militari
+                                                                                                                                                                        help
+                                                                                                                                                                           question       person
+                                                                                                                                                                                                        deal
+                                                                                                                                                                           support bring     pay start     chang
+                                                                                                                                                             millionrepublican                            idea congress
+                                                                                                                     immigr                                 parti
+                                                                                                                                                                allow wrong social     washington live
+                                                                                                                                     iraq          bill                                                     reasonfree
+                                                                                                                                                              energi ill                   runreal respons   home           market
+                                                                                                                                                                                        come
+                                                                                                                                          actualcours decis                agre
+                                                                                                                                                                              iran
+                                                                                                                                                                        absolut   call
+                                                                                                                                                                                          billion
+                                                                                                                                                                                       votecost get hous      individu
+                                                                                                                                                                                                             doesnt
+                                                                                        famili                                  stand reagan                           take
+                                                                                                                                                                        rais
+                                                                                                                                                                             nuclear        sayprivateduc econom                         constitut
+                                                                                                                                                               move                pass                                                           foreign
+                                                                                                                        school                                            hes  day                      middl
+                                                                                                                                                                                                     protect control
+                                                                                          insur                             conserv kid lead stop                             fight  level continu
+                                                                                                                                                                                    rate
+                                                                                                                                                                                   answer             build
+                                                                                                                                                                                                      budget   troop
+                                                                                                                        trade                                                 elect
+                                                                                                                                                                                 posit base     fix          forc
+                                                     democrat                                                                debat legal
+                                                                                                                            win            strong           opportunfenc valu        save
+                                                                                                                                                                                   solut                             weapon regul dollar
+                                                                                                                                                        polit             power court    incom
+                                                                                                                                                                                             afghanistan        matter
+                                                                                                                               china friend                             termbuy                     lose        kill
+                                                                                                  record respect
+                                                                                                               youv                         stagereform                                   what
+                                                                                                                                                                                     probabl
+                                                                                                            thank            children   union increas                      frank   act compani
+                                                                                                                                                                                administr
+                                                                                                                                                                                   fail
+                                                                                                                                                                                                 principl
+                                                                                                                                                                                                serious          bad                involv
+                                                                                     senat                                 line     ronald                     differ entir    commit
+                                                                                                                                                                                   rulepakistan                    littl
+                                                                                                                                                                                                                 right
+                                                                                                                           choic     enforc singl
+                                                                                                                                            learn recogn            els
+                                                                                                                                                                     exact                   fund corpor attack
+                                                                                                                                                                                                             freedom
+                                                                                                    hope                                  faith
+                                                                                                                               serv particular ago                  offic oil     grow
+                                                                                                                                                                                 theyv                               amend
+                                                                                                                                                   parent servicpretti                           industri defens      code                      shouldnt
+                                                                                                     experi human               leadershipcitizen
+                                                                                                                       situatwhos
+                                                                                                                      god     instead                  terrorist
+                                                                                                                                                                    month
+                                                                                                                                                                       trustlower
+                                                                                                                                                                             propos    threat
+                                                                                                                                                                                          follow
+                                                                                                                                                                                          spentdirect                  lost      depart trillion drug
+                                                                                               pro                                                         romney
+                                                                                                                                                       product        hear
+                                                                                                                                                                    fair leav
+                                                                                                                                                                      invest      major                 send    isnt     street              ridprice
+                                                                                                                                                publicword
+                                                                                                                                                        speak
+                                                                                                                                                   effect     ground
+                                                                                                                                                                 mistak    setbalanc
+                                                                                                                                                                           medicar      provid        obvioussens                       benefit
+                                                                                                                                                                                                                               societiexecut
+                                                                                                futur                         play           histori
+                                                                                                                                                final    process
+                                                                                                                                                           marriag harddecid            worker five                     gone wall goe
+                                                                     view               forward employindepend                                                suggest
+                                                                                                                                                             childoppos     found  critic account
+                                                                                                                                                                                        legisl simpli third   make
+                                                                                                                                                                                                              paul class                     solv
+                                                                                                                                                                                                                                             welfarwouldnt
+                                                                                  love                        abort         technolog candid             alli
+                                                                                                                                                   sit maybhand
+                                                                                                                                                         tough     half left
+                                                                                                                                                                  listen
+                                                                                                                                                               relat
+                                                                                                                                                               rest women depend           happi chanc
+                                                                                                                                                                                           put
+                                                                                                                                                                                              arent
+                                                                                                                                                                                                                                                  currenc
+                                                                                                             begin sign leader exampl          folkaction   challengdiscuss          congressman
+                                                                                                                                                                                 tonight           feel wont will    afford
+                                                                        success guy         terror                                                revenu
+                                                                                                                                              focus period
+                                                                                                                                                       encourag
+                                                                                                                                                        break  death      havent
+                                                                                                                                                                      specialchief
+                                                                                                                                                                                 close
+                                                                                                                                                                            concern
+                                                                                                                                                                          gain   natur
+                                                                                                                                                                             rememb
+                                                                                                                                                                                      read biggest
+                                                                                                                                                                                       taxpay
+                                                                                                                                                                                               address
+                                                                                                                                                                                                 inform
+                                                                                                                                                                                                                                                          oversea
+                                                                                                                         seen         zero
+                                                                                                                                         georg
+                                                                                                                                             hold includ communiti
+                                                                                                                                                             develop command            pick      give    elimin
+                                                                                                                                                                                                            repres
+                                                                                     effort                         week  headcampaign               step centuri
+                                                                                                                                                   bush                   institut
+                                                                                                                                                                     return
+                                                                                                                                                                          stay            card
+                                                                                                                                                                                          deficit region
+                                                                                                                                                                                                   told
+                                                                                                                                                                                                 won                     crisi local             caus
+                                                                                                                                                                                                                                                   author
+                                                                                                                                         result                    promis
+                                                                                                                                                                  complet
+                                                                                                                                                                amnesti  name    difficult
+                                                                                                                                                                            thousandsafe true
+                             reduc                                                                           supremtruth six
+                                                                                                           generat
+                                                                                                                                               south
+                                                                                                                                                figur         amount     model
+                                                                                                                                                                    role burden risk youll                      wed credit
+                                                                                                                                                                                                                          retir
+                                                                                                          meet                 track
+                                                                                                                               john      intelligfundament  justic
+                                                                                                                                                            huge
+                                                                                                                                                          abil                                   tabl
+                                                                                                                                                                                                   use
+                                                                                                                                                                                               worri                       politician
+                                                                                                                                                                                                                              moraltotal
+                                                                                                                                                                                                                            messag
+                                      realiti                                                      ran                                                                          enemi
+                                                                                                                                                                             basic        one            mention                                                         reserv
+                                                                                                                 train                                   perfect
+                                                                                                                                                    disagre                             wasnt
+                                                                                                                                                                                        broken  add
+                                                                                                                                                                                               past worth activ
+                                                                                                                                                                                                       expect unless               offer
+                                                                                                                                                                                                                                    doctor                              liberti
+                                                                                                                                                                                                                organ                    defend sound
+                                                                                                                                                                                                                                      bomb
+                                                   key                    brought            coupl                                        basi     consist
+                                                                                                                                                race             studiboard  sorriform    sort
+                                                                                                                                                                                      negotihundr
+                                                                                                                                                                                         white    central sacrific
+                                                                                                                                                                                               essenti
+                                                                                                                                                                                            europlimitresourc
+                                                                                                          vice
+                                                                                                                    liber         measur         altern
+                                                                                                                                               share
+                                                                                                                                           crimin          impact
+                                                                                                                                                        consid           statement                         immedi
+                                                                                                                                                                                                            hasnt export manag
+                                                                                                                                                                                                                beyond
+                                                                                                                                                                                                                 explain       determin
+                                                                                                                                                                                                                             citizenship
+                                                                                                                                                                                                                                     entitl
+                                                                                                        pledg                 youd             confidface  front
+                                                                                                                                                              couldnt
+                                                                                                                                                            father                           food
+                                                                                                                                                                                            piec
+                                                                                                 field                                                                                  mind
+                                                                                                                                                                                    earlier               finish          peac destroyobject
+                                         report         ultim               woman fought background
+                                                                           heard                         watch                      oper                  center                                      produc
+                                                                                                                                                                                                    size
+                                                                                                                                                                                                 capabl
+                                                                                                                                                                                          unfortunearn               suppos
+                                                                                                                                                                                                                       standard incent
+                                                                                                                                                                                                                                            goal                    medic
+                                                              chris reach                                                                                 specif gotten    afraid hit drive           purpos               road
+                                                                                                                                                                                                                             equal
+                                     requir                                                                                  except                           minut                              east laden  bin                 diseas                  bit
+                                                                                                                                                                                                                                                          air
+                                                                                                       night             appropri              event                           short
+                                                                                                             defin advantag                   apolog              moment
+                                                                                                                                                                rebuild                                           designdie
+                                                                                                                                                                                                                         stuff worst
+                                                                                                                                      join held                                                                                                        intern
+                                                                                                                establish quick                         averag
+                                                                                                                                                         opinion       plus
+                                                                                                                                                               ahead written     accord   appreci
+                                                                                                                                                                                               hill          deserv  wage
+                                                                                                    fiscal                                       miss
+                                                                                                      approv low                                     influenc
+                                                                                                                                                otherwis                                                                                        near
+                                                                                                                                  convinc
+                                                                                                                                   loss common                                                                                taxat
+                                                                   remain
+                                                  −1.5                                      −1.0                                          −0.5                                             0.0                                        0.5                                   1.0
+
+
+                                                                                                                                        Stem slopes
+   The X-axis captures loadings on the extracted dimension and the Y-axis captures the stem fixed effects. Stems used more in 2012 are shown in bold (red). The stem “citi” is not
+   plotted (weight = −2.9; slope = 1.2).
+
+
+SENSITIVITY ANALYSIS                                                                                                                         candidate preferences and positions going into the election
+To test the sensitivity of the analysis, we compared the ideological                                                                         unaﬀected by election maneuvering.
+dimensions derived from the 2012 candidate announcements                                                                                         To better understand the candidate positions, we used quantiwith the 2012 debates.7 Whereas the debates can be expected to                                                                               tative text analysis and extracted a single factor from frequencies
+encompass a larger set of speciﬁc issues, the announcements—                                                                                 of words spoken in presidential-primary debates. The result was a
+much shorter texts produced at the beginning of a campaign—focus                                                                             scale that clearly extends from a moderate, traditional Republican
+on two very general topics: namely, the general values emphasized                                                                            point of view to a more radical view in line with the values of the
+by the candidate and the qualities of the candidate. Furthermore,                                                                            anti-Washington Tea Party. To ensure that our scale was not simply
+although candidates prepare carefully, the messages they convey                                                                              an artifact of the selected texts, we cross-validated it with the 2012
+in the debates are considerably more improvised than those                                                                                   candidacy announcements, which yielded highly comparable
+embedded in their announcements. We selected stems that were                                                                                 results.
+used by at least two candidates. Although this analysis did not                                                                                  When comparing the 2008 and 2012 candidates, there is
+consider the 2008 announcements, the dimensions extracted from                                                                               both a drastic and a statistically signiﬁcant shift toward the
+both the announcements and the debates are remarkably close                                                                                  overall positions of the anti-Washington Tea Party. There also
+to one another (as shown in ﬁgure 3) and strongly correlated:                                                                                is a clear and signiﬁcant shift for both candidates who ran in
+Pearson’s ρ = 0.94 (95% conﬁdence interval: 0.69, 0.99).                                                                                     both the 2008 and 2012 presidential campaigns. In 2012, Mitt
+                                                                                                                                             Romney moved from the moderate to the extreme side of
+CONCLUSION                                                                                                                                   the 2008 ﬁeld. By the standards of the 2012 election, this move
+Much of the scholarship on the Tea Party focuses on what is                                                                                  placed him near the median of the 2012 candidates. Although
+driving the movement, what attracts people to it, and what                                                                                   the causal mechanism underlying this shift is still uncertain, it
+inﬂuence it has had on policy. Our study asked whether the move-                                                                             is clear that Tea Party positions moved Republican politics to
+ment directly inﬂuences the positions of Republicans running                                                                                 an ideologically anti-Washington, anti-government position.
+for national oﬃce. We focused on pre-Iowa debates assuming                                                                                   It remains to be seen whether these eﬀects herald a lasting shift
+that these early debates provide a more accurate reﬂection of                                                                                in Republican ideology. Q
+
+810 PS • October 2014
+
+
+Table 4
+Selected Five-Sentence Sequences Spoken by a Single Candidate in a Single Debate
+NEGATIVE, −1±0. 1                                                                    POSITIVE, +1±0.1
+“I have joined together across the aisle on a number of pieces                       “Repeal Dodd-Frank, repeal Obamacare. It really isn’t that tough if you try. It is
+of legislation, many of them very important. I’m proud of my                         easy to turn around this economy, just have the backbone to do it. Well, as
+legislative record of conserving my ideals and my conservative                       president of the United States, I would not be reappointing Ben Bernanke, but
+principles and getting things done in Washington. And I am proud                     I want to say this. During the bailout, the $700 billion bailout, I worked behind
+of that, and I will continue to hold to those ideals. But I will reach               the scenes against the bailout, because one of the things that I saw from the
+across the aisle to the Democrats who I have worked with, who                        Federal Reserve, the enabling act legislation is written so broadly that, quite
+know me, and we know we can work together for the good of this                       literally, Congress has given the Federal Reserve almost unlimited power over
+country. Let’s raise the level of dialogue and discussion and debate                 the economy.” (Bachmann on September 12, 2011; score: 1.9)
+in this campaign.” (McCain on December 12, 2007; score: −1.1)
+“It’s the one place I found to agree with President Obama. If every                  “If we look for it, you’ll realize that our national sovereignty is under threat. Yes,
+parent in America had a choice of the school their child went to,                    and I would like to state that, to the statement earlier made that we all went to
+if that school had to report its scores, if there was a real opportunity,            Washington to change Washington and Washington changed us, I don’t think
+you’d have a dramatic improvement. I visited schools where, three                    that applies to me; Washington did not change me. I would like to change
+years earlier, there were fights, there were dropouts, there was no                  Washington, and we could by cutting three programs, such as the Department
+hope. They were taken over by a charter school in downtown                           of Education−Ronald Reagan used to talk about that−Department of Energy,
+Philadelphia, and all of a sudden the kids didn’t fight anymore,                     Department of Homeland Security is the biggest bureaucracy we ever had.
+because they were disciplined. They were all asked every day, what                   And besides, what we can do is we can have a stronger national defense by
+college are you going to? Not are you going to go to college, what                   changing our foreign policy. Our foreign policy is costing us a trillion dollars,
+college are you going.” (Gingrich on September 7, 2011; score: −1)                   and we can spend most of that or a lot of that money home if we would bring
+                                                                                     our troops home.” (Paul on November 28, 2007; score: 2)
+“I can tell you a good union, the Steel Workers Union. When last                     “There’s a responsible way for the federal government to do the things that it
+year, Chris, we had a strike in a Kansas plant that made the tires                   should do. Running organizations like the TSA, I would agree with Representative
+for our humvees, I called up the president of the Steelworkers                       Paul, no. Having the federal government responsible for trying to micromanage
+and the president of Goodyear, and within a very short period of                     Medicare, no, trying to micromanage education, no. The federal government is
+time, they were working together, they got that thing done for                       not good at micromanaging anything. This is why I believe in empowering the
+the good of the country. A union is a receptacle of power, just                      states to do more and limit what the federal government does with regard to
+like management. But those folks love this country, they love                        those kinds of program.” (Cain on August 11, 2011; score: 2.1)
+their family, and they helped to build a middle class, which has
+been important for America and for our party. We need to work
+with unions to win this presidency.” (Hunter on October 9, 2007;
+score: −0.9)
+Sequences were selected from all such sequences longer than 500 characters and within ±0.1 to two points on the dimension: −1 and +2. Sequences in the first column characterize
+the negative end of the extracted dimension and sequences in the second column the positive end.
+
+
+                                                                                          NOTES
+                                                                                           1. See Grimmer and Stewart (2013) for a comprehensive overview of the current
+Figure 3                                                                                      state of computer-assisted content analysis in political science.
+                                                                                           2. Slapin and Proksch (2008) demonstrate that the method produces estimates that
+Positions of 2012 Candidates                                                                  are both internally and externally valid. Grimmer and Stewart (2013) discuss the
+                                                                                              validity and reliability of the position estimates in the context of the underlying
+                                                                                              assumptions about the document-generating process.
+                2.5
+
+
+                                                                                           3. Applications of the method include documents such as party manifestos (Proksch
+                                                                                              and Slapin 2009; Proksch, Slapin, and Thies 2011; Slapin and Proksch 2008); party
+                                                                                              congress motions (Ceron 2012, 2014); submissions to European Commission con2.0
+
+
+                                                                                              sultations (Klüver 2009, 2011, 2012); and political talk (i.e., legislative speeches)
+                                                                                              (Louwerse 2012; Proksch and Slapin 2010).
+                1.5
+Announcements
+
+
+                                                                                           4. Whereas the 2012-cycle announcements were speeches of similar length delivered in similar contexts, some of the 2008-cycle announcements did not follow this format, diﬀered in length, and were delivered in diﬀerent contexts
+                1.0
+
+
+                                                 2                                            (i.e., some were published only in writing and one occurred during a legislative session).
+                                                                                           5. The frequencies were obtained and the stop-words excluded using R
+                0.5
+
+
+                                                                                              (R Core Team 2013) package “tm” (Feinerer 2013; Meyer, Hornik, and
+                                         1                         1 Bachmann                 Feinerer 2008).
+                0.0
+
+
+                                    4                              2 Cain
+                                                                   3 Gingrich              6. We also excluded one stem (“york”) from the analysis because it was a clear out3                     8                     4 Huntsman                 lier. It was used disproportionately by a single candidate (Giuliani). Its exclu5 Paul
+                                                                                              sion also facilitates the graphical presentation of the results without aﬀecting
+                −0.5
+
+
+                                                                   6 Perry
+                                                                   7 Romney                   them.
+                                                                   8 Santorum
+                                                                                           7. We also tested the sensitivity of our analysis to diﬀerent stem-inclusion criteria,
+                                                                                              which are reported in the online appendix.
+                       −1.0       −0.5   0.0     0.5   1.0   1.5   2.0     2.5
+                                                 Debates
+Positions of 2012 candidates extracted from pre-Iowa debates and                          REFERENCES
+candidacy announcements.                                                                  Abramowitz, Alan I. 2011. “Partisan Polarization and the Rise of the Tea Party
+                                                                                            Movement.” 2011 APSA Annual Meeting Paper.
+
+
+                                                                                                                                                        PS • October 2014 811
+
+
+Fe a t u r e s : H a s t h e T e a P a r t y E r a R a d i c a l i z e d t h e R e p u b l i c a n P a r t y ?
+
+Arceneaux, Kevin, and Stephen P. Nicholson. 2012. “Who Wants to Have a Tea                     Libby, Ronald T. 2013. Purging the Republican Party: Tea Party Campaigns and Elections.
+   Party? The Who, What, and Why of the Tea Party Movement.” PS: Political Science                Lanham, MD: Lexington Books.
+   and Politics 45 (4): 700–10.
+                                                                                               Livne, A., M. P. Simmons, E. Adar, and L. A. Adamic. 2011. “The Party Is over Here:
+Barreto, M., B. Cooper, B. Gonzalez, C. Parker, and C. Towler. 2011. “The Tea Party in            Structure and Content in the 2010 Election.” Fifth International AAAI Conference
+   the Age of Obama: Mainstream Conservatism or Out-Group Anxiety?” Political                     on Weblogs and Social Media, ICWSM 2011.
+   Power and Social Theory 22: 105–37.                                                         Louwerse, Tom. 2012. “Mechanisms of Issue Congruence: The Democratic Party
+Ceron, Andrea. 2012. “Bounded Oligarchy: How and When Factions Constrain Leaders                  Mandate.” West European Politics 35 (6): 1249–71.
+   in Party Position-Taking.” Electoral Studies 31 (4): 689–701.                               Lowe, Will. 2013. “Austin: Do Things with Words.” R Package Version 0.2.
+———. 2014. “Gamson Rule Not for All: Patterns of Portfolio Allocation among Italian            Mead, Walter Russell. 2011. “Tea Party and American Foreign Policy.” Foreign Aﬀairs
+  Party Factions.” European Journal of Political Research 53 (1): 180–99.                        90 (2): 28–44.
+Feinerer, Ingo. 2013. “tm: Text Mining Package.” R Package Version 0.5-8.3.                    Meyer, David, Kurt Hornik, and Ingo Feinerer. 2008. “Text Mining Infrastructure in R.”
+Gervais, Bryan T., and Irwin L. Morris. 2012. “Reading the Tea Leaves: Understanding             Journal of Statistical Software 25 (5): 1–54.
+   Tea Party Caucus Membership in the US House of Representatives.” PS: Political              Proksch, Sven-Oliver, and Jonathan B. Slapin. 2009. “How to Avoid Pitfalls in
+   Science and Politics 45 (2): 245–50.                                                           Statistical Analysis of Political Texts: The Case of Germany.” German Politics
+Grimmer, Justin, and Brandon M. Stewart. 2013. “Text as Data: The Promise and                     18 (3): 323–44.
+   Pitfalls of Automatic Content Analysis Methods for Political Texts.” Political              ———. 2010. “Position Taking in European Parliament Speeches.” British Journal of
+   Analysis 21 (3): 267–97.                                                                      Political Science 40 (3): 587–611.
+Jacobson, Gary C. 2011. “The President, the Tea Party, and Voting Behavior in 2010:            Proksch, Sven-Oliver, Jonathan B. Slapin, and Michael Thies. 2011. “Party System
+   Insights from the Cooperative Congressional Election Study.” Available at Social               Dynamics in Post-War Japan: A Quantitative Content Analysis of Electoral
+   Science Research Network 1907251.                                                              Pledges.” Electoral Studies 30 (1): 114–24.
+Karpowitz, C., J. Monson, K. Patterson, and J. Pope. 2011. “Tea Time in America? The           R Core Team. 2013. R: A Language and Environment for Statistical Computing. Vienna,
+   Impact of the Tea Party Movement on the 2010 Midterm Elections.” PS: Political                 Austria: R Foundation for Statistical Computing.
+   Science & Politics 44 (2): 303–9.
+                                                                                               Slapin, Jonathan B., and Sven-Oliver Proksch. 2008. “A Scaling Model for Estimating
+Klüver, Heike. 2009. “Measuring Interest Group Inﬂuence Using Quantitative Text                   Time-Series Party Positions from Texts.” American Journal of Political Science
+   Analysis.” European Union Politics 10 (4): 535–49.                                             52 (3): 705–22.
+———. 2011. “The Contextual Nature of Lobbying: Explaining Lobbying Success in                  Williamson, Vanessa, Theda Skocpol, and John Coggin. 2011. “The Tea Party and
+  the European Union.” European Union Politics 12 (4): 483–506.                                  the Remaking of Republican Conservatism.” Perspectives on Politics 9 (1): 25–43.
+———. 2012. “Biasing Politics? Interest Group Participation in EU Policy-Making.”               Zernike, Kate. 2010. Boiling Mad: Inside Tea Party America. New York: Times Books/
+  West European Politics 35 (5): 1114–33.                                                         Henry Holt & Co.
+
+
+812 PS • October 2014

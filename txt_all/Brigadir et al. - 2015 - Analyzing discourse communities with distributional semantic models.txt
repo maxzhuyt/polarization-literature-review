@@ -1,0 +1,744 @@
+Title                       Analyzing Discourse Communities with Distributional Semantic Models
+
+
+Authors(s)                  Brigadir, Igor, Greene, Derek, Cunningham, Pádraig
+
+
+Publication date            2015-07-01
+
+
+Publication information     Brigadir, Igor, Derek Greene, and Pádraig Cunningham. “Analyzing Discourse Communities with
+                            Distributional Semantic Models.” ACM, July 1, 2015. https://doi.org/10.1145/2786451.2786470.
+
+
+Conference details          ACM Web Science 2015 Conference, 28 June - 1 July 2015, Oxford, United Kingdom
+
+
+Publisher                   ACM
+
+
+Item record/more            http://hdl.handle.net/10197/6613
+information
+Publisher's statement       © 2015 ACM. This is the author's version of the work. It is posted here by permission of ACM for
+                            your personal use. Not for redistribution.
+
+
+Publisher's version (DOI)   10.1145/2786451.2786470
+
+
+Downloaded 2026-02-26 18:07:35
+
+The UCD community has made this article openly available. Please share how this access
+benefits you. Your story matters! (@ucd_oa)
+
+
+© Some rights reserved. For more information
+
+
+       Analyzing Discourse Communities with Distributional
+                        Semantic Models
+
+                      Igor Brigadir                              Derek Greene                   Pádraig Cunningham
+                    Insight Centre                              Insight Centre                       Insight Centre
+               University College Dublin                   University College Dublin            University College Dublin
+                        Ireland                                     Ireland                              Ireland
+              igor.brigadir@insight-                       derek.greene@ucd.ie               padraig.cunningham@ucd.ie
+                    centre.org
+
+ABSTRACT                                                                         “. . . a local and temporary constraining system,
+This paper presents a new corpus-driven approach applica-                        defined by a body of texts (or more generally,
+ble to the study of language patterns in social and political                    practices) that are unified by a common focus.
+contexts, or Critical Discourse Analysis (CDA) using Distri-                     A discourse community is a textual system with
+butional Semantic Models (DSMs). This approach considers                         stated and unstated conventions, a vital history,
+changes in word semantics, both over time and between com-                       mechanisms for wielding power, institutional himunities with differing viewpoints. The geometrical spaces                       erarchies, vested interests, and so on.”
+constructed by DSMs or “word spaces” offer an objective,
+                                                                               We are primarily concerned with the changes between,
+robust exploratory analysis tool for revealing novel patterns
+                                                                            and within discourse communities over time. We explore
+and similarities between communities, as well as highlighthow different political groups unified by a common focus
+ing when these changes occur. To quantify differences be-
+                                                                            (i.e. discourse communities) present themselves as defined
+tween word spaces built on different time periods and from
+                                                                            by the body of text they generate on Twitter. This work
+different communities, we analyze the nearest neighboring
+                                                                            proposes using word similarities from statistical semantics
+words in the DSM, a process we relate to analyzing “concorgrounded in the Distributional Hypothesis, popularized by
+dance lines”. This makes the approach intuitive and interFirth [12] and adopts elements of the discourse-historical
+pretable to practitioners. We demonstrate the usefulness of
+                                                                            approach [33], a methodology that is problem-oriented, inthe approach with two case studies, following groups with
+                                                                            terdisciplinary, and recommends movement back and forth
+opposing political ideologies in the Scottish Independence
+                                                                            between theory and empirical data.
+Referendum, and the US Midterm Elections 2014.
+                                                                               Current methods drawn from corpus linguistics that are
+                                                                            used in critical discourse analysis, usually rely on keyword
+1.    INTRODUCTION                                                          extraction and manual examination of “concordance lines”
+  In linguistics and social sciences, Discourse Analysis is                 or “key words in context” (i.e. sorted and aligned lists of
+concerned with analysis of naturally occurring language use                 words with their surrounding contexts) but can also include
+and patterns. Van Dijk [32] defined Critical Discourse Anal-                topic modeling approaches. Emphasis is placed on generatysis (CDA) as:                                                              ing insights into the ways in which the structures of text or
+                                                                            speech relate to social and political contexts rather than on
+      “. . . a type of discourse analytical research that                   any particular approach.
+      primarily studies the way social power abuse,                            The nature and volume of tweet text makes these apdominance, and inequality are enacted, repro-                         proaches challenging for several reasons. Firstly, poor samduced, and resisted by text and talk in the social                    pling can lead to raw frequency counts of words to be skewed.
+      and political context.”                                               Terse style and Twitter-specific use of user account mentions, hashtags and other media entities can also cause probThis paper presents techniques for Critical Discourse Anal-                 lems for methods that rely on frequency counts. Secondly,
+ysis applicable to opposing communities. A discourse com-                   the sheer number of tweets available often makes close readmunity is a group of people sharing a set of basic values,                  ing intractable, while distant reading techniques that look
+assumptions and ways of communicating. Porter [27] offers                   at the entire corpus can hide interesting periods of change
+a definition of a discourse community as:                                   and dynamics between communities.
+                                                                               The changes between and within communities with opposing political ideologies, manifest themselves as shifting distributional semantic similarities between words. We suggest
+                                                                            that these changes can be quantified using Distributional Semantic Language Models (DSMs). The differences between
+                                                                            semantic models derived from text produced by certain discourse communities can offer practitioners useful tools for
+                                                                            CDA. These tools are more aligned with what Fairclough
+To appear in ACM Web Science 2015 (WebSci15) Conference, June 28—July 01,
+                                                                            [11] calls textually oriented discourse analysis, examining
+2015, Oxford, United Kingdom                                                how “the mode of language. . . identified as constitutive of
+
+
+power in modern society. . . is received and appropriated by      with augmented summarization techniques [26], performing
+those who are subjected to it”. Concretely, language models       comparative text mining and ideology classification with a
+are used in this work as a supporting corpus-driven tech-         topic modeling approach [8], and a network analysis apnique, providing entry points for further, more detailed anal-    proach for quantifying political polarity of individuals [1].
+ysis, allowing researchers to investigate how language use is     The problem of political alignment on policy issues, which
+shaped by political objectives.                                   is often cast as a classification task, is outside the scope of
+   As the primary contribution of this paper, we propose a        this work.
+novel application of distributional semantic models for CDA,
+where constructing a DSM or word space model can be re-           2.2    Distributional Semantic Models
+lated to Key Words in Context (KWIC) analysis—a well-                Recently, word2vec [24] has been widely used to generate
+established, qualitative approach familiar in corpus-assisted     useful representations of words using a Neural Network LanCDA. We evaluate the approach on two case studies from            guage Model (NNLM). This distributional semantic model
+Twitter, each involving two distinct communities with dif-        offers efficient training times and performs well on a variety
+fering political viewpoints—the 2014 Scottish Independence        of semantic and syntactic word similarity tasks. A comparReferendum and the 2014 US Midterm Elections. In addi-            ison of distributional semantic models that involve context
+tion, we also provide reusable data sets of tweets for these      prediction and context counting is performed in [5]. Modcase studies.                                                     els were compared using a number of widely-used syntactic
+                                                                  relatedness, synonym, concept categorization and analogy
+2.    RELATED WORK                                                tasks. Context-predicting models, such as word2vec, were
+                                                                  shown to perform better than context-counting variants.
+   A framework for using Corpus Linguistic methods for Critical Discourse analysis is presented by Baker et al. [3]. This    2.3    Linguistic Shift
+paper takes a similar position, arguing that since CDA lacks
+                                                                     Measuring linguistic shift with an information theoretic
+a concrete set of techniques for performing analysis, novel
+                                                                  approach is explored by Juola [18]. Using a corpus of sevapproaches can be made available to practitioners.
+                                                                  eral decades of National Geographic publications, changes in
+   Social scientists and CDA practitioners are increasingly
+                                                                  language were not only perceptible algorithmically, but are
+looking to social media as a rich source of data. Current
+                                                                  also not uniform over time, suggesting that some periods of
+corpus-based approaches and tools involve manual inspectime are more actively changing than others.
+tion of keyword frequency lists and reading concordance
+                                                                     Kulkarni et al. [20] developed a method for detecting siglines. Collocation analysis offers “a suitable vehicle for the
+                                                                  nificant linguistic shift in the meaning and usage of words,
+discoursal presentation of a group” [4] but using plain freemploying a DSM to construct a time series of word usage
+quency for collocation extraction yields general, uninterestand a mean shift change point detection algorithm to estiing terms [30]. The methods proposed in this paper are not
+                                                                  mate when this change occurs. In contrast to our work, the
+related to Rhetorical Structure Theory (RST), a method for
+                                                                  timespan involved is larger, covering two years for Twitdiscourse parsing [23], concerned with coherence of multiter data and several decades for the Google n-gram set.
+sentence texts. In contrast, we consider similarities at the
+                                                                  However, a comparison between different clusters or comword level, rather than sentence level.
+                                                                  munities is not considered by the authors. In [15], a distri2.1    Political Discourse on Twitter                             butional similarity approach is compared to a relative frequency based approach, using two Google n-gram corpora
+   An analysis of political discourse on Twitter by Zappavifrom 1960s and 1990s.
+gna [34] suggests that users appear to bond around the act
+                                                                     Another relevant approach that explores changing word
+of collectively witnessing moments they perceive to be immeanings over a long period of time is described by Basile
+portant to their cultural history, while politicians often use
+                                                                  et al. [6]. Neighborhoods of words are examined across sevTwitter as a means of fostering engagement with others, oferal decades of Italian books and the ACL Anthology Netfering positive evaluations of themselves and their parties.
+                                                                  work data set. Unlike previous work, in this study we focus
+In our case studies, this promotional style adopted by official
+                                                                  on shorter time spans, seeking to identify changes between
+campaign accounts is also evident.
+                                                                  and within communities, as opposed to simply looking at a
+   An in-depth study concentrating on politicians on Twitchanges across an entire corpus.
+ter is presented in [22]. Methods common in Information
+Retrieval have been applied to theoretical sociological constructs, deriving measures of “Cultural Similarity”, Rank         3.    PROPOSED METHOD
+Biased Overlap measures for “Cultural Reproduction” and              Common corpus-assisted techniques for discourse analyseveral others. The type of conversational practice (or dis-      sis include comparative word frequency lists, keyword excourse) examined included analysis of hashtags, retweets and      traction, and concordance lines or KWIC—showing the surmentions. Political polarization on Twitter is investigated       rounding context of a keyword of interest (See Table 1).
+by Conover et al. [10] through the analysis of mention and        Typically, results are presented as raw or normalized counts
+retweet interactions in the previous 2010 US Midterm elec-        derived from the corpus, along with a qualitative assessment
+tions. The notion of “content injection” is also revealed using   that involves close reading of a selection of material. In colour proposed methods, although this is more pronounced in         location analysis [4] the most frequent co-occurrences may
+groups containing regular supporters of a particular ideol-       not be the most useful for CDA. To address the drawbacks
+ogy, rather than official function accounts such as campaign      of frequency-based approaches [30], we propose the use of a
+accounts of prominent politicians.                                distributional semantic model that computes vector repreRelated work that does not use Twitter data but deals          sentations of words. The rationale here is that DSMs reveal
+with similar themes, includes: summarizing contrastive views      different types of similarity and relatedness useful for CDA.
+
+
+...  #nothanks #indyref foremost authority on north sea oil throws doubt over snp prediction for the future of ...
+...   foremost expert felt he had to speak out to warn of oil depletion #indyref cant rely on oil to deliver public ..
+... points out what john swimney said about volatility of oil @sygazette debate an injustice in one part of the uk ...
+.. welfare health education and pensions costs 40 billion oil revenue 3 billion #no gb on the #nhs the ties that bind
+
+             Table 1: Example concordance lines, from Scottish Referendum tweets containing the word “oil”.
+
+    0.40                                       0.9                                            For analysis of groups with opposing political ideologies,
+             untapped                                                       revenues
+    0.35                                       0.8                                            DHA recommends six discursive strategies for identifying
+                     scotlands                                                                ideological positioning, summarized with questions below:
+    0.30                               sea     0.7
+                        oil                              sea
+    0.25                                       0.6                                              1. Nomination: Constructing in-groups and out-groups
+                                                        north                                      via membership categorization. How do different groups
+    0.20                                       0.5
+
+    0.15                                       0.4
+                                                                oil                                categorize themselves and opposing groups? Do these
+               revenues                                  overestimated                             change over time?
+    0.10                                       0.3
+                                                                                                2. Predication: Labeling social actors positively or nega0.05                                       0.2
+       0.0     0.2   0.4   0.6   0.8     1.0     0.20    0.25     0.30   0.35   0.40   0.45        tively. How are key individuals represented by different
+                                                                                                   groups? How is this reproduced in tweet text?
+Figure 1: An illustrative example of word spaces                                                3. Argumentation: Justifying positive or negative attriwith only 2 dimensions. Words are represented by                                                   butions, political inclusion or exclusion.
+vectors with 2 components, x and y values.
+                                                                                                4. Framing: Expressing involvement through reporting,
+                                                                                                   narration of events and utterances.
+   Motivated by results from Baroni et al. [5], we use a contextpredicting distributional semantic model as opposed to a                                        5. Intensification / Mitigation: Modifying a proposition
+context-counting model. The task requires a good estima-                                           by intensifying or mitigating force of utterances.
+tion of word similarity, as well as association. As a concrete
+example, the words “fields” and “oil” are not synonymous, de-                                   As a motivating example, consider discursive strategies
+scribing two different concepts, but are related in the context                               used in the following tweets:
+of fossil fuels. Likewise, “oil” and “crude” are synonymous1 .                                     Why do Nats want Scotland to be one of Europes vulnerBoth similarity and relatedness are useful to consider for                                         able, marginal economies? We truly are #BetterTogether
+                                                                                                   #IndyRef
+CDA. It is important to note that DSMs have previously
+been evaluated with this distinction [16].                                                         Nationalist lies over oil @YesScotland @UK_Together #idyref
+   Figure 1 shows a toy example of two word spaces. In the                                         No Boom No Oil Bonanza #ProjectFear
+space on the left, the word “oil” is represented by a vector
+                                                                                              We can manually identify several interesting keywords in
+[0.50, 0.25], and on the right [0.29, 0.40]. The components of
+                                                                                              the text of these tweets: “nats”—nationalists (nomination,
+the vectors do not represent actual counts or occurrences,
+                                                                                              membership categorization), “lies” (predication, labeling sobut after training a DSM, words that are more related are
+                                                                                              cial actors negatively), “bonanza” (intensification).
+closer to one another. We can compare the two spaces by
+                                                                                                 Closely examining a large volume of tweets this way is
+looking at what words are closest to one another in each
+                                                                                              impractical, and while some levels of context require a close
+space. In practice, words are represented by hundreds of
+                                                                                              reading, analysis of the text itself can be performed at scale,
+dimensions.
+                                                                                              using of corpus driven approaches. A concrete example of
+3.1          Discourse-historical Approach                                                    where DSM approach can help DHA, is in exploring discursive strategies in racial, national and ethnic issues. QuesA suitable framework for CDA is Wodak’s Discourse–
+                                                                                              tions like ”How are persons named and referred to linguistiHistorical Approach (DHA)[33]. DHA emphasizes the intercally?”, ”What traits, characteristics, qualities and features
+pretation of discourse in its historical and cultural contexts.
+                                                                                              are attributed to them?” prescribed in DHA to explore “posiFour levels of context are suggested:
+                                                                                              tive self” and “negative other” presentations can be answered
+      1. The immediate co-text for a particular linguistic fea-                               with a combination of examining nearest neighborhoods of
+         ture found in the text: Involves analysis of the text                                words, and closer reading of selected tweets.
+         itself. Our proposed approach provides most benefit                                     As a starting exploratory step for our analysis, we examat this level, suggesting entry points for further, more                             ine the different communities using a small selection of words
+         in-depth analysis.                                                                   representing topics of interest which are known a priori. We
+                                                                                              then examine some discursive strategies in the communities.
+      2. Other texts and discourses that the text draws upon:                                 This is firstly performed across communities over the entire
+         In a corpus of tweets, this level would include analysis                             period, and then in more detail, looking both within and
+         of media linked and referred to in tweets.                                           across communities over shorter time periods. We then ex3. Conditions of text production, distribution and recep-                               pand this set of words, by examining the k-nearest neighbortion. This level is constrained by the platform, partic-                             ing words for the communities, in order to discover interestularly in terms of distribution and reception with use                               ing commonalities or differences between them. Restricting
+         of hashtags and mentions [34].                                                       the nearest neighbor search to consider either words or hashtags alone could potentially provide alternative lines of in4. Wider social, political, economic and cultural contexts.
+                                                                                              quiry [10]. However, we follow a more general approach, al1                                                                                             lowing for a mix of words, mentions and hashtags to appear,
+    The word “oil” is frequently dropped from the phrase “crude
+    oil”, especially in length-restricted posts like Twitter.                                 but excluding URLs which appear in tweets. The method is
+
+
+an iterative, word-level approach to critical discourse anal-       Rank         Frequency                                                  Mutual Information                                          word2vec
+                                                                       1         important                                                  scotenergynews                                              untapped
+ysis that alternates between exploration, and close reading.           2         #indyref                                                   pegging                                                     revenues
+   To summarize the prescribed process: 1) select initial can-         3         tank                                                       kuwaits                                                     pouring
+didate words of interest, 2) examine the word change “pro-             4         oil                                                        headlined                                                   #clairridge
+file” visualized as a trend, 3) examine word neighborhoods,            5         #scotdecides                                               @conhome                                                    recoverable
+4) retrieve relevant tweets for a more qualitative, closer read-       6         #yes                                                       kindness                                                    300bn
+ing of texts, and 5) repeat the process armed with new key-            7         #westcoastoil                                              exploration                                                 rig
+                                                                       8         thousands                                                  @yuillnoodz                                                 bonanza
+words or hypotheses.                                                   9         #voteyes                                                   @wynnscottishsun                                            #northseaoil
+                                                                      10         north                                                      @wulliekane                                                 asianomics
+3.2    Distributional Semantic Approach                                          ...                                                        ...                                                         ...
+   Mikolov et al. proposed a DSM that performs well on a variety of syntactic and semantic relatedness tasks [25]. The        Table 2: Comparison of collocates considering 5
+skip-gram training process learns word representations that        words before and after the word “oil” from 7 days of
+are useful for predicting the nearby words (the context).          ‘Yes’ vote supporters using raw frequency, Mutual
+From a sequence of words (w1 , w2 , . . . wT ), the objective      Information, and word2vec.
+maximizes the average log probability:
+                                                                                           untapped
+                 T                                                                                                                                              undiscovered                                   purported
+               1 X        X
+                                                                                                                                                          #crazytalk   cripes
+                                     log p(wt+j |wt )
+               T t=1
+
+
+                                                                                                                                                                                   0.640
+                       −c≤j≤c,j6=0                                                                                                                                                                     0.6
+                                                                                                                                                                                               50
+                                                                                                                                                                       0.6
+
+
+                                                                                                                                                                                            0.6
+                                                                                                        0.577
+                                                                                                            asianomics                               shetlands
+where the context size c is the number of words before and                                                         300bn                                     0.657
+
+
+after the target word wt . It is interesting to note that the                  bonanza                                                                                                                0.67
+                                                                     pouring
+                                                                                                                0.553
+                                                                                                                                                                                                                 revenues
+
+
+                                                                                                                                                                             0.6
+
+
+                                                                                                                                                                                           0.65
+                                                                                            0.5
+
+
+                                                                                                                        0.5
+mechanics of “key words in context” analysis roughly maps                       0.56
+                                                                                                  56
+                                                                                                                                                             norways
+                                                                                                                                       recoverable
+to the training objective of the DSM approach.                                                                                                                                               revs
+
+
+                                                                                                                                                                 0.6
+                                                                                                                               0.559
+
+
+                                                                                                                                                                                             0.695
+   When analyzing collocates (i.e. words that co-occur more
+
+
+                                                                                                                0.553
+
+
+                                                                                                                        0.5
+                                                                                      72
+                                                                                0.5
+
+often than would be expected by chance), Mutual Informa0.56
+                                                                                                                                                     imaginary
+                                                                                              rig
+                                                                                       #northseaoil
+tion (MI) is a commonly used association measure. For in-                revenues
+stance, the popular AntConc concordance tool [2] uses Mu-                       #clairridge                                                                                                         overestimated
+
+tual Information to rank collocates.
+   Pointwise Mutual Information (PMI), proposed by Church
+and Hanks [9] is another widely-adopted association measure. If two outcomes x and y have probabilities P (x) and         Figure 2: A sample k-nearest neighbor graph for the
+P (y), then their Pointwise Mutual Information P M I(x, y)         word “oil” for Scottish ‘Yes’ and ‘No’ voters. Words
+is defined as:                                                     unique to a community are colored, words in gray
+                                                                   are common to both communities.
+                                        P (x, y)
+                 P M I(x; y) = log
+                                       P (x)P (y)                     The advantage of using a word2vec model in this case
+Levy and Goldberg show that the skip-gram training pro-            is that searching the trained model for nearest neighborcess implicitly factorizes a word-context matrix, the cells of     ing words is extremely fast, and provides meaningful rewhich are Pointwise Mutual Information (PMI) of word and           sults, without over-promoting highly-rare or highly-frequent
+context pairs, shifted by a global constant[21].                   terms. A drawback to our approach is that it requires a relThe word2vec model, trained with skip-gram is a good             atively large, pre-processed corpus. Applying these corpuschoice for the purpose of quantifying semantic & syntactic         assisted techniques over a stream of documents can reveal
+similarity between words. Similar models can also be used,         more nuanced changes in discourse. These changes can pobut word2vec was chosen for having a good trade-off between        tentially be related to external events, or can serve to quanperformance and training time.                                     tify the evolution of a discourse community over time. Rather
+                                                                   than examining the social network structure of different com3.3    Comparison of KWIC & k-NN Lists                             munities, k-nearest neighbor graphs (k-NNG) can be used
+  Manually examining KWIC lists will often be unfeasible           to examine distinctive linguistic similarities and differences
+for larger corpora, such as a collection of tweets. Sampling       between discourse communities. As an example, Figure 2
+a selection can introduce bias, while a close reading of each      shows the word neighborhoods of the word “oil” from two
+and every document in a collection is impractical. Collo-          different communities in the Scottish Referendum campaign.
+cates are generally useful for “a semantic analysis of a word”     Nodes are other related words, and edge lengths are inversely
+[28]. Examining these collocation patterns can provide a           proportional to the cosine similarity of each word to “oil” in
+corpus driven tool for CDA, as used in an analysis of the          the community-specific word space.
+representation of refugees, asylum seekers, and immigrants
+in the UK press [4].                                               3.4      Accounting for Change Over Time
+  Our approach can be used to discover similar patterns,              Since discourse communities are temporary systems dewhere predicting a set of contexts given a word can be in-         fined by a body of texts [27], we must account for time in
+terpreted as an aggregation of concordance lines, drawing          the models. As word2vec does not account for a temporal
+an analogy between the training objective and KWIC anal-           dimension in texts, we propose splitting the data set of each
+ysis familiar to practitioners. Table 2 shows how different        community into windows, each covering different time pemeasures of association can provide different collocates.          riods. The conversion of continuous data streams, such as
+
+
+content from social media platforms, to discrete windows              k   Rank A        Rank B     Jaccard at k   AJ at k
+                                                                      1   untapped      untapped       1.00        1.00
+has been a common strategy in the analysis of online com-             2   revenues      yada           0.33        0.66
+munities [29].                                                        3   pouring       reserves       0.20        0.51
+   Separate models are then trained for a number of fixed             4   #clairridge   bonanza        0.14        0.42
+length windows of tweets, creating different models for each          5   300bn         revenues       0.25        0.39
+window and each community. Models are trained using the                   ...           ...            ...          ...
+skip-gram architecture, with vector size 300, context window of 5 words, for 30 iterations on time windows spanning        Table 3: Average Jaccard values at different val7 days. Due to the stochastic nature of word2vec train-           ues of k, comparing the word neighborhoods of “oil”
+ing, and the different training sets, the various word spaces     from two consecutive weeks from ‘Yes’ voter tweets.
+created are not directly comparable. However, we are not
+interested in the resultant model representation, but rather
+the relationships between words that can be interpreted by        tweets from all users [13]. Problems arising from monitoring
+practitioners. Therefore, for a given word, we retrieve its k     social media based on the pre-selection of specific hashtags
+nearest neighbors in the model, and present these for con-        or keywords have also been discussed in the literature [31].
+sideration. This is analogous to the way in which a KWIC             Rather than relying on keyword or hashtag searches, for
+analysis presents concordance lines. From this, quantifying       our experiments we gathered all available tweets for a fixed
+the changes between time windows and communities can              subset of users. For both the Scottish Referendum and US
+now be accomplished by comparing the word neighborhood            Midterm Elections, users were first selected by their “offiof a particular word in different spaces—i.e. the similarity of   cial function” – i.e. politicians, campaign accounts, political
+the word’s k nearest neighbor lists in each model.                organizations. Additional accounts included in each set are
+                                                                  detailed in 5.1 and 6.1. During data collection, users are au3.5     Average Jaccard for k-NN                                  tomatically notified when added to a Twitter list, and have
+   To compare word neighborhoods, we require a suitable           the ability to remove themselves by “blocking” the account
+similarity measure. The k-nearest neighbors of words in a         used to add them, or by making their account private. Sevword space, when viewed as rankings, are incomplete (i.e. not     eral accounts were either deleted or made private during and
+all words are covered), top-weighted (i.e. top ranked words       after the data collection period. For pre-processing, common
+are more important), and indefinite (i.e. choice of k is arbi-    stop words, those words occurring less than twice, and URLs
+trary). A desirable measure should account for these prop-        are removed from tweet text. The default NLTK English
+erties.                                                           stop word list2 was expanded to include several TwitterThe Average Jaccard (AJ) measure from Greene et al. [14]       specific function words such as “ht”, “via”, “mt”. The data
+used for comparing ranked lists has the required properties.      set was post-processed to honor deletion requests and user
+Though distinct, AJ can be related to cultural reproduction       privacy settings. A summary of the data is shown in Table
+[22], as both measure a form of rank-biased overlap. We           4.
+calculate the AJ scores between the k nearest neighboring         Community Users         Tweets Total Words      Date Range
+words from two spaces. The two spaces can either be two           Scotland Yes 618        799,096  12,551,654     11-Aug to 19-Oct
+time windows from the same community, or the same time            Scotland No  610        570,024   8,957,721     11-Aug to 19-Oct
+window from two different communities.                            Democrat     942         89,296   1,404,737     10-Oct to 20-Nov
+                                                                  Republican   997         80,840   1,209,197     10-Oct to 20-Nov
+   As AJ is top-weighted, increasingly higher values of k have
+a decreasing influence on the overall score. The choice of k
+                                                                  Table 4: User, tweet and word counts for Scottish
+is largely influenced by the need for rankings to be examined
+                                                                  and US data sets. Date ranges are in 2014.
+by practitioners. In both case studies presented later, we set
+k = 30, but this parameter can be varied to consider more            The sets of tweet IDs and users are available, together
+distant words.                                                    with tools for retrieval to reconstruct the data set3 . While
+   Jaccard similarity between two sets is defined as the size     classifying polarity and party affiliation is outside the scope
+of the intersection divided by the size of the union. The         of this study, this data set potentially offers a useful ground
+Average Jaccard (AJ) between two ranks A and B to depth           truth for such tasks.
+k is defined as the average Jaccard scores between subsets
+of d top ranked words in two rankings, where d is d ∈ [1, k].
+                                  k                               5.      CASE STUDY: 2014 SCOTTISH
+                              1X
+                 AJ(A, B) =
+                              k
+                                 Jd (A, B)                                REFERENDUM
+                                d=1                                  The Scottish Independence Referendum, which took place
+where Jd (A, B) = |Ad ∩Bd |
+                          and Ad ,Bd are the heads of lists       on 18th of September 2014, decided Scotland’s membership
+                  |Ad ∪Bd |
+                                                                  in the United Kingdom political union. The single quesup to depth k. See Table 3 for a worked example.
+                                                                  tion posed by the referendum—“Should Scotland be an independent country?”—generated considerable debate on social
+4.    DATA SETS                                                   media platforms in the weeks before the vote. Both the offiVarious selection criteria exist for gathering Twitter cor-     cial Yes Scotland and Better Together (No vote) campaigns
+pora for the study of politics and political discourse. A         were established in 2012, with the date of the referendum
+recent survey [17] offers a comprehensive overview of data        set in March 2013, and legislation passed in November 2014.
+sources and collection techniques. Gathering all tweets from
+a subset of users was shown to provide a much richer and              http://www.nltk.org/nltk_data/
+trustworthy source of data as opposed to a random sample of           http://dx.doi.org/10.6084/m9.figshare.1430449
+
+
+While the lifetimes of these campaigns were long, the majority of activity occurred within weeks of the referendum.
+                                                                       oil
+We consider tweets over a time span of 10 weeks (11 August to 19 October 2014), for communities of ‘Yes’ and ‘No’        pound
+supporters.
+
+5.1       Scottish Voter Communities                              trident
+   An initial seed list of Twitter accounts belonging to “registered campaigners” on the Scottish Independence Refer-          darling
+endum Electoral Commission was built. As the number
+of these official function accounts was small, additional ac-    salmond
+counts were added to the set based on public Twitter lists
+                                                                             1   2   3    4     5     6     7     8     9    10
+the seed accounts were members of. Parody accounts, non-                                      Weeks
+partisan organizations, and users with private accounts were
+removed. To be included as a “Yes” or “No” supporter, users
+had to self-identify through prominent use of campaign pro-      Figure 3: Trends illustrating the Average Jaccard
+file banners (party logos and campaign icons in profile im-      similarity changes between word neighborhoods for
+ages were popular with both sides), explicitly stating an        the ‘Yes’ and ‘No’ communities, over 10 weeks of the
+affiliation in their user descriptions (e.g. using #BetterTo-    Scottish Referendum campaign. High similarity ingether, #iVotedYes etc.), and actively engaging with refer-      dicates agreement between communities, while low
+endum topics.                                                    similarity indicates greater difference in how a word
+   Data from Twitter showed the ‘Yes’ campaign was dom-          is used.
+inant in terms of volume and participation, skewing some
+predictions and on-line opinion polls in their favor4 . Polls
+that relied on interviews showed more support for a ‘No’         word neighborhoods from different communities, for a winvote5 . Ultimately, Scotland remained part of the United         dow of a single week. A more detailed understanding of a
+Kingdom, the ‘No’ vote gathering 55.3% and ‘Yes’ 44.7%,          given point can be supported by looking at the correspondwith a turnout of 84.6%, one of the the highest recorded for     ing word neighborhoods for each community for that the
+a referendum or election in the UK.                              time window, as illustrated by the ranked lists of words in
+   Key issues in the campaign included: EU membership and        Table 5. This can subsequently be used to retrieve the relecurrency, health care, education and research funding, Scot-     vant tweets for a closer reading and analysis.
+land’s renewable energy and north sea oil revenue, NATO
+membership, and the issue of British Trident nuclear missile     5.2    Discursive Strategies
+system on Scottish territory. Using the analysis methodol-          Predication is an important discursive strategy with the
+ogy proposed in Section 3, an initial set of words relating      objective of labeling social actors, used for reinforcing the
+to these issues was selected. This was followed by an explo-     construction of “us” and “them” between the ‘Yes’ and ‘No’
+ration step, adding related words, and removing those words      voter communities. These “positive self” and “negative other”
+that did not feature prominently in either community.            presentations can be extracted from the nearest neighboring
+                                                                 terms used to refer to political leaders. Table 6 shows a
+    Yes Week 5     No Week 5      Yes Week 6     No Week 6       selection of nearest neighboring words from ‘Yes’ and ‘No’
+    untapped       fields         norways        revenues        voters, for terms that refer to political figures central to the
+    yada           rigs           revenues       ridge           campaigns. The k nearest neighbors for Table 6 are derived
+    reserves       rosy           reserves       bonanza
+    bonanza        revenues       147bn          sea             from a model trained on tweets in the entire date range,
+    discoveries    downgrade      discoveries    4bn             before during and after the referendum.
+    bloddy         bonanza        chevron        offset
+    1billion       inflated       bonanza        estimates        Alex Salmond                   Alistair Darling
+    ...            ...            ...            ...              Yes Voters    No Voters        Yes Voters No Voters
+                                                                  lucid         frantical        adversarial commanding
+Table 5: Yes and ‘No’ Voter word neighborhood of                  authoritative misdirection     bluffing    principled
+“oil” corresponding to Figure 3 in weeks 5 and 6.                 statesman     fraudster        dismissive  quizzing
+Top 7 words are shown from the 30 used in analysis.
+                                                                 Table 6:    Sample nearest neighbor words for
+                                                                 “salmond”, @alexsalmond, #alexsalmond, and “darWhile neighbor graphs such as Figure 2 can be illustraling”, @togetherdarling, #alistairdarling
+tive for small examples, a network visualization of larger
+word spaces will quickly become an uninterpretable “hairball”. The differences between time windows are also not            The Referential / Nomination strategy in the discourse
+evident. As an alternative, we suggest a trend visualiza-        historical approach is used for constructing in-groups and
+tion to compare the similarities between communities and         out-groups, and categorizing memberships. A key advantage
+time windows. Figure 3 provides a sample comparison of           of using the DSM in this task, is that all tokens (individual
+word neighborhoods between ‘Yes’ and ‘No’ voters over 10         words, hashtags, mentions) are in the same “word space”
+weeks. A point in the trend is the AJ similarity between         and their similarity can be compared – however, this process
+                                                                 requires a practitioner to perform several searches: first to
+    http://blog.twitter.com/en-gb/2014/indyref-at-the-polls      identify which nearest neighboring terms are used to refer to
+    http://survation.com/?s=Scottish+Referendum                  a social actor (“salmond”, “@alexsalmond”, “#alexsalmond”)
+
+
+                                        #indyref               #oil               #pound                                                   #indyref               #oil               #pound
+                            +0.20                                                                                              +0.15
+                            +0.15                                                                                              +0.10
+                            +0.10                                                                                              +0.05
+                            +0.05                                                                                               0.00
+Change from previous week
+
+
+                                                                                                   Change from previous week
+                             0.00                                                                                              −0.05
+                            −0.05
+                                                                                                                               −0.10
+                            −0.10
+                                                                                                                               −0.15
+                            −0.15
+                                                                                                                               −0.20
+
+                                        salmond              #the45               #voteyes                                     +0.15   #bettertogether           darling             #voteno
+                            +0.20
+                                                                                                                               +0.10
+                            +0.15
+                                                                                                                               +0.05
+                            +0.10
+                            +0.05                                                                                               0.00
+                             0.00                                                                                              −0.05
+                            −0.05                                                                                              −0.10
+                            −0.10                                                                                              −0.15
+                            −0.15                                                                                              −0.20
+                                    2 3 4 5 6 7 8 9 10   2 3 4 5 6 7 8 9 10   2 3 4 5 6 7 8 9 10                                       2 3 4 5 6 7 8 9 10   2 3 4 5 6 7 8 9 10   2 3 4 5 6 7 8 9 10
+                                                              Weeks                                                                                              Weeks
+                               (a) Selected “Yes” community word neighborhoods.                                                   (b) Selected “No” community word neighborhoods.
+                                                         Figure 4: Temporal changes in within-community AJ similarity
+
+and then retrieve some sample tweets for context.                                                  influences. Figure 4 show temporal changes between word
+  In terms of argumentation & framing, there is evidence                                           neighborhoods for the two respective communities. These
+for content injection [10] in the time windows with highest                                        are derived by calculating the AJ similarity between neighsimilarity between the two groups. Our method suggests                                             bourhoods for each week with those from the previous week,
+that this strategy is effectively reproduced in tweet text with                                    for the same words and within the same community. Bars
+hashtags, evidenced by the appearance of hashtags from the                                         above 0.00 indicate increasing agreement within a commuopposition in the nearest neighboring term lists.                                                  nity, while bars below 0.00 show a decrease in AJ scores
+  Twitter users would temporarily adopt hashtags popular                                           between two consecutive weeks, indicating larger difference
+with ideologically opposing groups, in order to spread and                                         between word neighborhoods.
+reinforce their political views. Below are examples of content                                        The impact of the day of the vote, and the winning aninjection from ‘No’ supporters, using #yesscot, and ‘Yes’                                          nouncement can be seen within the communities between
+supporters using #bettertogether:                                                                  weeks 5 and 6 on x-axis in Figure 4 a and b. Naturally,
+                                                                                                   there is an upsurge in agreement for #bettertogether &
+independence would bring a new wave of austerity for                                               #voteno within the community as ‘No’ supporters celebrate
+families in scotland #indyref #yesscot #nothanks                                                   the result. Zappavigna in [34] describes how Twitter users
+why voting ‘No’ is a huge mistake #bettertogether #yessbond around a moment they perceive to be important to
+cotland #indyref [link]                                                                            their cultural history.
+                                                                                                      After the vote results are announced, the changes within
+                                                                                                   the ‘No’ community diminish, while the ‘Yes’ voters, form
+  The debate around North Sea oil revenues featured frea brand new label (nomination strategy). The ‘Yes’ voters
+quently in Twitter discussions on both sides. In Figure 3,
+                                                                                                   rapidly adopted #the45 hashtag, rallying supporters around
+the “oil” row in Week 6 has a high AJ similarity. Both
+                                                                                                   a new in-group. #the45 refers to a rounded figure of 45%
+groups had “bonanza” in the word neighborhoods, listed in
+                                                                                                   counted for the ‘Yes’ vote. The ‘Yes’ voters were much more
+Table 5. This revealed an interesting case, where ‘Yes’ votactive and engaged on social media, but this activity did not
+ers were sharing an old article from 20136 , while ‘No’ voters
+                                                                                                   seem to translate into higher turnout for the ‘Yes’ campaign.
+were quoting a correction to another news article from Prof.
+                                                                                                   In a meta-analysis of social media usage [7], while there may
+Alex Kemp, director of Aberdeen Center for Research in
+                                                                                                   be a positive relationship between social media use and voter
+Energy Economics:
+                                                                                                   participation, whether or not this relationship is causal and
+There will be ‘No’ oil bonanza - respected researcher
+                                                                                                   transformative is questionable.
+Prof Alex Kemp P&J 12/9/14 #indyref                                                                   There are many other examples where interesting deviations in discourse between and within communities can serve
+                                                                                                   as a guide for further, more qualitative interpretation.
+  Manually examining concordance lines for “oil”, such as
+those illustrated in Table 1, would entail reading through
+thousands of entries, whereas the proposed method offers                                           6.                              CASE STUDY: 2014 US MIDTERM
+an immediately useful starting point for further exploration
+into how different groups appeal to authority in order to                                                                          ELECTIONS
+disseminate their ideas and exert power over one another.                                             Midterm elections in the United States are held near the
+                                                                                                   midpoint of the four year presidential elections. In 2014,
+5.3                                 Variation Within Communities Over Time                         elections were held on November 4th, involving seats being
+  Looking at each community individually, we can begin to                                          contested for the House of Representatives and Senate, along
+formulate an explanation for why and how these variations                                          with governorships and a variety of local positions. Several
+emerged in terms of social, political, internal and external                                       key topics dominated the elections: immigration, national
+                                                                                                   debt, jobs and minimum wage, and fears of an Ebola outhttps://twitter.com/BizforScotland/status/510166055659270144                       break in the US.
+
+
+6.1       Midterm Elections Communities                          with a promotional style. In this study, we did not consider
+  Several official and unofficial sources listing Twitter ac-    these other texts, restricting the corpus to tweets alone.
+counts of incumbent and challenger campaigners were merged                            #amnesty                   jobs                     obama
+                                                                          +0.15
+and segmented into Republican and Democrat groups. Third                  +0.10
+
+
+                                                                 Change
+parties were not included in this case study. Official sources            +0.05
+included verified government accounts listed by the @gov                   0.00
+                                                                          −0.05
+Twitter account, and accounts linked from the House of
+                                                                          −0.10
+Representatives7 and Congress member pages8 . Twitter ac-                 −0.15
+counts advertised on these pages were included in the set.                        2     3   4   5   6   2    3     4     5   6   2    3    4   5   6
+The majority of these accounts were verified by Twitter, and                                                 Weeks
+were either official campaign accounts of representatives run
+by staff, or their personal accounts which in many cases were    Figure 6: Temporal changes for selected Republican
+also run by staff for the duration of the campaign.              community word neighborhoods.
+  While Midterm elections do not involve the same level of
+activity as presidential elections, a qualitative analysis of         Week 3                    Week 4                 Week 5             Week 6
+Twitter feeds and interviews with campaign staff from the             create                    create                 #energy            #jobs
+                                                                      textile                   sector                 independence       american
+2012 Presidential Election by Kreiss [19] offers an insight           #madeinusa                private                lowers             create
+into the use of Twitter by campaign staff to frame an agenda          kills                     created                fewer              #energy
+and engage with supporters.                                           manufacturing             180                    kill               project
+                                                                      creating                  manufacturing          create             approve
+                                                                      remark                    kill                   gas                creating
+immigration                                                           amortization              scientific             lowering           #yes2energy
+                                                                      1k                        generated              #jobs              supports
+          jobs                                                        ...                       ...                    ...                ...
+
+          debt                                                   Table 7: Sample top words from word neighborhoods for “jobs” in the Republican community, over
+       #ebola                                                    4 weekly time windows.
+                                                                                      immigration                jobs                     obama
+        obama                                                             +0.15
+
+              1         2         3         4         5    6              +0.10
+                                                                 Change
+
+
+                               Weeks                                      +0.05
+                                                                           0.00
+                                                                          −0.05
+Figure 5: Trends illustrating AJ similarity changes
+                                                                          −0.10
+between word neighborhoods for Democrat and Re-                                   2     3   4   5   6   2    3     4     5   6   2    3    4   5   6
+publican communities. High similarity indicates                                                              Weeks
+agreement between communities, while low similarity indicates greater difference in how a word is used.          Figure 7: Temporal changes for selected Democrat
+                                                                 community word neighborhoods.
+   For initial exploration, words associated with issues outlined by The Brookings Institution9 were used. The issue of           Week 3                    Week 4           Week 5               Week 6
+immigration revealed an important difference between Re-              creating                  outsourced       000                  creating
+publican and Democrat candidates. Examining the near-                 add                       overseas         added                celebrate
+est neighbors of “immigration”, in word spaces built on Re-           manufacturing             paying           214                  lets
+                                                                      overseas                  created          economy              create
+publican accounts, there were many more hashtags such as              adding                    #dayonenc        manufacturing        entrepreneurs
+#noamnesty and #amnesty in contrast to Democrat word                  create                    1943             adds                 would
+spaces, where “immigration” was associated with “reform”              ship                      300k             breaking             thousands
+and ”senate”.                                                         ca52                      shipped          news                 pass
+                                                                      bringing                  rebuilding       214k                 #kxl
+6.2       Discursive Strategies                                       ...                       ...              ...                  ...
+   The framing strategy was by far the most prominent in         Table 8: Sample top words from word neighborthis case. Official campaign accounts rarely expressed or        hoods for “jobs” in the Democrat community, over
+argued a stance on an issue, but did reference content else-     4 weekly time windows.
+where - manifestos on websites, interviews, etc. The majority of contentious conversation happened away from official         As an alternative to selecting words of interest, a full
+accounts, among supporters and journalists. Finding this         search through the word spaces using the AJ similarity meatype of political discourse supports findings in [34], where     sure can rank the most similar word neighborhoods dispoliticians mainly use Twitter to foster engagement with         cussed by Republicans and Democrats during the election
+their supporters, offering positive evaluations of themselves    period. This has the advantage of discovering surprising instances of mitigation or intensifying utterances reproduced
+    http://house.gov/representatives                             in text. The top ranked terms before and during elections
+    https://www.congress.gov/members                             included “#ebola”, “jobs”, and “halloween”. Just after the
+    http://www.brookings.edu/research/flash-topics/              elections, the most similar words included “birthday” associflash-topic-folder/2014-midterm-elections#state              ated with the 239th Birthday of the Marine Corps. Neither
+
+
+community attempted to steer the conversation into some           volving two communities on Twitter, the approach naturally
+of the more contentious topics relating to veteran care or        generalizes to scenarios involving multiple distinct commutroops overseas around the time of the Marine Corps birth-        nities, and longer pieces of text such as party manifestos,
+day celebrations. The framing strategy used by both sides         news articles, and blog posts.
+amounted to sharing the same video messages and congrat-             In general, we suggest that DSMs offer CDA practitioners
+ulations.                                                         a useful exploratory tool that can be used in conjunction
+                                                                  with existing qualitative and quantitative approaches. The
+6.3    Variation Within Communities Over Time                     ability of the DSM approach to produce word neighborhoods
+   Plots of the within-community temporal changes for word        with both semantic and syntactic similarities could also be
+neighborhoods (see Figures 6 and 7) show a large spike in         employed in downstream applications, such as estimating
+similarity within the Republican community for “amnesty”,         party or candidate positions on certain key issues. The efand Democrat community for “immigration”. This may be             fectiveness of using features derived from DSMs for these
+largely due to Obama’s immigration reform speech that aired       tasks is currently being investigated.
+on November 20th. Both communities, individually, ex-                Potentially, multi-disciplinary methodologies can benefit
+pressed support for their official party line, as evidenced by    from both quantitative and qualitative methods. A purely
+a high similarity over time within each community. Overall,       quantitative approach can be backed by a large body of
+the majority of tweets produced by campaigns rarely dis-          social science and literary theory, while traditional qualicussed political issues on Twitter, instead the platform was      tative approaches to discourse analysis can be guided and
+utilized for general announcements and advertising positive       supported with quantitative techniques that are familiar in
+feedback from supporters. Both Democrats and Republicans          text mining, but remain underutilized by CDA practitionon Twitter steered away from contentious topics, opting to        ers. The DSM-supported process of initial word selection,
+share generic calls to action or announcement updates about       followed by expansion, and examination of word neighbortheir campaigning activities. Some examples are highlighted       hoods can yield support to, or inform hypotheses about
+below:                                                            mechanisms for wielding power, hierarchies, vested interests
+wow based on the turnout tonight voters are fired up              and other aspects of critical discourse analysis.
+
+looking forward to discussing my work in congress on              Acknowledgments. This publication has emanated from
+wnri tune in at 8 am [link]                                       research conducted with the support of Science Foundation
+                                                                  Ireland (SFI) under Grant Number SFI/12/RC/2289.
+this isnt just an election we can win its an election we
+must win
+  Discussions around jobs and employment featured fre8.   REFERENCES
+                                                                   [1] L. Akoglu. Quantifying political polarity based on
+quently in both Republican and Democrat campaign ac-                   bipartite opinion networks. In Proceedings of the
+counts (See Tables 8 and 7). Both parties brought out an-              International Conference on Weblogs and Social
+nouncements that thousands of new jobs need to be created,             Media, ICWSM 2014, Ann Arbor, Michigan, USA,
+and frequently cited legislation on which they either voted,           2014.
+or will vote if re-elected.
+                                                                   [2] L. Anthony. Antconc: A learner and classroom
+  Republicans tended to promote energy sector growth, while
+                                                                       friendly, multi-platform corpus analysis toolkit. In
+democrats tended towards “entrepreneurs” in the context of
+                                                                       Proceedings of IWLeL 2004: An Interactive Workshop
+creating jobs. Both are similar in using words like “approve”
+                                                                       on Language e-Learning, 2005.
+and “pass” referring to their party proposed legislation targeting job creation.                                               [3] P. Baker, C. Gabrielatos, M. Khosravinik,
+  In general, for this case study we observed that candidates          M. Krzyżanowski, T. McEnery, and R. Wodak. A
+did not directly engage in debates with one another, and               useful methodological synergy? combining critical
+typically kept expressions of their political positions to a           discourse analysis and corpus linguistics to examine
+minimum. This curiosity is perhaps explained by an overly              discourses of refugees and asylum seekers in the uk
+cautious approach to Twitter as a medium of communication              press. Discourse & Society, 19(3):273–306, 2008.
+for politicians.                                                   [4] P. Baker, T. McEnery, and C. Gabrielatos. Using
+                                                                       collocation analysis to reveal the construction of
+                                                                       minority groups: The case of refugees, asylum seekers
+7.    CONCLUSION                                                       and immigrants in the uk press. In Corpus Linguistics,
+   In this paper, we have proposed an approach to Critical             2007.
+Discourse Analysis that uses distributional semantic models        [5] M. Baroni, G. Dinu, and G. Kruszewski. Don’t count,
+to explore variations between online communities, and over             predict! A systematic comparison of context-counting
+time, at a word level. The approach is applicable to large so-         vs. context-predicting semantic vectors. In Proceedings
+cial media data sets, where frequency-based approaches fail            of the Annual Meeting of the Association for
+to adequately capture discourse variations between commu-              Computational Linguistics, ACL 2014, June 22-27,
+nities and over time. We evaluated our approach using two              2014, Baltimore, MD, USA, Volume 1: Long Papers,
+quite different political case studies, each with distinct com-        pages 238–247, 2014.
+munities active on Twitter. These case studies illustrate          [6] P. Basile, A. Caputo, and G. Semeraro. Analysing
+that analyzing discourse communities over short periods of             word meaning over time by exploiting temporal
+time can highlight interesting dynamics both between and               random indexing. In CLIC 2014, The Italian
+within communities, as they react to external influences that          Conference on Computational Linguistics, pages
+shape their discourse. While we have focused on cases in-              38–42, 2014.
+
+
+ [7] S. Boulianne. Social media use and participation: a              pages 2177–2185, 2014.
+     meta-analysis of current research. Information,             [22] H. Lietz, C. Wagner, A. Bleier, and M. Strohmaier.
+     Communication & Society, 18(5):524–538, 2015.                    When politicians talk: Assessing online conversational
+ [8] C. Chen, W. L. Buntine, N. Ding, L. Xie, and L. Du.              practices of political parties on twitter. In Proceedings
+     Differential topic models. IEEE Transactions on                  of the International Conference on Weblogs and Social
+     Pattern Analysis and Machine Intelligence,                       Media, ICWSM 2014, Ann Arbor, Michigan, USA,
+     37(2):230–242, 2015.                                             2014.
+ [9] K. W. Church and P. Hanks. Word association norms,          [23] W. C. Mann and S. A. Thompson. Rhetorical
+     mutual information, and lexicography. Computational              Structure Theory: Toward a functional theory of text
+     Linguistics, 16(1):22–29, 1990.                                  organisation. Text - Interdisciplinary Journal for the
+[10] M. Conover, J. Ratkiewicz, M. R. Francisco,                      Study of Discourse, 3(8):234–281, 1988.
+     B. Gonçalves, F. Menczer, and A. Flammini. Political       [24] T. Mikolov, K. Chen, G. Corrado, and J. Dean.
+     polarization on twitter. In Proceedings of the                   Efficient estimation of word representations in vector
+     International Conference on Weblogs and Social                   space. CoRR, abs/1301.3781, 2013.
+     Media, Barcelona, Catalonia, Spain, 2011.                   [25] T. Mikolov, I. Sutskever, K. Chen, G. S. Corrado, and
+[11] N. Fairclough. Critical Discourse Analysis: Papers in            J. Dean. Distributed representations of words and
+     the Critical Study of Language. Language in social life          phrases and their compositionality. In Advances in
+     series. Longman, 1995.                                           Neural Information Processing Systems 26: 27th
+[12] J. Firth. A synopsis of linguistic theory 1930-1955. In          Annual Conference on Neural Information Processing
+     Studies in Linguistic Analysis. Philological Society,            Systems 2013. Proceedings of a meeting held December
+     Oxford, 1957. reprinted in Palmer, F. (ed. 1968)                 5-8, 2013, Lake Tahoe, Nevada, United States., pages
+     Selected Papers of J. R. Firth, Longman, Harlow.                 3111–3119, 2013.
+[13] S. Ghosh, M. B. Zafar, P. Bhattacharya, N. Sharma,          [26] M. J. Paul, C. Zhai, and R. Girju. Summarizing
+     N. Ganguly, and K. Gummadi. On sampling the                      contrastive viewpoints in opinionated text. In
+     wisdom of crowds: Random vs. expert sampling of the              Proceedings of the Conference on Empirical Methods
+     twitter stream. In Proceedings of the International              in Natural Language Processing, EMNLP ’10, pages
+     Conference on Conference on Information &                        66–76, Stroudsburg, PA, USA, 2010.
+     Knowledge Management, CIKM ’13, pages 1739–1744,            [27] J. Porter. Audience and rhetoric: an archaeological
+     New York, NY, USA, 2013. ACM.                                    composition of the discourse community. Prentice Hall
+[14] D. Greene, D. O’Callaghan, and P. Cunningham. How                studies in writing and culture. Prentice Hall, 1992.
+     many topics? stability analysis for topic models. In        [28] J. Sinclair. Corpus, Concordance, Collocation. Oxford
+     Machine Learning and Knowledge Discovery in                      University Press, Oxford, 1991.
+     Databases - European Conference, ECML PKDD ’14,             [29] R. Sulo, T. Berger-Wolf, and R. Grossman.
+     Nancy, France, pages 498–513, 2014.                              Meaningful selection of temporal resolution for
+[15] K. Gulordava and M. Baroni. A distributional                     dynamic networks. In Proceedings of the Eighth
+     similarity approach to the detection of semantic                 Workshop on Mining and Learning with Graphs, MLG
+     change in the google books ngram corpus. In                      ’10, pages 127–136, New York, NY, USA, 2010.
+     Proceedings of the GEMS 2011 Workshop on                    [30] A. Thanopoulos, N. Fakotakis, and G. Kokkinakis.
+     Geometrical Models of Natural Language Semantics,                Comparative evaluation of collocation extraction
+     EMNLP ’11, pages 67–71. Association for                          metrics. In Proceedings of the Third International
+     Computational Linguistics, 2011.                                 Conference on Language Resources and Evaluation,
+[16] F. Hill, R. Reichart, and A. Korhonen. SimLex-999:               LREC 2002, May 29-31, 2002, Las Palmas, Canary
+     Evaluating Semantic Models with (Genuine)                        Islands, Spain, 2002.
+     Similarity Estimation. ArXiv e-prints, Aug. 2014.           [31] Z. Tufekci. Big questions for social media big data:
+[17] A. Jungherr. Twitter in politics: a comprehensive                Representativeness, validity and other methodological
+     literature review. Available at SSRN 2402443, 2014.              pitfalls. In Proceedings of the International Conference
+[18] P. Juola. The time course of language change.                    on Weblogs and Social Media, ICWSM 2014, Ann
+     Computers and the Humanities, 37(1):77–96, 2003.                 Arbor, Michigan, USA, 2014.
+[19] D. Kreiss. Seizing the moment: The presidential             [32] T. A. Van Dijk. Critical discourse analysis. The
+     campaignsâĂŹ use of twitter during the 2012 electoral         handbook of discourse analysis, 18:352, 2003.
+     cycle. New Media & Society, 2014.                           [33] R. Wodak. The discourse-historical approach. In
+[20] V. Kulkarni, R. Al-Rfou, B. Perozzi, and S. Skiena.              Methods of critical discourse analysis, pages 63–94,
+     Statistically significant detection of linguistic change.        2001.
+     In Proceedings of the International Conference on           [34] M. Zappavigna. Discourse of Twitter and Social
+     World Wide Web, WWW ’15, pages 625–635, Geneva,                  Media: How We Use Language to Create Affiliation
+     Switzerland, 2015. International World Wide Web                  on the Web. Bloomsbury Academic. 2012.
+     Conferences Steering Committee.
+[21] O. Levy and Y. Goldberg. Neural word embedding as
+     implicit matrix factorization. In Advances in Neural
+     Information Processing Systems 27: Annual
+     Conference on Neural Information Processing Systems
+     2014, December 8-13 2014, Montreal, Quebec, Canada,

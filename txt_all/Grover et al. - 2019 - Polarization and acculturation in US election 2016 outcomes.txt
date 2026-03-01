@@ -1,0 +1,1247 @@
+Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                                               Contents lists available at ScienceDirect
+
+
+                                          Technological Forecasting & Social Change
+                                                 journal homepage: www.elsevier.com/locate/techfore
+
+
+Polarization and acculturation in US Election 2016 outcomes – Can twitter
+analytics predict changes in voting preferences
+                                                                                      ⁎
+Purva Grovera, Arpan Kumar Kara, Yogesh K. Dwivedib, , Marijn Janssenc
+a
+  Information Systems area, DMS, Indian Institute of Technology Delhi, India
+b
+  Emerging Markets Research Centre (EMaRC) School of Management, Swansea University Bay Campus, Swansea SA1 8EN, UK
+c
+  Policy and Management of Delft University of Technology, Netherlands
+
+
+A R T I C LE I N FO                                   A B S T R A C T
+
+Keywords:                                             Elections are among the most critical events in a national calendar. During elections, candidates increasingly use
+Social media                                          social media platforms to engage voters. Using the 2016 US presidential election as a case study, we looked at the
+Twitter analytics                                     use of Twitter by political campaigns and examined how the drivers of voter behaviour were reﬂected in Twitter.
+Polarization in elections                             Social media analytics have been used to derive insights related to theoretical frameworks within political
+eParticipation
+                                                      science. Using social media analytics, we investigated whether the nature of social media discussions have an
+Public policy
+Hashtag community
+                                                      impact on voting behaviour during an election, through acculturation of ideologies and polarization of voter
+Acculturation in social media                         preferences. Our ﬁndings indicate that discussions on Twitter could have polarized users signiﬁcantly. Reasons
+                                                      behind such polarization were explored using Newman and Sheth's model of voter's choice behaviour.
+                                                      Geographical analysis of tweets, users, and campaigns suggests acculturation of ideologies among voting groups.
+                                                      Finally, network analysis among voters indicates that polarization may have occurred due to diﬀerences between
+                                                      the respective online campaigns. This study thus provides important and highly relevant insights into voter
+                                                      behaviour for the future management and governance of successful political campaigns.
+
+
+1. Introduction                                                                           2014; Hossain et al., 2018; Ogola, 2015). Social media platforms support two-way communication (Kapoor and Dwivedi, 2015; Vaccari and
+    Social media plays a pivotal role in impacting the outcome of na-                     Valeriani, 2015). According to the Pew Research Centre and the
+tional elections (Bruns and Stieglitz, 2013). The United States pre-                      American Life Project, 69% of online adults use social networking sites
+sidential election of 2016, held on 8 November, resulted in a victory for                 (Social Media Fact Sheet, 2016). Online campaigning was one of the
+the Republican party; the Republican ticket of Donald Trump and Mike                      biggest drivers behind the Democrat victory of 2008 and Barack Obama
+Pence defeating the Democratic ticket of Hillary Clinton and Tim Kaine.                   presidential campaign (Stirland, 2008).
+Using data from 784,153 tweets collected over the 120 days from 13                            Social media allows people to – without meeting physically – create,
+August to 10 December 2016 – and employing Twitter search terms                           share and exchange their thoughts, ideas, opinions, information, videos,
+such as ‘Hillary Clinton’, ‘Donald Trump’ and ‘USA Election’ – this paper                 images and other digital content in virtual communities such as
+oﬀers insights into how Twitter was used by the 2016 presidential                         Facebook, Twitter, LinkedIn, Google+, Slideshare, Flickr, Instagram
+candidates and the way in which this reﬂects the political engagement                     and many more. These platforms allow users to form online commuof US citizens over the election period. The study also describes the                     nities in which they can share personal information and perspectives
+Twitter campaigns run by the presidential candidates for the 58th                         through user-generated content. Authors have described social media
+quadrennial American presidential election, the drivers of their en-                      platform as a means for large-scale communication (Boynton and
+gagement and their potential impact.                                                      Richardson Jr, 2016) and sharing purposes (AlAlwan et al., 2017;
+    The presidential election of the United States of America (USA) is a                  Barnett et al., 2017; Dwivedi et al., 2015; Hollander, 2008; Kapoor
+highly signiﬁcant event for both the country and the rest of the world.                   et al., 2018). Social media is able to empower voters by enhancing
+Existing literature shows that increased use of digital media leads to                    deliberative democracy among voters (Lawrence et al., 2010; Yardi and
+increased political participation; raising the political knowledge of ci-                 Boyd, 2010). Deliberation may help voters in: (a) reﬁning their own
+tizens and engaging them in the election campaigns (Dimitrova et al.,                     opinions; (b) listening to diﬀerent opinions; and (c) identifying
+
+
+    ⁎
+        Corresponding author.
+        E-mail addresses: y.k.dwivedi@swansea.ac.uk (Y.K. Dwivedi), M.F.W.H.A.Janssen@tudelft.nl (M. Janssen).
+
+https://doi.org/10.1016/j.techfore.2018.09.009
+Received 17 October 2017; Received in revised form 16 August 2018; Accepted 9 September 2018
+0040-1625/ © 2018 Elsevier Inc. All rights reserved.
+
+
+    Please cite this article as: Grover, P., Technological Forecasting & Social Change, https://doi.org/10.1016/j.techfore.2018.09.009
+
+
+P. Grover et al.                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+common ends and means (Lawrence et al., 2010). However, research                 2.1. Political communication
+also indicates that online discussions may amplify division among social groups with diﬀering views, rather than building consensus among                Traditional media follows a model of unidirectional communication
+them (Lee, 2007; Yardi and Boyd, 2010).                                          and oﬀers asynchronous communications. In contrast, social media
+     According to Pew Research, around 225.78 million American citi-             communication is multi-directional and oﬀers interactive communicazens were of legal voting age in 2016. The Statista portal estimates that        tion (Kruikemeier et al., 2016; Ross and Bürger, 2014). This facility of
+in the USA there are around 67 million monthly active users on Twitter.          social media enables political discourse to shift from the traditional
+Twitter data can thus become a signiﬁcant source of information, with            mass media to social media platforms like Facebook and Twitter (Heo
+the potential to impact election outcomes owing to four overarching              et al., 2016). The use of the social media platforms in western
+factors. First, the numbers presented above highlights that almost a             democracies is very high for purposes of political communication
+quarter of the voting population of the USA is present on Twitter.               (Mosca and Quaranta, 2016) and varies between countries due to facSecond, Twitter has been used by the presidential candidates to interact         tors such as broadband facilities, internet penetration, and media litwith the public and the media for reasons of public conversation                 eracy (Klinger, 2013).
+(Shapiro and Hemphill, 2017; Vaccari and Valeriani, 2015; Waisbord                   Politicians and journalists – through such online interaction – are
+and Amado, 2017). Third, Twitter is highly associated with non-per-              emerging as both actors and sources of information (Ekman and
+sonal engagement (Mosca and Quaranta, 2016). Finally, Twitter data               Widholm, 2015). In this light, many have highlighted the signiﬁcant
+has been used for electoral forecasting (Burnap et al., 2016), for in-           role that social media plays in the modern media environment (e.g.
+dicating social tension (Burnap et al., 2015) and to estimate public             Bode, 2016). Politicians have used social media for distributing inengagement over the election period in various countries (Adams and              formation (Klinger, 2013; Ross and Bürger, 2014) and campaigning
+McCorkindale, 2013; Ahmed et al., 2016; Bode, 2016; Burnap et al.,               purposes (Jungherr, 2014); seeking to mobilize voters through drawing
+2016; Ceron et al., 2014; Domingo and Martos, 2015; Ernst et al.,                their attention to a party's agenda (Skogerbø and Krumsvik, 2015).
+2017).                                                                           Social media sites are emerging as journalistic sources (Ogola, 2015;
+     To the best of our knowledge, this study is the ﬁrst within the po-         Skogerbø and Krumsvik, 2015) and as a way to connect politically inlitical domain in which the social activity created by a presidential            volved citizens to non-involved citizens in political discourse (Mosca
+candidate's tweets were mapped to citizens' responses. The study aims            and Quaranta, 2016).
+to explore the following areas: (a) relationship between activity and                Communication between like-minded users can strengthen a group
+engagement on social media platforms; (b) consecutive campaigns ef-              identity, whereas communication between diﬀerent-minded users leads
+fects on popularity and engagement; (c) tweets sentiments eﬀects on              to in-group and out-group aﬃliations (Yardi and Boyd, 2010). In-group
+popularity and engagement; (d) relationship between drivers of voter's           refers to connections within the group to which a user already belongs,
+choice behaviour and engagement on social media platforms; (e) ac-               whereas out-group refers connections to a group which a user does not
+culturation of ideologies through hashtags; (f) opinion polarization of          belong to (Iyengar and Westwood, 2015). In the deliberation of duos,
+users within political deliberation and the subsequently formation of            one user rates their self-opinion more positively when other users are in
+communities.                                                                     support of opinion (Lee, 2007). Users with similar political views ﬂock
+     The contents of this study may position it within the sphere of             together (Gruzd and Roy, 2014; Kim, 2015; Lawrence et al., 2010; Lee
+computer-mediated communication and digital politics. The study                  et al., 2014; Yardi and Boyd, 2010). However, voters with little interest
+contributes to the ﬁeld through analyzing the social engagement from             in politics have been shown to be ideologically moderate and can be
+both the presidential candidate's and the voter's perspective. It presents       polarized easily (Lawrence et al., 2010).
+the Twitter discussions concerning party policies and campaigning that,              Research has further shown that the reach of protest messages intheoretically, may have led to the acculturation of political ideologies         creases through the use of social media platforms (Barberá et al., 2015)
+among voters, and subsequently to polarizations in voter opinion – thus          which can enable crowd mobilization (Ems, 2014; Theocharis et al.,
+potentially impacting the outcome of the 2016 election. In short, the            2015). Communication on social media gets accelerated (Ernst et al.,
+buzz created by presidential candidates Twitter presence has been                2017; Poell, 2014) and user-generated content within small span of
+mapped according to the concept of acculturation of ideologies (i.e.             time reaches to thousands of people present on social media platform
+hashtags) and opinion polarization within virtual communities.                   (Heo et al., 2016).
+     The remaining sections are organized as follows. Section 2 summarizes a literature review regarding political communications, social           2.2. Social media
+media, polarization in elections, acculturation in social media and the
+usage of social media platforms for political communication, along with              Social media data (i.e. user-generated content) has been extensively
+the knowledge gap identiﬁed, research questions and potential con-               used in the analysis of issues such as electoral forecasting (Burnap et al.,
+tribution of the study. Section 3 focuses on hypothesis development and          2016), engaging with voters (Adams and McCorkindale, 2013), idencontains the key sources identiﬁed by the literature review instrumental         tifying social tensions (Burnap et al., 2015), evaluating voting intenin hypothesis development. Section 4 illustrates the methodology for             tions (Ceron et al., 2014) and measuring behaviour transition in nacollecting and analyzing the tweets. Section 5 presents the results of the       tional events (Lakhiwal and Kar, 2016). Domain-speciﬁc understanding
+analysis of the tweets. Further discussions are presented concerning the         may be developed by analyzing user-generated content through the use
+contribution of the study, the implications to practice and policy, lim-         of social media analytics (R. Aswani et al., 2017; A. Aswani et al., 2017,
+itations and future research directions.                                         2018; Grover et al., 2017; Joseph et al., 2017; Rathore et al., 2017)
+                                                                                 using big data analytics (Grover and Kar, 2017; Gupta et al., 2018).
+                                                                                     Twitter has been used for announcing and promoting awareness of
+2. Literature review                                                             various public policies, such as campaigns regarding electronic cigarettes (Harris et al., 2014), early warning announcements concerning
+     The literature review is divided into the ﬁve sections, namely po-          natural hazards (Chatﬁeld et al., 2013), understanding social sensitivity
+litical communication, social media, polarization, acculturation in so-          towards the environment (Cody et al., 2015) and emergency managecial media, and how political actors are using social media for public           ment (Panagiotopoulos et al., 2016; Singh et al., 2017). Voters have
+communication. The last section of the literature review presents the            also used Twitter for seeking and sharing information related to social
+knowledge gaps identiﬁed, research questions and the potential con-              support (Yardi and Boyd, 2010). The potential for using Twitter to
+tribution of the study.                                                          uncover unbiased information from user-generated content was one of
+P. Grover et al.                                                                                          Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+the drivers behind using Twitter data in our study.                                Demographic homogeneity and minority expertise reduce group poThe hybrid of television and social media can lead to positive out-             larization (Zhu, 2013).
+comes regarding democratic engagement in elections (Chadwick et al.,                   On Twitter, various social groups participate in discussions - leading
+2017). Literature indicates online engagement on social media impacts              to diversity in opinions (Yardi and Boyd, 2010). Divergence in opinion
+user's sentiments (Ibrahim et al., 2017). Highly engaged users are often           may increase the representativeness or breadth of governmental pohighly educated followers (Scott et al., 2017) belonging to higher socio-          licies, leading to a healthy democracy (Hollander, 2008; Layman et al.,
+economic equity. Post tagged with the hashtags inﬂuence users more as              2006). Isenberg (1986) found that argumentation eﬀects tend to be
+compared to untagged posts (Chadwick et al., 2017).                                larger than social comparison in seeding polarization among social
+                                                                                   groups. From above literature evidences it can be concluded that social
+2.3. Polarization in elections                                                     media has the potential of exposing voters to both sides of an argument
+                                                                                   (i.e. positive and negative), which can lead to opinion polarization
+     Polarization can be deﬁned as a state as well as a process (DiMaggio          among voters, resulting in the ampliﬁcation of division between social
+et al., 1996). Polarization is a state in which an opinion on an issue has         groups holding diﬀerent views (Lee, 2007).
+generated an opposing opinion to a theoretical maximum value. Polarization is a process whereby this opposition increases over the time.           2.4. Acculturation in social media
+In this study, polarization had been treated as a state. The study considers two states (positive and negative) of polarization. A voter is in                Acculturation has been deﬁned as the occurrence of a change in
+the positive state when the voter holds a positive opinion of the pre-             preferences within an individual when exposed to individuals or groups
+sidential candidate. Similarly, a voter is in the negative state when the          from a diﬀerent cultural background (Redﬁeld et al., 1936). Various
+voter holds a negative opinion of the presidential candidate. Opinion              interpretations and caveats to this deﬁnition exist. Ferguson et al.
+polarization is relevant in ﬁelds of political conﬂict and social volatility       (2017), for example, extends the deﬁnition to include what he calls
+(DiMaggio et al., 1996). Existing literature indicates that polarization           remote acculturation: changes experienced by individuals having only
+within American society has increased over the past four decades                   intermittent contact with a geographically separate culture. The over-
+(Iyengar and Westwood, 2015).                                                      arching view across deﬁnitions, however, sees acculturation as a proDiMaggio et al. (1996) highlight four dimensions of the polariza-             cess of altering individual identity by exposing them to new ideas
+tion: dispersion, bimodality, constraint, and consolidation. Dispersion            through geographically dispersed individuals or groups. This is the
+takes into the account the diversity of the opinions among the public.             deﬁnition of acculturation adopted by this study.
+As dispersion of opinions increases among voters, diﬃculty in estab-                    Ogden et al. (2004) describe acculturation both at an individual and
+lishing and maintaining a consensus within the political system also               group level. The writers further identiﬁed a series of characteristics of
+increases. Bimodality refers to polarization occurring between opinions;           acculturation on both an individual and group level. Changes in perthe authors suggesting that people with diﬀerent positions cluster into            ception, attitudes, values, and personality are described as important on
+separate camps regarding an issue. Constraints consider whether the                an individual basis, whereas group level acculturation characteristics
+extent of opinion is associated with any other opinions within an opi-             included relationship to socialization, social interaction, and mobility.
+nion domain. Consolidation refers to diﬀerences in the responses to an             Ogden et al. (2004) further describe three phases of acculturation:
+issue on the basis of demographics such as gender, race, occupation,               contact, conﬂict and adaptation. In Phase 1 (contact), an individual
+age, graduation, and income. DiMaggio et al. (1996) surmise that opi-              comes into contact with an individual or group of diﬀering ideology,
+nion polarization increases when opinion distribution becomes dis-                 resulting in conﬂict (Phase 2) of opinion, and subsequently adaptation
+persed, bimodal, closely associated and closely linked to social iden-             (Phase 3) of the majority opinion. Acculturation also leads to psychotities.                                                                            logical changes within an individual (Berry, 2008) and inﬂuences their
+     Political leaders act as the polarizing cues for voters (Nicholson,           behaviour, values and identity (Ferguson et al., 2017).
+2012). Iyengar and Westwood (2015) suggest that followers of a pre-                     Berry (1997) suggests four strategies for the process of acculturasidential candidate – those present on social media – can play a sig-              tion: assimilation, separation, integration and marginalization. Assimniﬁcant role in polarizing the political choices of voters. Political po-          ilation is a strategy where an individual belonging to a non-dominant
+larization towards party is strong as race polarization (Iyengar and               group – who does not wish to maintain their cultural identity – interacts
+Westwood, 2015). Polarization stimulates voters towards political                  frequently with the dominant group. In contrast, separation describes a
+participation (Abramowitz and Saunders, 2008). Polarization among in-              situation where an individual seeks to retain their values and tries not
+group leaders tends to decrease voters' trust in the party (Layman et al.,         to interact with other cultures. When both the groups seek to maintain
+2006).                                                                             their cultural values but also wish to interact with other groups, a
+     In attempting to explain political polarization, authors have de-             strategy of integration is followed. For groups less interested in mainscribed what is termed the echo chamber eﬀect of social media platforms            taining their cultural preferences and less interested in maintaining
+(Gruzd and Roy, 2014; Iyengar and Westwood, 2015; Lawrence et al.,                 relationships with another group, a marginalization strategy is followed.
+2010). This refers to the environment in which voters are exposed only             Changes primarily impact the minority group, which is then expected to
+to information and communities that support and reinforce their views              become more like the majority group (Berry, 2008).
+and opinions. Some authors, however, have sought to downplay this                       Acculturation theories have been applied to the political domain by
+eﬀect, oﬀering the opinion that suggests that the use of social media for          Hindriks et al. (2016), in a study of native majority and immigrant
+political news distribution and policy-based deliberation by the voters            minority populations. Their results indicate that (a) using a political
+can lessen any echo chamber eﬀect since discussions take place in open             assimilation strategy, the interests of only the major groups advance;
+platforms and are accessible to all (Lee et al., 2014).                            whereas (b) with a strategy of political integration, the interests of a
+     Public self-awareness increases group polarization within commu-              majority group advances along with those of a minority group; and (c)
+nities (Lee, 2007). Group polarization can be enhanced within the user             using a political separation strategy, the interests of the minority group
+with group discussions (Chadwick et al., 2017; Isenberg, 1986). Dis-               only advance.
+agreement of the user was negatively associated with group polariza-                    Authors have also described how the media can be an important
+tion (Kim, 2015). The group has the potential of creating or distorting a          mechanism for remote acculturation (e.g. Ferguson et al., 2017). The
+user's opinion (Moscovici and Zavalloni, 1969; Zhu, 2013). Literature              branch of the media used by this study for mapping acculturation is the
+indicates group opinions had been often adopted by individuals as their            social media platform Twitter. In this study, individual level acpersonal opinion (Lee, 2007; Moscovici and Zavalloni, 1969).                       culturation had been measured through examining the perceptions of,
+P. Grover et al.                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                          Fig. 1. Pictorial representation of knowledge gaps identiﬁed for study.
+
+
+and attitudes towards, a presidential candidate. Communications taking          Skogerbø, 2013). National Assembly members in Korea used Twitter to
+place on social media have the potential to strengthen or weaken the            communicate with fellow politicians rather than with their constituents
+perceptions and attitudes of users (Croucher, 2011; Li and Tsai, 2015;          (Hsu and Park, 2012). Twitter can also be used as a tool for political
+Mao and Yuxia, 2015).                                                           opposition by politicians (Van Kessel and Castelein, 2016).
+    There are numerous studies that have examined the process of ac-                Political actors in Western democracies are increasingly using
+culturation due to the inﬂuence of social media platforms, and various          Twitter and Facebook for populist communication (Ernst et al., 2017)
+user groups have been studied: Chinese professionals overseas (Mao              and are able to freely circulate their messages and ideology through the
+and Yuxia, 2015), Hispanics in the US (Li and Tsai, 2015), international        use of social media platforms (Engesser et al., 2017). A political leader
+students (Cao and Zhang, 2012; Forbush and Foucault-Welles, 2016),              using Twitter and Facebook receives considerable attention on these
+and Lebanese nationals residing in French-speaking urban areas                  platforms (Larsson, 2017).
+(Cleveland et al., 2009). It seems from the literature that geographical            Twitter has also been used by politicians for broadcasting purposes
+divergence among communities can lead to the acculturation of ideas.            (Hutchins, 2016; Theocharis et al., 2016), advertising (Domingo and
+                                                                                Martos, 2015; Hutchins, 2016) and for engaging with citizens (Ahmed
+                                                                                et al., 2016). LaMarre and Suzuki-Lambrecht (2013) have, furthermore,
+2.5. Political communication and social media                                   been able to show that Twitter usage by politicians increases their
+                                                                                chances of winning an election. The adoption of Twitter by presidential
+    Politicians use social media platforms like Facebook and Twitter for        candidate is conditioned at a personal level (Scherpereel et al., 2017)
+professional communication (Kelm et al., 2017). Political campaigning           and driven by candidate's age (Rauchﬂeisch and Metag, 2016).
+through social media campaigning can be of two broad styles: party-                 Twitter is used by established political parties as well as new and
+centric or individually targeted (Karlsen and Enjolras, 2016). Political        upcoming parties for political communication. Established parties use
+information shared and discussed on social media engages young                  Twitter to supplement oﬄine strategies, whereas newer political parties
+people (Vromen et al., 2015). Evidence further suggests that the degree         use it more for self-promotion and media validation (Ahmed et al.,
+of social media buzz created by political parties has impacted the out-         2016). Politicians who maintain the synergy between social media
+come of general elections in emerging economies such as India                   platforms and traditional media channels can act as inﬂuencers on so-
+(Saﬁullah et al., 2017).                                                        cial media platforms (Conway et al., 2015; Karlsen and Enjolras, 2016).
+    Microblogging services provide opportunities to politicians with            The more the politician is active on social media, the more journalism
+respect to disseminating information, engaging with voters, monitoring          and press the politician receives (Rauchﬂeisch and Metag, 2016).
+public opinion, and making public relations (Frame and Brachotte,
+2015; LaMarre and Suzuki-Lambrecht, 2013). If voters acquire political
+information via social media channels and respond to that information,          2.6. Knowledge gap
+this increases the likelihood that they will go on to contact politicians
+and attend oﬄine events (Vaccari et al., 2015a, 2015b). Oﬃcials active              To the best of our knowledge, no study in the existing literature has
+on social media have more contacts as compared to less active oﬃcials           mapped a presidential candidate's Twitter impact among voters.
+(Djerf-Pierre and Pierre, 2016). Therefore, politicians use social media        Further the role of social media in aﬀecting the voting communities has
+platforms for communication, engagement with voters and marketing               never been explored. Following extensive literature review, four spepurposes. For marketing purposes, Facebook is often the preferred tool,         ciﬁc knowledge gaps have been identiﬁed. These knowledge gaps are
+whereas for continuous dialogue Twitter is often preferred (Enli and            listed below: (a) to measure the impact of presidential candidate's
+P. Grover et al.                                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+Table 1
+Overview of Twitter analytics method.
+  Twitter analytics methods
+
+  Descriptive analytics
+  • Retweet (Bode et al., 2015; Yardi and Boyd, 2010)                          Allows one follower to share someone else's tweet.
+  • URL analysis (Stieglitz and Dang-Xuan, 2013a, 2013b)                       Allows users to disseminate information by including the URL within the 140 character tweet.
+  • Hashtags analysis (Bode et al., 2015; Borondo et al., 2014; Chae, 2015)    Hashtags are user-generated keywords preceded by the # symbol, allowing users to cluster opinions.
+  • @mentions analysis (Borondo et al., 2014; Larsson and Ihlen, 2015; Shuai   @mentions allow users to draw an individual's attention to a discussion topic (and helps in
+      et al., 2012)                                                            promoting one to one discussions on Twitter).
+  • Word cloud (Nooralahzadeh et al., 2013)                                    Pictorially represents the most frequent words used in Twitter discussions.
+  • Reach metric (Ganis and Kohirkar, 2015)                                    Measures the reach of the tweets.
+
+  Content analysis
+  • Sentiment analysis (Burnap et al., 2015)                                   Identiﬁes and categorizes opinions present the text.
+     I. Polarity analysis                                                      Categorizes user opinions in the text into positive, negative, and neutral.
+     II. Emotion analysis                                                      Categorize the tweets on the basis of the emotions expressed.
+  • Topic modelling (Llewellyn et al., 2015)                                   Identiﬁes the key themes within the text.
+
+  Network analysis
+  • Network analysis (HerdaĞdelen et al., 2013; Stieglitz and Dang-Xuan,       Depict connection among the users
+       2013a, 2013b)
+  • Cluster/community detection (Abascal-Mena et al., 2015)                    Identiﬁes diﬀerent communities among users.
+  • Information ﬂow networks (Park et al., 2015)                               Depicts the ﬂow of the information across a network.
+
+  GeoSpatial analysis
+  • Time-trend analysis (Saboo et al., 2016)                                   Temporal analysis of trends or topics.
+  • Geospatial analysis (Attu and Terras, 2017; Stephens and Poorthuis,        Location speciﬁc analysis
+      2015)
+
+
+tweets on popularity and engagement among followers on Twitter; (b)                        polarization of their preferences through Twitter over the course of an
+how political ideologies become acculturated using hashtags on                             election?
+Twitter; (c) how opinion polarization occurs among voters on Twitter;                          In order to answer these questions, the study will analyze tweets
+(d) how opinion of a voter plays a role in formation of the communities                    using social media analytics such as descriptive analysis, content anaon Twitter.                                                                                lysis and network analysis (Chae, 2015) along with data mining apThe knowledge gaps identiﬁed have been visually represented in                         proaches such as regression analysis and community detection
+Fig. 1 with the help of four scenarios. Therefore, the ﬁrst knowledge                      (Fortunato, 2010). Details of this are provided in subsequent sections.
+gap - the speciﬁcs of a candidate's tweets - leads us to Scenario 1, which                 The study showcases how voter engagement occurs on the social media
+attempts to measure and characterize a presidential candidate's tweets                     platform during the election period among the diﬀerent stakeholders in
+with respect to activity, consecutive campaigning, sentiments ex-                          virtual communities. The study also highlights the role of Twitter feapressed, issues and policies discussed on Twitter. The second knowl-                       tures such as hashtags, @mention, retweets, and likes, and how these
+edge gap, concerning how political ideologies become acculturated,                         features are being used in political communications. Future political
+leads us to Scenario 2: mapping political deliberation among geo-                          actors can then use the results of the study for planning digital camgraphically dispersed voters using hashtags reﬂecting the activities of                    paigns over the Twitter platform.
+the presidential candidate on Twitter. The third knowledge gap, how
+opinion polarization occurs among voter (Scenario 3), requires us to
+attempt to map voter polarization. We hypothesize voter polarization -                     3. Hypotheses development
+potentially caused by voter acculturation of ideologies - may have
+subsequently lead to the formation of communities among voters                                 On Twitter, voters are exposed to a diversity of opinions sur-
+(Scenario 4).                                                                              rounding events and issues (Lee et al., 2014; Yardi and Boyd, 2010).
+    We elaborate on these knowledge gaps in the subsequent subsec-                         Research indicates that diversity and deliberation are critical compotions, and use them to develop research questions and hypotheses, we                       nents of the online society; therefore, potential voters witnessing deattempt to validate through our study.                                                     liberations on social media platforms try to participate in it (Yardi and
+                                                                                           Boyd, 2010). This leads to voters forming connections to other voters
+                                                                                           with similar ideologies (Gruzd and Roy, 2014): leading to the formation
+2.7. Research questions and major contributions                                            of communities.
+                                                                                               Higher activity on Twitter leads to higher visibility, leading to an
+    The primary focus of the study is to explore deliberation sur-                         increased number of online discussions among voters. These discussions
+rounding the 2016 US election that took place via a social media                           can polarize voters towards a candidate and ultimately result in a
+platform (Twitter), and how these deliberations could have resulted in                     candidate winning the election (Kruikemeier et al., 2016; Larsson and
+the acculturation of ideologies and subsequent voter polarization, as                      Moe, 2012). Research shows that the frequency of posts on Twitter is
+illustrated in Fig. 1. This study is constructed around three research                     related to voter engagement (Scherpereel et al., 2017). Tweet inﬂuence
+questions (RQ1, RQ2 and RQ3), listed below:                                                can be measured in terms of the number of followers the author has
+    RQ1: Is the frequency of social media use related to popularity and                    within their network (Moya-Sánchez and Herrera-Damas, 2016). The
+engagement? Are the topics discussed by Trump more popular than the                        reach metric (shown in Table 1) attempts to quantify the reach of a
+topics discussed by Clinton on Twitter?                                                    political message (Ganis and Kohirkar, 2015).
+    RQ2: How are the drivers of voter's choice behaviour being dis-                            A candidate who engages heavily with voters on social media
+cussed in the Twitter ecosystem? How do these drivers aﬀect the out-                       platforms is likely to be exposed to more to criticism and harassment
+come of the election?                                                                      (Theocharis et al., 2016). Higher activity on social media can be related
+    RQ3: Does acculturation have an impact on polarization? What is                        to both increased popularity and engagement, but the opposite can also
+the nature of this polarization? Do voters undergo transition and                          be true, and higher activity on social media can also be negatively
+P. Grover et al.                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+related to popularity and engagement among followers (Rauchﬂeisch                engagement among voters, actively or passively.
+and Metag, 2016). Therefore, to examine how social media activity is
+                                                                                     Mao and Yuxia (2015), in their study of Chinese professionals
+related to popularity and engagement among followers in the 2016 US
+                                                                                 overseas, show how groups have been able to use Facebook as an acelection, the ﬁrst hypothesis looks to test if:
+                                                                                 culturation tool for acquiring information regarding contemporary toH1. Higher activity on social media is positively related to higher              pics in their host countries. Speciﬁc to voting populations, Twitter
+popularity and engagement among followers.                                       hashtags and internet campaigns have further been shown to inﬂuence
+                                                                                 users political views (Bode et al., 2015; Kruikemeier et al., 2016;
+    Literature indicates society can radicalize ideas within individuals
+                                                                                 Larsson and Moe, 2012; Wu, 2014). Twitter has been used by candithrough communication (Moscovici and Zavalloni, 1969). Campaigns
+                                                                                 dates for purposes of mobilizing their campaigns and for directly inencourage communications on Twitter through responding, retweeting
+                                                                                 teracting with voters (Bode et al., 2015; Borondo et al., 2014; Chae,
+and engaging (Jensen, 2017). Citizens can relate to consecutive cam2015; Graham et al., 2013; Gruzd and Roy, 2014). Prior research has
+paigns with ease (Iyengar and Westwood, 2015). Campaigns organized
+                                                                                 shown that social media platforms are useful in the acculturation proat a national level receive more attention than local campaigns
+                                                                                 cess (Li and Tsai, 2015).
+(DiMaggio et al., 1996). On Twitter campaigns had been associated
+                                                                                     Our next hypothesis (H5) is designed to explore how hashtags or
+with hashtags. Political engagement through hashtags had been concampaigns contribute towards the acculturation process among Twitter
+sidered as most consistent (Chadwick et al., 2017; Vaccari et al., 2015a,
+                                                                                 users located in diﬀerent geographical locations.
+2015b).
+    Communicative exchanges can be easily tracked using hashtags.                H5. Popular hashtags or campaigns initiate a process of acculturation of
+Research indicates that the use of free-text on Twitter has a stronger           ideologies among Twitter users located in diﬀerent geographical
+correlation to voting outcomes compared to @mention use (McKelvey                locations.
+et al., 2014). Regular tweeting helps to sustain voter interest in social
+                                                                                      Voters on Twitter are exposed to a diversity of opinions which, in
+media campaigns (Mills, 2012), although this has not been established
+                                                                                 turn, allows voters to explore and reﬁne their own opinions (Lee, 2007).
+empirically. Therefore, the second hypothesis (H2) attempts to explore
+                                                                                 Political deliberation moderates the relationship between network
+whether the frequency of tweets during the election period is of imheterogeneity and ideological polarizations (Lee et al., 2014). Furportance, and assists in information propagation.
+                                                                                 thermore, In-group leaders can be highly persuasive in these groups
+H2. Less time between consecutive campaigns is positively related to             (Nicholson, 2012). Kim (2015) suggests that the frequency of voter's
+higher popularity and engagement.                                                participation in deliberation on social media platforms is negatively
+                                                                                 related to polarization. The social media buzz created by political
+    Deliberation and argumentation in the online environment mostly
+                                                                                 parties had been shown to result in their favor in terms of votes in an
+surround political news, emotionally charged tweets or controversial
+                                                                                 election (Saﬁullah et al., 2017). Indeed, some electoral campaigns have
+issues (Yardi and Boyd, 2010). Some accounts (inﬂuencers) play a more
+                                                                                 resulted in only minimal public attention (Hong and Nadler, 2012).
+signiﬁcant role in disseminating this information in the social network.
+                                                                                 Furthermore, polarization may seem to increase even when, in reality,
+Furthermore, tweets with more emotionally charged content may be
+                                                                                 it does not (DiMaggio et al., 1996).
+retweeted more than neutral tweets (Stieglitz and Dang-Xuan, 2013a,
+                                                                                      Given the conﬂicting evidence, it appears debatable as to whether
+2013b). High Twitter usage by the elected candidates during an elecvoters can become polarized in the virtual environment, and concrete
+tion period is likely to increase voter loyalties towards the party (Gruzd
+                                                                                 evidence of polarization is missing from the existing literature.
+and Roy, 2014). Therefore, this hypothesis (H3) attempts to explore
+                                                                                 Therefore, this hypothesis (H6) attempts to explore the impact of powhether greater levels of polarity and emotions expressed in tweets
+                                                                                 litical deliberation on opinion polarization:
+have a positive or negative impact on buzz in social media platforms
+(Twitter).                                                                       H6. Political deliberation on a social media platforms (Twitter) leads to
+                                                                                 opinion polarization among users.
+H3. Higher thresholds of sentiments (polarity) within tweets is
+positively related to higher popularity and engagement among                         Users may potentially be polarized through campaigns, tweets or
+followers.                                                                       discussions surrounding the candidate. Polarization is the process by
+                                                                                 which users undergo a transition of opinion. In this study opinion poNewman and Sheth's model of voter's choice describes seven factors
+                                                                                 larization of Twitter users were tracked from Phase 1 to Phase 2. This
+which drive the voter's behaviour in the physical world. The drivers of
+                                                                                 study treats polarization as a state. Two states consider in the study are
+voter's choice behaviour described by the authors are issues and popositive and negative. A voter holds the positive state when he/she has
+licies, social imagery, emotional feelings, candidate image, current
+                                                                                 a positive opinion towards presidential candidate. A voter holds the
+events, personal events, and epistemic issues (Newman and Sheth,
+                                                                                 negative state when he/she has a negative opinion towards presidential
+1985). This model has been widely applied in examining voter's choice
+                                                                                 candidate. In this case, opinion polarization of Twitter users was
+behaviour in empirical surveys. However, the utility of this model in
+                                                                                 tracked from Phase 1 to Phase 2 (positive to positive, positive to neanalyzing user-generated digital content has not been explored.
+                                                                                 gative, negative to positive, negative to negative).
+Therefore, in this study we try to translate model components into the
+                                                                                     Internet communication has the potential to fragment populations
+virtual environment using Twitter analytics, to determine whether the
+                                                                                 by engaging users (Lawrence et al., 2010). Voters may form their opidiscussions surrounding these factors are initiating polarization and
+                                                                                 nions both according to personal, closely held beliefs and in opposition
+acculturation processes among voters.
+                                                                                 to beliefs that threaten their core values (Hollander, 2008; Kim, 2015).
+    Twitter has been used by candidates to interact with voters (Graham
+                                                                                 Demographically, men tend to be more politically neutral on social
+et al., 2013), and voters actively participate in election-orientated dismedia whereas women tend to be more opinionated on social media
+cussions on Twitter (Raynauld and Greenberg, 2014). The discussions
+                                                                                 platforms, with young people expressing a higher proportion of negasurrounding these seven domains of voter's choice behaviour can
+                                                                                 tive opinions and emotions than older users (Volkova and Bachrach,
+highlight how the Twitter users get impacted in the virtual world. The
+                                                                                 2015). Through hypothesis (H7), we attempt to explore how polarizadrivers of voter's choice behaviour are explained through Twitter anation eﬀects formation of communities among voters.
+lytics in this study.
+                                                                                 H7. Communities are formed among groups of users polarized during
+H4. Greater levels of social discussion – concerning the components of
+                                                                                 social media discussions, around political events such as elections.
+Newman and Sheth's model of voter's choice behaviour – increase
+P. Grover et al.                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+    Social media users have been shown to cluster into politically                themes within the tweets (Llewellyn et al., 2015). Topic modelling was
+homogeneous networks (Borondo et al., 2014). Homophily is a central               performed using the tm and topicmodels libraries of R.
+idea in the study of social networks (Aral and Walker, 2012).                         Connections among Twitter users can be visually depicted through
+Himelboim et al. (2016) describe this phenomenon in relation to online            the identiﬁcation of networks (HerdaĞdelen et al., 2013; Stieglitz and
+political discourse, whereby individuals try to associate themselves              Dang-Xuan, 2013a, 2013b). Networks analysis further allows us to
+with similar users on the social network. This leads to the formation of          identify communities and clusterings of users on the basis of their
+clusters within the virtual communities (Yardi and Boyd, 2010). Users             opinions and thoughts expressed on social networks (Abascal-Mena
+within these communities are unlikely to be exposed to ideologies from            et al., 2015). Information ﬂow on social media can, therefore, represent
+diﬀerent groups (Himelboim et al., 2013). However, social media is                the information ﬂow within and among these networks (Park et al.,
+able to – more generally – open up the potential for cross-cultural in-           2015).
+teraction (Gruzd and Roy, 2014; Li and Tsai, 2015).                                   Geospatial analysis was divided into two broad categories: locationspeciﬁc analysis, and time-trend speciﬁc analysis. The time-trend ana4. Research methodology                                                           lysis allows us to examine the evolution of topics and trends over the
+                                                                                  period of time (Saboo et al., 2016). Geospatial analysis helps us in
+    A social media analytics framework, for use in the political domain,          mining location speciﬁc opinions (Attu and Terras, 2017; Stephens and
+was adopted from the work of Stieglitz and Dang-Xuan (2013a, 2013b).              Poorthuis, 2015).
+This framework consists of two parts: data tracking and monitoring,                   To test our hypotheses, we retrieved data from Twitter – over a
+followed by data analysis. The tweets constituting the raw data were              period of 120 days – in two main ways. First, daily Twitter searches
+extracted through Twitter's APIs (application programming interfaces)             were performed using the search terms ‘USA election’, ‘Hillary Clinton’
+over a timeframe of four months. Tweets can be tracked via user                   and ‘Donald Trump’, concatenated by ‘OR’. Only tweets that were
+timeline, keywords, topics, hashtags, and URL. The data can be ex-                generated within the USA have been included in the analyses. Second,
+tracted from social media using API functions such as “search API” and            we extracted Twitter timeline data of ‘Hillary Clinton’ and ‘Donald
+“streaming API.” The framework used illustrates that social media data            Trump’.
+can be analyzed using content analysis, opinion mining, social network                This study uses social media analytics applied to 784,153 tweets,
+analysis and sentiment analysis (Stieglitz and Dang-Xuan, 2013a,                  derived from 287,838 users, to attempt to gain insights into changes in
+2013b). Twitter allows users to download data posted or discussed                 voter opinion over the election period, and the speciﬁc topics shared
+around a search term within a particular period. This data can then be            and discussed via Twitter. For each tweet, 46 parameters – focusing on
+analyzed for deriving metrics and developing more in-depth insights.              the user demographics and tweet characteristics – were analyzed. User
+    Techniques for quantitatively comparing communicative patterns                demographics captured included name, location and description. Tweet
+on Twitter have been previously described (e.g. Bruns and Stieglitz,              characteristics captured included tweet content, language, retweet
+2013; Chae, 2015). A full list of methods used by this study for purposes         count, like count, and status updates. The results from the analysis of
+of Twitter analytics is given in Table 1. This comprehensive overview of          tweets were also used to explore and assess the drivers of the outcome
+Twitter analytics is among the contributions of this study, as, to the best       of the election.
+of our knowledge, this has not been attempted before in the scientiﬁc                 For the ﬁrst part of the data extraction, the methodology sub-divides
+literature.                                                                       into ﬁve-phases (Fig. 2). Phase 1 identiﬁes the search terms with which
+    The Twitter analytics have been divided into four broad categories:           to extract data from Twitter. For this study, the election-related search
+descriptive analytics, content analysis, network analysis, and geospatial         terms ‘USA election’, ‘Hillary Clinton’ and ‘Donald Trump’ were idenanalysis. The descriptive analysis incorporates basic descriptive statis-         tiﬁed based on Twitter trends. Phase 2 of the study focuses on extics, such as the number of and types of tweets, number of individual             tracting the data from Twitter. The unstructured data were collected
+users, hashtags, frequency of @mention and hyperlink modiﬁers added               through the Twitter API using Python scripts in JSON format. Phase 3 of
+to tweets, word cloud, and reach metrics. Word clouds help us to vi-              the study converts the unstructured data to structured data, i.e. JSON to
+sualize the popular words/topics in tweets (Nooralahzadeh et al.,                 the structured Excel format. The steps of Phases 2 and 3 were repeated
+2013). The reach metric can be used as a way to measure the reach of the          daily over the 18 weeks to extract the data from Twitter; Gonzalezmessages (Ganis and Kohirkar, 2015). Similarly, the reply and retweet             Bailon et al. (2014) having previously shown that small, online samples
+features of Twitter allow for measurement of two-way interaction and              do not give an accurate representation of activities on Twitter. Phase 4
+engagement (Purohit et al., 2013). Hashtags are used in tweets so that            is concerned with deriving meaningful insights from the data, through
+the tweet can be shared across a broader community of similar interest            the analytical methodologies described in Table 1. Phase 5 explains the
+(Chae, 2015). Similarly, the @mentions analysis helps in identifying the          impact of the ﬁndings in the framework of Newman and Sheth's model
+inﬂuencers who had inﬂuenced users to the extent that they wish to                of voter's behaviour, using the seven concepts of issues and policies,
+engage in discussion with the inﬂuencer on the tweet topic (Shuai et al.,
+2012).
+    Content analysis is used to extract the semantic content from text
+data. It uses principles from natural language processing (NLP) and text
+mining (Kayser and Blind, 2017) in order to retrieve information from a
+large amount of text data (Kassarjian, 1977). For example, sentiment
+analysis is the process of computationally identifying and categorizing
+opinions present in the text (Zhang et al., 2016). It consists of two
+analytical components: polarity analysis and emotion analysis. For this
+study, sentiment analysis of the tweets was performed with R (programming language), using syuzhet, lubridate, and dplyr libraries. Polarity analysis is one of the most commonly used techniques for analyzing Twitter data; classifying the opinions of the users in terms of
+positive, negative, and neutral. Emotion analysis is a technique in
+which user-generated content is classiﬁed into eight emotions, namely
+anger, anticipation, disgust, fear, joy, sadness, surprise, and trust.
+Volkova and Bachrach (2015). Topic modelling identiﬁes the key                                          Fig. 2. Methodology followed.
+P. Grover et al.                                                                                             Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+social imagery, emotional feelings, candidate image, current events,                  approximately twice the number of the tweets as Trump. Fig. 3 shows
+personal events, and epistemic issues.                                                that the Trump campaign posted more regularly on Twitter, though the
+                                                                                      buzz created by the Clinton campaign was higher.
+5. Findings and interpretation                                                            The primary axis of Fig. 3 represents the social media buzz of the
+                                                                                      candidate and the secondary axis depicts the number of tweets on the
+   This section is divided into three sub-sections. Section 5.1 illustrates           candidates' screen on each day. Trump had 17.6 million followers on
+the way the Twitter handle was used by the presidential candidates.                   Twitter, producing 34,160 tweets over the 120 days, whereas Clinton
+Section 5.2 shows the impact of Twitter users on topics discussed by the              had 11.7 million followers, totalling 9838 tweets over the 120 day
+presidential candidates using Newman and Sheth's model of voter's                     period. Regression analysis shows that the buzz (Y) may be modelled
+choice behaviour. Section 5.3 shows the user communities formed,                      using regression against user activity (X): (a) For Clinton
+deﬁned using hashtags.                                                                Y = 3.122 ∗ X + 2089 (b) For Trump Y = 1.989 ∗ X + 685.3. It appears
+                                                                                      that Hillary Clinton had more reach than Donald Trump.
+5.1. Tweet frequency and its impact                                                   H2. Less variation in time (greater nexus) between consecutive
+                                                                                      campaigns is positively related to higher popularity and engagement.
+    To address our ﬁrst three hypotheses (H1, H2 and H3), all tweets
+                                                                                          Twitter campaigns are launched with the help of the hashtags.
+from each candidate's Twitter screen were extracted, providing an
+                                                                                      Online campaigns using hashtags are cost-eﬀective for presidential
+overview of the respective campaigns over the election period (13
+                                                                                      candidates, and the hashtags provide metadata regarding the camAugust–10 December 2016). We analyzed the screen data in two ways:
+                                                                                      paigns (Abascal-Mena et al., 2015). We use hashtags to explore how the
+(1) through hashtag analysis, and (2) by counting the numbers of rerespective Twitter campaigns were run by each presidential candidate.
+tweets and likes to estimate user engagement and opinions. Insights
+                                                                                      Fig. 4 presents the frequency of hashtag campaigns used by the prederived from tweets are described using the SPIN Framework (Mills,
+                                                                                      sidential candidates, along with the periodicity mean, periodicity
+2012). SPIN frameworks indicate the spreadability and propagativity of
+                                                                                      standard deviation, retweet (10K), retweet mean (10K), retweet stantweets among Twitter users.
+                                                                                      dard deviation (K), favorite sum (10K), favorite mean (10K) and faH1. Higher activity on social media is positively related to higher                   vorite standard deviation (K). In this ﬁgure K stands for 1000 in number
+popularity and engagement among followers.                                            of retweets and likes (denoted by favorite).
+                                                                                          The Trump team consistently incorporated campaign hashtags
+    Spreadability refers to the ease with which campaigns can spread
+                                                                                      (#maga; #draintheswamp; #bigleaguetruth) into their Tweets,
+across the Twitter ecosystem. Likes and retweets help a tweet to spread
+                                                                                      whereas the Clinton team did not. The use of campaign hashtags in
+across the various networks within Twitter (Mills, 2012). A descriptive
+                                                                                      Trump's tweets may have led to the higher campaign polarization
+overview of the Twitter activity of the 2016 US presidential candidates
+                                                                                      among users – and higher voter participation using these hashtags –
+is presented in Table 2, which illustrates the degree of spreadability of
+                                                                                      further propagating the core message of his campaigns.
+both candidates Twitter campaigns among Twitter users.
+    From Table 2, it may be inferred that a higher frequency of tweets                H3. Higher thresholds of sentiments (polarity) within tweets is
+leads to higher visibility and social presence (from Fig. 11). This is in             positively related to higher popularity and engagement among
+accordance with existing research. The Clinton campaign was tweeting                  followers.
+twice as much as the Trump campaign but went on to lose the election,
+                                                                                          We subsequently looked to explore whether higher levels of polarity
+despite previous research indicating that higher frequency of tweets
+                                                                                      and emotions expressed in tweets have a positive impact in creating
+lead to positive outcomes in elections (Kruikemeier et al., 2016; Larsson
+                                                                                      social media buzz. Fig. 5 shows that, in absolute numbers, the Clinton
+and Moe, 2012). Clinton was exposed to numerous and frequent criticampaign expressed higher levels of sentiment in tweets. When these
+cisms over the election campaign which was derived using URL anastatistics are compared by percentage, there is a substantial diﬀerence
+lytics presented in annexure. Prior research has also provided evidence
+                                                                                      in the ‘surprise’ sentiment of tweets, with Clinton scoring 49.88% and
+for a detrimental impact of high activity in social media (Karlsen and
+                                                                                      Donald Trump scoring 25.51%. Clinton appears to have described more
+Enjolras, 2016; Theocharis et al., 2016). Interestingly, the mean retweet
+                                                                                      surprises to users - potentially resulting in the increased social buzz as
+count of Trump is almost twice that of Clinton, whereas the mean like
+                                                                                      indicated in Fig. 3. This is in line with existing research (Berger and
+count of Trump is almost 3.8 times that of Clinton. In the following
+                                                                                      Milkman, 2012).
+sections, we attempt to explore how this outcome may have occurred.
+    Propagativity refers to the ease with which tweets can be redistributed, or propagated, among voters, taking into account cycle time,
+                                                                                      5.2. Twitter discussions surrounding the drivers of voter choice
+network size (i.e. number of followers), content richness and content
+proximity (Mills, 2012). 441,261 tweets were collected using the search
+                                                                                          To explain these trends, we devised a framework for analyzing the
+term ‘USA Election’, 258,212 tweets were collected using the search
+                                                                                      discussions surrounding the drives of voter's choice on Twitter, as ilterm ‘Hillary Clinton’, and 84,680 tweets were collected with the search
+                                                                                      lustrated in Fig. 6. This model maps Twitter analytics to the drivers of
+term ‘Donald Trump’. The diﬀerence in the number of tweets collected
+                                                                                      voter choice.
+between campaigns is likely to be because Clinton posted
+                                                                                      H4. Greater levels of social discussion – concerning the components of
+Table 2                                                                               Newman and Sheth's model of voter's choice behaviour – increase
+Descriptive statistics of activity and engagement.                                    engagement among voters, actively or passively.
+                                 Retweet count           Like count                      Various Twitter functions, such as @mention, reply, and retweet,
+                                 Clinton     Trump       Clinton      Trump
+                                                                                      have been used by candidates for purposes of voter engagement
+                                                                                      (Borondo et al., 2014; Hosch-Dayican et al., 2016; Jensen, 2017). In the
+  Total tweets                   2400        1227        2400         1227            subsequent section, we attempt to explain our data by applying methMinimum activity/tweets        175         1792        0            0               odologies of Twitter analytics through the framework of Newman and
+  Maximum activity/tweets        665,370     345,548     1,197,489    634,112
+                                                                                      Sheth's model of voter choice (Newman and Sheth, 1985) – detailing
+  Mean activity/tweets           4619.51     12,439.78   8617.21      32,749.12
+  Std. dev. of activity/tweets   16,190.92   14,256.63   31,359.86    37,376.37       seven distinct cognitive domains that drive voter's behaviour.
+P. Grover et al.                                                                                       Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                                    Fig. 3. Tweeting frequency vs social media buzz.
+
+
+                                Fig. 4. Top hashtags used by Clinton and Trump in their tweets during the election period.
+
+
+5.2.1. Issues and policies                                                      inﬂuencing voter's behaviour (Newman and Sheth, 1985).
+    Issues and policies concern the economic, foreign and social policies           Economic policy refers to the policies concerned with reducing the
+put forward by a candidate during the election period. Key literature           level of inﬂation and budget-balancing. Foreign policies include pohighlights that issues and policies are important components in                 licies such as those related to defence spending. After extraction from
+
+
+                                  Fig. 5. Sentiment analysis of posted tweets - actual numbers vs percentage comparison.
+P. Grover et al.                                                                                             Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                                                                     period, through which the social images of the candidates can be inferred.
+                                                                                         In the run-up to the election, WikiLeaks released over 30 thousand
+                                                                                     emails and email attachments from Hillary Clinton's private email
+                                                                                     server (from while she was Secretary of State) – provoking accusations
+                                                                                     of corruption. Social media discussions presenting the image of Clinton
+                                                                                     as a corrupt politician, reﬂected in the hashtags #podestaemails,
+                                                                                     #wikileaks, and #crookedhillary. However, #iamwithher was also one
+                                                                                     of the dominant hashtags, indicating a large amount of support for
+                                                                                     Clinton and opposition to this image.
+          Fig. 6. Proposed model for analyzing voter behaviour choice.
+                                                                                         The hashtags in green boxes reﬂect a positive image of Hillary
+                                                                                     Clinton, whereas hashtags in the red boxes purvey a negative image.
+the respective candidate's Twitter screen, tweets were classiﬁed into                Hashtags in the blue boxes describe a positive image of Trump; no
+four categories: economy, foreign policy, social issues, and leadership.             negative imagery appears among the top 30 hashtags for Trump. The
+This was done using content analysis, which was performed on all                     hashtag feature oﬀered by Twitter helps candidates to reach a wider
+tweets by both investigators independently. There were 14,508 decision               audience and allows voters to engage in the discussions surrounding a
+points (2400 tweets from Hillary Clinton, 1227 tweets from Donald                    particular campaign (Jensen, 2017).
+Trump and four areas of issues and policies (i.e. economy, foreign
+policy, social issues and leadership). The two researchers agreed on                 5.2.3. Emotions
+13,293 decisions and disagreed on 1215 decisions, with a coeﬃcient of                    Emotions refer to the personal feelings possessed by voters towards
+reliability of 91.62%. This is above the 85% threshold typically used                the candidate. A comparative analysis of all discussions surrounding the
+(Kassarjian, 1977). Fig. 7 illustrates the tweet counts for both pre-                two candidates was conducted using emotion analysis, as illustrated by
+sidential candidates regarding policies and issues.                                  Fig. 10. The volume of these discussions concerning Clinton – for all
+    There were 167 tweets posted by Hillary Clinton with concerning                  sentiments analyzed – was greater than for those concerning Trump.
+policies. Donald Trump posted only 138. Clinton discussed various so-                This is also the case in the emotion comparison, in which tweets percial issues, speciﬁcally concerning women and children, equality,                    taining to emotions of trust, anger, anticipation, fear, and disgust, more
+safety, empowerment, childcare leave, disability, free education, career             commonly concerned Clinton. Fig. 10 contains two bar charts: the left
+progression, and mental stability. Clinton's tweets were focused more                chart depicting the emotion comparison of presidential candidate's
+on social issues (and Trump's policies) whereas Trump focused more on                tweets by percentage and the right chart showing the emotion comthe economy and foreign policy, such as ﬁghting terrorism and crime,                 parison of all tweets identiﬁed. From the graph on the left, it can be
+immigration, increasing job numbers and easing American business                     inferred that users trusted both Clinton and Trump equally, but users
+processes. Previous research has suggested that female politicians focus             posted a greater number of fear tweets aimed towards Clinton than
+more on women's issues, with a communication style more directed                     towards Trump. In terms of surprise, however, the numbers of tweets
+towards attacking the opposing candidate (Evans and Clark, 2016). Our                were similar for both candidates. Diﬀerent emotions clearly can have
+ﬁndings are consistent with this.                                                    diﬀerent impacts; research has shown that people are more heavily
+    To investigate how people responded to these issues and policies,                inﬂuenced by emotional than cognitive discussions (Song et al., 2016).
+tweets identiﬁed as explicitly concerning policies were analyzed by
+aggregating the retweet and like counts of those tweets. Fig. 8 shows that           5.2.4. Candidate image
+Trump's tweets concerning the economy, foreign policy, and broader                       This refers to the salient personality traits of a candidate. Voters
+social issues received signiﬁcantly more retweets and likes than Clin-               may form an opinion the basis of candidate image rather than on the
+ton's – signifying that the Republican campaign was able to garner                   basis of campaign issues. As illustrated in Fig. 10, user polarity is
+considerable public support in these areas.                                          somewhat similar in percentage of tweets but there is the diﬀerence in
+                                                                                     the number of tweets surrounding Clinton which can eﬀect polarization
+5.2.2. Social imagery                                                                of voters towards Clinton.
+    Social imagery refers to the perceived image of the candidate by the                 Fig. 11 illustrates the top 30 @mention uses, along with their frevoter. A candidate can provoke positive and negative stereotypes of                  quency, over the 18 weeks. Among the 784,153 tweets, there are
+their self-image through an understanding of the socio-economic, cul-                32,568 tweets which used the handle @realdonaldtrump (4.15%) and
+tural, ethical, political, and ideological dimensions of voter demo-                 20,515 tweets using @hillaryclinton (2.61%). The third most popular
+graphics. Fig. 9 shows the 30 most popular hashtags over the election                @mention was @wikileaks, where a lot of debate was took place
+
+
+                                       Fig. 7. Issues and policies discussed by Clinton (left cloud) and Trump (right cloud).
+P. Grover et al.                                                                                               Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                        Fig. 8. Comparison of the retweet count and favorite (like) count for the issues and policies tweeted by the candidates.
+
+
+concerning accusations of corruption of the Clinton campaign. This                     may possibly have been impacted by the nature of ‘popularity’ in such
+indicates that the role of WikiLeaks may have been signiﬁcant in de-                   discussions, which may have polarized citizens. Research has shown
+ciding the outcome of the election. Further dominant @mentions con-                    that increased citizen activity on Twitter around a presidential candicerned news and journalism based sources (CNN, NYTimes, Reuters,                       date can be related to negative campaigning or citizen incivility (Hopp
+FoxNews). Furthermore, the role of opinion leaders like Linda Suhler                   and Vargo, 2017). From the word cloud, it can be concluded that Hiland Mike Cernovich – who vocally supported Trump – is also high-                       lary Clinton posted more and was discussed more on Twitter during
+lighted through the popularity of their Twitter handles in the @mention                those election periods that social media discussions increased siganalysis. Prior research has suggested that out-of-party leaders opinions              niﬁcantly, potentially due to the emergence of popular news or notable
+leaders have greater inﬂuence in shaping voter opinions than in-group                  incidents.
+leaders (Nicholson, 2012).
+                                                                                       5.2.6. Personal events
+5.2.5. Current events                                                                      This is in reference to the historical events from a presidential
+    This factor takes into the account the events that occurred over the               candidate's past with the potential to cause a voter to change their
+course of the election, including both domestic and international events               voting preference. Personal events can inﬂuence the voter's decisions
+with the potential to impact individual voting behaviour. Since topic                  positively or negatively. Previous research has emphasized that social
+modelling is highly computationally extensive, our analysis only in-                   media has increased the focus of journalism on a politician's private life
+cluded days when user sentiments in Twitter ﬂuctuated signiﬁcantly                     (Ekman and Widholm, 2015). Numerous personal events surrounding
+(i.e. days with tweets polarity ± 2 standard deviations from the mean).                the Clinton campaign and were discussed negatively and extensively
+This totalled 18 days and allowed construction of a word cloud to il-                  over Twitter: her deletion of emails using BleachBit; WikiLeaks release
+lustrate the main concerns during the election periods of enhanced user                of over 30 thousands of her private emails; the FBI releasing detailed
+activity and major ﬂuctuations in sentiments. For the topic modelling,                 interview notes of their investigation into Clinton's email practices; and
+the top 15 topics were identiﬁed for each of the 18 days included.                     many more.
+Fig. 12 illustrates the word cloud created, based on the popularity of 15                  The fact that @WikiLeaks was the 13th most popular hashtag
+topics across 18 days each, to visually represent the hierarchy of topics              (shown in Fig. 9) gives an estimate of the popularity and potential
+discussed. Trump had 17.6 million followers on Twitter – producing                     importance of the Wikileaks story. Trump, in contrast, did not hold a
+34,160 tweets – whereas Hillary Clinton had 11.7 million followers                     governmental post before winning the election and, as such, did not
+with 9838 tweets. From this, it can be said that Donald Trump had                      instil the same kinds of discussions on social media. To analyze the
+greater reach than Hillary Clinton. However, Fig. 12 indicates that                    impact of these events, the 10 URLs creating the most buzz in social
+Twitter users were more frequently discussing Clinton. WikiLeaks again                 media discussions were extracted each month (Annexure 1). Each
+appeared to have played a prominent role in the discussions sur-                       month, we found that the top 10 URLs were centred around Clinton's
+rounding Clinton. Despite her popularity, the election outcome ﬁnal                    personal life – with a negative perspective of her image. Some of the
+
+
+                   Fig. 9. Nature of the imagery used to describe 2016 presidential candidates from the top 30 hashtags used in Twitter discussions.
+P. Grover et al.                                                                                         Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                       Fig. 10. Emotion analysis of tweets concerning candidates Clinton and Trump.
+
+
+most shared URLs include: a video link posted by Trump, detailing                 5.3. Acculturation and polarization of users in the online environment
+Clinton's fundraising activities; a video posted by Atlantic, diﬀerentiating between Clinton and Trump in terms of ethical disposition;                  The line between social media and traditional media is becoming
+and links posted by WikiLeaks, containing large amount of emails &                increasingly blurred, and social media platforms have been shown to
+email attachments sent to and from Clinton's private email server while           play a signiﬁcant role in shaping user cultural orientation (Li and Tsai,
+she was Secretary of State. These events impacted the participants of             2015). Therefore, we hypothesize that hashtag campaigns run on the
+the Twitter discussions, thereby polarizing them.                                 Twitter have the ability to connect users in diﬀerent geographical locations and to initiate a process of acculturation among users.
+                                                                                  H5. Popular hashtags or campaigns initiate a process of acculturation of
+5.2.7. Epistemic issues
+                                                                                  ideologies among Twitter users located in diﬀerent geographical
+    Epistemic issues refer to the issues raised by the candidates to bring
+                                                                                  locations.
+something new in the society. Literature indicates epistemic issues raise
+the curiosity of the voters (Newman and Sheth, 1985). Fig. 9 illustrates              To explore this, all tweets posted in English (754,109) were exthat #maga was the most frequently used of all hashtags; an acronym of            tracted. Only 412,767 tweets contained the location of the authors.
+the nationalist campaign ‘Make America Great Again’. Other campaigns              From these tweets, state names were extracted through content anainstigated by Donald Trump included ‘Big League Truth’ and ‘Drain The             lysis. The ﬁnal number of tweets included in the analysis was 148,881;
+Swamp’. In contrast, #strongertogether, launched by Hillary Clinton               posted by 26,386 users. The geographical distribution of the tweets (in
+with the stated intention of motivating citizens to unite and ﬁght for            red), users (in green), and tweet per user (in blue) is shown in Fig. 14.
+social issues, had much lower popularity among followers. Fig. 7 also             In terms of the volume of tweets surrounding the top 5 hashtag camillustrates Trump's campaign received considerable social support,                paigns, the highest contributing states are Tennessee (15815), Arkansas
+whereas the Clinton campaign received less support in terms of Twitter            (14359) and Georgia (13283). All these states had a Republican maretweets and mentions.                                                            jority in the 2016 election, potentially indicating what impact the popularity of the #MAGA campaign may have had on the outcome of the
+                                                                                  election.
+5.2.8. Overview of presidential candidate engagement through Twitter                  Fig. 15 illustrates the use of the ﬁve most popular hashtag camFollowing on from the previous analysis, we looked to explore those           paigns across the states. The highest number uses in our sample ocwho had participated in discussions as inﬂuencers, and how these in-              curred in Texas and California; whereas the states Delaware, South
+dividuals were connected within the networks. The top 50 @mention                 Dakota and West Virginia did not contribute to the top ﬁve hashtags.
+posts were extracted from the candidates' Twitter screens and were                28.7% of the total instances captured for the use of #maga came from
+mapped in the @mention network in Fig. 13, where the size of the node             the states of Texas (422) and California (328). In California and Texas,
+indicates the frequency of one to one communication directly to a                 Clinton and Trump won respectively; therefore the direct impact of the
+presidential candidate of blogger, celebrities, corporates, institutes,           top hashtag campaigns appears inconclusive.
+media houses, government oﬃcials, social workers and supporters.                      Fig. 16 shows the distribution of tweets containing the ﬁve most
+From Fig. 13, it can be derived that media personalities and houses               popular hashtag campaigns during the 2016 election. Fig. 16 illustrates
+were interacting more with the Clinton campaign using Twitter. This is            how users from disparate locations can connect through the use of
+in line with research that indicates that the more a politician is active         hashtags on Twitter. Therefore, Figs. 15 and 16 provide evidence that
+on the social media, the more journalists will follow that politician             these campaigns can lead to political integration through the ac-
+(Rauchﬂeisch and Metag, 2016).                                                    culturation of ideologies via social media.
+
+
+                                         Fig. 11. Polarity analysis and top @mentions in USA election discussions.
+P. Grover et al.                                                                                          Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                   Fig. 12. Word cloud on the topics identiﬁed from topic modelling of Twitter discussions surrounding the 2016 US election.
+
+
+    We also attempted to assess whether voter's had undergone polar-               opinion polarization among users.
+ization in terms of their preferred candidate. In order to address this,
+                                                                                       To test this hypothesis investigate and answer sub-part of research
+the election period was divided into the two phases. For both phases,
+                                                                                   question 3,
+tweets were categorized into those concerning Clinton or Trump.
+                                                                                       What is the nature of this polarization? Do voters undergo transition
+Sentiment analysis was applied to tweets to identify the polarity of the
+                                                                                   and polarization of their preferences through Twitter over the course of
+tweet with respect to that candidate (positive or negative). By coman election?
+paring the early phase to the late phase, transitions in polarity could be
+                                                                                       The following methodology was adopted:
+identiﬁed. From this, users can be segregated into four groups: (1) users
+                                                                                       Step 1: The dataset of tweets collected was divided into two phases
+who are positive in the ﬁrst phase for a candidate and changed their
+                                                                                   of 60 days. Phase 1 was from 13 August–11 October 2016, and Phase 2
+sentiment towards the candidate to negative in the second phase; (2)
+                                                                                   was from 12 October–10 December 2016.
+users who were negative in the ﬁrst phase and became positive in the
+                                                                                       Step 2: For both phases, tweets were separated into those consecond phase; (3) users who were positive in the ﬁrst phase and recerning Hillary Clinton and those concerning Donald Trump.
+mained positive in the second phase; and (4) the users who were neStep 3: The sentiment analysis algorithm (Saif et al., 2013) was
+gative in the ﬁrst phase and remained negative in the second phase with
+                                                                                   applied to the tweets.
+respect to the polarity of their sentiment towards the political candiStep 4: Users were labelled as ‘positive’ or ‘negative’ with respect to
+date. This is illustrated in Fig. 1 and is described in more detail below.
+                                                                                   their sentiments regarding a candidate. Positive and negative users
+H6. Political deliberation on social media platform (Twitter) leads to             from Phase 1 and Phase 2 were extracted for both Hillary Clinton and
+
+
+                                    Fig. 13. Top 50 @mention network for each candidate including strength of association.
+P. Grover et al.                                                                                          Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                      Fig. 14. Geographical distribution of tweets of users in reference to the ‘USA Election’ over the election period.
+
+
+Donald Trump.                                                                     IV. Phase 1, Negative Users to Phase 2, Negative Users (No change).
+    Step 5: Users were grouped into one of four groups for both or
+Hillary Clinton and Donald Trump:                                                     Table 3 illustrates the number of users in which sentiment transition
+                                                                                  had occurred during the election period for Trump and Clinton reI. Phase 1, Positive Users to Phase 2, Negative Users (Indicates po-            spectively. Previous research had indicated that polarization occurs
+     larization).                                                                 uniformly across parties (Iyengar and Westwood, 2015). However, our
+ II. Phase 1, Negative Users to Phase 2, Positive Users (Indicates po-            study indicates that higher levels of polarization occurred regarding
+     larization).                                                                 Clinton than Trump.
+III. Phase 1, Positive Users to Phase 2, Positive Users (No change).
+                                                                                  H7. Communities are formed among groups of users polarized during
+
+
+                                               Fig. 15. Usage of popular hashtags by geographical location.
+P. Grover et al.                                                                                                    Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+                                                         Fig. 16. Top 5 hashtag usage by geographical location.
+
+
+Table 3                                                                                  Table 4
+Impact assessment of polarization of preferences among voters (cells contain             Polarized and non-polarized users who had used the top 15 hashtags.
+number of users and in brackets the number of tweets posted by users).
+                                                                                          Highlighted cells indicate polarization   Hillary Clinton       Donald Trump
+  Highlighted cells indicate   Hillary Clinton         Donald Trump                       from Phase 1 to Phase 2
+  polarization from Phase 1                                                                                                         Phase 2               Phase 2
+  to Phase 2                   Phase 2                 Phase 2
+                                                                                                                                    Positive   Negative   Positive   Negative
+                               Positive     Negative   Positive       Negative
+                                                                                          Phase 1             Positive              883        301        267        47
+  Phase 1          Positive    11,236       10,250     476 (15185)    309 (3528)                              Negative              4576       1143       98         51
+                               (155640)     (145814)
+                   Negative    10,944       10,243     485 (14768)    361 (11057)
+                               (154006)     (147233)                                     represented as a square node, and the size of the square indicates the
+                                                                                         frequency of the hashtag use. If the user had used the hashtag, then they
+                                                                                         fall within the edges of the square. A hashtag usage graph has been
+social media discussions, around political events such as elections.
+                                                                                         drawn for both the presidential candidate's individually (Fig. 17).
+    Hypotheses H6 and H7 – as well as research question 3 – require the                  Fig. 17 describes that more people were polarized negatively consegregation of the user sample into the four groups described above. We                  cerning Clinton than Trump, as indicated by the red dots. However,
+further looked to investigate how the top 15 hashtags collected from                     positive polarization was also higher for Clinton in comparison to
+Twitter were being used by these four groups. Bode et al. (2015) sug-                    Trump.
+gested that network clustering has occurred on the basis of the hashtag                      Using the data depicted in Fig. 17, a greedy algorithm of modularity
+usage. To look deeper into this concept, we explored how the top 15                      optimization (Fortunato, 2010) was applied to detect communities on
+hashtags identiﬁed in Fig. 8 been used by the four groups described in                   the basis of hashtag usage. The communities detected are illustrated in
+Table 3; and whether these groups are forming communities with the                       Fig. 18 which show a much higher degree of overlap for Trump camhelp of the hashtags. For this, users from Table 3 who had used any of                   paigns compared to Clinton. From Fig. 18, it may be inferred that the
+the top 15 hashtags were identiﬁed. The number of users in each group                    users were forming communities on Twitter through the hashtags. With
+is given in Table 4.                                                                     respect to Clinton, the user groups were more disparate and isolated, as
+    A network graph was plotted showing the usage of the top 15                          depicted in the visualization of network analysis. In comparison,
+hashtags, in which each user and hashtag is a node. A user is re-                        Twitter users who were discussing Trump exhibited greater synergy
+presented as a circle. The node colour describes the user on the basis of                among discussed topics and greater participation in discussions surpolarization: a green node represents a user who has undergone tran-                     rounding the issues and campaigns highlighted by Trump.
+sition from negative in the ﬁrst phase to positive in the second phase; a
+red node represents a user who has undergone a transition from positive
+                                                                                         6. Discussion
+in the ﬁrst phase to negative in the second phase; and a yellow node
+represents a user who has not undergone any transition. The hashtag is
+                                                                                            Researchers have used data gathered from surveys, traditional news
+P. Grover et al.                                                                                           Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+Fig. 17. (a) Hashtag usage graph of the users concerning Clinton; (b) Hashtag usage graph of the users concerning Trump. Hashtag Mapping: 1-#maga; 2-#hillary; 3-
+#trump; 4-#clinton; 5-#hillaryclinton; 6-#imwithher; 7-#podestaemails; 8-#debate; 9-#neverhillary; 10-#tcot; 11-#crookedhillary; 12-#pjnet; 13-#wikileaks; 14-
+#trumppence; 15-#debatenight.
+
+
+articles, and now (increasingly) social media for analyzing national                speciﬁed to Twitter analytics. The study presents a brief overview of
+events, including elections (DiMaggio et al., 1996; Newman and Sheth,               Twitter analytical methodology in Section 4. The data for this study was
+1985). As data-capture processes diﬀer, the analytical methods applied              extracted from Twitter and analyzed through the use of Twitter anato data must also diﬀer. Data collected through surveys are typically               lytics and data mining. Data collection in social media has fewer limexamined through traditional statistical analyses such as regression,               itations concerning the size of data that can be collected; a restriction
+structural equation modelling, ANOVA and many more. The data col-                   typically faced by survey-based research. However, new challenges in
+lected through news articles are often analyzed through methods like                the analysis of such large data sets.
+exploratory content analysis. The data collected through social media is                This study examines the possible reasons for polarization of voters
+can be analyzed through social media analytics based on machine                     through Twitter during the US 2016 election. It allows us to identify the
+learning approaches (e.g. Grover et al., 2018; Kar, 2016; Rathore et al.,           popular hashtags, @mentions and the Twitter domains potentially in2017; Stieglitz and Dang-Xuan, 2013a, 2013b), which can be sub                      ﬂuencing voter's behaviour (Section 5.2). High frequency of social
+
+
+                        Fig. 18. Community detection based on greedy optimization of modularity for Clinton (left) and Trump (right).
+P. Grover et al.                                                                                       Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+media activity can result in increased popularity of a presidential can-        be investigated in future studies.
+didate (LaMarre and Suzuki-Lambrecht, 2013; Saﬁullah et al., 2017);                 From the network analyses in Figs. 17 and 18, it can be concluded
+however, in the case of Clinton, it has led to reduced or negative po-          that usage of hashtags had promoted users to forming communities; an
+pularity and high levels of criticism and negative media attention              observation in keeping with the theory of homophily (Borondo et al.,
+(shown in Fig. 13). Other studies have also described this phenomenon           2014; Himelboim et al., 2016). Polarized users have been shown pre-
+(Rauchﬂeisch and Metag, 2016).                                                  viously to form communities among themselves through hashtags
+    Trump was able to maintain a synergy between social media plat-             (Hollander, 2008; Kim, 2015). Among the top 15 hashtags used over the
+forms and traditional media outlet and acted as an inﬂuencer on                 election period, users with a negatively polarized view of Clinton used
+Twitter, with campaigns like ‘Make America Great Again’ and ‘Drain              the hashtags #podestaemails, #tcot and #pjnet, positively polarized
+The Swamp’; the beneﬁt of which has been previously described                   users towards Clinton used the hashtags #hillaryclinton and #im-
+(Conway et al., 2015; Karlsen and Enjolras, 2016). The topics of tweets         withher, and non-polarized users used the hashtags #neverhillary and
+are of high importance during the election period (Fig. 8). Research has        #crookedhillary. With respect to Trump, polarized and non-polarized
+shown that if the topics being discussed by a presidential election             users were randomly distributed across hashtag usage, and no clear
+candidate are liked, by Twitter users, message promotion is accelerated         interpretation regarding hashtags usage can be made from the polarized
+(Zhang et al., 2016). This was true for the Trump campaign, as depicted         behaviour of users. This may be because of the small user group used in
+in Table 2. The results show that out-group leaders such as Linda Suhler        this analysis after ﬁltering. This study supports the idea that Twitter is
+and Mike Cernovich played an important role in shaping Trump's public           an extension of oﬀ-line interactions between candidates and voters
+image; Nicholson (2012) having previously described that out-party              (Miller and Ko, 2015).
+leaders can exert a greater inﬂuence on voter opinion in comparison to
+in-group leaders.                                                               6.1. Theoretical contributions
+    Newman and Sheth (1985) proposed seven domains that drive voter
+behaviour. Through this study, we showed that the Twitter discussions               Methodologically, this study presents a way in which user-generated
+concerning these seven domains might have played a signiﬁcant role in           data (tweets) can be collected from Twitter; and how insights can be
+the election outcome through initiating deliberation among geo-                 derived through the application of Twitter analytics and data mining
+graphically dispersed voters. The issues and policies raised by Clinton         approaches such as regression analysis and community detection. We
+and Trump (Fig. 7) initiated deliberation on Twitter among voters, as           present an extensive list of Twitter analytics (descriptive analytics,
+illustrated in Figs. 14 and 16. The social imagery of the presidential          content analysis, network analysis and geospatial analysis) which can
+candidates was reﬂected in the hashtags used by voters (Fig. 9). The            be used to derive insights from the tweets. These methods adopted
+emotional feelings of Twitter users were analyzed by applying senti-            highlight how the approaches of big data analytics can be applied to
+ment analysis to social media buzz. In order to examine candidate               social media data to provide innovative insights into complex problem
+image, the polarity of the social media buzz along with @mention use            domains.
+was analyzed. Finally, the epistemic issues raised by presidential can-             The ﬁndings in our study contribute to the literature surrounding
+didates were identiﬁed and analyzed using their popular campaigns,              how social ecosystems use social media for conversing on topics across
+including ‘MAGA’, ‘Big League Truth’, ‘Drain the Swamp’ and ‘Stron-             geographically diverse areas. Higher and more consistent frequency of
+gerTogether’. Our study extends the existing literature regarding these         social media activity by a candidate leads to higher popularity and
+domains of voter behaviour and how manipulation of them through                 engagement among followers but also higher levels of criticism of the
+social media may impact the choices of voters.                                  candidate. Consecutive campaigns on social media engender higher
+    This study indicates that campaigns on Twitter had been used: (a)           popularity and engagement among Twitter users. The study also deby political candidates for spreading information; (b) for inﬂuencing           scribes how including strong emotional elements (like surprise) in a
+voter's political views through acculturation of ideologies among vo-           tweet can increase the social buzz on social media platforms.
+ters, subsequently leading to voter polarization; and (c) for engaging          Furthermore, greater coverage of the factors described by Newman and
+and associating with voters. Through the use of hashtag analysis, @             Sheth – issues and policies, social imagery, emotional feelings, candimentions, and word cloud creation, it appears that Clinton's campaigns          date image, current events, personal events, and epistemic issues –
+failed to gain popularity, whereas Trump's campaigns gathered sig-              creates more connections with otherwise geographically segregated
+niﬁcant support. Surprisingly, Clinton also tweeted more about her              social communities. Trump's campaign showed more substantial covRepublican rival, in contrast to Trump who focused mainly on his po-            erage of these factors of voter's choice behaviour compared to Clinton's,
+licies and their potential outcomes.                                            which may have impacted the outcome of the election. The study reDespite Clinton having much higher visibility, the outcome of the           veals that popular campaigns during the US election connected diselection was aﬀected by the nature of this visibility, and voter re-            parate groups of users on social media and facilitate acculturation of
+sonance with the content of her messages. Twitter users were to share           ideologies among users; helping to explain user polarization and the
+policies discussed by Trump (Fig. 8). However, our analysis highlights          formation of virtual communities on social media platforms.
+that the election outcome may have been strongly polarized by the way               Results infer in the study can be used for election campaigning and
+the Twitter handles been used by presidential candidates. The number            digital communication which will be beneﬁcial in inﬂuencing the voof polarized users for Clinton is higher than that for Trump. This may          ters. Furthermore, our research demonstrates how popular frameworks
+have been due to the high frequency of tweets by Clinton or the large           such as Newman and Sheth's model of voter's choice behaviour
+social media buzz (on Twitter) around Clinton, or a combination of              (Newman and Sheth, 1985) and the SPIN framework (Mills, 2012) can
+both. Research has previously described polarization as being some-             be adopted to analyze communications in virtual communities.
+thing uniform across parties (Iyengar and Westwood, 2015), but our
+study challenges this and shows that outcomes of polarization may be            6.2. Implications for practice and policy
+diﬀerent between parties, and higher engagement leads to a higher
+number of polarized users. This opens up a research question that can              The implications of the study for practice and policy are divided into
+P. Grover et al.                                                                                         Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+the three sections: (Section 6.2.1) a best practice overview for electoral        the candidate and the organization among voters.
+candidates; (Section 6.2.2) the characteristics of a good election campaign; and (Section 6.2.3) strategies for polarizing voter's behaviour on         7. Conclusion
+social media platforms such as Twitter.
+                                                                                      The study supports the notion that social media discussions have the
+6.2.1. Overview of best practices for candidate's standing in an election         ability to impact the outcome of national elections. This study con-
+(individual level)                                                                tributes to the ﬁelds of computer-mediated communication and digital
+    Research has shown that political actors are using Twitter to reach           politics by shedding light on four key areas. (1) Candidate activity on
+out to the public and the media (Shapiro and Hemphill, 2017; Vaccari              Twitter – with respect to campaigning, sentiments expressed, and issues
+and Valeriani, 2015; Waisbord and Amado, 2017); as Twitter is multi-              and policies discussed during the election period – has been mapped
+directional and oﬀers interactive communication along with message                according to voter reaction and responses through: (2) acculturation of
+broadcast facilities (Hutchins, 2016; Kruikemeier et al., 2016; Ross and          ideologies among geographically dispersed voters engaged using
+Bürger, 2014; Theocharis et al., 2016). With this in mind, we suggest             hashtags; (3) opinion polarization among voters; and (4) formation of
+four best practices for an electoral candidate to adopt with respect to           communities. These four areas are depicted in Fig. 1.
+social media: (1) The Twitter handle should be responsibly used by the                The study allows us to better understand the dynamics of polarmain political actor of the party. The political actor should not respond         ization in the online environment by converting qualitative tweets into
+to every comment made by protestors in the public forum. (2) Candi-               quantiﬁed data using machine learning algorithms, content analysis,
+dates should ensure that the wording used in the tweets does not                  and network analysis. Various factors inﬂuencing voter behaviour are
+convey negative emotions like anger or disgust. (3) The candidate                 highlighted in this study. The study also highlights that social media
+should strategically handle their engagement over Twitter to act as an            now plays an important role in the success of election campaigns, as it
+inﬂuencer on social media platforms. (4) Candidates should be careful             can facilitate voter engagement, public scrutiny, public harassment and
+with about using information concerning their personal and profes-                polarize voting outcome. Table 5 summarizes the ﬁndings of the study.
+sional background during the election and should take precautions to                  This study broadens the literature surrounding social media by
+contain unﬂattering information from their pasts. The study illustrates           presenting how community formation and polarization of voting outthe damaging impact that the release of past governmental information             come is feasible based on acculturation of ideologies through social
+had on the Clinton campaign. (5) Candidates should balance the use of             media platforms. This study contributes to various research avenues
+social media platforms and traditional media. Existing literature, in             such the role of inﬂuencers in information propagation over a network,
+addition to this study, indicates that the more a candidate is active on          the social psychology of online users, best practices in computersocial media, the more media attention – particularly negative attention          mediated communication, acculturation of ideologies, user polarization
+– the candidate receives.                                                         and social media usage.
+
+6.2.2. Characteristics of good campaigns or hashtags launched during the          8. Limitations and future work
+election period (organizational level)
+    Campaigns on social media platform are launched through hashtags                  This study extracted the data set from Twitter, which allows a daily
+(Abascal-Mena et al., 2015). The study reveals that campaigns depicts             extraction of 4000 to 10,000 records. This restriction on the extraction
+actionable agenda of the candidates; hashtags such as #maga and                   of tweets poses a limitation for this type of study. It is possible that we
+#draintheswamp used in Trump's tweets led to higher campaign po-                  were unable to track all important events happening on Twitter. The
+larity among users, which further helped in propagating the core                  second potential limitation of the study is that, of course, Twitter users
+messages of the campaigns. The study tries to highlight some of the               may be inﬂuenced by other, external events as opposed to solely those
+characteristics of successful digital campaigns, ﬁrstly a digital campaign        related to Twitter discussions. These cannot be mapped or factored into
+should be relevant to a large population emotionally. Secondly, should            our analyses concerning polarizations in user preferences. Similarly,
+be capable of holding the voter's attention. Thirdly, a digital campaign          other popular social media platforms like Facebook have not been
+should demonstrate their long-term beneﬁts or values to voters.                   considered in this study, due to challenges in accessing such data as
+                                                                                  well as integration challenges between data sets. A third limitation of
+6.2.3. Strategies for polarizing the voter's behaviour on social media            the study is that for our analysis of hashtag clustering's of users, we
+platforms                                                                         limited our investigations to the top 15 hashtags. If a Twitter user is
+    Political actors have used Twitter for engaging voters (Graham                unaware of a hashtag in popular use, they may not be able to contribute
+et al., 2013; Purohit et al., 2013; Raynauld and Greenberg, 2014). The            to the discussions concerning that theme. Fourth, most of the analyses
+connections among users on Twitter can be visually depicted using                 involved in social media analytics are based on visualization to draw
+networks (HerdaĞdelen et al., 2013; Stieglitz and Dang-Xuan, 2013a,               inferences, future researchers may use statistical test for validating the
+2013b). When political parties design their agendas for elections, two            hypothesis. Lastly, the study cannot track whether tweets had been
+key points should be considered. First, before devising strategies, the           posted by a human or a bot. Also, we do not attempt to diﬀerentiate
+party should investigate the issues and policies voters are currently             between tweets made by candidates and those made by a social media
+most concerned with. Our study highlighted the concerns of US voters              marketing company on behalf of the candidate. However, future reregarding security issues; Trump tweeted more with respect to foreign             search could seek to address these limitations and build upon the scope
+policy and security issues than Clinton, which increased engagement               of the study. The limitations highlighted in this study may be explored
+among voters with his campaigns. Second, campaigns launched during                as future research directions for improving the current theoretical unthe election period should ensure that they improve the social image of           derstanding of voting behaviour through social media.
+P. Grover et al.                                                                                                        Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+Table 5
+Summary of ﬁndings.
+  S. no     Hypothesis                                                                           Outcome/result
+
+  1         Higher activity on social media is positively related to higher popularity and       Negative feedback may also increase with higher engagement (as in the case of
+            engagement among followers.                                                          Clinton's Twitter activity).
+  2         Less variation in time (greater nexus) between consecutive campaigns is positively   Yes, positively: From the sample collected it seem Trump had less time between
+            related to higher popularity and engagement.                                         consecutive campaigns which may had led to greater engagement and popularity.
+  3         Higher thresholds of sentiments (polarity) within tweets is positively related to    Partially. There was very little diﬀerence in the percentage of emotional tweets
+            higher popularity and engagement among followers.                                    posted between Trump and Clinton except in the case of the ‘surprise’ emotion.
+  4         Greater levels of social discussion – concerning the components of Newman and        Yes, positively. Greater coverage of all seven factors in campaigns indicated a
+            Sheth's model of voter's choice behaviour – increase engagement among voters,        positive outcome with higher engagement.
+            actively or passively.
+  5         Popular hashtags or campaigns initiate a process of acculturation of ideologies      Yes. The #maga campaign gained support from citizens across the USA.
+            among Twitter users located in diﬀerent geographical locations.
+  6         Political deliberation on social media platforms (Twitter) leads to opinion          Yes. The number of users transitioning from a negative to a positive opinion of a
+            polarization among users.                                                            candidate over the election period is higher than for those transitioning from a
+                                                                                                 positive to a negative opinion.
+  7         Communities are formed among groups of users polarized during social media           Yes. Using hashtag analysis, it is evident that communities are formed around
+            discussions, around political events such as elections.                              campaigns, which are often overlapping.
+
+
+Appendix A. Annexure
+
+
+  Top URL across the month along with their descriptions (Annexure)
+
+  Rank URL                        Description                                                                                                       Count Polarity towards
+                                                                                                                                                          Hillary Clinton
+
+  August
+  1     https://t.co/             Hillary Clinton Deleted Emails using BleachBit which intended to prevent recovery of deleted                      259       Negative
+        D0MeBJXBwN                emails
+  2     https://t.co/             According to Marine Le Pen, leader of the National Front in France “For France, anything is                       248       Negative
+        ubS4OTxGbg                better than Clinton”. Clinton will bring “war,” “devastation” and “instability” as the
+                                  president
+  3        https://t.co/          According to USA, WTFM Hillary Clinton as an insider threat because she had sent classiﬁed                        229       Negative
+           CQTSo2ETJF             information using her personal server
+  4        https://t.co/          Expose Hillary                                                                                                    228       Negative
+           MEcH3u2uT2
+  5        https://t.co/          Huma Abedin, Hillary Clinton's top aide, was assistant editor of an Islamic journal published 201                           Negative
+           b2hFO1RlIQ             an article accusing Jews of ‘working the American political system’
+  6        https://t.co/          Hillary Clinton needs to address the racist undertones of her 2008 campaign                   200                           Negative
+           MJQp0rcnzH
+  7        https://t.co/          Election promotion                                                                                                191       –
+           fFpvl62RMB
+  8        https://t.co/          Hillary Clinton had claimed that Mexico's corruption and scandal-plagued President Enrique 189                              Negative
+           XJBZ59Rzb2             Peña Nieto is America's friend
+  9        https://t.co/          Dr. Ben Carson reaction on granting special “access” and “favors” to Clinton Foundation      171                            Negative
+           hNfvE9Bau4             donors by Hillary Clinton during her State Department tenure
+  10       https://t.co/          According to The New York Post, Clinton continued to email classiﬁed information even after 167                             Negative
+           uewPloyyoH             she resigned as Secretary of State in 2013
+                                  According to Raj Shah because of this Hillary Clinton can't be trusted for nation's security
+  September
+  1     https://t.co/             WikiLeaks – releasing the information regarding the governance of Hillary Clinton                                 587       –
+        QZ8BpcZk2l
+  2     https://t.co/             WikiLeaks                                                                                                         587       –
+        9dreUeDhZ9
+  3     https://t.co/             Steph Curry being asked Hillary or Trump? Curry responded: “Hillary”                                              368       Positive
+        YcjQUb83qr                Steph Curry is a basketball player of the National Basketball Association
+  4     https://t.co/             Steph Curry chooses Hillary Clinton over Donald Trump for President                                               368       Positive
+        sBHOHU5dYn
+  5     https://t.co/             Hillary Clinton career ﬂashback                                                                                   257       Positive
+        c1zs5DStuN
+  6     https://t.co/             National Poll results: Donald Trump and Hillary Clinton essentially going to tie over       255                             –
+        vznTnFelwu                presidential election
+  7     https://t.co/             New Batch of Hillary Clinton Emails showing Clinton Foundation contacts to cope with crises 254                             Negative
+        tOg4KIAvVA                facing the U.S. government overseas
+P. Grover et al.                                                                                                       Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+  8        https://t.co/        FBI had released detailed interview notes of investigation of Hillary Clinton's email practices 240                           Negative
+           oCVHoPvNHM
+  9        https://t.co/        Clinton was facing criticism of not holding a news conference for the months but had able to 215                              Negative
+           BIZvlAPHew           raise the $50 million from 22 fund-raising events, averaging around $150,000 an hour
+  10       https://t.co/        According to Clinton, America should treat cyber-attacks like any other attack               210                              Negative
+           so5MCo2TVK
+  October
+  1     https://t.co/           The video posted by Donald Trump on Twitter showcasing the activities done by Hillary                               1131      Negative
+        uKh5sCFfrv              Clinton to raise the fund
+  2     https://t.co/           TowsonU is a manager for the best DJ in Maryland and tweeted that he will not vote for                              990       Negative
+        bUUkzgOA2E              Hillary Clinton
+  3     https://t.co/           The article by Atlantic, diﬀerentiating between the Hillary Clinton and Donald Trump at the                         933       Positive
+        9ZcbSAmD0j              end of the article saying Trump is unﬁt for the oﬃce and declaring him as a demagogue, a
+                                xenophobe, a sexist, a know-nothing, and a liar person
+  4        https://t.co/        Wikileaks                                                                                                           712       Negative
+           S7tPrl2QCZ
+  5        https://t.co/        The Atlantic posted video supporting Hillary Clinton and pointing out bad things against                            588       Positive
+           lcG6u02Kgv           Donald Trump
+  6        https://t.co/        Wikileaks                                                                                                           556       Negative
+           qy2EQBa48y
+  7        https://t.co/        Flashback on Hillary Clinton decisions and their results is failure when it comes to national 497                             Negative
+           b5HqsGrc7N           security and international relations
+  8        https://t.co/        Wikileaks had thrown the lights on the money raised by Hillary Clinton by leaking the emails 482                              Negative
+           3cBNYjl5CD
+  9        https://t.co/        Wikileaks                                                                                                           443       Negative
+           0aHB7pV7u3
+  10       https://t.co/        Wikileaks                                                                                                           401       Negative
+           QKOqtwFgwM
+  November
+  1    https://t.co/            A Thanksgiving message from President-elect Donald J. Trump                                                         1471      –
+       86uLziQXC4
+  2    https://t.co/            Justiﬁcation for nominating Tom Price as Chairman of the House Budget Committee                                     1102      –
+       ZTh5cuY26Z               Congressman
+  3    https://t.co/            Video posted on Twitter saying not to make fun of Hillary Clinton in front of the females                           382       Positive
+       VvtB0z3L0G
+  4    https://t.co/            Clinton leading                                                                                                     305       Positive
+       d7ueOJvlvT
+  5    https://t.co/            Choice for Secretary of State                                                                                       293       –
+       qcaDTsF8c7
+  6    https://t.co/            Tweet by Twitter handle @America_1st_ saying voting for Hilliary Clinton is like supporting 281                               Negative
+       mDMYLSrGTn               crime
+  7    https://t.co/            Clinton leading                                                                             273                               Positive
+       tvPFZ73o30
+  8    https://t.co/            Clinton leading                                                                                                     273       Positive
+       kUKaLrlQzw
+  9    https://t.co/            Policy plans for First one hundred days                                                                             272       –
+       6NAY9dm5G1
+  10   https://t.co/            Clinton has won popular vote with substantial margin                                                                266       Positive
+       VbisTkUE3A
+  December
+  1    https://t.co/            TIME's person of the year for 2016                                                                                  507       –
+       puZVWYs9b4
+  2    https://t.co/            Clinton ignored the working class                                                                                   281       Negative
+       bzCbt0iaXD
+  3    https://t.co/            Electoral College petition to make Hillary Clinton as a President.                                                  270       Positive
+       MRUAYv1DkE
+  4    https://t.co/            Thank you, tour 2016 Cincinnati, Ohio                                                                               247
+       Mcc74kwzKa
+
+
+References                                                                                     applying social network analysis in tweets. Soc. Netw. Anal. Min. 5 (1), 1–17.
+                                                                                           Abramowitz, A.I., Saunders, K.L., 2008. Is polarization a myth? J. Polit. 70 (02), 542–555.
+                                                                                           Adams, A., McCorkindale, T., 2013. Dialogue and transparency: a content analysis of how
+Abascal-Mena, R., Lema, R., Sèdes, F., 2015. Detecting sociosemantic communities by            the 2012 presidential candidates used twitter. Public Relat. Rev. 39 (4), 357–359.
+P. Grover et al.                                                                                                                Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+Ahmed, S., Jaidka, K., Cho, J., 2016. The 2014 Indian elections on Twitter: a comparison                stage. Media Cult. Soc. 36 (5), 720–731.
+    of campaign strategies of political parties. Telematics Inform. 33 (4), 1071–1087.              Engesser, S., Ernst, N., Esser, F., Büchel, F., 2017. Populism and social media: how poAlAlwan, A., Rana, N.P., Dwivedi, Y.K., Algharabat, R., 2017. Social media in marketing:                liticians spread a fragmented ideology. Inf. Commun. Soc. 20 (8), 1109–1126.
+    a review and analysis of the existing literature. Telematics Inform. 34 (7),                    Enli, G.S., Skogerbø, E., 2013. Personalized campaigns in party-centred politics: Twitter
+    1177–1190.                                                                                          and Facebook as arenas for political communication. Inf. Commun. Soc. 16 (5),
+Aral, S., Walker, D., 2012. Identifying inﬂuential and susceptible members of social                    757–774.
+    networks. Science 337 (6092), 337–341.                                                          Ernst, N., Engesser, S., Büchel, F., Blassnig, S., Esser, F., 2017. Extreme parties and poAswani, R., Ghrera, S.P., Kar, A.K., Chandra, S., 2017. Identifying buzz in social media: a             pulism: an analysis of Facebook and Twitter across six countries. Inf. Commun. Soc.
+    hybrid approach using artiﬁcial bee colony and k-nearest neighbors for outlier de-                  1–18.
+    tection. Soc. Netw. Anal. Min. 7 (1), 1–10.                                                     Evans, H.K., Clark, J.H., 2016. “You tweet like a girl!” How female candidates campaign
+Aswani, A., Kar, A.K., Aggarwal, S., Ilavarsan, P.V., 2017, Novemer. Exploring content                  on twitter. Am. Politics Res. 44 (2), 326–352.
+    virality in Facebook: a semantic based approach. In: Conference on e-Business, e-               Ferguson, Y.L., Ferguson, K.T., Ferguson, G.M., 2017. I am AmeriBritSouthAfricanServices and e-Society. Springer, Cham, pp. 209–220.                                                Zambian: multidimensional remote acculturation and well-being among urban
+Aswani, R., Kar, A.K., Ilavarasan, P.V., Dwivedi, Y.K., 2018. Search engine marketing is                Zambian adolescents. Int. J. Psychol. 52 (1), 67–76.
+    not all gold: insights from Twitter and SEOClerks. Int. J. Inf. Manag. 38 (1), 107–116.         Forbush, E., Foucault-Welles, B., 2016. Social media use and adaptation among Chinese
+Attu, R., Terras, M., 2017. What people study when they study Tumblr: classifying                       students beginning to study in the United States. Int. J. Intercult. Relat. 50, 1–12.
+    Tumblr-related academic research. J. Doc. 73 (3), 528–554.                                      Fortunato, S., 2010. Community detection in graphs. Phys. Rep. 486 (3), 75–174.
+Barberá, P., Wang, N., Bonneau, R., Jost, J.T., Nagler, J., Tucker, J., González-Bailón, S.,        Frame, A., Brachotte, G., 2015. Le tweet stratégique: use of Twitter as a PR tool by French
+    2015. The critical periphery in the growth of social protests. PLoS One 10 (11),                    politicians. Public Relat. Rev. 41 (2), 278–287.
+    e0143611.                                                                                       Ganis, M., Kohirkar, A., 2015. Social Media Analytics: Techniques and Insights for
+Barnett, G.A., Ruiz, J.B., Xu, W.W., Park, J.Y., Park, H.W., 2017. The world is not ﬂat:                Extracting Business Value out of Social Media. IBM Press.
+    evaluating the inequality in global information gatekeeping through website co-                 Gonzalez-Bailon, S., Wang, N., Rivero, A., Borge-Holthoefer, J., Moreno, Y., 2014.
+    mentions. Technol. Forecast. Soc. Chang. 117, 38–45.                                                Assessing the bias in samples of large online networks. Soc. Networks 38, 16–27.
+Berger, J., Milkman, K.L., 2012. What makes online content viral? J. Mark. Res. 49 (2),             Graham, T., Broersma, M., Hazelhoﬀ, K., van't Haar, G., 2013. Between broadcasting
+    192–205.                                                                                            political messages and interacting with voters: the use of Twitter during the 2010 UK
+Berry, J.W., 1997. Immigration, acculturation, and adaptation. Appl. Psychol. 46 (1),                   general election campaign. Inf. Commun. Soc. 16 (5), 692–716.
+    5–34.                                                                                           Grover, P., Kar, A.K., 2017. Big data analytics: a review on theoretical contributions and
+Berry, J.W., 2008. Globalisation and acculturation. Int. J. Intercult. Relat. 32 (4),                   tools used in literature. Glob. J. Flex. Syst. Manag. 1–27. https://doi.org/10.1007/
+    328–336.                                                                                            s40171-017-0159-3.
+Bode, L., 2016. Political news in the news feed: learning politics from social media. Mass          Grover, P., Kar, A.K., Dwivedi, Y.K., Janssen, M., 2017, November. The untold story of
+    Commun. Soc. 19 (1), 24–48.                                                                         USA presidential elections in 2016 - insights from Twitter analytics. In: Conference on
+Bode, L., Hanna, A., Yang, J., Shah, D.V., 2015. Candidate networks, citizen clusters, and              e-Business, e-Services and e-Society. Springer, Cham, pp. 339–350.
+    political expression: strategic hashtag use in the 2010 midterms. Ann. Am. Acad. Pol.           Grover, P., Kar, A.K., Davies, G., 2018. “Technology enabled health”–insights from twitter
+    Soc. Sci. 659 (1), 149–165.                                                                         analytics with a socio-technical perspective. Int. J. Inf. Manag. 43, 85–97.
+Borondo, J., Morales, A.J., Benito, R.M., Losada, J.C., 2014. Mapping the online com-               Gruzd, A., Roy, J., 2014. Investigating political polarization on Twitter: a Canadian
+    munication patterns of political conversations. Physica A 414, 403–413.                             perspective. Policy Internet 6 (1), 28–45.
+Boynton, G.R., Richardson Jr., G.W., 2016. Agenda setting in the twenty-ﬁrst century.               Gupta, S., Kar, A.K., Baabdullah, A., Al-Khowaiter, W.A.A., 2018. Big data with cognitive
+    New Media Soc. 18 (9), 1916–1934.                                                                   computing: a review for the future. Int. J. Inf. Manag. 42, 78–89.
+Bruns, A., Stieglitz, S., 2013. Towards more systematic Twitter analysis: metrics for               Harris, J.K., Moreland-Russell, S., Choucair, B., Mansour, R., Staub, M., Simmons, K.,
+    tweeting activities. Int. J. Soc. Res. Methodol. 16 (2), 91–108.                                    2014. Tweeting for and against public health policy: response to the Chicago
+Burnap, P., Rana, O.F., Avis, N., Williams, M., Housley, W., Edwards, A., Sloan, L., 2015.              Department of Public Health's electronic cigarette Twitter campaign. J. Med. Internet
+    Detecting tension in online communities with computational Twitter analysis.                        Res. 16 (10), e238.
+    Technol. Forecast. Soc. Chang. 95, 96–108.                                                      Heo, Y.C., Park, J.Y., Kim, J.Y., Park, H.W., 2016. The emerging viewertariat in South
+Burnap, P., Gibson, R., Sloan, L., Southern, R., Williams, M., 2016. 140 characters to                  Korea: the Seoul mayoral TV debate on Twitter, Facebook, and blogs. Telematics
+    victory? Using Twitter to predict the UK 2015 general election. Elect. Stud. 41,                    Inform. 33 (2), 570–583.
+    230–233.                                                                                        HerdaĞdelen, A., Zuo, W., Gard-Murray, A., Bar-Yam, Y., 2013. An exploration of social
+Cao, L., Zhang, T., 2012. Social networking sites and educational adaptation in higher                  identity: the geography and politics of news-sharing communities in Twitter.
+    education: a case study of Chinese international students in New Zealand. Sci. World                Complexity 19 (2), 10–20.
+    J. 2012.                                                                                        Himelboim, I., McCreery, S., Smith, M., 2013. Birds of a feather tweet together: inCeron, A., Curini, L., Iacus, S.M., Porro, G., 2014. Every tweet counts? How sentiment                  tegrating network and content analyses to examine cross-ideology exposure on
+    analysis of social media can improve our knowledge of citizens' political preferences               Twitter. J. Comput.-Mediat. Commun. 18 (2), 40–60.
+    with an application to Italy and France. New Media Soc. 16 (2), 340–358.                        Himelboim, I., Sweetser, K.D., Tinkham, S.F., Cameron, K., Danelo, M., West, K., 2016.
+Chadwick, A., O'Loughlin, B., Vaccari, C., 2017. Why people dual screen political debates               Valence-based homophily on Twitter: network analysis of emotions and political talk
+    and why it matters for democratic engagement. J. Broadcast. Electron. Media 61 (2),                 in the 2012 presidential election. New Media Soc. 18 (7), 1382–1400.
+    220–239.                                                                                        Hindriks, P., Verkuyten, M., Coenders, M., 2016. Evaluating political acculturation straChae, B.K., 2015. Insights from hashtag #supplychain and Twitter analytics: considering                 tegies: the perspective of the majority and other minority groups. Polit. Psychol.
+    Twitter and Twitter data for supply chain practice and research. Int. J. Prod. Econ.                https://doi.org/10.1111/pops.12356.
+    165, 247–259.                                                                                   Hollander, B.A., 2008. Tuning out or tuning elsewhere? Partisanship, polarization, and
+Chatﬁeld, A.T., Scholl, H.J.J., Brajawidagda, U., 2013. Tsunami early warnings via                      media migration from 1998 to 2006. J. Mass Commun. Q. 85 (1), 23–40.
+    Twitter in government: net-savvy citizens' coproduction of time-critical public in-             Hong, S., Nadler, D., 2012. Which candidates do the public discuss online in an election
+    formation services. Gov. Inf. Q. 30 (4), 377–386.                                                   campaign?: the use of social media by 2012 presidential candidates and its impact on
+Cleveland, M., Laroche, M., Pons, F., Kastoun, R., 2009. Acculturation and consumption:                 candidate salience. Gov. Inf. Q. 29 (4), 455–461.
+    textures of cultural adaptation. Int. J. Intercult. Relat. 33 (3), 196–212.                     Hopp, T., Vargo, C.J., 2017. Does negative campaign advertising stimulate uncivil comCody, E.M., Reagan, A.J., Mitchell, L., Dodds, P.S., Danforth, C.M., 2015. Climate change               munication on social media? Measuring audience response using big data. Comput.
+    sentiment on twitter: an unsolicited public opinion poll. PLoS One 10 (8), e0136092.                Hum. Behav. 68, 368–377.
+Conway, B.A., Kenski, K., Wang, D., 2015. The rise of Twitter in the political campaign:            Hosch-Dayican, B., Amrit, C., Aarts, K., Dassen, A., 2016. How do online citizens persuade
+    searching for intermedia agenda-setting eﬀects in the presidential primary. J.                      fellow voters? Using Twitter during the 2012 Dutch parliamentary election camComput.-Mediat. Commun. 20 (4), 363–380.                                                            paign. Soc. Sci. Comput. Rev. 34 (2), 135–152.
+Croucher, S.M., 2011. Social networking and cultural adaptation: a theoretical model. J.            Hossain, M.A., Dwivedi, Y.K., Chan, C., Standing, S., Olanrewaju, A.-S., 2018. Sharing
+    Int. Intercult. Commun. 4 (4), 259–264.                                                             political content in online social media: a planned and unplanned behaviour apDiMaggio, P., Evans, J., Bryson, B., 1996. Have American's social attitudes become more                 proach. Inf. Syst. Front. 20 (3), 485–501.
+    polarized? Am. J. Sociol. 102 (3), 690–755.                                                     Hsu, C.L., Park, H.W., 2012. Mapping online social networks of Korean politicians. Gov.
+Dimitrova, D.V., Shehata, A., Strömbäck, J., Nord, L.W., 2014. The eﬀects of digital media              Inf. Q. 29 (2), 169–181.
+    on political knowledge and participation in election campaigns: evidence from panel             Hutchins, B., 2016. The many modalities of social networking: the role of Twitter in
+    data. Commun. Res. 41 (1), 95–118.                                                                  greens politics. Environ. Commun. 10 (1), 25–42.
+Djerf-Pierre, M., Pierre, J., 2016. Mediatised local government: social media activity and          Ibrahim, N.F., Wang, X., Bourne, H., 2017. Exploring the eﬀect of user engagement in
+    media strategies among local government oﬃcials 1989–2010. Policy Polit. 44 (1),                    online brand communities: evidence from Twitter. Comput. Hum. Behav. 72,
+    59–77.                                                                                              321–338.
+Domingo, J., Martos, J.M., 2015. Analysis of political discourse in Spain on school failure         Isenberg, D.J., 1986. Group polarization: a critical review and meta-analysis. J. Pers. Soc.
+    on Twitter. Anal. Arch. Educ. Pol. 24 (70). https://doi.org/10.14507/epaa.24. 2357.                 Psychol. 50 (6), 1141–1151.
+Dwivedi, Y.K., Kapoor, K.K., Chen, H., 2015. Social media marketing and advertising.                Iyengar, S., Westwood, S.J., 2015. Fear and loathing across party lines: new evidence on
+    Mark. Rev. 15 (3), 289–309.                                                                         group polarization. Am. J. Polit. Sci. 59 (3), 690–707.
+Ekman, M., Widholm, A., 2015. Politicians as media producers: current trajectories in the           Jensen, M.J., 2017. Social media and political campaigning: changing terms of engagerelation between journalists and politicians in the age of social media. Journal. Pract.            ment? Int. J. Press Polit. 22 (1), 23–42.
+    9 (1), 78–91.                                                                                   Joseph, N., Kar, A.K., Ilavarasan, P.V., Ganesh, S., 2017. Review of discussions on internet
+Ems, L., 2014. Twitter's place in the tussle: how old power struggles play out on a new                 of things (IoT): insights from twitter analytics. J. Glob. Inf. Manag. 25 (2), 38–51.
+P. Grover et al.                                                                                                                  Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+Jungherr, A., 2014. The logic of political coverage on Twitter: temporal dynamics and                Poell, T., 2014. Social media and the transformation of activist communication: exploring
+     content. J. Commun. 64 (2), 239–259.                                                                 the social media ecology of the 2010 Toronto G20 protests. Inf. Commun. Soc. 17 (6),
+Kapoor, K.K., Dwivedi, Y.K., 2015. Metamorphosis of Indian electoral campaigns: Modi's                    716–731.
+     social media experiment. Int. J. Indian Cult. Bus. Manag. 11 (4), 496–516.                      Purohit, H., Hampton, A., Shalin, V.L., Sheth, A.P., Flach, J., Bhatt, S., 2013. What kind of
+Kapoor, K.K., Tamilmani, K., Rana, N.P., Patil, P., Dwivedi, Y.K., Nerur, S., 2018.                       conversation is Twitter? Mining psycholinguistic cues for emergency coordination.
+     Advances in social media research: past, present and future. Inf. Syst. Front. 20 (3),               Comput. Hum. Behav. 29 (6), 2438–2447.
+     531–558.                                                                                        Rathore, A.K., Kar, A.K., Ilavarasan, P.V., 2017. Social media analytics: literature review
+Kar, A.K., 2016. Bio inspired computing–a review of algorithms and scope of applications.                 and directions for future research. Decis. Anal. 14 (4), 229–249.
+     Expert Syst. Appl. 59, 20–32.                                                                   Rauchﬂeisch, A., Metag, J., 2016. The special case of Switzerland: Swiss politicians on
+Karlsen, R., Enjolras, B., 2016. Styles of social media campaigning and inﬂuence in a                     Twitter. New Media Soc. 18 (10), 2413–2431.
+     hybrid political communication system: linking candidate survey data with Twitter               Raynauld, V., Greenberg, J., 2014. Tweet, click, vote: Twitter and the 2010 Ottawa
+     data. Int. J. Press Polit. 21 (3), 338–357.                                                          municipal election. J. Inform. Tech. Polit. 11 (4), 412–434.
+Kassarjian, H.H., 1977. Content analysis in consumer research. J. Consum. Res. 4 (1),                Redﬁeld, R., Linton, R., Herskovits, M.J., 1936. Memorandum for the study of ac8–18.                                                                                                culturation. Am. Anthropol. 38 (1), 149–152.
+Kayser, V., Blind, K., 2017. Extending the knowledge base of foresight: the contribution of          Ross, K., Bürger, T., 2014. Face to face (book) social media, political campaigning and the
+     text mining. Technol. Forecast. Soc. Chang. 116, 208–215.                                            unbearable lightness of being there. Pol. Sci. 66 (1), 46–62.
+Kelm, O., Dohle, M., Bernhard, U., 2017. Social media activities of political commu-                 Saboo, A.R., Kumar, V., Park, I., 2016. Using big data to model time-varying eﬀects for
+     nication practitioners: the impact of strategic orientation and in-group orientation.                marketing resource (re) allocation. MIS Q. 40 (4), 911–939.
+     Int. J. Strateg. Commun. 11 (4), 306–323.                                                       Saﬁullah, M., Pathak, P., Singh, S., Anshul, A., 2017. Social media as an upcoming tool for
+Kim, Y., 2015. Does disagreement mitigate polarization? How selective exposure and                        political marketing eﬀectiveness. Asia Pac. Manag. Rev. 22 (1), 10–15.
+     disagreement aﬀect political polarization. J. Mass Commun. Q. 92 (4), 915–937.                  Saif, H., Fernez, M., He, Y., Alani, H., 2013. Evaluation datasets for Twitter sentiment
+Klinger, U., 2013. Mastering the art of social media: Swiss parties, the 2011 national                    analysis: a survey and a new dataset, the STS-Gold. In: 1st Interantional Workshop on
+     election and digital challenges. Inf. Commun. Soc. 16 (5), 717–736.                                  Emotion and Sentiment in Social and Expressive Media: Approaches and Perspectives
+Kruikemeier, S., Kruikemeier, S., van Noort, G., van Noort, G., Vliegenthart, R.,                         from AI (ESSEM 2013), (3 Dec 2013, Turin, Italy).
+     Vliegenthart, R., ... H, de Vreese, C., 2016. The relationship between online cam-              Scherpereel, J.A., Wohlgemuth, J., Schmelzinger, M., 2017. The adoption and use of
+     paigning and political involvement. Online Inf. Rev. 40 (5), 673–694.                                Twitter as a representational tool among members of the European parliament. Eur.
+Lakhiwal, A., Kar, A.K., 2016. Insights from Twitter analytics: modeling social media                     Polit. Soc. 18 (2), 111–127.
+     personality dimensions and impact of breakthrough events. Lect. Notes Comput. Sci               Scott, C.F., Bay-Cheng, L.Y., Prince, M.A., Nochajski, T.H., Collins, R.L., 2017. Time spent
+     9844, 533–544.                                                                                       online: latent proﬁle analyses of emerging adults' social media use. Comput. Hum.
+LaMarre, H.L., Suzuki-Lambrecht, Y., 2013. Tweeting democracy? Examining Twitter as                       Behav. 75, 311–319.
+     an online public relations strategy for congressional campaigns. Public Relat. Rev. 39          Shapiro, M.A., Hemphill, L., 2017. Politicians and the policy agenda: does use of twitter
+     (4), 360–368.                                                                                        by the US congress direct New York Times content? Policy Internet 9 (1), 109–132.
+Larsson, A.O., 2017. Going viral? Comparing parties on social media during the 2014                  Shuai, X., Pepe, A., Bollen, J., 2012. How the scientiﬁc community reacts to newly subSwedish election. Convergence 23 (2), 117–131.                                                       mitted preprints: article downloads, twitter mentions, and citations. PLoS One 7 (11),
+Larsson, A.O., Ihlen, Ø., 2015. Birds of a feather ﬂock together? Party leaders on Twitter                e47523.
+     during the 2013 Norwegian elections. Eur. J. Commun. 30 (6), 666–681.                           Singh, J.P., Dwivedi, Y.K., Rana, N.P., Kumar, A., Kapoor, K.K., 2017. Event classiﬁcation
+Larsson, A.O., Moe, H., 2012. Studying political microblogging: Twitter users in the 2010                 and location prediction from tweets during disaster. Ann. Oper. Res. https://doi.org/
+     Swedish election campaign. New Media Soc. 14 (5), 729–747.                                           10.1007/s10479-017-2522-3.
+Lawrence, E., Sides, J., Farrell, H., 2010. Self-segregation or deliberation? Blog reader-           Skogerbø, E., Krumsvik, A.H., 2015. Newspapers, Facebook and Twitter: intermedial
+     ship, participation, and polarization in American politics. Perspect. Polit. 8 (1), 141.             agenda setting in local election campaigns. Journal. Pract. 9 (3), 350–366.
+Layman, G.C., Carsey, T.M., Horowitz, J.M., 2006. Party polarization in American poli-               Social Media Fact Sheet. 2016 PEW RESEARCH CENTER, 12 Jan. 2017. Web. Retrieved
+     tics: characteristics, causes, and consequences. Annu. Rev. Polit. Sci. 9 (1), 83–110.               on 21 July 2017 from http://www.pewinternet.org/fact-sheet/social-media/.
+Lee, E.J., 2007. Deindividuation eﬀects on group polarization in computer-mediated                   Song, Y., Dai, X.Y., Wang, J., 2016. Not all emotions are created equal: expressive becommunication: the role of group identiﬁcation, public-self-awareness, and perceived                 havior of the networked public on China's social media site. Comput. Hum. Behav.
+     argument quality. J. Commun. 57 (2), 385–403.                                                        60, 525–533.
+Lee, J.K., Choi, J., Kim, C., Kim, Y., 2014. Social media, network heterogeneity, and                Stephens, M., Poorthuis, A., 2015. Follow thy neighbor: connecting the social and the
+     opinion polarization. J. Commun. 64 (4), 702–722.                                                    spatial networks on Twitter. Comput. Environ. Urban. Syst. 53, 87–95.
+Li, C., Tsai, W.H.S., 2015. Social media usage and acculturation: a test with Hispanics in           Stieglitz, S., Dang-Xuan, L., 2013a. Emotions and information diﬀusion in social medthe US. Comput. Hum. Behav. 45, 204–212.                                                             ia—sentiment of microblogs and sharing behavior. J. Manag. Inf. Syst. 29 (4),
+Llewellyn, C., Grover, C., Alex, B., Oberlander, J., Tobin, R., 2015. Extracting a topic                  217–248.
+     speciﬁc dataset from a Twitter archive. In: International Conference on Theory and              Stieglitz, S., Dang-Xuan, L., 2013b. Social media and political communication: a social
+     Practice of Digital Libraries. Springer International Publishing, pp. 364–367.                       media analytics framework. Soc. Netw. Anal. Min. 3 (4), 1277–1291.
+Mao, Y., Yuxia, Y., 2015. Facebook use and acculturation: the case of overseas Chinese               Stirland, S.L., 2008. Propelled by internet, Barack Obama wins presidency. In: Wired
+     professionals in Western countries. Int. J. Commun. 9 (1), 2467–2486.                                Magazine, pp. 4.
+McKelvey, K., DiGrazia, J., Rojas, F., 2014. Twitter publics: how online political com-              Theocharis, Y., Lowe, W., van Deth, J.W., García-Albacete, G., 2015. Using Twitter to
+     munities signaled electoral outcomes in the 2010 US house election. Inf. Commun.                     mobilize protest action: online mobilization patterns and action repertoires in the
+     Soc. 17 (4), 436–450.                                                                                Occupy Wall Street, Indignados, and Aganaktismenoi movements. Inf. Commun. Soc.
+Miller, N.W., Ko, R.S., 2015. Studying political microblogging: parliamentary candidates                  18 (2), 202–220.
+     on Twitter during the February 2012 election in Kuwait. Int. J. Commun. 9, 21.                  Theocharis, Y., Barberá, P., Fazekas, Z., Popa, S.A., Parnet, O., 2016. A bad workman
+Mills, A.J., 2012. Virality in social media: the SPIN framework. J. Public Aﬀ. 12 (2),                    blames his tweets: the consequences of citizens' uncivil twitter use when interacting
+     162–169.                                                                                             with party candidates. J. Commun. 66 (6), 1007–1031.
+Mosca, L., Quaranta, M., 2016. News diets, social media use and non-institutional par-               Vaccari, C., Valeriani, A., 2015. Follow the leader! Direct and indirect ﬂows of political
+     ticipation in three communication ecologies: comparing Germany, Italy and the UK.                    communication during the 2013 Italian general election campaign. New Media Soc.
+     Inf. Commun. Soc. 19 (3), 325–345.                                                                   17 (7), 1025–1042.
+Moscovici, S., Zavalloni, M., 1969. The group as a polarizer of attitudes. J. Pers. Soc.             Vaccari, C., Chadwick, A., O'Loughlin, B., 2015a. Dual screening the political: media
+     Psychol. 12 (2), 125–135.                                                                            events, social media, and citizen engagement. J. Commun. 65 (6), 1041–1061.
+Moya-Sánchez, M., Herrera-Damas, S., 2016. How to measure persuasive potential on                    Vaccari, C., Valeriani, A., Barberá, P., Bonneau, R., Jost, J.T., Nagler, J., Tucker, J.A.,
+     Twitter: a methodological proposal. Palabra Clave 19 (3), 838–867.                                   2015b. Political expression and action on social media: exploring the relationship
+Newman, B.I., Sheth, J.N., 1985. A model of primary voter behavior. J. Consum. Res. 12                    between lower-and higher-threshold political activities among Twitter users in Italy.
+     (2), 178–187.                                                                                        J. Comput.-Mediat. Commun. 20 (2), 221–239.
+Nicholson, S.P., 2012. Polarizing cues. Am. J. Polit. Sci. 56 (1), 52–66.                            Van Kessel, S., Castelein, R., 2016. Shifting the blame. Populist politicians' use of Twitter
+Nooralahzadeh, F., Arunachalam, V., Chiru, C.G., 2013, May. 2012 Presidential elections                   as a tool of opposition. J. Contemp. Eur. Res. 12 (2), 594–614.
+     on twitter–an analysis of how the US and French election were reﬂected in tweets. In:           Volkova, S., Bachrach, Y., 2015. On predicting sociodemographic traits and emotions
+     2013 19th International Conference on Control Systems and Computer Science                           from communications in social networks and their implications to online self-dis-
+     (CSCS). IEEE, pp. 240–246.                                                                           closure. Cyberpsychol. Behav. Soc. Netw. 18 (12), 726–736.
+Ogden, D.T., Ogden, J.R., Schau, H.J., 2004. Exploring the impact of culture and ac-                 Vromen, A., Xenos, M.A., Loader, B., 2015. Young people, social media and connective
+     culturation on consumer purchase decisions: toward a microcultural perspective.                      action: from organisational maintenance to everyday political talk. J. Youth Stud. 18
+     Acad. Mark. Sci. Rev. 3 (1), 1–22.                                                                   (1), 80–100.
+Ogola, G., 2015. Social media as a heteroglossic discursive space and Kenya's emergent               Waisbord, S., Amado, A., 2017. Populist communication by digital means: presidential
+     alternative/citizen experiment. Afr. J. Stud. 36 (4), 66–81.                                         Twitter in Latin America. Inf. Commun. Soc. 20 (9), 1330–1346.
+Panagiotopoulos, P., Barnett, J., Bigdeli, A.Z., Sams, S., 2016. Social media in emergency           Wu, A.X., 2014. Ideological polarization over a China-as-superpower mindset: an exmanagement: Twitter as a tool for communicating risks to the public. Technol.                        ploratory charting of belief systems among Chinese internet users, 2008–2011. Int. J.
+     Forecast. Soc. Chang. 111, 86–96.                                                                    Commun. 2014 (8), 2650–2679.
+Park, S.J., Lim, Y.S., Park, H.W., 2015. Comparing Twitter and YouTube networks in                   Yardi, S., Boyd, D., 2010. Dynamic debates: an analysis of group polarization over time on
+     information diﬀusion: the case of the “Occupy Wall Street” movement. Technol.                        twitter. Bull. Sci. Technol. Soc. 30 (5), 316–327.
+     Forecast. Soc. Chang. 95, 208–217.                                                              Zhang, K., Bhattacharyya, S., Ram, S., 2016. Large-scale network analysis for online social
+P. Grover et al.                                                                                                               Technological Forecasting & Social Change xxx (xxxx) xxx–xxx
+
+
+    brand advertising. MIS Q. 40 (4), 849–868.                                                     and digital marketing, particularly in the context of emerging markets. He has published
+Zhu, D.H., 2013. Group polarization on corporate boards: theory and evidence on board              more than 250 articles in a range of leading academic journals and conferences. He has
+    decisions about acquisition premiums. Strateg. Manag. J. 34, 800–822.                          co-edited/co-authored more than 20 books on technology adoption, e-government, IS
+                                                                                                   theory, eWOM and social media which have been published by international publishers
+                                                                                                   such as Chandos Publishing (an imprint of Elsevier), Springer, Chapman and Hall/CRC
+Purva Grover is a research scholar in Information Systems at DMS, Indian Institute of              Press, Routledge and Emerald. He has acted as co-editor of ﬁfteen journal special issues;
+Technology, Delhi. Her research interests are in big data, social media, business analytics        organized tracks, mini-tracks and panels in leading conferences and served as programme
+and technology management. She has published ﬁve research articles which are available             co-chair of the 2013 IFIP WG 8.6 Conference on Grand Successes and Failures in IT:
+in IEEE and Springer. She had earlier served at Indian Council of Medical Research. Prior          Public and Private Sectors and as Conference Chair of the IFIP WG 6.11 I3E2016
+to that, she has two years of experience at Absolutdata Research and Analytics.                    Conference on Social Media: The Good, the Bad, and the Ugly. He is an Associate Editor of
+                                                                                                   the European Journal of Marketing and Government Information Quarterly and Senior
+Arpan Kumar Kar teaches in the Information Systems area in DMS, Indian Institute of                Editor of the Journal of Electronic Commerce Research. Professor Dwivedi is the founding
+Technology Delhi, India. His research interests are in the domain of digitization, social          editor of the recently established Springer Book Series on Advances in Theory and
+media, analytics, machine learning and technology management and have published                    Practice of Emerging Markets (http://www.springer.com/series/15802). More informaextensively in these domains. He has edited books in Springer and Taylor & Francis. He is          tion about Professor Dwivedi can be found at: http://www.swansea.ac.uk/staﬀ/som/
+also Associate Editor of Global Journal of Flexible Systems Management and a Guest                 academic-staﬀ/y.k.dwivedi/.
+Editor of Information Systems Frontiers. He has earlier worked for IIM Rohtak, IBM
+Research Laboratory, and Cognizant Business Consulting. He has handled major research              Marijn Janssen is full professor in ICT & Governance and chair of the Information and
+and consulting projects for private and public MNCs/Governments. He has received a lot             Communication Technology research group of the Technology, Policy and Management
+of awards from reputed organizations like AIMS, PMI, IIMR, TCS etc.                                Faculty of Delft University of Technology. His research interests are in the ﬁeld of ICT and
+                                                                                                   governance in particular orchestration, (shared) services, intermediaries, open data, and
+Yogesh K. Dwivedi is a Professor of Digital Marketing and Innovation, and Director of              infrastructures in public–private service networks. He serves on several editorial boards
+the Emerging Markets Research Centre (EMaRC) in the School of Management at Swansea                and is involved in the organization of a number of conferences. He published over 400
+University, Wales, UK. His research interests are in the area of Information Systems (IS)          refereed publications.
+including: the adoption and diﬀusion of emerging ICTs, electronic/digital government

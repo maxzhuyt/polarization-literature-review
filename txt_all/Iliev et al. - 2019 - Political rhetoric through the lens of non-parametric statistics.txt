@@ -1,0 +1,989 @@
+J. R. Statist. Soc. A (2018)
+
+
+      Political rhetoric through the lens of non-parametric
+      statistics: are our legislators that different?
+
+      Iliyan R. Iliev
+      University of Southern Mississippi, Hattiesburg, USA
+
+      and Xin Huang and Yulia R. Gel
+      University of Texas at Dallas, USA
+
+      [Received June 2017. Final revision September 2018]
+
+      Summary. We present a novel statistical analysis of legislative rhetoric in the US Senate that
+      sheds a light on hidden patterns in the behaviour of Senators as a function of their time in
+      office. Using natural language processing, we create a novel comprehensive data set based
+      on the speeches of all Senators who served on the US Senate Committee on Energy and
+      Natural Resources in 2001–2011. We develop a new measure of congressional speech, based
+      on Senators’ attitudes towards the dominant energy interests. To evaluate intrinsically dynamic
+      formation of groups among Senators, we adopt a model-free unsupervised space–time data
+      mining algorithm that has been proposed in the context of tracking dynamic clusters in environmental georeferenced data streams. Our approach based on a two-stage hybrid supervised–
+      unsupervised learning methodology is innovative and data driven and transcends conventional
+      disciplinary borders. We discover that legislators become much more alike after the first few
+      years of their term, regardless of their partisanship and campaign promises.
+      Keywords: Data mining; Dynamic clustering; Natural language processing; Political time
+      series
+
+
+1.   Introduction
+What are politicians really telling us? They sound different, but are they really? The 2016 campaign for US President presented us with two distinct candidates: Hillary Clinton and Donald
+Trump, who had very different messages for the voters. The outsider message was a prominent feature of the 2016 elections, used by both presidential and congressional candidates, on
+both sides of the aisle (Lowry, 2016; Healy, 2015). The Democrats and Republicans in the US
+Congress are also ﬁghting for the increasingly divided electorate. Using their speech, politicians
+from both sides constantly send (often contradictory) signals to the voters and ﬁnancial supporters. Such political sentiments have a tremendous inﬂuence on all aspects of our society, and
+better understanding of the behaviour of politicians when in ofﬁce is critical for both voters and
+interest groups. This is particularly acute as political discourse is rarely driven by compromise
+and co-operation, especially in the currently highly polarized US Congress. Politicians running
+for ofﬁce often promise to be different from their colleagues, but do they keep those promises
+when in ofﬁce? Is their rhetoric really that distinct, or do they cater to similar interests? And
+how can statistical analysis help us to unveil and quantify political perception?
+
+  Address for correspondence: Iliyan R. Iliev, Department of Political Science, University of Southern Mississippi,
+118 College Drive, Hattiesburg, MS 39406, USA.
+E-mail: iliyan.iliev@usm.edu
+
+© 2018 Royal Statistical Society                                                          0964–1998/18/182000
+
+
+2        I. R. Iliev, X. Huang and Y. R. Gel
+   Detecting hidden underlying dynamics in political attitudes and expressions, as well as similarities between them, is crucial for our society but such a challenging task is difﬁcult to achieve
+without advanced statistical methods and data mining tools. And although politicians increasingly use data analytics in their election campaigns (see overviews in Issenberg (2012), Kaye
+(2014), Grajales (2014) and Markman (2016) and references therein), can we uncover political
+patterns with modern statistical methodology? We attempt to address this challenging problem
+by proposing a novel study of political rhetoric in congressional committees.
+   We develop a mixed supervised–unsupervised approach for tracking changes in speech over
+time and detecting common features and behavioural clustering among legislators. We combine
+automated content analysis of legislative speech with spatiotemporal dynamic clustering and a
+data-driven (in)stability criterion to select optimal clustering input parameters. Although some
+of the tools that we use existed before, the combination of these methods is novel, as well as
+their application. The application of these algorithms to the study of politicians’ rhetoric and
+their dynamic behaviour with respect to their time in ofﬁce is innovative, and such an analysis
+is only possible through the use of advanced statistical methods. The statistical contribution
+stems from the combining of three methods that existed separately to solve a complex problem
+in energy policy, which could not be analysed by using a traditional approach, i.e. we show how
+statistical thinking and statistical algorithms and analyses can play a vital role in enhancing
+our understanding of intrinsic mechanisms of legislative politics and can beneﬁt our society in
+general. Furthermore, the need and application of these advanced statistical and data mining
+methods renders our study beyond the traditional scope of a single discipline. Our approach
+is not exclusive to political science, but can be used as a template to solve similarly complex
+multistage problems in a wide array of disciplines.
+   Whereas committee text has been used previously (Yano et al., 2012; Nowlin, 2015; Stramp
+and Wilkerson, 2015; Talbert et al., 1995), the focus has been on legislative bills or speciﬁc
+issue deﬁnitions. Rhetoric in congressional committees has not been analysed before, to our
+knowledge, in a systematic and objective way by using advanced statistical methods. Here, we
+primarily focus on the arguably most dominant area of the US and worldwide politics: the energy
+sector. We create a novel comprehensive data set based on the statements from congressional
+hearings of all Senators who served on the US Senate Committee on Energy and Natural
+Resources in 2001–2011. Our data set can be used to evaluate various expressions of political
+behaviour or attitudes quantitatively through rhetoric. Our analytic approach of combining
+supervised natural language processing and aggregate classiﬁcation with unsupervised dynamic
+clustering has numerous applications well beyond the energy sector and range from analysis of
+political statements when soliciting campaign contributions, discussing foreign policy issues or
+during contentious political campaigns. The results can in turn lead to a deeper understanding
+of political rhetoric and facilitate the comprehensive analysis that can inform the voters, as well
+as a broad range of policy makers.
+   The ﬁrst stage of our algorithm is an automated content analysis of legislative speech in a
+supervised context. We are interested in scaling attitudes towards prespeciﬁed interest groups and
+in classifying document category proportions. Note that we do not focus on individual documents
+since we study attitudes in the aggregate. Thus, the ﬁrst stage of our analysis is based on a
+supervised natural language processing method for aggregate classiﬁcation that was developed
+by Hopkins and King (2010). Since our current focus is on the US Senate Committee on Energy
+and Natural Resources and the energy sector explicitly and implicitly affects all sectors of the
+economy, including non-energy related sectors, from national security to the environment, we
+propose a novel measure for legislative rhetoric—attitudes towards the dominant energy interests.
+In a statistical sense, the measure can be viewed as a baseline. The data are aligned so that all
+
+
+                           Political Rhetoric through the Lens of Non-parametric Statistics      3
+rhetoric begins at month 1 of the Senators’ tenure in ofﬁce within the period that we analyse,
+allowing us to trace the speech trajectories as they progress in ofﬁce.
+   The second stage of our analysis aims to uncover clusters in the behaviour of legislators in
+terms of their expressed rhetoric identiﬁed in the ﬁrst stage. However, the process of political
+group formation is intrinsically dynamic, and the number and shape of the clusters are unknown
+a priori, since they could be based on partisanship, geography, constituency and other unknown
+subjective factors. To address these challenges, we adopt an unsupervised spatiotemporal data
+mining algorithm for discovering dynamic clusters of arbitrary shape in environmental georeferenced data, namely, the trend-based clustering algorithm for spatiotemporal data stream called
+TRUST (Ciampi et al., 2010). We then employ data-driven (in)stability criteria to select optimal
+clustering input parameters, based on the cross-validation argument (Dudoit and Fridlyand,
+2002; Ben-David et al., 2006; Ben-David and Von Luxburg, 2008; Wang, 2010; Huang et al.,
+2016, 2017) that allow for a more objective and automatic choice of parameters in contrast
+with a traditional user prespeciﬁed option. Such a data-driven approach to clustering allows us
+to retain the dynamic component of political speech—group membership and the number of
+groups can evolve over time; thus the numbers of clusters are selected automatically.
+   The results of the study suggest that, in the beginning of their tenure, Senators tend to differ
+noticeably from each other (i.e. to exhibit distinct rhetoric), as usually promised on the campaign trail—there is a higher number of clusters with smaller membership. However, as Senators
+spend more time in the institution, becoming more institutionalized, these differences begin to
+diminish and their rhetoric becomes more alike—as a result, we observe fewer clusters and cluster membership tends to be higher. The cluster formation shows complex dynamics, and not
+separation based on party. For instance, the Senators cluster on the basis of their seniority in
+the committee, the signiﬁcance of the energy industry in their state and other connections to the
+sector, but surprisingly not on partisanship. Our data-driven dynamic clustering approach enables us to explore these political formation dynamics in a more objective way while minimizing
+model and data constraints.
+   The paper is organized as follows. We proceed with an overview of related methodology for
+the analysis of political text in Section 2. Next, in Section 3 we discuss the natural language
+processing algorithm that we employ and the rhetoric data set that is produced by it. Section 4
+is devoted to the dynamic clustering algorithm TRUST in application to committee rhetoric.
+We discuss our case-study and ﬁndings on the dynamics of legislative rhetoric in the US Senate
+Committee on Energy and Natural Resources in Section 5. The paper is concluded with the
+closing discussion and overview of future work in Section 6.
+
+2.   Related work
+Stringent seniority deference norms are suggested to inﬂuence behaviour (Sinclair, 1983, 2016),
+which is in line with the traditional view of Congressional norms. Analysis of ﬂoor speeches
+suggests that Senators tend to differentiate themselves later in their terms (Quinn et al., 2010).
+However, an important aspect of modern campaigns is the candidate positioning as an outsider, or someone who is different from an otherwise unpopular institution. This phenomenon,
+which shapes Congressmen’s behaviour, is what is known as Fenno’s paradox—voters generally disapprove of Congress as a whole but support the Congressmen from their own district
+(Fenno, 2002). Anti-establishment politics are not new (Horwitz, 2013; Barr, 2009) and can
+currently be observed both in the conservative right with the Tea Party members (Boykoff and
+Laschever, 2011; Skocpol and Williamson, 2012), as well as in the liberal left (Bolton, 2016).
+However, members of Congress become institutionalized and their behaviour is shaped by their
+
+
+4         I. R. Iliev, X. Huang and Y. R. Gel
+institution (Binder, 2015; Hibbing and Theiss-Morse, 1995; Canon, 1989) even as they campaign
+as outsiders (Herrnson, 2007; Burden, 2004). The literature provides evidence that members become more alike the more time they spend in the institution (Cox and McCubbins, 2005) and
+that general election competition exerts pressure towards convergence (Hirano et al., 2010).
+   Rhetoric is an important political commodity that carries value for both the speaker and the
+audience, and it can be used as a strategic tool (Mayhew, 2004). The need for credibility makes
+the signals costly and not just ‘cheap talk’. Interest groups pay attention to the way that their
+preferences are discussed and adjust their responses. Examples come from every policy area,
+ranging from oil companies becoming involved in lobbying during an oil spill (OpenSecrets.org,
+2011) to information technology companies ﬁghting for net neutrality (Brodkin, 2015) and for
+changes in the H1B visa process (San Jose Mercury News, 2015). The evolving patterns of
+legislative behaviour can alert these groups when and how to become involved in the political
+processes. The diverse patterns of legislative behaviour can be based on party lines, geographic
+differences or the composition of the particular constituents. The numerous sources that inﬂuence the behaviour and associated uncertainties create underlying patterns that are hardly
+detectable without a deeper statistical analysis.
+
+
+2.1. Individual document classification versus category proportions
+Unlike other ﬁelds, content analysis in the social sciences is often focused on category proportions and generalizations rather than individual document classiﬁcations (Hopkins and King,
+2010; Grimmer, 2010). Political scientists are generally interested in the attitudes of a Senator
+or a presidential candidate in the aggregate, rather than the classiﬁcation of any speciﬁc speech
+or statement. Hopkins and King (2010) made an apt analogy—
+    ‘policy makers or computer scientists may be interested in ﬁnding the needle in the haystack..., but
+    social scientists are more commonly interested in characterizing the haystack’.
+
+Grimmer (2010) proposed a hierarchical structure with political statements at the bottom, and
+their author at the top, which we employ in our analysis. The focus on political actors and not
+on their individual expressions is crucial, as we are interested in the overall legislative behaviour
+of these actors. Document classiﬁcation would require frequency-based methods, whereas our
+focus on the speakers themselves requires a method that takes the category proportions into
+account. In addition, the link between legislative sentiment and legislative text, and its use to
+explain and predict roll-call voting, is discussed, for instance, by Gerrish and Blei (2011, 2012).
+
+2.2. Analysis of the dynamics
+The behaviour of political actors is dynamic in nature and studying it requires statistical solutions
+that capture its temporal and spatial components. One such solution is provided by the dynamic
+networks literature (Loglisci, 2013; Loglisci et al., 2015; Beykikhoshk et al., 2015; Loglisci
+and Malerba, 2015). The focus is on the dynamics of evolving (heterogeneous) structured data
+(Loglisci et al., 2015), as well as the dynamics of the content of textual data (Loglisci, 2013;
+Beykikhoshk et al., 2015). Beykikhoshk et al. (2015) proposed a ﬂexible solution that does not
+restrict the type of changes that the model can capture, whereas Loglisci and Malerba (2015)
+developed a method based on two notions of patterns: emerging patterns and periodic changes.
+The emphasis is on discovering complex structural changes in the dynamic network across the
+temporal dimension. These solutions are useful when the focus of the analysis is on networks,
+where the complex linkages between individual nodes are of interest. When the dynamics of
+the behaviour are studied at the group level, i.e. similar behaviour within a group over time,
+
+
+                           Political Rhetoric through the Lens of Non-parametric Statistics      5
+clustering methods are appropriate. The number of dynamic data-driven clustering procedures
+for space–time data that allow the number, shape and distributional properties of clusters to
+vary remains limited, despite receiving interest in recent years (Gaber et al., 2005; Cao et al.,
+2006; Banerjee et al., 2014). Two such dynamic clustering procedures are a space–time data
+mining procedure (TRUST) that is based on interleaving spatial clustering and temporal trend
+detection (Ciampi et al., 2010), and a hierarchical spectral merger algorithm to cluster brain
+connectivity (Euan et al., 2015).
+
+2.3. Supervised versus unsupervised political content analysis
+Measuring the intensity of expressed attitudes through political speech patterns provides rich
+data and enables a better measure of support or opposition that is not necessarily visible in
+the ﬁnal vote. Automated analysis of political text is a relatively new ﬁeld, which poses speciﬁc
+problems and requires a problem-speciﬁc validation (Hopkins and King, 2010; Grimmer, 2010;
+Gerrish and Blei, 2011; Grimmer and Stewart, 2013). Within the ﬁeld, the two main categories of
+analysis are ideological scaling and classiﬁcation mechanisms, both of which can be supervised
+or unsupervised (for a more extended overview see Grimmer and Stewart (2013), and references
+therein). Supervised and dictionary-based learning methods assume deﬁned sets of categories
+allowing for the selection of a particular focus of the analysis rather than relying on underlying
+categories. If such a predetermined categorization scheme is missing or the goal is to explore
+unknown classiﬁcations, unsupervised methods can be helpful. According to Grimmer and
+Stewart (2013), although supervised and unsupervised methods are often seen as competing,
+they are in fact context dependent and can even be complementary. We apply this logic to our
+study and utilize the beneﬁts of both methods in a new two-stage procedure to capture better
+the dynamics of legislative behaviour over time.
+
+
+3.   Data generation
+3.1. Rhetoric in committee
+Our focus on committee rhetoric is novel both in political science and in the statistics and
+machine learning contexts, providing multifold beneﬁts. Despite some indication that the role
+of committees in the legislative process in Congress is evolving (Sinclair, 2016; Schickler, 2001),
+Congressional committees continue to be an important component of that process. First, most
+of the interactions take place within committees, providing richer information on its members.
+Second, legislative hearings in committee allow for daily measures of changes in rhetoric. Third,
+understanding dynamics of committee work is essential because policy preferences are expressed
+during committee hearings, and those discussions shape future bills. Although a large number
+of proposed bills never make it past that stage, they still contain indispensable information
+about policy positions. Finally, despite the various audiences that scrutinize the behaviour in
+committees, they provide a lower visibility setting where legislative interactions can occur with
+less attention from the public. Thus, the agenda in congressional committees is more ﬂuid,
+and it is easier for interest groups to become involved and to insert their preferences (Hall and
+Wayman, 1990; Hojnacki and Kimball, 1998).
+   Despite the importance of congressional rhetoric, and the fact that the records of the committee hearings are public, to the best of our knowledge, this wealth of data has never been
+systematically organized and analysed. We develop a novel methodical procedure to analyse
+political rhetoric, with an immediate application for committee speech, but with a multitude of
+applications beyond that.
+
+
+6        I. R. Iliev, X. Huang and Y. R. Gel
+   Our source of legislative rhetoric is the US Government Printing Ofﬁce, which has an archive
+of transcripts from congressional hearings (US Government Printing Ofﬁce, 2014). We use data
+on hearings from 2001 to 2011. However, the unit of analysis is individual rhetoric, which is not
+readily obtainable. Senators can make a number of statements within the same hearing; thus we
+utilize a Java algorithm to parse single uninterrupted remarks from the full text of the hearings.
+The algorithm separates statements by members of the committee from other statements such
+as testimonies from witnesses and statements by foreign delegations. The algorithm also takes
+into account changing chairmanship of the committee, and different members sharing the same
+last name such as the case with Frank Murkowski of Alaska, who was the chairman in the
+beginning of the time period in question, and his daughter Lisa Murkowski, who replaced him
+in 2002.
+   The transcripts from the committee include statements by Senators (the focus here), as well
+as statements from witnesses and expert testimony. The witness statements are often in the form
+of written prepared testimony. Senators can sometimes submit written remarks as well, usually
+when they are not at the hearing. These types of statement occur rather infrequently and, since
+most introductory statements are prepared in advance, the dynamics and inherent structure are
+similar in written and spoken statements.
+   The resulting data set includes 40525 individual statements from congressional hearings from
+2001 to 2011 that are organized temporally. The rhetoric data span over more than 10000 pages.
+Because of the large amount of text that was analysed, we employ a natural language processing
+algorithm that was devised by Hopkins and King (2010).
+
+
+3.2. Natural language processing of committee rhetoric
+Computerized text analysis falls within the broader ﬁeld of pattern recognition and is quite a
+new ﬁeld, especially for the social sciences (Monroe and Schrodt, 2008; Pang and Lee, 2008;
+Shellman, 2008). We conducted an extensive search of appropriate language processing tools,
+and a method that was developed by Hopkins and King (2010) is particularly suitable for our
+objectives. The method is a supervised learning approach, enabling us to specify categories of
+interest (attitudes towards the energy industry), and to estimate document category proportions instead of individual document scores. Our focus is not to ﬁnd undeﬁned patterns in the
+congressional speeches, but to measure changes in speciﬁed categories over time that constitute a basis for subsequent quantitative and qualitative analysis. We study document category
+proportions instead of scoring individual texts—the proportion of speeches within each month
+that fall within the predetermined categories because the focus is on the speakers and not the
+speeches themselves. The natural language processing algorithm is used to produce proportion
+level estimates per Senator per month (a Senator–month measure).
+   We select a training set with documents Di , where i = 1, : : : , I. We choose a training sample
+size I in accordance with the guidelines that were speciﬁed by Hopkins and King (2010), pages
+241–242, who recommended 500 documents for minimizing the root-mean-square error. Our
+training set is almost double the recommended value and is based on I of 947 statements. The
+documents in the training set are selected by using simple random sampling from the full set of
+speeches and hand coded into four categories. The documents are labelled with a label j, such that
+Di = j: in our case, with four categories, j = 1, : : : , 4. The categories that we use are ‘pro-lobby’
+(category 1), ‘neutral’ (category 0), ‘procedural’ (category 9) and ‘anti-lobby’ (category −1).
+An anti-lobby statement, for example, would be a statement that proposes a cut in the subsidies
+for the oil industry. A pro-lobby statement would be a statement that proposes an increase in
+the number of drilling permits for off-shore oil drilling. A procedural speech is a speech that
+
+
+                            Political Rhetoric through the Lens of Non-parametric Statistics       7
+thanks an outside expert for being present during a hearing, whereas an example for a neutral
+statement would be the discussion of the creation of a memorial.
+   The energy industry is dominated by the fossil fuel and electric utilities subindustries in terms
+of both interest group activity and production. These subindustries represented 78% of the total
+energy production in 2010 (US Energy Information Administration, 2000) and around 92% of
+the lobbying and campaign contributions from the energy sector (OpenSecrets.org, 2013). Thus,
+our focus here is on those interests, and the attitudes that we measure in the rhetoric are towards
+these groups. Multivariate classiﬁcation across the subinterests (oil, coal, etc.) is preferable, but
+there is not enough variation in the data to support coding multiple dimensions.
+   The classiﬁcation algorithm summarizes the text of the labelled documents Di by using word
+stems Sik , k = 1, : : : , K, where K is a number of word stems. Thus, the text of each labelled
+document is represented by a K × 1 vector of word stems, where word stem Sik = 1, if the
+particular word stem is used at least once in document Di , and Sik = 0 otherwise. The selection
+mechanism and size of the subsets of words that are used for word stems K are outlined in
+Hopkins and King (2010), page 237. The size of the vector of subsets of word stems was chosen
+on the basis of cross-validation within the labelled set, within the boundaries that were deﬁned
+by Hopkins and King (2010), which in our case was equal to 20. The size was determined
+empirically through cross-validation and is application speciﬁc.
+   The population set of documents, Dl , l = 1, : : : , L, includes the full 40525 speeches for all
+the members of the committee from 2001 to 2011, which are then subsetted by speaker and
+time. The documents in the population set have an unobserved classiﬁcation Dl = j, j = 1, : : : , 4,
+and are described by using word stems, similarly to the training set. The quantity of interest
+for the algorithm is the aggregate proportion of all of the population documents that fall into
+each category (P.D/ = .P.D = 1/, : : : , P.D = 4// ). For example, P.D = 1/ is the estimate of the
+proportion of documents in category 1, and the true proportion is P.D = 1/. Proportion P.D/
+is a 4 × 1 vector, where each element is computed as follows:
+                                                     1 L
+                                    P.D = j/ =             1.Dl = j/:                          .3:1/
+                                                     L l=1
+The algorithm estimates the proportion of documents in various categories by using
+                                         
+                                         J
+                           P.D = j/ =            P.D = j|D = j  /P.D = j  /:               .3:2/
+                                         j  =1
+
+Hence, the aggregate proportion of all of the population documents that fall into each category,
+P.Dl = j/, is computed according to
+                                       P.S/ = P.S|D/ P.D/ ,                                    .3:3/
+                                       2k ×1         2k ×J   J×1
+
+where P.S/ is the probability that each of the 2K possible word stem proﬁles occurs and P.S|D/ is
+the probability of each of the word stem proﬁles occurring within the documents in category Dl =
+j. Note that P.S|D/ signiﬁes that the attitude of the Senators towards the energy industry comes
+before the words that they use in their statements. (We follow Mahatma Gandhi’s paradigm ‘Your
+beliefs become your thoughts, Your thoughts become your words...’.) For a further discussion
+of the algorithm, see Hopkins and King (2010).
+   The syntax of a language often needs to be annotated as part of natural language processing. The annotation usually includes part-of-speech tagging, phrase structure and dependence
+structure. Various corpora include parts-of-speech tags as part of the annotation process. Such
+
+
+8       I. R. Iliev, X. Huang and Y. R. Gel
+a step is particularly important for parsers. Additional annotation for semantic content is also
+possible, allowing an algorithm to distinguish more complex structures. Finally, annotation
+can help to identify the document level semantic properties that are implied by a text, such as
+free-text annotations (Branavan et al., 2009). Although annotations can be crucial for certain
+applications, the so-called ‘bag of words’ simpliﬁcation can be highly effective (Pang et al.,
+2002). Hopkins and King (2010), page 232, discussed the issue at length and concluded that, on
+empirical testing, annotation is not necessary for the particular application of the algorithm.
+   Certain Senators might make a higher number of interrupted remarks (such as the chairman)
+versus longer uninterrupted statements within the same hearing. The ﬁnal scores are not affected
+by the length of the individual statements, nor by whether they are interrupted or not because we
+are not interested in classiﬁcation of individual statements, but in classifying statement category
+proportions within a given month. There are various reasons why a Senator would be a member
+of the committee but not make a statement in a given time period. There might not have been a
+committee hearing in that period (during recesses for example); thus the Senators were unable
+to express their attitudes and we can extend the last available expression of their attitudes to
+the period with the missing data. The same logic applies in cases of absence from a hearing.
+However, the cases when there was a committee hearing and a Senator did not make a speech
+contain information because not making a speech while being present on the committee can
+represent a certain expression of attitude and we cannot assume that he or she simply retained
+the previously expressed attitude. In these cases, we cannot extend their previous available scores
+without inducing bias. Instead a score of 0 for all possible categories of rhetoric in that period
+would signify that there was a hearing, but attitude was not expressed in either category. Ignoring
+the reasons for the missing data would induce bias. We handle the missing rhetoric by using a
+combination of extending previous rhetoric scores in cases when a hearing did not occur and
+assigning a score of 0 when a Senator was present but did not speak.
+
+
+3.3. Reindexing time
+The ﬁnal measures are monthly time series for each member of the committee in the period 2001–
+2011. For our analysis, we select the pro-lobby rhetoric for all Senators who were members of
+the committee for at least 48 months during the period of interest, and we produce two data sets
+with a focus on full membership and full term representation. The full membership data include
+31 Senators over 48 months, whereas the full term data include a smaller number of Senators
+(19) over a longer time period (72 months). The supportive rhetoric measure is on a scale from
+0.00 to 1.00.
+   The data present a time indexing problem. If we use the ‘real world clock’, we would account
+for events affecting the policy environment (oil spills, wars, etc.) and the political environment
+(divided government, etc.). However, this clock does not align with the time that the Senators
+have spent on the committee or the time that has passed since their previous election because
+they are elected at different times. We also cannot account for the time that has passed since
+they were ﬁrst elected (their time in the Senate) because some of the members who are included
+had been in Congress for decades before our period of interest. Finally, aligning the Senators
+on the basis of when they appeared in the data removes the substantive meaning that we are
+interested in.
+   Ultimately, our substantive focus is on their behaviour based on length of time since their last
+election. Electoral strategies and concerns have an inﬂuence on legislative behaviour as evidenced
+by the ‘electoral connection’ literature (Mayhew, 2004; Rothenberg and Sanders, 2000). We
+measure the inﬂuence of the electoral connection on legislative behaviour by reindexing the
+
+
+                            Political Rhetoric through the Lens of Non-parametric Statistics         9
+data so that all rhetoric begins at month 1 in ofﬁce following a Senator’s election (time since
+last election). Thus, for both data sets, xtm is a scalar-valued rhetoric score expressed by the mth
+Senator at time point t, where t = 1, : : : , T and m = 1, : : : , M. For the full membership data set,
+T = 48 and M = 31, whereas, for the full term data set, T = 72 and M = 19.
+
+3.4. Statistical validation and reliability testing
+The two main requirements for any automated natural language processing algorithm are
+reliability and utility over hand coding. In our case, hand coding tens of thousands of pages
+of text is not feasible, so the algorithm clearly adds utility. However, validation and reliability
+concerns need to be addressed by any researchers who utilize automated text analysis (Grimmer and Stewart, 2013). Biases in supervised learning stem mostly from the human coding that
+‘teaches’ the algorithm (Hopkins and King, 2010). A critical component of content analysis
+is the measure of intercoder reliability or coder agreement (Lombard et al., 2002). Intercoder
+reliability refers to the degree to which independent coders evaluate a feature (in this case, text)
+and reach the same conclusion. We perform an intercoder reliability test with two coders who
+coded the training set of 947 statements. A widely used measure for evaluating intercoder reliability is Krippendorff’s α which can be used regardless of the number of observers, levels of
+measurement, sample sizes and presence or absence of missing data (Hayes and Krippendorff,
+2007; Krippendorff, 2004). The general form of Krippendorff’s α is
+
+                                          α = 1 − Do =De ,                                       .3:4/
+
+where Do is the disagreement that is observed, and De is the disagreement that is expected by
+chance (for a detailed discussion, see Krippendorff (2004)). Values of α above 0.8 are generally
+considered to indicate a high intercoder reliability (Krippendorff (2004), pages 241–243). In our
+case, the resulting Krippendorff α is 0.91, which suggests a high intercoder agreement and a
+reliable coding scheme.
+   Furthermore, the algorithm needs to be validated as a reliable tool for replicating human
+coding (Grimmer and Stewart (2013), page 271). Cross-validation is a commonly used method
+for assessing reliability of automated natural language processing algorithms. The idea is to
+partition data into complementary non-overlapping subsets, to perform analysis on one subset
+and to validate the results on the other subset. The process involves multiple rounds using
+different partitions (known as folds), with the results averaged over the folds to produce a
+single estimate. V -fold cross-validation is a process in which the original text data are randomly
+partitioned into V equally sized subsamples. We performed ﬁvefold cross-validation, which
+randomly partitioned the training set into ﬁve groups. This enables us to compare the output of
+the machine coding with the output of the hand coding. The performance is assessed on each
+of the groups with predictions made on data out of sample. (For a complete discussion of this
+validation model, see Grimmer and Stewart (2013), pages 279–280.) In our study, the resulting
+accuracy (i.e. proportion of correctly classiﬁed documents) score is 0.92, which indicates an
+accurate classiﬁer.
+
+4.   Cluster analysis of political rhetoric
+Grimmer and King (2011) provided an overview of the existing automated methods for cluster
+analysis of political data and proposed a simultaneous unsupervised algorithm that combines
+text analysis and clustering, under the assumption of unknown document categories or topics.
+In our setting, however, we focus on detecting common features and a hidden structure among
+
+
+10       I. R. Iliev, X. Huang and Y. R. Gel
+time series where each time series represents a Senator’s aggregated behaviour with respect to
+a certain known topic, or a baseline. In our study, the prespeciﬁed topic is attitudes towards
+energy, and the goal is to cluster Senators’ aggregated behaviour with respect to the energy
+interests and then to trace the changes during their time in ofﬁce.
+   Political clusters based on such ‘behavioural’ time series are intrinsically dynamic, with time
+varying distributional shapes and number of groups. Indeed, the behaviour of Senators may
+dynamically evolve over time to maximize their interests at different stages. Hence, most conventional clustering algorithms are inapplicable in the current setting. Because of this complexity
+of the behavioural time series, it is crucial to choose a more ﬂexible clustering method that can
+dynamically detect the intrinsic patterns. Some possible methods are clustering techniques from
+streamed data mining, where a window model is usually used to capture dynamics inside data
+(Aggarwal et al., 2003; Munro and Chawla, 2004; Cao et al., 2006; Aggarwal, 2007). However,
+these methods either require the number of clusters to be prespeciﬁed (Aggarwal et al., 2003),
+thus increasing the level of a priori subjectivity, or they do not address the temporal dynamics of
+the data within a cluster, which is required for our political science study (Munro and Chawla,
+2004; Cao et al., 2006).
+   To address these challenges, we bring an idea from environmental studies and adopt a ﬂexible
+data mining approach, the trend-based clustering algorithm for spatiotemporal data, TRUST,
+that was proposed by Ciampi et al. (2010) and Appice et al. (2015) in the context of environmental
+space–time data. The key idea of TRUST is based on a temporal sliding window argument
+extended to multiple spatially distributed data sources such as georeferenced sensors. Spatial
+locations are then grouped in terms of the proximity of their temporal trajectories in the recent
+past. We, in turn, apply TRUST by viewing each Senator as a location (or ‘sensor’) and cluster
+them in terms of the similarity of their rhetoric. However, in the framework of political time
+series, there is no spatial information, and Senators are grouped as long as they share similar
+temporal trajectories in their rhetoric. Therefore, our modiﬁed algorithm is targeted to detect
+dynamic clustering in time series only and is referred to as reduced TRUST or ‘R-TRUST’.
+   Below we present a schematic idea of R-TRUST (Fig. 1). (Since in general TRUST aims to
+preserve the space–time continuity of the observed data, its detailed description is tedious, and
+for more details we refer the reader to Ciampi et al. (2010) and discussion therein.)
+   Recall that, for both data sets, xtm is a scalar-valued rhetoric score expressed by the mth
+Senator at time point t, where t = 1, : : : , T and m = 1, : : : , M. (For the full membership data set,
+T = 48, and M = 31, whereas, for the full term data set, T = 72, and M = 19.) Let X be a T × M
+matrix formed by xtm . Each row of X, i.e. x·1 , : : : , x·M , represents the rhetoric of all Senators at
+a given time point and is called a layer. A set of p consecutive rows is called a slide, and a set of
+ω consecutive layers forms a sliding window of size ω.
+   The R-TRUST algorithm consists of two main steps. The ﬁrst step is slide level clustering.
+Let the ith slide, denoted by Xi , be a p × M matrix, where p < T , i = 1, : : : , T=p, and r
+denotes the ﬂoor function, i.e. the greatest integer less than or equal to r. Each column of Xi ,
+i.e. x1: , : : : , xp: , represents temporal behaviour of one Senator (i.e. a sequence of time series).
+R-TRUST randomly starts with one time series l as an initial point (i.e. a seed time series) and
+searches time series m for close relations in terms of Eδθ (referred to as neighbours). The procedure
+is formalized as follows:
+                                                                     p                     
+                                                                     
+                              Eδθ = x·m , x·l , m, l = 1, : : : , M    ψδ .xtm , xtl / ⩾ θp ,     .4:1/
+                                                         t=1
+
+where
+
+
+                              Political Rhetoric through the Lens of Non-parametric Statistics            11
+
+
+Fig. 1. Sketch of the R-TRUST clustering approach for a toy example with six Senators: circles S1 ,. . . , S6
+denote times series corresponding to rhetoric of each Senator over a period of one slide
+
+                                                           |xtm − xtl |
+                                                      1    if            ⩽δ
+                              ψδ .xtm , xtl / =                β −α                                .4:2/
+                                                0         otherwise,
+where x·m and x·l are rhetoric expressed by the mth and lth Senators respectively, over t = 1, : : : , T ,
+θ is the slide level trend continuity threshold in [0, 1], p is the slide size, [α, β] is the domain of
+slide Xi and δ is the value similarity threshold in [0, 1] (θ, p, α, β and δ are user-prespeciﬁed
+parameters). Hence, the dissimilarity measure ψδ .xtm , xtl / is a weighted l1 -distance between x·m
+and x·l .
+   The seed time series and neighbours that are found by expression (4.1) form the initial cluster.
+Each neighbour time series is then chosen as seed time series and applied to expression (4.1) to
+expand the cluster further in an iterative fashion. Once each time series has been assigned into
+a cluster, the algorithm stops and returns a Γ slide level clustering set for slide Xi . (For more
+details on pseudocode of the algorithm and deﬁnitions of concepts, see Ciampi et al. (2010) and
+Appice et al. (2015).)
+   Second, in window level clustering, Senators are identiﬁed as belonging to the same slide level
+cluster over a window of size ω if their rhetoric trajectories are clustered jointly in at least [ω]
+slides; here  ∈ R, 0 <  < 1 and [·] denotes its integer part. Slide level clustering can be performed
+as a stand-alone task or a preliminary stage for window level clustering.
+   R-TRUST has multifold beneﬁts:
+  (a) it does not require a number of clusters a priori as opposed to k-means clustering;
+  (b) it can detect arbitrarily shaped clusters;
+  (c) it can dynamically detect the drift of space–time data distributions by using a sliding
+      window moving from past to recent, which provides ﬂexibility to detect various behaviours
+      and political expressions of Senators at different time periods.
+   Following Ciampi et al. (2010), layer and window sizes are deﬁned via expert knowledge
+input, e.g. corresponding to climate cycles. In our case, we set the slide size to 4 and the window
+size to 3. These settings produce 12-month periods for the analysis. The 12-month period is
+a reasonable choice for the analysis because a congressional session lasts for around a year or
+until the congressional chambers decide to adjourn for that year. A full session of 12 months is a
+natural time period for position taking as it follows the cycle of the institution. Finally, we select
+δ by using the clustering cross-validation-based (in)stability principle (Dudoit and Fridlyand,
+2002; Ben-David et al., 2006; Ben-David and Von Luxburg, 2008; Wang, 2010). In particular, we
+
+
+12       I. R. Iliev, X. Huang and Y. R. Gel
+adopt the downhill riding procedure of Huang et al. (2016, 2017) with twofold cross-validation
+averaged over 100 rounds.
+
+
+5.   Case-study
+As outlined in Section 3, the natural language processing algorithm produced two data sets that
+differ in their membership and temporal composition. The full membership data set includes 31
+Senators over 48 months, whereas the full term data set contains a smaller number of Senators
+(19) over a longer time period (72 months). The reasons for the inclusion of two separate data
+sets are both substantive and methodological. It enables us to evaluate the performance of the
+clustering algorithm with varying data structures—differences in the number of time points and
+in the estimates per time point. In particular, the full membership data set, which contains a
+higher number of Senators, enables us to evaluate better the dynamics of expressed rhetoric
+due to variation in the types of Senators included. This provides more generalizable results in
+terms of membership-related factors. For instance, some of the Senators included in the full
+membership data set are Senators who retired in the period that we study; others were ﬁrst-time
+Senators who had just started their ﬁrst term. The full term data set, in contrast, comprises one
+full term in the Senate—72 months. Although not every Senator from the full membership data
+set is included in the second data set, analysis of the 19 Senators over their full term enables us
+to test how clusters evolve in the last years before an election. Hence, the combined conclusions
+from the results on both data sets enable us to paint a fuller and multiperspective picture of the
+behaviour in the Senate committee.
+   Fig. 2 depicts clustering results for the full membership and full term data sets, obtained
+using TRUST. The results are comparable across the data sets—the number of clusters diminishes over time. In both data sets, there is a higher number of clusters at the beginning of the
+Senators’ terms than in later periods. The biggest changes occur in the earlier periods, and then
+the number of clusters stabilizes. The dynamics are comparable in the two data sets despite
+the different membership and length of the period analysed. The ﬁndings suggest a remarkably interesting phenomenon—whether we are observing institutionalization or similarities in
+strategic behaviour, legislative speech is congruous and becomes more so as a Senator’s term
+progresses. Politicians, especially in Congress, run for ofﬁce on a promise of being different from
+
+
+Fig. 2. Summary of clustering results for the full term (six periods) ( ) and full membership (four periods)
+( ) data sets (each period is 12 months): since the full membership data set is limited to only four periods,
+no clustering exists for periods 5 and 6
+
+
+                             Political Rhetoric through the Lens of Non-parametric Statistics          13
+their colleagues, but we ﬁnd that these differences greatly diminish soon after they take ofﬁce.
+Our results are also a proof of concept; political speech can in fact be analysed, and it does
+follow detectable patterns. However, simply analysing the number of clusters does not show us
+the full picture. Hence, we proceed with a more ﬁne-grained analysis of the composition and
+structure of the clusters in each data set.
+   In certain contexts, unsupervised clustering models might include substantive clusters or
+subclustering speciﬁcation that can help to detect latent clustering effects (Womack et al., 2014;
+Yano et al., 2014; Gill and Casella, 2009; Sireci and Geisinger, 1992). Womack et al. (2014)
+proposed a Bayesian approach where the random effects are modelled with a Dirichlet process
+mixture prior. The application of such speciﬁcations is for instances when
+  ‘a variable could be a strong determinant of the outcome variable, but its effect is sufﬁciently heterogeneous across individuals that it does not appear statistically reliable in the model’
+(Womack et al. (2014), page 2). The speciﬁcation accounts for latent clusters where the effect
+of the variable might differ between clusters, affecting the way that the explanatory variable
+is assessed in the model summary. Additional modelling of the substantive or latent clusters
+can be beneﬁcial when working with unsupervised clustering. However, such speciﬁcations rely
+on the inclusion of information from explanatory variables, which is beyond the scope of the
+analysis that is proposed here.
+   The issue of substantive clusters also relates to the identity of the nodes within the clusters.
+Of interest is which nodes are included in each cluster, and what is the unifying feature. Two
+aspects of our clustering analysis relate to that concept. Our focus is not on the relationships
+between the individual nodes (Senators) or the network structure within the clusters, but the
+overall behaviour over time (whether the nodes converge; not who converges). The unifying
+features are unspeciﬁed, which is a crucial component behind the selection of TRUST—it is
+a dynamic data-driven clustering procedure that allows the number, shape and distributional
+properties of the clusters to vary. Additionally, the cluster numbers are not ﬁxed between time
+periods—cluster number 1 in time period 1 is not necessarily the same as cluster number 1 in
+time period 2 so we are not observing the ‘evolution’ of speciﬁc clusters over time. These aspects
+of the analysis were chosen deliberately because of our focus on the overall dynamics instead of
+the individual dynamics of speciﬁc nodes (Senators).
+   Remark 1. To evaluate the stability of our ﬁndings, we also consider multiple settings for
+slide and window sizes in R-TRUST, and such additional studies yield qualitatively similar
+results. Furthermore, we also investigate the clustering dynamics of both data sets by using the
+density-based spatial clustering of applications with noise (DBSCAN) of Ester et al. (1996) and
+a more conventional k-means method. Although neither DBSCAN nor k-means clustering is
+aimed at cluster recovery in dynamic space–time data, DBSCAN is considered to be the most
+popular and most cited clustering algorithm for spatial data (Microsoft Academic Search, 2016),
+whereas k-means clustering is (arguably) a conventional starting point in many clustering studies
+(Steinbach et al., 2000; Kanungo et al., 2002; Friedman et al., 2009). In the case of DBSCAN,
+we select optimal clustering parameters by using a cross-validation-based (in)stability criterion
+(Huang et al., 2016, 2017). In the case of k-means clustering, we choose the optimal number
+of clusters by using silhouette analysis (Rousseeuw, 1987). Both approaches deliver similar
+ﬁndings to those of TRUST, i.e. the number of groups is highest at the beginning of the Senators’
+terms and gradually diminishes over time. (The results for DBSCAN and k-means clustering
+have been omitted here but are available from the authors. The R code that was used for the
+analysis is made available by the authors as part of the funtimes (Lyubchich and Gel, 2017)
+R package.)
+
+
+14      I. R. Iliev, X. Huang and Y. R. Gel
+5.1. Full membership data set—high number of Senators; shorter period
+Our clustering ﬁndings for the full membership data set are depicted in Fig. 3. The circles
+represent the clusters, and their sizes convey the relative size of the clusters. The initials of
+the Senators, their party and state are shown in the circles. The smaller clusters are individual
+Senators whose speech is different from the rest of their colleagues’. Their names have been
+omitted from the circles for clarity.
+   The composition of the clusters reveals that not only the number of clusters diminishes over
+time, but also the membership in the clusters becomes more concentrated in fewer clusters.
+Fewer clusters exist over time, but also more Senators belong to fewer clusters with a small
+number of Senators representing separate clusters, or forming small clusters with a few others.
+Overall, the Senators become more alike.
+   We observe a high number of clusters in the ﬁrst year in ofﬁce with a small number of
+Senators in each cluster, as illustrated in time period 1 in Fig. 3. This is to be expected given
+the current levels of polarization in Congress, which is at an all-time high—Congressmen rarely
+agree on policies and there is not much compromise. Some widely known surveys show that the
+institution is the least popular part of the government, surpassed even by the Internal Revenue
+Service (Gallup, 2014; Cillizza, 2011). Legislators are aware of it and often run their campaigns
+promising their constituents that they are different from their colleagues in ofﬁce. This creates
+a situation where the voters like their Congressman but hate Congress (Gallup, 2013; Molla,
+2014). The results of our clustering analysis depict these attitudes and promises. In their ﬁrst
+and second years in ofﬁce, Congressmen use their rhetoric to differentiate themselves from their
+colleagues and do not coalesce into big groups. This trend is sustained throughout their second
+year in ofﬁce, when we still observe a relatively high number of groups, but the total number
+diminishes—they begin to form bigger clusters.
+   A signiﬁcant change occurs after the second year, as seen in the remarkable change between
+time period 2 and time period 3 in Fig. 3. The slow decrease in the number of total clusters that
+can be observed during year 2 in ofﬁce is accelerated and the total number of clusters drops
+precipitously. One big cluster is formed in this period, as well as some smaller clusters. The
+rhetoric becomes more alike and both Republicans and Democrats start speaking in similar
+ways. This type of behaviour is associated with institutionalization or ‘marrying the locals’—
+it occurs in various bureaucracies where an outsider becomes more like those already in the
+institution. The trend peaks in the fourth year (time period 4 in Fig. 3), when the largest cluster
+becomes even bigger and almost all Senators are included. The rhetoric towards the energy
+sector is very similar across parties and geography.
+   The clusters are not based on simple party lines but show more complex dynamics. These dynamics are more evident with the newer members of the committee—Senators Maria Cantwell
+D-WA (Democrat, Washington) (who joined in 2001; cluster numbers 7, 6, 3 and 1), Jon Tester
+D-MT (Democrat, Montana) (who joined in 2007; clusters 12, 10, 2 and 1) and Bob Corker
+R-TN (Republican, Tennessee) (who joined in 2007; clusters 15, 11, 1 and 1) were not clustering with anyone else in their ﬁrst 1 or 2 years in ofﬁce. They are relatively new members of
+the committee and did not yet have well-established relations with their colleagues, or with the
+various interest groups. Their rhetoric slowly converges with the rest of their colleagues and,
+by their fourth year, they become members of the biggest cluster (cluster 1). Similar dynamics
+can be observed with other relatively new Senators who converge with the rest of the institution
+at various speeds—Senators Robert Menendez D-NJ (Democrat, New Jersey) (who joined in
+2006; cluster numbers 8, 1, 1 and 1), James Talent R-MO (Republican, Missouri) (who joined
+in 2002, clusters 9, 1, 1 and 1) and Jim Demint R-SC (Republican, South Carolina) (who joined
+in 2005, clusters 3, 2, 1 and 1) either do not group with others in their ﬁrst year or are not part
+
+
+Fig. 3.   Dynamic clustering of legislative rhetoric in the full membership data set
+                                                                                       Political Rhetoric through the Lens of Non-parametric Statistics
+16       I. R. Iliev, X. Huang and Y. R. Gel
+of bigger groups in their ﬁrst year, but in their second year start speaking in a similar way to
+the rest of their colleagues.
+   The Senators who do not cluster with others towards their fourth year in ofﬁce tell a compelling
+story also. Senator Lisa Murkowski R-AK (Republican, Alaska) (cluster numbers 10, 3, 1 and 3)
+was the minority leader in the energy committee, and her speech patterns reﬂect her special role
+in the committee. Most of the time she is not part of big groupings, and even in the fourth year in
+ofﬁce has different speech patterns from those of the rest of her colleagues. Minority leaders in a
+polarized Congress are to be expected to make stronger and more divisive statements (Davidson
+et al., 2013). Another Senator who does not appear in large clusters most of the time is Ken
+Salazar D-CO (Democrat, Colorado) (cluster numbers 11, 7, 1 and 4), who served between 2005
+and 2009, when he became Secretary of the Interior in President Obama’s administration. He
+has strong ties with the coal and oil industries, and often supports these interests. His rhetoric
+and voting record exhibit complex patterns, as a right-of-centre Democrat, which explains why
+he does not cluster with colleagues most of the time.
+   Furthermore, since any clustering algorithm can be sensitive to the underlying assumptions
+that are built into it, it is important to evaluate the sensitivity of the conclusions drawn. We
+address the issue of clustering sensitivity, by performing a cross-validation study, i.e. a standard
+data-driven validation routine in statistics. We ﬁnd that the cross-validation analysis, based on
+randomly selecting 40%, 60% and 80% of Senators in the full membership data set over 10
+cross-validation replications, supports our conclusion of a decreasing number of clusters over
+time and institutionalizing of Senators over their term in ofﬁce (Fig. 4).
+
+
+5.2. Full term data set—longer period; lower number of Senators
+Fig. 5 shows the clustering results for the full term data set. It includes more temporal points,
+but fewer Senators per time period. Analysing the full term enables us to study whether the
+dynamics that are exhibited in the full membership data set hold for the full term data set
+despite the variation in the number of Senators, and whether there are differences in their last 2
+years in ofﬁce before an election. Although the numbers of clusters that the algorithm captures
+differ between the data sets, the dynamics are similar. The number of groups decreases over time
+in both data sets, although we do not observe the same sharp drop in the full term data set. Just
+like with the full membership data set, in the full term data set, the group membership becomes
+more concentrated in fewer clusters. After the ﬁrst 2 years, most Senators belong to one or two
+large clusters, which is sustained until the end of their term.
+   As with the full membership data set, we observe the most signiﬁcant changes in the ﬁrst
+few time periods. The tendency to cluster in bigger groups that we detect in the ﬁrst data set
+is also present here, but the ‘lumping’ of Senators occurs sooner in their term. Clusters in the
+full term data set are not based on simple party lines, but once again on more complex dynamics. The members in this data set are generally long-time Senators who have worked with
+one another multiple times before and are well aware of what successful strategies look like.
+This can explain the differences in the results for the two data sets. The Senators in the full
+term data set have probably already been institutionalized in their previous terms, and they
+follow a familiar strategy—behave differently in the beginning of the term, but then start to
+converge. These similarities in behaviour occur frequently in various organizations and depict
+the ‘culture’ of the institution. This type of homogeneous behaviour is beneﬁcial to the institutional agents because it allows them easier access to resources (successful legislation, campaign
+contributions or earmarks) and creates informal mechanisms for their distribution. These patterns are not based on partisanship—both Republicans and Democrats follow similar strategies
+
+
+                                  Political Rhetoric through the Lens of Non-parametric Statistics          17
+                     12
+Number of Clusters
+                     8
+                          1                  2                            3                             4
+                                                      Time Period
+Fig. 4. Sensitivity analysis for the full membership data set (the number of cross-validation replications is
+10): , 40% Senators; , 60% Senators; , 80% Senators
+
+
+and the dynamics of the rhetoric towards the energy sector is very similar across parties and
+geography.
+   The overall dynamics in the data are clear—in the beginning of their tenure, most Senators’
+speech and attitudes are distinct from their colleagues’, as most politicians promise on the
+campaign trail, especially at times when the institution is highly polarized. However, after the
+ﬁrst 2 years in ofﬁce, the differences tend to diminish. These ﬁndings are of importance to interest
+groups because they can adjust their strategies on the basis of these changes. Understanding
+these dynamics is crucial when strategizing when to become involved through lobbying and
+campaign contributions. The results show that legislative rhetoric is malleable and dynamic,
+and efforts from outside groups to inﬂuence and shape it could be more efﬁcient at certain times
+during a Senator’s tenure. These conclusions are also meaningful for the voters because of the
+prevalent ‘we like our Congressman, but hate Congress’ attitudes (Gallup, 2013, 2014, 2016).
+   Similarly to the full membership data set, the sensitivity analysis of the full term data set
+based on the cross-validation argument, i.e. randomly selecting 40%, 60% and 80% of Senators,
+supports our conclusion of a decreasing number of clusters over time and associated institutionalization of Senators in ofﬁce (Fig. 6). Legislators run on the promise of being different, but
+the results suggest that their rhetoric when in ofﬁce is not that different from one another.
+
+
+6.                   Discussion
+Legislative representation is crucial in a democratic society, and politicians typically run for
+ofﬁce on the promise of change. Understanding their behaviour when in ofﬁce can help interest
+groups and voters to make informed decisions. However, the hidden sophisticated structure of
+                                                                                 I. R. Iliev, X. Huang and Y. R. Gel
+
+
+Fig. 5.   Dynamic clustering of legislative rhetoric in the full term data set
+
+
+                               Political Rhetoric through the Lens of Non-parametric Statistics              19
+
+
+                     5.5
+
+
+                     5.0
+Number of Clusters
+
+
+                     4.5
+
+
+                     4.0
+
+
+                     3.5
+
+
+                     3.0
+
+
+                     2.5
+
+                           1    2                 3                 4                  5                 6
+                                                      Time Period
+Fig. 6. Sensitivity analysis for the full term data set (the number of cross-validation replications is 10): ,
+40% Senators; , 60% Senators; , 80% Senators
+
+
+political time series poses a broad range of methodological challenges and cannot be assessed
+with conventional statistical procedures of time series analysis and clustering. In this paper, we
+develop an innovative two-stage hybrid supervised–unsupervised learning methodology to study
+dynamics in legislative rhetoric in congressional committees, without imposing restrictions on
+shape, number and structure of clusters. We construct an innovative measure of political rhetoric
+and produce two data sets with varying structures, in terms of both the time component and
+membership. Such investigation of legislative behaviour at the committee level was not available
+before, and it serves as a proof of concept, enabling other political speech to be analysed in a
+systematic way, and for the uncovering of hidden structures within such data.
+  The results from our clustering analysis depict compelling dynamics. As the legislative term
+progresses, Senators, despite their party membership and campaign promises, tend increasingly
+to group together over time. The similarities in their behaviour become apparent after the ﬁrst
+year or two in ofﬁce and, near the last year, there are only few groupings that describe the
+speech. Our ﬁndings are in contrast with the promises that politicians usually make on the
+campaign trail. They usually emphasize how different they are from their opponents, and their
+future colleagues. As we showed, voters are generally supportive of their own representative, but
+not of the institution as a whole. We ﬁnd that these perceived dissimilarities are in fact greatly
+exaggerated, and politicians are in fact more alike than they are trying to project.
+  In the future, we plan to incorporate a network component into a rhetoric analysis and to
+evaluate how the structure of legislative networks evolves over time. Possible algorithms for this
+future work can be found in the dynamic networks literature (Beykikhoshk et al., 2015; Loglisci,
+2013). This is of particular interest in analysing presidential elections in the USA, as well as statements by terrorist organizations, and foreign political and social leaders, to name a few. Another
+
+
+20        I. R. Iliev, X. Huang and Y. R. Gel
+future component is analysis at the document level, which would require a frequency-based solution. Such a classiﬁcation would be a beneﬁcial addition to the current analysis and would
+enable us to study the effect of speciﬁc events such as terrorist attacks or international conﬂicts.
+
+References
+Aggarwal, C. C. (2007) Data Streams: Models and Algorithms. New York: Springer Science and Business Media.
+Aggarwal, C. C., Han, J., Wang, J. and Yu, P. S. (2003) A framework for clustering evolving data streams. In Proc.
+  29th Int. Conf. Very Large Data Bases.
+Appice, A., Ciampi, A. and Malerba, D. (2015) Summarizing numeric spatial data streams by trend cluster
+  discovery. Data Minng Knowl. Discov., 29, 84–136.
+Banerjee, S., Carlin, B. P. and Gelfand, A. E. (2014) Hierarchical Modeling and Analysis for Spatial Data. Boca
+  Raton: CRC Press.
+Barr, R. R. (2009) Populists, outsiders and anti-establishment politics. Party Polit., 15, 29–48.
+Ben-David, S. and Von Luxburg, U. (2008) Relating clustering stability to properties of cluster boundaries. In
+  Proc. 21st A. Conf. Learning Theory.
+Ben-David, S., Von Luxburg, U. and Pál, D. (2006) A sober look at clustering stability. Int. Conf. Computational
+  Learning Theory.
+Beykikhoshk, A., Arandjelović, O., Venkatesh, S. and Phung, D. (2015) Hierarchical Dirichlet process for tracking
+  complex topical structure evolution and its application to autism research literature. In Proc. Paciﬁc-Asia Conf.
+  Knowledge Discovery and Data Mining. New York: Springer.
+Binder, S. (2015) The dysfunctional congress. A. Rev. Polit. Sci., 18, 85–101.
+Bolton, A. (2016) Anti-establishment mood roils senate democratic primaries. (Available from http://
+  thehill.com/homenews/campaign/271897-anti-establishment-mood-roils-democratic
+  -primaries.)
+Boykoff, J. and Laschever, E. (2011) The Tea Party movement, framing, and the US media. Socl Movmnt Stud.,
+  10, 341–366.
+Branavan, S., Chen, H., Eisenstein, J. and Barzilay, R. (2009) Learning document-level semantic properties from
+  free-text annotations. J. Artif. Intell. Res., 34, 569–603.
+Brodkin, J. (2015) Tech companies urge congress to drop ﬁght against net neutrality rules. (Available from
+  http://arstechnica.com/tech-policy/2015/12/tech-companies-urge-congress-to-drop
+  -fight-against-net-neutrality-rules/.)
+Burden, B. C. (2004) Candidate positioning in U.S. congressional elections. Br. J. Polit. Sci., 34, 211–227.
+Canon, D. T. (1989) The institutionalization of leadership in the U.S. congress. Legis. Stud. Q., 14, 415–443.
+Cao, F., Ester, M., Qian, W. and Zhou, A. (2006) Density-based clustering over an evolving data stream with
+  noise. In Proc. Int. Conf. Data Mining. Philadelphia: Society for Industrial and Applied Mathematics.
+Ciampi, A., Appice, A. and Malerba, D. (2010) Discovering trend-based clusters in spatially distributed data
+  streams. Int. Wrkshp Mining Ubiquitous and Social Environments.
+Cillizza, C. (2011) Congress’ approval problem in one chart. (Available from https://www.washington
+  post.com/blogs/the-fix/post/congress-approval-problem-in-one-chart/2011/11/15/
+  gIQAkHmtON-blog.html.)
+Cox, G. W. and McCubbins, M. D. (2005) Setting the Agenda: Responsible Party Government in the US House of
+  Representatives. New York: Cambridge University Press.
+Davidson, R. H., Oleszek, W. J., Lee, F. E. and Schickler, E. (2013) Congress and Its Members. Washington DC:
+  CQ.
+Dudoit, S. and Fridlyand, J. (2002) A prediction-based resampling method for estimating the number of clusters
+  in a dataset. Genome Biol., 3, article research0036.1–0036.21.
+Ester, M., Kriegel, H.-P., Sander, J. and Xu, X. (1996) A density-based algorithm for discovering clusters in large
+  spatial databases with noise. In Proc. Conf. Knowledge Discovery and Data Mining, pp. 226–231.
+Euan, C., Ombao, H. and Ortega, J. (2015) Spectral synchronicity in brain signals. Preprint arXiv:1507.05018.
+Fenno, R. F. (2002) Home Style: House Members in Their Districts. Harlow: Longman.
+Friedman, J., Hastie, T. and Tibshirani, R. (2009) The Elements of Statistical Learning, 2nd edn, vol. 1. Berlin:
+  Springer.
+Gaber, M. M., Zaslavsky, A. and Krishnaswamy, S. (2005) Mining data streams: a review. ACM Specl Intrst Gp
+  Management of Data Rec., 34, 18–26.
+Gallup (2013) Americans down on congress, ok with own representative. Gallup, Washington DC. (Available from
+  http://www.gallup.com/poll/162362/americans-down-congress-own-representative.
+  aspx.)
+Gallup (2014) Public faith in congress falls again, hits historic low. Gallup. (Available from http://www.gall
+  up.com/poll/171710/public-faith-congress-falls-again-hits-historic-low.aspx.)
+Gallup (2016) Congress and the public. Gallup. (Available from http://www.gallup.com/poll/1600/
+  congress-public.aspx.)
+
+
+                                Political Rhetoric through the Lens of Non-parametric Statistics                21
+Gerrish, S. and Blei, D. M. (2011) Predicting legislative roll calls from text. In Proc. 28th Int. Conf. Machine
+  Learning.
+Gerrish, S. and Blei, D. M. (2012) How they vote: issue-adjusted models of legislative behavior. In Advances in
+  Neural Information Processing Systems.
+Gill, J. and Casella, G. (2009) Nonparametric priors for ordinal Bayesian social science models: speciﬁcation and
+  estimation. J. Am. Statist. Ass., 104, 453–454.
+Grajales, C. A. G. (2014) How statisticians have changed elections. (Available from http://www.statistics
+    views.com / details / feature / 6931581 / How-statisticians-have-changed-elections.
+    html.)
+Grimmer, J. (2010) A Bayesian hierarchical topic model for political texts: measuring expressed agendas in senate
+  press releases. Polit. Anal., 18, 1–35.
+Grimmer, J. and King, G. (2011) General purpose computer-assisted clustering and conceptualization. Proc. Natn.
+  Acad. Sci. USA, 108, 2643–2650.
+Grimmer, J. and Stewart, B. M. (2013) Text as data: the promise and pitfalls of automatic content analysis methods
+  for political texts. Polit. Anal., 21, 267–297.
+Hall, R. L. and Wayman, F. W. (1990) Buying time: moneyed interests and the mobilization of bias in congressional
+  committees. Am. Polit. Sci. Rev., 84, 797–820.
+Hayes, A. F. and Krippendorff, K. (2007) Answering the call for a standard reliability measure for coding data.
+  Commun. Meth. Meas., 1, 77–89.
+Healy, P. (2015) Democrats ﬁnd that anti-establishment isn’t just a g.o.p. theme. (Available from https://
+  www.nytimes.com/2015/10/04/us/insurgent-candidacies-shaking-up-the-gop-also-dogdemocrats.html?-r=0.)
+Herrnson, P. S. (2007) Congressional Elections: Campaigning at Home and in Washington. Washington DC: CQ.
+Hibbing, J. R. and Theiss-Morse, E. (1995) Congress as Public Enemy: Public Attitudes toward American Political
+  Institutions. New York: Cambridge University Press.
+Hirano, S., Snyder, J. M., Ansolabehere, S. and Hansen, J. M. (2010) Primary elections and partisan polarization
+  in the US congress. Q. J. Polit. Sci., 5, 169–191.
+Hojnacki, M. and Kimball, D. C. (1998) Organized interests and the decision of whom to lobby in congress. Am.
+  Polit. Sci. Rev., 92, 775–790.
+Hopkins, D. J. and King, G. (2010) A method of automated nonparametric content analysis for social science.
+  Am. J. Polit. Sci., 54, 229–247.
+Horwitz, R. B. (2013) America’s Right: Anti-establishment Conservatism from Goldwater to the Tea Party. New
+  York: Wiley.
+Huang, X., Iliev, I. R., Brenning, A. and Gel, Y. R. (2016) Space-time clustering with stability probe while riding
+  downhill. In Proc. Specl Intrst Gp Knowledge Discovery Mining and Learning from Time Series.
+Huang, X., Iliev, I. R., Lyubchich, V. and Gel, Y. R. (2017) Riding down the bay: spacetime clustering of ecological
+  trends. Environmetrics, 29, article e2455.
+Issenberg, S. (2012) How Obama’s team used big data to rally voters. (Available from https://www.
+  technologyreview.com/s/509026/how-obamas-team-used-big-data-to-rally-voters/.)
+Kanungo, T., Mount, D. M., Netanyahu, N. S., Piatko, C. D., Silverman, R. and Wu, A. Y. (2002) An efﬁcient
+  k-means clustering algorithm: analysis and implementation. IEEE Trans. Pattn Anal. Mach. Intell., 24, 881–892.
+Kaye, K. (2014) GOP provided social analytics to key senate campaigns. (Available from http://adage.com/
+  article / datadriven-marketing /gop-provided-social-data-tech-key-senate-campaig
+  ns/295573/.)
+Krippendorff, K. (2004) Content Analysis: an Introduction to Its Methodology. New York: Sage.
+Loglisci, C. (2013) Time-based discovery in biomedical literature: mining temporal links. Int. J. Data Anal. Tech.
+  Strat., 5, 148–174.
+Loglisci, C., Ceci, M. and Malerba, D. (2015) Relational mining for discovering changes in evolving networks.
+  Neurocomputing, 150, 265–288.
+Loglisci, C. and Malerba, D. (2015) Mining periodic changes in complex dynamic data through relational pattern
+  discovery. Int. Wrkshp New Frontiers in Mining Complex Patterns. New York: Springer.
+Lombard, M., Snyder-Duch, J. and Bracken, C. C. (2002) Content analysis in mass communication: assessment
+  and reporting of intercoder reliability. Hum. Commun. Res., 28, 587–604.
+Lowry, R. (2016) Where is the Republican establishment? (Available from http://www.nationalreview.
+  com/article/429596/2016-presidential-race-all-about-anti-establishment-candid
+  ate.)
+Lyubchich, V. and Gel, Y. R. (2017) funtimes: functions for time series analysis. R Package Version 4.0.
+Markman, J. (2016) Big data and the 2016 election. (Available from http://www.forbes.com/sites/
+  jonmarkman/2016/08/08/big-data-and-the-2016-election.)
+Mayhew, D. R. (2004) Congress: the Electoral Connection. New York: Yale University Press.
+Microsoft Academic Search (2016) Top publications in data mining. (Available from http://academic.
+  research.microsoft.com/RankList?entitytype=1&topDomainID=2&subDomainID=7&last
+  =0&start=1&end=100.)
+
+
+22        I. R. Iliev, X. Huang and Y. R. Gel
+Molla, R. (2014) Americans hate congress, but like their own representatives. (Available from http://blogs.
+  wsj.com/numbers/americans-hate-congress-but-like-their-own-representatives-18
+  28.)
+Monroe, B. and Schrodt, P. (2008) Introduction to the special issue: the statistical analysis of political text. Polit.
+  Anal., 16, 351–355.
+Munro, R. and Chawla, S. (2004) An integrated approach to mining data streams. Technical Report. School of
+  Information Technologies, University of Sydney, Sydney.
+Nowlin, M. (2015) Modeling issue deﬁnitions using quantitative text analysis. Poly Stud J., 44, 309–331.
+OpenSecrets.org (2011) BP ﬁring up political machine one year after start of oil spill. OpenSecrets.org,
+  Washington DC. (Available from http://www.opensecrets.org/news/2011/04/bp-firing-uppolitical-machine-one/.)
+OpenSecrets.org (2013) Energy/natural resources: long-term contribution trends. OpenSecrets.org, Washington
+  DC. (Available from http://www.opensecrets.org/industries/totals.php.)
+Pang, B. and Lee, L. (2008) Opinion mining and sentiment analysis. Foundns Trends Inform. Retrvl, 2, 1–135.
+Pang, B., Lee, L. and Vaithyanathan, S. (2002) Thumbs up?: Sentiment classiﬁcation using machine learning
+  techniques. In Proc. Conf. Empirical Methods in Natural Language Processing. Association for Computational
+  Linguistics.
+Quinn, K., Monroe, B., Colaresi, M., Crespin, M. and Radev, D. (2010) How to analyze political attention with
+  minimal assumptions and costs. Am. J. Polit. Sci., 54, 209–228.
+Rothenberg, L. S. and Sanders, M. S. (2000) Severing the electoral connection: shirking in the contemporary
+  congress. Am. J. Polit. Sci., 44, 316–325.
+Rousseeuw, P. (1987) Silhouettes: a graphical aid to the interpretation and validation of cluster analysis. Computnl
+  Appl. Math., 20, 53–65.
+San Jose Mercury News (2015) Google’s Eric Schmidt says H-1B visa changes would help economy. (Available
+  from http://www.mercurynews.com/business/ci-27739294/googles-eric-schmidt-saysh-1b-visa-changes.)
+Schickler, E. (2001) Disjointed Pluralism: Institutional Innovation and the Development of the US Congress. Princeton: Princeton University Press.
+Shellman, S. (2008) Coding disaggregated intrastate conﬂict: machine processing the behavior of substate actors
+  over time and space. Polit. Anal., 16, 464–477.
+Sinclair, B. (1983) Majority Leadership in the United States House. Baltimore: Johns Hopkins University Press.
+Sinclair, B. (2016) Unorthodox Lawmaking: New Legislative Processes in the US Congress. Washington DC: CQ.
+Sireci, S. G. and Geisinger, K. F. (1992) Analyzing test content using cluster analysis and multidimensional scaling.
+  Appl. Psychol. Measmnt, 16, 17–31.
+Skocpol, T. and Williamson, V. (2012) The Tea Party and the Remaking of Republican Conservatism. Oxford:
+  Oxford University Press.
+Steinbach, M., Karypis, G., Kumar, V. et al. (2000) A comparison of document clustering techniques. Knowledge
+  Discovery and Data Mining Wrkshp Text Mining, Boston.
+Stramp, N. and Wilkerson, J. (2015) Legislative explorer: data-driven discovery of lawmaking. Polit. Sci. Polit.,
+  48, 115–119.
+Talbert, J. C., Jones, B. D. and Baumgartner, F. R. (1995) Non-legislative hearings and policy change in congress.
+  Am. J. Polit. Sci., 39, 383–405.
+US Energy Information Administration (2000) Federal ﬁnancial interventions and subsidies in energy
+  markets 1999: primary energy. US Energy Information Administration, Washington DC. (Available from
+  http://www.eia.gov/oiaf/servicerpt/subsidy/index.html.)
+US Government Printing Ofﬁce (2014) Congressional hearings—senate committee on energy and natural
+  resources. US Government Printing Ofﬁce, Washington DC. (Available from http://www.gpo.gov/
+  fdsys/browse/committee.action?chamber=senate&committee=energy.)
+Wang, J. (2010) Consistent selection of the number of clusters via crossvalidation. Biometrika, 97, 893–904.
+Womack, A., Gill, J. and Casella, G. (2014) Product partitioned Dirichlet process prior models for identifying
+  substantive clusters and ﬁtted subclusters in social science data. Technical Paper. Washington University, Seattle.
+Yano, T., Smith, N. A. and Wilkerson, J. D. (2012) Textual predictors of bill survival in congressional committees.
+  In Proc. Conf. North American Chapter of the Association for Computational Linguistics: Human Language
+  Technologies. Association for Computational Linguistics.
+Yano, T., Smith, N. A. and Wilkerson, J. D. (2014) Textual predictors of bill survival in congressional committees.
+  In Proc. LWA 2014 Wrkshps.

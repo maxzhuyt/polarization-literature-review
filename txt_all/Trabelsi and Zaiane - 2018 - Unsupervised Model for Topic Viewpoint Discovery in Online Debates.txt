@@ -1,0 +1,408 @@
+Proceedings of the Twelfth International AAAI Conference on Web and Social Media (ICWSM 2018)
+
+
+                          Unsupervised Model for Topic Viewpoint Discovery
+                          in Online Debates Leveraging Author Interactions
+
+                                               Amine Trabelsi, Osmar R. Zaı̈ane
+                                       Department of Computing Science, University of Alberta
+                                                     Edmonton, Alberta Canada
+                                                   {atrabels, zaiane}@ualberta.ca
+
+
+                            Abstract                                       that usually engender opposing stances or viewpoints (e.g.
+                                                                           supporting or opposing same-sex marriage). Forum users
+  Online debate forums provide a valuable resource for tex-                usually write posts to defend their standpoint using persuatual discussions about controversial social and political issues. Discovering the viewpoints and their discourse or arsion, reasons or arguments. Such posts correspond to what
+  guments from such resources is important for policy and de-              we describe as contentious documents (Trabelsi and Zaiane
+  cision makers. In order to detect the stance, most of the exist-         2014a). Decision makers, politicians or a lay person seeking
+  ing methods rely on expensively obtained human annotations               information to develop an opinion or to make a decision reand propose supervised solutions. In this work, we introduce             lated to a contentious issue need to go through many of the
+  a purely unsupervised Author Interaction Topic Viewpoint                 existing posts on the subject. They need an automatic tool to
+  model (AITV) for viewpoint identiﬁcation at the post and the             help them overcome the overload of data and provide a condiscourse levels. The model favors “heterophily” over “ho-               trasting overview of the main viewpoints and reasons given
+  mophily” when encoding the nature of the authors’ interac-               by opposed sides. However, reaching this objective supposes
+  tions in online debates. It assumes that the difference in view-         the ability of the tool to accurately identify the viewpoints at
+  points breeds interactions, unlike similar studies based on social network analysis, which hypothesize that similar viewthe post and/or author levels, as well as the capacity to detect
+  points encourage interactions. We evaluate the model’s view-             the relevant discourse used to express distinct and recurrent
+  point identiﬁcation and clustering accuracies at the author and          arguing or reasoning themes. In this work, given online fopost levels. Experiments are held on six corpora about four              rum posts about a contentious issue, we study the problem of
+  different controversial issues, extracted from two online de-            unsupervised identiﬁcation and clustering of the viewpoints
+  bate forums. AITV’s results show a better performance in                 at the post level, as well as, the discovery of the contrastive
+  terms of viewpoint identiﬁcation at the post level than the              discourse pertaining to each of the viewpoints.
+  state-of-the-art supervised methods in terms of stance prediction, even though it is unsupervised. It also outperforms                Recent research on stance detection suggests that applya recently proposed topic model for viewpoint discovery in               ing sentiment analysis techniques on contentious documents
+  social networks and achieves close results to a weakly guided            is not sufﬁcient to produce an effective solution to the probunsupervised method in terms of author level viewpoint iden-             lem (Hasan and Ng 2013; Walker et al. 2012b). Indeed, Motiﬁcation. Our results highlight the importance of encoding              hammad, Sobhani, and Kiritchenko(2017) show that both
+  “heterophily” for purely unsupervised viewpoint identiﬁca-               positive and negative lexicons are used, in contentious text,
+  tion in the context of online debates. We also carry out a brief         to express the same stance. Moreover, the stance can be
+  qualitative evaluation of the discourse modeling in terms of             implicitly conveyed through reasons and arguments, and
+  Topic-Viewpoint word clusters. AITV shows encouraging re-                not necessarily expressed through polarity sentiment words.
+  sults suggesting an accurate discovery of the viewpoints and
+                                                                           Furthermore, challenges to accurate viewpoint detection can
+  topics’ discourses.
+                                                                           arise because of the dialogic nature of online debate (Hasan
+                                                                           and Ng 2014; Boltužić and Šnajder 2014). The unstrucIntroduction                                       tured and colloquial language that is used makes it “noisy”,
+Research on people’s viewpoints, ideologies, and antagonis-                i.e., containing non-argumentative portions and irrelevant
+tic relationships is gaining interest thanks to the emergence              dialogs, which misleads the model. The similarity in words’
+of social media and online forums as accessible tools to ex-               usage between authors holding divergent viewpoints leads
+press opinion on different political and social issues. Online             to clustering errors when the model is entirely based on texdebate forums, speciﬁcally, provide a valuable resource for                tual features. This is often the case when a post rephrases
+textual discussions about contentious issues. Contentious is-              the opposing side’s premise while attacking it or when asksues are controversial topics or divisive entities, e.g. legal-            ing a rhetorical question like “what makes a fetus not huization of abortion, same-sex marriage and Donald Trump,                   man ?”. Fetus not human is usually a discourse pertaining to
+                                                                           those who support Abortion, but here the same vocabulary
+Copyright  c 2018, Association for the Advancement of Artiﬁcial           is used to express the opposite stance. It has been shown
+Intelligence (www.aaai.org). All rights reserved.                          that complementary features like the nature of the authors’
+interactions at post level (e.g., rebuttal, not rebuttal) can en-         they use (e.g., Twitter, Online Debates), the features that
+hance pure text-based approaches in viewpoint distinguish-                they exploit (e.g., text, authors interactions, disagreement),
+ing (Walker et al. 2012b).                                                the targeted task (e.g., post or author level stance prediction,
+   In this work, we propose a purely unsupervised Author                  viewpoints’ discourse discovery) and the applied learning
+Interaction Topic Viewpoint model (AITV) for viewpoint                    methods (e.g., supervised or unsupervised). It is important
+discovery at the post and the discourse levels. AITV jointly              to mention that the Natural Language Processing commumodels the textual content and the interactions between the               nity usually employs the word stance while the text mining
+authors in terms of replies. The model favors “heterophily”               community uses the word viewpoint often to express a poover “homophily” when encoding the nature of the authors’                 litical or ideological stand over an issue. We use both words
+interactions in online debates. In this context, “heterophily”            interchangeably in this paper.
+means that the difference in viewpoints breeds interactions,                  The work on supervised methods for stance prediction has
+unlike similar studies based on social network analysis,                  recently seen a growing interest (Walker et al. 2012a). The
+which hypothesize that similar viewpoints encourage inter-                Semantic Evaluation series 2016 (SemEval-16) propose a
+actions (Thonet et al. 2017). Thus, “heterophily”, here, does             shared task for stance detection in Twitter (Mohammad et
+not mean the tendency to construct friendship groups with                 al. 2016). Sobhani, Inkpen, and Matwin (2015) tackle the
+diverse people but the tendency to reply to opposed view-                 stance classiﬁcation for news comments using arguments
+point author. In that regard, our assumption is similar to that           features that are extracted using Topic Modeling. Hasan
+of the supervision-based methods of Walker et al. (2012b)                 and Ng (2013) identify the stance at the post and the senand Hasan and Ng (2013).                                                  tence levels of online debates corpora. They construct a rich
+   AITV is able to produce: (1) viewpoint assignments for                 feature set of linguistic and semantic features, and encoureach post; (2) Topic-Viewpoint word distributions denoting                age opposing stance between successive posts. Sridhar et al.
+“arguing expressions” (Trabelsi and Zaiane 2014b) for each                (2015) model disagreement and collectively predict stances
+topic and viewpoint. Experiments are held on six corpora                  at the post and the author levels. They try different modelabout four different controversial issues, extracted from two             ing approaches on online debate corpora. The approach that
+online debate forums: 4Forums.com and CreateDebate.com.                   is based on Probabilistic Soft Logic (PSL) and which modGiven the viewpoints’ assignments for each post, we eval-                 els disagreement achieves the overall best performance. In
+uate the model’s viewpoint identiﬁcation at the post level                our paper, we later (see Experiments Section) compare our
+ﬁrst. Viewpoints’ assignments for each post are later aggre-              results in terms of post level viewpoint identiﬁcation to the
+gated to evaluate the author level clustering. AITV’s results             reported results of this state-of-the-art supervised method,
+show a better performance in terms of viewpoint identiﬁ-                  on the same debate corpora that it uses. All these described
+cation at the post level than the state-of-the-art supervised             methods extensively rely on human annotations, which are
+methods in terms of stance prediction, even though it is un-              expensive to obtain, and on supervision which does not guarsupervised. It also outperforms the recently proposed topic               antee scaling to different domains and types of data.
+model for viewpoint discovery in social networks (Thonet et                   Another line of work focuses on weakly guided or pure
+al. 2017) and achieves close results to a weakly guided un-               unsupervised methods aiming to detect the contrastive dissupervised method in terms of author level viewpoint iden-                course in different viewpoints and/or to identify the viewtiﬁcation and clustering. We also carry out a brief qualita-              points of the posts and the authors. We mention the studies
+tive evaluation of the discourse modeling in terms of Topic-              on Topic-Viewpoint modeling, which are based on Latent
+Viewpoint word dimensions. We use one corpus, the Abor-                   Dirichelet Allocation (LDA) (Blei, Ng, and Jordan 2003).
+tion data set, as a case study. AITV shows promising char-                They are applied on different sources of contentious docuacteristics that would allow to avoid some of the discourse               ments: opinion polls, editorials (Paul, Zhai, and Girju 2010),
+challenges mentioned previously and simultaneously accu-                  online forums (Trabelsi and Zaı̈ane 2016), Twitter (Joshi,
+rately distinguish the viewpoints and topics. Our contribu-               Bhattacharyya, and Carman 2016), and parliamentary detions consist of:                                                         bates (Vilares and He 2017). They hypothesize the existence
+• an unsupervised model to detect the viewpoints of the                   of underlying topic and viewpoint variables that inﬂuence
+   posts which leverages the content and the reply infor-                 the author’s word choice when writing about a controvermation about the authors (who is replying to whom) and                 sial issue. The viewpoint variable is also called stance, perwhich assumes “heterophily”;                                           spective or argument variable in different studies. The ob-
+• quantitative and qualitative evaluations against supervised             jective is mainly to extract relevant Topic-Viewpoint distristate-of-the-art and recent unsupervised methods that de-              butions of words that express the different viewpoints sepnote an accurate learning of the viewpoints at the post and            arately, along with their respective discussed topics. Thus,
+   the discourse levels;                                                  most of the Topic-Viewpoint models do not necessarily attempt to cluster the posts or their authors. However, Qiu and
+• a discussion about author level viewpoint clustering and                Jiang (2013) exploit the authors’ interactions in threaded
+   the limitations of the approach.                                       discussion forums to discover stances of posts and cluster authors with different viewpoints. Similarly, our work
+                      Related Work                                        leverages the interactions between the authors in online foThe studies on viewpoint discovery or stance prediction dif-              rum debates to determine the opposed viewpoints of the
+fer mainly in terms of the type of the social media data that             posts and the authors. Conversely, our method jointly models the Topic-Viewpoint distribution to uncover, the viewpoints’ discourse. The Topic-Viewpoint word distributions
+are not modeled in Qiu and Jiang (2013)’s work. Moreover,
+the polarity of the interactions between the authors, positive
+or negative, is guided and determined using lexicon-based
+methods. In our work, we don’t exploit any external or speciﬁc sentiment lexicon to determine the type of interactions
+between the authors, which makes our approach purely unsupervised, independent of any external knowledge.
+   Recently, Thonet et al. (2017) propose different extended
+versions of Social Network-LDA (SN-LDA) (Sachan et
+al. 2014) that model the viewpoint discovery in social
+media: the Social Network Viewpoint Discovery Models
+(SNVDMs). Similar to our work, SNVDMs jointly model
+topic, viewpoint and discourse. One of their main objectives is to accurately determine the author’s viewpoint. Conversely, they assume that the “homophily” pehenomenon is
+governing the authors’ interactions. SNVDMs are experimented on political Twitter data, and consider a network
+of replies and retweets interactions. The SNVDM-GPU, the                         Figure 1: Plate Notation of AITV model
+version based on Generalized Polya Urn sampling, is performing the best among all degenerate versions. It aims to
+overcome the sparsity of interactions.                                 them into Topic-Viewpoint classes. Prior to the topic modelAnother recent work (Dong et al. 2017) focuses on a pre-            ing step, we pre-process the online debate posts. We remove
+dicting the author’s stance and providing insights about the           identical portions of text in replying posts. These can be asviewpoints’ discourse. The authors propose a weakly guided             similated to references or citations of previous posts text. We
+Stance-based Text Generative Model with Link Regulariza-               remove stop and rare words. We consider working with the
+tion (STML) which leverages the text content as well as the            stemmed version of the words.
+authors’ interactions in news comments and online debates.
+The weak guidance consists of estimating the signs of in-              Generative Process
+teractions, i.e., agreement or disagreement, using heuristics          AITV assumes that A authors participate in a forum debate
+rules like the number of a discussion’s turns, the presence of         about a particular issue. Each author a writes Da posts. Each
+agreement or disagreement signals.                                     post da contains Nda words. Each term wnd in a document
+   In our paper, similar to the recent research mentioned              belongs to the corpus vocabulary of distinct terms of size W .
+above, we jointly utilize content and interactions in view-            In addition, we assume that we have the information about
+point’s discourse discovery and posts/authors clustering.              whether a post replies to a previous post or not. Let K be the
+Our method is, however, purely unsupervised, i.e., does not            total number of topics and L be the total number of viewrequire external knowledge or weak guidance to infer the na-           points, in our case set to 2. Let θda denote the probability
+ture of interactions between the authors. Moreover, it does            distribution of K topics under a post da ; ψa be the probanot assume “homophily” but “heterophily” when modeling                 bility distributions of L viewpoints for an author a; φkl be
+the interactions in online debate.                                     the multinomial probability distribution over words associated with a topic k and a viewpoint l. The generative process
+  Author Interaction Topic Viewpoint Model                             of a post according to the AITV model (see Figure 1) is described below.
+As mentioned in the previous sections, the Author Interac-                An author a chooses a viewpoint vda from the distribution Topic Viewpoint (AITV) Model is a generative Topic-               tion ψa . For each word wnd in the post, the author draws a
+Viewpoint model. Topic-Viewpoint models are extensions of              topic znd from θda , then, samples each word wnd from the
+LDA (Blei, Ng, and Jordan 2003). They are mainly data-                 topic-viewpoint distribution corresponding to topic znd and
+driven approaches which reduce the documents into topic-               viewpoint vda , φznd vda .
+viewpoint dimensions. A Topic-Viewpoint pair k-l is a prob-               Note that, in what follows, we refer to a current post with
+ability distribution over unigram words. The unigrams with             index id and to a current word with index i. When the current
+top probabilities characterize the used vocabulary when talk-          post is a reply to a previous post by a different author, it
+ing about a speciﬁc topic k while expressing a particular              may contain a rebuttal or it may not. If the reply attacks the
+viewpoint l at the same time.                                          previous author then the rebuttal variable Rbid is set to 1
+   AITV takes as input the posts or documents, and the in-             else if it supports, the rebuttal takes 0. We deﬁne the parent
+formation about author-reply interactions in an online de-             posts of a current post as all the posts of the author who
+bate forum. The objective is to: (1) assign a viewpoint to             the current post is replying to. Similarly, the child posts of
+each post and; (2) assign a topic-viewpoint label to each oc-          a current post are all the posts replying to the author of the
+currence of the unigram words. This would help to cluster              current post. We assume that the probability of a rebuttal
+                                                                                           (t)
+Rbid = 1 depends on the degree of opposition between the                              id; nid is the number of time word t occurs in the post. The
+                                                      par
+viewpoint vid of the current post and the viewpoints Vid  of                          third term of the multiplication in Equation 2 corresponds to
+its parent posts as the following:                                                    Equation 1 and is applicable when the current post is a reply.
+                                           par
+                                          Vid
+                                                                                      The fourth term of the multiplication takes effect when the
+                                                                                     current post has child posts. It is a product over each child
+                                                  I(vid = l ) + η
+                        par                l                                         c according to Equation 1. It computes how much would
+      p(Rbid = 1|vid , Vid  )=                     par                ,   (1)         the children’s rebuttal be probable if the value of vid is l. It
+                                                 |Vid  | + 2η
+                                                                                      is important to mention that during the implementation of
+where I(condition) equals 1 if the condition is true and η is a                       the viewpoint sampling, we used few tricks that helped imsmoothing parameter. This modeling of authors interactions                            proving the model in terms of effectiveness and efﬁciency.
+is similar to the users interactions setting presented in (Qiu                        First, we only consider as children the posts that are replyand Jiang 2013).                                                                      ing to the current post, instead of all the posts replying to
+                                                                                      the author of the current post. This enhances the efﬁciency
+Parameters Inference                                                                  for large datasets with keeping at least the same effectiveFor the inference of the model’s parameters, we use the col-                          ness of the original setting. Second, in order to make the
+lapsed Gibbs sampling. For all our parameters, we set ﬁxed                            Gibbs Sampling less variable to the random initializations,
+symmetric Dirichlet priors. According to Figure 1, the Rb                             we set an automatic initialization process that helped stavariable is observed. However, the true value of the rebuttal                         bilizing the model. The automatic initialization consists of
+variable is unknown to us. We ﬁx it to 1 to keep the frame-                           offsetting terms 1 and 2 in Equation 2 for the initial 100
+work fully unsupervised, instead of estimating the reply dis-                         iterations. Thus, we only leverage the interactions, and not
+agreement using methods based on lexicon polarity like in                             the text content. Third, following (Hasan and Ng 2014), we
+(Qiu and Jiang 2013). Setting Rb = 1 means that all replies                           unify all the posts’ viewpoint of a given author by assigning
+of any post are rebuttals attacking all of the parent posts ex-                       the majority label among them. This is done few iterations
+cluding the case when the author replies to his own post.                             before stopping the Gibbs sampling.
+This correspond to our “heterophily” assumption. It comes                                Given the assignment of a viewpoint vid = l, we also
+from the observation that the majority of the replies, in the                         jointly sample the topic for each word i in post id, according
+debate forums framework, are intended to attack the previ-                            to the following:
+ous proposition (Hasan and Ng 2013). This setting will affect the viewpoint sampling of the current post. The intuition                          p(zi = k|wi = t, z¬i , w
+                                                                                                                 ¬i , v ) ∝
+is that, if an author is replying to a previous post, the algo-                                                                     (t)
+rithm is encouraged to sample a viewpoint which opposes                                                             (k)            nkl,¬i + β
+                                                                                                                   nid,¬i + α ×    (.)
+                                                                                                                                                 ,   (3)
+the majority viewpoint of parent posts (Equation 1). Simi-                                                                        nkl,¬i + W β
+larly, if the current post has some child posts, the algorithm
+is encouraged to sample a viewpoint opposing the children’s                                  (k)
+                                                                                      Here nid,¬i is the number of times topic k is observed in
+prevalent stance. If both parent and child posts exist, the al-                                                                           (t)
+gorithm is encouraged to oppose both, creating some sort of                           document id, excluding the current word i; nkl,¬i correadversarial environment when the prevalent viewpoints of                              sponds to the number of times the word t is assigned to
+                                                                                                                                           (.)
+parents and children are opposed. The derived sample equa-                            topic-viewpoint kl excluding the current occurence; nkl,¬i
+tion of current post’s viewpoint vid given all the previous                                                 (t)
+                                                                                      is a summation of nkl,¬i over all words.
+sampled assignments in the model v¬id is:
+                                                                                         After the convergence of the Gibbs algorithm, each post
+  p(vid = l|v¬id , w,  ∝
+                     Rb)                                                             is assigned a viewpoint. Thus, we can cluster the post according to their assignments. Although the modeling sug-
+                                    (t)
+                         
+                         W     −1
+                           id nid
+                                                 (t)
+                                                                                      gests that an author may have different viewpoints, the viewnl,¬id + j + β                            point’s uniﬁcation trick mentioned above ensures that an au-
+           (l)             t        j=0                                               thor will have a unique viewpoint by the end of the samna,¬id + γ × n −1               (.)                                        pling. Thus, the authors also can be clustered. Each word is
+                           j=0
+                               id
+                                          nl,¬id + W β + j                            assigned a topic and a viewpoint label. We exploit these lapar
+                   × p(Rbid = 1|vid , Vid  )                                          bels to ﬁrst create clusters, where each cluster corresponds
+                                                                                     to a topic-viewpoint value kl. It contains all the unigrams
+                     ×          p(Rbc = 1|vc , Vcpar ).                   (2)         that are assigned to kl at least one time. Second, we rank
+                       c|vid ∈Vcpar                                                   the words inside each cluster according to their assignment
+             (l)                                                                      frequencies.
+The count na,¬id is the number of times viewpoint l is assigned to author a’s posts excluding the assignment of cur-                                                       Datasets
+                                (t)
+rent post, indicated by ¬id; nl,¬id is the number of times
+                                                                                      We evaluate the proposed model on six datasets about four
+term t is assigned to viewpoint l in the corpus excluding as-                         different controversial issues, extracted from 4Forums.com
+                            (.)
+signments in current post; nl,¬id is the total number of words                        (Abbott et al. 2016) and CreateDebate.com (Hasan and Ng
+assigned to l; Wid is the set of vocabulary of words in post                          2014). Table 1 presents the datasets and their key statistics.
+                                               4Forums                                     CreateDebate
+                                               Abortion   Gay Marriage      Gun Control      Abortion      Gay Rights    Obama
+        nb. posts                               7795         6782              3653            1876          1363         962
+        nb. authors                              333          294              274             506            368         277
+        % majority label posts                  56.03        65.54            67.80           55.34          62.10       54.76
+        % reply posts                           99.38        99.32            98.87           76.81          76.45       59.46
+        % replies btw. opposing stance posts     77.6         72.1            63.59            81.3          87.07       84.44
+
+Table 1: Statistics on the six datasets used in experiments belonging to two online debate forums: 4Forums and CreateDebate.
+
+                                     4Forums                                         CreateDebate
+                                     Abortion     Gay Marriage      Gun Control        Abortion       Gay Rights      Obama
+        AITV                        92.0 ± 1.9     90.6 ± 0.3       70.5 ± 11.6      72.6 ± 10.1      79.3 ± 2.8    67.8 ± 9.9
+        PSL (Sridhar et al. 2015)   77.0 ± 8.9     80.5 ± 8.5        65.4 ± 8.3      66.8 ± 12.2      72.7 ± 8.9    63.5 ± 16.3
+
+Table 2: Averages and standard deviations of post level viewpoint identiﬁcation accuracy in percentage (AITV) and stance
+prediction accuracy in percentage (PSL)
+
+
+The 4Forums datasets contain the ground truth stance labels              stance prediction accuracy of the best overall method in
+at the author level, while the CreateDebate have annotated               Sridhar et al.(2015)’s work. The method is based on PSL
+labels at the post level. In order to perform extrinsic cluster-         (Probabilistic Soft Logic). Its results are estimated on 5 reing evaluation at both the post and author levels, we apply              peats of 5-fold cross-validation. AITV’s reported values are
+the author label for all of the corresponding posts when deal-           averaged over 10 repeats.
+ing with 4Forums datasets. For CreateDebate, we assign to                   Table 2 shows that AITV clearly outperforms PSL on each
+each author the majority label of his/her corresponding posts            of the datasets. This is achieved although it is a purely unsu-
+(Sridhar et al. 2015). For all the datasets, Table 1 reports the         pervised method. We also notice that the best performances
+percentage of rebuttals as the percentage of replies between             are recorded on the largest and highest connected datasets
+authors of opposed stance labels among all the replies.                  (see % reply posts in Table 1). Indeed, Abortion and Gay
+                                                                         Marriage datasets of 4Forums reach 90%+ accuracies with
+              Experiments and Analysis                                   low variances. The patterns in terms of the best and lowest
+We conduct experiments in order to evaluate AITV’s perfor-               accuracies over all the datasets are the same for both of the
+mance on 4Forums and CreateDebate in terms of: (1) view-                 reported methods. We also observe that the datasets containpoint identiﬁcation at the post level, (2) viewpoint clustering          ing greater percentages of replies between posts of opposing
+at the author level, (3) text clustering and detection of Topic-         stance, i.e. rebuttals, are not necessarily the ones for which
+Viewpoint word distribution.                                             AITV performs the best. This suggests that the adversarial
+                                                                         setting of viewpoint sampling for AITV, with the help of the
+Experiments Set Up                                                       high number of connections, can properly distinguish communities. Thus, its performance is not just the consequence
+All the reported results of AITV in this section correspond              or the result of using the dataset that corresponds the most
+to aggregation measures on 10 runs or repeats. The number                to the “heterophily” assumption.
+of Topics K is 30 unless speciﬁed otherwise. The number                     We compare AITV’s performance against its degenerate
+of Viewpoint L is always set to 2. AITV hyperparameters                  version “AITV-Rebuttal Known”. The ﬁrst objective of this
+are set as follows: α = 0.1; β = 1; γ = 1; η = 0.01. The                 experiment is to compare AITV to a close version to the
+number of the Gibbs Sampling iterations is 1500. The words               weakly-guided work of Qiu and Jiang (2013) 1 (see also Reoccurring less than 20 times are considered rare words and               lated Work Section). The second objective is to evaluate the
+are removed.                                                             performance of AITV which supposes that the rebuttal information is unknown against a degenerate version that uses
+Post Level Viewpoint Identiﬁcation                                       the ground truth about rebuttals. Finally, we want to comGiven AITV’s output, which consists of post level view-                  pare against a version that does not implement the tricks
+point assignments, we compute an extrinsic viewpoint iden-               discussed when sampling the viewpoints in the Section detiﬁcation accuracy measure, given the fact that all of the               tailing AITV model. The AITV Rebuttal Known (AITVused datasets contain ground-truth viewpoint labels. We                  RK) version, like Qiu and Jiang(2013), models background
+choose the better alignment of output viewpoint labels with              words and does not implement the three sampling tricks conthe ground truth, support/oppose class labels, and compute               sisting of considering only the immediate child posts, the
+the percentage of posts that are “correctly clustered” as                automatic initialization and the uniﬁcation of the author’s
+the viewpoint identiﬁcation accuracy. We compare AITV’s                  viewpoints. Qiu and Jiang(2013) determine the rebuttal beviewpoint identiﬁcation results, on all corpora, against the
+state-of-the-art supervised method (Sridhar et al. 2015) (see               1
+                                                                              At the time of writing, the implementation of Qiu and Jiang
+Section Related Work). In Table 2, we report the average                 (2013)’s work is not available publicly.
+      Figure 2: Boxplots of the post level viewpoint identiﬁcation accuracies for AITV and AITV-RK, for CreatDebate.
+
+
+                                  4Forums                                         CreateDebate
+                                  Abortion     Gay Marriage      Gun Control        Abortion        Gay Rights      Obama
+     AITV                        70.4 ± 2.1     70.3 ± 1.4        57.5 ± 7.6       55.2 ± 3.3       60.4 ± 3.2     56.8 ± 4.1
+     SNVDM-GPU                   52.2 ± 1.4     52.3 ± 1.8        54.1 ± 2.7       52.0 ± 1.8       52.8 ± 2.3     52.2 ± 1.7
+     STML (Dong et al. 2017)        75.6           68.6              66.3               -                -              -
+     PSL (Sridhar et al. 2015)   65.8 ± 4.4     77.1 ± 4.4        67.1 ± 5.4       67.4 ± 7.5       74.0 ± 5.3     63.0 ± 8.3
+
+Table 3: Averages and standard deviations of author level viewpoint identiﬁcation accuracy in percentage (AITV, SNVDMGPU) and stance prediction accuracy in percentage (PSL, STML)
+
+
+tween the authors using lexicon-based methods. AITV-RK               report the values on the CreateDebate datasets which are
+goes further and uses the ground truth values of rebuttals           presented in the original paper. Table 3 contains the average
+which only exist for the CreateDebate datasets. Figure 2             viewpoint identiﬁcation accuracies for AITV and SNVDMpresents the box-plots of the post level viewpoint identiﬁ-          GPU and the average stance prediction accuracies for STML
+cation accuracies for AITV and AITV-RK over 10 runs, for             and PSL. AITV outperforms its rival unsupervised method
+CreateDebate. We observe that when the rebuttal is known             SNVDM, speciﬁcally for the datasets containing many inthe difference is not signiﬁcant in terms of median values.          teractions. It has also close to comparable performance with
+In fact, AITV has even a better median on Abortion issue.            the weakly guided STML on Abortion and Gay Marriage.
+We also observe a slightly lower variance for AITV on the            However, AITV’s performance in this task remains far from
+higher connected datasets. This may be due to the automatic          that of the supervised PSL, except for Abortion on 4Forums.
+initialization based on authors’ interactions which helps in         We notice a big drop in accuracies between the post level
+reducing the variance of the non-deterministic outputs, due          and the author level for AITV. We suspect that AITV is able
+to the Gibbs Sampling.                                               to accurately detect the viewpoints for highly interactive authors, who reply a lot or get many replies, and thus account
+Author level Viewpoint Identiﬁcation and                             for a big portion of the total posts in the online debate. HowClustering                                                           ever, it has low accuracy when authors are non interactive.
+                                                                     We further develop this point in the Discussion Section.
+In this section, we compare author level viewpoint identiﬁcation and clustering performances against another recently             We evaluate the two unspervised Topic-Viewpoint clusproposed Topic-Viewpoint unsupervised method on social               tering methods AITV and SNVDM with the BCubed Fnetwork analysis, the SNVDM-GPU (Thonet et al. 2017)                 Measure. The BCubed F-Measure, which is based on B-
+(See Section Related Work). SNVDM-GPU supposes “ho-                  Cubed recall and B-Cubed precision, satisﬁes the four esmophily” in reply and retweets interactions in Twitter. It           sential criteria needed for a clustering quality measure (Han,
+only outputs author level viewpoint assignment. We apply             Pei, and Kamber 2011). We run both models on a different
+it on our six datasets. SNVDM is run 10 times and default            number of topics: 10, 30 and 50 in order to check potenparameters are used with acquaintance τ = 10. Also, we               tial variations in performance. Figure 3 plots the AITV and
+compare AITV to the recently introduced weakly unsuper-              SNVDM-GPU median and quartile values of the BCubed
+vised method STML (Dong et al. 2017) (See Section Re-                F-Measure for author level viewpoint clustering. The plot
+lated Work). The code of STML cannot be made available               conﬁrms the results found when evaluating the viewpoint
+during the time of this paper’s writing. Therefore, we only          accuracy about the better overall performance of AITV at
+Figure 3: AITV and SNVDM-GPU median and quartile values of the Bcubed F-Measure for author level viewpoint clustering.
+
+
+the author level clustering comparing to SNVDM-GPU. It                 ing viewpoint according to AITV. The third column of Taalso emphasizes the problem of the high variance in AITV’s             ble 4 contains the result of this procedure for some selected
+performance for Gun Control dataset, which has the lowest              Topic-Viewpoint clusters generated by AITV. We can obpercentage of rebuttals among its counterparts (see Table 1).          serve that the sentences, corresponding to examples 1 and
+Both models are pretty constant for all the other datasets and         5, shed light upon the nature of the viewpoint of the clusfor different number of topics.                                        ter. Although, clearly both sentences are discussing the topic
+                                                                       of women’s rights, the viewpoint of example 5 is claiming
+Topic-Viewpoints Words Clustering                                      that right while sentence 1 is questioning it in the context of
+We qualitatively evaluate the AITV’s Topic-Viewpoint clus-             Abortion. A similar pattern can be seen in examples 2 and 6.
+tering of the unigram words. We consider the Abortion                  However, the topic of argumentation is changing here to the
+dataset as a case study. Topic-Viewpoint clusters are usu-             fetus’s rights. We can observe the change of the topics within
+ally represented by the top frequent words. We assimilate              the same viewpoint and the similarity of the themes at the
+those clusters to a representation of reasons or argument              inter-viewpoints level. This suggests that our AITV has been
+expressions about a speciﬁc topic of argumentation from a              successful in distinguishing between topics and viewpoints
+particular viewpoint (Trabelsi and Zaiane 2014b). The prob-            discourses. We can also observe that the example sentence 4
+lem with using unigrams is that inferring the topic of the             corresponds to a rhetorical question. This may give insight
+cluster is often not a straight forward task (See examples in          on how to overcome the rhetorical discourse challenge.
+Table 4). Moreover, in the context of controversial issues,
+the used vocabulary for different viewpoints may be very                            Conclusion and Discussion
+similar. This is one of the challenges described in the Intro-         In this paper, we present AITV, a purely unsupervised
+duction Section. For instance, we can observe that the top             model, which jointly leverages the content and the interacwords of examples 1 and 5 in Table 4, which are related to             tions between the authors in online debates in order to detect
+opposed viewpoints, contain 4 common words out of 5. In                the viewpoints at the post and author levels. The model also
+order to perform a better evaluation of the discourse out-             attempts to jointly discover the discourse of the viewpoints
+put of our model, we choose to use the unigrams pertain-               and their sub-topics. The quantitative and qualitative evaluaing to each Topic-Viewpoint and to query back the origi-               tions are held against one supervised state-of-the-art method
+nal datasets to retrieve a representative sentence. The sen-           and two recent unsupervised approaches. The results denote
+tence must belong to a post that is assigned the correspond-           an accurate learning of the viewpoints at the post and the disView 1: Oppose Legalization of Abortion
+            Topic-View Top 5 words         Sentence
+       1    not abort child woman don      Taking away the womans right to destroy her child is not about taking away her choice.
+       2    human fetus right dna live     The fetus is a living, human being, who has every right in the world.
+       3    human life begin cell person   IMO, life begins when a unique cell is created by the combination of a human egg and
+                                           a human sperm.
+       4    kill not babi abort mother     If the court or parental unit is not allowed to interfere with abortion plans, does the
+                                           mother have the right to kill the child?
+                                           View 2: Support Legalization of Abortion
+            Topic-View Top 5 words         Sentence
+       5    not abort child women preg-    It is my opinion that women should have the opportunity to stop a pregnancy they do
+            nanc                           not want, and not be forced to have a child.
+       6    right not woman fetus abort    The fetus has no rights to violate, but even if it did it’s right to live would not allow it
+                                           to use the woman’s body against her will.
+       7    exist mental not fetus bodi    Before a fetus has a mental existence, it is just a growing human body - a thing, not a
+                                           person.
+       8    kill abort not murder peopl    Therefore your Abortion is not murder.
+
+Table 4: Clustered Viewpoints by AITV in terms of Topic-Viewpoint discourse dimensions (Top 5 words), along with the
+corresponding sentences, retrieved using the top words as query.
+
+                                                       4Forums                                  CreateDebate
+                                                   wrongly clustered      correct. clustered   wrong. clustered     correct. clustered
+       % Non Interacting authors                         4.0                     2.12              42.95                  29.30
+       % Interactions with same view per author         64.97                   32.49              28.15                  17.97
+       Median number of interactions per author          2.6                     6.35               1.35                   1.93
+
+Table 5: Interactions statistics on wrongly and correctly clustered authors by AITV, averaged on the datasets of the two forums.
+
+
+course levels. However, although the good performance of                 ologies interacts at a much higher rate in the mention netAITV against the recently proposed SNVDM at the author                   work comparing to retweet network. Automatic summarizalevel clustering, it does not outperform neither the weakly-             tion of contentious issue, given the encouraging results of
+guided, nor the supervised method on this task. Moreover,                AITV, may also be explored.
+we notice a signiﬁcant drop in AITV’s performance comparing to the post level task.                                                                      References
+   We discuss here some of the potential reasons pertain-                Abbott, R.; Ecker, B.; Anand, P.; and Walker, M. A. 2016.
+ing to this drop. We average some interaction statistics, over           Internet argument corpus 2.0: An sql schema for dialogic
+the two forums’ datasets, about the authors that were mis-               social media and the corpora to go with it. In LREC.
+clustered and correctly clustered by AITV, in Table 5. We                Blei, D. M.; Ng, A. Y.; and Jordan, M. I. 2003. Latent
+consider any received or sent out reply as an interaction in-            dirichlet allocation. Journal of Machine Learning Research
+volving the author. We make two observations. The ﬁrst is                3:993–1022.
+that mis-clustered authors on average interacted more often              Boltužić, F., and Šnajder, J. 2014. Back up your stance: Recwith the posts that have the same viewpoints, than the cor-              ognizing arguments in online discussions. In Proceedings of
+rectly clustered authors. This is valid for both forums. More-           the First Workshop on Argumentation Mining, 49–58. Balover, this percentage is almost 65% for mis-clustered authors            timore, Maryland: Association for Computational Linguisof 4Forums. These correspond to authors leaning towards                  tics.
+“homophily”. The second observation is that the percentages
+                                                                         Conover, M.; Ratkiewicz, J.; Francisco, M.; Goncalves, B.;
+of low interactive authors and those with no interactions are
+                                                                         Menczer, F.; and Flammini, A. 2011. Political polarization
+also higher within the mis-clustered than within the correctly
+                                                                         on twitter. In International AAAI Conference on Web and
+clustered over both forums. However, CreateDebate has sigSocial Media.
+niﬁcantly more non interactive authors than 4Forums. These
+represent on average 42.95% of mis-clustered authors com-                Dong, R.; Sun, Y.; Wang, L.; Gu, Y.; and Zhong, Y. 2017.
+paring to 29.30% for correctly clustered. The mis-clustered              Weakly-guided user stance prediction via joint modeling of
+authors of 4Forums interact rarely on average compared to                content and social interaction. In Proceedings of the 2017
+the correct ones. Overcoming these limitations should be                 ACM on Conference on Information and Knowledge Manpart of future work on unsupervised viewpoint identiﬁca-                 agement, CIKM ’17, 1249–1258. New York, NY, USA:
+tion. Future work may also include the application of sim-               ACM.
+ilar models to AITV on Twitter mention networks. Indeed,                 Han, J.; Pei, J.; and Kamber, M. 2011. Data mining: conConover et al. (2011) observe that the users of opposed ide-             cepts and techniques. Elsevier.
+Hasan, K. S., and Ng, V. 2013. Stance classiﬁcation of ide-            keep: Topic models for viewpoint discovery in social netological debates: Data, models, features, and constraints. In          works. In Proceedings of the 2017 ACM on Conference on
+Proceedings of the Sixth International Joint Conference on             Information and Knowledge Management, 87–96.
+Natural Language Processing, 1348–1356. Nagoya, Japan:                 Trabelsi, A., and Zaiane, O. R. 2014a. Finding arguing
+Asian Federation of Natural Language Processing.                       expressions of divergent viewpoints in online debates. In
+Hasan, K. S., and Ng, V. 2014. Why are you taking this                 Proceedings of the 5th Workshop on Language Analysis for
+stance? identifying and classifying reasons in ideological de-         Social Media (LASM), 35–43. Gothenburg, Sweden: Assobates. In Proceedings of the 2014 Conference on Empirical              ciation for Computational Linguistics.
+Methods in Natural Language Processing (EMNLP), 751–                   Trabelsi, A., and Zaiane, O. R. 2014b. Mining contentious
+762. Doha, Qatar: Association for Computational Linguis-               documents using an unsupervised topic model based aptics.                                                                  proach. In Proceedings of the 2014 IEEE International ConJoshi, A.; Bhattacharyya, P.; and Carman, M. 2016. Political           ference on Data Mining, 550–559.
+issue extraction model: A novel hierarchical topic model that          Trabelsi, A., and Zaı̈ane, O. R. 2016. Mining conuses tweets by political and non-political authors. In Pro-            tentious documents. Knowledge and Information Systems
+ceedings of the 7th Workshop on Computational Approaches               48(3):537–560.
+to Subjectivity, Sentiment and Social Media Analysis, 82–90.           Vilares, D., and He, Y. 2017. Detecting perspectives in poSan Diego, California: Association for Computational Lin-              litical debates. In Proceedings of the 2017 Conference on
+guistics.                                                              Empirical Methods in Natural Language Processing, 1573–
+Mohammad, S.; Kiritchenko, S.; Sobhani, P.; Zhu, X.; and               1582. Copenhagen, Denmark: Association for ComputaCherry, C. 2016. Semeval-2016 task 6: Detecting stance in              tional Linguistics.
+tweets. In Proceedings of the 10th International Workshop              Walker, M. A.; Anand, P.; Abbott, R.; Tree, J. E. F.; Martell,
+on Semantic Evaluation (SemEval-2016), 31–41. San Diego,               C.; and King, J. 2012a. That is your evidence?: Classifying
+California: Association for Computational Linguistics.                 stance in online political debate. Decision Support Systems
+Mohammad, S. M.; Sobhani, P.; and Kiritchenko, S. 2017.                53(4):719 – 729.
+Stance and sentiment in tweets. ACM Trans. Internet Tech-              Walker, M. A.; Anand, P.; Abbott, R.; and Grant, R. 2012b.
+nol. 17(3):26:1–26:23.                                                 Stance classiﬁcation using dialogic properties of persuasion.
+Paul, M.; Zhai, C.; and Girju, R. 2010. Summarizing con-               In Proceedings of the 2012 Conference of the North Amertrastive viewpoints in opinionated text. In Proceedings of             ican Chapter of the Association for Computational Linthe 2010 Conference on Empirical Methods in Natural Lan-               guistics: Human Language Technologies, NAACL HLT ’12,
+guage Processing, 66–76. Cambridge, MA: Association for                592–596. Stroudsburg, PA, USA: Association for ComputaComputational Linguistics.                                             tional Linguistics.
+Qiu, M., and Jiang, J. 2013. A latent variable model for
+viewpoint discovery from threaded forum posts. In Proceedings of the 2013 Conference of the North American Chapter
+of the Association for Computational Linguistics: Human
+Language Technologies, 1031–1040. Atlanta, Georgia: Association for Computational Linguistics.
+Sachan, M.; Dubey, A.; Srivastava, S.; Xing, E. P.; and Hovy,
+E. 2014. Spatial compactness meets topical consistency:
+Jointly modeling links and content for community detection.
+In Proceedings of the 7th ACM International Conference on
+Web Search and Data Mining, WSDM ’14, 503–512. New
+York, NY, USA: ACM.
+Sobhani, P.; Inkpen, D.; and Matwin, S. 2015. From argumentation mining to stance classiﬁcation. In Proceedings of
+the 2nd Workshop on Argumentation Mining, 67–77. Denver, CO: Association for Computational Linguistics.
+Sridhar, D.; Foulds, J.; Huang, B.; Getoor, L.; and Walker,
+M. 2015. Joint models of disagreement and stance in online debate. In Proceedings of the 53rd Annual Meeting of
+the Association for Computational Linguistics and the 7th
+International Joint Conference on Natural Language Processing (Volume 1: Long Papers), 116–125. Beijing, China:
+Association for Computational Linguistics.
+Thonet, T.; Cabanac, G.; Boughanem, M.; and PinelSauvagnat, K. 2017. Users are known by the company they

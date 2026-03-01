@@ -1,0 +1,536 @@
+We Can Detect Your Bias:
+                                                            Predicting the Political Ideology of News Articles
+
+                                                     Ramy Baly1 , Giovanni Da San Martino2 , James Glass1 , Preslav Nakov2
+                                                           MIT Computer Science and Artificial Intelligence Laboratory
+                                                                    Qatar Computing Research Institute, HBKU
+                                                                          {baly,glass}@mit.edu
+                                                                    {gmartino,pnakov}@hbku.edu.qa
+
+
+                                                               Abstract                             Media bias can come in many different forms,
+                                             We explore the task of predicting the leade.g., by omission, by over-reporting on a topic, by
+                                             ing political ideology or bias of news articles.    cherry-picking the facts, or by using propaganda
+arXiv:2010.05338v1 [cs.CL] 11 Oct 2020
+
+
+                                             First, we collect and release a large dataset of    techniques such as appealing to emotions, preju34,737 articles that were manually annotated        dices, fears, etc. (Da San Martino et al., 2019,
+                                             for political ideology –left, center, or right–,    2020a,b) Bias can occur with respect to a spewhich is well-balanced across both topics and       cific topic, e.g., COVID-19, immigration, climate
+                                             media. We further use a challenging exper-          change, gun control, etc. (Darwish et al., 2020;
+                                             imental setup where the test examples come
+                                                                                                 Stefanov et al., 2020) It could also be more systemfrom media that were not seen during training, which prevents the model from learning         atic, as part of a political ideology, which in the
+                                             to detect the source of the target news arti-       Western political system is typically defined as left
+                                             cle instead of predicting its political ideology.   vs. center vs. right political leaning.
+                                             From a modeling perspective, we propose an             Predicting the bias of individual news articles
+                                             adversarial media adaptation, as well as a spe-     can be useful in a number of scenarios. For news
+                                             cially adapted triplet loss. We further add         media, it could be an important element of internal
+                                             background information about the source, and
+                                             we show that it is quite helpful for improvquality assurance as well as of internal or external
+                                             ing article-level prediction. Our experimental      monitoring for regulatory compliance. For news
+                                             results show very sizable improvements over         aggregator applications, such as Google News, it
+                                             using state-of-the-art pre-trained Transformers     could enable balanced search, similarly to what
+                                             in this challenging setup.                          is found on AllSides.1 For journalists, it could
+                                                                                                 enable news exploration from a left/center/right
+                                         1   Introduction
+                                                                                                 angle. It could also be an important building block
+                                         In any piece of news, there is a chance that the        in a system that detects bias at the level of entire
+                                         viewpoint of its authors and of the media organiza-     news media (Baly et al., 2018, 2019, 2020), such
+                                         tion they work for, would be reflected in the way       as the need to offer explainability, i.e., if a website
+                                         the story is being told. The emergence of the Web       is classified as left-leaning, the system should be
+                                         and of social media has lead to the proliferation of    able to pinpoint specific articles that support this
+                                         information sources, whose leading political ide-       decision.
+                                         ology or bias may not be explicit. Yet, systematic         In this paper, we focus on predicting the bias
+                                         exposure to such bias may foster intolerance as         of news articles as left-, center-, or right-leaning.
+                                         well as ideological segregation, and ultimately it      Previous work has focused on doing so at the level
+                                         could affect voting behavior, depending on the de-      of news media (Baly et al., 2020) or social megree and the direction of the media bias, and on the    dia users (Darwish et al., 2020), but rarely at the
+                                         voters’ reliance on such media (DellaVigna and Ka-      article level (Kulkarni et al., 2018). The scarce
+                                         plan, 2007; Iyengar and Hahn, 2009; Saez-Trumper        article-level research has typically used distant suet al., 2013; Graber and Dunaway, 2017). Thus,          pervision, assuming that all articles from a given
+                                         making the general public aware, e.g., by track-        medium should share its overall bias, which is not
+                                         ing and exposing bias in the news is important for      always the case. Here, we revisit this assumption.
+                                         a healthy public debate given the important role
+                                         media play in a democratic society.                            http://allsides.com/
+
+
+    Our contributions can be summarized as follows:         As manual annotation at the article level is very
+    • We create a new dataset for predicting the po-     time-consuming, requires domain expertise, and
+      litical ideology of news articles. The dataset     it could be also subjective, such annotations are
+      is annotated at the article level and covers       rarely available at the article level. As a result,
+      a wide variety of topics, providing balanced       automating systems for political bias detection have
+      left/center/right perspectives for each topic.     opted for using distant supervision as an easy way
+                                                         to obtain large datasets, which are needed to train
+    • We develop a framework that discourages the        contemporary deep learning models.
+      learning algorithm from modeling the source           Distant supervision is a popular technique for
+      instead of focusing on detecting bias in the       annotating datasets for related text classification
+      article. We validate this framework in an ex-      tasks, such as detecting hyper-partisanship (Horne
+      perimental setup where the test articles come      et al., 2018; Potthast et al., 2018) and propafrom media that were not seen at training time.    ganda/satire/hoaxes (Rashkin et al., 2017). For
+      We show that adversarial media adaptation is       example, Kiesel et al. (2019) created a large corquite helpful in that respect, and we further      pus for detecting hyper-partisanship (i.e., articles
+      propose to use a triplet loss, which shows siz-    with extreme left/right bias) consisting of 754,000
+      able improvements over state-of-the-art pre-       articles, annotated via distant supervision, and adtrained Transformers.                              ditional 1,273 manually annotated articles, part of
+    • We further incorporate media-level representa-     which was used as a test set for the SemEval-2019
+      tion to provide background information about       task 4 on Hyper-partisan News Detection. The winthe source, and we show that this information      ning system was an ensemble of character-level
+      is quite helpful for improving the article-level   CNNs (Jiang et al., 2019). Interestingly, all topprediction even further.                           performing systems in the task achieved their best
+                                                         results when training on the manually annotated
+   The rest of this paper is organized as follows:
+                                                         articles only and ignoring the articles that were laWe discuss related work in Section 2. Then, we
+                                                         beled using distant supervision, which illustrates
+introduce our dataset in Section 3, we describe
+                                                         the dangers of relying on distant supervision.
+our models for predicting the political ideology of
+a news article in Section 4, and we present our             Barrón-Cedeno et al. (2019) extensively disexperiments and we discuss the results in Section 5.     cussed the limitations of distant supervision in a
+Finally, we conclude with possible directions for        text classification task about article-level propafuture work in Section 6.                                ganda detection, in a setup that is similar to what
+                                                         we deal with in this paper: the learning systems
+2       Related Work                                     may learn to model the source of the article instead
+Most existing datasets for predicting the political      of solving the task they are actually trained for.
+ideology at the news article level were created          Indeed, they have shown that the error rate may
+by crawling the RSS feeds of news websites with          drastically increase if such systems are tested on
+known political bias (Kulkarni et al., 2018), and        articles from sources that were never seen during
+then projecting the bias label from a website to all     training, and that this effect is positively correlated
+articles crawled from it, which is a form of distant     with the representation power of the learning model.
+supervision. The crawling could be also done us-         They analyzed a number of representations and maing text search APIs rather than RSS feeds (Horne        chine learning models, showing which ones tend
+et al., 2019; Gruppi et al., 2020).                      to overfit more, but, unlike our work here, they fell
+   The media-level annotation of political leaning       short of recommending a practical solution.
+is typically obtained from specialized online plat-         Budak et al. (2016) measured the bias at the
+forms, such as News Guard,2 AllSides,3 and Media         article level using crowd-sourcing. This is risky
+Bias/Fact Check,4 where highly qualified journal-        as public awareness of media bias is limited (Eleists use carefully designed guidelines to make the       jalde et al., 2018). Moreover, the annotation setup
+judgments.                                               does not scale. Finally, their dataset is not freely
+      http://www.newsguardtech.com
+                                                         available, and their approach of randomly crawling
+      http://allsides.com/                               articles does not ensure that topics and events are
+      http://mediabiasfactcheck.com                      covered from different political perspectives.
+
+
+   Lin et al. (2006) built a dataset annotated with          Furthermore, AllSides uses the annotated artithe ideology of 594 articles related to the Israeli-      cles to enable its Balanced Search, which shows
+Palestinian conflict published on bitterlemons.           news coverage on a given topic from media with
+org. The articles were written by two editors and         different political bias. In other words, for each
+200 guests, which minimizes the risk of modeling          trending event or topic (e.g., impeachment or corothe author style. However, the dataset is too small       navirus pandemic), the platform pushes news arto train modern deep learning approaches.                 ticles from all sides of the political spectrum, as
+   Kulkarni et al. (2018) built a dataset using distant   shown in Figure 1. We took advantage of this and
+supervision and labels from AllSides. Distant su-         downloaded all articles along with their political
+pervision is fine for the purpose of training, but they   ideology annotations (left, center, or right), their
+also used it for testing, which can be problematic.       assigned topic(s), the media in which they were
+Moreover, their training and test sets contain arti-      published, their author(s), and their publication
+cles from the same media, and thus models could           date. Thus, our dataset contains articles that were
+easily learn to predict the article’s source rather       manually selected and annotated, and that are repthan its bias. In their models, they used both the        resentative of the real political scenery. Note that
+text and the URL contents of the articles.                the center class covers articles that are biased toOverall, political bias has been studied at the        wards a centrist political ideology, and not articles
+level of news outlet (Dinkov et al., 2019; Baly et al.,   that lack political bias (e.g., sports and technology),
+2018, 2020; Zhang et al., 2019), user (Darwish            which commonly exist in news corpora that were
+et al., 2020), article (Potthast et al., 2018; Saleh      built by scraping RSS feeds.
+et al., 2019), and sentence (Sim et al., 2013; Saez-         We collected a total of 34,737 articles published
+Trumper et al., 2013). In particular, Baly et al.         by 73 news media and covering 109 topics.6 In this
+(2018) developed a system to predict the political        dataset, a total of 1,080 individual articles (3.11%)
+bias and the factuality of news media. In a follow-       have a political ideology label that is different from
+up work, Baly et al. (2019) showed that bias and          their source’s. This suggests that, while the distant
+factuality of reporting should be predicted jointly.      supervision assumption generally holds, we would
+A finer-grained analysis is performed in (Horne           still find many articles that defy it. Table 1 shows
+et al., 2018), where a model was trained on 10K           some statistics about the dataset.
+sentences from a dataset of reviews (Pang and Lee,
+2004), and used to discriminate objective versus                 Political Ideology        Count      Percentage
+non-objective sentences in news articles. Lin et al.             Left                     12,003             34.6%
+(2006) presented a sentence-level classifier, where              Center                    9,743             28.1%
+the labels were projected from the document level.               Right                    12,991             37.3%
+
+3       Dataset                                                     Table 1: Statistics about our dataset.
+
+In this section, we describe the dataset that we creFigure 2 illustrates the distribution of the differated and that we used in our experiments. While
+                                                          ent political bias labels within each of the most
+most of the platforms that analyze the political
+                                                          frequent topics. We can see that our dataset is able
+leaning of news media provide in-depth analysis of
+                                                          to represent topics or events from different political
+particular aspects of the media, AllSides stands out
+                                                          perspectives. This is yet another advantage, as it
+as it provides annotations of political ideology for
+                                                          enables a more challenging task for machine learnindividual articles, which ensures high-quality data
+                                                          ing models to detect the linguistic and the semantic
+for both training and testing, which is in contrast
+                                                          nuances of different political ideologies in news
+with distant supervision approaches used in most
+                                                          articles, as opposed to cases where certain topics
+previous research, as we have seen above. In Allmight be coincidentally collocated with certain laSides, these annotations are made as a result of a
+                                                          bels, in which case the models would be actually
+rigorous process that involves blind bias surveys,
+                                                          learning to detect the topics instead of predicting
+editorial reviews, third-party analysis, independent
+                                                          the political ideology of the target news article.
+reviews, and community feedback.5
+                                                               In some cases, an article could be assigned to multiple
+   http://www.allsides.com/media-bias/                    topics, e.g., it could go simultaneously into coronavirus, public
+media-bias-rating-methods                                 health, and healthcare.
+
+
+         Figure 1: AllSides: balanced search on the topic of reopening after the coronavirus lockdown.
+
+
+                                                             The latter form of splitting would help us indicate what a trained classifier has actually learned.
+                                                          For instance, if it modeled the source, then it would
+                                                          not be able to perform well on the test set, since all
+                                                          its articles would belong to sources that were never
+                                                          seen during training. In order to ensure fair one-toone comparisons between experiments, we created
+                                                          these two different sets of splits, while making sure
+                                                          that they share the same test set, as follows:
+
+                                                             • Media-based Split: We sampled 1,200 articles from 12 news media (100 per medium)
+                                                               and used them as the test set, and we excluded
+                                                               the remaining 5,470 articles from these media.
+                                                               Then, we used the articles from the remaining
+                                                               61 media to create the training and the validation sets, where all articles from the same
+                                                               medium would appear in the same set: training, development, or testing. This ensures that
+Figure 2: Political ideology for the most frequent top-        the model is fine-tuned and tested on articles
+ics: elections, immigration, coronavirus, and politics.
+                                                               whose sources were not seen during training.
+
+   It is worth noting that since most article labels         • Random Split: Here, the test set is the same
+are aligned with their source labels, it is likely that        as in the media-based split. The 5,470 articles
+machine learning classifiers would end up model-               that we excluded from the 12 media are now
+ing the source instead of the political ideology of            added to the articles from the 61 remaining
+the individual articles. For example, a model would            media. Then, we split this collection of artibe learning the writing style of each medium, and              cles (using stratified random sampling) into
+then it would associate it with a particular ideology.         training and validation sets. This ensures that
+Therefore, we pre-processed the articles in a way              the model is fine-tuned and evaluated only on
+that eliminates explicit markers such as the name of           articles whose sources were observed during
+the authors, or the name of the medium that usually            training.
+appears as a preamble to the article’s content, or in
+the content itself. Furthermore, in order to ensure          Table 2 shows statistics about both splits, includthat we are actually modeling the political ideol-        ing the size of each set and the number of media
+ogy as it is expressed in the language of the news,       and topics they cover. We release the dataset, along
+we created evaluation splits in two different ways:       with the evaluation splits, and the code,7 which can
+(i) randomly, which is what is typically done (for        be used to extend the dataset as more news articles
+comparison only), and (ii) based on media, where          are added to AllSides.
+all articles by the same medium appear in either            7
+                                                              http://github.com/ramybaly/
+the training, the validation, or the testing dataset.     Article-Bias-Prediction
+
+
+                              Train     Valid.     Test     4.2.1 Adversarial Adaptation (AA)
+                     Count    22,969    5,098    1,200      This model was originally proposed by Ganin et al.
+    Media-based      Media        46       15       12      (2016) for unsupervised domain adaptation in imTopics      108      105       93      age classification. Their objective was to adapt a
+                                                            model trained on labelled images from a source
+                     Count    26,828    6,709    1,200
+                                                            domain to a novel target domain, where the images
+    Random           Media        73       73       12
+                                                            have no labels for the task at hand. This is done
+                     Topics      108      107       93
+                                                            by adding an adversarial domain classifier with
+Table 2: Statistics about our dataset and its two splits:   a gradient reversal layer to predict the examples’
+media-based and random.                                     domains. The label predictor’s is minimized for
+                                                            the labelled examples (from the source domain),
+                                                            and the adversarial domain classifier’s loss is max4     Methodology                                           imized for all examples in the dataset. As a result,
+4.1    Classifiers                                          the encoder can extract representation that is (i) discriminative for the main task and also (ii) invariant
+The task of predicting the political ideology of            across domains (due to the gradient reversal layer).
+news articles is typically formulated as a classi-          The overall loss is minimized as follows:
+fication problem, where the textual content of the
+articles is encoded into a vector representation that             X                            X
+is used to train a classifier to predict one of C                         Liy (θf , θy ) − λ           Lid (θf , θd ),   (1)
+classes (in our case, C = 3: left, center, and right).           i=1:N                         i=1:N
+                                                                  di =0
+In our experiments, we use two deep learning archiwhere N is the number of training examples,
+tectures: (i) Long Short-Term Memory networks
+                                                            Liy (·, ·) is the label predictor’s loss, the condi-
+(LSTMs), which are Recurrent Neural Networks
+                                                            tion di = 0 means that only examples from the
+(RNNs), which use gating mechanisms to selecsource domain are used to calculate the label pretively pass information across time and to model
+                                                            dictor’s loss, Lid (·, ·) is the domain classifier’s loss,
+long-term dependencies (Hochreiter and Schmidλ controls the trade-off between both losses, and
+huber, 1997), and (ii) Bidirectional Encoder Rep-
+                                                            {θf , θy , θd } are the parameters of the encoder, the
+resentations from Transformers (BERT), with a
+                                                            label predictor, and the domain classifier, respeccomplex architecture yielding high-quality contextively. Further details about the formulation of this
+tualized embeddings, which have been successful
+                                                            method is available in (Ganin et al., 2016).
+in several Natural Language Processing tasks (DeWe adapt this architecture as follows. Instead of
+vlin et al., 2019).
+                                                            a domain classifier, we implement a media clas4.2    Removing Media Bias                                  sifier, which, given an article, tries to predict the
+                                                            medium it comes from. As a result, the encoder
+Ultimately, our goal is to develop a model that can         should extract representation that is discriminative
+predict the political ideology of a news article. Our       for the main task of predicting political ideology,
+dataset, along with some others, has a special prop-        while being invariant for the different media. This
+erty that might stand in the way of achieving this          approach was originally proposed as an unsupergoal. Most articles published by a given source             vised domain adaptation, since labelled examples
+have the same ideological leaning. This might con-          were available for one domain only, whereas in our
+fuse the model and cause it to erroneously associate        case, all articles from different media were labelled
+the output classes with features that characterize en-      for their political ideology. Therefore, we jointly
+tire media outlets (such as detecting specific writing      minimize the losses of both the label predictor and
+patterns, or stylistic markers in text). Consequently,      the media classifier over the entire dataset. The
+the model would fail when applied to articles that          new objective function to minimize is as follows:
+were published in media that were unseen during
+training. The experiments in Section 5 confirm this.             X                             X
+Thus, we apply two techniques to de-bias the mod-                       Liy (θf , θy ) − λ           Lim (θf , θm ),     (2)
+els, i.e., to prevent them from learning the style of           i=1:N                        i=1:N
+
+a specific news medium rather than predicting the           where Lim (·, ·) is the loss of the media classifier,
+political ideology of the target news article.              and θm is its set of parameters.
+
+
+4.2.2 Triplet Loss Pre-training (TLP)                       Baly et al. (2020) proposed a comprehensive set
+In this approach, we pre-train the encoder using         of representation to characterize news media from
+a triplet loss (Schroff et al., 2015). The model is      different angles: how a medium portrays itself, who
+trained on a set of triplets, each composed of an        is its audience, and what is written about it. Their
+anchor, a positive, and a negative example. The          results indicate that exploring the Twitter bios of a
+objective in Eq. 3 ensures that the positive example     medium’s followers offers a good insight into its
+is always closer to the anchor than the negative         political leaning. To a lesser extent, the content
+example is, where a, p and n are the encodings           of a Wikipedia page describing a medium can also
+of the anchor, of the positive, and of the negative      help unravel its political leaning. Therefore, we
+examples, respectively, and D(·, ·) is the Euclidean     concatenated these representations to the encoded
+distance:                                                articles, at the output of the encoder and right before the SOFTMAX layer, so that both the article
+      L = max (D (a, p) − D (a, n) + , 0) .      (3)    encoder and the classification layer that is based on
+   Figure 3 shows an example of such a triplet. The      the article and the external media representations
+positive example shares the same ideology as the         are trained jointly and end-to-end.
+anchor’s, but they are published by different media.        Similarly to (Baly et al., 2020), we retrieved
+The negative example has a different ideology than       the profiles of up to a 1,000 Twitter followers for
+the anchor’s, but they are published by the same         each medium, we encoded their bios using the
+medium. In this way, the encoder will be cluster-        Sentence-BERT model (Reimers and Gurevych,
+ing examples with similar ideologies close to each       2019), and we then averaged these encodings to
+other, regardless of their source. Once the encoder      obtain a single representation for that medium. As
+has been pre-trained, its parameters, along with         for the Wikipedia representation, we automatically
+the softmax classifier’s, are fine-tuned on the main     retrieved the content of the page describing each
+task by minimizing the cross-entropy loss when           medium, whenever applicable. Then, we used
+predicting the political ideology of articles.           the pre-trained base BERT model to encode this
+                                                         content by averaging the word representations extracted from BERT’s second-to-last layer, which is
+                                                         common practice, since the last layer may be biased
+                                                         towards the pre-training objectives of BERT.
+
+                                                         5     Experiments and Results
+                                                         We evaluated both the LSTM and the BERT models, assessing the impact of (i) de-biasing and
+                                                         (ii) incorporating media-level representation.
+
+                                                         5.1    Experimental Setup
+  Figure 3: An example triplet used for de-biasing.
+                                                         We fine-tuned the hyper-parameters of both models
+                                                         on the validation set using a guided grid search
+4.3     Media-level Representation                       trial while fixing the seeds of the random weights
+Finally, we explore the benefits of incorporating        initialization. For LSTM, we varied the length of
+information describing the target medium, which          the input (128–1,024 tokens), the number of layers
+can serve as a complementary representation for          (1–3), the size of the LSTM cell (200–400), the
+the article. While this seems to be counter-intuitive    dropout rate (0–0.8), the learning rate (1e−3 to
+to what we have been proposing in Subsection 4.2,        1e−5), the gradient clipping value (0–5), and the
+we believe that medium-level representation can be       batch size (8–256). The best results were obtained
+valuable when combined with an accurate represen-        with a 512-token input, a 2-layer LSTM of size
+tation of the article. Intuitively, having an accurate   256, a dropout rate of 0.7, a learning rate of 1e−3,
+understanding of the natural language in the article,    gradient clipping at 0.5, and a batch size of 32.
+together with a glimpse into the medium it is pub-       This model has around 1.1M trainable parameters,
+lished in, should provide a more complete picture        and was trained with 300-dimensional GloVe input
+of its underlying political ideology.                    word embeddings (Pennington et al., 2014).
+
+
+   For BERT, we varied the length of the input, the       Model       Split         Macro F1     Acc.   MAE
+learning rate, and the gradient clipping value. The       Majority                    19.61     41.67   0.92
+best results were obtained using a 512-token input,
+                                                                      Media-based     31.51     32.30   0.97
+a learning rate of 2e−5, and gradient clipping at 1.      LSTM
+                                                                      Random          65.50     66.17   0.52
+This model has 110M trainable parameters.
+                                                                      Media-based     35.53     36.75   0.90
+   We trained our models on 4 Titan X Pascal GPUs,        BERT
+                                                                      Random          80.19     79.83   0.33
+and the runtime for each epoch was 25 seconds for
+the LSTM-based models and 22 minutes for the            Table 3: Baseline experiments (without de-biasing or
+BERT-based models. For each experiment, the             media-level representation) for the two splits.
+model was trained only once with fixed seeds used
+to initialize the models’ weights.
+                                                        Removing the Source Bias In order to further
+   For the Adversarial Adaptation (AA), we have
+                                                        confirm the bias towards modeling the media, we
+an additional hyper-parameter λ (see Equation 2),
+                                                        ran a side experiment of fine-tuning BERT on the
+which we varied from 0 to 1, where 0 means no
+                                                        task of predicting the medium given the article’s
+adaptation at all. The best results were obtained
+                                                        content, which is a 73-way classification problem.
+with λ = 0.7, which means that we need to pay
+                                                        We used stratified random sampling to create the
+significant attention to the adversarial classifier’s
+                                                        evaluation splits and to make sure each set contains
+loss in order to mitigate the media bias.
+                                                        all labels (media). The results in Table 4 confirm
+   For the Triplet Loss Pre-training (PLT), we samthat BERT is much stronger than the majority class
+pled 35,017 triplets from the training set, such that
+                                                        baseline, despite the high number of classes, which
+the examples in each triplet discuss the same topic
+                                                        means that predicting the medium in which a target
+in order to ensure that the change in topic has mininews article was published is a fairly easy task.
+mal impact on the distance between the examples.
+   To evaluate our models, we use accuracy and
+                                                                     Model      Macro F1        Acc.
+macro-F1 score (F1 averaged across all classes),
+which we also used as an early stopping criterion,                   Majority          0.25    10.21
+since the classes were slightly imbalanced. More-                    BERT             59.72    80.12
+over, given the ordinal nature of the labels, we
+report the Mean Absolute Error (MAE), shown in          Table 4: Predicting the medium in which a target news
+                                                        article was published.
+Equation (4), where N is the number of instances,
+and yi and ŷi are the number of correct and of
+                                                           In order to remove the bias towards modeling the
+predicted labels, respectively.
+                                                        medium, we evaluated the impact of the adversarial
+                           N                            adaptation (AA) and the Triplet Loss Pre-training
+                       1 X                              (TLP) with the media-based split. The results in
+             MAE =         |yi − ŷi |           (4)
+                       N                                Table 5 show sizeable improvements when either
+                          i=1
+                                                        of these approaches is used, compared to the base5.2   Results                                           line (no de-biasing). In particular, TLP yields an
+Baseline Results The results in Table 3 show the        improvement of 14.12 points absolute in terms of
+performance for LSTM and for BERT at predicting         accuracy, and 12.73 points in terms of macro-F1 .
+the political ideology of news articles for both the
+media-based and the random splits. We observe
+                                                          Model       De-bias   Macro F1       Acc.     MAE
+sizable differences in performance between the two
+splits. In particular, both models perform much                        None         31.51      32.30    0.97
+better when they are trained and evaluated on the         LSTM          AA          40.33      40.57    0.69
+random split, whereas they both fail on the media-                     TLP          45.44      46.42    0.62
+based split, where they are tested on articles from                    None         35.53      36.75    0.90
+media that were not seen during training. This            BERT          AA          43.87      46.22    0.59
+observation confirms our initial concerns that the                     TLP          48.26      51.41    0.51
+models would tend to learn general characteristics
+about news media, and then would face difficulties      Table 5: Impact of de-biasing (adversarial adaptation
+with articles coming from new unseen media.             and triplet loss) on article-level bias detection.
+
+
+                                                          LSTM                            BERT
+    #   Representation                        Macro F1      Acc.      MAE     Macro F1      Acc.     MAE
+    1   Article (baseline)                      31.51         32.30   0.97       35.53      36.75     0.90
+    2   Article with TLP                        45.44         46.42   0.62       48.26      51.41     0.51
+    3   Wikipedia                               41.39         41.86   0.92       41.39      41.86     0.92
+    4   Wikipedia + Article                     40.49         40.79   0.92       42.33      41.90     0.90
+    5   Wikipedia + Article with TLP            48.25         46.47   0.69       51.16      49.75     0.32
+    6   Twitter bios                            60.30         62.69   0.42       60.30      62.69     0.42
+    7   Twitter bios + Article                  60.30         62.69   0.42       60.42      63.12     0.40
+    8   Twitter bios + Article with TLP         62.02         70.03   0.32       64.29      72.00     0.29
+
+Table 6: Impact of adding media-level representations to the article-level representations (with and without debiasing). Note that the results in rows 3 and 6 are the same for both LSTM and BERT because no articles were
+involved, and the media-level representations were directly used to train the classifier.
+
+
+Impact of Media-Level Representation Fi-                     Overall, comparing the best results to the basenally, we evaluated the impact of incorporating the       line (rows 8 vs. 1), we can see that (i) using the
+media-level representation (Twitter followers’ bios       triplet loss to remove the source bias, and (ii) inand Wikipedia content) in addition to teh article-        corporating media-level representation from Twitlevel representation. Table 6 illustrates these re-       ter followers yields 30.51 and 28.76 absolute imsults in an incremental way. First, we evaluated          provement in terms of macro F1 on the challenging
+the performance of the media-level representation         media-based split.
+alone at predicting the political ideology of news
+articles (see rows 3 and 6). We should note that          6     Conclusion and Future Work
+these results are identical for the LSTM and the
+BERT columns since no article was encoded in              We have explored the task of predicting the leading
+these experiments, and the media representation           political ideology of news articles. In particular, we
+was used directly to train the logistic regression        created a new large dataset for this task, which feaclassifier. Then, adding the article representation       tures article-level annotations and is well-balanced
+from either model, without any de-biasing, had            across topics and media. We further proposed an
+no or little impact on the performance (see rows          adversarial media adaptation approach, as well as a
+4 vs. 3, and 7 vs. 6). This is not surprising, since we   special triplet loss in order to prevent modeling the
+have shown that, without de-biasing, both models          source instead of the political bias in the news artilearn more about the source than about the bias in        cle, which is a common pitfall for approaches dealthe language used by the article. Therefore, the          ing with data that exhibit high correlation between
+ill-encoded articles do not provide more informa-         the source of a news article and its class, as is the
+tion than what the medium representation already          case with our task here. Finally, our experimental
+gives, which is why no or too little improvement          results have shown very sizable improvements over
+was observed.                                             using state-of-the-art pre-trained Transformers.
+                                                             In future work, we plan to explore topic-level
+   When we use the triplet loss to mitigate the           bias prediction as well as going beyond left-centersource bias, the resulting article representation is      right bias. We further want to develop models that
+more accurate and meaningful, and the medium rep-         would be able to detect specific fragments in an
+resentation does offer complementary information,         article where the bias occurs, thus enabling explainand eventually contributes to sizeable performance        ability. Last but not least, we plan to experiment
+gains (see rows 5 and 8 vs. 2). The Twitter bios rep-     with other languages, and to explore to what extent
+resentation appears to be much more important than        a model for one language is transferable to another
+the representation from Wikipedia, which shows            one given that the left-center-right division is not
+the importance of inspecting the media followers’         universal and does not align perfectly across counbackground and their point of views, which is also        tries and cultures, even when staying within the
+one of the observations in (Baly et al., 2020).           Western political world.
+
+
+Acknowledgments                                               the 29th International Joint Conference on Artificial Intelligence and the 17th Pacific Rim InternaThis research is part of the Tanbih project8 , which          tional Conference on Artificial Intelligence, IJCAIaims to limit the effect of “fake news,” propaganda           PRICAI ’20, pages 4826–4832, Yokohama, Japan.
+and media bias by making users aware of what                Giovanni Da San Martino, Seunghak Yu, Alberto
+they are reading. The project is developed in col-            Barron-Cedeno, Rostislav Petrov, and Preslav
+laboration between the Qatar Computing Research               Nakov. 2019. Fine-grained analysis of propaganda
+Institute, HBKU and the MIT Computer Science                  in news articles. In Proceedings of the 2019 Conference on Empirical Methods in Natural Language
+and Artificial Intelligence Laboratory.                       Processing, EMNLP ’19, pages 5636–5646, Hong
+                                                              Kong, China.
+
+References                                                  Kareem Darwish, Michael Aupetit, Peter Stefanov, and
+                                                              Preslav Nakov. 2020. Unsupervised user stance deRamy Baly, Georgi Karadzhov, Dimitar Alexandrov,              tection on Twitter. In Proceedings of the InternaJames Glass, and Preslav Nakov. 2018. Predict-              tional AAAI Conference on Web and Social Media,
+  ing factuality of reporting and bias of news media          ICWSM ’20, pages 141–152, Atlanta, GA, USA.
+  sources. In Proceedings of the 2018 Conference on
+  Empirical Methods in Natural Language Processing,         Stefano DellaVigna and Ethan Kaplan. 2007. The Fox
+  EMNLP ’18, pages 3528–3539, Brussels, Belgium.               News effect: Media bias and voting. The Quarterly
+                                                              Journal of Economics, 122(3):1187–1234.
+Ramy Baly, Georgi Karadzhov, Jisun An, Haewoon
+                                                            Jacob Devlin, Ming-Wei Chang, Kenton Lee, and
+  Kwak, Yoan Dinkov, Ahmed Ali, James Glass, and
+                                                               Kristina Toutanova. 2019. BERT: Pre-training of
+  Preslav Nakov. 2020. What was written vs. who
+                                                               deep bidirectional transformers for language underread it: News media profiling using text analysis and
+                                                               standing. In Proceedings of the 2019 Conference of
+  social media context. In Proceedings of the 58th Anthe North American Chapter of the Association for
+  nual Meeting of the Association for Computational
+                                                               Computational Linguistics: Human Language TechLinguistics, ACL ’20, pages 3364–3374.
+                                                               nologies, NAACL-HLT ’19, pages 4171–4186, Minneapolis, MN, USA.
+Ramy Baly, Georgi Karadzhov, Abdelrhman Saleh,
+  James Glass, and Preslav Nakov. 2019. Multi-task          Yoan Dinkov, Ahmed Ali, Ivan Koychev, and Preslav
+  ordinal regression for jointly predicting the trustwor-     Nakov. 2019. Predicting the leading political idethiness and the leading political ideology of news          ology of YouTube channels using acoustic, textual,
+  media. In Proceedings of the 17th Annual Confer-            and metadata information. In Proceedings of the
+  ence of the North American Chapter of the Associ-           20th Annual Conference of the International Speech
+  ation for Computational Linguistics: Human Lan-             Communication Association, INTERSPEECH ’19,
+  guage Technologies, NAACL-HLT ’19, pages 2109–              pages 501–505, Graz, Austria.
+  2116, Minneapolis, MN, USA.
+                                                            Erick Elejalde, Leo Ferres, and Eelco Herder. 2018. On
+Alberto Barrón-Cedeno, Israa Jaradat, Giovanni                the nature of real and perceived bias in the mainDa San Martino, and Preslav Nakov. 2019. Proppy:             stream media. PloS one, 13(3):e0193765.
+  Organizing the news based on their propagandistic
+  content. Information Processing & Management,             Yaroslav Ganin, Evgeniya Ustinova, Hana Ajakan,
+  56(5):1849–1864.                                            Pascal Germain, Hugo Larochelle, François Laviolette, Mario Marchand, and Victor Lempitsky.
+Ceren Budak, Sharad Goel, and Justin M Rao. 2016.             2016. Domain-adversarial training of neural netFair and balanced? Quantifying media bias through           works. The Journal of Machine Learning Research,
+  crowdsourced content analysis. Public Opinion               17(1):2096–2030.
+  Quarterly, 80(S1):250–271.
+                                                            Doris A Graber and Johanna Dunaway. 2017. Mass
+Giovanni Da San Martino, Alberto Barrón-Cedeño,             media and American politics. SAGE Publications.
+  Henning Wachsmuth, Rostislav Petrov, and Preslav          Maurı́cio Gruppi, Benjamin D. Horne, and Sibel Adalı.
+  Nakov. 2020a. SemEval-2020 task 11: Detection              2020. NELA-GT-2019: A large multi-labelled news
+  of propaganda techniques in news articles. In Pro-         dataset for the study of misinformation in news articeedings of the International Workshop on Semantic         cles. arXiv preprint arXiv:2003.08444.
+  Evaluation, SemEval ’20, Barcelona, Spain.
+                                                            Sepp Hochreiter and Jürgen Schmidhuber. 1997.
+Giovanni Da San Martino, Stefano Cresci, Alberto              Long Short-Term Memory. Neural Computation,
+  Barrón-Cedeño, Seunghak Yu, Roberto Di Pietro,            9(8):1735–1780.
+  and Preslav Nakov. 2020b. A survey on computational propaganda detection. In Proceedings of          Benjamin D. Horne, William Dron, Sara Khedr, and
+                                                              Sibel Adali. 2018. Assessing the news landscape:
+       http://tanbih.qcri.org/                                A multi-module toolkit for evaluating the credibility
+
+
+  of news. In Proceedings of the The Web Conference,       Hannah Rashkin, Eunsol Choi, Jin Yea Jang, Svitlana
+  WWW ’18, pages 235–238, Lyon, France.                      Volkova, Yejin Choi, and Paul G Allen. 2017. Truth
+                                                             of varying shades: Analyzing language in fake news
+Benjamin D Horne, Jeppe Nørregaard, and Sibel Adalı.         and political fact-checking. In Proceedings of the
+  2019. Different spirals of sameness: A study of con-       2017 Conference on Empirical Methods in Natutent sharing in mainstream and alternative media. In       ral Language Processing, EMNLP ’17, pages 2931–
+  Proceedings of the International AAAI Conference           2937, Copenhagen, Denmark.
+  on Web and Social Media, ICWSM ’19, pages 257–
+  266, Munich, Germany.                                    Nils Reimers and Iryna Gurevych. 2019. SentenceBERT: Sentence embeddings using Siamese BERTShanto Iyengar and Kyu S Hahn. 2009. Red media,              networks. In Proceedings of the 2019 Conference on
+  blue media: Evidence of ideological selectivity in         Empirical Methods in Natural Language Processing
+  media use. Journal of communication, 59(1):19–39.          and the 9th International Joint Conference on Natural Language Processing, EMNLP-IJCNLP ’19,
+                                                             pages 3973–3983, Hong Kong, China.
+Ye Jiang, Johann Petrak, Xingyi Song, Kalina
+  Bontcheva, and Diana Maynard. 2019. Team Bertha          Diego Saez-Trumper, Carlos Castillo, and Mounia Lalvon Suttner at SemEval-2019 Task 4: Hyperpartisan          mas. 2013. Social media news communities: Gatenews detection using ELMo sentence representation          keeping, coverage, and statement bias. In Proceedconvolutional network. In Proceedings of the 13th          ings of the 22nd ACM International Conference on
+  International Workshop on Semantic Evaluation, Se-         Information & Knowledge Management, CIKM ’13,
+  mEval ’19, pages 840–844, Minneapolis, MN, USA.            page 1679–1684, San Francisco, CA, USA.
+Johannes Kiesel, Maria Mestre, Rishabh Shukla, Em-         Abdelrhman Saleh, Ramy Baly, Alberto Barrónmanuel Vincent, Payam Adineh, David Corney,                Cedeño, Giovanni Da San Martino, Mitra MoBenno Stein, and Martin Potthast. 2019. SemEval-           htarami, Preslav Nakov, and James Glass. 2019.
+  2019 Task 4: Hyperpartisan news detection. In Pro-         Team QCRI-MIT at SemEval-2019 Task 4: Propaceedings of the 13th International Workshop on Se-         ganda analysis meets hyperpartisan news detection.
+  mantic Evaluation, SemEval ’19, pages 829–839,             In Proceedings of the 13th International Workshop
+  Minneapolis, Minnesota, USA.                               on Semantic Evaluation, SemEval ’19, pages 1041–
+                                                             1046, Minneapolis, MN, USA.
+Vivek Kulkarni, Junting Ye, Steven Skiena, and
+  William Yang Wang. 2018. Multi-view models for           Florian Schroff, Dmitry Kalenichenko, and James
+  political ideology detection of news articles. In Pro-      Philbin. 2015. FaceNet: A unified embedding for
+  ceedings of the Conference on Empirical Methods in          face recognition and clustering. In Proceedings
+  Natural Language Processing, EMNLP ’18, pages               of the IEEE Conference on Computer Vision and
+  3518–3527, Brussels, Belgium.                              Pattern Recognition, CVPR ’15, pages 815–823,
+                                                              Boston, MA, USA.
+Wei-Hao Lin, Theresa Wilson, Janyce Wiebe, and
+                                                           Yanchuan Sim, Brice D. L. Acree, Justin H. Gross, and
+ Alexander Hauptmann. 2006. Which side are you
+                                                             Noah A. Smith. 2013. Measuring ideological proon? Identifying perspectives at the document and
+                                                             portions in political speeches. In Proceedings of the
+  sentence levels. In Proceedings of the Tenth Confer2013 Conference on Empirical Methods in Natural
+  ence on Computational Natural Language Learning,
+                                                             Language Processing, EMNLP ’13, pages 91–101,
+  CoNLL ’06, pages 109–116.
+                                                             Seattle, Washington, USA.
+Bo Pang and Lillian Lee. 2004. A sentimental edu-          Peter Stefanov, Kareem Darwish, Atanas Atanasov,
+  cation: Sentiment analysis using subjectivity sum-         and Preslav Nakov. 2020. Predicting the topical
+  marization based on minimum cuts. In Proceed-              stance and political leaning of media using tweets.
+  ings of the 42nd Annual Meeting of the Association         In Proceedings of the 58th Annual Meeting of the
+  for Computational Linguistics, ACL ’04, pages 271–         Association for Computational Linguistics, ACL ’20,
+  278, Barcelona, Spain.                                     pages 527–537.
+
+Jeffrey Pennington, Richard Socher, and Christopher D      Yifan Zhang, Giovanni Da San Martino, Alberto
+   Manning. 2014. GloVe: Global vectors for word rep-        Barrón-Cedeño, Salvatore Romeo, Jisun An, Haeresentation. In Proceedings of the 2014 Conference        woon Kwak, Todor Staykovski, Israa Jaradat, Georgi
+   on Empirical Methods in Natural Language Process-         Karadzhov, Ramy Baly, Kareem Darwish, James
+   ing, EMNLP ’14, pages 1532–1543, Doha, Qatar.             Glass, and Preslav Nakov. 2019. Tanbih: Get to
+                                                             know what you are reading. In Proceedings of the
+Martin Potthast, Johannes Kiesel, Kevin Reinartz,            2019 Conference on Empirical Methods in NatuJanek Bevendorff, and Benno Stein. 2018. A stylo-           ral Language Processing and the 9th International
+ metric inquiry into hyperpartisan and fake news. In         Joint Conference on Natural Language Processing,
+ Proceedings of the 56th Annual Meeting of the As-           EMNLP-IJCNLP ’19, pages 223–228, Hong Kong,
+ sociation for Computational Linguistics, ACL ’18,           China.
+ pages 231–240, Melbourne, Australia.

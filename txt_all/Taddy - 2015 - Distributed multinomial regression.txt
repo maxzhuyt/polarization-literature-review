@@ -1,0 +1,953 @@
+The Annals of Applied Statistics
+                                         2015, Vol. 9, No. 3, 1394–1414
+                                         DOI: 10.1214/15-AOAS831
+                                          c Institute of Mathematical Statistics, 2015
+
+
+                                                          DISTRIBUTED MULTINOMIAL REGRESSION
+
+                                                                                   By Matt Taddy
+arXiv:1311.6139v4 [stat.AP] 5 Nov 2015
+
+
+                                                                                 University of Chicago
+                                                          This article introduces a model-based approach to distributed
+                                                      computing for multinomial logistic (softmax) regression. We treat
+                                                      counts for each response category as independent Poisson regressions
+                                                      via plug-in estimates for fixed effects shared across categories. The
+                                                      work is driven by the high-dimensional-response multinomial models that are used in analysis of a large number of random counts.
+                                                      Our motivating applications are in text analysis, where documents
+                                                      are tokenized and the token counts are modeled as arising from a
+                                                      multinomial dependent upon document attributes. We estimate such
+                                                      models for a publicly available data set of reviews from Yelp, with
+                                                      text regressed onto a large set of explanatory variables (user, business, and rating information). The fitted models serve as a basis for
+                                                      exploring the connection between words and variables of interest, for
+                                                      reducing dimension into supervised factor scores, and for prediction.
+                                                      We argue that the approach herein provides an attractive option for
+                                                      social scientists and other text analysts who wish to bring familiar
+                                                      regression tools to bear on text data.
+
+
+                                            1. Introduction. This article is motivated by data sets that include
+                                         counts in a massive number of categories, such as text corpora (counts for
+                                         words), browser logs (counts on websites), and website tracking (counts of
+                                         clicks). The unit upon which counts are observed—for example, a “document” for text or a “user” in web analysis—is annotated with attributes,
+                                         additional information about each document (author, date, etc.) or user
+                                         (age, purchases, etc.). Much of contemporary Big Data analysis involves
+                                         some exploration, inference, and prediction of, or controlling for, the relationship between these attributes and the associated very high-dimensional
+                                         counts.                                                               P
+                                            Say ci is a vector of counts in d categories, summing to mi = j cij ,
+                                         accompanied by a p-dimensional attribute vector vi on observation unit i
+
+                                            Received December 2013; revised April 2015.
+                                            Key words and phrases. Distributed computing, MapReduce, logistic regression, lasso,
+                                         text analysis, multinomial inverse regression, computational social science.
+
+                                          This is an electronic reprint of the original article published by the
+                                          Institute of Mathematical Statistics in The Annals of Applied Statistics,
+                                          2015, Vol. 9, No. 3, 1394–1414. This reprint differs from the original in pagination
+                                          and typographic detail.
+2                                  M. TADDY
+
+of n total. For example, in the archetypal text mining application, ci are
+counts for words in document i annotated with metadata vi . We connect
+attributes and counts through a big multinomial logistic regression model,
+                         p(ci |vi , mi ) = MN(ci ; qi , mi )
+(1)
+                                                                            d
+                                   eηij                                     X
+                       where qij =      , ηij = αj + vi′ ϕj    and   Λi =         eηik .
+                                    Λi
+                                                                            k=1
+
+The multinomial denoted MN here has, for unit i, category j, probability
+qij , and size mi . This model can be computationally expensive to estimate
+for a large number of response categories (i.e., big ci dimension d). Even
+a single likelihood evaluation
+                             P is costly, due to the sum required for each
+normalizing intensity Λi = dk=1 eηik . The methodological innovation of the
+current article is to replace Λi with initial estimates, then condition upon
+these plug-ins when estimating (1) through d individual Poisson regressions
+for counts in each category j. This model-based factorization allows one to
+partition computation across many independent machines, so with enough
+processors the system of (1) is fit in the time required for a single Poisson
+regression.
+    We refer to this framework as distributed multinomial regression, or DMR.
+Our work here extends ideas from Taddy (2013a), which introduced the
+strategy of multinomial inverse regression (MNIR). That article argues for
+estimation of models like (1) as the first step in an inverse regression routine
+for predicting elements of new vi . However, Taddy (2013a) relies upon a
+fitting algorithm that collapses response counts across equal vi , and hence
+scales only for a small number of attributes (i.e., when p is just one or
+two). That article is also focused exclusively on applications in attribute
+prediction. The purpose of the current article is thus twofold: to supply
+techniques for estimation when both c and v are high dimensional, and to
+motivate how these models can be useful in many aspects of analysis and
+inference.
+    Much of the paper is devoted to an example analysis of reviews on Yelp—
+an Internet platform for feedback on various establishments, including restaurants, barbers, schools, and much else. This data set has a rich feature set
+associated with a wide variety of reviews. The data are also publicly available, after (free) registration on the data mining contest website kaggle.
+com. Moreover, our technology is provided in the distrom package for R and
+Yelp analysis code is cataloged at github.com/mataddy/yelp. Public access
+is essential here: our goal is to provide a complete template for analysis of
+high-dimensional count data.
+    The estimation strategy is detailed in Section 2, including model factorization, plug-ins for Λi , and regularization path estimation within each
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                                 3
+
+parallel regression. Methods are illustrated in the short classification example of Section 3, which shows utility for DMR not only in big d but also
+as a speedup for small d multinomial regressions. Finally, Section 4 runs
+through our full Yelp application, detailing model estimation and a variety
+of analyses. These analyses each correspond to a different inferential goal.
+
+   Exploration: What words are associated with funny or useful content?
+Here, we interpret the fitted regression model at the level of word loadings.
+We emphasize that these loadings represent partial effects—connections between text and attributes that arise after controlling for collinearity between
+attributes—and we describe how the interpretations change when controlling for more or less confounding information.
+
+   Dimension reduction: Which reviews have the most funny or useful content? Once the model has been fit, it acts as a map between text and
+attributes. We describe how to use this map to obtain sufficient reductions:
+low-dimensional scores that summarize text content directly relevant to a
+given attribute. We show that the sufficient reduction for, say, funny votes,
+is a seemingly better judge of humor than the original yelp voters (because
+reviews can generate funny votes for correlated but unfunny reasons).
+
+   Prediction: What will be the usefulness or hilarity of a new review? We
+consider performance of the above sufficient reductions as input to prediction algorithms, and find that they can match or outperform comparable
+techniques that use the full text as input.
+
+   Treatment effects: Does user tenure lead to higher ratings? Finally, we
+show how to use the sufficient reductions as synthetic controls in regressions
+that wish to remove from a targeted treatment effect the influence of any
+correlated text content. That is, the sufficient reductions act like a textbased propensity; in our application, we use them to see if older users are
+more positive in their ratings even if we control for the change in their review
+content.
+   Section 5 closes with a discussion and some practical advice for applications in text mining. We argue that, for many social science and business
+applications, the methods herein make regression of text onto observed attributes an attractive alternative to techniques such as topic modeling which
+require estimation and interpretation of a latent space.
+
+  2. Methods: Estimation in distribution. We adopt terminology from text
+analysis for the remainder and refer to each unit i as a “document” and
+each category j as a “word.”1 Suppose that every document–word count cij
+    Even in text mining this is a simplification; each j could be a combination of words
+or any other language token.
+
+
+4                                   M. TADDY
+
+has been drawn independently Po(eηij )—Poisson with intensity (i.e., mean)
+eηij . The joint document likelihood for ci then factorizes as the product of
+a multinomial distribution for individual counts conditional on total count
+mi and a Poisson distribution on mi :
+                       Y
+(2)           p(ci ) =   Po(cij ; eηij ) = MN(ci ; qi , mi ) Po(mi ; Λi ).
+                       j
+
+   This well-known result has long been used by statisticians to justify ignoring whether sampling was conditional on margin totals in analysis of
+contingency tables. Birch (1963) showed that the maximum likelihood estimate (MLE) of qi is unchanged under a variety of sampling models for
+3-way tables under the constraint that Λi = mi . This is satisfied at the MLE
+for a saturated model. Palmgren (1981) extends the theory to log-linear regression with ηij = αj + µi + ϕ′j vi , showing that the Fisher information on
+coefficients is the same regardless of whether or not you have conditioned on
+mi so long as µi in the Poisson model is estimated at its conditional MLE,
+                                               
+                               ⋆           mi
+(3)                           µi = log P ηij .
+                                           je
+
+   Most commonly, (2) is invoked when applying multinomial logistic regression: totals mi are then ancillary and the µi drop out of the likelihood. Our
+DMR framework takes the opposite view: if we are willing to fix estimates
+µ̂i potentially not at their MLE (we will argue for µ̂i = log mi ), then the
+factorized Poisson likelihood can be analyzed independently across response
+categories.2 As highlighted in the Introduction, this yields distributed computing algorithms for estimation on previously impossible scales. Indeed, we
+have observed in text and web analysis a recent migration from multinomial models—say, for latent factorization—to Poisson model schemes; see
+Gopalan, Hofman and Blei (2013) as an example. From the perspective of
+this article, such strategies are Big Data approximations to their multinomial precursors.
+
+   2.1. Estimating baseline intensity. The negative log likelihood implied
+by (1) is proportional to
+                         n           d
+                           "                !         #
+                       X            X
+                                        ηij      ′
+(4)                         mi log     e      − ci η i .
+                           i=1         j=1
+   In an older version of this idea, Hodges and Le Cam (1960) introduce a Poisson
+approximation to the binomial distribution, for which McDonald (1980) provides error
+bounds and extension to multinomials.
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                                 5
+
+It is easy to verify that adding observation fixed effects µi to each ηij in
+(4) leaves the likelihood unchanged. In contrast, the corresponding Poisson
+model, unconditional on mi , has negative log likelihood proportional to
+                           d X
+                           X n
+(5)                                  [eµi +ηij − cij (µi + ηij )]
+                           j=1 i=1
+
+with gradient on each µi of g(µi ) = eµi j eηij − mi , and is clearly sensitive
+                                         P
+to these observation “baseline intensities.” As mentioned above, the solution
+for the parameters of ηij is unchanged between (4) and (5) if each µi is set
+to its conditional MLE in (3).
+   Unfortunately, if our goal is to separate inference for ϕj across different
+j, the MLE formula of (3) will create a computational bottleneck: each
+category-j Poisson regression requires updates to µ⋆ = [µ⋆1 · · · µ⋆n ]′ during
+estimation. Distributed computation precludes such communication, and we
+instead use the simple plug-in estimator
+(6)                                    µ̂i = log mi .
+This choice is justified as optimal in a few simple models, and we rely upon
+empirical evidence to claim it performs well in more complex settings.3
+   The
+    P gradient     of the Poisson likelihood in (5) on µi at our plug-in is g(µ̂i ) =
+         η
+mi ( i e − 1). Define the plug-in MLEs η̂ i = [η̂i1 · · · η̂id ]′ as those which
+          ij
+
+minimize the Poisson objective in (5) under µi = µ̂i . Then in the three simple
+settings below, g(µ̂i ) = 0 for η i = η̂ i . This implies that µ̂i is the optimal joint
+MLE estimate for µi , and thus that {η̂ i , µ̂i } minimize the Poisson objective
+in (5) while {η̂ i } minimizes the logistic multinomial objective in (4):
+• In a saturated model, with each ηij free, η̂ij = log(cij ) − µ̂i = log(cij /mi )
+  and g(µ̂i ) = 0.                                                      P
+• With
+     P intercept-only      ηij = αj , the Poisson   MLE is α̂j = log      i cij −
+  log i eµ̂i = log( i cij /M ) where M = i mi , and g(µ̂i ) = mi ( j i cij /
+                    P                        P                         P P
+
+  M − 1) = 0.                                                            P
+• Consider aP  single vi ∈ {0,P
+                              1} such that ηij = αj +vi ϕj . Write Cvj = i:vi =v cij
+  and Mv = i:vi =v mi = j Cvj . Then the Poisson MLE are α̂j = log(C0j /
+                                                                     P
+  M0 ) and ϕ̂j = log(C1j /M1 )−log(C0j /M0 ), so that g(µ̂i ) = mi ( j Cvi j /Mvi −
+  1) = 0.
+Of course, these examples do not form a general result: the situation is more
+complicated with correlated covariates or under regularization. But they illustrate analytically why we might expect the performance we have seen
+
+  3                                                        P        ′
+     Note that, when compared to (3), the plug-in replaces j eαj +vi ϕj with 1. Adding a
+constant to each αj leaves probabilities unchanged, so this can be made to hold without
+affecting fit.
+
+
+6                                         M. TADDY
+
+empirically: estimates based upon µ̂i = log mi do not suffer in out-of-sample
+validation. The resulting benefit is huge, as using a plug-in allows estimation of the Poisson regression equations to proceed in complete isolation
+from each other. See the Appendix for an example MapReduce [Dean and
+Ghemawat (2008)] implementation.
+
+   2.2. Parallel Poisson regressions. Given baseline intensities fixed as µ̂i =
+log mi , each of our d separate Poisson regressions has negative log likelihood
+proportional to
+                                   n
+                                               ′
+                                   X
+(7)                l(αj , ϕj ) =     [mi eαj +vi ϕj − cij (αj + vi′ ϕj )].
+                                   i=1
+You are free to use your favorite estimation technique for each parallel regression. This section outlines our specific approach: “gamma lasso” L1 regularized deviance minimization.
+   In high-dimensional regression, it can be useful to regularize estimation
+through a penalty on coefficient size. This helps to avoid over-fit and stabilize
+estimation. A very common form of regularization imposes L1 coefficient
+costs [i.e., the lasso of Tibshirani (1996)], which, due to a nondifferentiable
+cost spike at the origin, yields variable selection: some coefficient estimates
+will be set to exactly zero. Our results here use weighted L1 regularization
+                                         p
+                       (                             )
+                                         X
+(8) α̂j , ϕ̂j = arg min l(αj , ϕj ) + nλ   ωjk |ϕjk |     where λ, ωjk ≥ 0.
+                 αj ,ϕj
+                                              k=1
+Penalty size λ acts as a squelch that determines what you measure as signal and what you discard as noise. In practice, since optimal λ is unknown,
+one solves a regularization path of candidate models minimizing (8) along
+the grid λ1 > λ2 > · · · > λT . Inference is completed through selection along
+this path, with optimal λt chosen to minimize cross-validation (CV) or information criteria (IC; e.g., Akaike’s AIC) estimated out-of-sample (OOS)
+deviance (i.e., to minimize the average error for a given training algorithm
+when used to predict new data). Crucially, selection is applied independently
+for each category j regression, so that only a single set of coefficients need
+be communicated back to a head node.
+   Analysis in this article applies the gamma lasso algorithm of Taddy (2014),
+wherein weights ωj diminish as a function of |ϕ̂j |.4 In particular, along the
+grid of λt squelch values,
+(9)                        t
+                          ωjk = (1 + γ|ϕ̂t−1
+                                         jk |)
+                                               −1
+                                                         for γ ≥ 0.
+    The iteratively reweighted least squares algorithm in Section 6 of Taddy (2014) applies
+directly to Poisson family regressions by setting each iteration’s “observation weights” eηij
+and “weighted response” ηij + cij /eηij − 1.
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                                    7
+
+This includes the standard lasso at γ = 0. For γ > 0 it provides diminishing bias regularization, such that strong signals are less shrunk toward zero
+than weak signals. This yields sparser ϕ̂, which reduces storage and communication needs, and can lead to lower false discovery rates. In practice, a
+good default is γ = 0 (i.e., the lasso), but if that provides solutions that are
+implausibly (or inconveniently) dense, one can experiment with increasing
+γ.5
+   For selection along the path, we minimize a corrected AIC [Hurvich and
+Tsai (1989)]:
+                                                       n
+(10)               AICc: − 2l(α̂j , ϕ̂j ) + 2df j              ,
+                                                  n − df j − 1
+where df j is the estimated degrees of freedom used to fit {α̂j , ϕ̂j }. This
+corrects the AIC’s tendency to over-fit, and Taddy (2014) finds that AICc
+performs well with the gamma lasso. In Section 3, where computation costs
+are very low, we also consider CV selection rules: both CV1se, which chooses
+the largest λt with mean OOS deviance no more than one standard error
+away from minimum, and CVmin, which chooses λt at lowest mean OOS
+deviance.
+   See Taddy (2014) for much more detail on these techniques. That article
+reviews diminishing bias regularization by emphasizing its close relationship
+to weighted L1 penalization.
+
+   3. Example: Glass shards and a parallel softmax. Our motivating big-d
+applications have the characteristic that mi is random, and usually pretty
+big. For example, text mining mi is the total word count in document i,
+and web analysis mi would be the total count of sites visited by a browser.
+A Poisson model for mi is not farfetched. However, we also find that DMR
+also does well in the more common softmax classification setting, where
+mi = 1 always. It thus provides an everyday speedup for classification tasks:
+even with small-d response categories, you’ll be able to fit the model almost d
+times faster in distribution.6 Thus, before moving to our Yelp case study, we
+look at the surprisingly strong performance of DMR in a simple classification
+problem.
+   This example considers the small forensic glass data set from Venables
+and Ripley (2002), available in the MASS library for R under the name fgl.7
+      All of our results use the gamlr implementation in R. The glass-shard example of
+Section 3 sets γ = 0 for direct comparison to a lasso penalized alternative, while the Yelp
+fits of Section 4 all use γ = 1 for more sparsity.
+      In shared-memory parallelization we observe speedups close to linear in d, depending
+upon machine architecture.
+      For the code used in this example, type help(dmr) in R after loading the distrom
+library.
+
+
+8                                     M. TADDY
+
+
+Fig. 1. Forensic glass. Regularization paths for each glass-type, with AICc selections
+marked.
+
+
+The data are 214 observations on shards of glass. The response of interest is
+of 6 glass types: window float glass (WinF), window nonfloat glass (WinNF),
+vehicle window glass (Veh), containers (Con), tableware (Tabl), and vehicle
+headlamps (Head). Covariates for each shard are their refractive index and
+%-by-weight composition among 8 oxides. Figure 1 shows Poisson regression
+regularization paths for each glass type, with AICc selection marked by a
+vertical dashed line.
+   The response here is a single category, such that mi = 1 and µ̂i = 0 for all
+i. This violates the assumption of Poisson generation: mi = 1 isP  not random.
+                                                                            ′
+For example, Figure 2 shows the conditional MLE µ⋆i = log(mi / j eα̂j +vi ϕ̂j )
+at AICc selected coefficients. The result is distributed around, but not equal
+to, the assumed plug-in of µ̂i = 0 for all i. However, dmr still works: Figure 3
+shows the distribution for OOS error in a 20-fold OOS experiment, either
+using AICc or CV selection on each individual Poisson regression, against
+
+
+Fig. 2.   Forensic glass. The conditional MLEs µ⋆i implied at our DMR coefficient estimates.
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                                 9
+
+
+Fig. 3. Forensic glass. OOS deviance samples in a 20-fold OOS experiment. The net
+models are from glment lasso multinomial logistic regression, and the dmr models are
+our distributed multinomial regression approximation. The applied penalty selection rule
+is indicated after each model.
+
+
+CV selected models from a lasso path for full multinomial logistic (softmax)
+regression as implemented in the glmnet package for R [Friedman, Hastie and
+Tibshirani (2010)]. There are subtle differences (e.g., AICc DMR selection
+has lower mean deviance with higher variance), but the full multinomial fits
+(glmnet) do not have any clear advantage over the nearly d-times faster
+approximation (distrom).
+
+   4. Yelp case study. These data were supplied by the review site Yelp
+for a data mining contest on kaggle.com. The data are available at www.
+kaggle.com/c/yelp-recruiting/data, and code for processing and estimation is at github.com/TaddyLab/yelp. We consider business, user, and
+review data sets in the yelp training data collection. The reviews, for all
+sorts of businesses, were recorded on January 19, 2013 for a sample of locations near to Phoenix, AZ. The goal of the competition was to predict the
+combined number of “funny,” “useful,” or “cool” (f/u/c) votes that a given
+review receives from other users. Such information can be used by yelp to
+promote f/u/c reviews before waiting for the users to grade them as such.
+   After detailing the data and model in Section 4.1, we describe a series of
+statistical analyses.
+   Section 4.2: Investigate model fit under a range of regularization schemes,
+looking at how word loadings change with the relative weight of penalty on
+variables of interest vs controls.
+   Section 4.3: Use the ideas of “sufficient reduction” to project text through
+the model onto topics relevant to f/u/c votes or star ratings, and interpret
+the resulting factor spaces.
+   Section 4.4: Use the sufficient reductions in prediction of the number of
+f/u/c votes (i.e., the original kaggle task), and compare OOS performance
+against that of a word-count regression.
+
+
+10                                   M. TADDY
+
+   Section 4.5: Use the sufficient reductions in treatment effect estimation—
+for the effect of user experience on rating—while controlling for heterogeneity in review content.
+By viewing text data as a big multinomial regression, we are able to address
+all of the above (and resolve the effects of many collinear attributes on review
+text) through a single model fit.
+
+   4.1. Data and model specification. The data are n = 215,879 reviews on
+11,535 businesses by 43,873 users.8 Review text is split on whitespace and tokenized into words (including combinations of punctuation: potential emoticons). After stripping some common suffixes (e.g., “s,” “ing,” “ly”) and
+removing a very small set of stopwords (e.g., “the,” “and,” “or”), we count
+frequencies for d = 13,938 words occurring in more than 20 (<0.01%) of the
+reviews (total word count is M = 17,581,214). Metadata includes review,
+business, and user attributes:
+• stars: review star rating (out of 5), from which we subtract the business
+  average rating.
+• Review counts for funny, useful, or cool votes. We divide these by the
+  square root of review age, which yields metrics roughly uncorrelated with
+  the posting date.
+• usr.count: a user’s total number of reviews at time of posting the given
+  review.
+• usr.stars: a user’s average star rating across all of their reviews.
+• A user’s average usr.funny, usr.useful, or usr.cool votes per review.
+• Business average star rating biz.stars and review count biz.count.
+• Business location among 61 possible cities surrounding (and including)
+  Phoenix.
+• Business classification according to Yelp’s nonexclusive (and partially user
+  generated) taxonomy. We track membership for 333 categories containing
+  more than 5 businesses.
+This yields 405 variables for each review. We also specify random effects9
+for each of the 11,535 businesses, leading to total attribute dimension p =
+11,940. Data components are the n × d document–term matrix C, the nvector of row-totals m, and the n × p attribute matrix V.
+   We split each row of the attribute matrix into two elements: ai , the 11
+numeric review attributes from stars through biz.count, and bi , a length11,929 vector of dummy indicators for business identity, location, and Yelp
+    We have removed reviews with unknown user.
+    We call these random, rather than fixed, effects because they are estimated under a
+penalty which shrinks them toward an overall mean. They will be estimated and we do
+not marginalize over them.
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                               11
+
+classification. This is done to differentiate the variables we deem of primary
+interest (ai ) from those which we include as controls (bi ); write V = [A B]
+as the resulting partition. Columns of A are normalized to have mean zero
+and variance one. The multinomial regression of (1) is adapted by similarly
+splitting each ϕj = [ϕaj , ϕbj ] and rewriting category intensities ηij = αj +
+a′i ϕaj + b′i ϕbj .
+
+  4.2. Multinomial model fit and interpretation. Following the recipe of
+Section 2.2, each word’s Poisson regression is estimated
+                                        X                          
+                                             a    a      1X b b
+(11) α̂j , ϕ̂j = arg min l(αj , ϕj ) + nλ   ωjk |ϕjk | +   ωjk |ϕjk | ,
+                  αj ,ϕj                                 τ
+                                               k                k
+                    Pn          αj +a′i ϕa   ′ b
+                                         j +bi ϕj
+where l(αj , ϕj ) = i=1 [mi e                − cij (αj + a′i ϕaj + b′i ϕbj )]. The relative penalty weight τ > 0 controls differential regularization between the
+target variables and the controls. At larger τ values, there is less penalty on
+ϕbj and the effect of bi on cij has less opportunity to pollute our estimate
+for ϕaj . That is, ϕ̂aj becomes more purely a partial effect. At the extreme
+of τ = ∞, any collinearity with bi is to be completely removed from the
+estimated ϕ̂aj .
+   As outlined in the Appendix, counts for the 14k words are partitioned into
+256 files. Each file is then read by one of 64 workstations, which itself uses
+16 cores in parallel to run through the Poisson regressions. Each individual
+regression is a full gamma lasso path solution over grids of 100 λt squelch
+values, with weights ωjk at , ω bt updated as in (9) under γ = 1, and AICc sejk
+lected coefficients are then written to file. The entire problem (including the
+sufficient reduction projection of our next section) takes around 1/2 hour.
+   Regularization paths for a few of the Poisson regressions, estimated under
+τ = 2 relative penalty weight, are shown in Figure 4. Coefficient values are
+scaled to the effect of 1sd change in the corresponding attribute. We see, for
+example, that at our AICc selection the effect of a 1sd increase in review
+stars multiplies the expected count (or odds, in the multinomial model) for
+the happy face :-) by around exp 0.38 ≈ 1.46, the “hmmm” face :-/ by
+exp −0.15 ≈ 0.86, and the sad face :-( by exp −0.35 ≈ 0.7. Notice that :-/
+and :-( both occur more often in low-star (negative) reviews, but that :-/
+is associated with useful content, while :-( is uncool.
+   The relative penalty divisor τ allows us to specify the amount of word
+count variation that is allocated the control variables in B. Such differential
+penalization is a powerful tool in Big Data analysis, as it allows one to isolate
+partial effects in messy overdetermined systems. Unfortunately, unlike for
+λ, we have no objective criterion with which to choose τ . Since it weights
+the penalty on variables whose effect we would like to remove from our
+targeted coefficients, one could argue that τ = ∞ is the optimal choice. In
+
+
+12                                    M. TADDY
+
+
+Fig. 4. Yelp. Poisson regression regularization paths for counts of the tokens :-), :-/,
+and :-( under relative penalty weight τ = 2. Coefficient values have been multiplied by
+the corresponding covariate standard deviation. The legend highlights select covariates,
+regression degrees of freedom are on the top axis, and our AICc selected estimates are
+marked with vertical dashed lines.
+
+
+practice, however, this can lead to inference for the coefficients of interest
+that is dependent upon only a small subset of documents (since variation
+in the others is saturated by the controls). We advise using whatever prior
+knowledge is available to evaluate the appropriateness of results under a
+range of τ .
+   For example, Table 1 investigates fit under increasing τ . The numbers of
+nonzero ϕ̂ajk (i.e., deemed useful for OOS prediction by AICc) are decreasing
+with τ for all attributes. This is because B accounts for more variation in
+C at higher τ , and there is little residual variation left for A. Here, τ = 2
+yields top words only indirectly associated with our attributes (e.g., prik is
+positive because Thai food gets high ratings), while full τ = ∞ control leads
+to near perfect fit and infinite likelihoods conditional on B alone. To our
+eye, τ = 20 manages a good balance: there remain many significant ϕ̂ajk 6= 0,
+but the model has avoided loading words that are not directly associated
+with the given attributes. This fit is used in the remainder of our study.
+
+   4.3. Sufficient reduction. The previous section’s coefficient estimates, resolving a complex system of relationships between words and attributes,
+provide a rich basis for storytelling and exploratory analysis. For many, this
+is either the end goal or a jumping-off point (e.g., to experiments testing
+hypotheses generated in exploration). But in our practice, a primary reason
+
+
+                     DISTRIBUTED MULTINOMIAL REGRESSION                                 13
+
+                                          Table 1
+Top 10 words by loading on review characteristics, as a function of relative penalty weight
+ τ . The top row for each attribute corresponds to terms ordered by marginal correlations
+
+         τ ϕ̂ 6= 0Top ten words by loading
+
+         Marginal Great love amaz favorite deliciou best awesome alway perfect excellent
++Stars     2 8440 Unmatch salute :-)) prik laurie pheonix trove banoffee exquisite sublime
+          20 3077 Heaven perfection gem divine amaz die superb phenomenal fantastic
+                  deliciousnes
+         200 508 Gem heaven awesome wonderful amaz fantastic favorite love notch fabulou
+         Marginal Not worst ask horrib minut rude said told would didn
+−Stars     2 8440 Rude livid disrespect disgrace inexcusab grossest incompet audacity unmelt
+                  acknowledge
+          20 3077 Rude incompet unaccept unprofession inedib worst apolog disrespect insult
+                  acknowledge
+         200 508 Worst horrib awful rude inedib terrib worse tasteles disgust waste
+         Marginal You that know like your yelp . . . what don who
+Funny      2 6508 Dimsum rue reggae acne meathead roid bong crotch peni fart
+          20 1785 Bitch shit god dude boob idiot fuck hell drunk laugh
+         200 120 Bitch dear god hell face shit hipst dude man kidd
+         Marginal That yelp you thi know biz-photo like all http ://
+Useful     2 5230 Fiancee rife dimsum maitre jpg poultry harissa bureau redirect breakdown
+          20 884 biz-photo meow harissa www bookmark :-/ http :// (?), tip
+         200 33 www http :// com factor already final immediate ask hope
+         Marginal Yelp you that biz-photo http :// www know like your
+Cool       2 4031 Boulder lewi rogue lagunita wanton celebratory hanker politic mozzerella
+                  onsite
+          20 577 Userid htm cen rand poem sultry arlin brimm cubic inspiration
+         200 11 Biz-photo select yelp along certain fil chose house
+
+
+for fitting big multinomial models is as a tool for dimension reduction, mapping from the original d-dimensional text down to univariate indices that
+contain all information relevant to a given attribute.
+   Cook (2007) outlines use of regression models with high-dimensional response as a map to project from that response onto interesting covariates.
+Taddy (2013a) extends the idea in our context of big multinomials, motivated by applications in text analysis. Both of these articles are focused on
+inverse regression (IR), a technique wherein the fitted model map is applied
+for prediction of unobserved covariates (e.g., the votes associated with new
+review text, as in Section 4.4). However, the IR algorithms are prefaced on
+a more basic concept of sufficient reduction (SR), which is useful beyond its
+application in IR prediction.
+
+
+14                                    M. TADDY
+
+ Consider observation ci from a d-dimensional exponential family linear
+model, with natural parameter η i = [ηi1 · · · ηd ]′ , ηij = αj + vi ϕj , such that
+(12)                     p(ci ) = h(ci ) exp[c′i η i + A(η i )],
+where h is a function of only data (not η i ) while A is a function of only
+parameters (not ci ). Both the full multinomial logistic regression model
+(conditional upon mi ) or our independent Poisson’s model (conditional upon
+µ̂i ) can be written as in (12). Then with Φ = [ϕ1 · · · ϕd ] the p × d matrix of
+regression coefficients, we get
+                          ′
+(13)     p(ci ) = h(ci )eci α exp[c′i Φ′ vi + A(Φ′ vi )] = h̃(ci )g(Φci , vi ),
+so that the likelihood factorizes into a function of ci only and another function of vi that depends upon ci only through the projection Φci . This implies
+that, conditional upon the regression parameters, Φci is a sufficient statistic
+for vi . That is, vi ⊥⊥ ci |Φci .
+   We call zi = Φci an SR projection. In practice, we work with estimated
+SR projections zi = Φ̂ci and hope that Φ̂ has been estimated well enough for
+zi to be a useful summary [see Taddy (2013b) for discussion]. In that case,
+Φ̂ provides a linear map from text into the p-dimensional attribute space.
+This works just like the rotation matrix from common principal components
+analysis except that, instead of mapping into latent factors, Φ projects into
+observed attributes. The resulting zi are model-based sufficient statistics,
+useful in the same roles as a traditional sufficient statistic (like x̄). For
+example, to predict vik from ci we can work with univariate zik instead of
+the d-dimensional original text. In general, SR projections are a simple way
+to organize information in Big Data systems. When new text ci arrives, one
+need just feed it through Φ to obtain zi indices which can be summarized,
+plotted, and analyzed as desired.
+   It is important to emphasize that, since estimated loadings ϕ̂ik are partial
+effects (influence of other attributes has been controlled for), zik will also
+correspond to partial rather than marginal association. As another way to
+see this, note that the factorization in (13) is easily manipulated to show sufficiency for each individual zik conditional on vi,−k , our vector of attributes
+omitting the kth. Thus, SR reduces dimension into a space of information
+directly relevant to an attribute of interest, where influence of text variation due to other attributes has been removed or minimized. Consider the
+correlation matrices in Figure 5. The original vote attributes are highly positively correlated, while the text projections are either nearly independent
+(e.g., useful against either funny or cool) or strongly negatively correlated
+(funny and cool). This suggests that there are underlying factors that encourage votes in any category; only after controlling for these confounding
+factors do we see the true association between f/u/c content. Similarly, all
+
+
+                    DISTRIBUTED MULTINOMIAL REGRESSION                                      15
+
+                                    Correlation matrices
+           Attributes (v)                          Text projections (z)
+               f     u     c      ⋆                     f       u       c       ⋆
+          f 1       0.7 0.8       0              f     1     −0.1 −0.7         −0.4
+          u 0.7 1         0.9     0             u −0.1          1       0.1    −0.2
+          c 0.8 0.9 1             0              c −0.7         0.1     1       0.5
+          ⋆ 0       0     0       1              ⋆ −0.4 −0.2            0.5     1
+
+Fig. 5. Correlation for the original review attributes in v (left) and for z (right) SR text
+projection. Here f denotes either the observed (vfunny ) or sufficient reduction for (zfunny )
+the number of funny votes per square root review age, similarly with u for useful votes and
+c for cool votes, and ⋆ denotes the observed and SR for the number of review stars.
+
+
+vote attributes are uncorrelated with star rating, but for the text projections
+we see both negative (funny, useful) and positive (cool) association.
+   The three 50–100 word reviews in Figure 6 provide further illustration.
+A single review (bottom) of a historical site scores highest in funny and
+useful attributes (and also in cool). The review is neither dry nor useless,
+but we imagine its high vote count has been influenced by other factors, for
+example, the page is heavily viewed or people who read reviews of national
+parks are more likely to vote. In contrast, the two reviews identified through
+SR projections as having the most funny or useful content appear to us
+as more directly related to these concepts. The funny review, for a pizza
+restaurant, is a fictional comedic story. The useful review contains a high
+proportion of business photos (biz-photo), which the multinomial model has
+identified as directly useful. The machine-learned text projections are able
+to detect humor and helpfulness distinct from the other factors that lead to
+increased user votes.
+
+   4.4. Inverse regression for prediction. Multinomial-based SR projections
+were originally motivated by Taddy (2013a) for their use in multinomial
+inverse regression [MNIR; see also Taddy (2013c)]. Say viy , some element of
+the attribute vector vi , is viewed as a “response” to be predicted for future
+realizations. For example, in the original kaggle Yelp contest the goal was to
+predict vi,funny , vi,useful , or vi,cool —the vote attributes. In such applications,
+                                                                          P
+an MNIR routine would use the SR projection into viy , ziy = j ϕ̂jy cij ,
+to build a forward regression that predicts viy from ziy , vi,−y (attributes
+omitting y), and mi .10 This p+1 dimensional regression replaces the d+p−1
+dimensional one that would have been necessary to predict viy from vi,−y
+and ci , the original text counts.
+     The SR result that applies here is viy ⊥⊥ ci |ziy , vi,−y , mi . Since sufficiency for ziy
+from the multinomial factorization is conditional upon mi , these document totals need to
+be conditioned upon in forward regression.
+
+
+16                                      M. TADDY
+
+
+     Funniest 50–100 word review, by SR projection zfunny .
+     Dear La Piazza al Forno: We need to talk. I do not quite know how to
+     say this so I’m just going to come out with it. I’ve been seeing someone
+     else. How long? About a year now. Am I in love? Yes. Was it you? It was.
+     The day you decided to remove hoagies from your lunch menu, about a year
+     ago, I’m sorry, but it really was you. . . and not me. Hey. . . wait. . . put down
+     that pizza peel. . . try to stay calm. . . please? [Olive oil container whizzing
+     past head] Please! Stop throwing shit at me. . . everyone breaks up on social
+     media these days. . . or have not you heard? Wow, what a Bitch!
+
+     Most useful 50–100 word review, by SR projection zuseful .
+     We found Sprouts shortly after moving to town. There’s a nice selection
+     of Groceries & Vitamins. It’s like a cheaper, smaller version of Whole
+     Foods. [biz-photo] [biz-photo] We shop here at least once a week. I like
+     their selection of Peppers. . . . I like my spicy food! [biz-photo][biz-photo][bizphoto] Their freshly made Pizza is not too bad either. [biz-photo] Overall,
+     it’s a nice shopping experience for all of us. Return Factor—100%.
+
+     Funniest and most useful 50–100 word review, as voted by Yelp users
+     (votes normalized by square root of review age).
+     I use to come down to Coolidge quite a bit and one of the cool things I
+     use to do was come over here and visit the ruins. A great piece of Arizona
+     history! Do you remember the Five C’s? Well, this is cotton country. The
+     Park Rangers will tell you they do not really know how old the ruins are,
+     but most guess at around 600 years plus. But thanks to a forward thinking
+     US Government, the ruins are now protected by a 70 foot high shelter.
+     Trust me, it comes in handy in July and August, the two months I seem
+     to visit here most. LOL. I would also recommend a visit to the bookstore.
+     It stocks a variety of First Nation history, as well as info on the area.
+     http: // www. nps. gov/ cagr/ index. htm . While you are in Coolidge, I
+     would recommend the Gallopin’ Goose for drinks or bar food, and Tag’s for
+     dinner. Both are great!
+
+
+Fig. 6. Illustration of the information contained in sufficient projections z. The top two
+reviews are those, among all where m ∈ (50, 100), with highest SR projection scores into
+the funny and useful attribute spaces. For comparison, we also show the single 50–100
+word review with highest values for both vfunny and vuseful (recall that these are vote totals
+per square root review age). Note that, since variance of z increases with m, high scoring
+reviews tend to be longer. One can also, as in Taddy (2013a), divide the SR projections
+by document length and work with normalized z/m. On this scale, the funniest review is
+“Holy Mother of God” and the most useful review is “Ask for Nick!”
+
+
+                   DISTRIBUTED MULTINOMIAL REGRESSION                                   17
+
+                                          Table 2
+ Yelp. Out-of-sample R2 in prediction for vote attributes (normalized by root review age)
+in 5-fold CV. The top row shows a standard lasso regression from the vote attribute onto
+ text and all nonvote attributes, while the bottom row holds results for MNIR followed by
+ lasso regression from the vote attribute onto review length (mi ), nonvote attributes, and
+                        the corresponding univariate SR projection
+
+                            Forward regression                Average out-of-sample R2
+                       Input variables         Dimension     funny     useful       cool
+
+Standard lasso     Nonvote attributes, C         25,876       0.308     0.291       0.339
+MNIR + lasso      Nonvote attributes, z, m       11,940       0.316     0.296       0.341
+
+
+    Estimating an inverse regression in order to get at another forward regression may seem a strange use of resources. But there are a variety of
+reasons to consider MNIR. Computationally, through either the techniques
+of this article or the collapsing of Taddy (2013a), the multinomial regression
+estimation can occur in distribution on many independent machines. This
+is useful when the full count matrix C is too big to fit in memory. Another
+reason to use MNIR is for statistical efficiency when d is big relative to n.
+Assuming a multinomial distribution for ci |vi introduces information into
+the estimation problem (a lessPgenerous term is “bias”). In particular, it
+implies that each of the M = i mi counts are independent observations,
+such that the sample size for learning Φ becomes M rather than n. That
+is, estimation variance decreases with the number of words rather than the
+number of documents [see Taddy (2013b)].
+    As an illustration, Table 2 shows results for prediction of individual f/u/c
+vote attributes, both through MNIR with lasso forward regression and for
+a standard lasso onto the full text counts. That is, MNIR fits E[viy ] = β0 +
+[vi,−f/u/c , mi , ziy ]′ β while the comparator fits E[viy ] = β0 + [vi,−f/u/c , ci ]′ β,
+where vi,−f/u/c denotes all nonvote attributes. For MNIR each Φ̂ (hence, ziy )
+is also estimated using only the training sample, and in both cases prediction
+rules were selected via AICc minimization along the L1 regularization path.
+We see that MNIR forward regression, replacing 13,938 covariates from ci
+with just the two numbers zyi and mi , does not suffer against the full lasso
+comparator (indeed, it is very slightly better in each case). Such performance
+is typical of what we have observed in application.11 This is not evidence that
+      In Taddy (2013a), the MNIR routines more significantly outperform lasso comparators in OOS prediction. However, the data sets used in that paper are both very small,
+with M ≫ n. Thus, our statistical efficiency argument—that for MNIR estimation variance decreases with M instead of n—is working heavily in favor of MNIR. Here, even
+though M > n, vocabulary size d is smaller than n and linear regression is already plenty
+efficient.
+
+
+18                                    M. TADDY
+
+the text counts do not matter: each full lasso estimates at least 4000 terms
+having nonzero coefficients. Rather, the multinomial model is a good enough
+fit that the factorization results of (13) apply and all relevant information
+is contained in the SR projection.12
+   Note that the MNIR forward regression ignores projection from text onto
+any other nonvote attributes. This is because those attributes are conditioned upon in forward regression. Indeed, Taddy (2013a, 2013b) argue that,
+in prediction for a single variable, you only need fit the multinomial dependence between counts and that single variable. This yields SR projection
+based on marginal association, which can work as well as that based on
+partial association for simple predictions. The benefit of fitting models for
+high-dimensional vi is that we are then able to interpret the resulting partial
+effects and SR projections, as in Sections 4.2–4.3. It is also useful in more
+structured prediction settings, as in the next section.
+
+   4.5. Confounder adjustment in treatment effect estimation. In our final
+application, we illustrate use of SR projections as convenient low-dimensional
+controls in treatment effect estimation. The task here has a particular attribute, say t, whose effect on another, say y, you want to estimate. You
+want to know what will happen to y if t changes independently from the
+other attributes. Unfortunately, everything is collinear in the data and both
+y and t could be correlated to other unobserved confounders. Your best option is to estimate the treatment effect—that of t on y—while controlling for
+observable potential confounders. In text analysis, this includes controlling
+for the text content itself.
+   Consider estimating the effect of a user’s experience—the number of reviews that they have written—on their expected rating. That is, are experienced users more critical, perhaps because they have become more discerning? Or do they tend to give more positive reviews, perhaps because community norms encourage a high average rating? It is hard to imagine getting
+firm evidence in either direction without running a randomized trial—we
+will always be worried about the effect of an omitted confounder. However,
+we can try our best and condition on available information. In particular,
+we can condition on content to ask the question: even given the same review
+message, would an experienced user give more or less stars than a newbie?
+   The response attribute, viy , is star rating. The treatment, vit , is the log
+number of reviews by the author (including the current review, so never less
+than one). Results for estimation of the effect of vit on viy , conditioning on
+different control variables, are detailed in Table 3. A naı̈ve estimate for the
+     We have also found success applying nonlinear learning (e.g., trees) in forward regression after SR projection. Methods that are too expensive or unstable on the full text
+work nicely on the reduced dimension subspace.
+
+
+                    DISTRIBUTED MULTINOMIAL REGRESSION                                   19
+
+                                          Table 3
+Estimated effect “γ” of user experience (log number of reviews) on number of stars rated.
+ Each corresponds to different levels of confounder adjustment. The effects are all AICc
+  selected estimates along a γ = 10 (very near to L0 ) gamma lasso regularization path,
+where all of the other regression coefficients were unpenalized. Thus, they are significant,
+  in the sense that the AICc deems vit useful for predicting viy even after all variation
+                        explained by confounders has been removed
+
+                  Marginal Conditional on attributes only Adding and interacting text SR
+
+Effect estimate    0.003                  0.015                          0.020
+
+
+effect of experience on rating, estimated through the marginal regression
+E[viy ] = β0 + vit γ, is a γ̂ = 0.003 increase in number of stars per extra unit
+log review count. Use vi,−yt to denote all other attributes. Then an improved
+estimate of the treatment effect is obtained by fitting E[viy ] = β0 + vit γ +
+  ′
+vi,−yt β, which yields the much larger γ̂ = 0.015.
+    Finally, we would like to control for ci , the review content summarized
+as word counts. It would also be nice to control for content interacting with
+attributes since, for example, positive content for a restaurant might imply
+a different star rating boost than it does for a bowling alley. Unfortunately,
+interacting 13,938 dimensional ci with the 333 business categories yields almost 4.7 million regression coefficients. This is more controls than we have
+observations. However, the SR projections offer a low-dimensional alternative. Write ziy and zit for the SR projections onto response and treatment,
+respectively. Then sufficiency factorization implies
+(14)                        viy , vit ⊥⊥ ci |ziy , zit , mi , vi,−yt .
+That is, the joint distribution of treatment and control is independent of
+the text given SR projection into each. This suggests we can control for
+review content, and its interaction with business classification, simply by
+adding to our conditioning set [ziy , zit , mi ] and its interaction with business
+classification. The resulting regression, with around 13k control coefficients
+instead of 4.7 million, yields the still larger treatment effect estimate γ̂ =
+0.02.
+
+   5. Discussion. Distributed estimation for multinomial regression allows
+such models to be applied on a new scale, one that is limited only by the
+number of machines you are able to procure. This is an important advance
+not only for our motivating text analysis applications, but also for any other
+setting of high-dimensional multinomial modeling. This includes any softmax classification model.
+   One message of this paper has been that Poisson factorization enables fast
+estimation of multinomial distributions. It has been pointed out to us that,
+in unstructured data analysis, a Poisson seems little more arbitrary than
+
+
+20                                       M. TADDY
+
+a multinomial model. Equation (2) clarifies this issue: the only additional
+assumption one makes by working with independent Poissons is that the
+aggregate total, mi , is Poisson. We have attempted to mitigate the influence
+of this assumption, but that is unnecessary if you consider the Poisson a fine
+model in and of itself.
+   Finally, we wish to emphasize the relative simplicity of this approach.
+Although this article describes models for complex language systems, and
+it may not seem to the reader that we are providing anything “simple,”
+almost all of this material is just Poisson regression. We have used the
+ideas of Taddy (2014) and the gamma lasso to fit these regressions, but any
+generalized linear model estimator could have been applied. As implemented
+in this article, there are only two tuning parameters in the entire system: the
+gamma lasso weight γ, which can be safely fixed at zero (for lasso regression)
+as a solid default; and the relative confounder-penalty divisor τ . Specification
+of τ is a clearly subjective choice,13 but such subjectivity is inevitable in
+any structural inference that does not involve a random or pseudo-random
+experiment.
+   Too often, social scientists faced with text data will jump to latent space
+models (e.g., topic models) as the first step in their analysis. Unless the
+phenomena that they’d like to measure is a dominant source of variation in
+word choice, these latent topics will be mostly irrelevant. The same scientist
+faced with more familiar response variables—such as money spent—would
+likely have used regression modeling with a mix of observable covariates and
+fixed or random effects, instead of trying to model any sort of latent space.
+Thus, without wanting to claim that topic and related models are not useful
+(they are very useful), we hope that this article will give social scientists the
+option of using the same type of regression tools for text analysis that they
+use successfully in their nontext research.
+
+                         APPENDIX: MAPREDUCE DETAILS
+   MapReduce (MR) is a recipe for analysis of massive data sets, designed
+to work when the data itself is distributed: stored in many files on a network
+of distinct machines. The most common platform for MR is Hadoop paired
+with a distributed file-system (DFS) optimized for such operations (e.g.,
+Hadoop DFS).
+   A MapReduce routine has three main steps: map, partition, and reduce.
+The partition is handled by Hadoop, such that we need worry only about
+map and reduce. The map operation parses unstructured data into a special
+format. For us, in a text mining example, the mapper program will take a
+document as input, parse the text into tokens (e.g., words), and output lines
+          Except for when you have enough data to identify the model with τ = ∞.
+
+
+                      DISTRIBUTED MULTINOMIAL REGRESSION                   21
+
+Algorithm 1 MapReduce DMR
+Map: For each document, tokenize and count sums for each token. Save
+the total counts mi along with attribute information vi . Output token
+document|count.
+Combine totals mi and attributes vi into a single table, say VM. This info
+can be generated during map or extracted in earlier steps. Cache VM so it is
+available to your reducers.
+Reduce: For each token key “j,” obtain a regularization path for Poisson
+regression of counts cij on attributes vi with µ̂i = log mi . Apply AICc to
+select a segment of coefficients from this path, say ϕ̂j , and output nonzero
+elements in sparse triplet format: word|attribute|phi.
+Each reducer writes coefficients ϕ̂j of interest to file, and maintains a running total for SR projection, zi += c′i ϕ̂j , output as say Z.r for the rth
+reducer. When all machines are done we aggregate Z.r to get the complete
+projections.
+
+of processed token counts: “token document|count.” The pre-tab item (our
+token) is called a “key.” Hadoop’s sort facility uses these keys to send the
+output of your mappers to machines for the next step, reducers, ensuring
+that all instances of the same key (e.g., the same word) are grouped together at a single reducer. The reducer then executes some operation that
+is independent-by-key, and the output is written to file (usually one file per
+reducer).
+    DMR fits nicely in the MR framework. Our map step tokenizes your
+unstructured data and organizes the output by token keys. Reduce then
+takes all observations on a single token and runs a Poisson log regression,
+applying the gamma lasso with IC selection to obtain coefficient estimates.
+This recipe is detailed in Algorithm 1.
+    We have written this as a single MR algorithm, but other variations may
+work better for your computing architecture. Our most common implementation uses Hadoop to execute the map on a large number of document
+files, but replaces the regression reduce step with a simple write, to solid
+state storage “midway” at the University of Chicago’s Research Computing Center, of token counts tabulated by observation. For example, given
+64 reducer machines on AWS, the result is 64 text tables on midway, with
+lines “word|doc|count,” each containing all nonzero counts for a subset
+of the vocabulary of tokens. These files are small enough to fit in working
+memory14 and can be analyzed on distinct compute nodes, each employing
+       If not, use more reducers or split the files.
+
+
+22                                    M. TADDY
+
+another layer of parallelization in looping through Poisson regression for each
+token. This scheme is able to take advantage of Hadoop for fast tokenization
+of distributed data, and of high performance computing architecture (much
+faster than, say, a virtual AWS instance) for each regression. It is a model
+that should work well for the many statisticians who have access to computing grids designed for high throughput tasks more traditionally associated
+with physics or chemistry.
+
+                                   REFERENCES
+Birch, M. W. (1963). Maximum likelihood in three-way contingency tables. J. Roy.
+  Statist. Soc. Ser. B 25 220–233. MR0168065
+Cook, R. D. (2007). Fisher lecture: Dimension reduction in regression. Statist. Sci. 22
+  1–26. MR2408655
+Dean, J. and Ghemawat, S. (2008). MapReduce: Simplified data processing on large
+  clusters. Comm. ACM 51 107–113.
+Friedman, J., Hastie, T. and Tibshirani, R. (2010). Regularization paths for generalized linear models via coordinate descent. J. Stat. Softw. 33 1–22.
+Gopalan, P., Hofman, J. M. and Blei, D. M. (2013). Scalable recommendation with
+  Poisson factorization. Available at arXiv:1311.1704.
+Hodges, J. L. Jr. and Le Cam, L. (1960). The Poisson approximation to the Poisson
+  binomial distribution. Ann. Math. Statist. 31 737–740. MR0117812
+Hurvich, C. M. and Tsai, C.-L. (1989). Regression and time series model selection in
+  small samples. Biometrika 76 297–307. MR1016020
+McDonald, D. R. (1980). On the Poisson approximation to the multinomial distribution.
+  Canad. J. Statist. 8 115–118. MR0595721
+Palmgren, J. (1981). The Fisher information matrix for log linear models arguing conditionally on observed explanatory variables. Biometrika 68 563–566. MR0626420
+Taddy, M. (2013a). Multinomial inverse regression for text analysis. J. Amer. Statist.
+  Assoc. 108 755–770. MR3174658
+Taddy, M. (2013b). Rejoinder: Efficiency and structure in MNIR. J. Amer. Statist. Assoc.
+  108 772–774. MR3174661
+Taddy, M. (2013c). Measuring political sentiment on Twitter: Factor optimal design for
+  multinomial inverse regression. Technometrics 55 415–425. MR3176547
+Taddy, M. (2014). One-step estimator paths for concave regularization. Available at
+  arXiv:
+  1308.5623.
+Tibshirani, R. (1996). Regression shrinkage and selection via the lasso. J. Roy. Statist.
+  Soc. Ser. B 58 267–288. MR1379242
+Venables, W. N. and Ripley, B. D. (2002). Modern Applied Statistics with S, 4th ed.
+  Springer, New York.
+
+                                                          University of Chicago
+                                                            Booth School of Business
+                                                          5807 South Woodlawn Avenue
+                                                          Chicago, Illinois 60637
+                                                          USA
+                                                          E-mail: taddy@chicagobooth.edu

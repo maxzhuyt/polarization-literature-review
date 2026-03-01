@@ -1,0 +1,569 @@
+Early Rumour Detection
+          Kaimin Zhou2,3              Chang Shu1,2              Binyang Li3⇤                       Jey Han Lau2,4,5
+              School of Computer Science, University of Nottingham Ningbo China
+                                         2
+                                           DeepBrain
+       School of Information Science and Technology, University of International Relations
+           School of Computing and Information Systems, The University of Melbourne
+                                    IBM Research Australia
+                 will@deepbrain.ai, scxcs1@nottingham.edu.cn,
+                      byli@uir.edu.cn, jeyhan.lau@gmail.com
+
+                      Abstract                                            User 0
+                                                                          Follower Count: 873021
+                                                                                                                         User 1
+                                                                          17 year old unarmed kid shot
+    Rumours can spread quickly through social                   0 hour    ten times by police for stealing
+                                                                                                                         Follower Count: 1222
+
+                                                                          candy. I didn't know that was                    No excuse.
+    media, and malicious ones can bring about sigpunishable by death.
+    nificant economical and social impact. Moti4 hours
+    vated by this, our paper focuses on the task                                 User 4
+                                                                                                           User 3
+                                                                                                           Follower Count: 6
+                                                                                 Follower Count: 205
+    of rumour detection; particularly, we are in-                                apparently it is          It applies to
+                                                                                                           Black people.
+                                                                                 now.
+    terested in understanding how early we can                 8 hours
+    detect them. Although there are numerous                                        User 5
+                                                                                    Follower Count: 6632
+                                                                                                                       User 2
+                                                                                                                       Follower Count: 3144
+    studies on rumour detection, few are con-                                      These days anything,                This is unbelievable,
+                                                                                   especially with Stand Your
+    cerned with the timing of the detection. A                 12 hours            Ground and even a sneeze
+                                                                                                                       or should be.
+                                                                                   is punishable by death.
+    successfully-detected malicious rumour can
+    still cause significant damage if it isn’t de-                           User 6
+                                                                             Follower Count: 1141
+                                                                                                                  User 0
+                                                               16 hours                                           Follower Count: 873021
+    tected in a timely manner, and so timing is                             there has not been any               I was just going off what I
+                                                                            proof that he stole
+    crucial. To address this, we present a novel                            candy. I guess skittles
+                                                                                                                 read in the #ferguson tag
+                                                                                                                 early last night. Wasn't any
+    methodology for early rumour detection. Our                20 hours
+                                                                            has become a reason to
+                                                                            kill black teens.                    real news out at that point.
+    model treats social media posts (e.g. tweets)
+    as a data stream and integrates reinforcement                         User 7
+                                                                          Follower Count: 122                        User 8
+    learning to learn the number minimum num-                  24 hours   He was 18. Nothing to do with              Follower Count: 11197
+                                                                          stealing candy. He was walking             Anything is punishable by
+    ber of posts required before we classify an                           in the street. Horrible situation.         death if the youth is black.
+                                                                          But stop spreading false facts.
+    event as a rumour. Experiments on Twitter and
+    Weibo demonstrate that our model identifies
+    rumours earlier than state-of-the-art systems             Figure 1: An illustration of a rumour propagating on
+    while maintaining a comparable accuracy.                  T WITTER. The green box indicates the source message, and the red box highlights a post that rebuts the
+1   Introduction                                              rumour.
+
+The concept of rumour has a long history, and
+there are various definitions from different research communities (Allport and Postman, 1947).               the cause of Michael Brown’s shooting, and it was
+In this paper, we follow a commonly accepted def-             published shortly after the shooting happened. It
+inition of rumour, that it is an unverified statement,        claimed that he was shot ten times by the police
+circulating from person to person and pertaining to           for stealing candy. The message was retweeted by
+an object, event, or issue of public concern and it           multiple users on T WITTER, and within 24 hours
+is circulating without known authority for its truth-         there were about 900K users involved, either by
+fulness at the current time, but it may turn out to           reposting, commenting, or questioning the origibe true, or partly or entirely false; alternatively, it       nal source message. From Figure 1, we see some
+may also remain unresolved (Peterson and Gist,                users (e.g. User 7) question the veracity of the
+1951; Zubiaga et al., 2018).                                  original message. Had the rumour been identified
+   Rumours have the potential to spread quickly               timely and rebutted, its propagation could have
+through social media, and bring about significant             been contained.
+economical and social impact. Figure 1 illustrates               Most studies (Qazvinian et al., 2011; Zhang
+an example of a rumour propagating on T WIT-                  et al., 2015) consider rumour detection as a binary
+TER . The source message started a claim about                classification problem, where they extract various
+
+                                                        1614
+                                 Proceedings of NAACL-HLT 2019, pages 1614–1623
+            Minneapolis, Minnesota, June 2 - June 7, 2019. c 2019 Association for Computational Linguistics
+
+
+features to capture rumour indicative signals for      detection systems, our approach determines the
+detecting a rumour, and a few recent works ex-         checkpoint for each event dynamically, by learnplore deep learning approaches to enhance detec-       ing when it should classify it as a rumour. Our
+tion accuracy (Long et al., 2017; Ruchansky et al.,    experimental results showed that ERD outper2017). In all these studies, however, the timeliness   forms state-of-the-art methods over two benchof the rumour detection is not evaluated.              mark data sets in detection accuracy and timeliThere are a few exceptions. In Ma et al. (2015)     ness. Our proposed framework is flexible and the
+and Kwon et al. (2017), the authors define a check-    individual modules (i.e. the rumour detection and
+point (e.g. number of posts or time elapsed after      checkpoint module) can be extended to incorpothe source message) in the timeline and use all the    rate more complex networks for further improveposts prior to this checkpoint to classify a rumour.   ments. An open source implementation of our
+The checkpoint is often a pre-determined value for     model is available at: https://github.com/
+all rumours, and so does not capture the variation     DeepBrainAI/ERD.
+of propagation patterns for different rumours.
+   The focus of our paper is on early rumour de-       2   Related Work
+tection. That is, our aim is to identify rumours       Traditionally, research on rumour detection has
+as early as possible, while keeping a reasonable       mainly focused on developing handcrafted feadetection accuracy. Our early rumour detection         tures for machine learning algorithms (Qazvinian
+system (ERD) features two modules: a rumour            et al., 2011). Takahashi and Igata (2012) propose a
+detection module that classifies whether an event      method for rumour detection on Twitter using cue
+(which consists of a number of posts) constitutes a    words and tweets statistics. Yang et al. (2012) aprumour, and a checkpoint module that determines        ply two new types of features — client-based and
+when to trigger the rumour detection module.           location-based features — to rumour detection on
+   ERD treats incoming posts as a data stream and      Sina Weibo. Beyond this, user-based (Liang et al.,
+monitors the posts in real time. When ERD re-          2015) and topic-based (Yang et al., 2015) features
+ceives a new post, this post — along with all prior    have also been explored. Friggeri et al. (2014)
+posts of the same event — will be used to decide       demonstrate that there are structural differences in
+if it constitutes an appropriate checkpoint to trig-   the propagation of rumours and non-rumours, and
+ger the rumour detection module. ERD integrates        Wu et al. (2015) and Ma et al. (2017) experiment
+reinforcement learning for the checkpoint module       with using these propagation patterns extensively
+to guide the rumour detection module, using its        to improve detection.
+classification accuracy as a reward. Through rein-        More recently, deep learning models are exforcement learning ERD is able to learn the min-       plored for the task. Compared to traditional maimum number of posts required to identify a ru-        chine learning approaches, these deep learning
+mour. In other words, ERD can dynamically deter-       models tend to rely less on sophisticated handmine the appropriate checkpoint for different ru-      crafted features. Ma et al. (2016) introduce a rumours, and this feature is the core novelty of our     mour detection model for microblogs based on remethodology.                                           current networks. The input to their model is simTo evaluate our approach, we use standard mi-       ple tf-idf features but it outperforms models levercroblog data sets from W EIBO and T WITTER. We         aging handcrafted features. Sampson et al. (2016)
+compare our method with benchmark rumour de-           show that implicit linkages between conversation
+tection systems (Ma et al., 2016; Ruchansky et al.,    fragments improve detection accuracy. Long et al.
+2017; Dungs et al., 2018) and found that ERD           (2017) present a deep attention model that learns a
+could on average identify rumours within 7.5 and       hidden temporal representation for each sequential
+3.4 hours with an accuracy of 93.3% and 85.8%          posts to represent the hypothesis. Ruchansky et al.
+on W EIBO and T WITTER respectively. Our detec-        (2017) integrate textual, user response, and source
+tion accuracy performance is better than a state-of-   information into their neural models and achieve
+the-art system that that detects rumours within 12     better performance.
+hours.                                                    Most of these works focus on detection accuTo summarise, we present a novel methodol-          racy, and so largely ignore the timing of the deogy for rumour detection. Unlike most rumour           tection. Ma et al. (2015) develop a dynamic time
+
+                                                   1615
+
+
+series structure to incorporate temporal informa-                where K is the number of words in the post.
+tion to the features to understand the whole life                Henceforth W in all equations are model paramecycle of rumours. Zhao et al. (2015) propose a                   ters.
+detection model using a set of regular expressions                  To capture the temporal relationship between
+to find posts that question or rebut the rumour to               multiple posts, we use a GRU (Cho et al., 2014):
+detect it earlier. Dungs et al. (2018) present an
+approach that checks for a rumour after 5 or 10                                    hi = GRU(mi , hi 1 )                      (1)
+retweets. These models are interested in early ruWe take the final state hN (N = number of
+mour detection, although the checkpoint for trigposts received to date) and use it to perform rugering a detection is pre-determined, and succeedmour classification:
+ing posts after the checkpoint are usually ignored.
+On a similar note but a different task, Farajtabar                             p = softmax(Wp hN + bp )                      (2)
+et al. (2017) experiment with reinforcement learning by combining it with a point process network                 where p 2 R2 , i.e. p0 (p1 ) gives the probability of
+activity model to detect fake news and found some                the positive (negative) class.3
+success.
+                                                                 3.2     Checkpoint Module (CM)
+3     Model Architecture                                         Rather than setting a static checkpoint when to
+                                                                 classify an event as a rumour, CM learns the numLet E denote an event, and it consists of a series
+                                                                 ber of posts needed to trigger RDM. To this end,
+of relevant posts xi , where x0 denotes the source
+                                                                 we leverage deep reinforcement learning to idenmessage and xT the last relevant message.1 The
+                                                                 tify the optimal checkpoint. We reward CM based
+objective of early rumor detection is to make a
+                                                                 on RDM’s accuracy and also penalise CM slightly
+classification decision whether E is a rumour as
+                                                                 every time it decides to not trigger RDM (and conearly as possible while keeping an acceptable detinue to monitor the event). This way CM learns
+tection accuracy.2
+                                                                 the trade-off between detection accuracy and timeAs shown in Figure 2, ERD has two modules:
+                                                                 liness. The reward function is detailed in Seca rumour detection module (RDM) that classifies
+                                                                 tion 3.3.
+whether an event is a rumour, and a checkpoint
+                                                                    We use the deep Q-learning model (Mnih et al.,
+module (CM) that decides when the rumour detec2013) for CM. The optimal action-value function
+tion module should be triggered. The checkpoint
+                                                                 Q⇤ (s, a) is defined as the maximum expected remodule plays an important role here, as it is return achievable under state s, which can be formusponsible for the timeliness of a detection.
+                                                                 lated as follows:
+3.1    Rumor Detection Module (RDM)
+                                                                       Q⇤ (s, a) = Es0 " [r + max Qi (s0 , a0 )|s, a]
+RDM contains three layers: a word embedding                                                    0     a
+layer that maps input words into vectors, a max-                 where r is the reward value, the discount rate,
+pooling layer that extracts important features of a              and the optimal action in all action sequence a0
+post, and a GRU (Cho et al., 2014) that processes                is selected to maximise the expected value of r +
+the sequential posts of an event.                                  Q⇤ (s0 , a0 ).
+   In the word embedding layer, we map words in                     The optimal action-value function obeys the
+post xi into vectors, yielding vectors eji for each              Bellman equation and is used for iterative value
+word. To capture the most salient features of a                  update:
+post, we apply a max pooling operation (Collobert
+et al., 2011; Kim, 2014; Lau et al., 2017), produc-                    Qi+1 (s, a) = E[r + max
+                                                                                               Qi (s0 , a0 )|s, a]
+                                                                                                     a
+ing a fixed size vector mi :
+                                                                 The above iterative algorithm will converge and
+                                                                 reach the optimal action value function, i.e. Qi !
+    mi = maxpool([Wm e0i ; Wm e1i ; ...; Wm eK
+                                             i ])                Q⇤ when q ! 1 (Sutton et al., 1998).
+    1                                                                 3
+      Relevant posts are defined as retweets or responses to a          Although sigmoid activation is more appropriate here as
+source message.                                                  it is a binary classification task, we used the softmax function
+      The earliest possible time to classify E is when we re-    because in preliminary experiments we considered a third
+ceive the first post x0 .                                        neural class.
+
+                                                             1616
+
+
+                                                                      rewardi
+
+
+          Checkpoint
+            Module                          ai                                     pi
+                                                                                                     New Length
+                        GRU State                                                                     Sequence
+                                                                 hi
+
+
+                        GRU Layer                                             ……
+                                       h0                 h1                               hN               output
+                           Max-
+                                                                              ……
+                          pooling      m0                 m1                               mN
+            Rumor          Layer
+           Detection
+            Module       Words                                                ……
+                        Embedding
+                          Layer
+                                       e0                 e1                               eN
+
+                          Inputs             x0                x1                               xN
+
+
+                                         Figure 2: Architecture of ERD.
+
+
+  CM takes as input the hidden states produced            l2 is the L2 loss for RDM parameters, and ↵ is a
+by the GRU in RDM to compute the action-value             hyper-parameter for scaling l2 .
+function using a two-layer feedforward network:              We then train CM while keeping RDM’s paramai = Wa (ReLu(Wh hi + bh )) + ba         (3)    eters fixed. In each step of the training, new posts
+                                                          that have arrived and previous GRU states are first
+where ai 2 R2 is the action value for terminate           fed to the RDM to produce the new states (Equa-
+(a0i ) or continue (a1i ) at post xi . Note that a ran-   tion (1)), which will in turn be used by CM to caldom action will be taken with the probability of ✓        culate the action values (Equation (3)). This deirrespective to the action value ai .                     cides whether the system takes the continue or ter3.3   Joint Training                                      minate action. If terminate is chosen, the reward
+                                                          is given in accordance to RDM’s prediction; othWe train both RDM and CM jointly, and the train-          erwise, a small penalty is incurred:
+ing process is similar to that of generative adversarial networks (Goodfellow et al., 2014). The                        (
+checkpoint module serves as the generator for ac-                         log M,   terminate with correct prediction
+                                                               ri =         P,     terminate with incorrect prediction
+tion sequences, while the detection module is the                           ",     continue
+discriminator. A key contrast, however, is that
+the two modules are working cooperatively rather
+than adversarially.                                       where M is the number of correct predictions acCM is trained using RDM’s accuracy as reward.          cumulated thus far, P is a large value to penalise
+To compute the reward, we first pre-train RDM             an incorrect prediction, and " is a small penalty
+based on cross entropy:                                   value for delaying the detection.
+     X                                                      To optimise our action value function, we ap-
+        [Lj log(p0j ) + (1 Lj )(log(p1j ))] + ↵l2         ply the deep Q-learning approach with the experij                                                   ence replay algorithm (Mnih et al., 2013). Based
+where Lj is a binary label indicating the true class      on the optimal action-value function Q⇤ (s, a), the
+for event Ej , p is computed based on Equation (2),       objective of the action value function yi is given as
+
+                                                      1617
+
+
+                 Interval 0                              Interval 1                         Interval 2                                           Statistics   W EIBO       T WITTER
+                                                                                                                 ……
+                                                                                                                                                   User#      2,746,818      49,345
+  0:00                2:00                4:00          6:00                8:00        10:00            12:00                                    Posts#      3,805,656     103,212
+                                                 Fixed number of posts                                                                           Events#        4,664        5,802
+         Interval 0          Interval 1                        Interval 2      Interval 3       Interval 4                                      Rumors#         2,313        1,972
+                                                                                                                 ……                        Non-rumours          2,351         3,830
+                                                                                                                                   Avg. hours per event        2,460.7        33.4
+  0:00                2:00                4:00          6:00                8:00        10:00            12:00
+                                                 Fixed time intervals                                                           Avg. # of posts per event        816           17
+                                                  Sample distribution
+                                                                                                                                Max # of posts per event        59,318         346
+                                                                                                                                Min # of posts per event          10            1
+                                                                                                                  Time
+  0:00                2:00            4:00             6:00             8:00            10:00            12:00
+                                                                                                                                     Table 1: Statistics of W EIBO and T WITTER.
+         Interval 0                 Interval 1                 Interval 2                       Interval 5
+
+
+                                                                                                                 ……
+  0:00                2:00            4:00             6:00            8:00             10:00            12:00              4        Experiment
+                                                     Dynamic intervals
+                                                                                                                            4.1       Data Set
+Figure 3: Three bucketing strategies to process stream-                                                                     We experiment with two data sets: W EIBO and
+ing posts in batches.                                                                                                       T WITTER, developed by Ma et al. (2016) and Zubiaga et al. (2016) respectively.4
+follows:                                                                                                                       Statistics of the data sets is presented in Ta-
+      (                                                                                                                     ble 1. Even though both data sets have a comri ,                      terminate                                                                  parable number of events, W EIBO is an order of
+yi =                   ri + max           0
+                                Q(hi+1 , a ; ✓), continue                                                                   magnitude larger than T WITTER as there are more
+                                                 a
+                                                                                                                            posts per event. We reserve 10% of the events as
+where is the discount rate that decides how much                                                                            the validation set for hyper-parameter tuning and
+experience is taken into consideration. And lastly,                                                                         early stopping, and split the rest in a ratio of 3:1
+CM is optimised by minimising the cost:                                                                                     for training and test partitions.
+
+                                                                                                                            4.2       Model Comparison
+                                                      (yi             ai ) 2
+                                                                                                                            As a baseline, we use an SVM with tf-idf features.
+  We train CM and RDM in an alternating fash-                                                                               We also include several state-of-the-art rumour deion, i.e. we train CM for several iterations while                                                                          tection systems for comparisons: CSI (Ruchankeeping RDM’s parameters fixed, and then we                                                                                 sky et al., 2017) on W EIBO; CRF (Zubiaga et al.,
+move to train RDM for several iterations while                                                                              2016) and HMM (Dungs et al., 2018) on T WITkeeping CM’s parameters fixed. Training con-                                                                                TER ; and GRU-2 (Ma et al., 2016) on both data
+verges when CM’s reward value stabilises between                                                                            sets. For GRU-2 (Ma et al., 2016) we also report
+consecutive epochs.                                                                                                         performance on several variants that use a different recurrent network: simple RNN with tanh ac3.4         Bucketing Strategy                                                                                              tivation (RNN); single-layer LSTM (LSTM); and
+For processing efficiency purposes, instead of pro-                                                                         single-layer GRU (GRU-1).
+cessing each incoming post individually, we ex-                                                                                CSI is a neural model that integrates text and
+periment with several bucketing strategies that                                                                             users representations to classify rumours. CRF
+group posts together and process them in batches.                                                                           and HMM are classical models that use crowd
+As Figure 3 illustrates, we group posts based on:                                                                           opinions (a.k.a. stance) of the event for classifi-
+(1) a fixed number of posts (FN), e.g. every 3 posts                                                                        cation. GRU-2 is based on a two-layer GRU that
+(i.e. 3 posts are combined together forming 1 sin-                                                                          captures contextual information of posts with tfgle post); (2) a fixed time interval (FT), e.g. every                                                                       idf features as inputs.
+2 hours; and (3) a dynamic interval (DI) that en-                                                                                4
+                                                                                                                                 There is a small difference in the definition of a “rusures the number of posts collected in an interval                                                                          mour” in these two data sets. For W EIBO, all labelled rumours are false rumours (i.e. the source message contains
+is close to the mean number of posts collected in                                                                           verified untruthful statements), where else for T WITTER, ruan hour in the full data set.                                                                                               mours maybe truthful, untruthful, or unverified.
+
+                                                                                                                         1618
+                                                                                                   Method        Accuracy      Precision    Recall      F1
+          0.8
+                                                                                                        FN          0.874        0.808       0.835    0.821
+          0.6
+                                                                                                        FT          0.861        0.771       0.850    0.808
+                                                                                                        DI          0.814        0.771       0.767    0.769
+Loss
+
+
+          0.4
+
+
+          0.2                                                                                  Table 2: Classification performance for 3 bucketing
+                                                                                               strategies on T WITTER.
+                  0       5     10    15    20    25     30     35     40      45     50
+                                            Iterations (k)
+                                                                                               at around 50K iterations. The reward curve, on
+              Figure 4: Loss over time during joint training.                                  the other hand, fluctuates more as the reward was
+          0.35
+                                                                                               calculated based on the accuracy of RDM. When
+                                                                                               switching between training RDM and CM, the re0.25                                                                                 ward value tends to change abruptly, although over
+                                                                                               time we see a consistent improvement.
+Rewards
+
+
+          0.15
+
+
+          0.05                                                                                 4.5        Results
+          -0.05                                                                                4.5.1         Bucketing Strategy
+          -0.15
+                                                                                               Recall that we explore 3 different methods to
+                      0   200   400   600   800   1000   1200
+                                            Iterations (k)
+                                                                1400   1600   1800   2000
+                                                                                               group posts in order to process them in batches
+                                                                                               (Section 3.4). Here we evaluate them on rumour
+          Figure 5: Reward over time during joint training.                                    classification accuracy over the validation set of
+                                                                                               T WITTER. Note that we do not use CM here (and
+4.3               Preprocessing and Hyper-parameters                                           hence no reinforcement learning is involved) —
+                                                                                               we simply use all posts of an event to perform ruWe preprocess each post by segmenting them into
+                                                                                               mour classification with RDM. In terms of metrics
+words, and remove all stop words.5 We prewe use standard accuracy, precision, recall and F1
+train word embeddings and kept them fixed durscores. Results are presented in Table 2.
+ing training.6 ✓ is set to 0.01 and to 0.95; both
+                                                                                                  We see FN produces the best performance, and
+values are determined empirically based on valiso FN is used for all following experiments as the
+dation data. We use the Adam optimiser (Kingma
+                                                                                               default bucketing strategy.7 As certain events have
+and Ba, 2014) with a learning rate of 0.001 during
+                                                                                               a long delay between posts, we also incorporate a
+joint training, which we found to produce stable
+                                                                                               maximum delay of one hour before processing the
+training.
+                                                                                               posts in a batch.
+4.4               Training Loss and Reward                                                     4.5.2         Detection Accuracy
+We present the training loss and reward values                                                 In this section, we assess how accurately the modover time during joint training in Figure 4 and Fig-                                           els classify rumours. All baselines and benchure 5. We pre-train RDM for 2 epochs before                                                    mark systems uses all posts of an event to perform
+joint training, and then we train RDM and CM                                                   classification, with the exception of HMM which
+in an alternating fashion for 1 epoch and 200K                                                 uses only the first 5 posts. For our models, we
+iterations respectively. We can see that loss de-                                              present: (1) the full model ERD, which uses a subclines steadily after 20K iterations and converges                                             set of posts for classification (checkpoint decided
+       For T WITTER, words are tokenised using white spaces,                                   by CM); and (2) RDM, which uses the full set of
+and stopword list is based on NLTK (Bird et al., 2009). For                                    posts. Results are detailed in Table 3 and 4.
+W EIBO, Jieba is used for tokenisation: https://pypi.
+org/project/jieba/; and stopword list is a customised                                             We can see that RDM outperforms all modlist based on: http://blog.sina.com.cn/s/blog_                                                 els across most metrics, including state-of-the-art
+a19ab3770102wjav.html.                                                                         rumour detection systems CSI (marginally) and
+       For W EIBO, the embeddings are pre-trained using
+word2vec (Mikolov et al., 2013) on a separate Weibo data                                       CRF (substantially). ERD, on the other hand,
+set we collected. For T WITTER, the embeddings are pre-                                        performs very competitively, outperforming most
+trained GloVe embeddings (Pennington et al., 2014). Unknown words are initialised as zero vectors.                                                            FN value: 5 posts for W EIBO and 2 posts for T WITTER.
+
+                                                                                            1619
+
+
+                                                                             100%
+ Method       Accuracy        Precision     Recall       F1                                                                     Weibo        Twitter
+
+ Baseline        0.724          0.673        0.746     0.707                     80%
+
+
+   RNN           0.873          0.816        0.964     0.884                     60%
+
+
+                                                                        Percent
+  LSTM           0.896          0.846        0.968     0.913
+  GRU-1          0.908          0.871        0.958     0.913                     40%
+  GRU-2          0.910          0.876        0.956     0.914
+   CSI*          0.953            —            —       0.954                     20%
+
+
+   RDM           0.957          0.950        0.963     0.957
+                                                                                  0%
+   ERD           0.933          0.929        0.936     0.932                            0-6   6-12   12-18   18-24   24-30   30-36   36-42      42-48
+                                                                                                        Checkpoints (Hours)
+
+
+Table 3: Detection accuracy on W EIBO. ‘*’ denotes                 Figure 6: Proportion of events classified by ERD over
+values taken from the original publications.                       time. Dashed line indicates the optimal checkpoint (12
+                                                                   hours) for GRU-2.
+ Method       Accuracy        Precision     Recall       F1
+                                                                                 1.00
+                                                                                                                                 Weibo        Twitter
+ Baseline        0.612          0.355        0.465     0.398
+                                                                                 0.80
+   RNN           0.785          0.707        0.659     0.682
+  LSTM           0.796          0.719        0.683     0.701          Accuracy
+                                                                                 0.60
+  GRU-1          0.800          0.735        0.685     0.709
+  GRU-2          0.808          0.741        0.694     0.717                     0.40
+  CRF*             —            0.667        0.566     0.607
+  HMM*             —              —            —       0.524                     0.20
+
+
+   RDM           0.873          0.817        0.823     0.820
+                                                                                 0.00
+   ERD           0.858          0.843        0.735     0.785                            0-6   6-12   12-18   18-24   24-30   30-36   36-42     42-48
+                                                                                                        Checkpoints (Hours)
+
+
+Table 4: Detection accuracy on T WITTER. ‘*’ denotes               Figure 7: Detection accuracy of ERD over time.
+values taken from the original publications.                       Dashed lines indicates GRU-2’s accuracies.
+
+
+benchmark systems and baselines, with the excep-                   T WITTER, the majority of the events (approxition of CSI on W EIBO. Note, however, that unlike                  mately 80%) are classified within the first 6 hours.
+most other systems, ERD leverages only a subset                    GRU-2’s optimal checkpoint is 12 hours (dashed
+of posts for rumour classification. HMM is the                     line), and so ERD is detecting rumours much earonly benchmark system on T WITTER that uses a                      lier than GRU-2.
+subset (first 5), and its performance is markedly                     We next present the classification accuracy of
+worse than that of ERD (which uses 4.03 posts on                   these events over time (again, in 6-hour interval)
+average).                                                          in Figure 7. ERD generally outperforms GRU2 (dashed lines) over all checkpoints. To be fair,
+4.5.3    Detection Timeliness
+                                                                   checkpoints that are longer than 12 hours are not
+Next we evaluate the timeliness of the detection,                  exactly comparable, as ERD uses more posts than
+and we focus on comparing our system with GRU-                     GRU-2 in these instances. But even if we con2 (Ma et al., 2016), as it performed competitively                 sider only the first 2 intervals (0-6 and 6-12 hours),
+in Section 4.5.2. Note that GRU-2 uses a manu-                     ERD still outperforms GRU-2 across both data
+ally set checkpoint (12 hours) that were found to                  sets, demonstrating that ERD detects rumours earbe optimal, while ERD determines the checkpoint                    lier and more accurately.
+dynamically.
+                                                                      For the two checkpoints on W EIBO where
+   We first present the proportion of events that                  GRU-2 outperforms ERD, in the first checkpoint
+are classified by ERD over time (6-hour interval)                  (24-30) we find that there are only 5 events and
+in Figure 6.8 We see that for both W EIBO and                      so the difference is unlikely to be statistically roWe include all events (whether it is a true of false posi-   bust. For the second checkpoint (42-48), we hytive) that CM decides to checkpoint.                               pothesise that these events are possibly the diffi1620
+
+
+           1.00                                                                            4.5.4 Case Study
+                               RDM-Weibo                 RDM-Twitter
+                               ERD-Weibo                 ERD-Twitter                       To provide a qualitative analysis for our ap0.95                                                                            proach, we showcase an example of a rumour
+                                                                                           event from W EIBO in Table 5. We present a set
+Accuracy
+
+
+                                                                                           of salient words (second column) and their trans0.90
+                                                                                           lations (third column) extracted from posts published during a particular period (first column) us0.85                                                                            ing simple tf-idf features.
+                                                                                              The rumour was started by a message claim0.80
+                                                                                           ing that hairy crabs contain harmful hormones and
+                  0   4    8   12    16   20   24   28    32   36    40   44    48         toxins on August 18th, 2012. After the message
+                               Detection Deadline (Hours)
+                                                                                           was posted, within 12 hours 2.3M users particiFigure 8: Detection accuracies of ERD and RDM over                                         pated in its propagation, either by re-posting, comtime.                                                                                      menting, or questioning the original source message. The rumour spread quickly and led to significant economic damage to the aquaculture inInterval           Salient Words             Translation                            dustry in China. Officially the rumour was rebut18:41 – 18:44
+                          '¯˘ “'               ¿    hairy crabs, toxicity, hor-            ted after 24 hours, but in Table 5 we see that ERD
+                             ≥ ⇤                    mone, harmful, amazed
+                                                                                           detects the rumour in 34 minutes.
+                          '¯˘        ⌃˙        à    hairy crabs, bursts, message,
+18:48 – 18:51
+                          o ⇤        ⌦⇥             amazed, on the market
+                          éﬂ :U           Ÿ7        delicious food, why,         so,
+                                                                                           5   Conclusions
+18:51 – 18:59
+                          U  Œ⇢                     dizzy, one city club
+                                                                                           We present ERD, an early rumour detection sysb⇤⌫ ⇤ów              ú    dare to eat, afford to eat, like,
+18:59 – 19:09
+                          " Ë w⌘                    miserable, laughing                    tem. Rather than setting a static checkpoint that
+                          ﬂ¡âh            Ñ⌫        food safety, really, disap-            determines when an event should be classified as
+19:11 – 19:15
+                          1  ^l            ˝        pointment, what, cannot                rumour, ERD learns dynamically the minimum
+                                    Rumour Detected
+                                                                                           number of posts required to identify a rumour. To
+                          / / '¯˘ ⇤                 is it, hairy crabs, cannot eat,
+19:34 – 19:49
+                           ⇣ ëÓ Ù¬                  doubt, look around
+                                                                                           this end, we integrate reinforcement learning with
+                                                                                           recurrent neural networks to monitor social media
+             Table 5: Case study of a rumour on W EIBO.
+                                                                                           posts in real time to decide when to classify rumours. We evaluate our model on two standard
+                                                                                           data sets, and demonstrate that ERD identifies rumours within 7.5 hours and 3.4 hours on W EIBO
+cult cases, and as such the classification decision                                        and T WITTER on average, compared to 12 hours
+is deferred until much later (and classification per-                                      of a competitive system. In terms of detection acformance is ultimately still low due to its diffi-                                         curacy, ERD achieves a performance of 93.3% and
+culty).                                                                                    85.8%, which is comparable to state-of-the-art ruTo understand the advantage of incorporating                                            mour detection systems.
+reinforcement learning (CM) for rumour detec-                                              Acknowledgements
+tion, we compute the detection accuracy over time
+for ERD and RDM in Figure 8. The dashed                                                    This work is partially funded by the National
+lines indicate the average accuracy performance of                                         Natural Science Foundation of China (61502115,
+ERD, which detects rumours on average in 7.5 and                                           U1636103, U1536207). We would also like to
+3.4 hours on W EIBO and T WITTER respectively.                                             thank Wei Gao and Jing Li for their valuable sugThe solid lines show the accuracy performance of                                           gestions.
+RDM, which increases over time as it has more
+evidence. For RDM to achieve the performance of
+ERD, we see that it requires approximately at least                                        References
+20 hours of posts on both data sets. This highlights                                       Gordon W Allport and Leo Postman. 1947. The psythe importance of the checkpoint module, which                                               chology of rumor.
+allows ERD to detect rumours much earlier. In                                              Steven Bird, Ewan Klein, and Edward Loper. 2009.
+certain events, they are detected within 3 minutes.                                           Natural Language Processing with Python — An1621
+
+
+  alyzing Text with the Natural Language Toolkit.       Jing Ma, Wei Gao, Prasenjit Mitra, Sejeong Kwon,
+  O’Reilly Media, Sebastopol, USA.                         Bernard J Jansen, Kam-Fai Wong, and Meeyoung
+                                                           Cha. 2016. Detecting rumors from microblogs with
+Kyunghyun Cho, Bart Van Merriënboer, Dzmitry Bah-         recurrent neural networks. In IJCAI, pages 3818–
+  danau, and Yoshua Bengio. 2014. On the properties        3824.
+  of neural machine translation: Encoder-decoder approaches. arXiv preprint arXiv:1409.1259.             Jing Ma, Wei Gao, Zhongyu Wei, Yueming Lu, and
+                                                           Kam-Fai Wong. 2015. Detect rumors using time seRonan Collobert, Jason Weston, Léon Bottou, Michael       ries of social context information on microblogging
+  Karlen, Koray Kavukcuoglu, and Pavel Kuksa.              websites. In Proceedings of the 24th ACM Inter2011. Natural language processing (almost) from          national on Conference on Information and Knowlscratch. 12:2493–2537.                                   edge Management, pages 1751–1754. ACM.
+Sebastian Dungs, Ahmet Aker, Norbert Fuhr, and
+  Kalina Bontcheva. 2018. Can rumour stance alone       Jing Ma, Wei Gao, and Kam-Fai Wong. 2017. Depredict veracity? In Proceedings of the 27th Inter-      tect rumors in microblog posts using propagation
+  national Conference on Computational Linguistics,        structure via kernel learning. In Proceedings of the
+  pages 3360–3370.                                         55th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), volMehrdad Farajtabar, Jiachen Yang, Xiaojing Ye, Huan        ume 1, pages 708–717.
+ Xu, Rakshit Trivedi, Elias Khalil, Shuang Li,
+ Le Song, and Hongyuan Zha. 2017. Fake news mit-        Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S Corigation via point process based intervention. In In-     rado, and Jeff Dean. 2013. Distributed representaternational Conference on Machine Learning, pages        tions of words and phrases and their compositional1097–1106.                                               ity. In Advances in neural information processing
+                                                          systems, pages 3111–3119.
+Adrien Friggeri, Lada A Adamic, Dean Eckles, and
+  Justin Cheng. 2014. Rumor cascades. In ICWSM.         Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Alex Graves, Ioannis Antonoglou, Daan WierIan Goodfellow, Jean Pouget-Abadie, Mehdi Mirza,          stra, and Martin Riedmiller. 2013. Playing atari
+   Bing Xu, David Warde-Farley, Sherjil Ozair, Aaron      with deep reinforcement learning. arXiv preprint
+   Courville, and Yoshua Bengio. 2014. Generative ad-     arXiv:1312.5602.
+   versarial nets. In Advances in neural information
+   processing systems, pages 2672–2680.                 Jeffrey Pennington, Richard Socher, and Christopher D. Manning. 2014. Glove: Global vectors for
+Yoon Kim. 2014. Convolutional neural networks for          word representation. In Empirical Methods in Natsentence classification. In Proceedings of the 2014      ural Language Processing (EMNLP), pages 1532–
+  Conference on Empirical Methods in Natural Lan-          1543.
+  guage Processing (EMNLP). Association for Computational Linguistics.                               Warren A Peterson and Noel P Gist. 1951. Rumor
+                                                          and public opinion. American Journal of Sociology,
+Diederik P. Kingma and Jimmy Ba. 2014.        Adam:       57:159–167.
+  A method for stochastic optimization.       CoRR,
+  abs/1412.6980.                                        Vahed Qazvinian, Emily Rosengren, Dragomir R
+Sejeong Kwon, Meeyoung Cha, and Kyomin Jung.              Radev, and Qiaozhu Mei. 2011. Rumor has it: Iden2017. Rumor detection over varying time windows.        tifying misinformation in microblogs. In ProceedPloS one, 12(1):e0168344.                               ings of the Conference on Empirical Methods in Natural Language Processing, pages 1589–1599. AssoJey Han Lau, Timothy Baldwin, and Trevor Cohn.            ciation for Computational Linguistics.
+   2017. Topically driven neural language model. In
+   Proceedings of the 55th Annual Meeting of the As-    Natali Ruchansky, Sungyong Seo, and Yan Liu. 2017.
+   sociation for Computational Linguistics (Volume 1:     Csi: A hybrid deep model for fake news detection.
+   Long Papers), pages 355–365.                           In Proceedings of the 2017 ACM on Conference
+                                                          on Information and Knowledge Management, pages
+Gang Liang, Wenbo He, Chun Xu, Liangyin Chen,             797–806. ACM.
+  and Jinquan Zeng. 2015. Rumor identification in
+  microblogging systems based on users’ behavior.       Justin Sampson, Fred Morstatter, Liang Wu, and Huan
+  IEEE Transactions on Computational Social Sys-           Liu. 2016. Leveraging the implicit structure within
+  tems, 2(3):99–108.                                       social media for emergent rumor detection. In Proceedings of the 25th ACM International on ConferYunfei Long, Qin Lu, Rong Xiang, Minglei Li,               ence on Information and Knowledge Management,
+  and Chu-Ren Huang. 2017. Fake news detection             pages 2377–2382. ACM.
+  through multi-perspective speaker profiles. In Proceedings of the Eighth International Joint Confer-    Richard S Sutton, Andrew G Barto, Francis Bach, et al.
+  ence on Natural Language Processing (Volume 2:          1998. Reinforcement learning: An introduction.
+  Short Papers), volume 2, pages 252–256.                 MIT press.
+
+                                                    1622
+
+
+Tetsuro Takahashi and Nobuyuki Igata. 2012. Rumor
+  detection on twitter. In Soft Computing and Intelligent Systems (SCIS) and 13th International Symposium on Advanced Intelligent Systems (ISIS), 2012
+  Joint 6th International Conference on, pages 452–
+  457. IEEE.
+Ke Wu, Song Yang, and Kenny Q Zhu. 2015. False rumors detection on sina weibo by propagation structures. In Data Engineering (ICDE), 2015 IEEE 31st
+  International Conference on, pages 651–662. IEEE.
+Fan Yang, Yang Liu, Xiaohui Yu, and Min Yang. 2012.
+  Automatic detection of rumor on sina weibo. In Proceedings of the ACM SIGKDD Workshop on Mining
+  Data Semantics, page 13. ACM.
+Zhifan Yang, Chao Wang, Fan Zhang, Ying Zhang,
+  and Haiwei Zhang. 2015. Emerging rumor identification for social media with hot topic detection.
+  In Web Information System and Application Conference (WISA), 2015 12th, pages 53–58. IEEE.
+Qiao Zhang, Shuiyuan Zhang, Jian Dong, Jinhua
+  Xiong, and Xueqi Cheng. 2015. Automatic detection of rumor on social network. In Natural Language Processing and Chinese Computing, pages
+  113–122. Springer.
+Zhe Zhao, Paul Resnick, and Qiaozhu Mei. 2015. Enquiring minds: Early detection of rumors in social
+  media from enquiry posts. In Proceedings of the
+  24th International Conference on World Wide Web,
+  pages 1395–1405. International World Wide Web
+  Conferences Steering Committee.
+
+Arkaitz Zubiaga, Ahmet Aker, Kalina Bontcheva,
+  Maria Liakata, and Rob Procter. 2018. Detection
+  and resolution of rumours in social media: A survey.
+  ACM Computing Surveys (CSUR), 51(2):32.
+
+Arkaitz Zubiaga, Maria Liakata, and Rob Procter.
+  2016. Learning reporting dynamics during breaking
+  news for rumour detection in social media. arXiv
+  preprint arXiv:1610.07363.
+
+
+                                                      1623

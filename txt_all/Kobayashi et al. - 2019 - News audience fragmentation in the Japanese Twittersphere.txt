@@ -1,0 +1,778 @@
+Asian Journal of Communication
+
+
+      ISSN: 0129-2986 (Print) 1742-0911 (Online) Journal homepage: http://www.tandfonline.com/loi/rajc20
+
+
+News audience fragmentation in the Japanese
+Twittersphere
+
+Tetsuro Kobayashi, Yuki Ogawa, Takahisa Suzuki & Hitoshi Yamamoto
+
+To cite this article: Tetsuro Kobayashi, Yuki Ogawa, Takahisa Suzuki & Hitoshi Yamamoto (2018):
+News audience fragmentation in the Japanese Twittersphere, Asian Journal of Communication,
+DOI: 10.1080/01292986.2018.1458326
+
+To link to this article: https://doi.org/10.1080/01292986.2018.1458326
+
+
+       View supplementary material
+
+
+       Published online: 06 Apr 2018.
+
+
+       Submit your article to this journal
+
+
+       View related articles
+
+
+       View Crossmark data
+
+
+                     Full Terms & Conditions of access and use can be found at
+             http://www.tandfonline.com/action/journalInformation?journalCode=rajc20
+
+
+ASIAN JOURNAL OF COMMUNICATION, 2018
+https://doi.org/10.1080/01292986.2018.1458326
+
+
+News audience fragmentation in the Japanese Twittersphere
+Tetsuro Kobayashia, Yuki Ogawab, Takahisa Suzukic and Hitoshi Yamamotod
+a
+ Department of Media and Communication, City University of Hong Kong, Kowloon, Hong Kong;
+b
+ Department of Information Science and Engineering, Ritsumeikan University, Kyoto, Japan; cCollege of Policy
+Studies, Tsuda University, Tokyo, Japan; dFaculty of Business Administration, Rissho University, Tokyo, Japan
+
+
+    ABSTRACT                                                                                ARTICLE HISTORY
+    Although computational approaches to ideology-based audience                            Received 1 August 2017
+    fragmentation are promising, they are not without limitations.                          Revised 14 February 2018
+    First, most existing studies have focused on the US, and the cross-                     Accepted 23 March 2018
+    national validity of their results has rarely been tested. Second,
+                                                                                            KEYWORDS
+    previous studies that rely solely on behavioral data from social                        Audience fragmentation;
+    media tend to make strong analytical assumptions such as that                           selective exposure; social
+    Twitter users prefer to follow media and politicians whose                              media; machine learning
+    ideological positions are similar to their own, and that the
+    ideologies of political elites can be extrapolated to infer the
+    ideologies of ordinary users. We aim to address these limitations.
+    First, we focus on Japan to test the generalizability of US findings
+    in an Asian context. Second, we do not rely solely on behavioral
+    measurement but combine survey and social media data to infer
+    the ideologies of Twitter users. Results indicate that our classifier
+    built based on these self-reported ideologies produces more valid
+    estimates than naïve extrapolation from views of the elites. Based
+    on these improved estimates of Twitter users’ ideologies, we
+    demonstrate that the ideological distributions of those who follow
+    major Japanese media accounts on Twitter largely overlap,
+    suggesting an absence of ideology-based audience fragmentation.
+
+
+Introduction
+Selective exposure and consequential audience fragmentation are central issues in the
+study of political communication (Bennett & Iyengar, 2008; Tewksbury, 2005; Webster
+& Ksiazek, 2012). As the range of choices available in the media environment has
+expanded since the advent of the Internet, the information that people consume has diversified to an unprecedented level, and selective exposure based on personal ideology has
+loomed large (Adamic & Glance, 2005; Hargittai, Gallo, & Kane, 2008; Lee & Park,
+2010). In particular, the social media environment makes it easy to tune in selectively
+to news outlets that share the user’s ideological leanings, resulting in ideology-based audience fragmentation (Conover et al., 2011; Gruzd & Roy, 2014; Hahn, Ryu, & Park, 2015;
+Messing & Westwood, 2014). Ideology-based audience fragmentation in this study is
+defined as ‘reduced overlap of consumed contents that is caused by the ideological
+
+CONTACT Yuki Ogawa         y-ogawa@fc.ritsumei.ac.jp      Ritsumeikan University, 1-1-1 Nojihigashi, Kusatsu, Shiga, Kyoto
+525-8577, Japan
+    Supplemental data for this article can be accessed https://doi.org/10.1080/01292986.2018.1458326
+© AMIC/WKWSCI-NTU 2018
+
+
+2      T. KOBAYASHI ET AL.
+
+
+selective exposure of audience’, which has been robustly demonstrated in previous literature (e.g. Coe et al., 2008; Iyengar & Hahn, 2009; Stroud, 2010).
+    Although ideological selective exposure has been well documented in both experimental and observational studies (e.g. Barberá, 2015; Garrett, 2009; Stroud, 2011), the existing
+literature has notable limitations, such as an inability to reveal the real-world scale of audience fragmentation as well as the large margin of measurement error in self-reported
+media exposure. Against this backdrop, recent studies have taken a more computational
+approach by using social media data, because this has several advantages over traditional
+methodologies, arising from the availability of massive real-world behavioral data that are
+less prone to measurement error (e.g. Barberá, 2015; Golbeck & Hansen, 2014). However,
+the current literature on ideological audience fragmentation, which employs computational approaches, still has room for improvement.
+    First, with few exceptions, most studies using this approach have been conducted in the
+US, and the cross-national validity of their results has scarcely been tested. The high level
+of ideological polarization in the US may be idiosyncratic from a global perspective, so
+cross-cultural investigation is necessary for assessing the generalizability of US-based findings. Second, previous studies relying solely on behavioral data from social media tend to
+make strong analytical assumptions. A typical assumption is that Twitter users on average
+prefer to follow media and politicians whose ideological positions are similar to their own
+(e.g. Barberá, 2015). Another strong and typical assumption is that the ideology of political
+elites can be extrapolated to that of ordinary users. However, these assumptions have not
+been subjected to rigorous empirical scrutiny. In fact, selective avoidance of ideologically
+incongruent information has been demonstrated to be relatively weak (Garrett, 2009; Knobloch-Westerwick & Johnson, 2014); therefore, following Twitter accounts across ideological boundaries may be more common than assumed. Furthermore, the ideological
+constraints on ordinary people are weaker than those on political elites (Converse,
+1964), so the validity of extrapolation from elites to ordinary Twitter users may be limited.
+    We aim to address these limitations in the current study. First, we focus on Japan to test
+the generalizability of US findings in an Asian context. Second, we do not rely solely on
+behavioral measures collected through social media but instead combine survey data
+and machine learning to estimate the ideology of Twitter users more precisely. Although
+we are not the first to use machine learning for this type of estimation (e.g. Pennacchiotti
+& Popescu, 2011; Rao, Yarowsky, Shreevats, & Gupta, 2010), to the best of our knowledge,
+we are the first to make use of self-reported ideology among Asian Twitter users for supervised machine learning. Results indicate that our classifier, based on the self-reported
+ideology of Twitter users produces more valid estimates than naïve extrapolation from
+data from elites. With improved estimates of Twitter users’ ideologies, we demonstrate
+that the ideological distributions of those who follow major Japanese media accounts
+on Twitter largely overlap, suggesting that ideology-based audience fragmentation is
+absent.
+
+
+Computational approaches to ideological audience fragmentation
+One of the notable limitations of experimental studies of selective exposure is that they
+cannot reveal the actual scale of audience fragmentation in the real world. Moreover,
+selective exposure may be overestimated in experimental studies, because many
+
+
+                                                       ASIAN JOURNAL OF COMMUNICATION        3
+
+
+experiments force the participants to choose information from either like-minded or
+unlike-minded parties without providing the option to pursue irrelevant information
+instead (Clay, Barber, & Shook, 2013). In fact, by analyzing behavioral data on news
+exposure collected by Nielsen, Prior (2013) demonstrated that selective exposure
+occurs only among a small fraction of people with strong partisanship and that most
+people simply tune out from partisan cable news. Similarly, previous studies have
+demonstrated that a vast proportion of the online audience concentrate on a small
+number of portal sites (Gentzkow & Shapiro, 2011; Kobayashi & Inamasu, 2015;
+Webster & Ksiazek, 2012; Webster & Lin, 2002), suggesting an absence of large-scale
+ideological audience fragmentation.
+   However, the diffusion of social media and the availability of API have made it possible
+to collect a massive amount of data that reflect the population more accurately. As an illustration, Kwak, Lee, Park, and Moon (2010) collected Twitter data from 41.7 million
+accounts, the population of Twitter users in 2009, and succeeded in estimating precisely
+that nearly 85% of the messages flowing through Twitter consist of information originating from traditional news media. In this way, a computational approach to social media
+data allows us to overcome the inability of traditional approaches to reveal the true
+scale of audience behavior in the real world.
+   Selective ideological exposure is confirmed by survey studies that have greater external
+validity than experimental studies (Garrett, 2009; Stroud, 2008, 2010). However, it is now
+widely known that measurement of media exposure based on self-reports suffers from
+large margins of error, which bias the assessment of audience fragmentation. For instance,
+Prior’s (2013) survey study demonstrated that those who regularly watch conservative Fox
+News constitute 22–24% of the US adults, whereas the behavioral data collected by Nielsen
+show that only 6.1% of US adults regularly tune in to Fox News, suggesting that the prevalence of selective ideological exposure is overestimated when measurement is based on
+survey data. Behavioral social media data, on the other hand, are less prone to measurement error. As behavior in social media such as following and ‘liking’ can be measured
+without self-report, the ambiguity surrounding the self-report measurement can be
+circumvented.
+   In fact, an increasing number of studies employ the computational approach to study
+audience fragmentation. Golbeck and Hansen (2014) estimated Twitter users’ ideology
+from the Americans for Democratic Action scores of members of the US Congress
+whom they followed and analyzed the type of news media accounts, governmental institutions, and think tanks that they followed. They found that liberals tended to follow
+liberal news media accounts selectively and conservatives tended to follow conservative
+news media accounts selectively, suggesting ideology-based audience fragmentation
+among US Twitter users. Barberá (2015) demonstrated audience fragmentation in five
+Western democracies by estimating the ideology of political Twitter accounts including
+those of politicians, political parties, media outlets, and journalists. More specifically, he
+extracted 2000–5000 followers of each political account and estimated their ideological
+leanings using a Markov chain Monte Carlo algorithm (for a similar approach, see also
+Al Zamal, Liu, & Ruths, 2012). Other studies attempted to estimate the ideology of ordinary Twitter users using the information on the accounts that they followed (e.g. Pennacchiotti & Popescu, 2011; Rao et al., 2010).
+
+
+4      T. KOBAYASHI ET AL.
+
+
+Limitations of the current literature
+Although a computational approach can address at least some of the limitations of traditional methodologies, the current literature on ideological audience fragmentation
+employing this approach still has room for improvement.
+    First, because most of the previous studies were conducted in the US, it is not clear how
+far we can generalize those findings to other political contexts. The US has a stable twoparty system, and both political elites and the public are polarized along the dimensions of
+ideology and partisanship (e.g. Abramowitz & Saunders, 2008; Iyengar & Westwood, 2015;
+Poole & Rosenthal, 1984). In a stable two-party system, committing to one partisan position greatly increases the probability of opposing the other partisan position. Furthermore, the US has a prototypically liberal media system characterized by weak
+regulation and a lack of the principle of political neutrality (Hallin & Mancini, 2004).
+These contextual factors make ideological audience fragmentation more likely.
+However, the level of partisan polarization greatly varies across countries, and bipolar partisan polarization is less likely to occur in countries with multiparty or unstable party
+systems. In summary, the high level of partisan polarization in the US could be exceptional
+from a global perspective, so careful cross-cultural investigation is necessary for generalizing the findings from the US. Evidence of audience fragmentation is particularly lacking
+in Asia. One of the few exceptions is Hahn et al. (2015), who analyzed data from all Twitter
+followers of 34 Korean news media accounts and survey data from 1811 Korean Twitter
+users. They demonstrated that fragmentation in Korean politics was determined by two
+primary dimensions; namely, ideology and generation.
+    Second, although the computational approach can avoid the low reliability of selfreported measurement by utilizing behavioral data, it typically entails strong analytical
+assumptions. The most common assumption is that Twitter users selectively follow
+media and politicians whose ideological positions are similar to their own (e.g. Barberá,
+2015). That is, Twitter users are assumed to follow ideologically congruent accounts selectively while at the same time selectively avoiding ideologically incongruent accounts.
+However, it has been repeatedly indicated in both experimental and survey studies that
+selective avoidance of ideologically incongruent information is weak (Garrett, 2009; Knobloch-Westerwick & Kleinman, 2012; Knobloch-Westerwick & Johnson, 2014), and more
+balanced information seeking is promoted, especially when the source of information is
+perceived as useful (Chaffee, Saphir, Graf, Sandvig, & Hahn, 2001; Frey, 1986). Therefore,
+cross-cutting exposure may occur in such a way that users follow media or politicians
+simply because they are informative or famous.
+    Another strong typical assumption is that the ideologies of political elites can be
+extrapolated to infer ideology among ordinary users. For example, Golbeck and Hansen
+(2014) extrapolated the ideology scores of members of the US Congress to their Twitter
+followers to compute the political preferences of Twitter followers of news media accounts.
+However, ideological constraints are weaker for ordinary people than for political elites
+(Baldassarri & Goldberg, 2014; Converse, 1964; Lewis-Beck, Jacoby, Norpoth, & Weisberg,
+2008); therefore, the validity of such extrapolation from elites to ordinary Twitter users
+may be limited. Given that the structure of ideology is qualitatively different between political elites and ordinary people, directly measuring the ideological leanings of Twitter
+users should provide greater validity than extrapolating those of elites.
+
+
+                                                       ASIAN JOURNAL OF COMMUNICATION        5
+
+
+   We aim to address these limitations in the current study. First, we focus on Japan to test
+the generalizability of US findings to an Asian context. While Japan shares a democratic
+political system with the US, its ideological landscape is quite different, making it a good
+place to test the generalizability of US-based findings in an Asian context. Because the generalizability of the US-centered empirical findings is guaranteed only when they are replicated across various political institutions and contexts (McDermott, 2011), it is crucial to
+investigate ideological audience fragmentation in countries outside the US. Specifically, in
+Japan, those who do not support any party make up 60% of the electorate, and media–
+party parallelism is remarkably low (Goldman & Mutz, 2011). The less ideologically
+polarized context of Japan offers a strict context for testing the hypotheses of ideological
+audience fragmentation. Second, we do not rely solely on followership behavioral
+measurement but instead combine survey data and machine learning to estimate the ideologies of Twitter users to avoid making strong analytical assumptions. Employing a classifier trained using Twitter users’ self-reported ideologies would produce more valid
+estimates than naïve extrapolation from those of the elites.1
+
+
+Method
+The target population of our study is defined as Japanese Twitter users who follow at least
+one media account and at least one member of the Japanese Diet. This population does not
+represent all Japanese Twitter users, and they are expected to be more politically active
+than users who do not follow any Diet members (Barberá, 2015; Kobayashi, 2017).
+However, their online behavior may be highly informative about ideological audience fragmentation because they are more likely to be knowledgeable and interested in politics than
+the average citizen (Barberá, 2015). If we do not observe audience fragmentation among
+this segment of Twitter users, then it would be absent even if we extended the target
+population.
+   We first conducted an online survey of Twitter users who followed at least one media
+account and at least one member of the Japanese Diet. Second, using Twitter users’ surveymeasured ideologies, the list of the Diet members whom they followed, and the texts of
+their tweets as training data, we applied supervised machine learning to build a classifier
+to estimate their ideologies. Third, we used this classifier to estimate the ideologies of all
+Twitter users who followed at least one media account and at least one Diet member (N =
+605,446); i.e. the population of this study. Finally, using estimated ideologies of Twitter
+users and the list of the media accounts that they followed, we evaluated the scale of ideology-based audience fragmentation at the population level. Each step is described in greater
+detail in the following sections.
+
+
+Online survey
+In September and October 2014, we recruited a set of Twitter users from the Rakuten
+Research panel who followed the accounts of at least one media outlet and one Diet
+member. We initially recruited 3420 Twitter users who claimed that: (1) they have
+Twitter accounts; (2) their accounts are public; (3) they follow at least one media outlet
+and one Diet member, and (4) they agree to disclose their Twitter accounts to us.
+Based on the disclosed Twitter accounts and Twitter API, we found that 2930 of 3420
+
+
+6       T. KOBAYASHI ET AL.
+
+
+respondents’ accounts were open to the public. Of these 2930 respondents, 1724 respondents followed at least one media outlet and one Diet member. We approached these 1724
+users and received responses from 1493 of them.
+   The list of media accounts is presented in Table 1; it includes all the major national
+newspapers, the public broadcaster (NHK), key commercial network stations, and
+wired news agencies. Although estimating the ideological slant of news media is beyond
+the scope of the present study, the ideological leanings of major national news media
+have been consistently demonstrated by content analyses (e.g. Ding, 2016; Pak, 2016)
+and by Bayesian ideal point estimation using Twitter data (Miwa, 2017). Specifically, it
+is well established and widely acknowledged by the public that Asahi, Mainichi, and
+Tokyo Shimbun have liberal leanings, whereas Yomiuri, Nikkei, and Sankei Shimbun
+have a conservative slant (Akuto, 1996). The ideological leanings of NHK and national
+networks are less clear because of the political impartiality principle of the Japanese Broadcast Act.
+   Table 1 also shows the number of followers as well as the number who follow at least
+one Diet member – the target population of our analysis. For Diet member accounts, we
+included those held as of 19 April 2014 by 418 of a total of 722 active Diet members. The
+accounts of media and Diet members that each respondent follows were identified using
+Twitter API. Furthermore, up to 3200 past tweets were collected for each respondent, the
+maximum possible number retrievable using API, for building classifiers.
+   The ideology of the respondents was measured using issue attitude items from The
+University of Tokyo/Asahi Shimbun Survey (UTAS), which is a publicly available
+survey administered to all the candidates and randomly sampled Japanese voters during
+national elections since 2003. The merit of using UTAS is that most elected Diet
+members have responded to these items. This means that the ideology of Twitter users
+
+
+Table 1. The list of media accounts.
+                                                    Total number of   Number of followers who follow at least
+Media               Topic         Twitter account      followers                one Diet member
+NHK                 News            nhk_news           1,312,759                     244,323
+Nikkei              News              Nikkei           1,161,008                     208,500
+  Shumbun
+Aashi Shimbun       News              Asahi             795,492                      184,075
+Yomiuri             News          Yomiuri_Online        401,523                      117,912
+  Shimbun
+Mainichi            News          Mainichijpnews        257,541                       90,454
+  Shumbun
+Kyodo News          News             47news             247,199                       81,566
+                 (unofficial)
+Fuji TV             News             FNN_News            60,931                       27,888
+TBS TV              News             tbs_newsi           59,052                       17,229
+Nippon TV           News             news24ntv           56,230                        9603
+Asahi Shimbun      Politics        asahi_kantei          49,534                       33,581
+Tokyo Shimbun       News           Tokyohotweb           42,967                       10,497
+Tokyo Shimbun      Politics         Tokyoseijibu         30,584                       13,137
+Sankei              News           Sankei_news           25,861                       15,301
+   Shumbun
+Kyodo News      News (official)    kyodo_official        14,589                         3096
+Asahi TV           News           tv_asahi_news          12,447                         4679
+Yomiuri           Politics          YOL_politics         10,534                         5181
+   Shumbun
+Jiji Press          News           i_jijicom_inp           9620                         5510
+
+
+                                                      ASIAN JOURNAL OF COMMUNICATION       7
+
+
+and that of the Diet members whom they follow can be independently estimated on the
+same scale, without extrapolation from Diet members to ordinary users. Specifically, the
+six items with a five-point scale were summed and rescaled so that the measure ranges
+from 0 to 1 (Cronbach’s alpha = 0.88; higher value means conservative ideology): ‘The
+constitution should be revised’; ‘The defensive strength of Japan should be further
+increased’; ‘North Korea needs pressure more than dialogue’; ‘Limitations on privacy
+and individual rights are justified to protect the peace’; ‘Non-Japanese permanent residents should have the right to vote in regional elections’; and ‘Moral education should
+be expanded.’ All these issues can be mapped onto traditional ideological dimensions in
+Japan (Kabashima & Takenaka, 2012).
+   Furthermore, based on the information collected through Twitter API, the names of
+Diet members whom each respondent followed were presented in the online survey questionnaire, which measured their approval or disapproval. The results indicated that
+60.95% of the respondents followed more politicians of whom they approved than
+those of whom they disapproved, whereas 16.68% followed more politicians of whom
+they disapproved than those of whom they approved. The rest of the respondents
+(22.37%) followed equal numbers of politicians of whom they approved and disapproved,
+or they only followed politicians of whom they neither approved nor disapproved (the
+difference between the number of approved politicians and disapproved politicians is illustrated in Figure OA1 in the Appendix). This result suggests that, on average, Twitter users
+prefer to follow politicians of whom they approve, whereas a nonnegligible number of
+users decided to follow Diet members even though they disapproved of them. At the
+level of each following behavior, the data indicated that 16.59% of decisions to follow
+Diet members were made by users who disapproved of them and 38.19% were made by
+users who neither approved nor disapproved of the members, so less than half of the
+follows were by users who explicitly supported the Diet members.
+
+
+Supervised machine learning
+Next, using respondents’ ideology measured in the online survey, information on the Diet
+members whom they follow, and the texts of their tweets as training data, we employed
+supervised machine learning with the aim of constructing a classifier that estimated the
+ideology of those who follow at least one media account and at least one Diet member
+but did not respond to the online survey (hereafter called nonrespondents).
+    The training data consisted of respondents’ self-reported ideology as the dependent
+variable, and following/nonfollowing of the 418 Diet members and the texts of tweets
+as independent variables. While previous studies have shown that the following pattern
+is informative for estimating users’ ideology (Barberá, 2015; Golbeck & Hansen, 2014),
+Rao et al. (2010) found that texts extracted from users’ tweets are also useful for
+machine learning to predict their political leanings. Therefore, to select a classifier that
+has the best predictive performance, both types of information are utilized as independent
+variables.
+    Random Forest was used to construct the classifiers because it is known to attain high
+accuracy by integrating and combining multiple learning devices (decision trees) that are
+created from a training data set (Breiman, 2001). Random Forest can be used for data
+classification as well as for regression by aggregating decision tree outputs (Liaw &
+
+
+8         T. KOBAYASHI ET AL.
+
+
+Wiener, 2002). As different weights are estimated for following different Diet members,
+employing Random Forest is a significant improvement over the methods of previous
+studies that estimated users’ ideology by simply averaging the ideology scores of the politicians whom they follow (e.g. Golbeck & Hansen, 2014). Assigning different weights to
+the acts of following different politicians is more realistic because the ideology of users
+would be more strongly reflected by following politicians whose ideological positions
+are well known through frequent appearances in the media, whereas the association
+between the ideologies of users and the politicians whom they follow would be weaker
+when they are less recognizable to the public, so their ideological positions remain
+unknown to users.
+    To evaluate the performance of the estimated regression models, mean squared errors
+(MSEs) were calculated to quantify the discrepancy between the observed and predicted
+outcomes. Table 2 shows average MSEs based on a 10-fold cross-validation of each classifier. As a benchmark of performance, we also calculated MSE using the method of
+Golbeck and Hansen (2014), which estimates users’ ideology by simply averaging ideology
+scores of the Diet members whom they follow. The ideology scores of the Diet members
+were calculated in the same way as those of respondents by using their self-report
+responses to UTAS. Model 1 utilized only the information about the following patterns
+of respondents; i.e. which of the Diet members they followed. Models 2 and 3 relied on
+the texts of tweets of each respondent rather than his or her following patterns, while
+Models 4 and 5 made use of both types of information. N-gram refers to the text
+mining method that considers consecutive N words in the texts as an independent variable. We employed 1-gram and 2-gram tweets as independent variables because Rao
+et al. (2010) demonstrated that Twitter users’ ideology can be accurately predicted by
+N-gram analyses of tweets. We also varied the number of independent variables used
+for each classifier, because more predictive variables would cause noise in the estimation
+and thus deteriorate the predictive performance. Independent variables for each classifier
+were selected based on MSE (Grömping, 2009).
+    As a result, all five models proposed were found to perform better than the benchmark,
+as smaller MSEs indicate better performance. In particular, Model 5 consistently demonstrated smaller MSEs than the other classifiers. On the other hand, the MSE of Model 5
+decreases as the number of independent variables increases from 100 to 500 but stops
+decreasing when more than 500 independent variables are included, arguably because
+the less important N-grams caused noise in the estimation. Based on these observations,
+
+
+Table 2. MSE of classifiers (10-fold cross-validation).
+                                                                  Number of independent variables
+                                                  100     200      418     500     1000    2000     5000    10,000
+Benchmark    Golbeck and Hansen (2014)              –       –      0.046     –       –       –        –       –
+Model 1      Following pattern                    0.034   0.033    0.034     –       –       –        –       –
+Model 2      Text of tweets                       0.038   0.037    0.037   0.037   0.037   0.037    0.038   0.038
+               (1-gram)
+Model 3      Text of tweets                       0.039   0.037    0.036   0.036   0.035   0.034    0.034   0.034
+               (2-gram)
+Model 4      Following pattern + Text of tweets   0.032   0.031    0.032   0.033   0.034   0.034    0.035   0.035
+               (1-gram)
+Model 5      Following pattern + Text of tweets   0.032   0.031    0.031   0.030   0.030   0.030    0.030   0.030
+               (2-gram)
+
+
+                                                      ASIAN JOURNAL OF COMMUNICATION       9
+
+
+we employed Model 5 with 500 independent variables to build a classifier to estimate nonrespondents’ ideology.
+    In addition, to assess the potential noise created by including disapproving follows, we
+calculated MSE using only approving follows and found that it (0.033) was not substantially improved from the original model, suggesting that the detrimental effect of including
+disapproving follows is minimal.
+
+
+Estimating nonrespondents’ ideology
+Using the classifier of following patterns, we then estimated the ideology of 603,952 nonrespondents who were identified through Twitter API as of 17 June 2014. Figure 1 presents
+the kernel density distribution of the ideology of respondents, nonrespondents, and the
+population that consists of respondents and nonrespondents. As the number of nonrespondents is far larger than that of respondents, the distributions of ‘Respondents and
+Nonrespondents’ and ‘Nonrespondents’ almost completely overlap.
+   The validity of estimates of ideology was tested by checking their correlation with the
+ideology of the Diet members followed. Given the previous findings on selective exposure,
+there should be a positive correlation between the estimated ideology of Twitter users and
+that of the Diet members whom they follow. Note that the ideology of Diet members was
+measured in UTAS independent of that of Twitter users. More specifically, the classifier to
+estimate Twitter users’ ideology was trained with the respondents’ self-reported ideology
+as the dependent variable and the list of the Diet members followed with the texts of their
+tweets as the independent variables. Therefore, the ideological scores of the Diet members
+were not used for the estimation, rendering it an appropriate external standard by which to
+assess the validity of estimation.
+   We found a highly significant correlation of 0.68 (p < .01) between Twitter users’ ideology and the average ideology of the Diet members whom they follow, supporting the validity of our estimation. When we break down the users into respondents and
+
+
+Figure 1. Distribution of estimated ideology.
+
+
+10      T. KOBAYASHI ET AL.
+
+
+nonrespondents, the correlations were 0.65 and 0.68, respectively. To avoid potential noise
+from including disapproving follows, we validated our estimation by calculating the correlation between the users’ ideology estimated only from their approving follows and that
+of the Diet members followed. The correlation was 0.71 (p < .01), which is not a remarkable improvement from 0.68, the correlation when the users’ ideology is estimated from all
+their follows. This result suggests that the validity is robust regardless of whether disapproving follows are included. Furthermore, we used the estimated ideology of Diet
+members reported by Miwa (2017) as another validation standard. Miwa (2017) applied
+Barberá’s (2015) Bayesian ideal point estimation to Japanese Twitter data to estimate
+Diet members’ ideologies. Therefore, although Miwa (2017) also used Twitter data, his
+estimation strategy was completely different from that of the present study. When we
+use the Diet member’s ideology reported by Miwa (2017), the correlation between
+Twitter users’ ideology and the average ideology of the Diet members whom they
+follow was highly significant (r = 0.69, p < .01), further supporting the validity of our
+estimation.
+
+
+News audience fragmentation in the Japanese Twittersphere
+Figure 2 shows the distributions of followers’ ideologies per media account for 605,446
+users. It illustrates that most of the media accounts have followers whose ideology is centered around the grand mean of the population, which is 0.61, indicating that significant
+differences are not observed across media accounts in terms of the distribution of their
+followers’ ideologies. The only exceptions are followers of Sankei Shimbun and Tokyo
+Shimbun. On average, the followers of Sankei Shimbun are more conservative than
+those of other media (mean ideology = 0.72), whereas the followers of Tokyo Shimbun
+are more liberal (mean ideology = 0.46).
+   To probe the reduction in the overlap of consumed contents due to ideological selective
+exposure, we ran a simulation to obtain the baseline following pattern of media accounts
+that precludes ideological selective exposure in all decisions to follow (see OA1 in the
+Appendix for details of the simulation). The comparison between observed and simulated
+following patterns of media accounts revealed that ideologically moderate popular media,
+such as NHK, attract more followers than the baseline and that the followers of small but
+ideologically distinct media, such as Sankei Shimbun and Tokyo Shimbun, tend to follow
+fewer media accounts than the baseline. Combined with the ideological distribution of
+each media account (Figure 2), the former result indicates that the majority of Twitter
+users in Japan selectively follow ideologically moderate popular media accounts (which
+suppresses ideological audience fragmentation), whereas the latter result suggests a
+partial fragmentation of those who follow ideologically distinct media accounts.
+   Next, to assess audience fragmentation in more detail, we evaluated the overlap among
+followers for each pair of media accounts using Jaccard coefficients (An, Cha, Gummadi,
+& Crowcroft, 2011).2 In the presence of audience fragmentation, the Jaccard coefficient
+becomes smaller because there is less overlap of followers; the Jaccard coefficient
+becomes larger when audience fragmentation is absent. Jaccard coefficients are reported
+in Table OA1 of the Appendix. Figure 3 is a network representation of the overlap of followers based on the Jaccard coefficients, where each node denotes a media account, the
+size of a node is proportional to the number of followers, and the width of an edge is
+
+
+                                                          ASIAN JOURNAL OF COMMUNICATION   11
+
+
+Figure 2. Distributions of Twitter users’ ideology per media account.
+
+
+proportional to its Jaccard coefficient. Colors indicate followers’ ideological slants, with
+red and blue representing media preference by conservative and liberal followers,
+respectively.
+   Figure 3 illustrates that the major media accounts positioned at the top of the network
+are in general connected by thicker edges, suggesting greater overlap of followers among
+these accounts. As an illustration, although the ideological leanings of conservative
+Yomiuri and liberal Asahi Shimbun are said to be polarized (e.g. Tokuyama, 2014), the
+Jaccard coefficient between the two major national newspapers is 0.30, meaning that
+30% of the Twitter users who follow at least one of the publications Yomiuri and Asahi
+Shimbun follow both accounts. That is, no ideological audience fragmentation among
+the major Japanese media accounts was observed.
+   In contrast, the media with ideologically distinctive followers tends to have thinner
+edges with other accounts, suggesting that the followers of these accounts are more
+
+
+12      T. KOBAYASHI ET AL.
+
+
+Figure 3. Overlap in followers of major Japanese media accounts.
+
+
+fragmented than the major accounts at the top of the figure. As an illustration, the largest
+Jaccard coefficient of Sankei Shimbun is 0.05, while that of Tokyo Shimbun is 0.10,
+suggesting that the ideologically distinctive followers of these two media accounts are isolated from the audience of major media accounts. In summary, ideological audience fragmentation in the Japanese Twittersphere is limited in that it is observed only among a few
+media accounts that have small number of ideologically distinctive followers.3
+
+
+Discussion
+By addressing the limitations of existing computational approach of social media analysis,
+this study evaluated the extent of ideological audience fragmentation in the Japanese Twittersphere. Specifically, by using survey data and supervised machine learning, we estimated Twitter users’ ideological leanings without extrapolating from those of political
+elites. This combination of self-report and behavioral measurement performed better
+than a computational approach relying solely on social media data. Using the estimated
+ideology of Twitter users, we demonstrated that large-scale audience fragmentation is
+
+
+                                                      ASIAN JOURNAL OF COMMUNICATION        13
+
+
+absent from the Japanese Twittersphere, with a few exceptions of small media outlets followed by ideologically distinct users. These findings not only contribute to the development of computational analysis of social media but also suggest that the US findings on
+ideological audience fragmentation are not necessarily replicated in Asian contexts.
+   The most significant methodological contribution of this study is that it showed that the
+combination of survey data and machine learning is capable of predicting Twitter users’
+ideology more precisely than previous methods that rely solely on social media data. As
+the performance of classifiers heavily depends on the quality of training data, directly
+measuring the users’ ideology via online survey has a great advantage over the extant
+methodologies. In addition, varying the number of independent variables and the
+length of N-grams allowed us to employ a classifier that can stably outperform others.
+In fact, our findings suggest that the ideologies of Twitter users can be more accurately
+predicted directly from their following patterns and the texts of their tweets than from
+simple extrapolation from elites’ ideologies. Most importantly, with these methodological
+improvements, Twitter users’ ideologies were estimated with high precision, even in Japan
+where the ideological constellation is far more ambiguous than that in the US (Kabashima
+& Takenaka, 1996). This is significant progress in light of the remarkably different levels of
+political polarization in the two countries.
+   All these methodological improvements culminate in the substantial finding that ideological audience fragmentation is not taking place on a large scale in the Japanese Twittersphere. Most media accounts are followed by both liberal and conservative users, and the
+followers of major media accounts overlap to a significant extent, which is in remarkable
+contrast to the US findings. Selective exposure to social media does not take place independent of the political contexts in the real world. Therefore, we should be cautious in
+extrapolating the US findings to other political contexts, as the ideological polarization
+in the US has been exacerbated to an unprecedented extent. This is especially important
+when we study Asian political communication, because the ideology of Asian countries is
+both qualitatively and structurally different from that in the US (e.g. Kabashima & Takenaka, 2012; Lu, Chu, & Shen, 2016). In this sense, this study serves as counterevidence to
+the naïve technological determinism that postulates that the use of high-choice social
+media triggers ideological selective exposure and leads to audience fragmentation.
+   Several limitations remain to be addressed. First, the respondents in the present study
+were not randomly sampled from the population (i.e. they were Japanese Twitter users
+who follow at least one media account and at least one member of the Japanese Diet),
+so we cannot preclude potential systematic sampling bias.4 To maximize the representativeness of the sample, future work should adjust the following pattern of respondents
+based on that of nonrespondents, either by weighting or by case selection. Moreover,
+although it is methodologically challenging, random sampling of respondents should
+also be attempted to obtain a representative sample of Twitter users who satisfy certain
+conditions.
+   Second, the classifier based on the following pattern regardless of approval or disapproval (Model 1 in Table 2) did not obviously underperform the classifier we selected
+(Model 5 in Table 2). Similarly, the classifier based on only approving follows did not
+have significantly smaller MSEs or substantially greater validity. These results indicate
+that the prediction of ideology was robust, regardless of whether disapproving follows
+were included, even though the online survey revealed that fewer than half of the
+
+
+14         T. KOBAYASHI ET AL.
+
+
+follows were by those who explicitly supported the Diet members. Future studies are
+needed to determine why the performance of machine learning is largely sustained even
+when approval or disapproval in following is ignored.
+    Third, although the method we proposed to predict Twitter users’ ideology outperformed existing methods, even in Japan where ideological constellation is unclear, the
+cost of running an online survey to obtain high-quality training data for machine learning
+is significant. In addition, using the texts of tweets as independent variables in machine
+learning requires substantial preprocessing. These costs can be regarded as disadvantages
+of the proposed method.
+
+
+Notes
+     1. We acknowledge that self-report measures of ideology are not without measurement error.
+        However, ideology is known to predict a range of political behaviors and its measurement
+        is well established (e.g. Conover & Feldman, 1981; Jost, 2006). Furthermore, the merit of
+        measuring the ideology of Twitter users rather than extrapolating it from political elites is
+        clear because their ideologies are not as constrained as those of elites (Converse, 1964).
+        Therefore, it can be assumed that using self-reported ideology is at least less problematic
+        than using self-reported media exposure.
+     2. The Jaccard coefficient is defined as Sim(A, B) = (|A∩B|)/(|A∪B|) and is a value between 0
+        and 1. If there are no users following two media accounts, the Jaccard coefficient is 0; if
+        the followers of two media accounts match exactly, the coefficient is 1. The robustness of
+        the results was tested by using other measures of similarity. The correlation between
+        Jaccard and Dice coefficients was extremely high (r = .99, p < .01). Simpson coefficients of
+        small sets tend to be inflated, even when their associations with other sets are weak, so
+        they are not suitable to measure the similarities between media accounts on Twitter that
+        vary in terms of the number of followers.
+     3. To assess the level of fragmentation at the user level, we extracted audience clusters from a
+        user–user network (605,446 × 605,446) using the Louvain method (Blondel, Guillaume, Lambiotte, & Lefebvre, 2008) (see OA2 in the Appendix for the details). The results of clustering
+        corroborated the findings shown in Figure 3. That is, although the overall level of fragmentation was low (with most of the news audience following ideologically moderate media
+        accounts), the segments of the audience following Sankei Shimbun and Tokyo Shimbun
+        were extracted as small but distinct clusters, indicating partial fragmentation.
+     4. To check the similarity between respondents and nonrespondents, we compared the distribution of Diet members that these two types of users followed. To account for the multiparty
+        nature of the Japanese Diet, we classified members into those who belong to the incumbent
+        governing parties and those belong to opposition parties. Thirty-one percent of all respondent follows were of governing party Diet members, compared with 32% for the nonrespondents, indicating that there is no meaningful difference between the following behavior of
+        respondents and nonrespondents.
+
+
+Disclosure statement
+No potential conflict of interest was reported by the authors.
+
+
+Funding
+This work was supported by Grant-in-Aid for Scientific Research: [Grant Number 16K16157 and
+15KT0133] and the KDDI Foundation, JAPAN.
+
+
+                                                           ASIAN JOURNAL OF COMMUNICATION           15
+
+
+Notes on contributors
+Tetsuro Kobayashi is an associate professor of Department of Media and Communication, City
+University of Hong Kong. His research focuses on political communication and psychology in
+East Asian countries.
+Yuki Ogawa is an assistant professor of College of Information Science and Engineering Department of Information and Communication at Ritsumeikan University in Japan. His research
+focuses on computational social science.
+Takahisa Suzuki (PhD, The Graduate University for Advanced Studies, Japan) is an associate lecturer in College of Policy Studies at the Tsuda University in Japan. His research focuses on media
+effects and computational methods.
+Hitoshi Yamamoto (PhD, received his D. Eng. from the University of Electro-Communications,
+Japan, in 2003) is currently a professor at Rissho University, Tokyo, Japan. He has been working
+on evolution of cooperation, evolutionary game theory, Social dilemma and social simulation.
+http://ecosos.isslab.org
+
+
+References
+Abramowitz, A. I., & Saunders, K. L. (2008). Is polarization a myth? The Journal of Politics, 70, 542–
+   555. doi:10.1017/S0022381608080493
+Adamic, L. A., & Glance, N. (2005). The political blogosphere and the 2004 US election: Divided
+   they blog. In Proceedings of the Third International Workshop on Link Discovery, 36–43.
+   doi:10.1145/1134271.1134277
+Akuto, H. (1996). Media in electoral campaigning in Japan and the United States. In S. J. Pharr & E.
+   S. Krauss (Eds.), Media and politics in Japan (pp. 313–337). Honolulu, HI: University of Hawaii
+   Press.
+Al Zamal, F., Liu, W., & Ruths, D. (2012). Homophily and latent attribute inference: Inferring latent
+   attributes of Twitter users from neighbors. In Proceedings of the Sixth International AAAI
+   Conference on Weblogs and Social Media, Dublin, CA: The AAAI Press, 387–390.
+An, J., Cha, M., Gummadi, K., & Crowcroft, J. (2011). Media landscape in Twitter: A world of new
+   conventions and political diversity. In Proceedings of the Fifth International AAAI Conference on
+   Weblogs and Social Media, Barcelona, CA: The AAAI Press, 18–25.
+Baldassarri, D., & Goldberg, A. (2014). Neither ideologues nor agnostics: Alternative voters’ belief
+   system in an age of partisan politics. American Journal of Sociology, 120, 45–95. doi:10.1086/
+   676042
+Barberá, P. (2015). Birds of the same feather tweet together: Bayesian ideal point estimation using
+   Twitter data. Political Analysis, 23, 76–91. doi:10.1093/pan/mpu011
+Bennett, W. L., & Iyengar, S. (2008). A new era of minimal effects? The changing foundations of
+   political communication. Journal of Communication, 58, 707–731. doi:10.1111/j.1460-2466.
+   2008.00410.x
+Blondel, V. D., Guillaume, J. L., Lambiotte, R., & Lefebvre, E. (2008). Fast unfolding of communities
+   in large networks. Journal of Statistical Mechanics: Theory and Experiment, 2008, P10008. doi:10.
+   1088/1742-5468/2008/10/P10008
+Breiman, L. (2001). Random forests. Machine Learning, 45, 5–32. doi:10.1023/A:1010933404324
+Chaffee, S. H., Saphir, M. N., Graf, J., Sandvig, C., & Hahn, K. S. (2001). Attention to counter-attitudinal messages in a state election campaign. Political Communication, 18, 247–272. doi:10.
+   1080/10584600152400338
+Clay, R., Barber, J. M., & Shook, N. J. (2013). Techniques for measuring selective exposure: A critical
+   review. Communication Methods and Measures, 7, 147–171. doi:10.1080/19312458.2013.813925
+Coe, K., Tewksbury, D., Bond, B. J., Drogos, K. L., Porter, R. W., Yahn, A., & Zhang, Y. (2008).
+   Hostile news: Partisan use and perceptions of cable news programming. Journal of
+   Communication, 58, 201–219. doi:10.1111/j.1460-2466.2008.00381.x
+
+
+16       T. KOBAYASHI ET AL.
+
+
+Conover, P. J., & Feldman, S. (1981). The origins and meaning of liberal/conservative self-identifications. American Journal of Political Science, 25, 617–645. doi:10.2307/2110756
+Conover, M., Ratkiewicz, J., Francisco, M. R., Gonçalves, B., Menczer, F., & Flammini, A. (2011).
+   Political polarization on Twitter. In Proceedings of the Fifth International AAAI Conference on
+   Weblogs and Social Media, Barcelona, CA: The AAAI Press, 89–96.
+Converse, P. E. (1964). The nature of belief systems in mass publics. In D. Apter (Ed.), Ideology and
+   discontent (pp. 206–261). New York: Free Press.
+Ding, W. (2016). Newspaper reports about the dispute over Senkaku/Diaoyu islands: Analyzing editorials of the Asahi Shimbun and Yomiuri Shimbun from 1972 to 2012. Social Science Review,
+   116, 41–71. [In Japanese].
+Frey, D. (1986). Recent research on selective exposure to information. Advances in Experimental
+   Social Psychology, 19, 41–80. doi:10.1016/S0065-2601(08)60212-9
+Garrett, R. K. (2009). Politically motivated reinforcement seeking: Reframing the selective exposure
+   debate. Journal of Communication, 59, 676–699. doi:10.1111/j.1460-2466.2009.01452.x
+Gentzkow, M., & Shapiro, J. M. (2011). Ideological segregation online and offline. Quarterly Journal
+   of Economics, 126, 1799–1839. doi:10.1093/qje/qjr044
+Golbeck, J., & Hansen, D. (2014). A method for computing political preference among Twitter followers. Social Networks, 36, 177–184. doi:10.1016/j.socnet.2013.07.004
+Goldman, S. K., & Mutz, D. C. (2011). The friendly media phenomenon: A cross-national analysis
+   of cross-cutting exposure. Political Communication, 28, 42–66. doi:10.1080/10584609.2010.
+   544280
+Grömping, U. (2009). Variable importance assessment in regression: Linear regression versus
+   random forest. The American Statistician, 63, 308–319. doi:10.1198/tast.2009.08199
+Gruzd, A., & Roy, J. (2014). Investigating political polarization on Twitter: A Canadian perspective.
+   Policy & Internet, 6, 28–45. doi:10.1002/1944-2866.POI354
+Hahn, K. S., Ryu, S., & Park, S. (2015). Fragmentation in the Twitter following of news outlets: The
+   representation of South Korean users’ ideological and generational cleavage. Journalism & Mass
+   Communication Quarterly, 92, 56–76. doi:10.1177/2F1077699014559499
+Hallin, D. C., & Mancini, P. (2004). Comparing media systems: Three models of media and politics.
+   New York: Cambridge University Press.
+Hargittai, E., Gallo, J., & Kane, M. (2008). Cross-ideological discussions among conservative and
+   liberal bloggers. Public Choice, 134, 67–86. doi:10.1007/s11127-007-9201-x
+Iyengar, S., & Hahn, K. S. (2009). Red media, blue media: Evidence of ideological selectivity in
+   media use. Journal of Communication, 59, 19–39. doi:10.1111/j.1460-2466.2008.01402.x
+Iyengar, S., & Westwood, S. J. (2015). Fear and loathing across party lines: New evidence on group
+   polarization. American Journal of Political Science, 59, 690–707. doi:10.1111/ajps.12152
+Jost, J. T. (2006). The end of the end of ideology. American Psychologist, 61, 651–670.
+Kabashima, I., & Takenaka, Y. (1996). Political ideology in Japan. Tokyo: University of Tokyo Press.
+   [in Japanese].
+Kabashima, I., & Takenaka, Y. (2012). Ideologi (ideology). Tokyo: University of Tokyo Press. [in
+   Japanese].
+Knobloch-Westerwick, S., & Johnson, B. K. (2014). Selective exposure for better or worse: Its mediating role for online news’ impact on political participation. Journal of Computer-Mediated
+   Communication, 19, 184–196. doi:10.1111/jcc4.12036
+Knobloch-Westerwick, S., & Kleinman, S. B. (2012). Preelection selective exposure confirmation
+   bias versus informational utility. Communication Research, 39, 170–193. doi:10.1177/
+   0093650211400597
+Kobayashi, T. (2017). Is the power of online campaigning in Japanese electoral politics a Myth? A
+   causal inference analysis of the 2013 Upper House Election. In S. Kiyohara, K. Maeshima, & D.
+   Owen (Eds.), Internet election campaigns in the United States, Japan, South Korea, and Taiwan
+   (pp. 115–136). Cham: Palgrave Macmillan.
+Kobayashi, T., & Inamasu, K. (2015). The knowledge leveling effect of portal sites. Communication
+   Research, 42, 482–502. doi:10.1177/0093650214534965
+
+
+                                                          ASIAN JOURNAL OF COMMUNICATION          17
+
+
+Kwak, H., Lee, C., Park, H., & Moon, S. (2010). What is Twitter, a social network or a news media?
+   In Proceedings of the 19th International Conference on World Wide Web, Raleigh, NY: ACM,
+   591–600. doi:10.1145/1772690.1772751
+Lee, Y. O., & Park, H. W. (2010). The reconfiguration of E-campaign practices in Korea: A case
+   study of the presidential primaries of 2007. International Sociology, 25, 29–53. doi:10.1177/
+   2F0268580909346705
+Lewis-Beck, M. S., Jacoby, W. G., Norpoth, H., & Weisberg, H. F. (2008). The American voter
+   revisited. Ann Arbor: University of Michigan Press.
+Liaw, A., & Wiener, M. (2002). Classification and regression by random Forest. R news, 2, 18–22.
+Lu, Y., Chu, Y., & Shen, F. (2016). Mass media, new technology, and ideology: An analysis of political trends in China. Global Media and China, 1, 70–101. doi:10.1177/2F2059436416648799
+McDermott, R. (2011). Internal and external validity. In J. N. Druckman, D. P. Green, J. H.
+   Kuklinski, & A. Lupia (Eds.), Handbook of experimental political science (pp. 27–40).
+   Cambridge: Cambridge University Press.
+Messing, S., & Westwood, S. J. (2014). Selective exposure in the age of social media: Endorsements
+   trump partisan source affiliation when selecting news online. Communication Research, 41,
+   1042–1063. doi:10.1177/0093650212466406
+Miwa, H. (2017). Estimating the ideology of Japanese politicians, political commentators, political
+   parties, and news media using Twitter data. Japanese Journal of Electoral Studies, 33, 41–56. [In
+   Japanese].
+Pak, H. J. (2016). News reporting on comfort women: Framing, frame difference, and frame changing in four South Korean and Japanese newspapers, 1998–2013. Journalism & Mass
+   Communication Quarterly, 93, 1006–1025.
+Pennacchiotti, M., & Popescu, A. M. (2011). A machine learning approach to Twitter user classification. In Proceedings of the Fifth International AAAI Conference on Weblogs and Social Media,
+   Barcelona, CA: The AAAI Press, 281–288.
+Poole, K. T., & Rosenthal, H. (1984). The polarization of American politics. The Journal of Politics,
+   46, 1061–1079. doi:10.2307/2131242
+Prior, M. (2013). Media and political polarization. Annual Review of Political Science, 16, 101–127.
+   doi:10.1146/annurev-polisci-100711-135242
+Rao, D., Yarowsky, D., Shreevats, A., & Gupta, M. (2010). Classifying latent user attributes in
+   Twitter. In Proceedings of the Second International Workshop on Search and Mining UserGenerated Contents, Toronto, ON: ACM, 37–44.
+Stroud, N. J. (2008). Media use and political predispositions: Revisiting the concept of selective
+   exposure. Political Behavior, 30, 341–366. doi:10.1007/s11109-007-9050-9
+Stroud, N. J. (2010). Polarization and partisan selective exposure. Journal of Communication, 60,
+   556–576. doi:10.1111/j.1460-2466.2010.01497.x
+Stroud, N. J. (2011). Niche news: The politics of news choice. New York: Oxford University Press.
+Tewksbury, D. (2005). The seeds of audience fragmentation: Specialization in the use of online news
+   sites. Journal of Broadcasting & Electronic Media, 49, 332–348. doi:10.1207/
+   s15506878jobem4903_5
+Tokuyama, Y. (2014). Abe kantei to shimbun “nikyokka suru hodo” no kiki. Tokyo: Shueisha
+   Shinsho. [in Japanese].
+Webster, J. G., & Ksiazek, T. B. (2012). The dynamics of audience fragmentation: Public attention in
+   an age of digital media. Journal of Communication, 62, 39–56. doi:10.1111/j.1460-2466.2011.
+   01616.x
+Webster, J. G., & Lin, S. F. (2002). The Internet audience: Web use as mass behavior. Journal of
+   Broadcasting & Electronic Media, 46, 1–12. doi:10.1207/s15506878jobem4601_1

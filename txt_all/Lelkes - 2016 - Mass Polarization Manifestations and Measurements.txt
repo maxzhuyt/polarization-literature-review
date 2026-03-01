@@ -1,0 +1,778 @@
+Public Opinion Quarterly, Vol. 80, Special Issue, 2016, pp. 392–410
+
+
+THE POLLS—REVIEW
+MASS POLARIZATION: MANIFESTATIONS AND
+MEASUREMENTS
+
+
+                                                                                                                                YPHTACH LELKES*
+
+
+         Abstract The debate on mass polarization is itself polarized. Some
+         argue that the United States is in the midst of a culture war; others argue
+         that the claims are exaggerated. As polarization is a multifaceted concept,
+         both sides can be correct. I review four distinct manifestations of polarization that have appeared in the public opinion literature—ideological
+         consistency, ideological divergence, perceived polarization, and affective
+         polarization—and discuss ways in which each has been measured. Then,
+         using longitudinal data from the American National Election Studies
+         (ANES), I update past analyses in order to more clearly show the ways
+         in which Americans have or have not polarized: Americans at the mass
+         level have not diverged, nor have they become more consistent ideologically, but partisans have; perceptions of polarization have increased, but
+         this change is driven by partisans, who increasingly dislike one another.
+
+
+Ask a pundit or journalist if America is polarized, and you might be chided
+for asking an obvious question. After Pew (2014, 6) released a report that
+purported to show that “Republicans and Democrats are more divided along
+ideological lines ... than at any point in the last two decades,” Vox’s Ezra Klein
+(2014) dismissed the report’s punchline as a non-finding: “(E)veryone already
+knew that.” However, many political scientists were not so sure, and disagreed
+that the Pew findings (or any other) were indicative of a polarized public (e.g.,
+Fiorina 2014; Dickinson 2015).
+   Much of the disagreement between journalists and (some) political scientists over polarization comes down to varied definitions. Pew focused on
+polarization as ideological consistency, while in their reaction to the report,
+
+Yphtach Lelkes is an assistant professor of political communication in the Amsterdam School
+of Communication Research at the University of Amsterdam, Amsterdam, the Netherlands. The
+author thanks Michael Traugott, Christopher Wlezien, Bert Bakker, and Erica Weitz for helpful comments and suggestions, and thanks Seth Hill and Chris Tausanovitch for access to their
+data.*Address correspondence to Yphtach Lelkes, University of Amsterdam, Amsterdam School of
+Communication, PO Box 15791, 1001 NG Amsterdam, the Netherlands; e-mail: y.lelkes@uva.nl
+
+doi:10.1093/poq/nfw005                                                             Advance Access publication March 15, 2016
+© The Author 2016. Published by Oxford University Press on behalf of the American Association for Public Opinion
+Research. All rights reserved. For permissions, please e-mail: journals.permissions@oup.com
+
+
+Poll Review—Measuring Mass Polarization                                                       393
+
+
+Fiorina and Dickinson defined polarization as ideological divergence. Both of
+these, I argue, are distinct manifestations of polarization. Since media outlets
+often do not clearly operationalize the concept when writing about polarization, the casual observer or even political pundit could be forgiven for misunderstanding the current state of affairs. The situation is further confused when
+outlets cite election outcomes, such as the red state/blue state narrative, as
+evidence of polarization (see Fiorina, Abrams, and Pope [2005]; Levendusky
+and Pope [2011] for critiques).
+   To clear up this confusion, I review four distinct manifestations of polarization that have appeared in the public opinion literature—ideological
+consistency, ideological divergence, perceived polarization, and affective
+polarization—and discuss ways in which each has been measured. While
+some, most prominently Fiorina, Levendusky, and co-authors, may argue
+that consistency and its component—sorting—are distinct from polarization,
+both can increase political tension,1 and therefore fit into the overall typology
+(DiMaggio, Evans, and Bryson 1996; Noel 2014).
+   Polarization is often discussed as both a state and a trend. In this paper,
+I focus on the latter, and therefore utilize longitudinal data to illustrate the
+extent to which the mass public has polarized over time. Given space limitations, I focus on two sets of groups—the mass public and partisans.2 Although
+these groups are the primary focus of the polarization literature, other groups
+are often compared, for example the politically engaged versus the unengaged
+(e.g., Abramowitz 2010) and the religious versus secular (e.g., Baker 2005).
+   If we refocus the debate from the umbrella term—polarization—to its
+components, we more clearly understand the ways in which Americans have
+become polarized: Americans at the mass level have not become more consistent ideologically, nor have they diverged, but partisans have; perceptions of
+polarization have increased among partisans; and partisans increasingly dislike one another.
+
+
+Ideological Polarization
+Perhaps the most prominent work in the polarization literature involves a
+debate between Alan Abramowitz and Kyle Saunders (Abramowitz and
+Saunders 2005, 2008; Abramowitz 2010) on the one side, and Morris Fiorina,
+Samuel Abrams, Jeremy Pope, and Matthew Levendusky (e.g., Fiorina,
+Abrams, and Pope 2005; Fiorina and Levendusky 2006a; Fiorina and Abrams
+
+
+1. For instance, Mason (2015) finds that the sorted individuals exhibit higher levels of interparty
+hostility and bias.
+2. By mass partisans, I mean all Americans, regardless of partisan preferences and political
+engagement. Partisans refers to those who, in surveys, identify with the Republican or Democratic
+parties. As is typical, I include partisan leaners in this definition (Keith et al. 1992).
+
+
+394                                                                        Lelkes
+
+
+2008; Fiorina, Abrams, and Pope 2008) on the other. Relying on one set of
+measures, the former group believes that America is in the midst of a culture
+war; relying on another set of measures, the latter believes that claims of a culture war are exaggerated. Because the groups define polarization differently,
+the debate seems to go in circles.
+   With a more nuanced definition of ideological polarization, there is evidence in favor of both camps’ arguments. On the one hand, polarization can
+be defined as alignment, which refers to the degree to which party identity
+increasingly matches ideology (sorting) and the degree to which attitudes
+become more internally consistent (see also Hill and Tausanovitch [2015]).
+On the other hand, polarization has been defined as divergence or the degree
+to which the distribution of ideology has moved apart. To Abramowitz and
+Saunders, polarization is consistency, while to Fiorina and colleagues, polarization is divergence.
+
+Ideological Consistency
+The Pew Report (2014) that purported to show increased polarization relied
+heavily on Abramowitz and Saunders’s (2005) measure and operationalization
+of polarization. To these authors, it’s not necessarily the degree of ideological difference that matters so much as the degree to which people consistently align themselves with one side or another. As Baldassarri and Gelman
+(2008, 409) put it, “political polarization constitutes a threat to the extent that
+it induces alignment along multiple lines of potential conflict and organizes
+individuals and groups around exclusive identities, thus crystallizing interests
+into opposite factions.” By this definition, consistency consists of two components: sorting, or the degree to which ideology matches identity, and constraint, or the correlation between issue positions.
+   To measure ideological alignment, Abramowitz (2010), Abramowitz and
+Saunders (2008), and the Pew Research Center (2014) primarily rely on an
+issue consistency scale. These authors take policy items that have appeared in
+a number of waves of either the ANES or Pew surveys, and trichotomize them
+to indicate the liberal position (coded -–1), the conservative position (coded
+1), or the moderate/no-opinion position (coded 0). They then sum across items
+to form a 15-point consistency index (–7 indicates that a respondent gave a
+liberal response to all items; 7 indicates that a respondent gave a conservative
+response to all items). Using this scale, these authors find that scores on this
+scale have polarized over time, as indicated by higher standard deviations and
+increased bimodality. This increase has been slight among non-voters (6 percent increase between 1984 and 2004) and fairly large among the politically
+engaged (~25 percent increase; Abramowitz 2010).
+   This measure has been criticized for exaggerating polarization, however
+(Fiorina and Levendusky 2006b, 96–97), as the trichotomization of the 7-point
+scales equates those that are slightly liberal (or conservative) with those that
+
+
+Poll Review—Measuring Mass Polarization                                                395
+
+
+are extremely liberal (or conservative). Baldassarri and Gelman (2008) offer
+an alternative way of analyzing consistency using the same data, and come to
+different conclusions. They calculate correlations between forty-seven issues
+
+
+                                                                                               asked in the ANES between 1972 and 2004 (yielding 1,081 issue-pairs).
+They find that issue consistency has barely budged—correlations increased
+by roughly .06 points over thirty years. This modest increase applies both to
+correlations between items in the same domain (e.g., two questions about economic attitudes) and to correlations between items in different domains (e.g.,
+a question about economic attitudes and a question about moral attitudes).3
+Issue consistency has grown, however, among strong partisans (Abramowitz
+and Saunders 2008; Baldassarri and Gelman 2008; Hare and Poole 2014).
+   While findings in favor of increased issue alignment among the mass public
+are mixed, scholars in both camps agree that alignment between party identity
+and issue attitudes has increased, a phenomenon that has been labeled sorting
+(Levendusky 2009). One of the ways in which these scholars have shown evidence in favor of sorting is by looking at the correlation between the 7-point
+party identity measure and the ideological self-placement measure.4 This correlation has doubled from 1972 to 2012: from r = .28 in 1972 to r = .58 by
+2012, if we look at the ANES. Similarly, scholars have calculated the proportion of partisans that align their party identity with their self-reported ideology. Here as well, sorting has increased substantially over the past forty years
+(from 39 percent sorted in 1972 to 57 percent sorted in 2012).
+   Researchers have also shown an increased correlation between party identification and a variety of issues (Fiorina and Levendusky 2006b; Baldassarri
+and Gelman 2008; Levendusky 2009; Abramowitz 2010). Baldassarri and
+Gelman (2008), for instance, find that the average correlations between issues
+and party identification have increased by roughly .05 per decade. Sorting
+has increased the most on moral issues over the past four decades, although
+it should be noted that the relationship between economic issues and partisan
+identification has always been stronger than that of moral issues and partisan
+identification.
+
+
+Ideological Divergence
+Fiorina, Levendusky, and colleagues believe that changes in sorting and constraint are categorically different phenomena with potentially different roots
+than polarization. Much of the evidence against ideological divergence (in the
+mass public) utilizes the 7-point liberal–conservative scale. To Fiorina and
+colleagues, the mass public is polarized if the distribution of responses on this
+scale is bimodal (a feature that they eyeball).
+
+3. Like Abramowitz (2010), they also find that consistency has increased primarily among the
+politically engaged.
+4. See the appendix for question wording.
+
+
+396                                                                                          Lelkes
+
+
+   I update Fiorina’s analysis by formally assessing bimodality over time. To
+assess whether the distribution of responses to this measure have diverged,
+I use the ANES Time Series Cumulative data file (1972–2012)5 and calculate
+
+
+                                                                                                         the bimodality coefficient (BC) (Freeman and Dale 2013; Pfister et al. 2013) of
+the liberal–conservative measure for each year. This measure is calculated as
+
+                                                 m32 + 1
+                                BC =                            ,
+                                                     (n − 1)2                                     (1)
+                                        m4 + 3 ⋅
+                                                 (n − 2) (n − 3) 
+
+where m3 refers to the skewness of the distribution, m4 refers to its excess
+kurtosis, and n is the sample size. A BC of 1 indicates that a distribution is
+completely bimodal, and a BC of 0 indicates that the distribution is completely
+unimodal. A BC greater than .56 can be categorized as bimodal. In the appendix, I simulate two distributions, one that is unimodal (BC = .33) and one that
+is just above the threshold (BC = .57; figure A1).
+   In the top panel of figure 1, I plot the BC from the ANES data over time
+(solid line); the horizontal line indicates the value of which we can consider
+a distribution bimodal. While no time point crosses the threshold, there is a
+march toward bimodality and, therefore, polarization. In 1972 the BC was .27,
+and by 2012 the BC had increased to .38. Regardless, at all points in time, the
+distribution of responses to this measure is clearly unimodal.
+   While the BC can be used to assess polarization in the mass electorate,
+it cannot be used to test divergence between two groups. Comparing means
+may be misleading, as ideological consistency can lead to significant mean
+differences (Baldassarri and Gelman 2008). A better indicator is the degree of
+overlap—or common ground—between two groups. To measure the degree
+of overlap between Democrats and Republicans on the ideological self-placement measure, I follow Levendusky and Pope (2011) and use Schmid and
+Schmidt’s (2006) formula to estimate an overlap coefficient (OC):
+
+                                        1 +∞
+                                        2 ∫−∞
+                                   1−         f ( x ) − g( x ) dx,                                (2)
+                                                                   
+
+where f(x), in this case, represents the distribution of ideology among
+Republicans, and g(x) represents the distribution of ideology among Democrats.
+An OC of 1 indicates that the two distributions completely overlap, and are
+therefore not polarized, when an OC of 0 indicates complete separation of the
+two groups. Again in the appendix (Figure A2), I simulate two sets of distributions—ones that are not polarized (OC = .64) and ones that are (OC = .30).
+   The OC coefficients for each year in the ANES data are plotted in figure 1
+(solid line). By this metric, the parties have become polarized. In 1972, the
+
+5. I use this data set throughout this review. See the appendix for details on sample characteristics.
+
+
+Poll Review—Measuring Mass Polarization                                       397
+
+
+
+
+Figure 1. Ideological Divergence: Bimodality in the Mass Public and
+Overlap between Partisans.
+
+two distributions were heavily overlapping (coefficient = .68), but by 2012, the
+degree of overlap had dropped by 45 percent (coefficient = .39).
+   However, the liberal–conservative scale may be a poor measure of ideological polarization. As discussed by Hare et al. (2015), a variety of response biases
+affect the validity of this scale, such as exaggerating the distance between
+oneself and the opposing candidate. Once Hare et al. correct for differential
+item functioning (DIF), the distribution of ideological self-placement among
+
+
+398                                                                                       Lelkes
+
+
+the mass public is much more bimodal and the degree of overlap between
+partisans is smaller than if we use the uncorrected distribution. Additionally,
+the ideological self-placement measure may be devoid of ideological content,
+
+
+                                                                                                      as many self-identified conservatives hold liberal attitudes (Malka and Lelkes
+2010; Ellis and Stimson 2012).
+   Other scholars have relied on other methods to tap into ideology. For
+instance, a number of researchers have extracted latent ideology from
+a set of policy items through factor analysis and its extension—item
+response theory—from a set of policy attitudes (e.g., Treier and Hillygus
+2009; Jacobson 2012; Ura and Ellis 2012). More sophisticated analyses
+come from Pierce (2015) and Hill and Tausanovitch (2015), both of whom
+use a Bayesian item response theory method to extract latent ideology
+from the almost complete set of policy items in the ANES, starting in
+the 1950s. I use Hill and Tausanovitch’s (2015) estimates of ideology to
+assess bimodality in the mass public and overlap between Republicans
+and Democrats.
+   I calculate the bimodality coefficient in the mass public using the bimodality coefficient from 1972 to 2012 (top panel, figure 1, dotted line). Unlike the
+ideological self-placement data, bimodality has stayed entirely stable in the
+mass public, one bump aside in 1998. Latent ideology among the mass public
+is not currently polarized, nor has it been polarizing.
+   Next, I assess the amount of divergence between partisans using the overlap coefficient (bottom panel, figure 1, dotted line). This trend is very similar
+to that of the self-reported ideology measure. Partisans were actually more
+similar to one another in 1972 than the self-reported ideology measure shows
+(the degree of overlap was .82 using the latent ideology measure and .73 using
+the self-reported measure). By 2008, both measures show the same amount of
+overlap between the two parties (~.46).
+   Substantively, these results show that the mass public has not diverged
+ideologically; partisans, on the other hand, have diverged quite a bit.6
+Methodologically, these results show that results from sophisticated methods
+are not much different from the results obtained from the traditional 7-point
+measure, with two minor exceptions—the latent measures show stability in
+bimodality and a somewhat larger drop in overlap between partisans (a 43 percent decrease in overlap using the latent measure versus a 36 percent decrease
+in overlap using the self-reported measure).
+   In sum, evidence in terms of increased ideological polarization among the
+mass public is, at best, mixed. The distribution of ideology among the mass
+public is unimodal, and the public is not becoming more ideologically consistent. Polarization, in terms of both divergence and consistency, has occurred
+among partisans.
+
+6. It should also be noted that partisans have not only moved apart, but have often moved in parallel in response to political and economic changes (Soroka and Wlezien 2010; Ura and Ellis 2012).
+
+
+Poll Review—Measuring Mass Polarization                                       399
+
+
+Perceived Ideological Polarization
+Another form of mass polarization is perceived ideological polarization, or the
+degree to which the mass public perceives the parties and their followers to
+
+
+                                                                                     be polarized (Hetherington 2008; Lachat 2008; Ahler 2014; Van Boven, Judd,
+and Sherman 2012; Levendusky and Malhotra 2015; Westfall et al. 2015).
+Perceived polarization may have effects on citizen attitudes that are independent from ideological polarization. For instance, Levendusky and Malhotra
+(2015) find that increasing perceptions of polarization cause people to moderate their issue positions while increasing interparty animosity.
+   To measure perceived polarization, Westfall et al. (2015) use a series of
+questions on the ANES that have asked respondents since 1970 to place each
+party on 7-point scales (1 = most liberal position; 7 = most conservative position) on a variety of issues. They then subtract the mean Democratic position
+from the mean Republican position, and find that the perceived difference has
+increased from slightly more than 1 point in 1968 to slightly less than 2 points
+in 2008 (roughly 17 percent of the full perceived polarization scale). However,
+the results are non-monotonic: perceived differences were equally as large in
+the mid-1980s and the mid-1990s as they were in 2008.
+   Given the aforementioned issues of using difference-of-means measures to
+assess polarization, I use the overlap coefficient to track perceived polarization
+in America. First, I assess the overlap in the mass public’s placement of the
+Republican and Democratic parties on seven policy issues asked in the ANES,
+with lower values indicating that the two parties are farther apart than higher
+values. The thick, solid line in the top panel of figure 2, which is a loesssmoothed estimate across the seven issues, indicates that perceived polarization increased by about 10 percent. While the degree of overlap between the
+two parties has decreased by double digits on several issues between the first
+time and last time they were asked (aid to blacks—16 points; insurance—30
+points; guaranteed jobs—23 points; women’s role—16 points), on other
+issues, perceived differences have been stable.
+   Separating partisans from non-identifiers indicates that the trend is driven
+entirely by partisans. In panel 2 of figure 2, I plot the loess-smoothed overlap coefficients in perceived Democratic Party placement and perceived
+Republican Party placement by party identification. Independents perceive no
+more polarization today than they did thirty years ago. Regressing the overlap
+coefficient on year (rescaled so that 0 indicates 1972 and 1 indicates 2012),
+and allowing the intercept to vary by issue, indicates that perceived polarization has not budged among Independents (b = .01, se = .04) but has among
+Democrats (b = –.12, se = .04) and Republicans (b = –.14, se = .04).
+   There are reasons to be skeptical of these types of measures, however. Two
+recent studies (Bullock et al. 2015; Prior, Sood, and Khanna 2015) found that
+partisan differences in perceptions of objective economic conditions disappear
+once respondents are incentivized to give the right answer. One implication
+
+
+400                                                                      Lelkes
+
+
+
+
+Figure 2. Degree of Overlap in Perceived Ideology.
+
+of this work is that respondents exaggerate party extremity as a way to criticize the other side and engage in partisan cheerleading. Hence, the increase in
+perceived polarization among partisans may be an artifact of other forms of
+polarization.
+   A concept related to perceived polarization is false polarization, which
+is the difference between perceived polarization and “actual polarization,”
+which Westfall et al. (2015) define as the difference in average issue positions
+
+
+Poll Review—Measuring Mass Polarization                                                     401
+
+
+between Democrats and Republicans. Using overlap coefficients to calculate
+the degree of actual polarization on these seven issues, I subtract the perceived polarization overlap coefficients from the actual polarization overlap
+
+
+                                                                                                    coefficients.
+   While Americans have always overestimated the differences between partisans, false polarization has actually decreased over time (see bottom panel, figure 2). Regressing false polarization on year (rescaled so that 0 indicates 1972
+and 1 indicates 2012), and allowing the intercept to vary by issue, indicates
+that, across issues, the gap closed by .11 (se = .03). This finding contradicts
+the notion that an increased focus on polarization by the media has increased
+(false) perceptions of polarization among the general public (Fiorina, Abrams,
+and Pope 2005; Ahler 2014; Levendusky and Malhotra 2015). While perceived polarization is on the rise in America, this trend seems to be increasingly grounded in reality.
+
+
+Affective Polarization
+Partisan identification has become an increasingly strong correlate of political attitudes and behavior (Abramowitz and Saunders 1998; Bartels 2000;
+Hetherington 2001; Bafumi and Shapiro 2009). This, some believe, is at
+the root of growing interparty hostility, or affective polarization (Haidt and
+Hetherington 2012; Iyengar, Sood, and Lelkes 2012; Iyengar and Westwood
+2015; Mason 2015).
+   As one indicator of affective polarization, scholars have used “feeling thermometers,” measures that ask respondents to indicate on a 101-point scale
+how warm or cold they feel toward each party, and subtract feelings toward
+the out-party from feelings toward the in-party (see the appendix for wording).
+These studies show about an eight-point increase in affective polarization over
+time—from .64 points in 1978 to .72 in 2012. Furthermore, these changes
+have been driven almost entirely by feelings toward the out-party. In 1978, the
+average feeling thermometer score toward one’s own party was .74. In 2012,
+the average was .75. Meanwhile, the average feeling toward the out-party was
+.47 in 1978, and .30 in in 2012.
+   However, feeling thermometers are often criticized. First, their underpinnings are unclear. Do respondents say they feel “cool” toward the other side
+because they do not like their policies? Or are these feelings based on increasing social distance, as Iyengar, Sood, and Lelkes (2012) contend? Additionally,
+some have pointed out that feeling thermometers suffer from severe differential item functioning: for some, a warm glow envelops all groups; for others,
+the world is a much chillier place (Wilcox, Sigelman, and Cook 1989).7
+
+
+7. Iyengar, Sood, and Lelkes (2012) correct for this by focusing on difference scores rather than
+raw estimates.
+
+
+402                                                                                    Lelkes
+
+
+   Luckily, a number of other indicators of affective polarization have been
+proposed. To measure social distance, Iyengar, Sood, and Lelkes (2012) use
+a variant of a measure first created by Bogardus (1925), and later used by
+
+
+                                                                                                   Almond and Verba (1963). Respondents were asked whether they would be
+happy or unhappy if their son or daughter married a member of the other party.
+In 1960, only about 5 percent of partisans reported displeasure at the prospect
+of interparty marriage; by 2010, that number had increased tenfold, to about
+50 percent. This measure is only one of the seven items that make up the original Bogardus scale, which also asks about accepting members of the opposite
+group as close personal friends, neighbors on the same street, coworkers in the
+same occupation, citizens in their country, visitors in their country, or whether
+they would exclude them from their country. While the last three might not be
+as relevant to measure partisan prejudice, combining the others might make a
+more reliable indicator of social distance than the single-item measure.
+   Second, Iyengar, Sood, and Lelkes (2012) assess changes in partisan stereotypes. For instance, they compare perceptions that out-party members are
+intelligent and selfish overtime using data from Almond and Verba (1963) and
+more recent data. While these trait questions do not appear on the mainstay of
+polarization research—the ANES—other similar indicators do. For instance,
+the ANES has, since 1980, asked respondents to indicate whether they see the
+major party candidates as intelligent or moral.
+   These measures may be biased by social desirability concerns, as respondents may be hesitant to call anyone selfish or not intelligent.8 To tackle this concern, Iyengar and Westwood (2015) used a version of the Implicit Association
+Test, a measure designed to tap into implicit attitudes. In these types of studies, explicit measures tend to underestimate the extent of negative sentiment
+toward a group (Hofmann et al. 2005). The partisan bias shows the opposite. If
+we take the implicit measure to be indicative of a true attitude—a controversial
+statement (Fazio and Olson 2003)—or at least an attitude that is less biased by
+social desirability, explicit attitudes tend to overestimate the extent of partisan
+sentiment. Hence, affective polarization, which is clearly on the rise, seems to
+be a unique form of prejudice. Social norms seem to pressure individuals to
+overstate their feelings of antipathy.
+
+
+Discussion
+This review described various manifestations of polarization, their operationalizations, and some trends over time. It shows that the motivating question—
+are Americans polarized—is impossible to answer without first specifying
+the form of polarization. I show that partisans have become more polarized
+on all fronts—ideologically (both in terms of divergences and alignment),
+
+8. However, critics of self-reports may find comfort in recent behavioral findings that echo the
+survey measures (Levendusky et al. 2015).
+
+
+Poll Review—Measuring Mass Polarization                                       403
+
+
+perceptually, and affectively. While perceived polarization has increased in
+the aggregate, this trend is driven entirely by partisans.
+    Each of these manifestations has important implications for the practice
+
+
+                                                                                     and science of politics. For instance, while the lack of bimodality among the
+general public indicates that we should be concerned about representation, the
+increasing divergence between partisans indicates that elites are not necessarily out of step with their supporters. While the increased consistency between
+ideology and identity indicates that Americans are becoming less “innocent
+of ideology” (Kinder and Sears 1985) than in years past (Converse 1964),
+it also indicates that partisans are clearly divided into different ideological
+groups (even if the spatial distance between these groups is not far). The rise
+of perceived polarization may stimulate ideologues to vote, as more is at stake
+if they perceive the other side to be distant from their own. Increased affective polarization has the potential to increase incivility between citizens and
+decrease their support for compromise. Relatedly, Hetherington and Rudolph
+(2015) argue that the affectively polarized will not trust government when the
+other side is in power, thereby yielding the dysfunction we see today.
+    This is not an exhaustive review of mass polarization, as other forms have
+also been discussed that are not featured in this review. Some were omitted
+because they do not manifest as public opinion. For instance, I do not discuss geographic sorting, or the degree to which Americans are segregating
+themselves into ideologically homogeneous communities (Bishop 2009; Tam
+Cho, Gimple, and Hui 2013). Others were omitted because longitudinal public
+opinion data are not available. For instance, recent work on value polarization
+shows that “American society is characterized by extreme levels of value disagreement rather than broad adherence to a set of common fundamental principles” (Jacoby 2014, 762). The measure used to assess the rank-orderings of
+values has only recently been introduced. Finally, some were omitted because
+it is not clear whether they are independent constructs or, alternatively, caused
+by other forms of polarization. For instance, Jacobson (2003) has shown that
+partisans’ approval of presidents has increasingly polarized. In this case, polarized elite choices yield polarized mass opinions (Fiorina and Abrams 2012).
+    Future research should assess the causes and consequences of each manifestation. More work is needed that manipulates each form of polarization and
+gauges their effects on various political outcomes. For instance, Levendusky
+and Malhotra (2015) manipulate perceived polarization by exposing respondents to media coverage that exaggerated the extent of polarization in the public. Affective polarization is likely exacerbated by priming partisan identity.
+Bryan et al. (2009) manage to make people more or less ideological by priming schemas that underpin liberal and conservative ideologies.
+    In sum, polarization is a complex construct that requires nuanced discussion. To properly inform the public, researchers and journalists must more
+clearly specify their operationalization of mass polarization.
+
+
+404                                                             Lelkes
+
+
+Appendix
+
+
+                                                                         Figure A1. Simulated Distributions and Bimodality Coefficient Scores.
+
+
+Figure A2. Simulated Distributions and Overlap Coefficient Scores.
+
+
+Poll Review—Measuring Mass Polarization                                       405
+
+
+Sample Characteristics
+The American National Election Studies were conducted every two years between
+1972 and 2004, and then in 2008 and 2012. Between 1972 and 2004, surveys
+
+
+                                                                                      were conducted in English. In 2008 and 2012, the surveys were also conducted
+in Spanish among some Latino respondents. In each year, the ANES utilized
+an equal-probability cross-section sample of the US population. The sampling
+frame of these studies includes all citizens who reside in the forty-eight contiguous states who are of voting age on or before Election Day. Washington, DC,
+residents were excluded from the sampling frame in 1978 and 1980. According
+to the cumulative file documentation, “the most common NES study design has
+been a cross-section, equal probability sample. These designs are typically ‘selfweighting’—i.e., the respondents do not need to be weighted to compensate for
+unequal probabilities of selection in order to restore the ‘representativeness’ of
+the sample. In several years, however, NES departed from this standard design
+and ‘oversampled’ certain groups (African Americans in 1964 and 1968, for
+example). In other years, the Election Study combined a panel re-interview with
+a cross-section design (as in 1974, for example).” The response rate (AAPOR
+RR1) and number of completed interviews, respectively, are the following: 1972
+(75.0, 2,705), 1974 (70.0, 1,575), 1976 (70.4, 2,248), 1978 (68.9, 2,304), 1980
+(71.8, 1,614), 1982(72.3, 1,418), 1984 (72.1, 2,257), 1986 (67.7, 2,176), 1988
+(70.5, 2,040), 1990 (70.6, 1,980), 1992 (74.0, 2,485), 1994 (72.1, 1,795), 1996
+(59.8, 1,714), 1998 (63.8, 1,281), 2000 (60.5, 1,807), 2002 (55.8, 1,511), 2004
+(66.1, 1,212), 2008 (53.9, 1,212), and 2012 (38, 2,054).
+   For more information, visit http://www.electionstudies.org/studypages/cdf/
+cdf.htm.
+
+
+Question Wording
+Party identification
+Generally speaking, do you usually think of yourself as a Republican, a
+Democrat, an Independent, or what? (IF REPUBLICAN OR DEMOCRAT)
+Would you call yourself a strong (REP/DEM) or a not very strong (REP/DEM)?
+(IF INDEPENDENT, OTHER [1966 AND LATER: OR NO PREFERENCE;
+2008: OR DK) Do you think of yourself as closer to the Republican or
+Democratic party? (1. Strong Democrat 2. Weak Democrat 3. Independent–
+Democrat 4. Independent–Independent 5. Independent–Republican 6. Weak
+Republican 7. Strong Republican)
+
+
+Ideological identification
+We hear a lot of talk these days about liberals and conservatives. I’m going
+to show you (1996 AND LATER: Here is) a seven-point scale on which the
+
+
+406                                                                      Lelkes
+
+
+political views that people might hold are arranged from extremely liberal
+to extremely conservative. Where would you place the (Yourself/Democratic
+Party/Republican Party) on this scale? (1. Extremely liberal 2. Liberal
+
+
+                                                                                   3. Slightly liberal 4. Moderate, middle of the road 5. Slightly conservative
+6. Conservative 7. Extremely conservative)
+
+
+Insurance
+There is much concern about the rapid rise in medical and hospital costs.
+Some (1988, 1994: people) feel there should be a government insurance plan
+which would cover all medical and hospital expenses (1988, 1994: for everyone). Others feel that (1988, 1994: all) medical expenses should be paid by
+individuals, and through private insurance like Blue Cross (1988, 1994: or
+other company paid plans). Where would you place the (Yourself/Democratic
+Party/Republican Party) on this scale (1988 ONLY: or haven’t you thought
+much about this)? (1. Government insurance plan 2. 3. 4. 5. 6. 7. Private insurance plan)
+
+
+Guaranteed jobs
+Some people feel that the government in Washington should see to it that every
+person has a job and a good standard of living. (1972–1978: Suppose these
+people are at one end of a scale, at point 1). Others think the government
+should just let each person get ahead on his/her own. (1972–1978: Suppose
+these people are at the other end, at point 7. And, of course, some other people
+have opinions somewhere in between, at points 2,3,4, 5, or 6.) Where would
+you place the (Yourself/Democratic Party/Republican Party) on this scale? (1.
+Government see to job and good standard of living 2. 3. 4. 5. 6. 7. Government
+let each person get ahead on his own)
+
+
+Aid to blacks
+1988 FORM A, 1990 AND LATER: Some people feel that the government in
+Washington should make every possible effort to improve the social and economic position of blacks. Others feel that the government should not make any
+special effort to help blacks because they should help themselves. 1970–1984,
+1988 FORM B: Some people feel that the government in Washington should
+make every possible effort to improve the social and economic position of
+blacks (1970: Negroes) and other minority groups (1980: even if it means
+giving them preferential treatment). Others feel that the government should
+not make any special effort to help minorities because they should help themselves (1970: but they should be expected to help themselves). ALL YEARS:
+Where would you place the (Yourself/Democratic Party/Republican Party) on
+
+
+Poll Review—Measuring Mass Polarization                                          407
+
+
+this scale? (1. Government see to job and good standard of living 2. 3. 4. 5.
+6. 7. Government let each person get ahead on his own)
+
+
+                                                                                         Government services
+Some people think the government should provide fewer services, even in areas
+such as health and education, in order to reduce spending. (1996 AND LATER:
+Suppose these people are at one end of a scale, at point 1). Other people feel
+that it is important for the government to provide many more services even if
+it means an increase in spending. (1996: Suppose these people are at the other
+end, at point 7. And, of course, some other people have opinions somewhere
+in between, at points 2, 3, 4, 5, or 6.) Where would you place the (Yourself/
+Democratic Party/Republican Society) on this scale? (1. Government should
+provide many fewer services: reduce spending a lot 2. 3. 4. 5. 6. 7. Government
+should provide many more services: increase spending a lot)
+
+
+Defense spending
+Some people believe that we should spend much less money for defense. (1996,
+2004: Suppose these people are at one end of a scale, at point 1.) Others feel that
+defense spending should be greatly increased. (1996, 2004: Suppose these people are at the other end, at point 7. And, of course, some other people have opinions somewhere in between at points 2, 3, 4, 5, or 6.) Where would you place
+the (Yourself/Democratic Party/Republican Party) on this scale? (1. Greatly
+decrease defense spending 2. 3. 4. 5. 6. 7. Greatly increase defense spending.)
+
+
+Women’s rights
+Recently there has been a lot of talk about women’s rights. Some people feel
+that women should have an equal role with men in running business, industry,
+and government. (2004: (Suppose these people are at one end of a scale, at
+point 1.)) Others feel that a women’s place is in the home. (2004: (Suppose
+these people are at the other end; at point 7.)) And of course, some people
+have opinions somewhere in between, at points 2, 3, 4, 5, or 6.) ALL YEARS
+EXC. 2000 VERSION 2: Where would you place yourself on this scale or
+haven’t you thought much about this? Where would you place the (Yourself/
+Democratic Party/Republican Society) on this scale? (1. Women and men
+should have an equal role 2. 3. 4. 5. 6. 7. Women’s place is in the home)
+
+References
+Abramowitz, Alan I. 2010. The Disappearing Center: Engaged Citizens, Polarization, and
+  American Democracy. New Haven, CT: Yale University Press.
+
+
+408                                                                                      Lelkes
+
+
+Abramowitz, Alan I., and Kyle L. Saunders. 1998. “Ideological Realignment in the US Electorate.”
+  Journal of Politics 60:634–52.
+———. 2005. “Why Can’t We All Just Get Along? The Reality of a Polarized America.” The
+  Forum: A Journal of Applied Research in Contemporary Politics 3:1–22.
+
+
+                                                                                                     ———. 2008. “Is Polarization a Myth?” Journal of Politics 70:542–55.
+Ahler, Douglas J. 2014. “Self-Fulfilling Misperceptions of Public Polarization.” Journal of
+  Politics 76:607–20.
+Almond, Gabriel A., and Sidney Verba. 1963. The Civic Culture. Princeton, NJ: Princeton
+  University Press.
+Bafumi, Joseph, and Robert Y. Shapiro. 2009. “A New Partisan Voter.” Journal of Politics 71:1–24.
+Baker, Wayne E. 2005. America’s Crisis of Values: Reality and Perception. Princeton, NJ:
+  Princeton University Press.
+Baldassarri, Delia, and Andrew Gelman. 2008. “Partisans without Constraint: Political Polarization
+  and Trends in American Public Opinion.” American Journal of Sociology 114:408–46.
+Bartels, Larry M. 2000. “Partisanship and Voting Behavior, 1952–1996.” American Journal of
+  Political Science 44:35–50.
+Bishop, Bill. 2009. The Big Sort: Why the Clustering of Like-Minded America Is Tearing Us
+  Apart. Boston: Houghton Mifflin Harcourt.
+Bogardus, Emory S. 1925. “Measuring Social Distance.” Journal of Applied Sociology
+  9:299–308.
+Bryan, Christopher J., Carol S. Dweck, Lee Ross, Aaron C. Kay, and Natalia O. Mislavsky. 2009.
+  “Political Mindset: Effects of Schema Priming on Liberal-Conservative Political Positions.”
+  Journal of Experimental Social Psychology 45:890–95.
+Bullock, John G., Alan S. Gerber, Seth J. Hill, and Gregory A. Huber. 2015. “Partisan Bias in
+  Factual Beliefs about Politics.” Quarterly Journal of Political Science 10:519–78.
+Converse, Phillip E. 1964. “The Nature of Belief Systems in Mass Politics.” In Ideology and
+  Discontent, edited by David Apter, 206–61. New York: Free Press of Glencoe.
+Dickinson, Matthew. 2015. “No, America’s Not Divided.” Politico. Available at http://www.politico.com/magazine/story/2014/06/no-americas-not-divided-108119.html.
+DiMaggio, Paul, John Evans, and Bethany Bryson. 1996. “Have American’s Social Attitudes
+  Become More Polarized?” American Journal of Sociology 102:690–755.
+Ellis, Christopher, and James A. Stimson. 2012. Ideology in America. New York: Cambridge
+  University Press.
+Fazio, Russell H., and Michael A. Olson. 2003. “Implicit Measures in Social Cognition Research:
+  Their Meaning and Use.” Annual Review of Psychology 54:297–327.
+Fiorina, Morris. 2014. “Americans Have Not Become More Politically Polarized.” Washington
+  Post. Available at http://www.washingtonpost.com/blogs/monkey-cage/wp/2014/06/23/
+  americans-have-not-become-more-politically-polarized/.
+Fiorina, Morris P., Samuel A. Abrams, and Jeremy C. Pope. 2008. “Polarization in the American
+  Public: Misconceptions and Misreadings.” Journal of Politics 70:556–60.
+Fiorina, Morris P., and Samuel J. Abrams. 2008. “Political Polarization in the American Public.”
+  Annual Review of Political Science 11:563–88.
+———. 2012. Disconnect: The Breakdown of Representation in American Politics. Norman:
+  University of Oklahoma Press.
+Fiorina, Morris P., Samuel J. Abrams, and Jeremy C. Pope. 2005. Culture War? New York:
+  Pearson Longman.
+Fiorina, Morris P., and Matthew Levendusky. 2006a. “Disconnected: The Political Class Versus
+  the People.” In Red and Blue Nation? Volume I: Characteristics and Causes of America’s
+  Polarized Politics, edited by Pietro S. Nivola and David W. Brady, 49–71. Washington, DC:
+  Brookings Institution Press; and Stanford, CA: Hoover Institution Press.
+———. 2006b. “Disconnected: The Political Class versus the People—Rejoinder.” In Red and
+  Blue Nation? Volume I: Characteristics and Causes of America’s Polarized Politics, edited
+
+
+Poll Review—Measuring Mass Polarization                                                      409
+
+
+  by Pietro S. Nivola and David W. Brady, 95–110. Washington, DC: Brookings Institution Press;
+  and Stanford, CA: Hoover Institution Press.
+Freeman, Jonathan B., and Rick Dale. 2013. “Assessing Bimodality to Detect the Presence of a
+  Dual Cognitive Process.” Behavior Research Methods 45:83–97.
+
+
+                                                                                                     Haidt, Jonathan, and Marc J. Hetherington. 2012. “Look How Far We’ve Come Apart.” Available at
+  http://campaignstops.blogs.nytimes.com/2012/09/17/look-how-far-weve-come-apart/.
+Hare, Christopher, David A. Armstrong, Ryan Bakker, Royce Carroll, and Keith T. Poole. 2015.
+  “Using Bayesian Aldrich–McKelvey Scaling to Study Citizens’ Ideological Preferences and
+  Perceptions.” American Journal of Political Science 59:759–74.
+Hare, Christopher, and Keith T. Poole. 2014. “The Polarization of Contemporary American
+  Politics.” Polity 46:411–29.
+Hetherington, Marc J. 2001. “Resurgent Mass Partisanship: The Role of Elite Polarization.”
+  American Political Science Review 95:619–31.
+———. 2008. “Turned Off or Turned On? How Polarization Affects Political Engagement.” In
+  Red and Blue Nation? Volume I: Characteristics and Causes of America’s Polarized Politics,
+  edited by Pietro S. Nivola and David W. Brady, 1–33. Washington, DC: Brookings Institution
+  Press; and Stanford, CA: Hoover Institution Press.
+Hetherington, Marc J., and Thomas J. Rudolph. 2015. Why Washington Won’t Work: Polarization,
+  Political Trust, and the Governing Crisis. Chicago: University of Chicago Press.
+Hill, Seth, and Chris Tausanovitch. 2015. “Non-Polarization in the American Public.” Working
+  Paper.
+Hofmann, Wilhelm, Tobias Gschwendner, Brian A. Nosek, and Manfred Schmitt. 2005. “What
+  Moderates Implicit—Explicit Consistency?” European Review of Social Psychology
+  16:335–90.
+Iyengar, Shanto, Gaurav Sood, and Yphtach Lelkes. 2012. “Affect, Not Ideology: A Social Identity
+  Perspective on Polarization.” Public Opinion Quarterly 76:405–31.
+Iyengar, Shanto, and Sean J. Westwood. 2015. “Fear and Loathing across Party Lines: New
+  Evidence on Group Polarization.” American Journal of Political Science 59:690–707.
+Jacobson, Gary C. 2003. “Partisan Polarization in Presidential Support: The Electoral Connection.”
+  Congress & the Presidency: A Journal of Capital Studies 30:1–36.
+———. 2012. “The Electoral Origins of Polarized Politics: Evidence from the 2010 Cooperative
+  Congressional Election Study.” American Behavioral Scientist 56:1612–1630.
+Jacoby, William G. 2014. “Is There a Culture War? Conflicting Value Structures in American
+  Public Opinion.” American Political Science Review 108:754–71.
+Keith, Bruce E., David B. Magleby, Candice J. Nelson, Elizabeth Orr, and Mark C. Westlye. 1992.
+  The Myth of the Independent Voter. Berkeley: University of California Press.
+Kinder, Donald R., and David O. Sears. 1985. “Public Opinion and Political Action.” In Handbook
+  of Social Psychology, vol. 2, 3rd ed., edited by Gardner Lindzey and Elliot Aronson, 659–741.
+  New York: Random House.
+Klein, Ezra. 2014. “The Single Most Important Fact about American Politics.” Available at http://
+  www.vox.com/2014/6/13/5803768/pew-most-important-fact-american-politics.
+Lachat, Romain. 2008. “The Impact of Party Polarization on Ideological Voting.” Electoral
+  Studies 27:687–98.
+Levendusky, Matthew S. 2009. The Partisan Sort: How Liberals Became Democrats and
+  Conservatives Became Republicans. Chicago: University of Chicago Press.
+Levendusky, Matthew, and Neil Malhotra. 2015. “Does Media Coverage of Partisan Polarization
+  Affect Political Attitudes?” Political Communication, Advanced Online Publication.
+Levendusky, Matthew S., Neil Malhotra, Yotam Margalit, and Christopher McConnell. 2015.
+  “The Economic Consequences of Political Polarization: Is Partisan Animus Cheap Talk?”
+  Working Paper.
+Levendusky, Matthew S., and Jeremy C. Pope. 2011. “Red States vs. Blue States: Going Beyond
+  the Mean.” Public Opinion Quarterly 75:227–48.
+
+
+410                                                                                      Lelkes
+
+
+Malka, Ariel, and Yphtach Lelkes. 2010. “More than Ideology: Conservative–Liberal Identity and
+  Receptivity to Political Cues.” Social Justice Research 23:156–88.
+Mason, Lilliana. 2015. “‘I Disrespectfully Agree’: The Differential Effects of Partisan Sorting on
+  Social and Issue Polarization.” American Journal of Political Science 59:128–45.
+
+
+                                                                                                     Noel, Hans. 2014. “Polarization Is About More Than Just Sorting, But Sorting Is Polarization
+  Anyway.” Available at http://www.mischiefsoffaction.com/2014/06/polarization-is-aboutmore-than-just.html/.
+Pew Research Center. 2014. “Political Polarization in the American Public.” Available at http://
+  www.people-press.org/2014/06/12/political-polarization-in-the-american-public/.
+Pfister, Roland, Katharina A. Schwarz, Markus Janczyk, Rick Dale, and Jon Freeman. 2013.
+  “Good Things Peak in Pairs: A Note on the Bimodality Coefficient.” Frontiers in Psychology
+  4. Available at http://journal.frontiersin.org/article/10.3389/fpsyg.2013.00700/full.
+Pierce, Andrew W. 2015. “When Did Polarization Begin? Improving upon Estimates of Ideology
+  over Time.” Working Paper.
+Prior, Markus, Gaurav Sood, and Kabir Khanna. 2015. “You Cannot Be Serious: The Impact of
+  Accuracy Incentives on Partisan Bias in Reports of Economic Perceptions.” Quarterly Journal
+  of Political Science 10:489–518.
+Schmid, Friedrich, and Axel Schmidt. 2006. “Nonparametric Estimation of the Coefficient of
+  Overlapping—Theory and Empirical Application.” Computational Statistics & Data Analysis
+  50:1583–1596.
+Soroka, Stuart N., and Christopher Wlezien. 2010. Degrees of Democracy: Politics, Public
+  Opinion, and Policy. New York: Cambridge University Press.
+Tam Cho, Wendy K., James G. Gimpel, and Iris S. Hui. 2013. “Voter Migration and the Geographic
+  Sorting of the American Electorate.” Annals of the Association of American Geographers
+  103:856–70.
+Treier, Shawn, and D. Sunshine Hillygus. 2009. “The Nature of Political Ideology in the
+  Contemporary Electorate.” Public Opinion Quarterly 73:679–703.
+Ura, Joseph Daniel, and Christopher R. Ellis. 2012. “Partisan Moods: Polarization and the
+  Dynamics of Mass Party Preferences.” Journal of Politics 74:277–91.
+Van Boven, Leaf, Charles M. Judd, and David K. Sherman. 2012. “Political Polarization
+  Projection: Social Projection of Partisan Attitude Extremity and Attitudinal Processes.” Journal
+  of Personality and Social Psychology 103:84–100.
+Westfall, Jacob, Leaf Van Boven, John R. Chambers, and Charles M. Judd. 2015. “Perceiving
+  Political Polarization in the United States Party Identity Strength and Attitude Extremity
+  Exacerbate the Perceived Partisan Divide.” Perspectives on Psychological Science 10:145–58.
+Wilcox, Clyde, Lee Sigelman, and Elizabeth Cook. 1989. “Some Like It Hot: Individual Differences
+  in Responses to Group Feeling Thermometers.” Public Opinion Quarterly 53:246–57.

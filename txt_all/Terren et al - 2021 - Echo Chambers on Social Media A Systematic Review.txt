@@ -1,0 +1,1103 @@
+OPEN ACCESS Top-Quality Science                                                  Review of Communication Research
+Peer Reviewed                                                                                          2021, Vol.9
+Open Peer Reviewed                                                                               ISSN: 2255-4165
+
+
+
+                             Echo Chambers on Social Media:
+                           A Systematic Review of the Literature
+
+                Ludovic Terren                                                   Rosa Borge
+    Universitat Oberta de Catalunya, Spain                          Universitat Oberta de Catalunya, Spain
+                      lterren@uoc.edu                                                  rborge@uoc.edu
+                                                           Abstract
+There have been growing concerns regarding the potential impact of social media on democracy and public debate. While
+some theorists have claimed that ICTs and social media would bring about a new independent public sphere and increase
+exposure to political divergence, others have warned that they would lead to polarization through the formation of echo
+chambers. The issue of social media echo chambers is both crucial and widely debated. This article attempts to provide a
+comprehensive account of the scientific literature on this issue, shedding light on the different approaches, their similarities,
+differences, benefits, and drawbacks, and offering a consolidated and critical perspective that can hopefully support future
+research in this area. Concretely, it presents the results of a systematic review of 55 studies investigating the existence of
+echo chambers on social media, providing a first classification of the literature and identifying patterns across the studies’
+foci, methods and findings.
+We found that conceptual and methodological choices influence the results of research on this issue. Most importantly,
+articles that found clear evidence of echo chambers on social media were all based on digital trace data. In contrast, those
+that found no evidence were all based on self-reported data. Future studies should take into account the possible biases of
+the different approaches and the significant potential of combining self-reported data with digital trace data.
+
+
+                                                          Highlights
+•    This article attempts to provide a comprehensive account of the literature on the existence of social media echo
+     chambers.
+•    We provide a comparative perspective by addressing variations and patterns across the studies’ foci, methods and
+     findings.
+•    A majority of the studies focus on communication and interactions on social media, while the rest focus on content
+     exposure.
+•    The studies in our sample relied on two types of data: digital trace data and self-reported data.
+•    Articles finding clear evidence of echo chambers were all based on digital trace data, while those finding no
+     evidence were all based on self-reported data.
+•    Future studies should consider the strengths and weaknesses of different approaches and the significant potential
+     of combining self-reported data with digital trace data.
+•    State of the literature at January 2020.
+
+
+Suggested citation: Terren, L. & Borge, R. (2021). Echo Chambers on Social Media: A Systematic Review of the Literature.
+Review of Communication Research, 9. 99-118. https://doi.org/10.12840/ISSN.2255-4165.028
+Keywords: echo chambers; filter bubbles; social media; selective exposure; algorithmic curation; systematic literature review.
+
+
+Editor: Giorgio P. De Marchis (Universidad Complutense de Madrid, Spain).
+Reviewers: Mathieu O’Neil (University of Canberra, Australia), Mohamed Ben Moussa (University of Sharjah, United
+Arab Emirates). Two reviewers prefer to stay blind.
+
+
+Received: Aug. 12th 2020         Accepted: Mar. 15th 2021        Prepublished: Apr. 2021          Published: May 2021
+Terren & Borge
+
+
+
+                                                                   Content
+
+           INTRODUCTION....................................................................................................... 100
+           SCOPE AND METHODOLOGY................................................................................ 102
+           RESULTS.................................................................................................................... 104
+             1. Foci: Communication and Interactions vs. Content Exposure................................. 105
+                Studies focusing on communication and interactions.............................................. 105
+                Studies focusing on content exposure..................................................................... 105
+             2. Research Methods and Data.................................................................................. 106
+                Studies based on digital trace data.......................................................................... 106
+                Studies based on self-reported data........................................................................ 107
+                Studies combining digital trace data and self-reported data..................................... 108
+             3. Findings: Echo Chamber vs. Public Sphere?........................................................... 108
+                Evidence of echo chambers on social media........................................................... 110
+                Mixed findings...................................................................................................... 110
+                No evidence of echo chambers on social media...................................................... 110
+           DISCUSSION AND CONCLUSIONS......................................................................... 111
+           REFERENCES............................................................................................................ 113
+
+
+                        Introduction
+                                                                             this pessimistic vision, we find Sunstein’s (2001; 2017) met-
+                                                                             aphor of the echo chamber and Pariser’s (2011) image of the
+Throughout the last decades, the advent of the internet and                  online filter bubble. The underlying assumption behind the
+the Web 2.0 have drawn a significant amount of scholarly                     idea of echo chambers is that social media users selectively
+attention to their potential impact on democracy and the                     engage with like-minded others and ideologically-aligned
+public sphere. The latter, following Dahlgren’s (2005) more                  content, thus rarely being exposed to the conflicting ideas
+recent take on Habermas’ (1991[1962]) seminal work, is to                    that make up the agonistic public sphere (cf. Mouffe, 2005).
+be understood as “a constellation of communicative spaces                    This process is believed to be exacerbated by social media
+in society that permit the circulation of information, ideas,                platforms’ algorithmic curation of content based on users’
+debates, ideally in an unfettered manner, and also the for-                  past activity (cf. filter bubbles), which limits the novelty and
+mation of political will” (p. 148). Some adopted an optimis-                 diversity of the content that users are exposed to, and which
+tic view, seeing these new technological developments as                     – instead of contributing to viewpoint diversity – leads to
+enabling a diversification of communicative action and the                   online clustering and polarization. Within the framework of
+promotion of viewpoint diversity (e.g., Gimmler, 2001;                       this paper, the metaphors of the echo chamber and the filter
+Papacharissi, 2002); as advancing freedom, disrupting the                    bubble are thus to be understood as a situation or a space in
+elites’ grip on democratic discourse and ultimately leading                  which pre-existing beliefs are repeated and reinforced – like
+to the creation of an online knowledge commons (Benkler,                     reverberations in an acoustic echo chamber. For the sake of
+2006; Rheingold, 2003); or as providing opportunities to                     clarity, we will use the term “echo chambers on social me-
+participate in civic life as well as increasing incidental ex-               dia” to refer to both the issue of echo chambers and filter
+posure to news and political opinions (Bode, 2012; Gil de                    bubbles. While the concepts of echo chambers and filter
+Zúñiga et al., 2012; Xenos et al., 2014). Others, however,                   bubbles – which are not mutually exclusive – are often used
+were more pessimistic, thinking that digital technologies                    interchangeably and can be considered as embodying the
+would lead to polarization through users’ careful selection                  same problem when it comes to political information envi-
+of information that matches previous beliefs and the forma-                  ronments and polarization, there is a distinction in the situ-
+tion of increasingly homogenous online groups (McPherson                     ation they depict (Nguyen, 2017). Indeed, the notion of the
+et al., 2001). Among the most emblematic embodiments of                      echo chamber usually refers to a situation in which users
+
+www.rcommunicationr.org                                                 100
+                                                                                            Echo Chambers on Social Media
+
+
+
+mostly communicate with – and are exposed to content               bers that preclude deliberation. It is an issue that has impli-
+from – like-minded others. This situation is often attrib-         cations for political polarization, being one of the main
+uted to homophily, the human tendency to interact and              challenges of our time, and that touches upon the ability of
+associate with similar others (McPherson et al., 2001); selec-     digital media to help with the formation of an informed
+tive exposure, which is linked to processes of challenge           public opinion and the promotion of political deliberation,
+avoidance and reinforcement seeking and translates into            diversity, and tolerance.
+the tendency to consume ideologically-aligned information              Several widely-cited scientific works have found support
+(Garrett, 2009; Stroud, 2010); or confirmation bias, the           for the “social media echo chamber hypothesis”, highlighting
+propensity to seek, choose and interpret information in line       the clustered nature of online social networks (Barberá,
+with one’s own belief system (Nickerson, 1998). These              2015a; Conover et al., 2011; Aragó et al., 2013; Schmidt et al.,
+tendencies are assumed to stem from our willingness to             2017). Yet, the contrasting nature of the literature – scien-
+avoid cognitive dissonance, the psychological stress that is       tific or otherwise – as well as the different approaches that
+experienced when one simultaneously holds multiple con-            are used warrant deeper investigation. So far, there is no
+tradictory beliefs (Festinger, 1957).                              comprehensive account (to the best of our knowledge) of the
+    On the other hand, the concept of the filter bubble is         literature on the existence of echo chambers on social media.
+usually associated with the idea that social media users are       This systematic review intends to provide such an account,
+mostly exposed to ideologically-aligned content in their           taking stock and providing a first classification of the scien-
+news feed, as a result of the platforms’ algorithmic selection     tific knowledge on the topic. It aims to shed light on the
+of content based on users’ past behavior (Raynauld &               different approaches, their similarities, differences, benefits
+Greenberg, 2014; Thorson et al., 2019).                            and drawbacks, and offer a consolidated and critical perspec-
+    Generally speaking, there is variation in the way that         tive that can hopefully support future research in this area.
+this issue is addressed and understood, with different schol-          Concretely, this article presents the results of a content
+ars choosing different empirical approaches and building           analysis of 55 peer-reviewed studies investigating the exis-
+their analysis around different terms. Yet, the core norma-        tence of echo chambers on social media. It provides an en-
+tive concern remains the same: the potential breakdown of          compassing perspective by addressing variations and
+a shared environment for information seeking, debate, and          patterns across the foci, methods, and findings of these
+opinion formation. Social media have the potential to be a         studies, before moving on to a discussion and a conclusion.
+free and autonomous space for information and communi-                 The results highlight a division between studies that fo-
+cation among citizens, contributing to the public sphere as        cus on social media communication and interactions or on
+envisaged by Habermas (1991[1962]) and Dahlgren (2005).            content exposure; and another division between those that
+However, this potential is not realized when diversity is          rely on digital trace data or those that rely on self-reported
+lacking, when there is no (or little) exchange of opinions,        data. Most significantly, our results highlight the influence
+no reasoned debate between opponents, and therefore no             of conceptual and methodological choices on research out-
+common ground or shared concerns.                                  puts. Although a majority of the studies included in this
+    The information segregation that likely results from           review found some evidence of echo chambers on social
+echo chambers and filter bubbles is a serious concern, giv-        media, conceptual and methodological choices seem to
+en the increasing reliance on social media for news con-           weigh on the findings of these studies (see Table 1). Indeed,
+sumption (Pew Research Center, 2018) as well as the fact           in our sample, the studies that focused on interactions and/
+that political deliberation and awareness of other political       or relied on digital trace data tended to find significantly
+opinions represent cornerstones of a healthy democracy.            more evidence of echo chambers and polarization than the
+Exposure to opposing viewpoints induces reflective politi-         studies that focused on content exposure and/or relied on
+cal reasoning (Muradova, 2020), while the confrontation            self-reported data. Among the latter, some found no evidence
+of ideas is a trigger for deliberation (Guttman and Thomp-         of echo chambers, finding – on the contrary – heterogeneity
+son, 1998). The issue with social media, however, is the           and cross-cutting interactions and exposure on social media.
+tendency to build up closed communities mostly valuing                 While this tendency might be better understood by taking
+like-minded and inside voices, and turning into echo cham-         into account the respective weaknesses and potential biases
+
+                                                                 101                                             2021, 9, 99-118
+Terren & Borge
+
+
+
+of these two approaches and types of data, it is not uncom-              such as studies on internet browsing recommender systems
+mon in the social sciences to find different results depending           (Nguyen et al., 2014), or hyperlink interaction patterns online
+on the methodological approach. Social media research is                 (Häussler, 2019).
+not an exception1.                                                           Although restrictive, the decision to exclusively take into
+    In sum, this paper constitutes a first classification of the         account peer-reviewed journals and conference proceedings
+peer-reviewed literature on social media echo chambers,                  is – aside from the above-mentioned issue of manageability
+shedding light on the different approaches and potential                 – based on a willingness to establish systematic search cri-
+biases, and further suggesting the need to consider the prom-            teria to identify relevant studies. This approach more close-
+ising – yet challenging – combination of digital trace data              ly conforms to the methodological norms of primary
+and self-reported data in future studies.                                empirical research, such as transparency and reproducibil-
+                                                                         ity. These selection criteria, however, meant overlooking
+                                                                         potentially important contributions published in technical
+                  Scope and Methodology                                  reports, books and book chapters (e.g., Pariser, 2011; Sun-
+                                                                         stein, 2001, 2017), press articles, as well as in studies pub-
+The development of the Web 2.0 and the widespread adop-                  lished in other languages. Therefore, this paper should not
+tion of social media have given rise to a plethora of studies            be seen as a review of all the existing literature on social
+and research areas of which we cannot give a complete ac-                media echo chambers, but as a systematic review2 of a rep-
+count here. For the sake of manageability and coherence,                 resentative collection of the academic literature, following
+and drawing on existing guidelines for selection and report-             the selection criteria laid out at the start of this section.
+ing (Fink, 2014; Moher et al., 2009), this systematic review                 Based on a sample of the peer-reviewed literature on the
+will take into account scientific studies investigating the              existence of echo chambers on social media, this review will
+existence of echo chambers on social media, written in Eng-              take an encompassing look at how the issue is approached,
+lish, and published in peer-reviewed journals or in peer-re-             the methods and data that are used, and the findings that are
+viewed conference proceedings before the 1st of January                  generated.
+2020 (which corresponds to the cut-off point of this system-                 In order to identify and retrieve relevant studies published
+atic review). Narrowing down our topical scope meant dis-                in peer-reviewed social science journals and conference pro-
+carding a significant number of studies touching upon – or               ceedings, we performed a clearly-defined keyword search in
+based on – the idea of social media echo chambers but not                two dedicated academic databases: Scopus and Web of Science.
+specifically centered on the presence (or absence) of echo               An additional search was then performed in Google Scholar,
+chambers on social media. Many of these studies departed                 to account for peer-reviewed journals or conference proceed-
+from the assumption that there are echo chambers on social               ings missed by the above-mentioned databases and/or pub-
+media and looked at – among others – their polarizing effect;            lished in lower impact journals or conferences. We performed
+the causes and consequences of online selective exposure                 Boolean searches using the following keyword phrase: “so-
+(e.g., Borah, Thorson, and Hwang 2015); or different tools               cial media” OR “social network*”, in combination with
+to counter the formation of echo chambers, burst the filter              (AND) “echo chamber*” OR “filter bubble*”. This was done
+bubble by increasing exposure diversity or raise awareness               through a topic search, looking for correspondence in the
+among social media users (e.g., Bozdag & van den Hoven,                  studies’ titles, abstracts, and keywords. The same Boolean
+2015). Other types of discarded works included studies on                search was carried out in Google Scholar. However, as this
+echo chambers online but not specifically on social media,               search engine tends to inflate the number of relevant studies
+
+
+
+   1
+       See, for example, meta-analyses from Shelley Boulianne (2009, 2015) on the effects of the Internet and social media on political
+participation where studies using panel data are less likely to report positive and statistically significant coefficients between internet or
+social media use and participation, compared to cross-sectional surveys.
+   2
+       Given the broad character of the collected literature as well as the fact that many of the studies on the existence of echo chambers
+on social media are qualitative and not based on statistical results, a meta-analysis was not applicable.
+
+
+www.rcommunicationr.org                                             102
+                                                                                                  Echo Chambers on Social Media
+
+
+
+(the Boolean search yielded more than 10,000 results), we                with a third party.
+focused on the first 500 results, sorted by relevance.                      The 891 results were first checked for duplicates (n=164),
+    The searches in Scopus (222 results), Web of Science (169            after which the titles and abstracts of the remaining 727
+results) and Google Scholar (first 500 results) together yielded         studies were screened. Based on the exclusion criteria laid
+891 studies that were then subject to a careful eligibility as-          out in Figure 1, 509 records were excluded in this first broad
+sessment process detailed in the PRISMA flow3 diagram (see               screening process. The full text of the remaining 218 studies
+Figure 1). Titles and abstracts of extracted records were in-            was then checked for relevance in a second in-depth screen-
+dependently reviewed by a second investigator (RB) and                   ing process. This last step of eligibility assessment left us
+potential discordances were resolved through discussion                  with 55 studies (46 articles and 9 conference proceedings)
+
+
+
+                        Records identified through database
+                                  search (n = 891)
+ Identification
+
+
+
+
+                               Web of Science (n = 169)
+                                  Scopus (n = 222)
+                               Google Scholar (n = 500)
+
+
+                                                                                                Duplicates (n = 164)
+
+
+                          Records screened after duplicates                         Records excluded after screening (n = 509)
+ Screening
+
+
+
+
+                                removed (n = 727)
+                                                                                     Not about the existence of echo chambers on
+                                                                                                social media (n = 324)
+
+                                                                                       Not peer-reviewed articles or conference
+                                                                                                proceedings (n = 180)
+
+                                                                                                Not in English (n = 5)
+ Eligibility
+
+
+
+
+                             Full-text articles assessed for                            Full-text articles excluded (n = 163)
+                                  eligibility (n = 218)
+                                                                                     Not about the existence of echo chambers on
+                                                                                                social media (n = 138)
+
+                                                                                       Not peer-reviewed articles or conference
+                                                                                                 proceedings (n = 17)
+ Included
+
+
+
+
+                                                                                                   No access (n = 8)
+                            Studies included in qualitative
+                                       synthesis
+                                        (n = 55)
+
+
+
+Figure 1. PRISMA flow diagram
+
+         3
+             PRISMA is an evidence-based minimum set of items for reporting in systematic reviews and meta-analyses. See
+http://www.prisma-statement.org/
+
+
+                                                                     103                                               2021, 9, 99-118
+Terren & Borge
+
+
+
+that were included for analysis in this systematic literature                                 Although we did not restrict our search by year of publi-
+review.                                                                                   cation, the studies in our sample were published between
+    Throughout the articles’ screening and selection process,                             2011 and 2020 (year of the search cut-off point), with a sig-
+we started building an analytical framework to classify the                               nificant increase from 2014 onwards.
+studies using a bottom-up approach, which resulted in the                                     Taking into account the number of occurrences of ana-
+use of three main categories: foci, methods, and findings.                                lytically-relevant keywords in the full text of the 55 studies
+This process allowed us to evaluate the role of conceptual                                included in our sample, Figure 2 shows the rather obvious
+and methodological choices on research findings on this                                   centrality of the concept of “exposure” as well as a signifi-
+topic. It also helped us to identify similarities and differ-                             cantly more important focus on echo chambers than on filter
+ences, assess strengths and weaknesses, and provide a broad-                              bubbles (although these were both included in the keyword
+er view of scholarship on this crucial issue.                                             search). Despite these two being closely related, this imbal-
+                                                                                          ance suggests a more important emphasis on communica-
+                                                                                          tion, interactions, and exposure to like-minded users (closer
+                                               Results                                    to the concept of echo chambers), and a less important em-
+                                                                                          phasis on algorithms and on exposure to like-minded content
+In this section, we scrutinize the studies included in this                               (closer to the concept of the filter bubble), as will be further
+systematic review and try to make sense of a diverse set of                               developed in the next section.
+research outputs on the existence of echo chambers on social                                 In trying to investigate the existence of echo chambers
+media.                                                                                    on social media, the studies in our sample used a variety of
+
+
+                        1000
+                                        967
+                         900
+
+                         800
+                                                            776
+                         700
+ Number of occurences
+
+
+
+
+                                                                                714
+                         600
+
+                         500
+
+                         400
+
+                         300
+
+                         200                                                                        262
+                                                                                                                        214
+                         100                                                                                                               124
+                             0
+                                      expos*             interact*       echo chamber*          algorithm*          selective         filter bubble*
+                                                                                                                    exposure
+                                                                                      Keywords
+
+
+    Figure 2. Number of occurrences of analytically-relevant keywords4 from all the studies included in the sample.
+
+               4
+                        The * at the end of the keywords were used to include all the variants of these words. For example: algorithm* accounts for algorithm,
+algorithms, algorithmic and algorithmically.
+
+
+www.rcommunicationr.org                                                               104
+                                                                                         Echo Chambers on Social Media
+
+
+
+approaches –both in terms of focus and methodology– which        posite sides of a polarized political issue (Balcells & Padró-
+are reviewed in the following sections.                          Solanet, 2016; Del Vicario et al., 2017; Furman & Tunç, 2019).
+                                                                     Others used a communication approach to focus on so-
+1. Foci: Communication and Interactions vs.                      cial media use and polarization. While some analyzed social
+Content Exposure                                                 media’s potential contribution to partisan polarization by
+                                                                 looking at the Twitter readership of more extreme or moder-
+Although the 55 studies included in this review are about        ate politicians (Hong & Kim, 2016), others studied the rela-
+the existence of echo chambers on social media, they differ      tionship between political communication on social media
+in their chosen focus to address this issue and how they         and extremity of attitude in different contexts (Chan & Fu,
+operationalize it. Yet, a broad distinction could be made        2017; Lee, 2016; Bodrunova, Litvinenko, Gavra, & Yakunin,
+between two types of studies: those focusing on communica-       2015).
+tion and interactions on social media (usually more related          Many of the studies focusing on communication and
+to the issue of echo chambers), and those looking at content     interactions analyzed political homophily and the level of
+exposure on social media (usually more related to the issue      social media interactions between groups or entities that are
+of filter bubbles). Broadly speaking, studies focusing on com-   already highly polarized (e.g., conspiracy vs. scientific; dem-
+munication and interactions tend to operationalize the issue     ocrats vs. republicans), which is a potential bias that ought
+of echo chambers as the presence or absence of cross-cutting     to be taken into account.
+interactions between social media users. The idea is that the        Also, interactions on social media are not uniform, and
+development of a public sphere through social media is only      different studies focused on different social media platforms
+possible when political discussions are characterized by the     and different interaction networks (e.g., reply, mention, fol-
+presence of opposite ideas and diverse sources of information    lower, or retweet networks for Twitter). One ought to con-
+are shared on online social networks (Dahlgren, 2005). The       sider the fact that these choices can have a significant
+main assumption underlying this approach is that fragment-       influence on the results. Indeed, with some knowledge of
+ed and homogenous online publics within social networks          microblogging platforms such as Twitter, one could assume
+reflect echo chambers and polarization (Batorski & Grzy-         that the mention and reply networks – being more confron-
+winska, 2018).                                                   tational in nature – will tend to display less segregation and
+    Studies focusing on content exposure tend to operation-      more cross-cutting interactions. The follower and retweet
+alize the issue as the presence or absence of cross-cutting      networks, on the other hand, will tend to show more political
+content in users’ news feeds. The general assumption behind      homophily, endorsement and ideologically-congruent inter-
+this approach is that exposure to diverse content and opin-      actions, as suggested by previous studies (Williams et al.,
+ions will be associated with lower levels of polarization, and   2015; Esteve Del Valle & Borge Bravo, 2018; Conover et al.,
+vice versa (Williams et al., 2015).                              2011).
+
+   Studies focusing on communication and interactions               Studies focusing on content exposure
+
+As it can be expected when studying echo chambers on so-         Although a larger number of studies looked at communica-
+cial media, a significant share of the studies in our sample     tion and interactions on social media, close to a quarter fo-
+focused on communication and interactions between differ-        cused on the content that users are exposed to and consume
+ent (and often ideologically-discordant) users on social me-     on social media. This approach is based on the premise that
+dia.                                                             the more users are exposed to opinion-reinforcing content
+    More specifically, some of these studies looked at the       in their social media news feeds, the more they can be con-
+level of interactions between climate skeptics or activists      sidered as being in an echo chamber/filter bubble.
+(Williams et al., 2015), followers of two gun policy organiza-       Some of these studies looked at the relationship between
+tions (Merry, 2015), the audiences of partisan TV shows          network diversity and content exposure on social media
+(Hayat & Samuel-Azran, 2017; Jacobson et al., 2016), be-         (Wohn & Bowe, 2016), and the role of “weak ties” or hetero-
+tween users on both sides of the left-right ideological divide   geneous friends in increasing content diversity (Bakshy et al.,
+(Grömping, 2014; Takikawa & Nagayoshi, 2017), or on op-          2015).
+
+                                                             105                                              2021, 9, 99-118
+Terren & Borge
+
+
+
+    Others observed the diversity and the nature of news or       data on the content that users are exposed to in their social
+information that is reached from social media platforms           media news feeds, and on the other hand, to the relative ease
+(Flaxman et al., 2016; Nikolov et al., 2015), or the level of     of gathering digital trace data (detailed in the next section),
+viewpoint diversity encountered in Twitter users’ news feeds      often in the form of social network analyses, giving the re-
+(Bozdag et al., 2014).                                            searcher access to interaction data for thousands, sometimes
+    Some scholars focused on selective exposure and news          millions, of social media users. In spite of this, one ought to
+consumption habits among social media users, looking at           consider the need to take into account both communication
+the relationship between social media use, media diversity,       and interactions (arguably more related to social media use)
+and the likelihood of being in an echo chamber (Dubois &          and content exposure (arguably more related to the design
+Blank, 2018; Messing & Westwood, 2014). Studying content          and functioning of social media platforms) if we are to better
+exposure on social media is challenging, given researchers’       understand the issue of the potential breakdown of a shared
+severely limited access to the actual content of social media     environment for information seeking, debate, and opinion
+news feeds and the subsequent need to rely on individual          formation. This encompassing view could probably more
+self-reports and proxies for exposure. Some of the limitations    easily be achieved through a mixed-methods approach, fo-
+of the above-mentioned studies include small, unrepresenta-       cusing on both self-reported data (shedding light on individ-
+tive samples as well as a focus on active news consumers and      ual-level characteristics and on the media repertoire of
+users who openly volunteer their ideological affiliation on-      individual users) and digital trace data (allowing for direct
+line.                                                             observations of human activity and behavior across entire
+                                                                  networks), as will be developed in the following sections.
+    While most of the studies scrutinized social media echo
+chambers by either looking at communication and interac-          2. Research Methods and Data
+tions or content exposure on social media, a few studies took
+both perspectives into account. For example, some focused         Although there were variations in the methods applied and
+on the relationship between exposure and subsequent inter-        the data used in the studies included in this review, we were
+actions with specific types of content, whether looking at        able to group all the studies into two main methodological
+scientific and conspiracy pages and topics (Bessi et al., 2016;   (i.e., data collection) approaches. The first – and most fre-
+Del Vicario et al., 2016), Brexit-related posts (Del Vicario et   quently used – approach consisted in direct observations of
+al., 2017), or exposure and subsequent engagement with            online activity through the use of digital trace data (n=43),
+“supportive”, “oppositional”, and “mixed” networks on so-         while the second approach was based on self-reported data
+cial media (Vaccari et al., 2016). While these studies – by       obtained from social media users themselves (n=11), mostly
+taking both perspectives into account – might do more justice     through surveys, interviews, or focus groups. We found that
+to the complexity of the issue of social media echo chambers,     only one of the 55 studies included in our sample combined
+they do not account for the diversity (or lack thereof) of the    digital trace data with self-reported survey data, despite the
+content that users are exposed to in their social media news      advantages of this approach. This could be partly due to the
+feeds.                                                            challenges associated with such combination, as will be
+    Overall, and as already suggested in Figure 2, it seems       touched upon later in this section.
+that scholars tend to favor analyses of communication and
+                                                                     Studies based on digital trace data
+interactions on social media over analyses of exposure to
+like-minded content, although this is – arguably – equally        Digital trace data can be briefly defined as records of activ-
+problematic and essential to our understanding of users’          ity that took place in the digital world (Howison et al., 2011).
+political information environment. Moreover, the decision         In our sample, most of the studies that relied on digital trace
+to focus on communication and interactions or content ex-         data focused on the social network Twitter (n=28), while the
+posure might also weigh on the findings, as will be further       rest used Facebook (n=10), YouTube (n=1), or a combination
+developed later on in this article. The larger number of stud-    of multiple platforms (n=4). Although Twitter – with 330
+ies focusing on communication and interactions could be           million active users globally in 2019 (Statista, 2019) – is not
+partly due, on the one hand, to the difficulty of obtaining       representative of the world’s online population (estimated at
+
+www.rcommunicationr.org                                       106
+                                                                                            Echo Chambers on Social Media
+
+
+
+more than 4 billion in 2019 - Internet World Stats, 2019), it      specific users (e.g., “opinion leaders”). Digital trace data
+is arguably the most open and easily-accessible source of          provide unsolicited and precise records of human behaviour
+social media data.                                                 in their “natural” environment, and can be collected from
+    It is worth mentioning that a large majority (n=44) of the     numerous platforms. This being said, the notable potential
+studies included in this review based their analysis on a          of this approach should not cloud the need for individual-
+single social media platform, which potentially limits the         level data and qualitative, in-depth assessments of these
+generalizability of the results.                                   social media interactions, which could for instance shed light
+    Although digital trace data can be collected and analyzed      on the nature (e.g., whether more supportive, confronta-
+in different ways, among the studies that used this type of        tional or deliberative) of these interactions. Indeed, few of
+data, we found an overwhelming majority of social network          the studies included in this review have carried out SNA to
+analyses, systematically looking at social media activity in       focus on the nature of social media interactions. Williams
+the environment in which it naturally occurs. Broadly speak-       et al. (2015) retrieved Twitter data on climate-related hashtags
+ing, Social Network Analysis (SNA) investigates patterns in        and performed a sentiment analysis, classifying users based
+relationships between interacting units, looking at network        on their expressed attitude towards climate change. Balcells
+structures in terms of nodes (usually individual users) and        and Padró-Solanet (2016) built a manageable sample of Twit-
+ties or edges (the interactions or relationships that exist be-    ter replies by users following accounts for or against Catalan
+tween these nodes) (Prell, 2011; Scott & Carrington, 2011).        independence and manually coded them to assess their de-
+This type of analysis can be performed using a variety of          liberative character. It is one of the only studies in our sam-
+digital tools for data processing and visualization (e.g., No-     ple that qualitatively focused on the deliberative nature of
+deXL, R, Python, Gephi, UCINet).                                   social media interactions.
+    These SNAs took different forms. Some used social net-             Over-relying on digital trace data and SNA without tak-
+work maps to identify the formation – around specific topics       ing into account the nature of social media interactions nor
+or debates – of distinct ideological clusters (Barberá, 2015a;     the content to which social media users are exposed in their
+Del Vicario et al., 2016, 2018; Wieringa et al., 2018), and the    news feeds might not only promote a one-sided view of on-
+distance between them (Garimella, 2017; Lynch et al., 2017).       line media environments, but might also exaggerate the
+Others looked at the frequency and direction of edges (i.e.,       level of fragmentation or segregation that actually exists
+relationships and actions between users, such as likes,            (Webster & Ksiazek, 2012). Digital trace data generally
+retweets, comments, etc.) between ideologically-discordant         provide incomplete or no information about individual at-
+users as well as the distance between them (Bodrunova,             tributes or their activity across different online and offline
+Smoliarova, Blekanov, Zhuravleva, & Danilova, 2018; Col-           spaces. On their own, they are arguably of limited use in
+leoni, Rozza, & Arvidsson, 2014; Takikawa & Nagayoshi,             linking human behaviour with social science theories or in
+2017; Williams et al., 2015). SNAs were also carried out by        shedding light on individual-level factors explaining these
+focusing on the sharing of URLs and hyperlinks across dif-         human behaviours (Stroud & McGregor, 2018).
+ferent social media platforms (Bessi et al., 2016; Callaghan           Finally, SNAs usually rely on social media platforms’
+et al., 2013), or from social media to news websites (Gari-        Application Programming Interface (API), which cannot
+mella et al., 2018). Others retrieved content produced by          account for acts of “disconnectivity” like “unfriending” or
+ideologically-distant groups or pages and looked at users’         “unliking”, and which might therefore paint a biased picture
+interactions in relation to them (Bessi et al., 2016; Del Vi-      of social media communication (John & Nissenbaum, 2019).
+cario et al., 2016; Merry, 2015; Del Vicario et al., 2017). Some
+                                                                      Studies based on self-reported data
+studies relied on “click experiments”, investigating the place
+of social media in users’ news consumption habits via web          The second approach was based on more traditional means
+tracking data (Flaxman et al., 2016; Nikolov et al., 2015).        of data collection, relying on self-reported data for which
+    Digital trace data, and SNAs in particular, are very good      users were asked about their own social media usage and
+at illustrating movements and trends in network dynamics,          news consumption habits, mostly through surveys and – to
+including the formation of ideological clusters, the quantity      a lesser extent – focus groups and interviews.
+of interactions between distinct users, or the centrality of           Within this approach, some scholars used survey re-
+
+                                                               107                                               2021, 9, 99-118
+Terren & Borge
+
+
+
+sponses combined with regression analyses to study the links       encounter cross-cutting content. By linking survey data with
+between the use of diverse media and respondents’ network          digital trace data, these researchers were able to study online
+diversity (Hampton et al., 2011) or the likelihood of users        behavior and political information environments at the in-
+finding themselves in echo chambers on social media (Du-           dividual level, using publicly available data.
+bois & Blank, 2018). Other studies combined survey methods             The integration of digital trace data and self-reported
+with experiments reproducing online settings and exposing          survey data seems to be significantly underexplored in the
+users to opinion-challenging arguments, subsequently ana-          study of social media echo chambers, although it represents
+lyzing reported perceptions and attitude change (Karlsen et        a promising way to account for the respective weaknesses of
+al., 2017). In a similar study, users were exposed to news         these two types of data. Their combination allows for the
+stories from left- and right-wing newspapers to look at the        cross-validation of measurements, using both rich individu-
+role of social and political cues on news content selection        al-level data and large-scale social media data, providing
+using a web interface similar to Facebook or Twitter (Messing      more depth of analysis and a more fine-grained understand-
+& Westwood, 2014).                                                 ing, while observing online behavior and dynamics in their
+    Several studies investigated respondents’ Facebook use         natural environment.
+and their interactions through focus groups and follow-up              This being said, the combination of digital trace data and
+interviews (Wohn & Bowe, 2016) or through survey ques-             self-reported survey data is not without challenges. Perhaps
+tions and follow-up interviews (Grevet et al., 2014; Seargeant     most importantly, these include ethical issues of consent at
+& Tagg, 2018).                                                     different levels. Indeed, researchers need explicit consent for
+    Although self-reported survey data provide rich individ-       different stages, as well as active participation in these stag-
+ual-level data shedding light on – for instance – sociodemo-       es (e.g., survey, online platform, web tracking). These mul-
+graphic characteristics and outcome variables such as              tiple stages increase the risk of low consent and response
+political attitudes, they are not devoid of limitations. Studies   rates, and subsequently, of potential selectivity bias (Jürgens
+relying on individually self-reported data – besides being         et al., 2020). Other issues include the representativity of
+based on significantly smaller samples – are exposed to            subsets of (active and motivated) social media users or the
+measurement issues (Andersen et al., 2016) and social desir-       equivalence of conceptual measurements across online and
+ability bias (Fisher, 1993; Stodel, 2015; Vraga & Tully, 2020),    offline indicators (for a review on integrating digital trace
+or the tendency of survey respondents to give approval-            data and survey data, see Stier et al. 2020).
+seeking answers, over-reporting “good behaviors” and under-
+reporting “bad” or objectionable ones. They also suffer from       3. Findings: Echo Chamber vs. Public Sphere?
+the potential lack of accuracy of retrospective self-reports,
+which might be worsened by today’s image-saturated and             After scrutinizing similarities and differences in terms of the
+fast-paced digital information environments (Stier et al.,         topics addressed, and the methods and data used, we shall
+2020).                                                             now review what these studies have found and concluded.
+                                                                   Going through the findings, a clear distinction could be
+    Studies combining digital trace data and
+                                                                   made between studies that painted scenarios of echo cham-
+self-reported data
+                                                                   bers, public sphere, or a combination of both. More con-
+Among the 55 studies included in this systematic review,           cretely, we could divide the studies between (i) those that
+only one combined digital trace data with self-reported (sur-      found clear evidence of echo chambers on social media; (ii)
+vey) data, despite the advantages of such an approach (Resn-       those that generated mixed findings; and (iii) those that did
+ick et al., 2015). Eady et al. (2019) combined survey data         not find evidence of echo chambers on social media, instead
+(including self-reported ideological placement) with data          finding evidence of heterogeneity and cross-cutting interac-
+from respondents’ public Twitter accounts. They analyzed           tions and exposure. The “mixed findings” category refers to
+the political and media environment of these users by merg-        studies that found echo chambers to be likely on social me-
+ing ideology estimates with content from the set of Twitter        dia, but under certain conditions. The findings of the studies
+accounts followed by the respondents in order to see wheth-        in our sample were independently coded by two investiga-
+er – and the extent to which – liberals and conservatives          tors. As nuances in these findings could be subject to inter-
+
+www.rcommunicationr.org                                        108
+                                                                                            Echo Chambers on Social Media
+
+
+
+pretation, we performed a reliability test. The inter-coder       (n=6). On the other hand, only 2 out of these 24 studies fo-
+reliability was satisfactory (Krippendorff’s alpha of 0.90).      cused solely on content exposure on social media.
+    When comparing the studies’ methods/data and foci with           These results – which might help us better understand
+their findings, clear patterns emerged (see Table 1). Indeed,     the sometimes contrasting nature of the literature on social
+while more than half (n=24) of the studies based on digital       media echo chambers – suggest that the findings of research
+trace data (n=43) found clear evidence of echo chambers on        on this issue are significantly influenced by the studies’ focus
+social media, none of the studies based on self-reported data     and methodological approach. This further reflects the im-
+did. Additionally, 22 out of the 24 studies that found clear      pact of conceptual, measurement and data choices on re-
+evidence of echo chambers on social media either focused          search outputs. These choices inevitably highlight some
+on communication and interactions (n=16) or combined a            aspects of media environments at the expense of others
+focus on communication/interactions and content exposure          (Napoli, 2011). In this sense, it is worth mentioning another
+
+                   Findings
+
+Methods/data       Evidence of echo                  Mixed findings                           No evidence of echo
+                   chambers on social media                                                   chambers on social media
+
+
+Digital trace      24 studies:                       19 studies:                              -
+data               Del Vicario et al. 2016**         Balcells & Padró-Solanet 2016*
+                   Williams et al. 2015*             Colleoni et al. 2014**
+                   Hong & Kim 2016**                 Barberá et al. 2015a*
+                   Bessi et al. 2016**               Flaxman et al. 2016***
+                   Jacobson et al. 2016**            Bozdag et al. 2014***
+                   Batorski & Grzywinska 2018*       Garimella et al. 2017*
+                   Zollo et al. 2017*                Bright 2018*
+                   Nikolov et al. 2015***            Bodrunova et al. 2015*
+                   Del Vicario et al. 2017**         Bakshy et al. 2015***
+                   Lynch et al. 2017*                Hanusch & Nölleke 2018*
+                   Hayat & Samuel-Azran 2017*        Esteve Del Valle & Borge Bravo 2018*
+                   Chung-hong & King-wa 2017*        Shore et al . 2018**
+                   Merry 2015; Grömping 2014*        Dehghan 2018**
+                   Takikawa & Nagayoshi 2017*        Matuszewski & Szabó 2019***
+                   O’Callaghan et al. 2013***        Cota et al . 2019*
+                   Garimella et al. 2018**           Bodrunova et al . 2019*
+                   Park et al. 2016*                 Rathnayake & Suthers 2019*
+                   Bodrunova et al. 2018*            Hodson & Petersen 2019*
+                   Schmidt et al . 2018*             Urman 2019***
+                   Chen & Milojević 2018*
+                   Del Vicario et al . 2018*
+                   Wieringa et al . 2018**
+                   Furman & Tunç 2019*
+Self-reported      -                                 6 studies:                               5 studies:
+data                                                 Vaccari et al. 2016**                    Hampton et al. 2011**
+                                                     Wohn & Bowe 2016***                      Dubois & Blank 2018***
+                                                     Grevet et al. 2014*                      Lee et al. 2014**
+                                                     Seargeant & Tagg 2018**                  Semaan et al. 2014**
+                                                     Karlsen et al. 2017*                     Messing & Westwood 2014***
+                                                     Lee 2016**
+Combination        -                                 1 study:                                 -
+of both                                              Eady et al . 2019***
+
+
+   Table 1. Foci, methods/data and findings of the studies in our sample (n=55). “Foci” legend: * Communication/inte-
+ractions; ** both communication/interactions and exposure; *** exposure.
+
+                                                             109                                                2021, 9, 99-118
+Terren & Borge
+
+
+
+potentially important distinction, namely that between me-           existence of an extreme-right filter bubble in which users
+dia-centric and user-centric approaches. Studies based on digi-      who click on extreme-right content are highly likely to be
+tal trace data and focusing on communication and                     recommended further extreme-right content (Callaghan et
+interactions will tend to favor a media-centric approach,            al., 2013).
+accounting for activity across entire networks and platforms.             A social network analysis of the Twitter activity surround-
+On the other hand, studies based on self-reported data and           ing Korea’s 2012 presidential campaign found an overwhelm-
+focusing on content exposure will tend to take a user-centric        ing majority of retweets and a small number of replies and
+approach, accounting for the media repertoire of individual          mentions, suggesting that, more than debating with one
+users (Webster & Ksiazek, 2012), as will be further developed        another, users relayed other users’ content. This is in line
+in the discussion.                                                   with the idea that social media such as Twitter work as echo
+                                                                     chambers in which dominant opinions are reinforced at the
+   Evidence of echo chambers on social media
+                                                                     expense of plurality (Park et al., 2016).
+Close to half of the studies found clear evidence supporting
+                                                                        Mixed findings
+the “social media echo chamber hypothesis”, according to
+which social media users will most likely interact with like-        Close to half of the studies included in our sample generated
+minded others and/or be exposed to ideologically-aligned             mixed findings. Among these, some found evidence of echo
+content on social media. As mentioned above, 22 out of the           chambers on social media, but mostly around political topics
+24 studies in this category focused on communication and             (Barberá, 2015a; Grevet et al., 2014), controversial issues
+interactions or combined a focus on communication/interac-           (Garimella, 2017), or between groups that are further apart
+tions and content exposure, and all of them relied on digital        in ideological terms (Bright, 2018; Eady et al., 2019).
+trace data (as shown in Table 1).                                        Other studies found that social media users tend to be
+    The findings pointing to the existence of echo chambers          mostly exposed to ideologically-aligned content but to a
+on social media varied across the studies reviewed in this           somewhat limited extent (Bakshy et al., 2015; Flaxman et al.,
+paper. On several occasions it was concluded that social             2016), or that disagreement persisted on social media, despite
+media activity is characterized by attitude-based homophily          users’ tendency to engage with networks that support their
+and takes place within segregated communities of like-mind-          views (Vaccari et al., 2016). Some argued that the level of
+ed users. Conflicting narratives on controversial topics were        ideological segregation on social media depended on the
+shown to lead to the clustering of users into homogenous             profile of the users. They found that followers of Democrat
+echo chambers, whether around conspiracy and scientific              accounts showed higher levels of political homophily than
+topics (Schmidt et al. 2018; Bessi et al., 2016; Chen and Milo-      those following Republican accounts (Colleoni et al., 2014).
+jevic, 2018; Del Vicario et al., 2016; Zollo et al., 2017), within
+                                                                        No evidence of echo chambers on social media
+the framework of Hong Kong’s Occupy Movement (Chan &
+Fu, 2017), or in the context of Egypt’s uprisings between 2011       Only five out of the 55 studies included in this review did
+and 2013 (Lynch et al., 2017). Others found that social media        not find any evidence of echo chambers on social media;
+users tend to selectively expose themselves to and engage            instead, they found evidence of heterogeneity and cross-
+with a restricted array of content and information sources           cutting exposure and interactions. All five studies based
+that correspond to their political orientation, thereby se-          their analysis on self-reported data and either focused on
+verely limiting the potential for cross-cutting exposure and         exposure or combined a focus on exposure and communica-
+interactions (Grömping, 2014; Jacobson et al., 2016). Two            tion/interactions (see Table 1). For example, through a sur-
+social network analyses on climate change (Williams et al.,          vey of internet users in the UK, a study by Dubois and Blank
+2015) and gun control (Merry, 2015) found that most Twitter          (2018) found no evidence of echo chambers on social media.
+users only (or almost only) interact with like-minded others,        Their results showed that, on the contrary, social media us-
+while avoiding direct confrontation with their “opponents”.          ers tended to check multiple sources and tried to confirm
+    A study of YouTube’s recommender system suggested that           information using external searches, thereby often encoun-
+users find themselves in echo chambers when consuming                tering things they disagreed with and opinions that changed
+content on the platform. In this instance, they identified the       their views. Similarly, others (Semaan et al., 2014) found that
+
+www.rcommunicationr.org                                          110
+                                                                                          Echo Chambers on Social Media
+
+
+
+– far from creating echo chambers of like-minded users –          social media (and more specifically on Twitter, like in many
+social media activity gave users access to a heterogeneous        of the studies included in this review) represent a minority
+group of people with whom they could discuss political is-        in comparison to those who use social media to consume
+sues. Their results showed that their sample of interviewees      media content and inform themselves. As an illustration, a
+actively sought out an environment that could facilitate          2016 survey of social media users in the US found that most
+deliberation. According to other scholars, social media use       of them never (50% of respondents) or hardly ever (24%)
+increases users’ network diversity (Lee et al., 2014; Hampton     commented, posted, or discussed about politics with others
+et al., 2011;) and exposure to a variety of news and political-   on social media (Statista, 2016).
+ly-diverse information (Messing & Westwood, 2014), there-             As we saw in this paper, there were not only differences
+by lessening concerns about social media echo chambers.           in the way echo chambers were operationalized (e.g., cross-
+    In this section, we have highlighted the findings of the      cutting content exposure vs. interactions), but also in the way
+studies included in our sample. As we have seen, the litera-      that social media interactions were operationalized, wheth-
+ture is not unanimous on the existence of echo chambers on        er taking into account (in the case of Twitter) the follower
+social media. Different studies – and different approaches        network, the retweet network, the mention, or the reply
+– generate significantly more or less evidence of segregation     network. Future scholars should consider that the decision
+and polarization on social media, further emphasizing the         to focus on one network or the other might influence the
+weight of methodological and measurement choices on re-           results in a way that cannot be overlooked.
+search findings.                                                      As shown in Table 1, the results of research on this issue
+                                                                  seem largely influenced by the choice of methods and ap-
+                                                                  proach to data collection, with most evidence of echo cham-
+             Discussion and Conclusions
+                                                                  bers found through analyses based on digital trace data. As
+                                                                  mentioned before, methodological and conceptual choices
+In this article, we have provided a first classification of the   often weigh on research outputs. In our case, it might be said
+literature on social media echo chambers and identified pat-      that digital trace data and a media-centric approach – for
+terns across the studies’ foci, methods and findings. These       instance, by focusing on specific (often polarized) networks
+were characterized by a significant focus on communication        or by neglecting the role of user agency across different plat-
+and interactions, as well as a tendency of studies focusing       forms and networks – could overestimate the level of frag-
+on communication/interactions and/or based on digital             mentation that actually characterizes social media. On the
+trace data to generate more evidence of echo chambers than        other hand, it might be said that survey data and a user-
+studies focusing on content exposure and/or based on self-        centric approach – for instance, by relying on small samples
+reported data.                                                    and on potentially inaccurate and biased self-reports – might
+    Throughout the analysis, we noticed that a majority of        underestimate fragmentation and polarization on social
+the studies focused on communication and interactions on          media. When studies are focused on individual behavior and
+social media, while fewer of them focused on content expo-        take into account user agency on different platforms and
+sure, or combined both perspectives. Although this can            networks and across longer timeframes, a different (and
+partly be explained in terms of data availability, future stud-   perhaps deeper) vision might show individuals being exposed
+ies should consider that an exclusive focus or an over-em-        to and interacting with opposing viewpoints (Barberá, 2015b;
+phasis on communication and interactions on social media          Dubois & Blank, 2018; Semaan et al., 2014).
+might not only weigh on the findings (potentially overesti-           Given the centrality of the exchange of information and
+mating polarization), but also miss the bigger picture. In-       opinions characteristic of the notion of public sphere, the
+deed, the problem not only lies with users communicating          issue of social media echo chambers cannot be captured
+with like-minded others on social media but also (and per-        solely through structural analyses of online networks or
+haps even more importantly) with users – often passively –        qualitative methods based on self-reported data. Indeed,
+consuming and being exposed mostly or solely to                   more attention should be given to online intertextuality and
+attitude-reinforcing content (cf. metaphor of the filter bub-     methods of discourse analysis, which are key to better un-
+ble). Users that are actively engaged in political debates on     derstand the multimodal forms of expression encountered
+
+                                                              111                                              2021, 9, 99-118
+Terren & Borge
+
+
+
+on social media (Herring, 2019).                                  bers, the lowest of which should already be seen as problem-
+    In our sample, a clear distinction could be made between      atic. This magnitude will depend upon the network, the
+the many studies based on digital trace data and those based      issue, as well as a multifaceted interplay between the archi-
+on self-reported data, both approaches providing rich in-         tecture of social media platforms and users’ individual char-
+sights. However, as we have seen, each of these approaches        acteristics. It would perhaps give us perspective to see this
+also comes with potential drawbacks and biases (e.g., lack of     issue in relation to an ideal environment in which social
+individual-level data and depth of analysis in the case of        media would truly enhance democratic deliberation, an
+digital trace data; inaccuracy of retrospective self-reports;     environment reminiscent of early optimism about the poten-
+social desirability bias and issues of generalizability in the    tial of social media and ICTs in contributing to the creation
+case of self-reported data). While these issues need to be ad-    of an independent public sphere and in diversifying people’s
+dressed, the significant potential of combining self-reported     networks and perspectives.
+data with digital trace data should be taken into account in          Although research on the existence of echo chambers on
+future studies. This could provide a more complete account        social media is still relatively young, through this review we
+of users’ political information environments through a com-       were able to identify relevant similarities and differences,
+bination of rich individual-level data and conspicuous obser-     and provide a descriptive, yet critical, picture of the peer-
+vations of online behavior in its natural setting. Although       reviewed work on this timely issue.
+challenging on several counts, such a combined approach               This is a challenging and rather fragmented field of re-
+could help to account for the respective weaknesses of these      search, often relying on variables and data that are difficult
+two types of methods/data and perhaps contribute to disen-        to gather, measure, and interpret. Still, the importance and
+tangling the apparent relationship between methodological         potential of research on social media echo chambers – and
+choices and research findings. An insightful account of po-       their implications for political deliberation and democracy
+tential ways forward can be found in Stier et al. (2020) and      – are manifest.
+their special methodological issue on integrating digital trace       This paper shed light on the restrictive – and potentially
+data and survey data. Finding innovative ways to combine          biased – character of one-sided operationalizations of the
+these two types of data (for instance, through survey ex-         issue of social media echo chambers as well as of one-sided
+periments and web tracking - see Vraga & Tully, 2020) could       data collection approaches. Future scholars should care-
+also make it easier for future studies to take into account       fully take into account the available body of work and avoid
+both communication/interactions and content exposure on           reproducing studies that focus solely on communication and
+social media, allowing for a more comprehensive under-            interactions or content exposure, or rely solely on digital
+standing of this multifaceted issue.                              trace data or self-reported data, as such approaches might
+    Among the studies in our sample, there seems to be a          fail to do justice to the complexity of the issue of political
+broader consensus supporting the “social media echo cham-         exposure on social media.
+ber hypothesis”. However, considering the potential biases
+of the different approaches and the seeming correlation be-
+tween foci, methods and findings, one ought to be careful
+not to fall in “absolutist” interpretations of the results in
+terms of the full-fledged existence or nonexistence of echo
+chambers on social media. While social media use can some-
+times positively contribute to – and at other times impede
+– democratic deliberation and plurality, there is a need to
+acknowledge the fact that this is far from being a binary is-
+sue. Moving beyond the metaphors of the echo chamber and
+the filter bubble, we ought to consider that any given increase
+in opinion-reinforcing arguments and decrease in opinion-
+challenging information is a likely source of polarization.
+There can certainly be different magnitudes of echo cham-
+
+www.rcommunicationr.org                                       112
+                                                                                          Echo Chambers on Social Media
+
+
+                                                         References
+
+
+Andersen, K., De Vreese, C. H., & Albaek, E. (2016). Measuring Media Diet in a High-Choice Environment - Testing the
+   List-Frequency Technique. Communication Methods and Measures, 10(2), 81–98.
+   https://doi.org/10.1080/19312458.2016.1150973
+Aragó, P., Kappler, K. E., Kaltenbrunner, A., Laniado, D., & Volkovich, Y. (2013). Communication Dynamics in Twitter
+   During Political Campaigns: The Case of the 2011 Spanish National Election. Policy and Internet, 5(2), 183–206.
+   https://doi.org/https://doi.org/10.1002/1944-2866.POI327
+Bakshy, E., Messing, S., & Adamic, L. A. (2015). Exposure to ideologically diverse news and opinion on Facebook. Science,
+   348(6239), 1130–1132. http://education.biu.ac.il/files/education/shared/science-2015-bakshy-1130-2.pdf
+Balcells, J., & Padró-Solanet, A. (2016). Tweeting on Catalonia’s Independence: The Dynamics of Political Discussion and
+   Group Polarisation. Medijske Studije, 7(14), 124–141. https://doi.org/10.20901/ms.7.14.9
+Barberá, P. (2015a). Tweeting From Left to Right: Is Online Political Communication More Than an Echo Chamber?
+   Psychological Science, 26(10), 1531–1542. https://doi.org/10.1177/0956797615594620
+Barberá, P. (2015b). How Social Media Reduces Mass Political Polarization. Evidence from Germany, Spain, and the U.S.
+   2015 APSA Conference.
+Batorski, D., & Grzywinska, I. (2018). Three dimensions of the public sphere on Facebook. Information Communication and
+   Society, 21(3), 356–374. https://doi.org/10.1080/1369118X.2017.1281329
+Benkler, Y. (2006). The Wealth of Networks: How Social Production Transforms Markets and Freedom on JSTOR. Yale University
+   Press. https://www.jstor.org/stable/j.ctt1njknw
+Bessi, A., Zollo, F., Vicario, M. Del, Puliga, M., Scala, A., Caldarelli, G., Uzzi, B., & Quattrociocchi, W. (2016). Users
+   Polarization on Facebook and Youtube. PLoS ONE, 11(8), 1–24. https://doi.org/10.1371/journal.pone.0159641
+Bode, L. (2012). Facebooking It to the Polls: A Study in Online Social Networking and Political Behavior. Journal of Information
+   Technology and Politics, 9(4), 352–369. https://doi.org/10.1080/19331681.2012.709045
+Bodrunova, S.S., Smoliarova, A. S., Blekanov, I. S., Zhuravleva, N. N., & Danilova, Y. S. (2018). A Global Public Sphere of
+   Compassion? #Jesuischarlie and #Jenesuispascharlie on Twitter and their Language Boundaries. Monitoring of Public
+   Opinion : Economic and Social Changes, 1(143), 267–295. https://doi.org/10.14515/monitoring.2018.1.14
+Bodrunova, Svetlana Sergeevna, Litvinenko, A. A., Gavra, D. P., & Yakunin, A. V. (2015). Twitter-based discourse on
+   migrants in Russia: The case of 2013 bashings in Biryulyovo. International Review of Management and Marketing, 5(Special
+   Issue), 97–104.
+Borah, P., Thorson, K., & Hwang, H. (2015). Causes and Consequences of Selective Exposure Among Political Blog Readers:
+   The Role of Hostile Media Perception in Motivated Media Use and Expressive Participation. Journal of Information
+   Technology and Politics, 12(2), 186–199. https://doi.org/10.1080/19331681.2015.1008608
+Bozdag, E., Gao, Q., Houben, G.-J., & Warnier, M. (2014). Does offline political segregation affect the filter bubble? An
+   empirical analysis of information diversity for Dutch and Turkish Twitter users. Computers in Human Behavior, 41, 405–415.
+   https://doi.org/10.1016/j.chb.2014.05.028
+Bozdag, E., & van den Hoven, J. (2015). Breaking the filter bubble: democracy and design. Ethics and Information Technology,
+   17, 249–265. https://doi.org/10.1007/s10676-015-9380-y
+Boulianne, S. (2009). Does Internet Use Affect Engagement? A Meta-Analysis of Research. Political Communication, 26,
+   193-211.
+Boulianne, S. (2015). Social media use and participation: a meta-analysis of current research. Information, Communication &
+   Society, 18(5), 524 538, https://doi.org/10.1080/1369118X.2015.1008542
+Bright, J. (2018). Explaining the Emergence of Political Fragmentation on Social Media: The Role of Ideology and Extremism.
+   Journal of Computer-Mediated Communication, 23, 17–33. https://doi.org/10.1093/jcmc/zmx002
+Callaghan, D. O., Greene, D., Conway, M., & Carthy, J. (2013). The Extreme Right Filter Bubble. ArXiv:1308.6149v1, arXiv:1308.
+
+
+
+www.rcommunicationr.org                                      113                                              2021, 9, 99-118
+Terren & Borge
+
+
+
+Chan, C. H., & Fu, K. W. (2017). The Relationship Between Cyberbalkanization and Opinion Polarization: Time-Series
+   Analysis on Facebook Pages and Opinion Polls During the Hong Kong Occupy Movement and the Associated Debate
+   on Political Reform. Journal of Computer-Mediated Communication, 22(5), 266–283. https://doi.org/10.1111/jcc4.12192
+Chen, W. C., & Milojevic, S. (2018). Interaction or segregation: Vaccination and information sharing on twitter. Proceedings
+   of the ACM Conference on Computer Supported Cooperative Work, CSCW, 301–304.
+   https://doi.org/10.1145/3272973.3274082
+Colleoni, E., Rozza, A., & Arvidsson, A. (2014). Echo Chamber or Public Sphere? Predicting Political Orientation and
+   Measuring Political Homophily in Twitter Using Big Data. Journal of Communication, 64(2), 317–332.
+   https://doi.org/10.1111/jcom.12084
+Conover, M., Ratkiewicz, J., Francisco, M., Gonçalves, B., Flammini, A., & Menezer, F. (2011). Political polarization on
+   twitter. Proceedings of the Fifth International AAAI Conference on Weblogs and Social Media Political, 133(26), 89–96.
+   https://doi.org/10.1021/ja202932e
+Dahlgren, P. (2005). The Internet, Public Spheres, and Political Communication: Dispersion and Deliberation. Political
+   Communication, 22, 1091–7675. https://doi.org/10.1080/10584600590933160
+Dehghan, E. (2018). A Year of Discursive Struggle Over Freedom of Speech on Twitter: What Can a Mixed-Methods
+   Approach Tell Us? International Conference on Social Media & Society, 266–270. https://doi.org/10.1145/3217804.3217926
+Del Valle, M. E., & Borge Bravo, R. (2018). Echo Chambers in Parliamentary Twitter Networks the Catalan Case. International
+   Journal of Communication, 12, 1715–1735.
+Del Vicario, M., Bessi, A., Zollo, F., Petroni, F., Scala, A., Caldarelli, G., Stanley, H. E., & Quattrociocchi, W. (2016). The
+   spreading of misinformation online. PNAS, 113(3), 554–559. https://doi.org/10.1073/pnas.1517441113
+Del Vicario, M., Zollo, F., Caldarelli, G., Scala, A., & Quattrociocchi, W. (2017). Mapping social dynamics on Facebook:
+   The Brexit debate. Social Networks, 50, 6–16. https://doi.org/10.1016/j.socnet.2017.02.002
+Del Vicario, M., Gaito, S., Quattrociocchi, W., Zignani, M., & Zollo, F. (2018). News consumption during the Italian
+   referendum: A cross-platform analysis on Facebook and Twitter. Proceedings - 2017 International Conference on Data Science
+   and Advanced Analytics, DSAA 2017, 2018-January, 648–657. https://doi.org/10.1109/DSAA.2017.33
+Dubois, E., & Blank, G. (2018). The echo chamber is overstated: the moderating effect of political interest and diverse media.
+   Information, Communication & Society, 21(5), 729–745. https://doi.org/10.1080/1369118X.2018.1428656
+Eady, G., Nagler, J., Guess, A., Zilinsky, J., & Tucker, J. A. (2019). How Many People Live in Political Bubbles on Social
+   Media? Evidence From Linked Survey and Twitter Data. SAGE Open, 9(1). https://doi.org/10.1177/2158244019832705
+Festinger, L. (1957). A Theory of Cognitive Dissonance. Stanford University Press. https://www.sup.org/books/title/?id=3850
+Fink, A. (2014). Conducting Research Literature Reviews: From the Internet to Paper (4th ed.). SAGE Publications.
+Fisher, R. J. (1993). Social Desirability Bias and the Validity of Indirect Questioning. Journal of Consumer Research, 20(2),
+   303–315. https://doi.org/https://doi.org/10.1086/209351
+Flaxman, S., Goel, S., & Rao, J. M. (2016). Filter bubbles, echo chambers, and online news consumption. Public Opinion
+   Quarterly, 80(Specialissue1). https://doi.org/10.1093/poq/nfw006
+Francis Lee. (2016). Impact of social media on opinion polarization in varying times. Communication and the Public, 1(1),
+   56–71. https://doi.org/10.1177/2057047315617763
+Furman, I., & Tunç, A. (2019). The End of the Habermassian Ideal? Political Communication on Twitter During the 2017
+   Turkish Constitutional Referendum. Policy & Internet, 10(2), 1–21. https://doi.org/10.1002/poi3.218
+Garimella, K. (2017). Quantifying Controversy on Social Media. ACM Trans. Soc. Comput, 1(26).
+   https://doi.org/10.1145/3140565
+Garimella, K., De Francisci Morales, G., Gionis, A., & Mathioudakis, M. (2018). Political Discourse on Social Media: Echo
+   Chambers, Gatekeepers, and the Price of Bipartisanship. Proceedings of the 2018 World Wide Web Conference on World Wide
+   Web - WWW ’18, 2, 913–922. https://doi.org/10.1145/3178876.3186139
+Garrett, K. R. (2009). Politically motivated reinforcement seeking: Reframing the selective exposure debate. Journal of
+   Communication, 59(4), 676–699. https://doi.org/10.1111/j.1460-2466.2009.01452.x
+
+www.rcommunicationr.org                                      114
+                                                                                           Echo Chambers on Social Media
+
+
+
+Gil de Zúñiga, H., Jung, N., & Valenzuela, S. (2012). Social Media Use for News and Individuals’ Social Capital, Civic
+   Engagement and Political Participation. Journal of Computer-Mediated Communication, 17(3), 319–336.
+   https://doi.org/10.1111/j.1083-6101.2012.01574.x
+Gimmler, A. (2001). Deliberative democracy, the public sphere and the internet. Philosophy & Social Criticism, 27(4), 21–39.
+   https://0-journals-sagepub-com.cataleg.uoc.edu/doi/pdf/10.1177/019145370102700402
+Grevet, C., Terveen, L., & Gilbert, E. (2014). Managing Political Differences in Social Media. Proceedings of the 17th ACM
+   Conference on Computer Supported Cooperative Work & Social Computing - CSCW ’14. https://doi.org/10.1145/2531602.2531676
+Grömping, M. (2014). ‘Echo Chambers’: Partisan Facebook Groups during the 2014 Thai Election. Asia Pacific Media Educator,
+   24(1), 39–59. https://doi.org/10.1177/1326365X14539185
+Guttman, A. and Thompson, D. (1998) Democracy and Disagreement. Harvard University Press.
+Habermas, J. (1991). The Structural Transformation of the Public Sphere: An Inquiry Into a Bourgeois Society. MIT Press.
+Hampton, K. N., Lee, C.-J., & Her, E. J. (2011). How new media affords network diversity: Direct and mediated access to
+   social capital through participation in local social settings. New Media & Society, 13(7), 1031–1049.
+   https://doi.org/10.1177/1461444810390342
+Häussler, T. (2019). Patterns of polarization: Transnational dynamics in climate change online networks in the US and
+   Switzerland. The Information Society, 35(4), 184–197. https://doi.org/10.1080/01972243.2019.1614707
+Hayat, T., & Samuel-Azran, T. (2017). “You too, Second Screeners?” Second Screeners’ Echo Chambers During the 2016
+   U.S. Elections Primaries. Journal of Broadcasting and Electronic Media, 61(2), 291–308.
+   https://doi.org/10.1080/08838151.2017.1309417
+Herring, S.C. (2019). The Coevolution of Computer-Mediated Communication and Computer-Mediated Discourse Analysis.
+   In: Bou-Franch, P., Garcés-Conejos Blitvich, P. (Eds.) Analyzing Digital Discourse. Palgrave Macmillan.
+   https://doi.org/10.1007/978-3-319-92663-6_2
+Hong, S., & Kim, S. H. (2016). Political polarization on twitter: Implications for the use of social media in digital governments.
+   Government Information Quarterly, 33(4), 777–782. https://doi.org/10.1016/j.giq.2016.04.007
+Howison, J., Wiggins, A., & Crowston, K. (2011). Validity issues in the use of social network analysis with digital trace data.
+   Journal of the Association for Information Systems, 12(12), 767–797. https://doi.org/10.17705/1jais.00282
+Internet World Stats. (2019). World Internet Users Statistics and 2019 World Population Stats.
+   https://internetworldstats.com/stats.htm
+Jacobson, S., Myung, E., & Johnson, S. L. (2016). Open media or echo chamber: the use of links in audience discussions on
+   the Facebook Pages of partisan news organizations. Information Communication and Society, 19(7), 875–891.
+   https://doi.org/10.1080/1369118X.2015.1064461
+John, N. A., & Nissenbaum, A. (2019). An agnotological analysis of APIs: or, disconnectivity and the ideological limits of
+   our knowledge of social media. The Information Society, 35(1), 1–12. https://doi.org/10.1080/01972243.2018.1542647
+Jürgens, P., Stark, B., & Magin, M. (2020). Two Half-Truths Make a Whole? On Bias in Self-Reports and Tracking Data.
+   Social Science Computer Review, 38(5), 600–615. https://doi.org/10.1177/0894439319831643
+Karlsen, R., Steen-Johnsen, K., Wollebaek, D., & Enjolras, B. (2017). Echo chamber and trench warfare dynamics in online
+   debates. European Journal of Communication, 32(3), 257–273. https://doi.org/10.1177/0267323117695734
+Lee, J. K., Choi, J., Kim, C., & Kim, Y. (2014). Social media, network heterogeneity, and opinion polarization. Journal of
+   Communication, 64(4), 702–722. https://doi.org/10.1111/jcom.12077
+Lynch, M., Freelon, D., & Aday, S. (2017). Online clustering, fear and uncertainty in Egypt’s transition. Democratization,
+   24(6), 1159–1177. https://doi.org/10.1080/13510347.2017.1289179
+McPherson, M., Smith-Lovin, L., & Cook, J. M. (2001). Birds of a Feather: Homophily in Social Networks. Annual Review
+   of Sociology, 27(1), 415–444. https://doi.org/10.1146/annurev.soc.27.1.415
+Merry, M. (2015). Making friends and enemies on social media: the case of gun policy organizations. Iranian Journal of
+   Information Processing Management, 30(2), 373–396. https://doi.org/10.1108/EL-01-2014-0022
+
+
+
+                                                              115                                               2021, 9, 99-118
+Terren & Borge
+
+
+
+Messing, S., & Westwood, S. J. (2014). Selective Exposure in the Age of Social Media: Endorsements Trump Partisan Source
+   Affiliation When Selecting News Online. Communication Research, 41(8), 1042–1063.
+   https://doi.org/10.1177/0093650212466406
+Moher, D., Liberati, A., Tetzlaff, J., & Altman, D. G. (2009). Preferred Reporting Items for Systematic Reviews and Meta-
+   Analyses: The PRISMA Statement. PLoS Medicine, 6(7). https://doi.org/10.1371/journal.pmed.1000097
+Mouffe, C. (2005). On the Political. Routledge. https://philpapers.org/rec/MOUOTP
+Muradova, L. (2020). Seeing the Other Side? Perspective-Taking and Reflective Political Judgements in Interpersonal
+   Deliberation. Political Studies. Online first. https://doi.org/10.1177/0032321720916605
+Napoli, P. (2011). Audience evolution: New technologies and the transformation of media audiences. Columbia University Press.
+Nguyen, T. T., Hui, P.-M., Harper, F. M., Terveen, L., & Konstan, J. A. (2014). Exploring the Filter Bubble: The Effect of
+   Using Recommender Systems on Content Diversity. Proceedings of the 23rd International Conference on World Wide Web -
+   WWW ’14, 677–686. https://doi.org/10.1145/2566486.2568012
+Nguyen,C.T. (2017) Escape the echo chamber. Aeon.co. Retrieved from:
+   https://aeon.co/essays/why-its-as-hard-to-escape-an-echo-chamber-as-it-is-to-flee-a-cult
+Nickerson, R. S. (1998). Confirmation Bias: A Ubiquitous Phenomenon in Many Guises. Review of General Psychology,
+   2(2), 175–220. https://doi.org/10.1037/1089-2680.2.2.175
+Nikolov, D., Oliveira, D. F. M., Flammini, A., & Menczer, F. (2015). Measuring online social bubbles. PeerJ Computer Science,
+   1(38). https://doi.org/10.7717/peerj-cs.38
+Papacharissi, Z. (2002). The virtual sphere: the internet as a public sphere. New Media & Society, 4(1), 9–27.
+   https://doi.org/10.1177/14614440222226244
+Pariser, E. (2011). The filter bubble: what the Internet is hiding from you. Penguin Books.
+Park, S. J., Park, J. Y., Lim, Y. S., & Park, H. W. (2016). Expanding the presidential debate by tweeting: The 2012 presidential
+   election debate in South Korea. Telematics and Informatics, 33, 557–569. https://doi.org/10.1016/j.tele.2015.08.004
+Pew Research Center. (2018). Majorities in most European countries get news from social media. https://www.journalism.
+   org/2018/05/14/many-western-europeans-get-news-via-social-media-but-in-some-countries-substantial-minorities-do-
+   not-pay-attention-to-the-source/pj_2018-05-14_western-europe_5-01/
+Prell, C. (2011). Social Network Analysis: History, Theory and Methodology. SAGE Publications.
+   https://uk.sagepub.com/en-gb/eur/social-network-analysis/book231856
+Raynauld, V., & Greenberg, J. (2014). Tweet, Click, Vote: Twitter and the 2010 Ottawa Municipal Election. Journal of
+   Information Technology and Politics, 11(4), 412–434. https://doi.org/10.1080/19331681.2014.935840
+Resnick, P., Adar, E., & Lampe, C. (2015). What Social Media Data We Are Missing and How to Get It. The annals of the
+   American Academy of Political and Social Science, 659(1), 192–206. https://doi.org/10.1177/0002716215570006
+Rheingold, H. (2003). Smart mobs: the next social revolution. Perseus Pub.
+Schmidt, A. L., Zollo, F., Del Vicario, M., Bessi, A., Scala, A., Caldarelli, G., Stanley, H. E., & Quattrociocchi, W. (2017).
+   Anatomy of news consumption on Facebook. Proceedings of the National Academy of Sciences, 114(12), 3035–3039.
+   https://doi.org/10.1073/pnas.1617052114
+Schmidt, A. L., Zollo, F., Scala, A., Betsch, C., & Quattrociocchi, W. (2018). Polarization of the vaccination debate on
+   Facebook. Vaccine, 36(25), 3606–3612. https://doi.org/10.1016/j.vaccine.2018.05.040
+Scott, J., & Carrington, P. J. (2011). The SAGE Handbook of Social Network Analysis. SAGE Publications.
+   https://uk.sagepub.com/en-gb/eur/the-sage-handbook-of-social-network-analysis/book232753
+Seargeant, P., & Tagg, C. (2018). Social media and the future of open debate: A user-oriented approach to Facebook’s filter
+   bubble conundrum. Discourse, Context & Media, 27, 41-48. https://doi.org/10.1016/j.dcm.2018.03.005
+Semaan, B. C., Robertson, S. P., Douglas, S., & Maruyama, M. (2014). Social media supporting political deliberation across
+   multiple public spheres: Towards Depolarization Bryan. Proceedings of the 17th ACM Conference on Computer Supported
+   Cooperative Work & Social Computing - CSCW ’14, 1409–1421. https://doi.org/10.1145/2531602.2531605
+
+
+
+www.rcommunicationr.org                                      116
+                                                                                          Echo Chambers on Social Media
+
+
+
+Shore, J., Baek, J., & Dellarocas, C. (2018). Network structure and patterns of information diversity on twitter. MIS Quarterly:
+    Management Information Systems, 42(3), 849–872. https://doi.org/10.25300/MISQ/2018/14558
+Statista. (2016). US Social media online politics debate frequency 2016 | Statistic.
+    https://www.statista.com/statistics/677457/social-media-us-participation-politics/
+Statista. (2019). Number of active Twitter users 2010-2019.
+    https://www.statista.com/statistics/282087/number-of-monthly-active-twitter-users/
+Stier, S., Breuer, J., Siegers, P., & Thorson, K. (2020). Integrating Survey Data and Digital Trace Data: Key Issues in
+    Developing an Emerging Field. Social Science Computer Review, 38(5), 503–516. https://doi.org/10.1177/0894439319843669
+Stodel, M. (2015). But What Will People Think?: Getting beyond Social Desirability Bias by Increasing Cognitive Load.
+    International Journal of Market Research, 57(2), 313–322. https://doi.org/10.2501/IJMR-2015-024
+Stroud, N. J. (2010). Polarization and partisan selective exposure. Journal of Communication, 60(3), 556–576.
+    https://doi.org/10.1111/j.1460-2466.2010.01497.x
+Stroud, N. J., & McGregor, S. (Eds.). (2018). Digital Discussions: How Big Data Informs Political Communication. Routledge.
+Sunstein, C. (2001). Republic.com. Harvard Journal of Law & Technology, 14(2).
+Sunstein, C. R. (2017). #Republic: divided democracy in the age of social media. Princeton University Press.
+Takikawa, H. (2017). Analysis of the “ Twitter Political Field ” in Japan. ArXiv:1711.06752, 3061–3068.
+    https://doi.org/10.1109/BigData.2017.8258291
+Takikawa, H., & Nagayoshi, K. (2017). Political Polarization in Social Media: Analysis of the Twitter Political Field in Japan.
+   2017 IEEE International Conference on Big Data. https://arxiv.org/ftp/arxiv/papers/1711/1711.06752.pdf
+Thorson, K., Cotter, K., Medeiros, M., & Pak, C. (2019). Algorithmic inference, political interest, and exposure to news and
+   politics on Facebook. Information, Communication & Society, 24(2), 183-200. https://doi.org/10.1080/1369118x.2019.1642934
+Vaccari, C., Valeriani, A., Barberá, P., Jost, J. T., Nagler, J., & Tucker, J. A. (2016). Of Echo Chambers and Contrarian Clubs:
+   Exposure to Political Disagreement Among German and Italian Users of Twitter. Social Media + Society, 1–24.
+   https://doi.org/10.1177/2056305116664221
+Vraga, E. K., & Tully, M. (2020). Who Is Exposed to News? It Depends on How You Measure: Examining Self-Reported
+   Versus Behavioral News Exposure Measures. Social Science Computer Review, 38(5), 550–566.
+   https://doi.org/10.1177/0894439318812050
+Webster, J. G., & Ksiazek, T. B. (2012). The Dynamics of Audience Fragmentation: Public Attention in an Age of Digital
+   Media. Journal of Communication, 62(1), 39–56. https://doi.org/10.1111/j.1460-2466.2011.01616.x
+Wieringa, M., van Geenen, D., Schäfer, M. T., & Gorzeman, L. (2018). Political topic-communities and their framing
+   practices in the dutch twittersphere. Internet Policy Review, 7(2), 1–16. https://doi.org/10.14763/2018.2.793
+Williams, H. T. P., McMurray, J. R., Kurz, T., & Hugo Lambert, F. (2015). Network analysis reveals open forums and echo
+   chambers in social media discussions of climate change. Global Environmental Change.
+   https://doi.org/10.1016/j.gloenvcha.2015.03.006
+Wohn, D. Y., & Bowe, B. J. (2016). Micro Agenda Setters: The Effect of Social Media on Young Adults’ Exposure to and
+   Attitude Toward News. Social Media + Society, 1–12. https://doi.org/10.1177/2056305115626750
+Xenos, M., Vromen, A., & Loader, B. D. (2014). The great equalizer? Patterns of social media use and youth political
+   engagement in three advanced democracies. Information Communication and Society, 17(2).
+   https://doi.org/10.1080/1369118X.2013.871318
+Zollo, F., Bessi, A., Del Vicario, M., Scala, A., Caldarelli, G., Shekhtman, L., Havlin, S., & Quattrociocchi, W. (2017).
+   Debunking in a world of tribes. PLoS ONE, 12(7). https://doi.org/10.1371/journal.pone.0181821
+
+
+
+
+                                                             117                                              2021, 9, 99-118
+Terren & Borge                                                                         Echo Chambers on Social Media
+
+
+
+
+                                            Copyrights and Repositories
+
+
+
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-3.0 Unported License.
+
+
+This license allows you to download this work and share it with others as long as you credit the author and the journal. You
+cannot use it commercially without the written permission of the author and the journal (“Review of Communication
+Research”).
+
+
+    Attribution
+You must attribute the work to the author and mention the journal with a full citation, whenever a fragment or the full text
+of this paper is being copied, distributed or made accessible publicly by any means.
+
+
+    Commercial use
+The licensor permits others to copy, distribute, display, and perform the work for non-commercial purposes only, unless you
+get the written permission of the author and the journal.
+
+
+The above rules are crucial and bound to the general license agreement that you can read at:
+http://creativecommons.org/licenses/by-nc/3.0/
+
+
+
+
+    Corresponding author
+Dr. Ludovic Terren
+Department of Law and Political Science
+Universitat Oberta de Catalunya
+Av. del Tibidabo, 39, 08035, Barcelona, Spain
+lterren@uoc.edu
+
+
+
+
+Attached is a list of permanent repositories where you can find the articles published by RCR:
+Academia.edu @ http://independent.academia.edu/ReviewofCommunicationResearch
+Internet Archive @ http://archive.org (collection “community texts”)
+Social Science Open Access Repository, SSOAR @ http://www.ssoar.info/en/home.html
+
+
+
+Review of Communication Research                           118                                             2021, 9, 99-118
+

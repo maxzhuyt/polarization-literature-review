@@ -1,0 +1,450 @@
+Multi-view Models for Political Ideology Detection of News Articles
+                                                              Vivek Kulkarni                                           Junting Ye
+                                                     Department of Computer Science                          Department of Computer Science
+                                                   University of California, Santa Barbara                       Stony Brook University
+                                                     vvkulkarni@cs.ucsb.edu                                  juyye@cs.stonybrook.edu
+
+                                                             Steven Skiena                                          William Yang Wang
+                                                     Department of Computer Science                          Department of Computer Science
+                                                         Stony Brook University                            University of California, Santa Barbara
+                                                    skiena@cs.stonybrook.edu                                   william@cs.ucsb.edu
+                                                                  Abstract                                 of articles, blogs, statements, and congressional
+                                                                                                           speeches (Gentzkow and Shapiro, 2010; Iyyer et al.,
+                                             A news article’s title, content and link struc2014; Preoţiuc-Pietro et al., 2017; Sim et al., 2013).
+                                             ture often reveal its political ideology. However, most existing works on automatic polit-                 In this paper, we consider the detection of ideoarXiv:1809.03485v1 [cs.CL] 10 Sep 2018
+
+
+                                             ical ideology detection only leverage textual                 logical bias at the news article level, in contrast to
+                                             cues. Drawing inspiration from recent ad-                     recent work by Iyyer et al. (2014) who focus on
+                                             vances in neural inference, we propose a novel                the sentence level or the work of (Preoţiuc-Pietro
+                                             attention based multi-view model to leverage                  et al., 2017) who focus on inferring ideological
+                                             cues from all of the above views to identify the              bias of social media users. Prior research exists
+                                             ideology evinced by a news article. Our model
+                                                                                                           on detecting ideological biases of news articles or
+                                             draws on advances in representation learning
+                                             in natural language processing and network
+                                                                                                           documents (Gentzkow and Shapiro, 2010; Gerrish
+                                             science to capture cues from both textual con-                and Blei, 2011; Iyyer et al., 2014). However, all
+                                             tent and the network structure of news articles.              of these works generally only model the text of
+                                             We empirically evaluate our model against a                   the news article. However, in the online world,
+                                             battery of baselines and show that our model                  news articles do not just contain text but have a
+                                             outperforms state of the art by 10 percentage                 rich structure to them. Such an online setting inpoints F1 score.                                              fluences the article in subtle ways: (a) choice of
+                                                                                                           the title since this is what is seen in snippet views
+                                         1    Introduction
+                                                                                                           online (b) links to other news media and sources in
+                                         Many issues covered or discussed by the me-                       the article and (c) the actual textual content itself.
+                                         dia and politicians today are so subtle that                      Except for the textual content, prior models ignore
+                                         even word-choice may require one to adopt                         the rest of these cues. Figure 1 shows an example
+                                         a particular ideological position (Iyyer et al.,                  from The New York Times. Note the pres2014). For example, conservatives tend to use                     ence of hyperlinks in the text, which link to other
+                                         the term tax reform, while liberals use tax                       sources like The Intercept (Figure 1a). We
+                                         simplification. Though objectivity and un-                        hypothesize that such a link structure is reflective
+                                         biased reporting remains a cornerstone of profes-                 of homophily between news sources sharing simsional journalism, several scholars argue that the                ilar political ideology – homophily which can be
+                                         media displays ideological bias (Gentzkow and                     exploited to build improved predictive models (see
+                                         Shapiro, 2010; Groseclose and Milyo, 2005; Iyyer                  Figure 1b). Building on this insight, we propose a
+                                         et al., 2014). Even if one were to argue that such                new model MVDAM: Multi-view document attenbias may not be reflective of a lack of objectiv-                 tion model to detect the ideological bias of news
+                                         ity, prior research Dardis et al. (2008); Card et al.             articles by leveraging cues from multiple views:
+                                         (2015) note that framing of topics can significantly              the title, the link structure, and the article content.
+                                         influence policy.                                                 Specifically, our contributions are:
+                                            Since manual detection of political ideology is
+                                         challenging at a large scale, there has been exten-                 1. We propose a generic framework MVDAM to
+                                         sive work on developing computational models                           incorporate multiple views of the news article
+                                         for automatically inferring the political ideology                     and show that our model outperforms state
+                                             © The authors, 2018. This draft is the authors draft of the        of the art by 10 percentage points on the F1
+                                         paper and has been posted here for your personal use.                  score.
+
+
+    2. We propose a method to estimate the ideo-          free-form text, but has a rich structure to it. In parlogical proportions of sources and rank them       ticular, we model cues from the title, the inferred
+       by the degree to which they lean towards a         network, and the content in a joint generic neural
+       particular ideology.                               variational inference framework to yield improved
+    3. Finally, differing from most works, which typ-     models for this task. Furthermore, differing from
+       ically focus on congressional speeches, we         Iyyer et al. (2014), we also incorporate attention
+       conduct ideology detection of news articles        mechanisms in our model which enables us to inby assembling a large-scale diverse dataset        spect which sentences (or words) have the most
+       spanning more than 50 sources.                     predictive power as captured by our model. Finally,
+                                                          since we work with news articles (which also con2     Related Work                                        tain hyperlinks), naturally our setting is different
+                                                          from all other previous works in general (which
+Several works study the detection of political ide-       mostly focus on congressional debates) and in parology through the lens of computational linguis-          ticular from Iyyer et al. (2014) where only textual
+tics and natural language processing (Laver et al.,       content is modeled or Preoţiuc-Pietro et al. (2017)
+2003; Monroe and Maeda, 2004; Thomas et al.,              which focuses on social media users.
+2006; Lin et al., 2008; Carroll et al., 2009; Ahmed
+and Xing, 2010; Gentzkow and Shapiro, 2010; Ger-          3       Dataset Construction
+rish and Blei, 2011; Sim et al., 2013; Iyyer et al.,      News Sources We rely on the data released by
+2014; Preoţiuc-Pietro et al., 2017). Gentzkow and        A LL S IDES . COM1 to obtain a list of 59 US-based
+Shapiro (2010) first attempt to rate the ideological      news sources along with their political ideology
+leaning of news sources by proposing a measure            ratings: L EFT, C ENTER or R IGHT which specify
+called “slant index” which captures the degree to         our target label space. While we acknowledge that
+which a particular newspaper uses partisan terms          there is no “perfect” measure of political ideology,
+or co-allocations. Gerrish and Blei (2011) predict        A LLSIDES . COM is an apt choice for two main reathe voting patterns of Congress members based on          sons. First, and most importantly the ratings are
+supervised topic models while Ahmed and Xing              based on a blind survey, where readers are asked
+(2010); Lin et al. (2008) use similar models to           to rate news content without knowing the identity
+predict bias in news articles, blogs, and political       of the news source or the author being rated. This
+speeches (Iyyer et al., 2014). Differing from the         is also precisely the setting in which our proposed
+above, Sim et al. (2013) propose a novel HMM-             computational models operate (where the models
+based model to infer the ideological proportions          have access to the content but are agnostic of the
+of the rhetoric used by political candidates in their     source itself) thus seeking to mirror human judgcampaign speeches which relies on a fixed lexicon         ment closely. Second, these are normalized by
+of bigrams.                                               A LL S IDES to ensure they closely reflect popular
+   The work that is most closely related to our work      opinion and political diversity present in the United
+is that of Iyyer et al. (2014); Preoţiuc-Pietro et al.   States. These ratings also correlate with indepen-
+(2017). Iyyer et al. (2014) use recurrent neural net-     dent measurements made by the P EW R ESEARCH
+works to predict political ideology of congressional      C ENTRE. All these observations suggest that these
+debates and articles in the ideological book corpus       ratings are fairly robust and generally “reflective of
+(IBC) and demonstrate the importance of compo-            the average judgment of the American People”2 .
+sitionality in predicting ideology where modifier
+phrases and punctuality affect the political ideolog-     Content Extraction Given the set of news
+ical position. Preoţiuc-Pietro et al. (2017) propose     sources selected above, we extract the article conmodels to infer political ideology of Twitter users       tent for these news sources. We control for time by
+based on their everyday language. Most crucially,         obtaining article content over a fixed time-period
+they also show how to effectively use the relation-       for all sources. Specifically, we spider several news
+ship between user groups to improve prediction            sources and perform data cleaning. In particular,
+accuracy. Our work draws inspiration from both of         the spidering component collates the raw HTML
+these works but differentiates itself from these in       of news sources into a storage engine (MongoDB).
+the following aspects: We leverage the structure of           1
+                                                                  https://www.allsides.com/media-bias/media-bias-ratings
+a news article by noting that an article is just not              https://www.allsides.com/media-bias/about-bias
+
+
+                                                                            (b) Homophily in link structure (viewed in color) of var-
+(a) A sample news article. Note the presence of hyperlinks                  ious news sources which can be observed by noting the
+to other sources like The Intercept.                                        presence of clusters corresponding to political ideologies.
+                                                                            The blue, orange and green clusters correspond to left,
+                                                                            right and center leaning sources respectively.
+
+Figure 1: Our proposed framework MVDAM models multiple views of the news article including the content and the link
+structure. Figure 1a shows a sample article from the New York Times. The presence of such links can provide informative
+signals for predictive tasks like ideology detection primarily due to homophily (Figure 1b).
+
+
+We track thousands of US based news outlets in-                         ers, footers, advertisements News sources syscluding country wide popular news sources as well                       tematically introduce footers, and advertisements
+as many local/state news based outlets like the                         which we remove explicitly. For example, every
+Boston Herald3 . However, in this paper, we con-                        article of the The Daily Beast has the folsider only the 59 US news sources for which we                          lowing footer You can subscribe to the
+can derive ground truth labels for political ideol-                     Daily Beast here which we filter out.
+ogy. For each of the news sources considered, we
+extract the title, the cleaned pre-processed content,                   4    Models and Methods
+and the hyperlinks within the article that reveal the
+network structure. The label for each article is the                    Problem      Formulation Given        X         =
+label assigned to its source as obtained from A LL -                    {Xtitle , Xnet , Xcontent } which represents
+S IDES. We choose a random sample of 120, 000                           a set of multi-modal features of news articles and
+articles and create 3 independent splits for training                   a label set Y = {L EFT, C ENTER, R IGHT}, we
+(100, 000), validation (10, 000) and test (10, 000)                     would like to model Pr(Y |X).
+with a roughly balanced label distribution. 4
+                                                                        Overview of MVDAM We consider a Bayesian
+Data Pre-processing and Cleaning Since the la-                          approach with stochastic attention units to effecbels were derived from the source, we are care-                         tively model textual cues. Bayesian approaches
+ful to remove any systematic features in each ar-                       with stochastic attention have been noted to be
+ticle which are trivially reflective of the source,                     quite effective at modeling ambiguity as well as
+since that would result in over-fitting. In particu-                    avoiding over-fitting scenarios especially in the
+lar we perform the following operations: (a) Re-                        case of small training data sets (Miao et al., 2016).
+move source link mentions When modeling the                             In particular, we assume a latent representation h
+link structure of an article, we explicitly remove                      learned from the multiple modalities in X which
+any link to the source itself. Second, we also                          is then mapped to the label space Y . In the most
+explicitly remove any systematic link structures                        general setting, instead of learning a deterministic
+in articles that are source specific. In particular,                    encoding h given X, we posit a latent distribusome sources may always have links to other do-                         tion over the hidden representation h, Pr(h|X)
+mains (like their own franchisees or social me-                         to model the overall document where Pr(h|X) is
+dia sites). These links are removed explicitly by                       parameterized by a diagonal Gaussian distribution
+noting their high frequency. (b) Remove head-                           N (h|µ(X), σ 2 (X)).
+                                                                           Specifically, consider the distribution Pr(Y |X)
+      This is a part of an ongoing project called MediaRank.
+More details can be found at http://media-rank.com
+                                                                        which can be written as follows:
+      Note that we do not restrict the articles to be strictly polit-                            X
+ical since even articles on other topics like health and sports                 Pr(Y |X) =            Pr(Y |h) Pr(h|X)            (1)
+can be reflective of political ideology (Hoberman, 1977).                                         h
+
+
+                                                                             (b) Overview of the inference network.
+
+                (a) Overview of our full model.
+
+Figure 2: A broad overview of our MVDAM model depicting the three major components:a discriminator, an inference network
+and a prior and captures cues from multiple views of the news article. As noted by Miao et al. (2016) we use stochastic attention
+units which are shown to model ambiguity better. We thus train the model end-to-end using neural variational inference.
+
+
+As noted by Miao et al. (2016), computing the exact               4.1    Discriminator
+posterior is in general intractable. Therefore, we
+                                                                  We use a simple feed-forward network with a linposit a variational distribution qφ (h) and maximize
+                                                                  ear layer that accepts as input the latent hidden
+the evidence lower bound L ≤ Pr(y|X) namely,
+                                                                  representation of X, followed by a ReLU for nonlinearity followed by a linear layer and a final softmax layer to model this component.
+ L = Eqφ (h) [p(Y |h)] − DKL (qφ (h)||p(h|X)),
+                                             (2)                  4.2    Approximate Posterior
+where p(Y |h) denotes a probability distribution
+                                                                  Here we model the approximate posterior qφ (h)
+over Y given the latent representation h, and
+                                                                  by an inference network shown succinctly in Figp(h|X) denotes the probability distribution over
+                                                                  ure 2b. The inference network takes as input the
+h conditioned on X.
+                                                                  features X and learns a corresponding hidden repEquation 2 can be interpreted as consisting of                 resentation h. More specifically, it outputs two
+three components, each of which can modeled sep-                  components: (µ, ς) corresponding to the mean
+arately: (a) Discriminator p(Y |h) can be viewed                  and log-variance of the gaussian parametrizing the
+as a discriminator given the hidden representation                hidden representation h. We model this using a
+h. Maximizing the first term is thus equivalent                   “multi-view” network which incorporates hidden
+to minimizing the cross-entropy loss between the                  representations learned from multiple modalities
+model’s prediction and true labels. (b) The second                into a joint representation. Specifically, given dterm, the KL Divergence term consists of two com-                 dimensional hidden representations corresponding
+ponents: (1) Approximate Posterior The term                       to multiple modalities ztitle , znetwork , and zcontent
+qφ (h) also known as the approximate posterior pa-                the model first concatenates these representations
+rameterizes the latent distribution which encodes                 into a single 3d-dimensional representation zconcat
+the multi-modal features X of a document. (2)                     which is then input through a 2-layer feed-forward
+Prior The term p(h|X) can be viewed as a prior                    network to output a d-dimensional mean vector µ
+which can be uninformative (a standard Gaussian                   and a d-dimensional log-variance vector ς that paprior in the most general case, or any other prior                rameterizes the latent distribution governing h. We
+model based on other features). We now discuss                    now discuss the models used for capturing each
+how we model each of these components in detail.                  view.
+
+
+4.2.1   Modeling the Title                                 4.2.3   Modeling the Content of articles
+
+We learn a latent representation of the title of a         To model the content of an article, we use a hierarticle by using a convolutional network. Convolu-         archical approach with attention. In particular, we
+tional networks have been shown to be very effec-          compute attention at both levels: (a) words and
+tive for modeling short sentences like titles of news      (b) sentences. We closely follow the approach by
+articles. In particular, we use the same architecture      (Yang et al., 2016) which learns a latent representaproposed by (Kim, 2014). The input words of the            tion of a document d using both word and sentence
+title are mapped to word embeddings and concate-           attention models.
+nated and passed through convolutional filters of             We model the article A hierarchically, by first
+varying window sizes. This is then followed by             representing each sentence i with a hidden reprea max-over-time pooling (Collobert et al., 2011).          sentation si . We model the fact that not all words
+The outputs of this layer are input to a fully con-        contribute equally in the sentence through a word
+nected layer of dimension d with drop-out which            level attention mechanism. We then learn the repoutputs ztitle , the latent representation of the title.   resentation of the article A by composing these
+                                                           individual sentence level representations with a sentence level attention mechanism.
+4.2.2   Modeling the Network Structure of
+        articles                                           Learning sentence representations We first
+                                                           map each word to its embedding matrix through
+Capturing the network structure of article consists        a lookup embedding matrix W . We then learn a
+of two steps: (a) Learning a network representation        hidden representation of the given sentence hit cenof each source based on its social graph G. (b)            tered around word wi by embedding the sentence
+Using the learned representation of each source to         through a bi-directional GRU as described by (Bahcapture the link structure of a particular article.        danau et al., 2014). Since not all words contribute
+   We use a state-of-the-art network representa-           equally to the representation of the sentence, we
+tion learning algorithm to learn representations           introduce a word level attention mechanism which
+of nodes in a social network. In particular,               attempts to extract relevant words that contribute
+we use Node2Vec (Grover and Leskovec, 2016),               to the meaning of the sentence. Specifically we
+which learns a d-dimensional representation of
+                                                                                             P Ww as follows
+                                                           learn a word level attention matrix
+each source given the hyperlink structure graph            αi ∝ exp(Ww hit + bw ), si = t αi hit where si
+G. Node2Vec seeks to maximize the log likeli-              is the latent representation of the sentence i.
+hood of observing the neighborhood of a node
+N (u), given the node u. Let F be a matrix of              Composing sentence representations We folsize (V, d) where F (u) represents the embedding           low a similar method to learn a latent represenof node u. We then maximize    the following like-         tation of an article. Given the embedding si
+                       P
+lihood function maxF u log Pr(N (u)|u). We                 of each sentence in the article, we learn a hidmodel the above likelihood similar to the Skip-            den representation of the given sentence hi cengram architecture (Mikolov et al., 2013) by as-            tered around si by embedding the list of sensuming that the likelihood of observing a node             tences through a bi-directional GRU as described
+v ∈ N (u) is conditionally independent of any              by (Bahdanau et al., 2014). Once again, since
+other node in the neighborhood    given u. That            not all sentences contribute equally to the repP
+is log Pr(N (u)|u) = v∈N (u) log Pr(v|u). We               resentation of the article, we introduce a senF (u).F (v)                   tence level attention mechanism which attempts
+then model Pr(v|u) = Pe eF (u).F (v) . Having fully
+                          v                                to extract relevant sentences that contribute to the
+specified the log likelihood function, we can now          meaning of the article. Specifically we learn the
+optimize it using stochastic gradient ascent.
+                                                                                                     P Ws
+                                                           weights of a sentence level attention matrix
+   Having learned the embedding matrix F for each          as αs ∝ exp(Ws hs + bs ), zcontent =         s αs hs ,
+source node, we now model the link structure of            where zcontent is the latent representation of the
+any given article A simply by the average of the net-      article. In this case we let the hidden representawork embedding representations for each link l ref-        tion of the sentence be a stochastic representation
+erenced in A. In particular, we compute znetwork           similar to the work by (Miao et al., 2016) and use
+                  1 P
+as: znetwork = |A|     l∈A F (l).                          the Gaussian re-parameterization trick to enable
+
+
+training via end-to-end gradient based methods 5 .                 3. CNN (Title) We consider a convolutional net
+Such techniques have been shown to be useful in                       classifier based on exactly the same architecmodeling ambiguity and also generalize well to                        ture as (Kim, 2014) which uses the title of the
+small training datasets (Miao et al., 2016).                          news article. Convolutional Nets have been
+                                                                      shown to be extremely effective at classify4.3    Prior                                                          ing short pieces of text and can capture nonThe prior models p(h|X) in Equation 2. Note that                      linearities in the feature space(Kim, 2014).
+our proposed framework is general and can be used                  4. FNN (Network) We also consider a simple
+to incorporate a variety of priors. Here, we assume                   fully-connected feed forward neural network
+the prior is drawn from a Gaussian distribution with                  using only the network features to characterize
+diagonal co-variances. The KL Divergence term in                      the predictive power of the network alone.
+Equation 2 can thus be analytically computed. In                   5. HDAM Model (Content) We use the state of
+particular, the KL Divergence between two K di-                       the art hierarchical document attention model
+mensional Gaussian distributions A, B with means                      proposed by (Yang et al., 2016) that models
+µA , µB and diagonal co-variances κA , κB is:                         the content of the article using both word and
+                                                                      sentence level attention mechanisms.
+                           j=K
+                         1X          κAj
+    DKL (A, B) = −          (1 + log
+                         2           κBj                         We consider three different flavors of our proposed
+                            j=1
+                     κAj                                         model which differ in the subset of modalities used
+                 −       − (µAj − µBj )2 /κBj ) (3)              (a) Title and Network (b) Title and Content, and
+                     κBj
+                                                                 (c) Full model: Title, Network, and Content. We
+Parameter Estimation Having described pre-                       train all of our models and the baselines on the
+cisely, the models for each of the components in                 training data set choosing all hyper-parameter using
+Equation 2, we can reformulate the maximization                  the validation set. We report the performance of all
+of the variational lower bound to the following loss             models on the held-out test set.
+function on the set of all learn-able model parameters θ: J (θ) as follows:                                        Experimental Settings We set the embedding
+                                                                 latent dimension captured by each view to be 128
+ J (θ) = NLL(y|X) + λDKL (q(h)||p(h|X)),
+                                                                 including the final latent representation obtained by
+                                                (4)
+                                                                 fusing multiple modalities. In case of the CNN’s,
+where NLL is the negative log likelihood loss comwe consider three convolutional filters of window
+puted between the predicted label and the true lasizes 3, 4, 5 each yielding a 100 dimensional feabel, and λ is a hyper-parameter that controls the
+                                                                 ture map followed by max-over time pooling which
+amount of regularization offered by the KL Diveris then passed through a fully connected layer to
+gence term. We use A DA D ELTA to minimize this
+                                                                 yield the output. In all the neural models, we used
+loss function.
+                                                                 AdaDelta with an initial learning rate of 1.0 to learn
+5     Experiments                                                the parameters of the model via back-propagation.
+
+We evaluate our model against several competitive                  Model         Views            P       R        F1
+baselines which model only a single view to place                  C HANCE       –                34.53   34.59    34.53
+                                                                   LR            Title            59.53   59.42    59.12
+our model in context:                                              CNN           Title            59.26   59.40    59.24
+                                                                   FNN           Network          68.28   56.54    55.10
+    1. Chance Baseline We consider a simple base-                  HDAM          Content          69.85   68.72    68.92
+       line that returns a draw from the label distri-             MVDAM         Title,    Net-   69.87   69.71    69.66
+                                                                                 work
+       bution as the prediction.                                    MVDAM        Title, Content   70.84   70.19    69.54
+    2. Logistic Regression LR (Title) We consider                   MVDAM        Title,    Net-   80.10   79.56    79.67
+       a bag of words classifier using Logistic Re-                              work, Content
+       gression that can capture linear relationships            Table 1: Precision, Recall, and F1 scores of our model MVin the feature space and use the words of the             DAM on the test set compared with several baselines. All
+       title as the feature set.                                 flavors of our model significantly outperform baselines and
+                                                                 yield state of the art performance.
+     Using deterministic sentence representations is a special
+case.
+
+
+5.1   Results and Analysis                                Challenging Cases In Table 2, we highlight
+                                                          some of the challenges of our model. In particular,
+Quantitative Results Table 1 shows the results            our model finds it quite challenging to identify the
+of the evaluation. First note that the logistic regres-   political ideology of the source for articles that
+sion classifier and the CNN model using the Title         are non-political and related to global events, or
+outperforms the C HANCE classifier significantly          entertainment. Examples include instances like
+(F1: 59.12, 59.24 vs 34.53). Second, only mod-            Tourist dies hiking in Australia
+eling the network structure yields a F1 of 55.10          Outback heat or Juan Williams makes
+but still significantly better than the chance base-      the ’case for Oprah’. We also note that
+line. This confirms our intuition that modeling           articles with “click-baity” titles like We are
+the network structure can be useful in prediction         all Just Overclocked Chimpanzees
+of ideology. Third, note that modeling the con-           are not necessarily discriminative of the underlying
+tent (HDAM) significantly outperforms all previ-          ideology. In summary, while our proposed
+ous baselines (F1:68.92). This suggests that con-         model significantly advances the state of art, it
+tent cues can be very strong indicators of ideology.      also suggests scope for further improvement
+Finally, all flavors of our model outperform the          especially in identifying political ideologies of
+baselines. Specifically, observe that incorporating       articles in topics like Entertainment or Sports. For
+the network cues outperforms all uni-modal mod-           example, prior research suggests that engagement
+els that only model either the title, the network, or     in particular sports is correlated with the political
+the content. It is also worth noting that without         leanings (Hoberman, 1977) which suggest that
+the network, only the title and the content show          improved models might need to capture deeper
+only a small improvement over the best perform-           linguistic and contextual cues.
+ing baseline (69.54 vs 68.92) suggesting that the
+network yields distinctive cues from both the title,
+and the content. Finally, the best performing model       Ideological Proportions of News Sources Fieffectively uses all three modalities to yield a F1       nally, we compute the expected proportion of an
+score of 79.67 outperforming the state of the art         ideology in a given source based on the probabilbaseline by 10 percentage points. Altogether our          ity estimates output by our model for the various
+results suggest the superiority of our model over         articles. While one might expect that the expected
+competitive baselines. In order to obtain deeper in-      degree of “left-ness” (or “right-ness”) for a given
+sights into our model, we also perform a qualitative      source can easily be computed by taking a simple
+analysis of our model’s predictions.                      mean of the prediction probability for the given ideology over all articles belonging to the source, such
+Visualizing Attention Scores Figure 3 shows a             an approach can be in-accurate because the probavisualization of sentences based on their attention       bility estimates output by the model are not necesscores. Note that for a left leaning article (see         sarily calibrated and therefore cannot be interpreted
+Figure 3a), the model focuses on sentences in-            as a confidence value. We therefore use isotonic
+volving gun-control, feminists, and                       regression to calibrate the probability scores output
+transgender. In contrast, a visualization of              by the model. Having calibrated the probability
+sentence attention scores for an article which            scores, we now compute the degree to which a parthe model predicted as “right-leaning” ((see Fig-         ticular news source leans toward an ideology by
+ure 3b)) reveals a focus on words like god,               simply computing the mean output score over all
+religion etc. These observations qualitatively            articles corresponding to the source. Table 3 shows
+suggest that the model is able to effectively pick        the top 10 sources ranked according to their proup on content cues present in the article. By ex-         portions for each ideology. We note that sources
+amining the distribution over the sentence indices        like CNN, Buzz Feed, SF Chronicle are considcorresponding to the maximum attention scores,            ered more left-leaning than the Washington Post.
+we noted that only in about half the instances, the       Similarly, we note that NPR and Reuters are conmodel focuses its greatest attention on the begin-        sidered to be the most center-aligned while Breitning of the article suggesting that the ability to        bart, Infowars and Blaze are considered to be most
+selectively focus on sentences in the news article        right-aligned by our model. These observations are
+contributes to the superior performance.                  moderately aligned with survey results that place
+
+
+                                   (a) Sample attention on sentences for a Left aligned article.
+
+
+                                   (b) Sample attention on sentences for a Right aligned article.
+
+Figure 3: Visualization of attention on different sentences on two sample articles from the Left and Right aligned sources
+respectively. Note the different focus based in the ideology reflected by the highlighted words.
+
+        Article Title                                                                     Source Label     Predicted Label
+        Juan Williams Makes the ’Case for Oprah’                                          Right            Left
+        Tourist dies hiking in Australia Outback heat                                     Right            Left
+        Back From China, UCLA Basketball Players Plagued by Father                        Right            Left
+        Democrat Ralph Northam Elected Governor of Virginia                               Right            Left
+        South Africa blighted by racially charged farm murders                            Right            Left
+        Lawsuit: Stripper punched man, knocked out his front tooth                        Left             Right
+        Heres How to Keep Fake News Off Twitter                                           Left             Right
+        We Are All Just Overclocked Chimpanzee                                            Left             Right
+        Curious Arctic Fox Pups Destroy Hidden Camera In The Most Adorable Way            Left             Right
+        I am American, Jewish, and banned from Israel for my activism                     Left             Right
+
+Table 2: Few failure cases of our model illustrating what our model finds challenging. Articles with “click-baity” titles are
+not necessarily very discriminative of the ideology. Similarly, articles that are non-political and related to global events or
+entertainment are quite challenging.
+
+        Rank      Source                         Rank     Source                               Rank      Source
+        1         CNN                            1        NPR                                  1         Breitbart
+        2         BuzzFeed                       2        Reuters                              2         Infowars
+        3         SF Chronicle                   3        USA Today                            3         Blaze
+        4         CBS News                       4        BBC                                  4         Fox News
+        5         BoingBoing                     5        CNBC                                 5         KSL
+        6         Mother Jones                   6        Chicago Tribune                      6         Townhall
+        7         Think Progress                 7        Business Insider                     7         CBN
+        8         The Atlantic                   8        Forbes                               8         ConservativeHQ
+        9         The Washington Post            9        APR                                  9         NewsMax
+        10        Rolling Stone                  10       The Wall Street Journal              10        DailyWire
+                (a) Left aligned                        (b) Centre aligned                          (c) Right aligned
+
+Table 3: A Top 10 ranking of Ideological sources as obtained by our model which correlate moderately with external surveys.
+
+
+news sources on the ideology spectrum based on                      litical ideology of news articles. We show that
+the political beliefs of their consumers 6 .                        incorporating cues from the title, the link structure and the content significantly beats state of the
+6       Conclusion                                                  art. Finally, using the predicted probabilities of our
+We proposed a model to leverage cues from mul-                      model, we draw on methods for probability calitiple views in the predictive task of detecting po-                 bration to rank news sources by their ideological
+                                                                    proportions which moderately correlates with existhttp://www.journalism.org/2014/10/21/political-                 ing surveys on the ideological placement of news
+polarization-media-habits/pj 14-10-21 mediapolarization08/                                                                 sources. To conclude, our proposed framework
+
+
+effectively leverages cues from multiple views to         Sean Gerrish and David M Blei. 2011. Predicting legyield state of the art interpret-able performance and       islative roll calls from text. In Proceedings of the
+                                                            28th international conference on machine learning
+sets the stage for future work which can easily in-
+                                                            (icml-11), pages 489–496.
+corporate other modalities like audio, video and
+images.                                                   Tim Groseclose and Jeffrey Milyo. 2005. A measure
+                                                            of media bias. The Quarterly Journal of Economics,
+Acknowledgments                                             120(4):1191–1237.
+
+We thank the anonymous reviewers for their com-           Aditya Grover and Jure Leskovec. 2016. node2vec:
+ments. This research was supported in part by               Scalable feature learning for networks. In ProceedDARPA Grant D18AP00044 funded under the                     ings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining.
+DARPA YFA program. This work was also partially supported by NSF grants DBI-1355990 and            John M Hoberman. 1977. Sport and political ideology.
+IIS-1546113. The authors are solely responsible             Journal of sport and social issues, 1(2):80–114.
+for the contents of the paper, and the opinions exMohit Iyyer, Peter Enns, Jordan Boyd-Graber, and
+pressed in this publication do not reflect those of        Philip Resnik. 2014. Political ideology detection usthe funding agencies.                                      ing recursive neural networks. In Proceedings of the
+                                                           52nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), volReferences                                                 ume 1, pages 1113–1122.
+Amr Ahmed and Eric P Xing. 2010. Staying informed:        Yoon Kim. 2014.         Convolutional neural netsupervised and semi-supervised multi-view topical          works for sentence classification. arXiv preprint
+ analysis of ideological perspective. In Proceed-           arXiv:1408.5882.
+ ings of the 2010 Conference on Empirical Methods
+ in Natural Language Processing, pages 1140–1150.         Michael Laver, Kenneth Benoit, and John Garry. 2003.
+ Association for Computational Linguistics.                 Extracting policy positions from political texts using
+Dzmitry Bahdanau, Kyunghyun Cho, and Yoshua Ben-            words as data. American Political Science Review,
+  gio. 2014. Neural machine translation by jointly          97(2):311–331.
+  learning to align and translate. arXiv preprint
+  arXiv:1409.0473.                                        Wei-Hao Lin, Eric Xing, and Alexander Hauptmann.
+                                                            2008. A joint topic and perspective model for ideDallas Card, Amber E Boydstun, Justin H Gross, Philip       ological discourse. In Joint European Conference
+  Resnik, and Noah A Smith. 2015. The media frames          on Machine Learning and Knowledge Discovery in
+  corpus: Annotations of frames across issues. In Pro-     Databases, pages 17–32. Springer.
+  ceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th Inter-   Yishu Miao, Lei Yu, and Phil Blunsom. 2016. Neunational Joint Conference on Natural Language Pro-        ral variational inference for text processing. In Incessing (Volume 2: Short Papers), volume 2, pages         ternational Conference on Machine Learning, pages
+  438–444.                                                  1727–1736.
+
+Royce Carroll, Jeffrey B Lewis, James Lo, Keith T         Tomas Mikolov, Kai Chen, Greg Corrado, and JefPoole, and Howard Rosenthal. 2009. Measuring              frey Dean. 2013. Efficient estimation of word
+  bias and uncertainty in dw-nominate ideal point esti-     representations in vector space. arXiv preprint
+  mates via the parametric bootstrap. Political Analy-      arXiv:1301.3781.
+  sis, 17(3):261–275.
+                                                          Burt L Monroe and Ko Maeda. 2004. Talks cheap:
+Ronan Collobert, Jason Weston, Léon Bottou, Michael        Text-based estimation of rhetorical ideal-points.
+  Karlen, Koray Kavukcuoglu, and Pavel Kuksa.
+  2011. Natural language processing (almost) from         Daniel Preoţiuc-Pietro, Ye Liu, Daniel Hopkins, and
+  scratch. Journal of Machine Learning Research,            Lyle Ungar. 2017. Beyond binary labels: political
+  12(Aug):2493–2537.                                        ideology prediction of twitter users. In Proceedings
+Frank E Dardis, Frank R Baumgartner, Amber E Boyd-          of the 55th Annual Meeting of the Association for
+  stun, Suzanna De Boef, and Fuyuan Shen. 2008.             Computational Linguistics (Volume 1: Long Papers),
+  Media framing of capital punishment and its impact        volume 1, pages 729–740.
+  on individuals’ cognitive responses. Mass Communication & Society, 11(2):115–140.                      Yanchuan Sim, Brice DL Acree, Justin H Gross, and
+                                                            Noah A Smith. 2013. Measuring ideological proMatthew Gentzkow and Jesse M Shapiro. 2010. What            portions in political speeches. In Proceedings of the
+ drives media slant? evidence from us daily newspa-         2013 Conference on Empirical Methods in Natural
+ pers. Econometrica, 78(1):35–71.                           Language Processing, pages 91–101.
+
+
+Matt Thomas, Bo Pang, and Lillian Lee. 2006. Get out
+ the vote: Determining support or opposition from
+ congressional floor-debate transcripts. In Proceedings of the 2006 conference on empirical methods in
+ natural language processing, pages 327–335. Association for Computational Linguistics.
+Zichao Yang, Diyi Yang, Chris Dyer, Xiaodong He,
+  Alex Smola, and Eduard Hovy. 2016. Hierarchical
+  attention networks for document classification. In
+  Proceedings of the 2016 Conference of the North
+  American Chapter of the Association for Computational Linguistics: Human Language Technologies,
+  pages 1480–1489.
